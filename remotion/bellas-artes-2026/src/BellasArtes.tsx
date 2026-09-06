@@ -26,7 +26,7 @@ const captions = [
 ];
 
 const PmxLogo: React.FC<{width?:number}> = ({width=360}) => (
-  <Img src={staticFile('pmx_logo.webp')} style={{width,height:width/4,objectFit:'contain'}} />
+  <Img src={staticFile('pmx_logo_v11.png')} style={{width,height:width/4,objectFit:'contain'}} />
 );
 
 const CaptionLayer: React.FC = () => {
@@ -44,15 +44,15 @@ const CaptionLayer: React.FC = () => {
 const OrganizerStrip: React.FC = () => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame,[6,18],[0,1],{extrapolateLeft:'clamp',extrapolateRight:'clamp'});
-  return <div style={{position:'absolute',top:48,left:54,right:54,zIndex:74,display:'flex',alignItems:'center',justifyContent:'space-between',opacity}}>
-    <div style={{display:'flex',alignItems:'center',gap:13,maxWidth:480}}>
-      <Img src={staticFile('colectivo_logo.webp')} style={{width:72,height:72,objectFit:'contain'}} />
+  return <div style={{position:'absolute',top:42,left:48,right:48,zIndex:74,display:'flex',alignItems:'center',justifyContent:'space-between',opacity}}>
+    <div style={{display:'flex',alignItems:'center',gap:16,maxWidth:520}}>
+      <Img src={staticFile('colectivo_logo.webp')} style={{width:88,height:108,objectFit:'contain'}} />
       <div>
-        <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:17,letterSpacing:1.5,color:C.gold}}>ORGANIZA</div>
-        <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:21,lineHeight:1.05,color:C.white,marginTop:3}}>COLECTIVO PACKERS MÉXICO</div>
+        <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:18,letterSpacing:1.5,color:C.gold}}>ORGANIZA</div>
+        <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:22,lineHeight:1.05,color:C.white,marginTop:3}}>COLECTIVO PACKERS MÉXICO</div>
       </div>
     </div>
-    <PmxLogo width={370} />
+    <PmxLogo width={420} />
   </div>;
 };
 
@@ -99,8 +99,8 @@ const VisualMoments: React.FC = () => <>
     <div style={{fontFamily:'Montserrat',fontWeight:700,fontSize:29,lineHeight:1.17,color:C.white,marginTop:11}}>Ellos coordinarán cómo se forma la fotografía.</div>
   </OverlayCard>
   <OverlayCard from={846} to={914}>
-    <div style={{display:'flex',alignItems:'center',gap:18}}>
-      <Img src={staticFile('colectivo_logo.webp')} style={{width:104,height:104,objectFit:'contain'}} />
+    <div style={{display:'flex',alignItems:'center',gap:22}}>
+      <Img src={staticFile('colectivo_logo.webp')} style={{width:128,height:158,objectFit:'contain'}} />
       <div>
         <div style={{fontFamily:'Bebas Neue',fontSize:62,lineHeight:.94,color:C.gold}}>ORGANIZA</div>
         <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:32,color:C.cream,marginTop:2}}>COLECTIVO PACKERS MÉXICO</div>
@@ -124,7 +124,7 @@ const CoverFrame: React.FC = () => {
   const translateY = interpolate(frame,[0,18],[28,0],{extrapolateRight:'clamp',easing:Easing.bezier(.16,1,.3,1)});
   return <AbsoluteFill style={{opacity,overflow:'hidden'}}>
     <BrandBackdrop />
-    <div style={{position:'absolute',top:62,right:64}}><PmxLogo width={390} /></div>
+    <div style={{position:'absolute',top:62,right:64}}><PmxLogo width={420} /></div>
     <div style={{position:'absolute',left:68,right:68,top:342,transform:`translateY(${translateY}px)`}}>
       <div style={{width:178,height:8,background:C.gold}} />
       <div style={{fontFamily:'Bebas Neue',fontSize:164,lineHeight:.84,color:C.cream,marginTop:30}}>FOTO OFICIAL</div>
@@ -152,15 +152,15 @@ const CtaFrame: React.FC = () => {
   const scale = interpolate(frame,[0,20],[.975,1],{extrapolateRight:'clamp',easing:Easing.bezier(.16,1,.3,1)});
   return <AbsoluteFill style={{opacity,overflow:'hidden'}}>
     <BrandBackdrop />
-    <div style={{position:'absolute',top:58,left:58,right:58,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-      <div style={{display:'flex',alignItems:'center',gap:14,maxWidth:470}}>
-        <Img src={staticFile('colectivo_logo.webp')} style={{width:88,height:88,objectFit:'contain'}} />
+    <div style={{position:'absolute',top:50,left:52,right:52,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+      <div style={{display:'flex',alignItems:'center',gap:18,maxWidth:500}}>
+        <Img src={staticFile('colectivo_logo.webp')} style={{width:112,height:138,objectFit:'contain'}} />
         <div>
-          <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:17,letterSpacing:1.4,color:C.gold}}>ORGANIZA</div>
-          <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:22,lineHeight:1.06,color:C.cream,marginTop:3}}>COLECTIVO PACKERS MÉXICO</div>
+          <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:18,letterSpacing:1.4,color:C.gold}}>ORGANIZA</div>
+          <div style={{fontFamily:'Montserrat',fontWeight:800,fontSize:23,lineHeight:1.06,color:C.cream,marginTop:3}}>COLECTIVO PACKERS MÉXICO</div>
         </div>
       </div>
-      <PmxLogo width={390} />
+      <PmxLogo width={420} />
     </div>
     <div style={{position:'absolute',left:68,right:68,top:410,transform:`scale(${scale})`,transformOrigin:'left center'}}>
       <div style={{fontFamily:'Bebas Neue',fontSize:110,lineHeight:.9,color:C.gold}}>¿TE SUMAS? 📸🧀</div>
