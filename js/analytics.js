@@ -118,6 +118,23 @@
     return true;
   }
 
+  function sendPageViewOnce() {
+    var key = "standard-page-view";
+    if (onceKeys.has(key)) return false;
+    onceKeys.add(key);
+
+    var parameters = sanitizeParameters(Object.assign({}, baseParameters(), {
+      page_title: document.title
+    }));
+    var enabled = isEnabled();
+
+    recordDebugAttempt("page_view", parameters, enabled);
+    if (!enabled) return false;
+
+    window.gtag("event", "page_view", parameters);
+    return true;
+  }
+
   function loadProvider() {
     if (!/^G-[A-Z0-9]+$/.test(measurementId)) return false;
 
@@ -126,7 +143,11 @@
       window.dataLayer.push(arguments);
     };
     window.gtag("js", new Date());
+
+    // Automatic page views stay disabled so the Hub has one explicit source of truth.
+    // The standard GA4 page_view is emitted exactly once below; HUB_VIEW remains independent.
     window.gtag("config", measurementId, { send_page_view: false });
+    sendPageViewOnce();
 
     var script = document.createElement("script");
     script.async = true;
@@ -147,6 +168,7 @@
     enabled: function () { return isEnabled(); },
     getAttribution: getAttribution,
     trackOnce: trackOnce,
+    sendPageViewOnce: sendPageViewOnce,
     debugEnabled: debugEnabled,
     debugAttempts: debugAttempts
   });
