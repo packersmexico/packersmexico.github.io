@@ -49,6 +49,13 @@ function renderGames(items) {
   });
 }
 
+function normalizeStatus(value) {
+  const s = String(value || 'HOLD').toUpperCase();
+  if (s.includes('READY') || s.includes('PASS')) return 'ready';
+  if (s.includes('RETAIN') || s.includes('RETENER') || s.includes('ERROR')) return 'blocked';
+  return 'hold';
+}
+
 function renderFunnel(data) {
   const root = document.getElementById('funnel');
   const steps = [
@@ -62,11 +69,47 @@ function renderFunnel(data) {
   root.innerHTML = '';
   steps.forEach(([index,name,status]) => {
     const row = document.createElement('div');
+    const cls = normalizeStatus(status);
     row.className = 'funnel-step';
     row.innerHTML = `
       <span class="step-index">${index}</span>
       <span class="step-name">${name}</span>
-      <span class="step-status ${status === 'READY' ? 'ready' : 'hold'}">${status}</span>
+      <span class="step-status ${cls}">${status}</span>
+    `;
+    root.appendChild(row);
+  });
+}
+
+function renderProduction(data) {
+  const production = data.production || {};
+  const outputs = production.outputs || [];
+  setText('package-status', production.package_status || 'HOLD');
+  setText('delivery-target', production.delivery_target || 'MAR 15 SEP · 07:00 CDMX');
+  setText('production-rule', production.rule || 'La pieza pasa por 04 y 05. Publicar sigue requiriendo autorización de Dirección.');
+
+  const statusNode = document.getElementById('package-status');
+  if (statusNode) statusNode.className = `section-stat package-${normalizeStatus(production.package_status)}`;
+
+  const root = document.getElementById('production-outputs');
+  if (!root) return;
+  root.innerHTML = '';
+
+  outputs.forEach(item => {
+    const cls = normalizeStatus(item.status);
+    const row = document.createElement('div');
+    row.className = `production-output ${cls}`;
+    const action = item.url && cls === 'ready'
+      ? `<a href="${item.url}" rel="noopener">ABRIR PIEZA →</a>`
+      : `<span class="output-wait">${item.next || 'ESPERANDO DATA'}</span>`;
+    row.innerHTML = `
+      <div>
+        <span class="output-label">${item.label}</span>
+        <span class="output-meta">${item.target || ''}</span>
+      </div>
+      <div class="output-state">
+        <strong>${item.status || 'HOLD'}</strong>
+        ${action}
+      </div>
     `;
     root.appendChild(row);
   });
@@ -91,6 +134,7 @@ function render(data) {
   renderParticipants(data.participants);
   renderGames(data.games);
   renderFunnel(data);
+  renderProduction(data);
 
   const privacy = document.getElementById('privacy-note');
   privacy.textContent = data.capture.window === 'OPEN'
