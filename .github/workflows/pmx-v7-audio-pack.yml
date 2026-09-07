@@ -11,22 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download voice clips
+      - name: Download approved crisp voice clips
         run: |
           mkdir -p audio
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=006da74080274c4b9c836b56fc9806f4' -o audio/S01.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=1d95623a50fb4cf2a71cd7ee97707ff4' -o audio/S02.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=5fc5e4155da5419fa7635284c630f17b' -o audio/S03.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=bebbadd2aae4d4728b4670dd488d16a4b' -o audio/S04.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=b8fb9dbac4f34887aa1de3d99fc033f5' -o audio/S05.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=f78a0a2297804600ab694025f70bcb62' -o audio/S06.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=2f9cede6a2f545d2b8b6c204cafc1bbb' -o audio/S07.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=aa78301ba664442e87ae4df01a442204' -o audio/S08.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=7295be3f86844ec9906c86da064268e5' -o audio/S09.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=1abca2f9df8541a4829ffb251515028d' -o audio/S10.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=dfdd0ab6d18246d6aa40b29caabf37c0' -o audio/S11.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=07f974cbbb81493d8f66cee5798484c6' -o audio/S12.mp3
-          curl -fL 'https://www.aidocmaker.com/g0/audio?name=b531e27567c94b8fa7d0659a3e5ae5a0' -o audio/S13.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/ece806e3-2e33-4006-ac22-ba29fbc13b86.mp3' -o audio/S01.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/0cef0ede-6468-4d62-91d7-124aee2df8ca.mp3' -o audio/S02.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/24e7c651-593e-41c5-8751-9f7850edb45d.mp3' -o audio/S03.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/1b94855d-364e-4640-a86e-24d1737597cd.mp3' -o audio/S04.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/aad43722-ed44-404a-855d-e3a97ad6a3e5.mp3' -o audio/S05.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/f1c900e7-4e41-4ff9-9450-08d92dd49f7a.mp3' -o audio/S06.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/60daf60f-4e6b-4f47-8627-9ebdd7a7ff34.mp3' -o audio/S07.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/aa01f622-c739-4237-9164-f9e8b59f8df4.mp3' -o audio/S08.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/6a7fb4f9-cbc6-44f5-8ae7-65cfef86d47b.mp3' -o audio/S09.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/ddfc0477-f455-4eda-894f-23360ba370a6.mp3' -o audio/S10.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/cd261f69-476e-4ef4-9973-a205d3d176fb.mp3' -o audio/S11.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/429bafeb-5524-469f-a0be-7b3ffedac852.mp3' -o audio/S12.mp3
+          curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/9e6816c9-2949-4a7a-8427-d016564647d6.mp3' -o audio/S13.mp3
+          for f in audio/*.mp3; do ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f"; done
       - uses: actions/upload-artifact@v4
         with:
           name: pmx-v7-audio-pack
