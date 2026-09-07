@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081D13">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Control operativo de la Quiniela de PACKERS MÉXICO.">
+  <title>PACKERS MÉXICO · Quiniela Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <a href="../" aria-label="PACKERS MÉXICO · Digital Hub">
+      <img class="brand-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
+    </a>
+    <p class="header-label">QUINIELA CONTROL</p>
+  </header>
+
+  <main id="contenido" class="shell">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow" id="week-label">WEEK 1 · 2026</p>
+      <h1 id="title">CONTROL DE<br>QUINIELA</h1>
+      <div class="hero-status" aria-live="polite">
+        <span class="big-number" id="capture-count">1/9</span>
+        <span class="big-copy">PICKS COMPLETOS</span>
+      </div>
+      <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="1">
+        <span id="progress-bar" style="width:11.11%"></span>
+      </div>
+      <div class="meta-line">
+        <span id="window-status">CAPTURA ABIERTA</span>
+        <span id="deadline">CIERRE · 07 SEP · 20:00 CDMX</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="capture-heading">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CAPTURA</p>
+          <h2 id="capture-heading">QUIÉN YA ESTÁ</h2>
+        </div>
+        <p class="section-stat"><span id="missing-count">8</span> FALTAN</p>
+      </div>
+      <div id="participants" class="participants" aria-live="polite"></div>
+    </section>
+
+    <section class="section" aria-labelledby="games-heading">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">RESULTADOS</p>
+          <h2 id="games-heading">SEMANA EN CURSO</h2>
+        </div>
+        <p class="section-stat"><span id="final-count">0/16</span> FINAL</p>
+      </div>
+      <div id="games" class="games"></div>
+    </section>
+
+    <section class="section funnel" aria-labelledby="funnel-heading">
+      <p class="eyebrow">FUNNEL</p>
+      <h2 id="funnel-heading">ESTADO DE PRODUCCIÓN</h2>
+      <div id="funnel" class="funnel-steps"></div>
+    </section>
+
+    <section class="ops-strip" aria-label="Estado operativo">
+      <div>
+        <span class="ops-label">ÚLTIMA SINCRONIZACIÓN</span>
+        <strong id="last-sync">—</strong>
+      </div>
+      <a class="action-link" href="https://form.jotform.com/262495470043053" rel="noopener">ABRIR FORMULARIO →</a>
+    </section>
+
+    <p class="privacy-note" id="privacy-note">Los picks individuales permanecen ocultos mientras la captura esté abierta.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>PACKERS MÉXICO</p>
+    <p class="independence">Proyecto independiente · no afiliado oficialmente con NFL/Green Bay Packers.</p>
+  </footer>
+</body>
+</html>
