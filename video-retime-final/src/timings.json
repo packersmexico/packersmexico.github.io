@@ -1,0 +1,6 @@
+{
+  "fps": 30,
+  "scenes": [
+    {"id":"S01","seconds":6.5},{"id":"S02","seconds":6.0},{"id":"S03","seconds":6.0},{"id":"S04","seconds":7.0},{"id":"S05","seconds":5.0},{"id":"S06","seconds":6.5},{"id":"S07","seconds":7.5},{"id":"S08","seconds":4.5},{"id":"S09","seconds":6.5},{"id":"S10","seconds":7.0},{"id":"S11","seconds":7.0},{"id":"S12","seconds":8.5},{"id":"S13","seconds":6.5}
+  ]
+}
