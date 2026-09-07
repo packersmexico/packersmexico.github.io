@@ -29,16 +29,28 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Install system media tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg imagemagick xz-utils
+          sudo apt-get install -y ffmpeg imagemagick
 
       - name: Install Remotion dependencies
         working-directory: ${{ env.WORKDIR }}
         run: npm install --no-audit --no-fund
 
-      - name: Materialize 03.5 assets and NEW V7 narration
+      - name: Generate NEW V7 narration
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          python -m pip install --disable-pip-version-check edge-tts==7.2.3
+          python scripts/generate-v7-voice.py
+          for f in public/audio/S*.mp3; do ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f"; done
+
+      - name: Materialize locked 03.5 visual assets
         working-directory: ${{ env.WORKDIR }}
         run: |
           python3 - <<'PY'
@@ -47,8 +59,12 @@ jobs:
           s = p.read_text(encoding='utf-8')
           a = s.index('# Exact uploaded authoritative horizontal V1.1 asset')
           b = s.index('# Asset map locked by 03.5.')
-          block = '''# Authoritative PACKERS MÉXICO horizontal V1.1 master already governed in this repository. Never rebuild or recolor.\necho '[logo] using approved horizontal V1.1 repository master'\ncp "$ROOT/../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" "$ASSETS/pmx-logo.svg"\ngrep -qi '<svg' "$ASSETS/pmx-logo.svg"\nsha256sum "$ASSETS/pmx-logo.svg"\n\n'''
-          p.write_text(s[:a] + block + s[b:], encoding='utf-8')
+          logo = '''# Authoritative PACKERS MÉXICO horizontal V1.1 master already governed in this repository. Never rebuild or recolor.\necho '[logo] using approved horizontal V1.1 repository master'\ncp "$ROOT/../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" "$ASSETS/pmx-logo.svg"\ngrep -qi '<svg' "$ASSETS/pmx-logo.svg"\nsha256sum "$ASSETS/pmx-logo.svg"\n\n'''
+          s = s[:a] + logo + s[b:]
+          c = s.index('# NEW V7 narration.')
+          d = s.index("echo '[assets] ready'")
+          s = s[:c] + "# NEW V7 narration generated locally in the previous workflow step. V6 is never downloaded or referenced.\n\n" + s[d:]
+          p.write_text(s, encoding='utf-8')
           PY
           bash scripts/prepare-assets-v2.sh
 
