@@ -3,8 +3,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 mkdir -p "$ROOT/public/assets" "$ROOT/public/audio" "$ROOT/out"
 
-base64 -d "$ROOT/assets/source-frames.zip.b64" > "$ROOT/assets/source-frames.zip"
-unzip -o "$ROOT/assets/source-frames.zip" -d "$ROOT/public/assets" >/dev/null
+# Reuse the already-committed V6 visual frame bundle. Do not rebuild slides.
+unzip -o "$ROOT/../video-retime-review/assets/source-frames.zip" -d "$ROOT/public/assets" >/dev/null
 
 fetch_audio() {
   local name="$1" id="$2"
@@ -34,7 +34,8 @@ fetch_audio S07 2f9cede6a2f545d2b8b6c204cafc1bbb
 fetch_audio S08 aa78301ba664442e87ae4df01a442204
 fetch_audio S09 7295be3f86844ec9906c86da064268e5
 fetch_audio S10 1abca2f9df8541a4829ffb251515028d
-fetch_audio S11 e63bb672250f4fe0a90341c913a8de6e
+# Corrected S11: no Quiniela / no Dr. Palma.
+fetch_audio S11 dfdd0ab6d18246d6aa40b29caabf37c0
 fetch_audio S12 07f974cbbb81493d8f66cee5798484c6
 fetch_audio S13 b531e27567c94b8fa7d0659a3e5ae5a0
 
@@ -43,6 +44,10 @@ if ! curl -fL --connect-timeout 20 --max-time 90 --retry 2 "$INVITE" -o "$ROOT/p
   echo 'Invitation thumbnail unavailable, using exact-data fallback background.'
   cp "$ROOT/public/assets/old_14.jpg" "$ROOT/public/assets/foto-oficial.png"
 fi
+
+# Fail fast if any expected visual is missing.
+for n in $(seq -w 1 14); do test -s "$ROOT/public/assets/old_${n}.jpg"; done
+test -s "$ROOT/public/assets/pmx-logo.png"
 
 for f in "$ROOT"/public/audio/*.mp3; do
   printf '%s ' "$(basename "$f")"
