@@ -4,7 +4,8 @@
   var config = window.PMX_CONFIG;
   var analyticsConfig = config && config.analytics ? config.analytics : {};
   var measurementId = analyticsConfig.GA4_MEASUREMENT_ID || "";
-  var storageKey = "pmx_hub_attribution_v1";
+  var attributionStorageKey = "pmx_hub_attribution_v1";
+  var trafficClassStorageKey = "pmx_hub_traffic_class_v1";
   var utmNames = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
   var allowedEvents = Object.freeze([
     "HUB_VIEW",
@@ -37,7 +38,7 @@
 
   function readStoredAttribution() {
     try {
-      var stored = JSON.parse(window.sessionStorage.getItem(storageKey) || "{}");
+      var stored = JSON.parse(window.sessionStorage.getItem(attributionStorageKey) || "{}");
       return stored && typeof stored === "object" ? stored : {};
     } catch (error) {
       return {};
@@ -50,7 +51,7 @@
 
     if (Object.keys(current).length) {
       try {
-        window.sessionStorage.setItem(storageKey, JSON.stringify(attribution));
+        window.sessionStorage.setItem(attributionStorageKey, JSON.stringify(attribution));
       } catch (error) {
         // Storage can be unavailable in strict privacy modes; tracking remains functional for the current page.
       }
@@ -66,12 +67,38 @@
     }, {});
   }
 
+  function readStoredTrafficClass() {
+    try {
+      return window.sessionStorage.getItem(trafficClassStorageKey) || "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function resolveTrafficClass() {
+    var search = new URLSearchParams(window.location.search);
+    var requestedTest = search.get("pmx_test") === "1";
+    var storedTrafficClass = readStoredTrafficClass();
+    var trafficClass = requestedTest || storedTrafficClass === "TEST_SETUP" ? "TEST_SETUP" : "PRODUCTION";
+
+    try {
+      window.sessionStorage.setItem(trafficClassStorageKey, trafficClass);
+    } catch (error) {
+      // If session storage is unavailable, the current page is still classified correctly.
+    }
+
+    return trafficClass;
+  }
+
+  var trafficClass = resolveTrafficClass();
+
   function baseParameters() {
     return Object.assign({
       id_juego: config.gameId,
       hub_version: analyticsConfig.hubVersion || "p0",
       event_version: analyticsConfig.eventVersion || "1.0",
-      page_location: window.location.href
+      page_location: window.location.href,
+      traffic_class: trafficClass
     }, normalizedAttribution(getAttribution()));
   }
 
@@ -101,6 +128,7 @@
     if (!allowedEvents.includes(eventName)) return false;
 
     var parameters = sanitizeParameters(Object.assign({}, baseParameters(), extraParams || {}));
+    if (trafficClass === "TEST_SETUP") parameters.debug_mode = true;
     var enabled = isEnabled();
 
     recordDebugAttempt(eventName, parameters, enabled);
@@ -126,6 +154,7 @@
     var parameters = sanitizeParameters(Object.assign({}, baseParameters(), {
       page_title: document.title
     }));
+    if (trafficClass === "TEST_SETUP") parameters.debug_mode = true;
     var enabled = isEnabled();
 
     recordDebugAttempt("page_view", parameters, enabled);
@@ -143,6 +172,12 @@
       window.dataLayer.push(arguments);
     };
     window.gtag("js", new Date());
+
+    // Classify the complete browser session before GA4 config so automatic events
+    // such as session_start/user_engagement inherit the same traffic class.
+    var globalParameters = { traffic_class: trafficClass };
+    if (trafficClass === "TEST_SETUP") globalParameters.debug_mode = true;
+    window.gtag("set", globalParameters);
 
     // Automatic page views stay disabled so the Hub has one explicit source of truth.
     // The standard GA4 page_view is emitted exactly once below; HUB_VIEW remains independent.
@@ -167,6 +202,7 @@
     allowedEvents: allowedEvents,
     enabled: function () { return isEnabled(); },
     getAttribution: getAttribution,
+    getTrafficClass: function () { return trafficClass; },
     trackOnce: trackOnce,
     sendPageViewOnce: sendPageViewOnce,
     debugEnabled: debugEnabled,
