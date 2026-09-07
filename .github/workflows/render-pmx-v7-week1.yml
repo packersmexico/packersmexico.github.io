@@ -1,0 +1,79 @@
+name: Render PMX V7 Week 1
+
+on:
+  push:
+    branches:
+      - pmx-v7-week1-render
+    paths:
+      - 'video-v7-week1/**'
+      - '.github/workflows/render-pmx-v7-week1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WORKDIR: video-v7-week1
+  OUTPUT: PMX-Offseason-Chisme-2026-V7-WEEK1-FINAL.mp4
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout render branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install system media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg imagemagick
+
+      - name: Install Remotion dependencies
+        working-directory: ${{ env.WORKDIR }}
+        run: npm install --no-audit --no-fund
+
+      - name: Materialize 03.5 assets and NEW V7 narration
+        working-directory: ${{ env.WORKDIR }}
+        run: bash scripts/prepare-assets.sh
+
+      - name: Derive timing from actual scene voice files
+        working-directory: ${{ env.WORKDIR }}
+        run: python3 scripts/build-timings.py
+
+      - name: Validate Remotion composition
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          npx remotion browser ensure || true
+          npm run compositions
+
+      - name: Render V7 Week 1 master
+        working-directory: ${{ env.WORKDIR }}
+        run: npm run render:v7 -- --concurrency=4
+
+      - name: Technical QA
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          mkdir -p out/qa
+          ffprobe -v error -show_entries format=duration,size,bit_rate:stream=index,codec_type,codec_name,width,height,r_frame_rate,sample_rate,channels -of json "out/${OUTPUT}" | tee out/qa/ffprobe.json
+          ffmpeg -v error -i "out/${OUTPUT}" -f null -
+          ffmpeg -y -ss 0 -i "out/${OUTPUT}" -vf "fps=1/6,scale=216:384:force_original_aspect_ratio=decrease,pad=216:384:(ow-iw)/2:(oh-ih)/2,tile=5x5:padding=8:margin=8" -frames:v 1 out/qa/contact-sheet.jpg
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 "out/${OUTPUT}")" = "1080"
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 "out/${OUTPUT}")" = "1920"
+
+      - name: Upload final MP4 and QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: PMX-Offseason-Chisme-2026-V7-WEEK1-FINAL
+          path: |
+            video-v7-week1/out/PMX-Offseason-Chisme-2026-V7-WEEK1-FINAL.mp4
+            video-v7-week1/out/qa/contact-sheet.jpg
+            video-v7-week1/out/qa/ffprobe.json
+            video-v7-week1/src/timings.json
+          if-no-files-found: error
+          retention-days: 7
