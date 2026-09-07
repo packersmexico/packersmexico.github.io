@@ -32,7 +32,7 @@ jobs:
       - name: Install system media tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg imagemagick
+          sudo apt-get install -y ffmpeg imagemagick xz-utils
 
       - name: Install Remotion dependencies
         working-directory: ${{ env.WORKDIR }}
@@ -40,7 +40,7 @@ jobs:
 
       - name: Materialize 03.5 assets and NEW V7 narration
         working-directory: ${{ env.WORKDIR }}
-        run: bash scripts/prepare-assets.sh
+        run: bash scripts/prepare-assets-v2.sh
 
       - name: Derive timing from actual scene voice files
         working-directory: ${{ env.WORKDIR }}
