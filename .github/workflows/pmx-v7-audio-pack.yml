@@ -1,0 +1,34 @@
+name: PMX V7 Audio Pack
+on:
+  push:
+    branches: [pmx-v7-week1-retime-final]
+    paths: ['video-retime-final/audio-pack-trigger.txt']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download voice clips
+        run: |
+          mkdir -p audio
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=006da74080274c4b9c836b56fc9806f4' -o audio/S01.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=1d95623a50fb4cf2a71cd7ee97707ff4' -o audio/S02.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=5fc5e4155da5419fa7635284c630f17b' -o audio/S03.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=bebbadd2aae4d4728b4670dd488d16a4b' -o audio/S04.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=b8fb9dbac4f34887aa1de3d99fc033f5' -o audio/S05.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=f78a0a2297804600ab694025f70bcb62' -o audio/S06.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=2f9cede6a2f545d2b8b6c204cafc1bbb' -o audio/S07.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=aa78301ba664442e87ae4df01a442204' -o audio/S08.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=7295be3f86844ec9906c86da064268e5' -o audio/S09.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=1abca2f9df8541a4829ffb251515028d' -o audio/S10.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=dfdd0ab6d18246d6aa40b29caabf37c0' -o audio/S11.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=07f974cbbb81493d8f66cee5798484c6' -o audio/S12.mp3
+          curl -fL 'https://www.aidocmaker.com/g0/audio?name=b531e27567c94b8fa7d0659a3e5ae5a0' -o audio/S13.mp3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pmx-v7-audio-pack
+          path: audio/*.mp3
+          retention-days: 1
