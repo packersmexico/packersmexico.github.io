@@ -1,7 +1,7 @@
 {
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-07T16:35:28-06:00",
+  "last_sync": "2026-09-07T17:28:50-06:00",
   "capture": {
     "complete": 1,
     "total": 9,
@@ -43,5 +43,15 @@
     "consensus": "HOLD",
     "production": "HOLD",
     "publication": "HOLD"
+  },
+  "production": {
+    "package_status": "HOLD · ESPERANDO DATA",
+    "delivery_target": "MAR 15 SEP · 07:00 CDMX",
+    "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
+    "outputs": [
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS / CONSENSUS","status":"HOLD","target":"TRAS CIERRE + 9/9","next":"ESPERANDO CIERRE","url":""},
+      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""},
+      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""}
+    ]
   }
 }
