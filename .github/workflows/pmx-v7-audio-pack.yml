@@ -27,7 +27,7 @@ jobs:
           curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/cd261f69-476e-4ef4-9973-a205d3d176fb.mp3' -o audio/S11.mp3
           curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/429bafeb-5524-469f-a0be-7b3ffedac852.mp3' -o audio/S12.mp3
           curl -fL 'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/9e6816c9-2949-4a7a-8427-d016564647d6.mp3' -o audio/S13.mp3
-          for f in audio/*.mp3; do ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f"; done
+          ls -lh audio
       - uses: actions/upload-artifact@v4
         with:
           name: pmx-v7-audio-pack
