@@ -40,7 +40,17 @@ jobs:
 
       - name: Materialize 03.5 assets and NEW V7 narration
         working-directory: ${{ env.WORKDIR }}
-        run: bash scripts/prepare-assets-v2.sh
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/prepare-assets-v2.sh')
+          s = p.read_text(encoding='utf-8')
+          a = s.index('# Exact uploaded authoritative horizontal V1.1 asset')
+          b = s.index('# Asset map locked by 03.5.')
+          block = '''# Authoritative PACKERS MÉXICO horizontal V1.1 master already governed in this repository. Never rebuild or recolor.\necho '[logo] using approved horizontal V1.1 repository master'\ncp "$ROOT/../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" "$ASSETS/pmx-logo.svg"\ngrep -qi '<svg' "$ASSETS/pmx-logo.svg"\nsha256sum "$ASSETS/pmx-logo.svg"\n\n'''
+          p.write_text(s[:a] + block + s[b:], encoding='utf-8')
+          PY
+          bash scripts/prepare-assets-v2.sh
 
       - name: Derive timing from actual scene voice files
         working-directory: ${{ env.WORKDIR }}
@@ -65,6 +75,9 @@ jobs:
           ffmpeg -y -ss 0 -i "out/${OUTPUT}" -vf "fps=1/6,scale=216:384:force_original_aspect_ratio=decrease,pad=216:384:(ow-iw)/2:(oh-ih)/2,tile=5x5:padding=8:margin=8" -frames:v 1 out/qa/contact-sheet.jpg
           test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 "out/${OUTPUT}")" = "1080"
           test "$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 "out/${OUTPUT}")" = "1920"
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of csv=p=0 "out/${OUTPUT}")" = "30/1"
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "out/${OUTPUT}")" = "h264"
+          test "$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "out/${OUTPUT}")" = "aac"
 
       - name: Upload final MP4 and QA
         uses: actions/upload-artifact@v4
