@@ -1,0 +1,47 @@
+{
+  "week": "WEEK 1",
+  "season": "2026",
+  "last_sync": "2026-09-07T15:34:00-06:00",
+  "capture": {
+    "complete": 1,
+    "total": 9,
+    "window": "OPEN",
+    "deadline_label": "07 SEP · 20:00 CDMX"
+  },
+  "participants": [
+    {"name":"EL DOC","status":"PENDING"},
+    {"name":"ARI","status":"PENDING"},
+    {"name":"LALO","status":"PENDING"},
+    {"name":"ALEX","status":"PENDING"},
+    {"name":"LUIS C.","status":"PENDING"},
+    {"name":"DR PALMA","status":"PENDING"},
+    {"name":"JENNI","status":"PENDING"},
+    {"name":"RODRI","status":"PENDING"},
+    {"name":"IBRACHO","status":"COMPLETE"}
+  ],
+  "results": {"final":0,"total":16},
+  "games": [
+    {"matchup":"NE @ SEA","kickoff_cdmx":"09 SEP · 18:20 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"SF @ LAR","kickoff_cdmx":"10 SEP · 18:35 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"CHI @ CAR","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"TB @ CIN","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"NO @ DET","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"BUF @ HOU","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"BAL @ IND","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"CLE @ JAX","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"ATL @ PIT","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"NYJ @ TEN","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"AZ @ LAC","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"MIA @ LV","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"GB @ MIN","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"WAS @ PHI","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"DAL @ NYG","kickoff_cdmx":"13 SEP · 18:20 CDMX · SNF","status":"SCHEDULED","winner":""},
+    {"matchup":"DEN @ KC","kickoff_cdmx":"14 SEP · 18:15 CDMX · MNF","status":"SCHEDULED","winner":""}
+  ],
+  "pipeline": {
+    "data_system": "READY",
+    "consensus": "HOLD",
+    "production": "HOLD",
+    "publication": "HOLD"
+  }
+}
