@@ -1,9 +1,9 @@
 {
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-07T23:36:32-06:00",
+  "last_sync": "2026-09-08T00:40:30-06:00",
   "capture": {
-    "complete": 7,
+    "complete": 9,
     "total": 9,
     "window": "OPEN",
     "deadline_label": "09 SEP · 12:00 CDMX"
@@ -12,11 +12,11 @@
     {"name":"EL DOC","status":"COMPLETE"},
     {"name":"ARI","status":"COMPLETE"},
     {"name":"LALO","status":"COMPLETE"},
-    {"name":"ALEX","status":"PENDING"},
+    {"name":"ALEX","status":"COMPLETE"},
     {"name":"LUIS C.","status":"COMPLETE"},
     {"name":"DR PALMA","status":"COMPLETE"},
     {"name":"JENNI","status":"COMPLETE"},
-    {"name":"RODRI","status":"PENDING"},
+    {"name":"RODRI","status":"COMPLETE"},
     {"name":"IBRACHO","status":"COMPLETE"}
   ],
   "results": {"final":0,"total":16},
@@ -45,7 +45,7 @@
     "publication": "HOLD"
   },
   "production": {
-    "package_status": "HOLD · ESPERANDO DATA",
+    "package_status": "HOLD · ESPERANDO CIERRE",
     "delivery_target": "MAR 15 SEP · 07:00 CDMX",
     "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
     "outputs": [
