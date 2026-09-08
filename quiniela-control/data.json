@@ -1,7 +1,7 @@
 {
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-08T10:42:56-06:00",
+  "last_sync": "2026-09-08T12:07:47-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -40,16 +40,17 @@
   ],
   "pipeline": {
     "data_system": "READY",
-    "consensus": "HOLD",
-    "production": "HOLD",
-    "publication": "HOLD"
+    "consensus": "HOLD · CAPTURA ABIERTA",
+    "production": "HOLD · CAPTURA ABIERTA",
+    "publication": "NO PUBLICAR"
   },
   "production": {
     "package_status": "HOLD · ESPERANDO CIERRE",
     "delivery_target": "MAR 15 SEP · 07:00 CDMX",
     "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
     "outputs": [
-      {"id":"W1-PICKS-CAROUSEL","label":"PICKS / CONSENSUS","status":"HOLD","target":"TRAS CIERRE + 9/9","next":"ESPERANDO CIERRE","url":""},
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS","status":"HOLD","target":"CAPTURA CLOSED + 9/9","next":"ESPERANDO CIERRE","url":""},
+      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD","target":"CAPTURA CLOSED + 9/9","next":"ESPERANDO CIERRE","url":""},
       {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""},
       {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""}
     ]
