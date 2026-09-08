@@ -1,20 +1,20 @@
 {
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-07T19:57:42-06:00",
+  "last_sync": "2026-09-07T20:54:23-06:00",
   "capture": {
-    "complete": 2,
+    "complete": 5,
     "total": 9,
     "window": "OPEN",
     "deadline_label": "09 SEP · 12:00 CDMX"
   },
   "participants": [
-    {"name":"EL DOC","status":"PENDING"},
-    {"name":"ARI","status":"PENDING"},
+    {"name":"EL DOC","status":"COMPLETE"},
+    {"name":"ARI","status":"COMPLETE"},
     {"name":"LALO","status":"PENDING"},
     {"name":"ALEX","status":"PENDING"},
     {"name":"LUIS C.","status":"COMPLETE"},
-    {"name":"DR PALMA","status":"PENDING"},
+    {"name":"DR PALMA","status":"COMPLETE"},
     {"name":"JENNI","status":"PENDING"},
     {"name":"RODRI","status":"PENDING"},
     {"name":"IBRACHO","status":"COMPLETE"}
