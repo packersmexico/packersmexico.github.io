@@ -1,9 +1,9 @@
 {
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-07T19:03:13-06:00",
+  "last_sync": "2026-09-07T19:57:42-06:00",
   "capture": {
-    "complete": 1,
+    "complete": 2,
     "total": 9,
     "window": "OPEN",
     "deadline_label": "09 SEP · 12:00 CDMX"
@@ -13,7 +13,7 @@
     {"name":"ARI","status":"PENDING"},
     {"name":"LALO","status":"PENDING"},
     {"name":"ALEX","status":"PENDING"},
-    {"name":"LUIS C.","status":"PENDING"},
+    {"name":"LUIS C.","status":"COMPLETE"},
     {"name":"DR PALMA","status":"PENDING"},
     {"name":"JENNI","status":"PENDING"},
     {"name":"RODRI","status":"PENDING"},
