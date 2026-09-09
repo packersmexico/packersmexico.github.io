@@ -25,10 +25,30 @@ window.PMX_CONFIG = Object.freeze({
   specialDescription: "",
   calendarUrl: "https://packersmexico.github.io/calendario/",
   gopackgoUrl: "https://www.youtube.com/@gopackgomx6092",
+  quiniela: Object.freeze({
+    enabled: true,
+    week: "WEEK 1",
+    label: "QUINIELA · WEEK 1",
+    title: "TODOS LOS PICKS",
+    meta: "9 integrantes · 16 partidos · 144 selecciones",
+    description: "Consulta la selección completa del board y revisa los picks de cada integrante.",
+    url: "https://packersmexico.github.io/quiniela/w01/",
+    members: Object.freeze([
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ])
+  }),
   analytics: Object.freeze({
     GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
     hubVersion: "p0",
-    eventVersion: "1.0"
+    eventVersion: "1.1"
   }),
   socialUrls: Object.freeze({
     facebook: "https://www.facebook.com/gopackgomx/",
