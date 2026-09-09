@@ -15,6 +15,8 @@
     "CLICK_CALENDAR",
     "CLICK_GOPACKGO",
     "CLICK_SOCIAL",
+    "CLICK_QUINIELA",
+    "VIEW_QUINIELA_W01",
     "QR_OPEN"
   ]);
   var onceKeys = new Set();
