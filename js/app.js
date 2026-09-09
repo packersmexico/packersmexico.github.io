@@ -48,6 +48,24 @@
     return link;
   }
 
+  function configureInternalLink(id, destination, attribution, unavailableLabel) {
+    var link = document.getElementById(id);
+    if (!link) return null;
+    var safeDestination = preserveAttribution(destination, attribution);
+    if (!safeDestination) {
+      link.removeAttribute("href");
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("title", unavailableLabel || "URL pendiente de validación");
+      return link;
+    }
+    link.href = safeDestination;
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+    link.removeAttribute("aria-disabled");
+    link.removeAttribute("title");
+    return link;
+  }
+
   function attachTracking(link, eventName, eventParameters) {
     if (!link || !link.hasAttribute("href")) return;
     link.addEventListener("click", function () {
@@ -138,6 +156,34 @@
     section.hidden = false;
   }
 
+  function renderQuiniela(attribution) {
+    var section = document.getElementById("quiniela-section");
+    var quiniela = config.quiniela;
+    if (!section || !quiniela || !quiniela.enabled) {
+      if (section) section.hidden = true;
+      return;
+    }
+
+    setText("quiniela-label", quiniela.label || "QUINIELA");
+    setText("quiniela-title", quiniela.title || "TODOS LOS PICKS");
+    setText("quiniela-meta", quiniela.meta || "");
+    setText("quiniela-description", quiniela.description || "");
+
+    var memberPreview = document.getElementById("quiniela-member-preview");
+    if (memberPreview) {
+      memberPreview.replaceChildren();
+      (quiniela.members || []).forEach(function (member) {
+        var item = document.createElement("span");
+        item.textContent = member;
+        memberPreview.appendChild(item);
+      });
+    }
+
+    var quinielaLink = configureInternalLink("quiniela-link", quiniela.url, attribution, "URL de quiniela pendiente de validación");
+    attachTracking(quinielaLink, "CLICK_QUINIELA", { destination_type: "editorial" });
+    section.hidden = false;
+  }
+
   function render() {
     var attribution = window.PMX_ANALYTICS.getAttribution();
     window.PMX_ATTRIBUTION = Object.freeze(Object.assign({}, attribution));
@@ -159,6 +205,7 @@
 
     renderPromo(attribution);
     renderSpecial();
+    renderQuiniela(attribution);
     renderSocialLinks(attribution);
 
     window.PMX_ANALYTICS.trackOnce("HUB_VIEW", {}, "hub-view");
