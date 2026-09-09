@@ -1,12 +1,17 @@
 {
+  "pmx_id": "PMX-PILOT-QUINIELA-001",
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-09T11:32:47-06:00",
+  "last_sync": "2026-09-09T12:49:07-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
-    "deadline_label": "09 SEP · 12:00 CDMX"
+    "window": "CLOSED",
+    "deadline_label": "09 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 144,
+    "missing_picks": 0,
+    "invitado": "OFF"
   },
   "participants": [
     {"name":"EL DOC","status":"COMPLETE"},
@@ -39,20 +44,23 @@
     {"matchup":"DEN @ KC","kickoff_cdmx":"14 SEP · 18:15 CDMX · MNF","status":"SCHEDULED","winner":""}
   ],
   "pipeline": {
-    "data_system": "READY",
-    "consensus": "HOLD · CAPTURA ABIERTA",
-    "production": "HOLD · CAPTURA ABIERTA",
+    "data_system": "PASS · 9/9 · 144/144",
+    "capture": "CLOSED",
+    "picks": "DATA READY · 04 PENDING",
+    "consensus": "DATA READY · 04 PENDING",
+    "results": "WAITING · 0/16 FINAL",
     "publication": "NO PUBLICAR"
   },
   "production": {
-    "package_status": "HOLD · ESPERANDO CIERRE",
+    "package_status": "PREGAME PACKAGE AVAILABLE · 04/05 STATE NOT ADVANCED",
+    "package_url": "https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx",
     "delivery_target": "MAR 15 SEP · 07:00 CDMX",
     "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
     "outputs": [
-      {"id":"W1-PICKS-CAROUSEL","label":"PICKS","status":"HOLD","target":"CAPTURA CLOSED + 9/9","next":"ESPERANDO CIERRE","url":""},
-      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD","target":"CAPTURA CLOSED + 9/9","next":"ESPERANDO CIERRE","url":""},
-      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""},
-      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"HOLD","target":"16/16 FINAL · MAR 15 SEP","next":"ESPERANDO RESULTADOS","url":""}
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS","status":"PACKAGE AVAILABLE · 04 PENDING","target":"CAPTURA CLOSED + 9/9","next":"04 VISUAL QA","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
+      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"DATA READY · 04 PENDING","target":"CAPTURA CLOSED + 9/9","next":"04 PRODUCTION / QA","url":""},
+      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"HOLD","target":"16/16 FINAL","next":"ESPERANDO RESULTADOS","url":""},
+      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"HOLD","target":"16/16 FINAL","next":"ESPERANDO RESULTADOS","url":""}
     ]
   }
 }
