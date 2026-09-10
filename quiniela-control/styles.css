@@ -33,9 +33,10 @@ a{color:inherit}
 .shell{padding:21px 0 55px}
 .hero{padding-bottom:34px;border-bottom:1px solid var(--line)}
 .eyebrow{margin:0;color:var(--gold);font-size:13px;font-weight:700;letter-spacing:.08em}
-h1,h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;text-transform:uppercase}
+h1,h2,h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;text-transform:uppercase}
 h1{margin:8px 0 21px;font-size:64px;line-height:.9;letter-spacing:.01em}
 h2{margin:4px 0 0;font-size:38px;line-height:.95}
+h3{margin:4px 0 0;font-size:32px;line-height:.95}
 .hero-status{display:flex;align-items:flex-end;gap:13px;margin-top:8px}
 .big-number{font-family:"Bebas Neue",Impact,sans-serif;font-size:76px;line-height:.8;color:var(--gold)}
 .big-copy{padding-bottom:4px;font-size:15px;font-weight:700;letter-spacing:.04em}
@@ -71,6 +72,8 @@ h2{margin:4px 0 0;font-size:38px;line-height:.95}
 .production-target strong{color:var(--cream)}
 .production-outputs{margin-top:13px;border-top:1px solid var(--line)}
 .production-output{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:21px;align-items:center;min-height:68px;padding:13px 0;border-bottom:1px solid var(--line)}
+.output-preview{grid-column:1/-1;display:block;margin-top:8px}
+.output-preview img{display:block;width:100%;max-height:360px;object-fit:contain;object-position:left center;background:#0b281c}
 .output-label{display:block;font-size:15px;font-weight:700}
 .output-meta{display:block;margin-top:4px;color:var(--muted);font-size:11px}
 .output-state{text-align:right}
@@ -82,6 +85,20 @@ h2{margin:4px 0 0;font-size:38px;line-height:.95}
 .output-state a{color:var(--gold);border-bottom:1px solid var(--gold)}
 .output-wait{color:var(--muted)}
 .production-rule{margin:13px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+.season-history{display:grid;grid-template-columns:1fr;gap:21px;margin-top:21px}
+.history-week{padding:21px 0;border-top:2px solid var(--line);border-bottom:1px solid var(--line)}
+.history-week.ready{border-top-color:var(--ok)}
+.history-week.hold{border-top-color:var(--gold-2)}
+.history-week.blocked{border-top-color:var(--blocked)}
+.history-week-head{display:flex;align-items:flex-end;justify-content:space-between;gap:21px}
+.history-week-head>span{font-size:11px;font-weight:700;color:var(--muted);text-align:right}
+.history-meta{margin:13px 0 0;color:var(--muted);font-size:12px}
+.history-outputs{margin-top:13px;border-top:1px solid var(--line)}
+.history-output{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:13px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}
+.history-output>span:first-child{font-weight:700}.history-output strong{font-size:10px;color:var(--muted);text-align:right}.history-output a{color:var(--gold);font-weight:700;text-decoration:none;white-space:nowrap}
+.history-links{display:flex;flex-wrap:wrap;gap:13px 21px;margin-top:13px}
+.history-links a{color:var(--gold);font-size:11px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)}
+.history-empty{margin:21px 0 0;color:var(--muted);font-size:12px}
 .ops-strip{display:flex;flex-direction:column;gap:21px;padding:34px 0 21px}
 .ops-strip>div{display:flex;flex-direction:column;gap:4px}
 .ops-label{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.07em}
@@ -113,8 +130,9 @@ h2{margin:4px 0 0;font-size:38px;line-height:.95}
   .production-outputs{display:grid;grid-template-columns:1fr 1fr}
   .production-output:nth-child(odd){padding-right:21px;border-right:1px solid var(--line)}
   .production-output:nth-child(even){padding-left:21px}
+  .season-history{grid-template-columns:1fr 1fr}
   .ops-strip{flex-direction:row;align-items:flex-end;justify-content:space-between}
-  .action-link{min-width:260px}
+  .action-link{min-width:310px}
 }
 @media(min-width:1100px){
   .site-header,.shell,.site-footer{width:min(calc(100% - 178px),1180px)}
