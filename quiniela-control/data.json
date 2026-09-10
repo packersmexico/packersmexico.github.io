@@ -2,7 +2,7 @@
   "pmx_id": "PMX-PILOT-QUINIELA-001",
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-09T16:12:00-06:00",
+  "last_sync": "2026-09-09T19:22:40-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -54,7 +54,7 @@
   "production": {
     "package_status": "HOLD · 04 / FIGMA TECHNICAL BLOCKER",
     "package_url": "https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx",
-    "blocker": "Slide 11 remains on 04 HOLD; Figma MCP connection failed twice at 16:12 CDMX, preventing inspection/correction and consensus production this run. Retry next controller run; do not advance to 05.",
+    "blocker": "2026-09-09 19:22 CDMX: Figma MCP connection failed again during Week 1 inspection. Picks remains on 04 HOLD for the visible slide 11 defect; Consensus remains HOLD because the approved instance cannot be inspected/produced. 05 must not run.",
     "delivery_target": "MAR 15 SEP · 07:00 CDMX",
     "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
     "outputs": [
