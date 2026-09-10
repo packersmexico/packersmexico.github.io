@@ -1,0 +1,24 @@
+{
+  "season": "2026",
+  "active_week": 1,
+  "last_sync": "2026-09-09T20:30:00-06:00",
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "week_number": 1,
+      "status": "ACTIVE",
+      "games_total": 16,
+      "capture": "9/9 · 144/144 · CLOSED",
+      "results": "0/16 FINAL",
+      "publication": "HOLD · 04",
+      "public_url": "https://packersmexico.github.io/quiniela/w01/",
+      "snapshot_url": "./weeks/week-01.json",
+      "outputs": [
+        {"label":"PICKS / CARRUSEL","status":"HOLD · 04 QA","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
+        {"label":"CONSENSUS","status":"HOLD · FIGMA CONNECTION","url":"https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq?node-id=1886-373923"},
+        {"label":"WINNER","status":"WAITING RESULTS","url":""},
+        {"label":"STANDINGS","status":"WAITING RESULTS","url":""}
+      ]
+    }
+  ]
+}
