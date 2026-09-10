@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Quiniela Week 1 de PACKERS MÉXICO: 9 integrantes, 16 partidos y 144 selecciones, con todos los picks por persona.">
+    <meta name="description" content="Quiniela Week 1 de PACKERS MÉXICO: experiencia editorial, 9 integrantes, 16 partidos y 144 selecciones.">
     <meta name="theme-color" content="#081D13">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_MX">
     <meta property="og:title" content="QUINIELA · WEEK 1 · PACKERS MÉXICO">
-    <meta property="og:description" content="Consulta los 144 picks del board de PACKERS MÉXICO para Week 1.">
+    <meta property="og:description" content="Consulta la Quiniela PMX Week 1 y explora los 144 picks del board.">
     <meta property="og:url" content="https://packersmexico.github.io/quiniela/w01/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="QUINIELA · WEEK 1 · PACKERS MÉXICO">
@@ -42,25 +42,52 @@
     </header>
 
     <main id="contenido" class="quiniela-shell">
-      <section class="quiniela-header" aria-labelledby="quiniela-page-title">
-        <div class="quiniela-header__main">
+      <section class="quiniela-intro" aria-labelledby="quiniela-page-title">
+        <div>
           <p class="quiniela-kicker">QUINIELA · WEEK 1</p>
-          <h1 id="quiniela-page-title" class="quiniela-page-title">TODOS LOS PICKS</h1>
-          <p class="quiniela-page-meta">9 integrantes · 16 partidos · 144 selecciones</p>
+          <h1 id="quiniela-page-title" class="quiniela-page-title">PICKS DEL BOARD</h1>
         </div>
-        <div class="quiniela-header__support">
-          <p class="quiniela-page-copy">Consulta la matriz completa o selecciona a un integrante para ver sus 16 picks de forma individual.</p>
+        <p class="quiniela-page-meta">9 integrantes · 16 partidos · 144 selecciones</p>
+      </section>
+
+      <section class="editorial-stage" aria-labelledby="editorial-stage-title">
+        <div class="editorial-stage__head">
+          <div>
+            <p class="section-kicker">EDICIÓN WEB · CANVA PARITY</p>
+            <h2 id="editorial-stage-title">LA QUINIELA, COMO SE PUBLICA</h2>
+          </div>
+          <p>Desliza la secuencia editorial. Después puedes explorar cada pick por integrante.</p>
+        </div>
+
+        <div class="carousel-frame">
+          <button id="carousel-prev" class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Lámina anterior">←</button>
+          <div id="editorial-carousel" class="editorial-carousel" tabindex="0" aria-label="Carrusel editorial Week 1"></div>
+          <button id="carousel-next" class="carousel-arrow carousel-arrow--next" type="button" aria-label="Lámina siguiente">→</button>
+        </div>
+        <div class="carousel-status" aria-live="polite">
+          <div id="carousel-dots" class="carousel-dots" aria-hidden="true"></div>
+          <span id="carousel-position">1 / 11</span>
         </div>
       </section>
 
-      <section class="member-navigation" aria-labelledby="member-nav-title">
-        <p id="member-nav-title" class="member-navigation__label">VER POR INTEGRANTE</p>
-        <div id="member-controls" class="member-controls" aria-label="Filtrar picks por integrante"></div>
-      </section>
+      <section class="explorer" aria-labelledby="explorer-title">
+        <div class="explorer-head">
+          <div>
+            <p class="section-kicker">EXPLORADOR INTERACTIVO</p>
+            <h2 id="explorer-title">REVISA CADA PICK</h2>
+          </div>
+          <p>La vista editorial conserva el ritmo del carrusel. Aquí puedes entrar a la matriz completa o filtrar a una persona.</p>
+        </div>
 
-      <section aria-labelledby="view-title">
-        <h2 id="view-title" class="view-title">TODOS · 144 PICKS</h2>
-        <div id="quiniela-games" class="quiniela-games" aria-live="polite"></div>
+        <div class="member-navigation" aria-labelledby="member-nav-title">
+          <p id="member-nav-title" class="member-navigation__label">VER POR INTEGRANTE</p>
+          <div id="member-controls" class="member-controls" aria-label="Filtrar picks por integrante"></div>
+        </div>
+
+        <section aria-labelledby="view-title">
+          <h3 id="view-title" class="view-title">TODOS · 144 PICKS</h3>
+          <div id="quiniela-games" class="quiniela-games" aria-live="polite"></div>
+        </section>
       </section>
 
       <nav class="quiniela-actions" aria-label="Acciones de la quiniela">
@@ -70,9 +97,9 @@
     </main>
 
     <footer class="quiniela-footer">
-      <p class="independence-note">© PACKERS MÉXICO · no afiliado oficialmente con NFL/Green Bay Packers</p>
+      <p class="independence-note">© PACKERS MÉXICO · comunidad independiente · no afiliada oficialmente con Green Bay Packers ni NFL</p>
     </footer>
 
-    <noscript>Esta página necesita JavaScript para mostrar y filtrar todos los picks.</noscript>
+    <noscript>Esta página necesita JavaScript para mostrar la experiencia editorial y filtrar los picks.</noscript>
   </body>
 </html>
