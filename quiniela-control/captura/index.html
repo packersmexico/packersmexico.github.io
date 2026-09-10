@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081D13">
+  <meta name="robots" content="noindex,nofollow">
+  <title>PACKERS MÉXICO · Captura Quiniela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--dark:#081D13;--green:#123B31;--gold:#FFC62F;--cream:#F2E8CF;--muted:#9AA99F}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--dark),#0A2318);color:var(--cream);font-family:"Montserrat",Arial,sans-serif;display:grid;place-items:center;padding:34px}
+    main{width:min(100%,720px)}img{width:min(320px,70vw);height:auto;display:block;margin-bottom:34px}p{margin:0}.kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:.08em}.week{font-family:"Bebas Neue",Impact,sans-serif;font-size:72px;line-height:.9;margin:8px 0 21px}.status{font-size:16px;font-weight:700}.meta{color:var(--muted);font-size:13px;line-height:1.6;margin-top:13px}.cta{display:inline-block;margin-top:34px;padding:13px 0;border-bottom:2px solid var(--gold);color:var(--gold);font-weight:700;text-decoration:none}.cta[aria-disabled="true"]{color:var(--muted);border-color:var(--muted);pointer-events:none}.back{display:block;margin-top:55px;color:var(--cream);font-size:12px;text-decoration:none}
+  </style>
+</head>
+<body>
+<main>
+  <img src="../../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
+  <p class="kicker">CAPTURA OFICIAL · TEMPORADA 2026</p>
+  <h1 class="week" id="week">CARGANDO…</h1>
+  <p class="status" id="status">Consultando semana activa.</p>
+  <p class="meta" id="meta">Usa siempre este mismo enlace. El controlador actualizará aquí el formulario vigente de cada semana.</p>
+  <a class="cta" id="form-link" href="#" aria-disabled="true">ABRIR FORMULARIO →</a>
+  <a class="back" href="../">← QUINIELA CONTROL</a>
+</main>
+<script>
+(async()=>{
+  const week=document.getElementById('week');
+  const status=document.getElementById('status');
+  const meta=document.getElementById('meta');
+  const link=document.getElementById('form-link');
+  try{
+    const r=await fetch('../capture-config.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const c=await r.json();
+    week.textContent=c.week || 'SEMANA ACTIVA';
+    const open=String(c.status||'').toUpperCase()==='OPEN';
+    status.textContent=open?'CAPTURA ABIERTA':'CAPTURA CERRADA';
+    meta.textContent=open
+      ? `Formulario vigente · cierre ${new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(c.deadline)).toUpperCase()} CDMX.`
+      : 'La captura de esta semana está cerrada. Este mismo enlace se reactivará automáticamente para la siguiente semana cuando el nuevo formulario esté validado.';
+    if(open && c.form_url){link.href=c.form_url;link.removeAttribute('aria-disabled');}
+    else{link.textContent='CAPTURA CERRADA';}
+  }catch(e){status.textContent='SIN CONEXIÓN AL CONTROLADOR';meta.textContent='No uses un formulario anterior. Vuelve a intentar más tarde.';console.error(e)}
+})();
+</script>
+</body>
+</html>
