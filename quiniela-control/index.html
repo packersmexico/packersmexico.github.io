@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#081D13">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="Control operativo de la Quiniela de PACKERS MÉXICO.">
+  <meta name="description" content="Control operativo de temporada de la Quiniela de PACKERS MÉXICO.">
   <title>PACKERS MÉXICO · Quiniela Control</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
     <a href="../" aria-label="PACKERS MÉXICO · Digital Hub">
       <img class="brand-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
     </a>
-    <p class="header-label">QUINIELA CONTROL</p>
+    <p class="header-label">QUINIELA CONTROL · SEASON 2026</p>
   </header>
 
   <main id="contenido" class="shell">
@@ -28,15 +28,15 @@
       <p class="eyebrow" id="week-label">WEEK 1 · 2026</p>
       <h1 id="title">CONTROL DE<br>QUINIELA</h1>
       <div class="hero-status" aria-live="polite">
-        <span class="big-number" id="capture-count">1/9</span>
+        <span class="big-number" id="capture-count">—/9</span>
         <span class="big-copy">PICKS COMPLETOS</span>
       </div>
-      <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="1">
-        <span id="progress-bar" style="width:11.11%"></span>
+      <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0">
+        <span id="progress-bar" style="width:0"></span>
       </div>
       <div class="meta-line">
-        <span id="window-status">CAPTURA ABIERTA</span>
-        <span id="deadline">CIERRE · 07 SEP · 20:00 CDMX</span>
+        <span id="window-status">CARGANDO</span>
+        <span id="deadline">CIERRE · —</span>
       </div>
     </section>
 
@@ -46,7 +46,7 @@
           <p class="eyebrow">CAPTURA</p>
           <h2 id="capture-heading">QUIÉN YA ESTÁ</h2>
         </div>
-        <p class="section-stat"><span id="missing-count">8</span> FALTAN</p>
+        <p class="section-stat"><span id="missing-count">—</span> FALTAN</p>
       </div>
       <div id="participants" class="participants" aria-live="polite"></div>
     </section>
@@ -57,7 +57,7 @@
           <p class="eyebrow">RESULTADOS</p>
           <h2 id="games-heading">SEMANA EN CURSO</h2>
         </div>
-        <p class="section-stat"><span id="final-count">0/16</span> FINAL</p>
+        <p class="section-stat"><span id="final-count">0/0</span> FINAL</p>
       </div>
       <div id="games" class="games"></div>
     </section>
@@ -76,9 +76,20 @@
         </div>
         <p class="section-stat" id="package-status">HOLD</p>
       </div>
-      <p class="production-target">OBJETIVO POST-MNF · <strong id="delivery-target">MAR 15 SEP · 07:00 CDMX</strong></p>
+      <p class="production-target">SIGUIENTE OBJETIVO · <strong id="delivery-target">GATE OPERATIVO</strong></p>
       <div id="production-outputs" class="production-outputs" aria-live="polite"></div>
-      <p class="production-rule" id="production-rule">La pieza pasa por 04 y 05. Publicar sigue requiriendo autorización de Dirección.</p>
+      <p class="production-rule" id="production-rule">04 produce y hace QA; 05 valida. El click final sigue siendo humano.</p>
+    </section>
+
+    <section class="section" aria-labelledby="history-heading">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">TEMPORADA 2026</p>
+          <h2 id="history-heading">HISTÓRICO SEMANAL</h2>
+        </div>
+        <p class="section-stat">WEEK N → N+1</p>
+      </div>
+      <div id="season-history" class="season-history" aria-live="polite"></div>
     </section>
 
     <section class="ops-strip" aria-label="Estado operativo">
@@ -86,7 +97,7 @@
         <span class="ops-label">ÚLTIMA SINCRONIZACIÓN</span>
         <strong id="last-sync">—</strong>
       </div>
-      <a class="action-link" href="https://form.jotform.com/262495470043053" rel="noopener">ABRIR FORMULARIO →</a>
+      <a class="action-link" href="./captura/" rel="noopener">ABRIR CAPTURA SEMANA ACTIVA →</a>
     </section>
 
     <p class="privacy-note" id="privacy-note">Los picks individuales permanecen ocultos mientras la captura esté abierta.</p>
