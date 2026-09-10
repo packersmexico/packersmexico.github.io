@@ -8,7 +8,7 @@ function setText(id, value) {
 }
 
 function escapeHtml(value) {
-  return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  return String(value ?? '').replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
 }
 
 function formatSync(value) {
@@ -56,7 +56,7 @@ function renderGames(items = []) {
 
 function normalizeStatus(value) {
   const s = String(value || 'HOLD').toUpperCase();
-  if (s.includes('READY') || s.includes('PASS') || s.includes('COMPLETE')) return 'ready';
+  if (s.includes('READY') || s.includes('PASS') || s.includes('COMPLETE') || s.includes('LOCKED')) return 'ready';
   if (s.includes('RETAIN') || s.includes('RETENER') || s.includes('ERROR') || s.includes('BLOCKER')) return 'blocked';
   return 'hold';
 }
@@ -86,10 +86,13 @@ function renderFunnel(data) {
   });
 }
 
-function outputAction(item, cls) {
-  if (!item.url) return `<span class="output-wait">${escapeHtml(item.next || 'ESPERANDO DATA')}</span>`;
-  const label = cls === 'ready' ? 'ABRIR / DESCARGAR →' : 'VER REFERENCIA →';
-  return `<a href="${escapeHtml(item.url)}" rel="noopener">${label}</a>`;
+function outputActions(item) {
+  const links = [];
+  if (item.canva_url) links.push(`<a href="${escapeHtml(item.canva_url)}" rel="noopener">CANVA →</a>`);
+  if (item.drive_url) links.push(`<a href="${escapeHtml(item.drive_url)}" rel="noopener">DRIVE →</a>`);
+  if (item.url && item.url !== item.canva_url && item.url !== item.drive_url) links.push(`<a href="${escapeHtml(item.url)}" rel="noopener">ABRIR →</a>`);
+  if (links.length) return `<div class="output-actions">${links.join('')}</div>`;
+  return `<span class="output-wait">${escapeHtml(item.next || 'ESPERANDO DATA')}</span>`;
 }
 
 function renderProduction(data) {
@@ -121,7 +124,7 @@ function renderProduction(data) {
       </div>
       <div class="output-state">
         <strong>${escapeHtml(item.status || 'HOLD')}</strong>
-        ${outputAction(item, cls)}
+        ${outputActions(item)}
       </div>
     `;
     root.appendChild(row);
@@ -141,7 +144,10 @@ function renderHistory(archive) {
     const card = document.createElement('article');
     const cls = normalizeStatus(week.status);
     const outputs = (week.outputs || []).map(item => {
-      const action = item.url ? `<a href="${escapeHtml(item.url)}" rel="noopener">ABRIR →</a>` : '<span>—</span>';
+      const links = [];
+      if (item.url) links.push(`<a href="${escapeHtml(item.url)}" rel="noopener">CANVA / DOC →</a>`);
+      if (item.drive_url) links.push(`<a href="${escapeHtml(item.drive_url)}" rel="noopener">DRIVE →</a>`);
+      const action = links.length ? `<span class="history-output-actions">${links.join('')}</span>` : '<span>—</span>';
       return `<div class="history-output"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.status)}</strong>${action}</div>`;
     }).join('');
     card.className = `history-week ${cls}`;
@@ -153,8 +159,9 @@ function renderHistory(archive) {
       <p class="history-meta">${escapeHtml(week.capture || '')}</p>
       <div class="history-outputs">${outputs}</div>
       <div class="history-links">
+        ${week.package_url ? `<a href="${escapeHtml(week.package_url)}" rel="noopener">PAQUETE DRIVE →</a>` : ''}
         ${week.public_url ? `<a href="${escapeHtml(week.public_url)}" rel="noopener">VER PICKS PÚBLICOS →</a>` : ''}
-        ${week.snapshot_url ? `<a href="${escapeHtml(week.snapshot_url)}" rel="noopener">VER SNAPSHOT →</a>` : ''}
+        ${week.snapshot_url ? `<a href="${escapeHtml(week.snapshot_url)}" rel="noopener">VER DETALLE SEMANA →</a>` : ''}
       </div>
     `;
     root.appendChild(card);
