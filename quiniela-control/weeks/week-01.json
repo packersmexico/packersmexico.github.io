@@ -4,7 +4,7 @@
   "week": "WEEK 1",
   "week_number": 1,
   "snapshot_status": "ACTIVE",
-  "last_sync": "2026-09-09T20:09:17-06:00",
+  "last_sync": "2026-09-09T21:30:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -30,18 +30,24 @@
   "pipeline": {
     "data_system": "PASS · 9/9 · 144/144",
     "capture": "CLOSED",
-    "picks": "HOLD · FIGMA INSTANCE STALE / EXPORT DEFECT",
-    "consensus": "HOLD · FIGMA CONNECTION",
+    "picks": "CANVA · V03 · 05 PENDIENTE",
+    "consensus": "CANVA · FINAL · 05 PENDIENTE",
+    "production": "CANVA · PACKAGE READY FOR FINAL QA",
     "results": "LIVE · 0/16 FINAL",
     "publication": "NO PUBLICAR"
   },
   "production": {
-    "package_status": "HOLD · 04 / FIGMA INSTANCE + EXPORT",
+    "surface": "CANVA",
+    "package_status": "CANVA PACKAGE · 05 PENDIENTE",
+    "package_url": "https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx",
     "outputs": [
-      {"id":"W1-PICKS-CAROUSEL","label":"PICKS / CARRUSEL","status":"HOLD · 04 QA","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
-      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD · FIGMA CONNECTION","url":"https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq?node-id=1886-373923"},
-      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"WAITING RESULTS","url":""},
-      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"WAITING RESULTS","url":""}
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS / CARRUSEL · 11","status":"CANVA · V03","canva_url":"https://www.canva.com/d/GjjHod9M_kqJsMH","drive_url":"https://drive.google.com/drive/folders/1ov7_X5FG66RcHAa-yCV2BrzxvbBOuN8P"},
+      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"CANVA · FINAL","canva_url":"https://www.canva.com/d/R6pnxstyjDqkhom","drive_url":"https://drive.google.com/drive/folders/1oodJmSHFe0lU1kpjvQzs5cBRYUAhTOqh"},
+      {"id":"W1-STORY","label":"STORY","status":"CANVA · V02","canva_url":"https://www.canva.com/d/EZdEMkcMakEYHyS","drive_url":"https://drive.google.com/drive/folders/19vEH4FJULTTcnsZcXVxOj6CwdIttlfvI"},
+      {"id":"W1-WHATSAPP","label":"WHATSAPP STATUS","status":"CANVA · V02","canva_url":"https://www.canva.com/d/lg0ecUYADUV-_qj","drive_url":"https://drive.google.com/drive/folders/19vEH4FJULTTcnsZcXVxOj6CwdIttlfvI"},
+      {"id":"W1-COPY","label":"COPY · IG / FB / TIKTOK","status":"02 · COPY LOCKED","url":"https://docs.google.com/document/d/1Fa_TyKV_fhAqNAdw5Vv-DlJ-R9j8wyBg1wRGYNySwV8/edit?usp=drivesdk","drive_url":"https://drive.google.com/drive/folders/151olsQsUoPZQeJsb98X4PZgJDy0b2qn5"},
+      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"WAITING RESULTS","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"},
+      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"WAITING RESULTS","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"}
     ]
   },
   "public_url": "https://packersmexico.github.io/quiniela/w01/"
