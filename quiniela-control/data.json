@@ -2,7 +2,7 @@
   "pmx_id": "PMX-PILOT-QUINIELA-001",
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-09T19:22:40-06:00",
+  "last_sync": "2026-09-09T20:09:17-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -26,7 +26,7 @@
   ],
   "results": {"final":0,"total":16},
   "games": [
-    {"matchup":"NE @ SEA","kickoff_cdmx":"09 SEP · 18:20 CDMX","status":"SCHEDULED","winner":""},
+    {"matchup":"NE @ SEA","kickoff_cdmx":"09 SEP · 18:20 CDMX","status":"IN_PROGRESS","winner":""},
     {"matchup":"SF @ LAR","kickoff_cdmx":"10 SEP · 18:35 CDMX","status":"SCHEDULED","winner":""},
     {"matchup":"CHI @ CAR","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
     {"matchup":"TB @ CIN","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
@@ -46,20 +46,20 @@
   "pipeline": {
     "data_system": "PASS · 9/9 · 144/144",
     "capture": "CLOSED",
-    "picks": "HOLD · 04 QA DEFECT ON SLIDE 11",
-    "consensus": "HOLD · FIGMA UNAVAILABLE",
-    "results": "WAITING · 0/16 FINAL",
+    "picks": "HOLD · FIGMA INSTANCE STALE / EXPORT DEFECT",
+    "consensus": "HOLD · FIGMA CONNECTION",
+    "results": "LIVE · 0/16 FINAL",
     "publication": "NO PUBLICAR"
   },
   "production": {
-    "package_status": "HOLD · 04 / FIGMA TECHNICAL BLOCKER",
+    "package_status": "HOLD · 04 / FIGMA INSTANCE + EXPORT",
     "package_url": "https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx",
-    "blocker": "2026-09-09 19:22 CDMX: Figma MCP connection failed again during Week 1 inspection. Picks remains on 04 HOLD for the visible slide 11 defect; Consensus remains HOLD because the approved instance cannot be inspected/produced. 05 must not run.",
+    "blocker": "2026-09-09 20:09 CDMX: Jotform/Data System remain consistent at 9/9 and 144/144. Figma connectivity recovered long enough to inspect the Week 1 system: the W1 / 01–10 workbench source is still stale with placeholders, and W1 / 14 Consensus is still unfilled. A subsequent Figma MCP call failed while locating approved NFL assets, so correction/production could not be completed. The Drive export still has the known slide 11 defect. 05 must not run.",
     "delivery_target": "MAR 15 SEP · 07:00 CDMX",
     "rule": "04 produce y hace QA visual; 05 valida prepublicación. El click final sigue siendo de Dirección y Rodrigo opera la publicación.",
     "outputs": [
-      {"id":"W1-PICKS-CAROUSEL","label":"PICKS","status":"HOLD · 04 QA","target":"CAPTURA CLOSED + 9/9","next":"RETRY FIGMA · CORREGIR SLIDE 11 + REEXPORTAR","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
-      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD · FIGMA UNAVAILABLE","target":"CAPTURA CLOSED + 9/9","next":"RETRY 04 PRODUCTION / QA","url":""},
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS","status":"HOLD · 04 QA","target":"CAPTURA CLOSED + 9/9","next":"RETRY FIGMA · SINCRONIZAR INSTANCIA + CORREGIR EXPORT","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
+      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD · FIGMA CONNECTION","target":"CAPTURA CLOSED + 9/9","next":"RETRY 04 PRODUCTION / QA","url":"https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq?node-id=1886-373923"},
       {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"HOLD","target":"16/16 FINAL","next":"ESPERANDO RESULTADOS","url":""},
       {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"HOLD","target":"16/16 FINAL","next":"ESPERANDO RESULTADOS","url":""}
     ]
