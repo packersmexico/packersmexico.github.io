@@ -1,0 +1,3 @@
+.editorial-slide--exact{padding:0;background:#081d13;border-top:0;border-bottom:0}
+.editorial-slide--exact::before,.editorial-slide--exact::after{display:none}
+.editorial-slide__exact-image{display:block;width:100%;height:100%;object-fit:contain;background:#081d13}
