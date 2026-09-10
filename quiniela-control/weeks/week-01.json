@@ -1,0 +1,48 @@
+{
+  "pmx_id": "PMX-PILOT-QUINIELA-001",
+  "season": "2026",
+  "week": "WEEK 1",
+  "week_number": 1,
+  "snapshot_status": "ACTIVE",
+  "last_sync": "2026-09-09T20:09:17-06:00",
+  "capture": {
+    "complete": 9,
+    "total": 9,
+    "window": "CLOSED",
+    "deadline_label": "09 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 144,
+    "missing_picks": 0,
+    "invitado": "OFF"
+  },
+  "participants": [
+    {"name":"EL DOC","status":"COMPLETE"},
+    {"name":"ARI","status":"COMPLETE"},
+    {"name":"LALO","status":"COMPLETE"},
+    {"name":"ALEX","status":"COMPLETE"},
+    {"name":"LUIS C.","status":"COMPLETE"},
+    {"name":"DR PALMA","status":"COMPLETE"},
+    {"name":"JENNI","status":"COMPLETE"},
+    {"name":"RODRI","status":"COMPLETE"},
+    {"name":"IBRACHO","status":"COMPLETE"}
+  ],
+  "results": {"final":0,"total":16},
+  "pipeline": {
+    "data_system": "PASS · 9/9 · 144/144",
+    "capture": "CLOSED",
+    "picks": "HOLD · FIGMA INSTANCE STALE / EXPORT DEFECT",
+    "consensus": "HOLD · FIGMA CONNECTION",
+    "results": "LIVE · 0/16 FINAL",
+    "publication": "NO PUBLICAR"
+  },
+  "production": {
+    "package_status": "HOLD · 04 / FIGMA INSTANCE + EXPORT",
+    "outputs": [
+      {"id":"W1-PICKS-CAROUSEL","label":"PICKS / CARRUSEL","status":"HOLD · 04 QA","url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx"},
+      {"id":"W1-CONSENSUS","label":"CONSENSUS","status":"HOLD · FIGMA CONNECTION","url":"https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq?node-id=1886-373923"},
+      {"id":"W1-RESULT-WINNER","label":"GANADOR WEEK 1","status":"WAITING RESULTS","url":""},
+      {"id":"W1-RESULT-STANDINGS","label":"STANDINGS","status":"WAITING RESULTS","url":""}
+    ]
+  },
+  "public_url": "https://packersmexico.github.io/quiniela/w01/"
+}
