@@ -21,3 +21,9 @@ window.PMX_QUINIELA_STICKER_ASSET_IDS = Object.freeze({
   "RODRI":"MAHUrC-vXKE",
   "IBRACHO":"MAHUrBPgToA"
 });
+
+if (window.PMX_QUINIELA_DATA) {
+  window.PMX_QUINIELA_DATA = Object.freeze(Object.assign({}, window.PMX_QUINIELA_DATA, {
+    memberStickers: window.PMX_QUINIELA_STICKERS
+  }));
+}
