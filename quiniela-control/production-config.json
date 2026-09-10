@@ -1,0 +1,72 @@
+{
+  "pmx_id": "PMX-PILOT-QUINIELA-001",
+  "season": 2026,
+  "production_surface": "CANVA",
+  "figma_parity_status": "NOT_APPROVED_FOR_QUINIELA_PRODUCTION",
+  "blocked_figma_file_keys": [
+    "RAoegEENwTH2L7gb3yydIq"
+  ],
+  "canva": {
+    "feed_master": {
+      "design_id": "DAHUptv8Xg4",
+      "title": "PMX · QUINIELA · PARITY MASTER · FEED MODULES · V1.0"
+    },
+    "story_master": {
+      "design_id": "DAHUpoOro48",
+      "title": "PMX · QUINIELA · PARITY MASTER · STORY 9:16 · V1.0"
+    },
+    "x_summary_master": {
+      "design_id": "DAHUpsb5bVg",
+      "title": "PMX · QUINIELA · PARITY MASTER · X SUMMARY · V1.0"
+    },
+    "week_01_reference_outputs": {
+      "carousel": {
+        "design_id": "DAHUt7ABPKw",
+        "title": "PMX · QUINIELA · WEEK 1 · PUBLIC CAROUSEL · 11 · V03"
+      },
+      "consensus": {
+        "design_id": "DAHUp30zdG8",
+        "title": "PMX · QUINIELA · WEEK 1 · CONSENSUS · FINAL"
+      },
+      "story": {
+        "design_id": "DAHUp39eHsg",
+        "title": "PMX · QUINIELA · WEEK 1 · STORY · PUBLIC · V02"
+      },
+      "whatsapp_status": {
+        "design_id": "DAHUp_Qcd5I",
+        "title": "PMX · QUINIELA · WEEK 1 · WHATSAPP STATUS · PUBLIC · V02"
+      }
+    }
+  },
+  "participants": {
+    "base": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "base_count": 9,
+    "guest_default": "OFF"
+  },
+  "guest_policy": {
+    "status": "VARIANT_NOT_YET_APPROVED",
+    "base_grid": "PRESERVE_3X3",
+    "visual_role": "SEPARATE_CONDITIONAL_MODULE",
+    "counts_for_consensus": false,
+    "counts_for_weekly_winner": false,
+    "counts_for_season_standings": false,
+    "counts_for_weeks_won": false,
+    "on_without_variant": "BLOCKER_GUEST_VARIANT_NOT_READY"
+  },
+  "identity": {
+    "pmx_logo": "HORIZONTAL_V1.1_ONLY",
+    "preserve_validated_nfl_logos": true,
+    "preserve_name_stickers": true,
+    "do_not_rebuild_identity": true
+  }
+}
