@@ -1,9 +1,14 @@
 const DATA_URL = './data.json';
+const ARCHIVE_URL = './archive.json';
 const REFRESH_MS = 60000;
 
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 }
 
 function formatSync(value) {
@@ -17,21 +22,21 @@ function formatSync(value) {
   } catch { return value; }
 }
 
-function renderParticipants(items) {
+function renderParticipants(items = []) {
   const root = document.getElementById('participants');
   root.innerHTML = '';
   items.forEach(item => {
     const row = document.createElement('div');
     row.className = `participant ${item.status === 'COMPLETE' ? 'complete' : 'pending'}`;
     row.innerHTML = `
-      <span class="participant-name">${item.name}</span>
+      <span class="participant-name">${escapeHtml(item.name)}</span>
       <span class="participant-status">${item.status === 'COMPLETE' ? 'RECIBIDO' : 'PENDIENTE'}</span>
     `;
     root.appendChild(row);
   });
 }
 
-function renderGames(items) {
+function renderGames(items = []) {
   const root = document.getElementById('games');
   root.innerHTML = '';
   items.forEach(item => {
@@ -40,10 +45,10 @@ function renderGames(items) {
     row.className = `game ${final ? 'final' : 'scheduled'}`;
     row.innerHTML = `
       <div class="game-main">
-        <span class="game-matchup">${item.matchup}</span>
-        <span class="game-kickoff">${item.kickoff_cdmx}</span>
+        <span class="game-matchup">${escapeHtml(item.matchup)}</span>
+        <span class="game-kickoff">${escapeHtml(item.kickoff_cdmx)}</span>
       </div>
-      <span class="game-result">${final ? `FINAL · ${item.winner}` : item.status}</span>
+      <span class="game-result">${final ? `FINAL · ${escapeHtml(item.winner)}` : escapeHtml(item.status)}</span>
     `;
     root.appendChild(row);
   });
@@ -51,20 +56,21 @@ function renderGames(items) {
 
 function normalizeStatus(value) {
   const s = String(value || 'HOLD').toUpperCase();
-  if (s.includes('READY') || s.includes('PASS')) return 'ready';
-  if (s.includes('RETAIN') || s.includes('RETENER') || s.includes('ERROR')) return 'blocked';
+  if (s.includes('READY') || s.includes('PASS') || s.includes('COMPLETE')) return 'ready';
+  if (s.includes('RETAIN') || s.includes('RETENER') || s.includes('ERROR') || s.includes('BLOCKER')) return 'blocked';
   return 'hold';
 }
 
 function renderFunnel(data) {
   const root = document.getElementById('funnel');
+  const total = Number(data.results?.total || data.games?.length || 0);
   const steps = [
-    ['01', 'CAPTURA', data.capture.complete === 9 && data.capture.window === 'CLOSED' ? 'READY' : 'HOLD'],
+    ['01', 'CAPTURA', data.capture.complete === data.capture.total && data.capture.window === 'CLOSED' ? 'READY' : 'HOLD'],
     ['02', 'DATA SYSTEM', data.pipeline.data_system || 'READY'],
-    ['03', 'CONSENSUS', data.pipeline.consensus || 'HOLD'],
-    ['04', 'PRODUCCIÓN', data.pipeline.production || 'HOLD'],
+    ['03', 'PICKS / CONSENSUS', data.pipeline.consensus || data.pipeline.picks || 'HOLD'],
+    ['04', 'PRODUCCIÓN / QA', data.pipeline.production || data.production?.package_status || 'HOLD'],
     ['05', 'QA / PUBLICACIÓN', data.pipeline.publication || 'HOLD'],
-    ['06', 'RESULTADOS', data.results.final === 16 ? 'READY' : 'HOLD']
+    ['06', 'RESULTADOS', total > 0 && data.results.final === total ? 'READY' : `${data.results.final}/${total} FINAL`]
   ];
   root.innerHTML = '';
   steps.forEach(([index,name,status]) => {
@@ -74,18 +80,24 @@ function renderFunnel(data) {
     row.innerHTML = `
       <span class="step-index">${index}</span>
       <span class="step-name">${name}</span>
-      <span class="step-status ${cls}">${status}</span>
+      <span class="step-status ${cls}">${escapeHtml(status)}</span>
     `;
     root.appendChild(row);
   });
+}
+
+function outputAction(item, cls) {
+  if (!item.url) return `<span class="output-wait">${escapeHtml(item.next || 'ESPERANDO DATA')}</span>`;
+  const label = cls === 'ready' ? 'ABRIR / DESCARGAR →' : 'VER REFERENCIA →';
+  return `<a href="${escapeHtml(item.url)}" rel="noopener">${label}</a>`;
 }
 
 function renderProduction(data) {
   const production = data.production || {};
   const outputs = production.outputs || [];
   setText('package-status', production.package_status || 'HOLD');
-  setText('delivery-target', production.delivery_target || 'MAR 15 SEP · 07:00 CDMX');
-  setText('production-rule', production.rule || 'La pieza pasa por 04 y 05. Publicar sigue requiriendo autorización de Dirección.');
+  setText('delivery-target', production.delivery_target || 'SIGUIENTE GATE OPERATIVO');
+  setText('production-rule', production.rule || '04 produce y hace QA; 05 valida. El click final sigue siendo humano.');
 
   const statusNode = document.getElementById('package-status');
   if (statusNode) statusNode.className = `section-stat package-${normalizeStatus(production.package_status)}`;
@@ -98,30 +110,65 @@ function renderProduction(data) {
     const cls = normalizeStatus(item.status);
     const row = document.createElement('div');
     row.className = `production-output ${cls}`;
-    const action = item.url && cls === 'ready'
-      ? `<a href="${item.url}" rel="noopener">ABRIR PIEZA →</a>`
-      : `<span class="output-wait">${item.next || 'ESPERANDO DATA'}</span>`;
+    const preview = item.preview_url
+      ? `<a class="output-preview" href="${escapeHtml(item.preview_url)}" rel="noopener"><img src="${escapeHtml(item.preview_url)}" alt="Preview ${escapeHtml(item.label)}" loading="lazy"></a>`
+      : '';
     row.innerHTML = `
+      ${preview}
       <div>
-        <span class="output-label">${item.label}</span>
-        <span class="output-meta">${item.target || ''}</span>
+        <span class="output-label">${escapeHtml(item.label)}</span>
+        <span class="output-meta">${escapeHtml(item.target || '')}</span>
       </div>
       <div class="output-state">
-        <strong>${item.status || 'HOLD'}</strong>
-        ${action}
+        <strong>${escapeHtml(item.status || 'HOLD')}</strong>
+        ${outputAction(item, cls)}
       </div>
     `;
     root.appendChild(row);
   });
 }
 
+function renderHistory(archive) {
+  const root = document.getElementById('season-history');
+  if (!root) return;
+  const weeks = Array.isArray(archive?.weeks) ? [...archive.weeks].sort((a,b) => Number(b.week_number)-Number(a.week_number)) : [];
+  root.innerHTML = '';
+  if (!weeks.length) {
+    root.innerHTML = '<p class="history-empty">Aún no hay semanas registradas.</p>';
+    return;
+  }
+  weeks.forEach(week => {
+    const card = document.createElement('article');
+    const cls = normalizeStatus(week.status);
+    const outputs = (week.outputs || []).map(item => {
+      const action = item.url ? `<a href="${escapeHtml(item.url)}" rel="noopener">ABRIR →</a>` : '<span>—</span>';
+      return `<div class="history-output"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.status)}</strong>${action}</div>`;
+    }).join('');
+    card.className = `history-week ${cls}`;
+    card.innerHTML = `
+      <div class="history-week-head">
+        <div><p class="eyebrow">${escapeHtml(week.status)}</p><h3>${escapeHtml(week.week)}</h3></div>
+        <span>${escapeHtml(week.results || '')}</span>
+      </div>
+      <p class="history-meta">${escapeHtml(week.capture || '')}</p>
+      <div class="history-outputs">${outputs}</div>
+      <div class="history-links">
+        ${week.public_url ? `<a href="${escapeHtml(week.public_url)}" rel="noopener">VER PICKS PÚBLICOS →</a>` : ''}
+        ${week.snapshot_url ? `<a href="${escapeHtml(week.snapshot_url)}" rel="noopener">VER SNAPSHOT →</a>` : ''}
+      </div>
+    `;
+    root.appendChild(card);
+  });
+}
+
 function render(data) {
+  const total = Number(data.results?.total || data.games?.length || 0);
   setText('week-label', `${data.week} · ${data.season}`);
   setText('capture-count', `${data.capture.complete}/${data.capture.total}`);
   setText('missing-count', String(data.capture.total - data.capture.complete));
   setText('window-status', data.capture.window === 'OPEN' ? 'CAPTURA ABIERTA' : 'CAPTURA CERRADA');
   setText('deadline', `CIERRE · ${data.capture.deadline_label}`);
-  setText('final-count', `${data.results.final}/${data.results.total}`);
+  setText('final-count', `${data.results.final}/${total}`);
   setText('last-sync', formatSync(data.last_sync));
 
   const progress = document.getElementById('progress-bar');
@@ -139,15 +186,19 @@ function render(data) {
   const privacy = document.getElementById('privacy-note');
   privacy.textContent = data.capture.window === 'OPEN'
     ? 'Los picks individuales permanecen ocultos mientras la captura esté abierta.'
-    : 'Captura cerrada. La publicación de picks, consensus y resultados sigue los gates 04 → 05.';
+    : 'Captura cerrada. Picks, consensus y resultados conservan los gates 04 → 05 antes de publicación.';
 }
 
 async function loadData() {
   try {
-    const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const [dataRes, archiveRes] = await Promise.all([
+      fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' }),
+      fetch(`${ARCHIVE_URL}?t=${Date.now()}`, { cache: 'no-store' })
+    ]);
+    if (!dataRes.ok) throw new Error(`DATA HTTP ${dataRes.status}`);
+    const data = await dataRes.json();
     render(data);
+    if (archiveRes.ok) renderHistory(await archiveRes.json());
   } catch (err) {
     setText('last-sync', 'SIN CONEXIÓN AL FEED');
     console.error(err);
