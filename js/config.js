@@ -24,7 +24,7 @@ window.PMX_CONFIG = Object.freeze({
   specialTitle: "",
   specialDescription: "",
   calendarUrl: "https://packersmexico.github.io/calendario/",
-  gopackgoUrl: "https://www.youtube.com/@gopackgomx6092",
+  gopackgoUrl: "https://youtu.be/BZBuRy3LHUY",
   quiniela: Object.freeze({
     enabled: true,
     week: "WEEK 1",
