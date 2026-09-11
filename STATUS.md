@@ -18,7 +18,7 @@ Season Calendar route: `https://packersmexico.github.io/calendario/`
 
 ## STATUS
 
-`CORE HUB PATCH DEPLOYED · GA4 PASS · CALENDAR 2026 IMPLEMENTED · PUBLIC GOOGLE CALENDAR COMPLETE · SOCIAL 5/5 · SPECIAL THEMES/UNIFORMS MAPPED · 03.5 PROVENANCE PASS / MATERIALIZATION + FAMILY AUTHORIZATION HOLD · CALENDAR PUBLIC BROWSER QA PENDING · FIGMA CALENDAR FAMILY HOLD · EXTERNAL FORM DEPENDENCY`
+`CORE HUB PATCH DEPLOYED · GA4 PASS · CALENDAR 2026 IMPLEMENTED · PUBLIC GOOGLE CALENDAR COMPLETE · SOCIAL 5/5 · SPECIAL THEMES/UNIFORMS MAPPED · 03.5 PROVENANCE PASS / MATERIALIZATION + FAMILY AUTHORIZATION HOLD · CALENDAR PUBLIC BROWSER QA PENDING · FIGMA CALENDAR FAMILY HOLD · EXTERNAL FORM DEPENDENCY · PODCAST W01 HUB DESTINATION DEPLOYED / TRACKING QA HOLD`
 
 ## CORE HUB · WEEK 1
 
@@ -291,6 +291,53 @@ Events preserved:
 Integrity:
 `CLICK_REGISTRO ≠ REGISTRO_CONFIRMADO ≠ ASISTENCIA_MEDIDA`
 
+## PODCAST W01 · HUB TRACKING
+
+PMX_ID:
+`PODCAST-W01 · GoPackGoMX #167`
+
+Direction state:
+`00 · TRACKING BUILD AUTHORIZED`
+
+Campaign:
+`podcast_2026_w01`
+
+Destination:
+`https://youtu.be/BZBuRy3LHUY`
+
+Hub implementation:
+- `js/config.js` GoPackGo destination updated from generic channel to Episode #167
+- commit: `8aca5d5831f9f245e1608ed7244f53f5529a9268`
+- public Hub QA URL returned HTTPS `200`
+- public `js/config.js` returned HTTPS `200` after deployment
+- destination resolves HTTPS `200` to YouTube watch URL for video ID `BZBuRy3LHUY`
+- `HUB_TRACKING_MAP` event destination for `CLICK_GOPACKGO` updated to Episode #167
+
+Locked production entry URLs:
+- X / `PODCAST_W01_X_EPISODE` → `https://packersmexico.github.io/?utm_source=x&utm_medium=social&utm_campaign=podcast_2026_w01&utm_content=episode_167`
+- Facebook / `PODCAST_W01_FACEBOOK_EPISODE` → `https://packersmexico.github.io/?utm_source=facebook&utm_medium=social&utm_campaign=podcast_2026_w01&utm_content=episode_167`
+- Instagram Story / `PODCAST_W01_IG_STORY_EPISODE` → `https://packersmexico.github.io/?utm_source=instagram&utm_medium=story&utm_campaign=podcast_2026_w01&utm_content=episode_167`
+- Instagram Feed → `TRACK_ID N/A · FINAL HUB URL N/A · dependency PODCAST_W01_IG_STORY_EPISODE`
+
+QA evidence:
+- temporary QA navigation used the X UTM URL plus technical `pmx_test=1`; production URL remains unchanged
+- GA4 Realtime observed fresh `HUB_VIEW = 1` after QA navigation
+- no fresh synthetic/browser click was executed, therefore `CLICK_GOPACKGO` event verification for this build remains HOLD
+
+Analytics blocker:
+`HOLD · TRAFFIC_CLASS TAXONOMY CONFLICT`
+
+Conflict:
+- current Direction handoff for Podcast W01 requests `traffic_class = qa` during tests and `production` at release
+- current Hub implementation emits `TEST_SETUP` when `pmx_test=1` and `PRODUCTION` otherwise
+- current GA4 custom dimension description is `Traffic Class · TEST_SETUP / PRODUCTION`
+- existing analytics control sheet also contains a previously locked traffic-class convention that is not identical to the new Podcast W01 wording
+
+Per repository STOP CONDITION, do not silently rewrite analytics semantics. Direction/Analytics must reconcile the traffic-class vocabulary before H01 can claim full Podcast W01 tracking PASS.
+
+Current Podcast W01 technical state:
+`PARTIAL PASS · DESTINATION DEPLOYED · FINAL URL BUILD READY · HUB_VIEW VERIFIED · CLICK_GOPACKGO QA + TRAFFIC_CLASS HOLD · READY_FOR_CLICK FALSE`
+
 ## EXTERNAL FORMS.APP DEPENDENCY
 
 State:
@@ -309,13 +356,14 @@ PMX CTA remains:
 
 ## NEXT ACTION
 
-1. `Public-browser recheck of patched core Hub at mobile + desktop.`
-2. `Public-browser QA of /calendario/ at 390×844 and 1440×900.`
-3. `Escalate PMX · SEASON CALENDAR 2026 · VISUAL FAMILY V1.0 to 00 for explicit asset-family authorization.`
-4. `After authorization + materialization, hand exact 03.5 assets to 04/Figma; no substitutions.`
-5. `Verify calendar HUB_VIEW + CLICK_CALENDAR + CLICK_SOCIAL in GA4 with QA traffic classified separately.`
-6. `Monitor NFL/Packers flex changes and update source + Google Calendar.`
+1. `Resolve Podcast W01 traffic_class taxonomy conflict in 00/Analytics; then execute fresh CLICK_GOPACKGO QA and close H01 return.`
+2. `Public-browser recheck of patched core Hub at mobile + desktop.`
+3. `Public-browser QA of /calendario/ at 390×844 and 1440×900.`
+4. `Escalate PMX · SEASON CALENDAR 2026 · VISUAL FAMILY V1.0 to 00 for explicit asset-family authorization.`
+5. `After authorization + materialization, hand exact 03.5 assets to 04/Figma; no substitutions.`
+6. `Verify calendar HUB_VIEW + CLICK_CALENDAR + CLICK_SOCIAL in GA4 with QA traffic classified separately.`
+7. `Monitor NFL/Packers flex changes and update source + Google Calendar.`
 
 ## LAST RELEVANT CHANGE
 
-`Core Hub cleaned to calendar-style language (@ / VS, WEEK + event label), redundant REDES nav and Wingstop footer logo removed. 03.5 returned provenance PASS for 14 opponent identities and W5/W14/W16 uniform visuals, but materialization and explicit Season Calendar family authorization remain HOLD.`
+`Podcast W01: GoPackGo Hub destination now points to Episode #167 and the event-level HUB_TRACKING_MAP destination is aligned. Three locked production UTM URLs were materialized and public HTTPS + HUB_VIEW QA passed. Full H01 PASS is blocked by traffic_class taxonomy conflict and a fresh CLICK_GOPACKGO click-event verification.`
