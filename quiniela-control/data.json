@@ -2,7 +2,7 @@
   "pmx_id": "PMX-PILOT-QUINIELA-001",
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-10T19:29:45-06:00",
+  "last_sync": "2026-09-11T10:00:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -24,10 +24,10 @@
     {"name":"RODRI","status":"COMPLETE"},
     {"name":"IBRACHO","status":"COMPLETE"}
   ],
-  "results": {"final":1,"total":16},
+  "results": {"final":2,"total":16},
   "games": [
     {"matchup":"NE @ SEA","kickoff_cdmx":"09 SEP · 18:20 CDMX","status":"FINAL","winner":"SEA"},
-    {"matchup":"SF @ LAR","kickoff_cdmx":"10 SEP · 18:35 CDMX","status":"IN_PROGRESS","winner":""},
+    {"matchup":"SF @ LAR","kickoff_cdmx":"10 SEP · 18:35 CDMX","status":"FINAL","winner":"SF"},
     {"matchup":"CHI @ CAR","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
     {"matchup":"TB @ CIN","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
     {"matchup":"NO @ DET","kickoff_cdmx":"13 SEP · 11:00 CDMX","status":"SCHEDULED","winner":""},
@@ -49,7 +49,7 @@
     "picks": "CANVA · V03 · 05 PENDIENTE",
     "consensus": "CANVA · FINAL · 05 PENDIENTE",
     "production": "CANVA · PACKAGE READY FOR FINAL QA",
-    "results": "LIVE · 1/16 FINAL",
+    "results": "LIVE · 2/16 FINAL",
     "publication": "NO PUBLICAR"
   },
   "production": {
