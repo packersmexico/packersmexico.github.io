@@ -8,6 +8,12 @@ on:
       - '.github/workflows/video-factory-render.yml'
   workflow_dispatch:
     inputs:
+      purpose:
+        description: 'TEST allows PILOT/DEV; PRODUCTION requires ACTIVE family'
+        required: true
+        default: TEST
+        type: choice
+        options: [TEST, PRODUCTION]
       pmx_id:
         description: 'PMX ID / Child ID'
         required: true
@@ -63,12 +69,16 @@ on:
         required: true
         default: '15'
         type: string
+      captions_json:
+        description: 'Optional JSON array: [{"start":0,"end":2,"text":"..."}]'
+        required: false
+        type: string
       audio_url:
-        description: 'Validated audio URL (optional)'
+        description: 'Validated public/direct audio URL (optional)'
         required: false
         type: string
       asset_url:
-        description: '03.5 validated visual asset URL (optional)'
+        description: '03.5 validated public/direct visual asset URL (optional)'
         required: false
         type: string
       asset_credit:
@@ -87,6 +97,7 @@ jobs:
       run:
         working-directory: video-factory
     env:
+      PURPOSE: ${{ inputs.purpose || 'TEST' }}
       PMX_ID: ${{ inputs.pmx_id || 'PMX-VF-CI-001' }}
       FAMILY: ${{ inputs.family || 'ANALYSIS' }}
       MODE: ${{ inputs.mode || 'HERO' }}
@@ -99,6 +110,7 @@ jobs:
       SOURCE_LABEL: ${{ inputs.source_label || 'SISTEMA LAMBEAU' }}
       DESTINATION_LABEL: ${{ inputs.destination_label || '' }}
       DURATION_SECONDS: ${{ inputs.duration_seconds || '8' }}
+      CAPTIONS_JSON: ${{ inputs.captions_json || '' }}
       AUDIO_URL: ${{ inputs.audio_url || '' }}
       ASSET_URL: ${{ inputs.asset_url || '' }}
       ASSET_CREDIT: ${{ inputs.asset_credit || '' }}
@@ -125,7 +137,7 @@ jobs:
           mkdir -p public/brand
           cp ../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg public/brand/pmx-logo.svg
 
-      - name: Build VideoSpec
+      - name: Build governed VideoSpec
         run: npm run build:spec
 
       - name: Render MP4
