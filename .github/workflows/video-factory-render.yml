@@ -1,6 +1,11 @@
 name: PMX Video Factory · Render
 
 on:
+  push:
+    branches: [video-factory-v0.1]
+    paths:
+      - 'video-factory/**'
+      - '.github/workflows/video-factory-render.yml'
   workflow_dispatch:
     inputs:
       pmx_id:
@@ -82,21 +87,21 @@ jobs:
       run:
         working-directory: video-factory
     env:
-      PMX_ID: ${{ inputs.pmx_id }}
-      FAMILY: ${{ inputs.family }}
-      MODE: ${{ inputs.mode }}
-      ASPECT: ${{ inputs.aspect }}
-      HEADLINE: ${{ inputs.headline }}
-      KICKER: ${{ inputs.kicker }}
-      SUBHEADLINE: ${{ inputs.subheadline }}
-      BODY: ${{ inputs.body }}
-      CTA: ${{ inputs.cta }}
-      SOURCE_LABEL: ${{ inputs.source_label }}
-      DESTINATION_LABEL: ${{ inputs.destination_label }}
-      DURATION_SECONDS: ${{ inputs.duration_seconds }}
-      AUDIO_URL: ${{ inputs.audio_url }}
-      ASSET_URL: ${{ inputs.asset_url }}
-      ASSET_CREDIT: ${{ inputs.asset_credit }}
+      PMX_ID: ${{ inputs.pmx_id || 'PMX-VF-CI-001' }}
+      FAMILY: ${{ inputs.family || 'ANALYSIS' }}
+      MODE: ${{ inputs.mode || 'HERO' }}
+      ASPECT: ${{ inputs.aspect || '9:16' }}
+      HEADLINE: ${{ inputs.headline || 'PACKERS MÉXICO VIDEO FACTORY' }}
+      KICKER: ${{ inputs.kicker || 'PILOT V0.1' }}
+      SUBHEADLINE: ${{ inputs.subheadline || 'RENDER AUTOMÁTICO · QA TÉCNICO' }}
+      BODY: ${{ inputs.body || '' }}
+      CTA: ${{ inputs.cta || '04 · PRODUCTION QA' }}
+      SOURCE_LABEL: ${{ inputs.source_label || 'SISTEMA LAMBEAU' }}
+      DESTINATION_LABEL: ${{ inputs.destination_label || '' }}
+      DURATION_SECONDS: ${{ inputs.duration_seconds || '8' }}
+      AUDIO_URL: ${{ inputs.audio_url || '' }}
+      ASSET_URL: ${{ inputs.asset_url || '' }}
+      ASSET_CREDIT: ${{ inputs.asset_credit || '' }}
 
     steps:
       - name: Checkout
@@ -138,11 +143,11 @@ jobs:
       - name: Upload Production Candidate artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pmx-video-${{ inputs.pmx_id }}
+          name: pmx-video-${{ env.PMX_ID }}
           path: |
-            video-factory/out/${{ inputs.pmx_id }}.mp4
-            video-factory/out/${{ inputs.pmx_id }}-thumbnail.png
-            video-factory/out/${{ inputs.pmx_id }}-spec.json
+            video-factory/out/${{ env.PMX_ID }}.mp4
+            video-factory/out/${{ env.PMX_ID }}-thumbnail.png
+            video-factory/out/${{ env.PMX_ID }}-spec.json
             video-factory/out/qa.json
           retention-days: 14
           if-no-files-found: error
