@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "families": {
+    "ANALYSIS": {
+      "status": "PILOT",
+      "canonicalMaster": "TBD · Figma family parity pending 04/Dirección",
+      "allowedModes": ["HERO", "TEASER", "HOOK", "STORY"],
+      "notes": "Technical smoke render PASS. Visual family is not ACTIVE for unattended production until 04 perceptual QA closes."
+    },
+    "BREAKING": {
+      "status": "DEV",
+      "canonicalMaster": "TBD · Family match required",
+      "allowedModes": ["TEASER", "HOOK", "STORY"],
+      "notes": "Renderer implemented; visual parity/acceptance pending."
+    },
+    "MATCHUP": {
+      "status": "DEV",
+      "canonicalMaster": "TBD · Family match required",
+      "allowedModes": ["HERO", "TEASER", "HOOK", "STORY"],
+      "notes": "Renderer implemented; visual parity/acceptance pending."
+    }
+  }
+}
