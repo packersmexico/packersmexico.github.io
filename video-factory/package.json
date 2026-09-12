@@ -1,0 +1,28 @@
+{
+  "name": "@packersmexico/video-factory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts PMXVideo out/video.mp4 --codec=h264 --crf=18",
+    "still": "remotion still src/index.ts PMXVideo out/thumbnail.png --frame=30",
+    "build:spec": "node scripts/build-spec.mjs",
+    "qa": "node scripts/qa.mjs"
+  },
+  "dependencies": {
+    "@fontsource/bebas-neue": "5.1.1",
+    "@fontsource/montserrat": "5.1.1",
+    "@remotion/cli": "4.0.506",
+    "@remotion/media": "4.0.506",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.506",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "typescript": "5.9.2"
+  }
+}
