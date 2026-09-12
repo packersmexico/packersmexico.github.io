@@ -1,8 +1,8 @@
 name: PMX Video Factory · Render
 
 on:
-  push:
-    branches: [video-factory-v0.1]
+  pull_request:
+    branches: [main]
     paths:
       - 'video-factory/**'
       - '.github/workflows/video-factory-render.yml'
