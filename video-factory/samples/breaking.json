@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-DEMO-BRK-001",
+  "family": "BREAKING",
+  "mode": "TEASER",
+  "aspect": "9:16",
+  "kicker": "BREAKING NEWS",
+  "headline": "ACTUALIZACIÓN\nPACKERS",
+  "subheadline": "Hecho principal + impacto + qué sigue.",
+  "sourceLabel": "FUENTE OFICIAL / ATRIBUIDA",
+  "durationSeconds": 10
+}
