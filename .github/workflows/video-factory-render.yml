@@ -1,0 +1,153 @@
+name: PMX Video Factory · Render
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'video-factory/**'
+      - '.github/workflows/video-factory-render.yml'
+  workflow_dispatch:
+    inputs:
+      pmx_id:
+        description: 'PMX ID / Child ID'
+        required: true
+        type: string
+      family:
+        description: 'Video family'
+        required: true
+        default: ANALYSIS
+        type: choice
+        options: [ANALYSIS, BREAKING, MATCHUP]
+      mode:
+        description: 'Output mode'
+        required: true
+        default: HERO
+        type: choice
+        options: [HERO, TEASER, HOOK, STORY]
+      aspect:
+        description: 'Aspect ratio'
+        required: true
+        default: '9:16'
+        type: choice
+        options: ['9:16','4:5','1:1']
+      headline:
+        description: 'LOCKED headline'
+        required: true
+        type: string
+      kicker:
+        description: 'Optional kicker'
+        required: false
+        type: string
+      subheadline:
+        description: 'Optional subheadline'
+        required: false
+        type: string
+      body:
+        description: 'Optional body'
+        required: false
+        type: string
+      cta:
+        description: 'Optional CTA'
+        required: false
+        type: string
+      source_label:
+        description: 'Visible source / attribution label'
+        required: false
+        type: string
+      destination_label:
+        description: 'Destination label'
+        required: false
+        type: string
+      duration_seconds:
+        description: 'Duration seconds'
+        required: true
+        default: '15'
+        type: string
+      audio_url:
+        description: 'Validated audio URL (optional)'
+        required: false
+        type: string
+      asset_url:
+        description: '03.5 validated visual asset URL (optional)'
+        required: false
+        type: string
+      asset_credit:
+        description: 'Asset credit if applicable'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: video-factory
+    env:
+      PMX_ID: ${{ inputs.pmx_id || 'PMX-VF-CI-001' }}
+      FAMILY: ${{ inputs.family || 'ANALYSIS' }}
+      MODE: ${{ inputs.mode || 'HERO' }}
+      ASPECT: ${{ inputs.aspect || '9:16' }}
+      HEADLINE: ${{ inputs.headline || 'PACKERS MÉXICO VIDEO FACTORY' }}
+      KICKER: ${{ inputs.kicker || 'PILOT V0.1' }}
+      SUBHEADLINE: ${{ inputs.subheadline || 'RENDER AUTOMÁTICO · QA TÉCNICO' }}
+      BODY: ${{ inputs.body || '' }}
+      CTA: ${{ inputs.cta || '04 · PRODUCTION QA' }}
+      SOURCE_LABEL: ${{ inputs.source_label || 'SISTEMA LAMBEAU' }}
+      DESTINATION_LABEL: ${{ inputs.destination_label || '' }}
+      DURATION_SECONDS: ${{ inputs.duration_seconds || '8' }}
+      AUDIO_URL: ${{ inputs.audio_url || '' }}
+      ASSET_URL: ${{ inputs.asset_url || '' }}
+      ASSET_CREDIT: ${{ inputs.asset_credit || '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Materialize authoritative PMX logo
+        run: |
+          mkdir -p public/brand
+          cp ../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg public/brand/pmx-logo.svg
+
+      - name: Build VideoSpec
+        run: npm run build:spec
+
+      - name: Render MP4
+        run: npx remotion render src/index.ts PMXVideo "out/${PMX_ID}.mp4" --props=generated/spec.json --codec=h264 --crf=18
+
+      - name: Render thumbnail
+        run: npx remotion still src/index.ts PMXVideo "out/${PMX_ID}-thumbnail.png" --props=generated/spec.json --frame=30
+
+      - name: Technical QA
+        run: npm run qa -- "out/${PMX_ID}.mp4"
+
+      - name: Preserve spec
+        run: cp generated/spec.json "out/${PMX_ID}-spec.json"
+
+      - name: Upload Production Candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmx-video-${{ env.PMX_ID }}
+          path: |
+            video-factory/out/${{ env.PMX_ID }}.mp4
+            video-factory/out/${{ env.PMX_ID }}-thumbnail.png
+            video-factory/out/${{ env.PMX_ID }}-spec.json
+            video-factory/out/qa.json
+          retention-days: 14
+          if-no-files-found: error
