@@ -4,7 +4,7 @@
   "week": "WEEK 1",
   "week_number": 1,
   "snapshot_status": "ACTIVE",
-  "last_sync": "2026-09-09T21:30:00-06:00",
+  "last_sync": "2026-09-14T15:58:29-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -26,14 +26,14 @@
     {"name":"RODRI","status":"COMPLETE"},
     {"name":"IBRACHO","status":"COMPLETE"}
   ],
-  "results": {"final":0,"total":16},
+  "results": {"final":15,"total":16},
   "pipeline": {
     "data_system": "PASS · 9/9 · 144/144",
     "capture": "CLOSED",
     "picks": "CANVA · V03 · 05 PENDIENTE",
     "consensus": "CANVA · FINAL · 05 PENDIENTE",
     "production": "CANVA · PACKAGE READY FOR FINAL QA",
-    "results": "LIVE · 0/16 FINAL",
+    "results": "LIVE · 15/16 FINAL",
     "publication": "NO PUBLICAR"
   },
   "production": {
