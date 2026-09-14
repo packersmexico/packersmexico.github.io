@@ -2,12 +2,12 @@
   "pmx_id": "PMX-PILOT-QUINIELA-001",
   "week": "WEEK 1",
   "season": "2026",
-  "last_sync": "2026-09-13T20:14:20-06:00",
+  "last_sync": "2026-09-14T15:58:29-06:00",
   "capture": {"complete":9,"total":9,"window":"CLOSED","deadline_label":"09 SEP · 12:00 CDMX","expected_picks":144,"received_picks":144,"missing_picks":0,"invitado":"OFF"},
   "participants": [
     {"name":"EL DOC","status":"COMPLETE"},{"name":"ARI","status":"COMPLETE"},{"name":"LALO","status":"COMPLETE"},{"name":"ALEX","status":"COMPLETE"},{"name":"LUIS C.","status":"COMPLETE"},{"name":"DR PALMA","status":"COMPLETE"},{"name":"JENNI","status":"COMPLETE"},{"name":"RODRI","status":"COMPLETE"},{"name":"IBRACHO","status":"COMPLETE"}
   ],
-  "results": {"final":14,"total":16},
+  "results": {"final":15,"total":16},
   "games": [
     {"matchup":"NE @ SEA","kickoff_cdmx":"09 SEP · 18:20 CDMX","status":"FINAL","winner":"SEA"},
     {"matchup":"SF @ LAR","kickoff_cdmx":"10 SEP · 18:35 CDMX","status":"FINAL","winner":"SF"},
@@ -23,10 +23,10 @@
     {"matchup":"MIA @ LV","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"FINAL","winner":"LV"},
     {"matchup":"GB @ MIN","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"FINAL","winner":"MIN"},
     {"matchup":"WAS @ PHI","kickoff_cdmx":"13 SEP · 14:25 CDMX","status":"FINAL","winner":"PHI"},
-    {"matchup":"DAL @ NYG","kickoff_cdmx":"13 SEP · 18:20 CDMX · SNF","status":"IN PROGRESS","winner":""},
+    {"matchup":"DAL @ NYG","kickoff_cdmx":"13 SEP · 18:20 CDMX · SNF","status":"FINAL","winner":"NYG"},
     {"matchup":"DEN @ KC","kickoff_cdmx":"14 SEP · 18:15 CDMX · MNF","status":"SCHEDULED","winner":""}
   ],
-  "pipeline": {"data_system":"PASS · 9/9 · 144/144","capture":"CLOSED","picks":"CANVA · V03 · 05 PENDIENTE","consensus":"CANVA · FINAL · 05 PENDIENTE","production":"CANVA · PACKAGE READY FOR FINAL QA","results":"LIVE · 14/16 FINAL","publication":"NO PUBLICAR"},
+  "pipeline": {"data_system":"PASS · 9/9 · 144/144","capture":"CLOSED","picks":"CANVA · V03 · 05 PENDIENTE","consensus":"CANVA · FINAL · 05 PENDIENTE","production":"CANVA · PACKAGE READY FOR FINAL QA","results":"LIVE · 15/16 FINAL","publication":"NO PUBLICAR"},
   "production": {
     "surface":"CANVA","package_status":"CANVA PACKAGE · 05 PENDIENTE","package_url":"https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx","delivery_target":"SIGUIENTE GATE · 05","rule":"Canva es la superficie operativa vigente de Quiniela. Drive entrega los archivos a Rodrigo; 05 valida y el click final sigue siendo humano.",
     "folders":{"picks":"https://drive.google.com/drive/folders/1ov7_X5FG66RcHAa-yCV2BrzxvbBOuN8P","consensus":"https://drive.google.com/drive/folders/1oodJmSHFe0lU1kpjvQzs5cBRYUAhTOqh","story_status":"https://drive.google.com/drive/folders/19vEH4FJULTTcnsZcXVxOj6CwdIttlfvI","results":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I","copy":"https://drive.google.com/drive/folders/151olsQsUoPZQeJsb98X4PZgJDy0b2qn5"},
