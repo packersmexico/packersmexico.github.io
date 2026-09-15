@@ -49,14 +49,17 @@ function render(data, captureConfig) {
   setText('w1-final', w1.results || '16/16 FINAL');
   setText('w1-score', w1.leader_score || '11/16');
   setHref('w1-results-folder', w1.results_sheet_url || w1.results_folder);
+  setHref('w1-summary', w1.summary_x_url);
   setHref('w1-public-picks', w1.public_picks_url);
 
   setHref('stable-capture', capture.stable_url || captureConfig.stable_url || './captura/');
   setHref('direct-form', capture.form_url || captureConfig.form_url);
 
   const xState = String(operator.x_asset_status || 'WAITING_FIGMA').toUpperCase();
-  setText('x-status', xState === 'READY' ? 'LISTO PARA X' : 'ESPERANDO FIGMA');
-  setHref('x-folder', operator.x_asset_url || operator.x_asset_folder || w1.results_sheet_url || w1.results_folder);
+  setText('x-status', xState === 'READY' ? 'PNG LISTOS' : 'ASSETS PENDIENTES');
+  setHref('x-folder', operator.x_asset_url || w1.results_sheet_url);
+  setHref('x-summary', operator.x_summary_url || w1.summary_x_url);
+  setHref('asset-library', operator.asset_library_url || w1.asset_library_url);
 }
 
 async function loadData() {
