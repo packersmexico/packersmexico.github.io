@@ -1,26 +1,24 @@
 {
   "season": "2026",
-  "active_week": 1,
-  "last_sync": "2026-09-09T21:30:00-06:00",
+  "active_week": 2,
+  "last_sync": "2026-09-14T23:45:00-06:00",
   "weeks": [
     {
       "week": "WEEK 1",
       "week_number": 1,
-      "status": "ACTIVE",
+      "status": "CLOSED",
       "games_total": 16,
       "capture": "9/9 · 144/144 · CLOSED",
-      "results": "0/16 FINAL",
-      "publication": "CANVA · 05 PENDIENTE",
+      "results": "16/16 FINAL · EMPATE 4 LÍDERES · 11/16",
+      "publication": "PICKS PUBLICADOS · RESULTADOS DATA READY",
       "public_url": "https://packersmexico.github.io/quiniela/w01/",
       "snapshot_url": "./week.html?week=1",
       "package_url": "https://drive.google.com/drive/folders/1KP2_rVshQenNoedOlNjugOCKsJ-uysjx",
       "outputs": [
-        {"label":"PICKS / CARRUSEL","status":"CANVA · V03","url":"https://www.canva.com/d/GjjHod9M_kqJsMH","drive_url":"https://drive.google.com/drive/folders/1ov7_X5FG66RcHAa-yCV2BrzxvbBOuN8P"},
-        {"label":"CONSENSUS","status":"CANVA · FINAL","url":"https://www.canva.com/d/R6pnxstyjDqkhom","drive_url":"https://drive.google.com/drive/folders/1oodJmSHFe0lU1kpjvQzs5cBRYUAhTOqh"},
-        {"label":"STORY / STATUS","status":"CANVA · V02","url":"https://www.canva.com/d/EZdEMkcMakEYHyS","drive_url":"https://drive.google.com/drive/folders/19vEH4FJULTTcnsZcXVxOj6CwdIttlfvI"},
-        {"label":"COPY","status":"02 · LOCKED","url":"https://docs.google.com/document/d/1Fa_TyKV_fhAqNAdw5Vv-DlJ-R9j8wyBg1wRGYNySwV8/edit?usp=drivesdk","drive_url":"https://drive.google.com/drive/folders/151olsQsUoPZQeJsb98X4PZgJDy0b2qn5"},
-        {"label":"WINNER","status":"WAITING RESULTS","url":"","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"},
-        {"label":"STANDINGS","status":"WAITING RESULTS","url":"","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"}
+        {"label":"PICKS / CARRUSEL","status":"PUBLICADO","url":"https://www.canva.com/d/GjjHod9M_kqJsMH","drive_url":"https://drive.google.com/drive/folders/1ov7_X5FG66RcHAa-yCV2BrzxvbBOuN8P"},
+        {"label":"CONSENSUS","status":"CLOSED","url":"https://www.canva.com/d/R6pnxstyjDqkhom","drive_url":"https://drive.google.com/drive/folders/1oodJmSHFe0lU1kpjvQzs5cBRYUAhTOqh"},
+        {"label":"RESULTADOS W1","status":"DATA READY · FIGMA","url":"","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"},
+        {"label":"STANDINGS W1","status":"DATA READY · FIGMA","url":"","drive_url":"https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I"}
       ]
     }
   ]
