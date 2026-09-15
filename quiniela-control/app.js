@@ -48,7 +48,7 @@ function render(data, captureConfig) {
 
   setText('w1-final', w1.results || '16/16 FINAL');
   setText('w1-score', w1.leader_score || '11/16');
-  setHref('w1-results-folder', w1.results_folder);
+  setHref('w1-results-folder', w1.results_sheet_url || w1.results_folder);
   setHref('w1-public-picks', w1.public_picks_url);
 
   setHref('stable-capture', capture.stable_url || captureConfig.stable_url || './captura/');
@@ -56,7 +56,7 @@ function render(data, captureConfig) {
 
   const xState = String(operator.x_asset_status || 'WAITING_FIGMA').toUpperCase();
   setText('x-status', xState === 'READY' ? 'LISTO PARA X' : 'ESPERANDO FIGMA');
-  setHref('x-folder', operator.x_asset_folder || w1.results_folder);
+  setHref('x-folder', operator.x_asset_url || operator.x_asset_folder || w1.results_sheet_url || w1.results_folder);
 }
 
 async function loadData() {
