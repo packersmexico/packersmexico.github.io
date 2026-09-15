@@ -44,7 +44,9 @@
       {"name":"ARI","correct":8,"rank":9}
     ],
     "last_game": {"matchup":"DEN @ KC","status":"FINAL","winner":"KC","score":"DEN 10 · KC 31"},
-    "results_sheet_url": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=2385-540670",
+    "results_sheet_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#results",
+    "summary_x_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
+    "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
     "results_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
     "public_picks_url": "https://packersmexico.github.io/quiniela/w01/"
   },
@@ -52,8 +54,10 @@
     "name": "RODRIGO",
     "role": "DATA OWNER + X OPERATOR",
     "x_asset_status": "READY",
-    "x_asset_url": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=2385-540670",
+    "x_asset_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#results",
+    "x_summary_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
+    "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
     "x_asset_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
-    "instructions": ["REVISAR HOJA DE RESULTADOS","DESCARGAR ASSET X","PUBLICAR EN X"]
+    "instructions": ["REVISAR IMAGEN","DESCARGAR PNG","PUBLICAR EN X"]
   }
 }
