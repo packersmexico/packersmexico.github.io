@@ -14,42 +14,78 @@ Season Calendar route: `https://packersmexico.github.io/calendario/`
 
 ## CURRENT PHASE
 
-`FASE 2C · HUB EXPANSION · SEASON CALENDAR 2026`
+`FASE 2C · HUB EXPANSION · WEEKLY AUTO-ROLLOVER + SEASON CALENDAR 2026`
 
 ## STATUS
 
-`CORE HUB PATCH DEPLOYED · GA4 PASS · CALENDAR 2026 IMPLEMENTED · PUBLIC GOOGLE CALENDAR COMPLETE · SOCIAL 5/5 · SPECIAL THEMES/UNIFORMS MAPPED · 03.5 PROVENANCE PASS / MATERIALIZATION + FAMILY AUTHORIZATION HOLD · CALENDAR PUBLIC BROWSER QA PENDING · FIGMA CALENDAR FAMILY HOLD · EXTERNAL FORM DEPENDENCY · PODCAST W01 HUB DESTINATION DEPLOYED / TRACKING QA HOLD`
+`CORE HUB WEEKLY AUTO-ROLLOVER DEPLOYED + PUBLIC BROWSER QA PASS · GA4 ACTIVE · CALENDAR 2026 IMPLEMENTED · PUBLIC GOOGLE CALENDAR COMPLETE · SOCIAL 5/5 · SPECIAL THEMES/UNIFORMS MAPPED · 03.5 PROVENANCE PASS / MATERIALIZATION + FAMILY AUTHORIZATION HOLD · FIGMA CALENDAR FAMILY HOLD · EXTERNAL FORM DEPENDENCY · PODCAST W01 TRACKING QA HOLD`
 
-## CORE HUB · WEEK 1
+## CORE HUB · CURRENT LIVE STATE
 
-- Game ID: `PMX-WS-2026-W01`
-- Matchup: `PACKERS @ VIKINGS`
-- Weekly label: `WEEK 1 · SEASON OPENER`
-- Date: `DOM 13 SEP 2026`
-- Community arrival: `14:00 CDMX`
-- Kickoff: `14:25 CDMX`
-- Venue: `Wingstop Condesa · CDMX`
-- Public wording LOCKED: `Casa Oficial de Packers en CDMX`
-- Registration: `https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
-- Promo: `OFF`
-- Special: `OFF`
+Current game resolved automatically from the season schedule using `America/Mexico_City` date.
 
-Latest Hub UI patch:
-- removed `AT`; away matchup now uses `@`
-- home matchup remains `VS`
-- Week/game-label language aligned with Calendar style (`WEEK 1 · SEASON OPENER`, future `HOME OPENER`, themes, etc.)
-- removed redundant `REDES` navigation because social destinations already live in footer
-- removed Wingstop partner logo/footer block
-- venue relationship remains in hero only
-- retained `CONFIRMA TU ASISTENCIA` + `CÓMO LLEGAR`
-- retained `CALENDARIO 2026` + `GOPACKGO MX`
-- social footer remains 5/5: Instagram, X, Facebook, TikTok, YouTube
+Public browser QA on 2026-09-14:
+- `WEEK 2`
+- `PACKERS @ JETS`
+- `DOM 20 SEP · 11:00 CDMX`
+- `WINGSTOP CONDESA · CDMX`
+- `Casa Oficial de Packers en CDMX`
+- `CONFIRMA TU ASISTENCIA` visible
+- `CÓMO LLEGAR` visible
+- no `VIKINGS` residue in the rendered Hub
+- no visible load/console error detected by browser QA
 
-Prior core Hub browser QA:
-- `390×844 = PASS`
-- `1440×900 = PASS`
+Current resolved game ID:
+`PMX-WS-2026-W02`
 
-Because the Hub UI was patched after those captures, a short visual recheck is required before treating the new layout as final browser PASS.
+Current opponent:
+`New York Jets`
+
+Current kickoff:
+`DOM 20 SEP 2026 · 11:00 CDMX`
+
+Venue:
+`Wingstop Condesa · CDMX`
+
+Public wording LOCKED:
+`Casa Oficial de Packers en CDMX`
+
+Registration:
+`https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
+
+Promo:
+`OFF`
+
+Special:
+`OFF`
+
+## WEEKLY AUTO-ROLLOVER
+
+State:
+`DEPLOYED · PUBLIC BROWSER QA PASS`
+
+Implementation:
+- root Hub now loads the existing season schedule from `calendario/config.js` before `js/config.js`
+- `js/config.js` resolves the first game whose `dateISO >= current CDMX date`
+- after a game date passes, the visible Hub advances automatically to the next dated game
+- if no dated future game remains, the first undated game (Week 18 TBD) is used as fallback
+- analytics `id_juego` now inherits the automatically resolved weekly game ID before `analytics.js` initializes
+- no page-layout rebuild is required for ordinary weekly rollover
+
+Current Hub implementation version:
+`p0-weekly-auto-v1`
+
+Important limit:
+The weekly rollover is automatic, but factual NFL flex changes still require source/recency maintenance in the season schedule. Automation must not invent updated dates/times.
+
+## WEEK 1 HUB CLOSEOUT
+
+Week 1 Hub game:
+`PMX-WS-2026-W01 · PACKERS @ VIKINGS`
+
+Historical Week 1 visible configuration has rolled forward automatically and is no longer the current hero state.
+
+Week 1 tracking/history remains meaningful through historical campaign URLs and State Board records; the visible Hub no longer needs a manual weekly opponent edit.
 
 ## SEASON CALENDAR 2026 EXTENSION
 
@@ -85,11 +121,6 @@ Calendar capabilities:
 
 Social footer:
 `PASS · 5/5 DESTINATIONS`
-- Instagram
-- X
-- Facebook
-- TikTok
-- YouTube
 
 Social click tracking:
 `CLICK_SOCIAL · PRESERVED TAXONOMY`
@@ -127,14 +158,6 @@ Coverage:
 - Weeks 12–17 created
 - Week 18 created as Jan 9–10 TBD window marker
 
-Every game event:
-- uses `America/Mexico_City`
-- points to PMX Hub with tracked URL
-- points to full Season Calendar with tracked URL
-- is public and transparent/non-blocking
-- carries special theme/uniform metadata when confirmed
-- includes independent-brand disclaimer
-
 Tracking convention:
 - `utm_source=google_calendar`
 - `utm_medium=calendar_event`
@@ -171,65 +194,15 @@ Family:
 03.5 state:
 `HOLD PARCIAL · PROVENANCE PASS / MATERIALIZATION + AUTHORIZATION PENDING`
 
-### Opponent logos
-
+Opponent logos:
 - `14/14 SOURCE PASS`
-- unique rivals covered: MIN, NYJ, ATL, TB, CHI, DAL, DET, CAR, NE, LA, NO, BUF, MIA, HOU
-- official NFL club-logo endpoints identified/validated
 - `0/14 MATERIALIZED BY 03.5 RUNTIME`
-- restriction: no redraw, recolor, distortion, pseudo-logo or improvised vectorization
+- no redraw, recolor, distortion, pseudo-logo or improvised vectorization
 
-### W5 · Packers Rivalries
-
-Provenance PASS:
-- `GB-RIV-2026-FULL-01`
-- `GB-RIV-2026-HELMET-01`
-- `GB-RIV-2026-JERSEY-01`
-
-No isolated pants asset validated. Do not fabricate cutout.
-
-### W14 · 1923 Classic
-
-Provenance PASS:
-- `GB-1923-2026-FULL-01`
-- `GB-1923-2026-DETAIL-01`
-
-No isolated pants asset validated. No AI/reconstruction of leather-look helmet.
-
-### W16 · Bears Rivalries
-
-Provenance PASS:
-- `CHI-RIV-2026-FULL-01`
-- `CHI-RIV-2026-HELMET-01`
-- `CHI-RIV-2026-JERSEY-01`
-- `CHI-RIV-2026-PANTS-01`
-
-LOCK:
-`BEARS RIVALRIES CONFIRMED FOR CHICAGO · DO NOT INFER PACKERS RIVALRIES W16`
-
-### Themes
-
-- Alumni Weekend → `TEXT ONLY / WAIT`
-- Packers Vs. Cancer → 2025 asset only = `REFERENCE ONLY · DO NOT USE AS 2026 MASTER`
-- Bob Harlan → contextual official photo source PASS; not W8 event-photo proof
-- Salute to Service → provenance PASS
-- Walter Payton MOY → provenance PASS; sponsor cannot be removed/rebuilt
-- Inspire Change → provenance PASS
-- NFL Play 60 → provenance PASS
-- Fan Appreciation → `TEXT ONLY / WAIT`
-
-### Authorization gate
-
-Specific family authorization is not recorded as closed:
+Theme/uniform asset notes remain governed by the 03.5 return. Specific family authorization is not recorded as closed:
 `⚪ NO SOLICITADA · USO EDITORIAL PROVISIONAL`
 
-Therefore:
-- provenance/context may be used for planning and text metadata
-- visual assets are NOT released as final public production package yet
-- 04 must not treat these URLs as final authorized/materalized assets
-- family must be escalated to `00 · Dirección y Gobernanza` for explicit authorization decision
-
-This follows the current workflow: 03.5 validates source/context/rights state; Dirección governs permissions/masters; 04 does not re-investigate or improvise assets.
+Therefore visual assets are not released as a final public production package yet.
 
 ## FIGMA · SEASON CALENDAR VISUAL FAMILY
 
@@ -274,16 +247,8 @@ GA4:
 Measurement ID:
 `G-QEN5F5YY14`
 
-Web Stream:
-- Name: `PMX Digital Hub`
-- URL: `https://packersmexico.github.io`
-- Data collection: `ACTIVE`
-
 Custom dimensions:
 `8/8 · EVENT SCOPE`
-
-Formal QA cutoff:
-`2026-09-05T11:55:39-06:00`
 
 Events preserved:
 `HUB_VIEW · CLICK_REGISTRO · CLICK_MAPS · CLICK_PROMO · CLICK_CALENDAR · CLICK_GOPACKGO · CLICK_SOCIAL · QR_OPEN`
@@ -291,52 +256,29 @@ Events preserved:
 Integrity:
 `CLICK_REGISTRO ≠ REGISTRO_CONFIRMADO ≠ ASISTENCIA_MEDIDA`
 
+Weekly auto-rollover consequence:
+`id_juego` now resolves from the current season game before analytics initialization.
+
 ## PODCAST W01 · HUB TRACKING
 
 PMX_ID:
 `PODCAST-W01 · GoPackGoMX #167`
 
-Direction state:
-`00 · TRACKING BUILD AUTHORIZED`
-
-Campaign:
-`podcast_2026_w01`
-
 Destination:
 `https://youtu.be/BZBuRy3LHUY`
 
-Hub implementation:
-- `js/config.js` GoPackGo destination updated from generic channel to Episode #167
-- commit: `8aca5d5831f9f245e1608ed7244f53f5529a9268`
-- public Hub QA URL returned HTTPS `200`
-- public `js/config.js` returned HTTPS `200` after deployment
-- destination resolves HTTPS `200` to YouTube watch URL for video ID `BZBuRy3LHUY`
-- `HUB_TRACKING_MAP` event destination for `CLICK_GOPACKGO` updated to Episode #167
-
-Locked production entry URLs:
-- X / `PODCAST_W01_X_EPISODE` → `https://packersmexico.github.io/?utm_source=x&utm_medium=social&utm_campaign=podcast_2026_w01&utm_content=episode_167`
-- Facebook / `PODCAST_W01_FACEBOOK_EPISODE` → `https://packersmexico.github.io/?utm_source=facebook&utm_medium=social&utm_campaign=podcast_2026_w01&utm_content=episode_167`
-- Instagram Story / `PODCAST_W01_IG_STORY_EPISODE` → `https://packersmexico.github.io/?utm_source=instagram&utm_medium=story&utm_campaign=podcast_2026_w01&utm_content=episode_167`
-- Instagram Feed → `TRACK_ID N/A · FINAL HUB URL N/A · dependency PODCAST_W01_IG_STORY_EPISODE`
-
-QA evidence:
-- temporary QA navigation used the X UTM URL plus technical `pmx_test=1`; production URL remains unchanged
-- GA4 Realtime observed fresh `HUB_VIEW = 1` after QA navigation
-- no fresh synthetic/browser click was executed, therefore `CLICK_GOPACKGO` event verification for this build remains HOLD
+Current technical state:
+`PARTIAL PASS · DESTINATION DEPLOYED · FINAL URL BUILD READY · HUB_VIEW VERIFIED · CLICK_GOPACKGO QA + TRAFFIC_CLASS HOLD · READY_FOR_CLICK FALSE`
 
 Analytics blocker:
 `HOLD · TRAFFIC_CLASS TAXONOMY CONFLICT`
 
-Conflict:
-- current Direction handoff for Podcast W01 requests `traffic_class = qa` during tests and `production` at release
-- current Hub implementation emits `TEST_SETUP` when `pmx_test=1` and `PRODUCTION` otherwise
-- current GA4 custom dimension description is `Traffic Class · TEST_SETUP / PRODUCTION`
-- existing analytics control sheet also contains a previously locked traffic-class convention that is not identical to the new Podcast W01 wording
+Conflict remains:
+- current Hub emits `TEST_SETUP` when `pmx_test=1` and `PRODUCTION` otherwise
+- another handoff requested `qa` / `production`
+- current GA4 custom-dimension description uses `TEST_SETUP / PRODUCTION`
 
-Per repository STOP CONDITION, do not silently rewrite analytics semantics. Direction/Analytics must reconcile the traffic-class vocabulary before H01 can claim full Podcast W01 tracking PASS.
-
-Current Podcast W01 technical state:
-`PARTIAL PASS · DESTINATION DEPLOYED · FINAL URL BUILD READY · HUB_VIEW VERIFIED · CLICK_GOPACKGO QA + TRAFFIC_CLASS HOLD · READY_FOR_CLICK FALSE`
+Do not silently rewrite analytics semantics; Direction/Analytics must reconcile vocabulary first.
 
 ## EXTERNAL FORMS.APP DEPENDENCY
 
@@ -345,7 +287,7 @@ State:
 
 Known conflicts:
 - broader official-sounding wording
-- 14:00 without clear 14:25 kickoff distinction
+- 14:00 without clear 14:25 kickoff distinction in historical Week 1 material
 - reservation-like wording
 
 PMX-controlled surfaces remain locked to:
@@ -354,16 +296,34 @@ PMX-controlled surfaces remain locked to:
 PMX CTA remains:
 `CONFIRMA TU ASISTENCIA`
 
+## DEPLOYMENT QA · 2026-09-14
+
+Commits:
+- `cbfcc39bfdb5423fbc79f51604094664a6963726` · load season schedule before Hub config
+- `8512f0b4ebe5c39dd0d9ca490b5d28bfc78be83b` · derive weekly Hub game from season calendar
+
+Public live-browser verification:
+`PASS`
+
+Verified rendered hero:
+`WEEK 2 · PACKERS @ JETS · DOM 20 SEP · 11:00 CDMX · WINGSTOP CONDESA · CDMX`
+
+Verified:
+- primary CTA present
+- Maps CTA present
+- no Week 1/Vikings residue in hero
+- no visible load/console error detected
+
 ## NEXT ACTION
 
-1. `Resolve Podcast W01 traffic_class taxonomy conflict in 00/Analytics; then execute fresh CLICK_GOPACKGO QA and close H01 return.`
-2. `Public-browser recheck of patched core Hub at mobile + desktop.`
-3. `Public-browser QA of /calendario/ at 390×844 and 1440×900.`
-4. `Escalate PMX · SEASON CALENDAR 2026 · VISUAL FAMILY V1.0 to 00 for explicit asset-family authorization.`
-5. `After authorization + materialization, hand exact 03.5 assets to 04/Figma; no substitutions.`
-6. `Verify calendar HUB_VIEW + CLICK_CALENDAR + CLICK_SOCIAL in GA4 with QA traffic classified separately.`
-7. `Monitor NFL/Packers flex changes and update source + Google Calendar.`
+1. `Open PMX-WS-2026-W02 in State Board with Tuesday ASSET CHECK and PMX fallback if Wingstop does not deliver images.`
+2. `Rebuild clean Week 2 operational chats from Sources + State Board; do not migrate obsolete conversation history as authority.`
+3. `Create WEEK 2 CONTROL BOARD / 20 publication slots and reserve the Wingstop partnership cadence inside those 20.`
+4. `Resolve Podcast W01 traffic_class taxonomy conflict in 00/Analytics; then execute fresh CLICK_GOPACKGO QA.`
+5. `Complete public-browser QA of /calendario/ at mobile + desktop.`
+6. `Escalate PMX · SEASON CALENDAR 2026 · VISUAL FAMILY V1.0 for explicit asset-family authorization.`
+7. `Monitor NFL/Packers flex changes and update the season schedule source when materially required.`
 
 ## LAST RELEVANT CHANGE
 
-`Podcast W01: GoPackGo Hub destination now points to Episode #167 and the event-level HUB_TRACKING_MAP destination is aligned. Three locked production UTM URLs were materialized and public HTTPS + HUB_VIEW QA passed. Full H01 PASS is blocked by traffic_class taxonomy conflict and a fresh CLICK_GOPACKGO click-event verification.`
+`2026-09-14 · Core Hub weekly rollover is now systemized. The root Hub consumes the existing 2026 season schedule and automatically advances the visible matchup by CDMX date. Public browser QA confirmed Week 2 Packers @ Jets at 11:00 CDMX and no Vikings residue. Ordinary weekly opponent/date/time rollover no longer requires a manual Hub edit; factual flex changes remain a recency-controlled maintenance task.`
