@@ -2,7 +2,7 @@
   "pmx_id": "PMX-QUINIELA-W2-001",
   "season": "2026",
   "week": "WEEK 2",
-  "last_sync": "2026-09-14T23:45:00-06:00",
+  "last_sync": "2026-09-15T04:22:00-06:00",
   "capture": {
     "complete": 0,
     "total": 9,
@@ -44,14 +44,16 @@
       {"name":"ARI","correct":8,"rank":9}
     ],
     "last_game": {"matchup":"DEN @ KC","status":"FINAL","winner":"KC","score":"DEN 10 · KC 31"},
+    "results_sheet_url": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=2385-540670",
     "results_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
     "public_picks_url": "https://packersmexico.github.io/quiniela/w01/"
   },
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + X OPERATOR",
-    "x_asset_status": "WAITING_FIGMA",
+    "x_asset_status": "READY",
+    "x_asset_url": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=2385-540670",
     "x_asset_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
-    "instructions": ["REVISAR RESUMEN","DESCARGAR ASSET X","PUBLICAR EN X"]
+    "instructions": ["REVISAR HOJA DE RESULTADOS","DESCARGAR ASSET X","PUBLICAR EN X"]
   }
 }
