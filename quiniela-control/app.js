@@ -23,10 +23,36 @@ function formatSync(value) {
   } catch { return value; }
 }
 
+function renderParticipants(participants = []) {
+  const wrap = document.getElementById('w2-participants');
+  if (!wrap) return;
+
+  wrap.replaceChildren();
+
+  participants.forEach((participant) => {
+    const status = String(participant.status || 'PENDING').toUpperCase();
+    const complete = status === 'COMPLETE';
+    const row = document.createElement('div');
+    row.className = `participant ${complete ? 'complete' : 'pending'}`;
+
+    const name = document.createElement('span');
+    name.className = 'participant-name';
+    name.textContent = participant.name || '—';
+
+    const state = document.createElement('span');
+    state.className = 'participant-status';
+    state.textContent = complete ? 'COMPLETADO' : 'FALTA';
+
+    row.append(name, state);
+    wrap.append(row);
+  });
+}
+
 function render(data, captureConfig) {
   const capture = data.capture || {};
   const w1 = data.week1_closeout || {};
   const operator = data.operator || {};
+  const participants = Array.isArray(data.participants) ? data.participants : [];
   const complete = Number(capture.complete || 0);
   const total = Number(capture.total || 9);
   const pct = Math.max(0, Math.min(100, total ? (complete / total) * 100 : 0));
@@ -45,6 +71,8 @@ function render(data, captureConfig) {
     progressWrap.setAttribute('aria-valuenow', String(complete));
     progressWrap.setAttribute('aria-valuemax', String(total));
   }
+
+  renderParticipants(participants);
 
   setText('w1-final', w1.results || '16/16 FINAL');
   setText('w1-score', w1.leader_score || '11/16');
