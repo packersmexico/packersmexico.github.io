@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "PMX_ID": "PMX-DRPALMA-W2-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "durationSeconds": 188,
+  "headlineLocked": "EN LA OPINIÓN DEL DR. PALMA",
+  "subheadlineLocked": "QUÉ VER ESTA SEMANA + APUNTE PACKERS",
+  "audioInput": "EXTERNAL_SECURE_INPUT_REQUIRED",
+  "assetPolicy": "03.5_PASS_OR_NO_PHOTO",
+  "publicationState": "TEST_ONLY",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 8,
+      "type": "HOOK",
+      "title": "¿QUÉ VER ESTA SEMANA?",
+      "support": "WEEK 2 · NFL"
+    },
+    {
+      "id": "S02",
+      "start": 8,
+      "end": 48,
+      "type": "MATCHUP",
+      "title": "JAX @ DEN",
+      "support": "DOM 20 SEP · 14:05 CDMX"
+    },
+    {
+      "id": "S03",
+      "start": 48,
+      "end": 86,
+      "type": "MATCHUP",
+      "title": "WAS @ DAL",
+      "support": "DOM 20 SEP · 14:25 CDMX"
+    },
+    {
+      "id": "S04",
+      "start": 86,
+      "end": 138,
+      "type": "MATCHUP",
+      "title": "NYG @ LAR",
+      "support": "LUN 21 SEP · 18:15 CDMX"
+    },
+    {
+      "id": "S05",
+      "start": 138,
+      "end": 174,
+      "type": "PACKERS_NOTE",
+      "title": "APUNTE PACKERS",
+      "support": "LA LECTURA DE DAVID"
+    },
+    {
+      "id": "S06",
+      "start": 174,
+      "end": 183,
+      "type": "OUTRO",
+      "title": "DR. PALMA",
+      "support": "PACKERS MÉXICO"
+    }
+  ],
+  "captionRules": {
+    "source": "approved transcript",
+    "maxLines": 2,
+    "nameCorrections": {
+      "Kenner Walker": "Kenneth Walker III",
+      "Patrick Mahontz": "Patrick Mahomes",
+      "Jaden Daniels": "Jayden Daniels",
+      "FC": "AFC"
+    }
+  },
+  "qa": {
+    "readyForClick": false,
+    "published": false,
+    "requires04PerceptualQA": true,
+    "requires035Assets": true
+  }
+}
