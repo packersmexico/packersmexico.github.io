@@ -93,7 +93,7 @@ export const DrPalma: React.FC<{spec: VideoSpec}> = ({spec}) => {
               letterSpacing: 0.8,
             }}
           >
-            NO-PHOTO · 03.5 ASSET PENDING
+            ANÁLISIS · CONTEXTO · COMUNIDAD
           </div>
         ) : null}
       </div>
