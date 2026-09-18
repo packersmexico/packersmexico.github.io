@@ -10,7 +10,7 @@ export type CaptionCue = {
   text: string;
 };
 
-export type VideoScene = {
+export type InsightItem = {\n  label: string;\n  text: string;\n};\n\nexport type VideoScene = {
   id: string;
   start: number;
   end: number;
