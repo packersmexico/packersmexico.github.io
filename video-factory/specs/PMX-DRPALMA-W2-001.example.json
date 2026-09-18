@@ -17,7 +17,21 @@
       "kicker": "EN LA OPINIÓN DEL DR. PALMA",
       "title": "¿QUÉ VER ESTA SEMANA?",
       "support": "WEEK 2 · NFL",
-      "body": "Qué ver cuando no estén jugando nuestros Packers."
+      "body": "Qué ver cuando no estén jugando nuestros Packers.",
+      "insights": [
+        {
+          "label": "ENFOQUE",
+          "text": "Tres duelos para medir contexto, ritmo y ejecución."
+        },
+        {
+          "label": "PACKERS",
+          "text": "Además, una lectura breve sobre cómo mirar a Green Bay esta semana."
+        },
+        {
+          "label": "CLAVE",
+          "text": "No sólo quién gana: importa cómo llegan y qué pueden confirmar."
+        }
+      ]
     },
     {
       "id": "S02",
@@ -27,7 +41,21 @@
       "kicker": "PARTIDO 1",
       "title": "JAX @ DEN",
       "support": "DOM 20 SEP · 14:05 CDMX",
-      "body": "Denver busca responder. Jacksonville intenta confirmar lo mostrado en Week 1."
+      "body": "Denver busca responder. Jacksonville intenta confirmar lo mostrado en Week 1.",
+      "insights": [
+        {
+          "label": "REBOTE DE DENVER",
+          "text": "Los Broncos necesitan una respuesta fuerte después de ser exhibidos."
+        },
+        {
+          "label": "JAX MÁS COMPLETO",
+          "text": "Jacksonville dejó sensaciones de equipo equilibrado y profundo."
+        },
+        {
+          "label": "PRUEBA REAL",
+          "text": "Ver si la ofensiva de Jaguars puede repetir ante una defensa seria."
+        }
+      ]
     },
     {
       "id": "S03",
@@ -37,7 +65,21 @@
       "kicker": "PARTIDO 2",
       "title": "WAS @ DAL",
       "support": "DOM 20 SEP · 14:25 CDMX",
-      "body": "Duelo divisional y una medición temprana en la NFC East."
+      "body": "Duelo divisional y una medición temprana en la NFC East.",
+      "insights": [
+        {
+          "label": "NFC EAST",
+          "text": "Juego que empieza a ordenar la conversación detrás de Philadelphia."
+        },
+        {
+          "label": "JAYDEN DANIELS",
+          "text": "David destaca que Washington cuidó mejor el balón en Week 1."
+        },
+        {
+          "label": "PARTIDO CERRADO",
+          "text": "El panorama apunta a un duelo parejo, físico y de pocos errores."
+        }
+      ]
     },
     {
       "id": "S04",
@@ -47,7 +89,21 @@
       "kicker": "MONDAY NIGHT",
       "title": "NYG @ LAR",
       "support": "LUN 21 SEP · 18:15 CDMX",
-      "body": "Otra prueba para Rams ante un rival que David ve fuerte en varias facetas."
+      "body": "Otra prueba para Rams ante un rival que David ve fuerte en varias facetas.",
+      "insights": [
+        {
+          "label": "RAMS A EXAMEN",
+          "text": "Después de caer en Week 1, Los Angeles necesita responder."
+        },
+        {
+          "label": "GIANTS SÓLIDOS",
+          "text": "New York dejó señales positivas en ejecución, coacheo y defensa frontal."
+        },
+        {
+          "label": "INDICADOR REAL",
+          "text": "Este juego puede decir si Rams siguen o no en perfil de contender."
+        }
+      ]
     },
     {
       "id": "S05",
@@ -57,7 +113,21 @@
       "kicker": "APUNTE PACKERS",
       "title": "GREEN BAY",
       "support": "LA LECTURA DE DAVID",
-      "body": "Cautela con la línea y con la lectura del matchup esta semana."
+      "body": "Cautela con la línea y con la lectura del matchup esta semana.",
+      "insights": [
+        {
+          "label": "SIN CONFIANZA CIEGA",
+          "text": "En el papel la línea luce alcanzable, pero Green Bay suele complicarse estos duelos."
+        },
+        {
+          "label": "MEJOR ACTUACIÓN",
+          "text": "David sí espera una reacción más sólida del equipo esta semana."
+        },
+        {
+          "label": "MIRAR EL PARTIDO",
+          "text": "Más útil analizar ejecución y control del juego que forzar una apuesta."
+        }
+      ]
     },
     {
       "id": "S06",
@@ -67,7 +137,21 @@
       "kicker": "LECTURA DEL PARTIDO",
       "title": "NYG @ LAR",
       "support": "MERCADO / TOTAL",
-      "body": "David espera un partido de perfil más defensivo."
+      "body": "David espera un partido de perfil más defensivo.",
+      "insights": [
+        {
+          "label": "PERFIL DEFENSIVO",
+          "text": "La lectura favorece un guion más cerrado de lo que el hype sugiere."
+        },
+        {
+          "label": "RITMO Y AJUSTES",
+          "text": "Ambos equipos podrían priorizar control, campo y disciplina."
+        },
+        {
+          "label": "TEMA A MIRAR",
+          "text": "Si el juego entra en golpe por golpe o si realmente baja el ritmo ofensivo."
+        }
+      ]
     },
     {
       "id": "S07",
@@ -77,7 +161,21 @@
       "kicker": "CIERRE",
       "title": "DR. PALMA",
       "support": "PACKERS MÉXICO",
-      "body": "Disfruten, comunidad."
+      "body": "Disfruten, comunidad.",
+      "insights": [
+        {
+          "label": "TEMAS A SEGUIR",
+          "text": "Ritmo ofensivo, presión al QB y ejecución en zona roja."
+        },
+        {
+          "label": "PACKERS",
+          "text": "Disciplina, control del partido y aprovechar las series clave."
+        },
+        {
+          "label": "COMUNIDAD",
+          "text": "Análisis, respeto y la misma pasión de siempre."
+        }
+      ]
     }
   ],
   "captions": [
