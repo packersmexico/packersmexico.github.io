@@ -1,79 +1,211 @@
 {
-  "schemaVersion": "1.0",
-  "PMX_ID": "PMX-DRPALMA-W2-001",
+  "version": "1.0",
+  "pmxId": "PMX-DRPALMA-W2-001",
   "family": "DR_PALMA",
   "mode": "WEEKLY_PREVIEW",
   "aspect": "9:16",
-  "durationSeconds": 188,
-  "headlineLocked": "EN LA OPINIÓN DEL DR. PALMA",
-  "subheadlineLocked": "QUÉ VER ESTA SEMANA + APUNTE PACKERS",
-  "audioInput": "EXTERNAL_SECURE_INPUT_REQUIRED",
-  "assetPolicy": "03.5_PASS_OR_NO_PHOTO",
-  "publicationState": "TEST_ONLY",
+  "headline": "EN LA OPINIÓN DEL DR. PALMA",
+  "subheadline": "QUÉ VER ESTA SEMANA + APUNTE PACKERS",
+  "durationSeconds": 184,
+  "audioUrl": "static:audio/dr-palma-w2.ogg",
+  "sourceLabel": "DR PALMA · AUDIO MASTER · WEEK 2",
   "scenes": [
     {
       "id": "S01",
       "start": 0,
-      "end": 8,
+      "end": 10.5,
       "type": "HOOK",
+      "kicker": "EN LA OPINIÓN DEL DR. PALMA",
       "title": "¿QUÉ VER ESTA SEMANA?",
-      "support": "WEEK 2 · NFL"
+      "support": "WEEK 2 · NFL",
+      "body": "Qué ver cuando no estén jugando nuestros Packers."
     },
     {
       "id": "S02",
-      "start": 8,
-      "end": 48,
+      "start": 10.5,
+      "end": 49,
       "type": "MATCHUP",
+      "kicker": "PARTIDO 1",
       "title": "JAX @ DEN",
-      "support": "DOM 20 SEP · 14:05 CDMX"
+      "support": "DOM 20 SEP · 14:05 CDMX",
+      "body": "Denver busca responder. Jacksonville intenta confirmar lo mostrado en Week 1."
     },
     {
       "id": "S03",
-      "start": 48,
-      "end": 86,
+      "start": 49,
+      "end": 85.8,
       "type": "MATCHUP",
+      "kicker": "PARTIDO 2",
       "title": "WAS @ DAL",
-      "support": "DOM 20 SEP · 14:25 CDMX"
+      "support": "DOM 20 SEP · 14:25 CDMX",
+      "body": "Duelo divisional y una medición temprana en la NFC East."
     },
     {
       "id": "S04",
-      "start": 86,
-      "end": 138,
+      "start": 85.8,
+      "end": 141,
       "type": "MATCHUP",
+      "kicker": "MONDAY NIGHT",
       "title": "NYG @ LAR",
-      "support": "LUN 21 SEP · 18:15 CDMX"
+      "support": "LUN 21 SEP · 18:15 CDMX",
+      "body": "Otra prueba para Rams ante un rival que David ve fuerte en varias facetas."
     },
     {
       "id": "S05",
-      "start": 138,
-      "end": 174,
+      "start": 141,
+      "end": 162.4,
       "type": "PACKERS_NOTE",
-      "title": "APUNTE PACKERS",
-      "support": "LA LECTURA DE DAVID"
+      "kicker": "APUNTE PACKERS",
+      "title": "GREEN BAY",
+      "support": "LA LECTURA DE DAVID",
+      "body": "Cautela con la línea y con la lectura del matchup esta semana."
     },
     {
       "id": "S06",
-      "start": 174,
-      "end": 183,
+      "start": 162.4,
+      "end": 174.4,
+      "type": "ANALYSIS",
+      "kicker": "LECTURA DEL PARTIDO",
+      "title": "NYG @ LAR",
+      "support": "MERCADO / TOTAL",
+      "body": "David espera un partido de perfil más defensivo."
+    },
+    {
+      "id": "S07",
+      "start": 174.4,
+      "end": 184,
       "type": "OUTRO",
+      "kicker": "CIERRE",
       "title": "DR. PALMA",
-      "support": "PACKERS MÉXICO"
+      "support": "PACKERS MÉXICO",
+      "body": "Disfruten, comunidad."
     }
   ],
-  "captionRules": {
-    "source": "approved transcript",
-    "maxLines": 2,
-    "nameCorrections": {
-      "Kenner Walker": "Kenneth Walker III",
-      "Patrick Mahontz": "Patrick Mahomes",
-      "Jaden Daniels": "Jayden Daniels",
-      "FC": "AFC"
+  "captions": [
+    {
+      "start": 1.04,
+      "end": 7.28,
+      "text": "Comunidad Packers MX, su amigo el doctor Palma, aquí con las recomendaciones de la semana 2 de la NFL."
+    },
+    {
+      "start": 7.76,
+      "end": 10.48,
+      "text": "¿Qué ver cuando no estén jugando nuestros Packers?"
+    },
+    {
+      "start": 10.64,
+      "end": 15.95,
+      "text": "Pues el domingo, a las 2 de la tarde, tendremos dos buenos duelos."
+    },
+    {
+      "start": 15.95,
+      "end": 20.83,
+      "text": "Empieza el duelo entre los Jacksonville Jaguars contra los Broncos de Denver."
+    },
+    {
+      "start": 21.15,
+      "end": 25.23,
+      "text": "Los Broncos fueron exhibidos y ahora necesitan demostrar que siguen siendo un contendiente."
+    },
+    {
+      "start": 25.67,
+      "end": 30.87,
+      "text": "Después de que Kenneth Walker III los pisoteara..."
+    },
+    {
+      "start": 30.87,
+      "end": 34.87,
+      "text": "...y Patrick Mahomes básicamente regresara a nivel élite."
+    },
+    {
+      "start": 35.59,
+      "end": 40.77,
+      "text": "Los Jacksonville Jaguars se ven como un equipo completo."
+    },
+    {
+      "start": 40.86,
+      "end": 47.42,
+      "text": "Vamos a ver si contra una buena defensiva pueden hacer el mismo daño que la semana pasada."
+    },
+    {
+      "start": 49.57,
+      "end": 57.09,
+      "text": "De la misma manera, a las 2:25, Washington va a visitar a los Dallas Cowboys."
+    },
+    {
+      "start": 57.09,
+      "end": 65.4,
+      "text": "Un partido muy interesante porque a la mayoría de la gente le gusta ver perder a los Dallas Cowboys."
+    },
+    {
+      "start": 63.08,
+      "end": 71.48,
+      "text": "Washington es mejor que el año pasado. Jayden Daniels está cuidando más el balón, al menos basado en la semana 1."
+    },
+    {
+      "start": 72.4,
+      "end": 85.13,
+      "text": "Espero un duelo muy cerrado, muy parejo, donde dos equipos van a tratar de estar a la altura de Philadelphia en la división Este."
+    },
+    {
+      "start": 85.89,
+      "end": 98.21,
+      "text": "Finalmente, el Monday Night Football cierra la semana con un duelazo espectacular para la semana 2."
+    },
+    {
+      "start": 99.08,
+      "end": 105.24,
+      "text": "Los Rams, el equipo llamado invencible, ya sufrió su primera caída en la semana 1."
+    },
+    {
+      "start": 105.56,
+      "end": 110.99,
+      "text": "Algunos se la achacan al viaje de Australia, otros a una mala gestión del head coach."
+    },
+    {
+      "start": 111.16,
+      "end": 119.95,
+      "text": "Sin embargo, viene otra prueba interesante. Van a enfrentar a los Giants, que en semana 1 se vieron formidables en tres facetas."
+    },
+    {
+      "start": 120.16,
+      "end": 131.02,
+      "text": "Un equipo muy bien entrenado, donde ya se ve la mano de John Harbaugh y una defensa frontal impresionante."
+    },
+    {
+      "start": 131.3,
+      "end": 138.33,
+      "text": "Una dura prueba para los Rams que nos dará una idea de si son o no favoritos para ganar el Super Bowl."
+    },
+    {
+      "start": 141.21,
+      "end": 146.25,
+      "text": "Por otro lado, les recomiendo alejarse un poco de las apuestas de los Packers esta semana."
+    },
+    {
+      "start": 146.98,
+      "end": 154.96,
+      "text": "En el papel, la línea es permisible, pero a Green Bay los duelos ante equipos débiles a veces se le dificultan."
+    },
+    {
+      "start": 155.49,
+      "end": 161.54,
+      "text": "Espero una mejor actuación. Yo creo que sí cubren la línea, pero aun así recomiendo no apostarles."
+    },
+    {
+      "start": 162.54,
+      "end": 169.4,
+      "text": "Por otro lado, no se vayan a las altas en el juego de Giants contra Rams."
+    },
+    {
+      "start": 169.84,
+      "end": 172.36,
+      "text": "Yo creo que vamos a tener un partido muy defensivo."
+    },
+    {
+      "start": 174.66,
+      "end": 180.95,
+      "text": "Disfruten, comunidad, y espero que estos partidos cumplan con la expectativa que en el papel tienen para esta semana."
     }
-  },
-  "qa": {
-    "readyForClick": false,
-    "published": false,
-    "requires04PerceptualQA": true,
-    "requires035Assets": true
-  }
+  ]
 }
