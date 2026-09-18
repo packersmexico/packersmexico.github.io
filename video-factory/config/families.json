@@ -18,6 +18,13 @@
       "canonicalMaster": "TBD · Family match required",
       "allowedModes": ["HERO", "TEASER", "HOOK", "STORY"],
       "notes": "Renderer implemented; visual parity/acceptance pending."
+    },
+    "DR_PALMA": {
+      "status": "DEV",
+      "canonicalMaster": "Figma · Page 10 · DR PALMA / FAMILY SYSTEM · FAM V1.0 VIGENTE",
+      "allowedModes": ["WEEKLY_PREVIEW", "AUDIOGRAM"],
+      "formats": ["9:16"],
+      "notes": "Bridge implementation for PMX-DRPALMA-W2-001. Full-length voice-led video requires multi-scene timing, captions, audio input and 03.5-approved asset slots. TEST only until renderer parity, mobile QA and 04/Dirección approval."
     }
   }
 }
