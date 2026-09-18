@@ -15,11 +15,11 @@ export const CaptionLayer: React.FC<{cues?: CaptionCue[]}> = ({cues = []}) => {
         position: 'absolute',
         left: 88,
         right: 88,
-        bottom: 184,
+        bottom: 248,
         textAlign: 'center',
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: 34,
-        lineHeight: 1.22,
+        fontSize: 38,
+        lineHeight: 1.5,
         fontWeight: 800,
         color: brand.cream,
         textShadow: '0 3px 10px rgba(0,0,0,.8)',
@@ -30,7 +30,7 @@ export const CaptionLayer: React.FC<{cues?: CaptionCue[]}> = ({cues = []}) => {
           background: 'rgba(8,29,19,.9)',
           boxDecorationBreak: 'clone',
           WebkitBoxDecorationBreak: 'clone',
-          padding: '9px 13px',
+          padding: '12px 16px',
         }}
       >
         {cue.text}
