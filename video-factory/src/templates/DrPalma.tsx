@@ -37,6 +37,22 @@ const SeriesFooter: React.FC<{progress: number}> = ({progress}) => (
   </>
 );
 
+const InsightStack: React.FC<{scene: VideoScene; top: number}> = ({scene, top}) => {
+  const items = scene.insights?.slice(0, 3) ?? [];
+  if (!items.length) return null;
+  return (
+    <div style={{position:'absolute',left:64,right:64,top,display:'flex',flexDirection:'column',gap:18}}>
+      {items.map((item, index) => (
+        <div key={index} style={{position:'relative',background:'rgba(18,59,49,.92)',border:'1px solid rgba(255,198,47,.18)',borderRadius:28,padding:'22px 28px 22px 44px',minHeight:118}}>
+          <div style={{position:'absolute',left:0,top:0,bottom:0,width:10,background:brand.cheeseGold,borderTopLeftRadius:28,borderBottomLeftRadius:28}} />
+          <div style={{color:brand.cheeseGold,fontSize:24,fontWeight:900,marginBottom:8}}>{item.label}</div>
+          <div style={{color:brand.cream,fontSize:25,lineHeight:1.35}}>{item.text}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const HookLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
   <div style={{opacity: enter, transform: `translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
     <div style={{position: 'absolute', left: 64, top: 160, width: 760, color: brand.cheeseGold, fontSize: 24, fontWeight: 800}}>
