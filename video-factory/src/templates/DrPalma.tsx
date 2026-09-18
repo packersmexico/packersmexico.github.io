@@ -1,7 +1,5 @@
 import React from 'react';
-import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
-import {Shell} from '../components/Shell';
-import {RemoteAsset} from '../components/RemoteAsset';
+import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {brand} from '../brand';
 import type {VideoScene, VideoSpec} from '../types';
 
@@ -11,12 +9,79 @@ const fallbackScene = (spec: VideoSpec): VideoScene => ({
   end: spec.durationSeconds,
   type: 'ANALYSIS',
   title: spec.headline,
-  kicker: spec.kicker || 'EN LA OPINIÓN DEL DR. PALMA',
+  kicker: spec.kicker || 'LA OPINIÓN DEL DR PALMA',
   support: spec.subheadline,
   body: spec.body,
-  assetUrl: spec.assetUrl,
-  assetCredit: spec.assetCredit,
 });
+
+const SceneHeader: React.FC<{right: string}> = ({right}) => (
+  <>
+    <Img src={staticFile(brand.logo)} style={{position: 'absolute', left: 64, top: 55, width: 220, height: 55, objectFit: 'contain'}} />
+    <div style={{position: 'absolute', right: 65, top: 68, width: 290, textAlign: 'right', color: brand.cheeseGold, fontSize: 18, fontWeight: 700}}>
+      {right}
+    </div>
+  </>
+);
+
+const SeriesFooter: React.FC<{progress: number}> = ({progress}) => (
+  <>
+    <div style={{position: 'absolute', left: 64, top: 1416, color: brand.cheeseGold, fontSize: 21, fontWeight: 800}}>
+      DR PALMA · ANÁLISIS PMX
+    </div>
+    <div style={{position: 'absolute', left: 64, right: 64, top: 1548, height: 3, background: 'rgba(242,232,207,.16)'}}>
+      <div style={{height: '100%', width: `${progress * 100}%`, background: brand.cheeseGold}} />
+    </div>
+    <div style={{position: 'absolute', left: 64, top: 1584, color: brand.muted, fontSize: 20, fontWeight: 700, letterSpacing: 0.7}}>
+      LA OPINIÓN DEL DR PALMA · WEEK 2
+    </div>
+  </>
+);
+
+const HookLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
+  <div style={{opacity: enter, transform: `translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
+    <div style={{position: 'absolute', left: 64, top: 160, width: 760, color: brand.cheeseGold, fontSize: 24, fontWeight: 800}}>
+      {scene.kicker || 'LA OPINIÓN DEL DR PALMA'}
+    </div>
+    <div style={{position: 'absolute', left: 64, top: 220, width: 952, height: 4, background: brand.cheeseGold}} />
+    <div style={{position: 'absolute', left: 64, top: 300, width: 760, color: brand.cream, fontFamily: 'Bebas Neue, sans-serif', fontSize: 108, lineHeight: 1.0}}>
+      {scene.title}
+    </div>
+    {scene.support ? <div style={{position:'absolute',left:66,top:575,width:620,color:brand.cream,fontSize:25,fontWeight:700}}>{scene.support}</div> : null}
+    {scene.body ? <div style={{position:'absolute',left:66,top:645,width:700,color:brand.cream,fontSize:30,lineHeight:1.32}}>{scene.body}</div> : null}
+  </div>
+);
+
+const MatchupLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
+  <div style={{opacity: enter, transform: `translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
+    <div style={{position: 'absolute', left: 64, top: 160, width: 620, color: brand.cheeseGold, fontSize: 23, fontWeight: 800}}>
+      {scene.kicker || 'MATCHUP CLAVE'}
+    </div>
+    <div style={{position: 'absolute', left: 64, top: 220, width: 952, height: 4, background: brand.cheeseGold}} />
+    <div style={{position: 'absolute', left: 64, top: 300, width: 820, color: brand.cream, fontFamily: 'Bebas Neue, sans-serif', fontSize: 118, lineHeight: .95}}>
+      {scene.title}
+    </div>
+    {scene.support ? <div style={{position:'absolute',left:64,top:510,width:820,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:48,lineHeight:1.0}}>{scene.support}</div> : null}
+    <div style={{position:'absolute',left:64,top:650,width:952,height:4,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:64,top:710,width:420,color:brand.cheeseGold,fontSize:20,fontWeight:800}}>LECTURA DR PALMA</div>
+    {scene.body ? <div style={{position:'absolute',left:64,top:765,width:840,color:brand.cream,fontSize:30,lineHeight:1.36}}>{scene.body}</div> : null}
+    <div style={{position:'absolute',left:64,top:1125,width:650,color:brand.muted,fontSize:18,fontWeight:700}}>ANÁLISIS · CONTEXTO · OPINIÓN</div>
+  </div>
+);
+
+const TakeLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
+  <div style={{opacity: enter, transform: `translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
+    <div style={{position:'absolute',left:64,top:160,width:560,color:brand.cheeseGold,fontSize:23,fontWeight:800}}>{scene.kicker || 'TAKE · DR PALMA'}</div>
+    <div style={{position:'absolute',left:64,top:220,width:952,height:4,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:64,top:310,width:900,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:104,lineHeight:.96}}>{scene.title}</div>
+    {scene.support ? <div style={{position:'absolute',left:66,top:540,width:780,color:brand.cheeseGold,fontSize:25,fontWeight:800}}>{scene.support}</div> : null}
+    {scene.body ? <div style={{position:'absolute',left:66,top:610,width:790,color:brand.cream,fontSize:30,lineHeight:1.38}}>{scene.body}</div> : null}
+    <div style={{position:'absolute',left:64,top:865,width:8,height:240,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:105,top:900,width:770,color:brand.cream,fontSize:34,lineHeight:1.28,fontWeight:800}}>
+      {scene.type === 'PACKERS_NOTE' ? '“Cautela: el análisis vale más que forzar una apuesta.”' : '“Espero un partido de perfil más defensivo.”'}
+    </div>
+    <div style={{position:'absolute',left:64,top:1190,width:650,color:brand.cheeseGold,fontSize:19,fontWeight:800}}>OPINIÓN / ANÁLISIS · NO HECHO</div>
+  </div>
+);
 
 export const DrPalma: React.FC<{spec: VideoSpec}> = ({spec}) => {
   const frame = useCurrentFrame();
@@ -24,83 +89,23 @@ export const DrPalma: React.FC<{spec: VideoSpec}> = ({spec}) => {
   const t = frame / fps;
   const scenes = spec.scenes?.length ? spec.scenes : [fallbackScene(spec)];
   const scene = scenes.find((item) => t >= item.start && t < item.end) ?? scenes[scenes.length - 1];
-
   const localFrame = Math.max(0, frame - Math.round(scene.start * fps));
-  const sceneFrames = Math.max(1, Math.round((scene.end - scene.start) * fps));
-  const enter = interpolate(localFrame, [0, Math.min(sceneFrames * 0.16, fps * 0.55)], [0, 1], {
+  const enter = interpolate(localFrame, [0, Math.min(fps * .45, Math.max(1,(scene.end-scene.start)*fps*.12))], [0, 1], {
     extrapolateRight: 'clamp',
     easing: Easing.out(Easing.cubic),
   });
-  const y = interpolate(enter, [0, 1], [34, 0]);
-  const progress = Math.min(1, Math.max(0, (t - scene.start) / Math.max(0.01, scene.end - scene.start)));
-  const accent = scene.type === 'PACKERS_NOTE' ? brand.cheeseGold : brand.secondaryGold;
-  const asset = scene.assetUrl || spec.assetUrl;
+  const progress = Math.min(1, Math.max(0, t / Math.max(.01, spec.durationSeconds)));
 
   return (
-    <Shell footer={scene.assetCredit ? `CRÉDITO: ${scene.assetCredit}` : 'EN LA OPINIÓN DEL DR. PALMA · PACKERS MÉXICO'}>
-      <RemoteAsset src={asset} />
-
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          width: asset ? '61.8%' : '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          transform: `translateY(${y}px)`,
-          opacity: enter,
-        }}
-      >
-        <div style={{fontSize: 27, fontWeight: 900, color: accent, letterSpacing: 1.1, marginBottom: 22}}>
-          {scene.kicker || (scene.type === 'PACKERS_NOTE' ? 'APUNTE PACKERS' : 'EN LA OPINIÓN DEL DR. PALMA')}
-        </div>
-
-        <div
-          style={{
-            fontFamily: 'Bebas Neue, sans-serif',
-            fontSize: scene.type === 'HOOK' ? 134 : scene.type === 'OUTRO' ? 142 : 126,
-            lineHeight: 0.92,
-            whiteSpace: 'pre-line',
-            maxWidth: asset ? 600 : 900,
-          }}
-        >
-          {scene.title}
-        </div>
-
-        {scene.support ? (
-          <div style={{fontSize: 34, fontWeight: 800, lineHeight: 1.18, marginTop: 28, color: brand.cream, maxWidth: 820}}>
-            {scene.support}
-          </div>
-        ) : null}
-
-        {scene.body ? (
-          <div style={{fontSize: 29, lineHeight: 1.4, marginTop: 28, maxWidth: 800, color: brand.muted}}>
-            {scene.body}
-          </div>
-        ) : null}
-
-        {!asset && scene.type !== 'HOOK' && scene.type !== 'OUTRO' ? (
-          <div
-            style={{
-              marginTop: 54,
-              borderTop: `3px solid ${accent}`,
-              paddingTop: 24,
-              color: brand.muted,
-              fontSize: 22,
-              fontWeight: 800,
-              letterSpacing: 0.8,
-            }}
-          >
-            ANÁLISIS · CONTEXTO · COMUNIDAD
-          </div>
-        ) : null}
-      </div>
-
-      <div style={{position: 'absolute', left: 0, right: 0, bottom: 22, height: 4, background: 'rgba(242,232,207,.18)'}}>
-        <div style={{height: '100%', width: `${progress * 100}%`, background: accent}} />
-      </div>
-    </Shell>
+    <AbsoluteFill style={{background: brand.fieldDark, color: brand.cream, fontFamily: 'Montserrat, sans-serif', overflow:'hidden'}}>
+      <div style={{position:'absolute',inset:0,background:`linear-gradient(180deg, ${brand.fieldDark} 0%, ${brand.fieldDark} 70%, ${brand.lambeauGreen} 100%)`}} />
+      <SceneHeader right={scene.type === 'OUTRO' ? 'CIERRE · WEEK 2' : 'WEEK 2 · 2026'} />
+      {scene.type === 'HOOK' || scene.type === 'OUTRO'
+        ? <HookLayout scene={scene} enter={enter} />
+        : scene.type === 'MATCHUP'
+          ? <MatchupLayout scene={scene} enter={enter} />
+          : <TakeLayout scene={scene} enter={enter} />}
+      <SeriesFooter progress={progress} />
+    </AbsoluteFill>
   );
 };
