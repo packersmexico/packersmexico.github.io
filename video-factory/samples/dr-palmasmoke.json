@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-DRPALMA-SMOKE-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "EN LA OPINIÓN DEL DR. PALMA",
+  "subheadline": "QUÉ VER ESTA SEMANA + APUNTE PACKERS",
+  "durationSeconds": 24,
+  "sourceLabel": "SMOKE TEST · NO AUDIO · NO-PHOTO",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 4,
+      "type": "HOOK",
+      "kicker": "EN LA OPINIÓN DEL DR. PALMA",
+      "title": "¿QUÉ VER ESTA SEMANA?",
+      "support": "WEEK 2 · NFL"
+    },
+    {
+      "id": "S02",
+      "start": 4,
+      "end": 9,
+      "type": "MATCHUP",
+      "kicker": "PARTIDO 1",
+      "title": "JAX @ DEN",
+      "support": "DOM 20 SEP · 14:05 CDMX"
+    },
+    {
+      "id": "S03",
+      "start": 9,
+      "end": 14,
+      "type": "MATCHUP",
+      "kicker": "PARTIDO 2",
+      "title": "WAS @ DAL",
+      "support": "DOM 20 SEP · 14:25 CDMX"
+    },
+    {
+      "id": "S04",
+      "start": 14,
+      "end": 19,
+      "type": "PACKERS_NOTE",
+      "kicker": "APUNTE PACKERS",
+      "title": "GREEN BAY",
+      "support": "LA LECTURA DE DAVID"
+    },
+    {
+      "id": "S05",
+      "start": 19,
+      "end": 24,
+      "type": "OUTRO",
+      "kicker": "CIERRE",
+      "title": "DR. PALMA",
+      "support": "PACKERS MÉXICO"
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.5,
+      "end": 3.5,
+      "text": "¿Qué ver cuando no estén jugando nuestros Packers?"
+    },
+    {
+      "start": 4.4,
+      "end": 8.4,
+      "text": "Jaguars contra Broncos: primera prueba del domingo."
+    },
+    {
+      "start": 9.4,
+      "end": 13.4,
+      "text": "Washington visita Dallas en un duelo divisional."
+    },
+    {
+      "start": 14.4,
+      "end": 18.4,
+      "text": "Y ahora, el apunte Packers de David."
+    },
+    {
+      "start": 19.4,
+      "end": 23.2,
+      "text": "Disfruten, comunidad. Go Pack Go."
+    }
+  ]
+}

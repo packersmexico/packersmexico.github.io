@@ -10,8 +10,31 @@ export const CaptionLayer: React.FC<{cues?: CaptionCue[]}> = ({cues = []}) => {
   const cue = cues.find((c) => t >= c.start && t < c.end);
   if (!cue) return null;
   return (
-    <div style={{position: 'absolute', left: 70, right: 70, bottom: 175, textAlign: 'center', fontSize: 42, lineHeight: 1.18, fontWeight: 800, color: brand.cream, textShadow: '0 3px 10px rgba(0,0,0,.8)'}}>
-      <span style={{background: 'rgba(8,29,19,.86)', padding: '10px 14px'}}>{cue.text}</span>
+    <div
+      style={{
+        position: 'absolute',
+        left: 88,
+        right: 88,
+        bottom: 184,
+        textAlign: 'center',
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: 34,
+        lineHeight: 1.22,
+        fontWeight: 800,
+        color: brand.cream,
+        textShadow: '0 3px 10px rgba(0,0,0,.8)',
+      }}
+    >
+      <span
+        style={{
+          background: 'rgba(8,29,19,.9)',
+          boxDecorationBreak: 'clone',
+          WebkitBoxDecorationBreak: 'clone',
+          padding: '9px 13px',
+        }}
+      >
+        {cue.text}
+      </span>
     </div>
   );
 };

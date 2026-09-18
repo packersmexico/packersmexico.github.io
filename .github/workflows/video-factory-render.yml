@@ -106,8 +106,8 @@ jobs:
         working-directory: video-factory
     env:
       PURPOSE: ${{ inputs.purpose || 'TEST' }}
-      SPEC_PATH: ${{ inputs.spec_path || '' }}
-      PMX_ID: ${{ inputs.pmx_id || 'PMX-VF-CI-001' }}
+      SPEC_PATH: ${{ inputs.spec_path || (github.event_name == 'pull_request' && startsWith(github.head_ref, 'video-factory/dr-palma-smoke') && 'samples/dr-palmasmoke.json') || '' }}
+      PMX_ID: ${{ inputs.pmx_id || (github.event_name == 'pull_request' && startsWith(github.head_ref, 'video-factory/dr-palma-smoke') && 'PMX-DRPALMA-SMOKE-001') || 'PMX-VF-CI-001' }}
       FAMILY: ${{ inputs.family || 'ANALYSIS' }}
       MODE: ${{ inputs.mode || 'HERO' }}
       ASPECT: ${{ inputs.aspect || '9:16' }}
