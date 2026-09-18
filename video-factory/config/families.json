@@ -4,27 +4,46 @@
     "ANALYSIS": {
       "status": "PILOT",
       "canonicalMaster": "TBD · Figma family parity pending 04/Dirección",
-      "allowedModes": ["HERO", "TEASER", "HOOK", "STORY"],
+      "allowedModes": [
+        "HERO",
+        "TEASER",
+        "HOOK",
+        "STORY"
+      ],
       "notes": "Technical smoke render PASS. Visual family is not ACTIVE for unattended production until 04 perceptual QA closes."
     },
     "BREAKING": {
       "status": "DEV",
       "canonicalMaster": "TBD · Family match required",
-      "allowedModes": ["TEASER", "HOOK", "STORY"],
+      "allowedModes": [
+        "TEASER",
+        "HOOK",
+        "STORY"
+      ],
       "notes": "Renderer implemented; visual parity/acceptance pending."
     },
     "MATCHUP": {
       "status": "DEV",
       "canonicalMaster": "TBD · Family match required",
-      "allowedModes": ["HERO", "TEASER", "HOOK", "STORY"],
+      "allowedModes": [
+        "HERO",
+        "TEASER",
+        "HOOK",
+        "STORY"
+      ],
       "notes": "Renderer implemented; visual parity/acceptance pending."
     },
     "DR_PALMA": {
-      "status": "DEV",
-      "canonicalMaster": "Figma · Page 10 · DR PALMA / FAMILY SYSTEM · FAM V1.0 VIGENTE",
-      "allowedModes": ["WEEKLY_PREVIEW", "AUDIOGRAM"],
-      "formats": ["9:16"],
-      "notes": "Bridge implementation for PMX-DRPALMA-W2-001. Full-length voice-led video requires multi-scene timing, captions, audio input and 03.5-approved asset slots. TEST only until renderer parity, mobile QA and 04/Dirección approval."
+      "status": "PILOT",
+      "canonicalMaster": "Figma · DR PALMA / FAMILY SYSTEM · V1.0 · FAMILY PASS · node 2653:1631025",
+      "allowedModes": [
+        "WEEKLY_PREVIEW",
+        "AUDIOGRAM"
+      ],
+      "formats": [
+        "9:16"
+      ],
+      "notes": "Figma family certification confirms FAMILY PASS / CERTIFIED FOR PRODUCTION (text-first, character OFF by default). Video Factory multi-scene WEEKLY_PREVIEW + captions + 9:16 smoke render passed technical QA. PILOT remains TEST-only until full Week 2 audio render, 03.5 asset decision, mobile/perceptual QA, and 04/Dirección approval."
     }
   }
 }
