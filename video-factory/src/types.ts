@@ -1,5 +1,5 @@
-export type VideoFamily = 'ANALYSIS' | 'BREAKING' | 'MATCHUP';
-export type VideoMode = 'HERO' | 'TEASER' | 'HOOK' | 'STORY';
+export type VideoFamily = 'ANALYSIS' | 'BREAKING' | 'MATCHUP' | 'DR_PALMA';
+export type VideoMode = 'HERO' | 'TEASER' | 'HOOK' | 'STORY' | 'WEEKLY_PREVIEW' | 'AUDIOGRAM';
 export type Aspect = '9:16' | '4:5' | '1:1';
 export type RenderPurpose = 'TEST' | 'PRODUCTION';
 export type FamilyStatus = 'DEV' | 'PILOT' | 'ACTIVE' | 'HOLD';
@@ -8,6 +8,19 @@ export type CaptionCue = {
   start: number;
   end: number;
   text: string;
+};
+
+export type VideoScene = {
+  id: string;
+  start: number;
+  end: number;
+  type: 'HOOK' | 'MATCHUP' | 'PACKERS_NOTE' | 'OUTRO' | 'ANALYSIS';
+  title: string;
+  kicker?: string;
+  support?: string;
+  body?: string;
+  assetUrl?: string;
+  assetCredit?: string;
 };
 
 export type VideoSpec = {
@@ -31,6 +44,7 @@ export type VideoSpec = {
   assetUrl?: string;
   assetCredit?: string;
   captions?: CaptionCue[];
+  scenes?: VideoScene[];
   theme?: {
     accent?: string;
   };
