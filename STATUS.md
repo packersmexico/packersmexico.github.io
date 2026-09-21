@@ -15,7 +15,7 @@ Season Calendar route: `https://packersmexico.github.io/calendario/`
 ## WEEK 3 ORCHESTRATOR · 2026-09-21
 
 State:
-`IN PROGRESS · TECHNICAL AUTOMATION ACTIVE ON REVIEW BRANCH · NO PUBLIC DEPLOYMENT CLAIMED`
+`IN PROGRESS · TECHNICAL AUTOMATION ACTIVE ON REVIEW BRANCH · WEEKLY MANIFEST QA PASS · NO PUBLIC DEPLOYMENT CLAIMED`
 
 Branch:
 `automation/week-03-orchestrator`
@@ -29,7 +29,7 @@ Implemented on branch:
 - Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
 - separate Week 3 Jotform draft created; Week 2 form preserved
 - Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
-- GitHub Actions validator added for weekly manifest invariants and publication firewall
+- GitHub Actions validator added for weekly manifest invariants and publication firewall\n- Weekly Manifest QA run #1: `PASS`\n- Week 3 Jotform build: `COMPLETE · 0 submissions · NO COMPARTIR AÚN`
 - Quiniela production config reconciled to current certified Figma F05 master
 - Figma Week 3 production-control clone created at node `2770:466376`
 
