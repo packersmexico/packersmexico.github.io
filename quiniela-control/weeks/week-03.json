@@ -3,54 +3,151 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "snapshot_status": "PREP_HOLD_CUTOFF_CONFIRMATION",
+  "snapshot_status": "CAPTURE_OPEN",
   "last_sync": "2026-09-21T11:50:00-06:00",
   "capture": {
     "complete": 0,
     "total": 9,
-    "window": "PREP",
-    "deadline_label": "PENDIENTE DE CONFIRMACIÓN",
+    "window": "OPEN",
+    "deadline_label": "CIERRE PENDIENTE · DIRECCIÓN",
     "expected_picks": 144,
     "received_picks": 0,
     "missing_picks": 144,
     "invitado": "OFF",
-    "form_status": "DRAFT_HOLD_CUTOFF_CONFIRMATION",
-    "form_url": "https://form.jotform.com/262634544487062",
-    "share_state": "NO_COMPARTIR_AUN"
+    "form_status": "OPEN",
+    "form_url": "https://form.jotform.com/262630890072052",
+    "share_state": "SHAREABLE",
+    "form_id": "262630890072052",
+    "cutoff_policy": "DIRECTION_MANUAL_CLOSE"
   },
   "participants": [
-    {"name":"EL DOC","status":"PENDING"},
-    {"name":"ARI","status":"PENDING"},
-    {"name":"LALO","status":"PENDING"},
-    {"name":"ALEX","status":"PENDING"},
-    {"name":"LUIS C.","status":"PENDING"},
-    {"name":"DR PALMA","status":"PENDING"},
-    {"name":"JENNI","status":"PENDING"},
-    {"name":"RODRI","status":"PENDING"},
-    {"name":"IBRACHO","status":"PENDING"}
+    {
+      "name": "EL DOC",
+      "status": "PENDING"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING"
+    }
   ],
   "schedule": [
-    {"game":"G01","matchup":"ATL @ GB","datetime":"JUE 24 SEP · 18:15 CDMX"},
-    {"game":"G02","matchup":"LAC @ BUF","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G03","matchup":"CAR @ CLE","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G04","matchup":"NYJ @ DET","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G05","matchup":"HOU @ IND","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G06","matchup":"NE @ JAX","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G07","matchup":"KC @ MIA","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G08","matchup":"TEN @ NYG","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G09","matchup":"CIN @ PIT","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G10","matchup":"SEA @ WAS","datetime":"DOM 27 SEP · 11:00 CDMX"},
-    {"game":"G11","matchup":"ARI @ SF","datetime":"DOM 27 SEP · 14:05 CDMX"},
-    {"game":"G12","matchup":"MIN @ TB","datetime":"DOM 27 SEP · 14:05 CDMX"},
-    {"game":"G13","matchup":"LV @ NO","datetime":"DOM 27 SEP · 14:25 CDMX"},
-    {"game":"G14","matchup":"BAL @ DAL","datetime":"DOM 27 SEP · 14:25 CDMX"},
-    {"game":"G15","matchup":"LAR @ DEN","datetime":"DOM 27 SEP · 18:20 CDMX"},
-    {"game":"G16","matchup":"PHI @ CHI","datetime":"LUN 28 SEP · 18:15 CDMX"}
+    {
+      "game": "G01",
+      "matchup": "ATL @ GB",
+      "datetime": "JUE 24 SEP · 18:15 CDMX"
+    },
+    {
+      "game": "G02",
+      "matchup": "LAC @ BUF",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G03",
+      "matchup": "CAR @ CLE",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G04",
+      "matchup": "NYJ @ DET",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G05",
+      "matchup": "HOU @ IND",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G06",
+      "matchup": "NE @ JAX",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G07",
+      "matchup": "KC @ MIA",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G08",
+      "matchup": "TEN @ NYG",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G09",
+      "matchup": "CIN @ PIT",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G10",
+      "matchup": "SEA @ WAS",
+      "datetime": "DOM 27 SEP · 11:00 CDMX"
+    },
+    {
+      "game": "G11",
+      "matchup": "ARI @ SF",
+      "datetime": "DOM 27 SEP · 14:05 CDMX"
+    },
+    {
+      "game": "G12",
+      "matchup": "MIN @ TB",
+      "datetime": "DOM 27 SEP · 14:05 CDMX"
+    },
+    {
+      "game": "G13",
+      "matchup": "LV @ NO",
+      "datetime": "DOM 27 SEP · 14:25 CDMX"
+    },
+    {
+      "game": "G14",
+      "matchup": "BAL @ DAL",
+      "datetime": "DOM 27 SEP · 14:25 CDMX"
+    },
+    {
+      "game": "G15",
+      "matchup": "LAR @ DEN",
+      "datetime": "DOM 27 SEP · 18:20 CDMX"
+    },
+    {
+      "game": "G16",
+      "matchup": "PHI @ CHI",
+      "datetime": "LUN 28 SEP · 18:15 CDMX"
+    }
   ],
-  "results": {"final":0,"total":16,"status":"NOT_STARTED"},
+  "results": {
+    "final": 0,
+    "total": 16,
+    "status": "NOT_STARTED"
+  },
   "pipeline": {
     "data_system": "PASS · NFL W3 SLATE · 16/16",
-    "capture": "HOLD · CUTOFF CONFIRMATION",
+    "capture": "OPEN · 0/9 · 0/144",
     "picks": "WAITING CAPTURE",
     "production": "FIGMA · F05 CERTIFIED",
     "publication": "NO PUBLICAR"
@@ -60,13 +157,33 @@
     "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
     "family_node_id": "2524:2",
     "control_node_id": "2770:466376",
-    "package_status": "INPUT READY · PICKS PENDING",
+    "package_status": "CAPTURE OPEN · PICKS INTAKE",
     "outputs": [
-      {"id":"W3-PICKS","label":"PICKS / CARRUSEL","status":"WAITING CAPTURE"},
-      {"id":"W3-CONSENSUS","label":"CONSENSUS","status":"WAITING 9/9"},
-      {"id":"W3-STORY","label":"STORY","status":"WAITING CAPTURE"},
-      {"id":"W3-RESULTS","label":"RESULTADOS","status":"WAITING GAMES"},
-      {"id":"W3-STANDINGS","label":"STANDINGS","status":"WAITING RESULTS"}
+      {
+        "id": "W3-PICKS",
+        "label": "PICKS / CARRUSEL",
+        "status": "WAITING CAPTURE"
+      },
+      {
+        "id": "W3-CONSENSUS",
+        "label": "CONSENSUS",
+        "status": "WAITING 9/9"
+      },
+      {
+        "id": "W3-STORY",
+        "label": "STORY",
+        "status": "WAITING CAPTURE"
+      },
+      {
+        "id": "W3-RESULTS",
+        "label": "RESULTADOS",
+        "status": "WAITING GAMES"
+      },
+      {
+        "id": "W3-STANDINGS",
+        "label": "STANDINGS",
+        "status": "WAITING RESULTS"
+      }
     ]
   },
   "public_url": null
