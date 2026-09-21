@@ -39,13 +39,13 @@
 
       capture: Object.freeze({
         week: 3,
-        status: "DRAFT_HOLD_CUTOFF_CONFIRMATION",
+        status: "OPEN",
         games: 16,
         participants: 9,
         expectedPicks: 144,
         receivedPicks: 0,
-        formId: "262634544487062",
-        formUrl: "https://form.jotform.com/262634544487062",
+        formId: "262630890072052",
+        formUrl: "https://form.jotform.com/262630890072052",
         cutoff: null,
         shareState: "NO_COMPARTIR_AUN"
       }),
