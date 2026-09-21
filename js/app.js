@@ -91,6 +91,23 @@
     document.querySelector(".venue-lock").textContent = config.venueWording;
     document.body.classList.toggle("state-data-pending", Boolean(config.dataPending));
 
+    var lockup = document.getElementById("team-lockup");
+    var packersTeamLogo = document.getElementById("packers-team-logo");
+    var opponentTeamLogo = document.getElementById("opponent-team-logo");
+    var lockupSeparator = document.getElementById("team-lockup-separator");
+    var packersLogoSrc = config.teamLogos && config.teamLogos.PACKERS;
+    var opponentLogoSrc = config.teamLogos && config.teamLogos[config.opponent];
+    if (lockup && packersTeamLogo && opponentTeamLogo && packersLogoSrc && opponentLogoSrc) {
+      packersTeamLogo.src = packersLogoSrc;
+      packersTeamLogo.alt = "Green Bay Packers";
+      opponentTeamLogo.src = opponentLogoSrc;
+      opponentTeamLogo.alt = config.opponentLong || config.opponent || "Rival";
+      if (lockupSeparator) lockupSeparator.textContent = config.homeAway === "AWAY" ? "@" : "VS";
+      lockup.hidden = false;
+    } else if (lockup) {
+      lockup.hidden = true;
+    }
+
     var image = document.getElementById("hero-image");
     if (config.heroImageUrl) {
       image.src = config.heroImageUrl;
@@ -105,15 +122,31 @@
 
   function renderSocialLinks(attribution) {
     var list = document.getElementById("social-links");
-    var labels = { instagram: "Instagram", x: "X", facebook: "Facebook", tiktok: "TikTok", youtube: "YouTube" };
+    var labels = {
+      instagram: { mark: "IG", label: "Instagram" },
+      x: { mark: "X", label: "@Packers_Mx" },
+      facebook: { mark: "FB", label: "Facebook" },
+      tiktok: { mark: "TT", label: "TikTok" },
+      youtube: { mark: "YT", label: "YouTube" }
+    };
     list.replaceChildren();
     Object.keys(labels).forEach(function (network) {
       var item = document.createElement("li");
       var link = document.createElement("a");
       var destination = preserveAttribution(config.socialUrls[network], attribution);
       link.className = "social-link";
-      link.textContent = labels[network];
       link.id = "social-" + network;
+      var socialMark = document.createElement("span");
+      socialMark.className = "social-link__mark";
+      socialMark.textContent = labels[network].mark;
+      var socialLabel = document.createElement("span");
+      socialLabel.className = "social-link__label";
+      socialLabel.textContent = labels[network].label;
+      var socialArrow = document.createElement("span");
+      socialArrow.className = "social-link__arrow";
+      socialArrow.setAttribute("aria-hidden", "true");
+      socialArrow.textContent = "↗";
+      link.append(socialMark, socialLabel, socialArrow);
       if (destination) {
         link.href = destination;
         link.target = "_blank";
