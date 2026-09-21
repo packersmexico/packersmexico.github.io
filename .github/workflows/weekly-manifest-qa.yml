@@ -1,0 +1,29 @@
+name: Weekly Manifest QA
+
+on:
+  pull_request:
+    paths:
+      - "js/weekly-manifest.js"
+      - "quiniela-control/weeks/**"
+      - "scripts/validate-weekly-manifest.mjs"
+      - ".github/workflows/weekly-manifest-qa.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "js/weekly-manifest.js"
+      - "quiniela-control/weeks/**"
+      - "scripts/validate-weekly-manifest.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate weekly manifest
+        run: node scripts/validate-weekly-manifest.mjs
