@@ -27,7 +27,7 @@ Implemented on branch:
 - canonical browser-readable weekly manifest at `js/weekly-manifest.js`
 - Week 2 snapshot at `quiniela-control/weeks/week-02.json` with `15/16 FINAL` and final-game hold
 - Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
-- separate Week 3 Jotform draft created; Week 2 form preserved
+- canonical Week 3 Jotform verified and wired: `https://form.jotform.com/262630890072052`; Week 2 form preserved
 - Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
 - GitHub Actions validator added for weekly manifest invariants and publication firewall\n- Weekly Manifest QA run #1: `PASS`\n- Week 3 Jotform build: `COMPLETE · 0 submissions · NO COMPARTIR AÚN`
 - Quiniela production config reconciled to current certified Figma F05 master
@@ -40,7 +40,7 @@ Current public Quiniela:
 `WEEK 2 · /quiniela/w02/`
 
 Week 3 capture:
-`DRAFT_HOLD_CUTOFF_CONFIRMATION · NO COMPARTIR AÚN`
+`OPEN · CANONICAL FORM · SHAREABLE · CUTOFF POLICY = DIRECTION_MANUAL_CLOSE`
 
 Week 2 results:
 `15/16 FINAL · WAITING NYG @ LAR · NO PUBLICAR RESULTADOS FINALES`
@@ -49,7 +49,7 @@ Wingstop Week 3:
 `ATL @ GB · JUE 24 SEP · 18:15 CDMX · INPUT READY · 05 HOLD`
 
 Open blocker:
-`W3 PICK CUTOFF NOT YET LOCKED`
+`NONE FOR PICK INTAKE · fixed cutoff remains optional/unset; Direction may close capture manually`
 
 Safe work that can continue:
 `CI validation · W2 result closeout after final game · Figma production candidates · Hub remains on existing public state until 05 gate`
