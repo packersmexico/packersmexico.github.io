@@ -54,6 +54,32 @@ Open blocker:
 Safe work that can continue:
 `CI validation · W2 result closeout after final game · Figma production candidates · Hub remains on existing public state until 05 gate`
 
+## WINGSTOP WEEK 3 PROMO · 2026-09-21
+
+PMX_ID:
+`PMX-W3-WINGSTOP-001`
+
+Game:
+`ATL @ GB · JUE 24 SEP · 18:15 CDMX`
+
+Creative:
+`04 PASS · FIGMA 2775:466376 · FEED 2775:466377 · STORY 2775:474577`
+
+Publication:
+`SCHEDULED TODAY · METRICOOL · AUTO-PUBLISH`
+
+Feed:
+`IG + FB · 15:00 CDMX · Metricool 379637469`
+
+Story:
+`IG + FB · 17:00 CDMX · Metricool 379637543`
+
+CTA:
+`https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
+
+Status:
+`PENDING PLATFORM PUBLICATION CONFIRMATION · DO NOT CLAIM PUBLISHED UNTIL URL/ID IS VERIFIED`
+
 ## CURRENT PHASE
 
 `FASE 2C · HUB EXPANSION · WEEKLY AUTO-ROLLOVER + SEASON CALENDAR 2026`
