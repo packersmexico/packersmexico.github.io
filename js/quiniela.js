@@ -145,7 +145,7 @@
   }
 
   function renderCoverSlide() {
-    var slide = createSlide("editorial-slide--cover", "Portada de la Quiniela Week 1");
+    var slide = createSlide("editorial-slide--cover", "Portada de la " + data.week);
     var logo = document.createElement("img");
     logo.className = "editorial-cover__logo";
     logo.src = "../../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg";
@@ -390,10 +390,11 @@
   if (carouselPrev) carouselPrev.addEventListener("click", function () { moveCarousel(-1); });
   if (carouselNext) carouselNext.addEventListener("click", function () { moveCarousel(1); });
 
-  if (analytics) {
-    analytics.trackOnce("VIEW_QUINIELA_W01", {
-      cta_id: "quiniela-w01-page",
+  if (analytics && data.analyticsViewEvent) {
+    var slug = String(data.week || "quiniela").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    analytics.trackOnce(data.analyticsViewEvent, {
+      cta_id: "quiniela-" + slug + "-page",
       destination_type: "editorial"
-    }, "view-quiniela-w01");
+    }, "view-quiniela-" + slug);
   }
 })();
