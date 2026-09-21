@@ -186,5 +186,11 @@
       }
     ]
   },
-  "public_url": null
+  "public_url": null,
+  "operator_handoff": {
+    "recipient": "RODRIGO",
+    "status": "READY_TO_SEND",
+    "purpose": "START WEEK 3 BOARD PICK INTAKE",
+    "form_url": "https://form.jotform.com/262630890072052"
+  }
 }
