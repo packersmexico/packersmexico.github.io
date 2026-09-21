@@ -78,14 +78,16 @@
   }
 
   function renderGame() {
-    var relation = config.homeAway === "AWAY" ? "@ " : config.homeAway === "HOME" ? "VS " : "";
+    var isHome = config.homeAway === "HOME";
+    var isAway = config.homeAway === "AWAY";
     var gameLabel = config.gameLabel || config.kickerDesktop || config.kickerMobile || "";
     var kicker = [config.week, gameLabel].filter(Boolean).join(" · ");
+    var opponent = config.opponent || "RIVAL PENDIENTE";
 
     setText("game-kicker-mobile", kicker);
     setText("game-kicker-desktop", kicker);
-    setText("game-heading-primary", "PACKERS");
-    setText("game-heading-secondary", relation + (config.opponent || "RIVAL PENDIENTE"));
+    setText("game-heading-primary", isHome ? opponent : "PACKERS");
+    setText("game-heading-secondary", isHome ? "@ PACKERS" : (isAway ? "@ " + opponent : opponent));
     setText("game-datetime", [config.date, config.time ? config.time + " CDMX" : ""].filter(Boolean).join(" · "));
     setText("game-venue", (config.venue || "").toUpperCase() + (config.venue ? " · CDMX" : ""));
     document.querySelector(".venue-lock").textContent = config.venueWording;
@@ -98,11 +100,18 @@
     var packersLogoSrc = config.teamLogos && config.teamLogos.PACKERS;
     var opponentLogoSrc = config.teamLogos && config.teamLogos[config.opponent];
     if (lockup && packersTeamLogo && opponentTeamLogo && packersLogoSrc && opponentLogoSrc) {
-      packersTeamLogo.src = packersLogoSrc;
-      packersTeamLogo.alt = "Green Bay Packers";
-      opponentTeamLogo.src = opponentLogoSrc;
-      opponentTeamLogo.alt = config.opponentLong || config.opponent || "Rival";
-      if (lockupSeparator) lockupSeparator.textContent = config.homeAway === "AWAY" ? "@" : "VS";
+      if (isHome) {
+        packersTeamLogo.src = opponentLogoSrc;
+        packersTeamLogo.alt = config.opponentLong || config.opponent || "Rival";
+        opponentTeamLogo.src = packersLogoSrc;
+        opponentTeamLogo.alt = "Green Bay Packers";
+      } else {
+        packersTeamLogo.src = packersLogoSrc;
+        packersTeamLogo.alt = "Green Bay Packers";
+        opponentTeamLogo.src = opponentLogoSrc;
+        opponentTeamLogo.alt = config.opponentLong || config.opponent || "Rival";
+      }
+      if (lockupSeparator) lockupSeparator.textContent = (isHome || isAway) ? "@" : "VS";
       lockup.hidden = false;
     } else if (lockup) {
       lockup.hidden = true;
@@ -229,7 +238,7 @@
     var gopackgoLink = configureLink("gopackgo-link", config.gopackgoUrl, attribution, "URL de GoPackGo MX pendiente de validación");
     var gopackgoHeaderLink = configureLink("gopackgo-link-header", config.gopackgoUrl, attribution, "URL de GoPackGo MX pendiente de validación");
 
-    attachTracking(registrationLink, "CLICK_REGISTRO", { destination_type: "registration" });
+    attachTracking(registrationLink, "CLICK_REGISTRO", { destination_type: "registration", cta_id: "confirma_tu_asistencia" });
     attachTracking(mapsLink, "CLICK_MAPS", { destination_type: "maps" });
     attachTracking(calendarLink, "CLICK_CALENDAR", { destination_type: "calendar" });
     attachTracking(calendarHeaderLink, "CLICK_CALENDAR", { destination_type: "calendar" });
