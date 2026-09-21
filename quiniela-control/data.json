@@ -2,48 +2,121 @@
   "pmx_id": "PMX-QUINIELA-W2-001",
   "season": "2026",
   "week": "WEEK 2",
-  "last_sync": "2026-09-16T20:21:00-06:00",
+  "last_sync": "2026-09-21T06:32:16.087Z",
   "capture": {
-    "complete": 7,
+    "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline_label": "16 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 112,
-    "missing_picks": 32,
+    "received_picks": 144,
+    "missing_picks": 0,
     "invitado": "OPTIONAL",
     "form_url": "https://form.jotform.com/262568478012058",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/"
   },
   "participants": [
-    {"name":"EL DOC","status":"COMPLETE"},
-    {"name":"ARI","status":"COMPLETE"},
-    {"name":"LALO","status":"COMPLETE"},
-    {"name":"ALEX","status":"PENDING"},
-    {"name":"LUIS C.","status":"COMPLETE"},
-    {"name":"DR PALMA","status":"COMPLETE"},
-    {"name":"JENNI","status":"COMPLETE"},
-    {"name":"RODRI","status":"PENDING"},
-    {"name":"IBRACHO","status":"COMPLETE"}
+    {
+      "name": "EL DOC",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "ARI",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "LALO",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "ALEX",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "JENNI",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "RODRI",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "COMPLETE"
+    }
   ],
   "week1_closeout": {
     "status": "CLOSED",
     "results": "16/16 FINAL",
     "headline": "EMPATE EN LA CIMA",
-    "leaders": ["EL DOC","ALEX","JENNI","RODRI"],
+    "leaders": [
+      "EL DOC",
+      "ALEX",
+      "JENNI",
+      "RODRI"
+    ],
     "leader_score": "11/16",
     "standings": [
-      {"name":"EL DOC","correct":11,"rank":1},
-      {"name":"ALEX","correct":11,"rank":1},
-      {"name":"JENNI","correct":11,"rank":1},
-      {"name":"RODRI","correct":11,"rank":1},
-      {"name":"LALO","correct":10,"rank":5},
-      {"name":"LUIS C.","correct":10,"rank":5},
-      {"name":"DR PALMA","correct":10,"rank":5},
-      {"name":"IBRACHO","correct":10,"rank":5},
-      {"name":"ARI","correct":8,"rank":9}
+      {
+        "name": "EL DOC",
+        "correct": 11,
+        "rank": 1
+      },
+      {
+        "name": "ALEX",
+        "correct": 11,
+        "rank": 1
+      },
+      {
+        "name": "JENNI",
+        "correct": 11,
+        "rank": 1
+      },
+      {
+        "name": "RODRI",
+        "correct": 11,
+        "rank": 1
+      },
+      {
+        "name": "LALO",
+        "correct": 10,
+        "rank": 5
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 10,
+        "rank": 5
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 10,
+        "rank": 5
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 10,
+        "rank": 5
+      },
+      {
+        "name": "ARI",
+        "correct": 8,
+        "rank": 9
+      }
     ],
-    "last_game": {"matchup":"DEN @ KC","status":"FINAL","winner":"KC","score":"DEN 10 · KC 31"},
+    "last_game": {
+      "matchup": "DEN @ KC",
+      "status": "FINAL",
+      "winner": "KC",
+      "score": "DEN 10 · KC 31"
+    },
     "results_sheet_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#results",
     "summary_x_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
     "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
@@ -58,6 +131,10 @@
     "x_summary_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
     "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
     "x_asset_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
-    "instructions": ["REVISAR IMAGEN","DESCARGAR PNG","PUBLICAR EN X"]
+    "instructions": [
+      "REVISAR IMAGEN",
+      "DESCARGAR PNG",
+      "PUBLICAR EN X"
+    ]
   }
 }
