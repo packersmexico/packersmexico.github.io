@@ -1,11 +1,14 @@
 {
   "season": "2026",
-  "week": "WEEK 2",
-  "week_number": 2,
-  "form_id": "262568478012058",
-  "form_url": "https://form.jotform.com/262568478012058",
+  "week": "WEEK 3",
+  "week_number": 3,
+  "form_id": "262630890072052",
+  "form_url": "https://form.jotform.com/262630890072052",
   "status": "OPEN",
-  "deadline": "2026-09-16T12:00:00-06:00",
+  "deadline": null,
+  "deadline_label": "CIERRE PENDIENTE · DIRECCIÓN",
+  "cutoff_policy": "DIRECTION_MANUAL_CLOSE",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
+  "share_state": "SHAREABLE",
   "last_sync": "2026-09-14T23:35:00-06:00"
 }
