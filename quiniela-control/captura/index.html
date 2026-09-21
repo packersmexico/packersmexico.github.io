@@ -38,9 +38,15 @@
     week.textContent=c.week || 'SEMANA ACTIVA';
     const open=String(c.status||'').toUpperCase()==='OPEN';
     status.textContent=open?'CAPTURA ABIERTA':'CAPTURA CERRADA';
-    meta.textContent=open
-      ? `Formulario vigente · cierre ${new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(c.deadline)).toUpperCase()} CDMX.`
-      : 'La captura de esta semana está cerrada. Este mismo enlace se reactivará automáticamente para la siguiente semana cuando el nuevo formulario esté validado.';
+    if(open){
+      if(c.deadline){
+        meta.textContent=`Formulario vigente · cierre ${new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(c.deadline)).toUpperCase()} CDMX.`;
+      }else{
+        meta.textContent='Formulario vigente · captura abierta · cierre pendiente de confirmación por Dirección.';
+      }
+    }else{
+      meta.textContent='La captura de esta semana está cerrada. Este mismo enlace se reactivará automáticamente para la siguiente semana cuando el nuevo formulario esté validado.';
+    }
     if(open && c.form_url){link.href=c.form_url;link.removeAttribute('aria-disabled');}
     else{link.textContent='CAPTURA CERRADA';}
   }catch(e){status.textContent='SIN CONEXIÓN AL CONTROLADOR';meta.textContent='No uses un formulario anterior. Vuelve a intentar más tarde.';console.error(e)}
