@@ -1,11 +1,9 @@
 {
   "pmx_id": "PMX-PILOT-QUINIELA-001",
   "season": 2026,
-  "production_surface": "CANVA",
-  "figma_parity_status": "NOT_APPROVED_FOR_QUINIELA_PRODUCTION",
-  "blocked_figma_file_keys": [
-    "RAoegEENwTH2L7gb3yydIq"
-  ],
+  "production_surface": "FIGMA",
+  "figma_parity_status": "APPROVED_FOR_QUINIELA_PRODUCTION",
+  "blocked_figma_file_keys": [],
   "canva": {
     "feed_master": {
       "design_id": "DAHUptv8Xg4",
@@ -36,7 +34,8 @@
         "design_id": "DAHUp_Qcd5I",
         "title": "PMX · QUINIELA · WEEK 1 · WHATSAPP STATUS · PUBLIC · V02"
       }
-    }
+    },
+    "status": "LEGACY_REFERENCE_AND_COLLABORATIVE_FALLBACK"
   },
   "participants": {
     "base": [
@@ -54,7 +53,7 @@
     "guest_default": "OFF"
   },
   "guest_policy": {
-    "status": "VARIANT_NOT_YET_APPROVED",
+    "status": "GUEST_DEFAULT_OFF",
     "base_grid": "PRESERVE_3X3",
     "visual_role": "SEPARATE_CONDITIONAL_MODULE",
     "counts_for_consensus": false,
@@ -68,5 +67,13 @@
     "preserve_validated_nfl_logos": true,
     "preserve_name_stickers": true,
     "do_not_rebuild_identity": true
+  },
+  "figma": {
+    "file_key": "RAoegEENwTH2L7gb3yydIq",
+    "family_node_id": "2524:2",
+    "family_status": "FAMILY_PASS_CERTIFIED_FOR_PRODUCTION",
+    "week_2_reference_status": "9/9 · 144/144 · CLOSED",
+    "week_3_control_node_id": "2770:466376",
+    "automation_status": "GO_CORE_AUTOMATION"
   }
 }
