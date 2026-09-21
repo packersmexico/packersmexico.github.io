@@ -99,7 +99,7 @@
     }),
     analytics: Object.freeze({
       GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
-      hubVersion: "p0-weekly-auto-v1",
+      hubVersion: "p0-weekly-auto-v1.1",
       eventVersion: "1.1"
     }),
     socialUrls: Object.freeze({
