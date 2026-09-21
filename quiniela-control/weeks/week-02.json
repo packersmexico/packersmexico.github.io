@@ -1,0 +1,66 @@
+{
+  "pmx_id": "PMX-QUINIELA-W2-001",
+  "season": "2026",
+  "week": "WEEK 2",
+  "week_number": 2,
+  "snapshot_status": "RESULTS_PENDING_FINAL_GAME",
+  "last_sync": "2026-09-21T11:50:00-06:00",
+  "capture": {
+    "complete": 9,
+    "total": 9,
+    "window": "CLOSED",
+    "deadline_label": "16 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 144,
+    "missing_picks": 0,
+    "invitado": "OFF"
+  },
+  "participants": [
+    {"name":"EL DOC","status":"COMPLETE"},
+    {"name":"ARI","status":"COMPLETE"},
+    {"name":"LALO","status":"COMPLETE"},
+    {"name":"ALEX","status":"COMPLETE"},
+    {"name":"LUIS C.","status":"COMPLETE"},
+    {"name":"DR PALMA","status":"COMPLETE"},
+    {"name":"JENNI","status":"COMPLETE"},
+    {"name":"RODRI","status":"COMPLETE"},
+    {"name":"IBRACHO","status":"COMPLETE"}
+  ],
+  "results": {
+    "final": 15,
+    "total": 16,
+    "status": "WAITING_FINAL_GAME",
+    "pending_game": "NYG @ LAR",
+    "pending_game_time": "LUN 21 SEP · 18:15 CDMX",
+    "winners_through_15": ["BUF","CAR","NO","MIN","CIN","NE","GB","CLE","PHI","DEN","LV","SEA","DAL","SF","KC"],
+    "provisional_correct_through_15": [
+      {"name":"LALO","correct":10},
+      {"name":"RODRI","correct":10},
+      {"name":"EL DOC","correct":9},
+      {"name":"ALEX","correct":9},
+      {"name":"LUIS C.","correct":9},
+      {"name":"DR PALMA","correct":9},
+      {"name":"IBRACHO","correct":9},
+      {"name":"ARI","correct":8},
+      {"name":"JENNI","correct":8}
+    ],
+    "publication": "NO_PUBLICAR_HASTA_16_16_FINAL"
+  },
+  "pipeline": {
+    "capture": "PASS · 9/9 · 144/144 · CLOSED",
+    "picks": "PUBLIC PAGE LIVE",
+    "results": "15/16 FINAL",
+    "production": "F05 · WAITING FINAL RESULT",
+    "publication": "HOLD · RESULTS FINAL"
+  },
+  "production": {
+    "surface": "FIGMA",
+    "family_node_id": "2524:2",
+    "package_status": "RESULTS WAITING FINAL GAME",
+    "outputs": [
+      {"id":"W2-RESULT-WINNER","label":"RESULTADOS WEEK 2","status":"WAITING 16/16"},
+      {"id":"W2-RESULT-STANDINGS","label":"STANDINGS ACUMULADO","status":"WAITING 16/16"}
+    ]
+  },
+  "public_url": "https://packersmexico.github.io/quiniela/w02/"
+}
