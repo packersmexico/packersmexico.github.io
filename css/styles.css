@@ -41,6 +41,11 @@ a { color: inherit; }
 .kicker,.module-kicker { margin: 0; color: var(--gold); font-size: 16px; font-weight: 600; line-height: normal; }
 .kicker--desktop { display: none; }
 .game-title { display: flex; flex-direction: column; margin: 0; color: var(--cream); font-family: "Bebas Neue", Impact, sans-serif; font-size: 58px; font-weight: 400; line-height: .93; text-transform: uppercase; }
+.team-lockup { display: flex; align-items: center; gap: 13px; margin: 5px 0 3px; }
+.team-lockup[hidden] { display: none; }
+.team-lockup__logo { display: grid; place-items: center; width: 55px; height: 55px; }
+.team-lockup__logo img { display: block; max-width: 55px; max-height: 55px; object-fit: contain; }
+.team-lockup__separator { color: var(--gold); font-family: "Bebas Neue",Impact,sans-serif; font-size: 26px; line-height: 1; }
 .game-datetime,.game-venue,.venue-lock { margin: 0; color: var(--cream); }
 .game-datetime { margin-top: 2px; font-size: 22px; font-weight: 600; }
 .game-venue { font-size: 18px; font-weight: 600; }
@@ -82,9 +87,15 @@ body.state-data-pending .hero__visual { display: none; }
 .footer-pmx { min-width: 0; }
 .footer-brand,.independence-note { margin: 0; }
 .footer-brand { color: var(--cream); font-size: 16px; font-weight: 600; }
-.social-list { display: flex; flex-wrap: wrap; gap: 4px 13px; margin: 8px 0 0; padding: 0; list-style: none; }
-.social-link { color: var(--cream); font-size: 13px; text-decoration: none; }
-.independence-note { margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+.footer-social-label { margin: 13px 0 0; color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.social-list { display: grid; grid-template-columns: 1fr; gap: 0; margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(242,232,207,.24); }
+.social-list li { min-width: 0; }
+.social-link { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 13px; align-items: center; min-height: 44px; border-bottom: 1px solid rgba(242,232,207,.18); color: var(--cream); font-size: 13px; font-weight: 600; text-decoration: none; }
+.social-link__mark { color: var(--gold); font-family: "Bebas Neue",Impact,sans-serif; font-size: 18px; line-height: 1; }
+.social-link__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.social-link__arrow { color: var(--muted); font-size: 15px; }
+.social-link:hover .social-link__arrow,.social-link:focus-visible .social-link__arrow { color: var(--gold); }
+.independence-note { margin-top: 13px; color: var(--muted); font-size: 11px; line-height: 1.35; }
 
 @media (min-width:768px) and (max-width:1099px) {
   .site-header,.hub-shell,.site-footer { width: min(calc(100% - (var(--tablet-margin) * 2)), var(--content-max)); }
@@ -113,6 +124,10 @@ body.state-data-pending .hero__visual { display: none; }
   .kicker--mobile { display: none; }
   .kicker--desktop { display: block; }
   .game-title { font-size: 96px; line-height: .9375; }
+  .team-lockup { gap: 21px; margin: 8px 0 5px; }
+  .team-lockup__logo { width: 76px; height: 76px; }
+  .team-lockup__logo img { max-width: 76px; max-height: 76px; }
+  .team-lockup__separator { font-size: 34px; }
   .game-datetime { margin-top: 0; font-size: 30px; }
   .game-venue { font-size: 22px; }
   .venue-lock { font-size: 18px; }
@@ -135,7 +150,7 @@ body.state-data-pending .hero__visual { display: none; }
   .site-footer { margin-top: 18px; padding: 0 0 34px; }
   .footer-pmx { max-width: 700px; }
   .footer-brand { font-size: 16px; }
-  .social-list { margin-top: 6px; }
+  .social-list { grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 34px; margin-top: 8px; }
   .social-link { font-size: 14px; }
   .independence-note { max-width: 600px; font-size: 11px; }
 }
