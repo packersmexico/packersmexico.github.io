@@ -12,6 +12,48 @@ Public Hub: `https://packersmexico.github.io/`
 
 Season Calendar route: `https://packersmexico.github.io/calendario/`
 
+## WEEK 3 ORCHESTRATOR · 2026-09-21
+
+State:
+`IN PROGRESS · TECHNICAL AUTOMATION ACTIVE ON REVIEW BRANCH · NO PUBLIC DEPLOYMENT CLAIMED`
+
+Branch:
+`automation/week-03-orchestrator`
+
+PMX_ID:
+`PMX-W3-AUTOMATION-001`
+
+Implemented on branch:
+- canonical browser-readable weekly manifest at `js/weekly-manifest.js`
+- Week 2 snapshot at `quiniela-control/weeks/week-02.json` with `15/16 FINAL` and final-game hold
+- Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
+- separate Week 3 Jotform draft created; Week 2 form preserved
+- Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
+- GitHub Actions validator added for weekly manifest invariants and publication firewall
+- Quiniela production config reconciled to current certified Figma F05 master
+- Figma Week 3 production-control clone created at node `2770:466376`
+
+Current publication firewall:
+`05 HOLD · READY FOR CLICK REQUIRED`
+
+Current public Quiniela:
+`WEEK 2 · /quiniela/w02/`
+
+Week 3 capture:
+`DRAFT_HOLD_CUTOFF_CONFIRMATION · NO COMPARTIR AÚN`
+
+Week 2 results:
+`15/16 FINAL · WAITING NYG @ LAR · NO PUBLICAR RESULTADOS FINALES`
+
+Wingstop Week 3:
+`ATL @ GB · JUE 24 SEP · 18:15 CDMX · INPUT READY · 05 HOLD`
+
+Open blocker:
+`W3 PICK CUTOFF NOT YET LOCKED`
+
+Safe work that can continue:
+`CI validation · W2 result closeout after final game · Figma production candidates · Hub remains on existing public state until 05 gate`
+
 ## CURRENT PHASE
 
 `FASE 2C · HUB EXPANSION · WEEKLY AUTO-ROLLOVER + SEASON CALENDAR 2026`
