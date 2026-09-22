@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 2",
   "week_number": 2,
-  "snapshot_status": "RESULTS_PENDING_FINAL_GAME",
-  "last_sync": "2026-09-21T11:50:00-06:00",
+  "snapshot_status": "RESULTS_FINAL_16_16_F05_READY",
+  "last_sync": "2026-09-22T11:00:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -27,39 +27,41 @@
     {"name":"IBRACHO","status":"COMPLETE"}
   ],
   "results": {
-    "final": 15,
+    "final": 16,
     "total": 16,
-    "status": "WAITING_FINAL_GAME",
-    "pending_game": "NYG @ LAR",
-    "pending_game_time": "LUN 21 SEP · 18:15 CDMX",
-    "winners_through_15": ["BUF","CAR","NO","MIN","CIN","NE","GB","CLE","PHI","DEN","LV","SEA","DAL","SF","KC"],
-    "provisional_correct_through_15": [
-      {"name":"LALO","correct":10},
-      {"name":"RODRI","correct":10},
-      {"name":"EL DOC","correct":9},
-      {"name":"ALEX","correct":9},
-      {"name":"LUIS C.","correct":9},
+    "status": "FINAL",
+    "final_game": "NYG @ LAR",
+    "final_game_score": "NYG 6 · LAR 28",
+    "final_game_winner": "LAR",
+    "winners": ["BUF","CAR","NO","MIN","CIN","NE","GB","CLE","PHI","DEN","LV","SEA","DAL","SF","KC","LAR"],
+    "final_correct": [
+      {"name":"LALO","correct":11},
+      {"name":"RODRI","correct":11},
+      {"name":"EL DOC","correct":10},
+      {"name":"ALEX","correct":10},
+      {"name":"LUIS C.","correct":10},
+      {"name":"ARI","correct":9},
       {"name":"DR PALMA","correct":9},
-      {"name":"IBRACHO","correct":9},
-      {"name":"ARI","correct":8},
-      {"name":"JENNI","correct":8}
+      {"name":"JENNI","correct":9},
+      {"name":"IBRACHO","correct":9}
     ],
-    "publication": "NO_PUBLICAR_HASTA_16_16_FINAL"
+    "week_winners": ["LALO","RODRI"],
+    "publication": "HOLD_BEHIND_05"
   },
   "pipeline": {
     "capture": "PASS · 9/9 · 144/144 · CLOSED",
     "picks": "PUBLIC PAGE LIVE",
-    "results": "15/16 FINAL",
-    "production": "F05 · WAITING FINAL RESULT",
-    "publication": "HOLD · RESULTS FINAL"
+    "results": "PASS · 16/16 FINAL",
+    "production": "F05 · RESULTS/STANDINGS CANDIDATE READY FOR QA",
+    "publication": "HOLD · 05 APPROVAL REQUIRED"
   },
   "production": {
     "surface": "FIGMA",
     "family_node_id": "2524:2",
-    "package_status": "RESULTS WAITING FINAL GAME",
+    "package_status": "RESULTS FINAL · F05 READY · NO PUBLICAR",
     "outputs": [
-      {"id":"W2-RESULT-WINNER","label":"RESULTADOS WEEK 2","status":"WAITING 16/16"},
-      {"id":"W2-RESULT-STANDINGS","label":"STANDINGS ACUMULADO","status":"WAITING 16/16"}
+      {"id":"W2-RESULT-WINNER","label":"RESULTADOS WEEK 2","status":"READY FOR F05 QA"},
+      {"id":"W2-RESULT-STANDINGS","label":"STANDINGS WEEK 2","status":"READY FOR F05 QA"}
     ]
   },
   "public_url": "https://packersmexico.github.io/quiniela/w02/"
