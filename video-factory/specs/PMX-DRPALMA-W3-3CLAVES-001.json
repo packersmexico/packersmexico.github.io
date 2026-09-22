@@ -1,0 +1,216 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-DRPALMA-W3-3CLAVES-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "3 CLAVES PARA GREEN BAY",
+  "subheadline": "DR. PALMA · WEEK 3",
+  "durationSeconds": 152.531438,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · 2026-09-22",
+  "destinationLabel": "WEEK 3 · 2026",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 31.89,
+      "type": "HOOK",
+      "kicker": "EN LA OPINIÓN DEL DR. PALMA",
+      "title": "3 CLAVES PARA GREEN BAY",
+      "support": "WEEK 3 · GREEN BAY",
+      "body": "David plantea tres puntos para entender qué necesita Green Bay en su siguiente partido.",
+      "insights": [
+        {
+          "label": "CONTEXTO",
+          "text": "Green Bay llega a una nueva prueba con la oportunidad de corregir detalles."
+        },
+        {
+          "label": "LECTURA",
+          "text": "El foco está en protección, variedad ofensiva y presión defensiva."
+        },
+        {
+          "label": "OBJETIVO",
+          "text": "Ejecutar con disciplina y evitar regalar series por errores propios."
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "start": 31.89,
+      "end": 63.54,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 1",
+      "title": "PROTEGER A LOVE",
+      "support": "LÍNEA OFENSIVA + RECEPTORES",
+      "body": "Más tiempo para Jordan Love y mayor seguridad al completar las jugadas.",
+      "insights": [
+        {
+          "label": "PROTECCIÓN",
+          "text": "La línea ofensiva tiene que darle una plataforma más limpia."
+        },
+        {
+          "label": "EJECUCIÓN",
+          "text": "Los receptores deben asegurar las oportunidades que lleguen."
+        },
+        {
+          "label": "VENTAJA",
+          "text": "Si Love tiene tiempo, Green Bay puede atacar mejor el fondo del campo."
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "start": 63.54,
+      "end": 99.52,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 2",
+      "title": "VARIANTES POR TIERRA",
+      "support": "MÁS CREATIVIDAD EN EL JUEGO TERRESTRE",
+      "body": "David pide salir de las llamadas repetitivas y encontrar nuevas respuestas.",
+      "insights": [
+        {
+          "label": "VARIEDAD",
+          "text": "Cambiar conceptos y ritmos para no volverse predecibles."
+        },
+        {
+          "label": "CHISPA",
+          "text": "Buscar más creatividad en la manera de generar yardas por tierra."
+        },
+        {
+          "label": "EQUILIBRIO",
+          "text": "Un juego terrestre distinto puede abrir mejores ventanas para el pase."
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "start": 99.52,
+      "end": 132.89,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 3",
+      "title": "PRESIONAR A PENIX",
+      "support": "DRAKE LONDON + BIJAN ROBINSON",
+      "body": "La defensa debe acelerar las decisiones del quarterback y reducir el impacto de las principales armas de Atlanta.",
+      "insights": [
+        {
+          "label": "PRESIÓN",
+          "text": "No permitir que Michael Penix Jr. juegue cómodo desde la bolsa."
+        },
+        {
+          "label": "AIRE",
+          "text": "Limitar el daño de Drake London y cortar conexiones explosivas."
+        },
+        {
+          "label": "TIERRA",
+          "text": "Golpear y contener a Bijan Robinson para obligar a Atlanta a cambiar el guion."
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "start": 132.89,
+      "end": 149.79,
+      "type": "ANALYSIS",
+      "kicker": "DETALLE QUE NO SE PUEDE REGALAR",
+      "title": "DISCIPLINA",
+      "support": "PENALIZACIONES + EJECUCIÓN",
+      "body": "David vuelve a señalar los castigos como un factor capaz de complicar un partido manejable.",
+      "insights": [
+        {
+          "label": "PENALIZACIONES",
+          "text": "Reducir errores que extienden series o frenan posesiones."
+        },
+        {
+          "label": "IMAGINACIÓN",
+          "text": "Mostrar más soluciones ofensivas cuando el plan inicial no alcanza."
+        },
+        {
+          "label": "CONTROL",
+          "text": "Hacer que el partido dependa de Green Bay y no de errores evitables."
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "start": 149.79,
+      "end": 152.531438,
+      "type": "OUTRO",
+      "kicker": "CIERRE",
+      "title": "DR. PALMA",
+      "support": "PACKERS MÉXICO",
+      "body": "Go Pack Go."
+    }
+  ],
+  "captions": [
+    {
+      "start": 1.145,
+      "end": 5.102,
+      "text": "Comunidad Packers MX, se viene la Semana 3."
+    },
+    {
+      "start": 5.651,
+      "end": 19.071,
+      "text": "Green Bay llega a una nueva prueba y David pone el foco en tres claves."
+    },
+    {
+      "start": 19.441,
+      "end": 27.901,
+      "text": "El rival presenta nuevas preguntas, pero el plan empieza por Green Bay."
+    },
+    {
+      "start": 28.894,
+      "end": 30.697,
+      "text": "¿Cuáles son las claves?"
+    },
+    {
+      "start": 31.89,
+      "end": 49.48,
+      "text": "Primero: darle tiempo a Jordan Love y asegurar las recepciones."
+    },
+    {
+      "start": 49.943,
+      "end": 60.161,
+      "text": "La línea ofensiva necesita proteger mejor a Love para abrir el ataque."
+    },
+    {
+      "start": 63.541,
+      "end": 80.735,
+      "text": "También necesitamos variantes en el juego terrestre."
+    },
+    {
+      "start": 81.18,
+      "end": 94.735,
+      "text": "No repetir siempre lo mismo: hace falta más creatividad y chispa."
+    },
+    {
+      "start": 99.516,
+      "end": 108.507,
+      "text": "Del lado defensivo, hay que presionar a Michael Penix Jr."
+    },
+    {
+      "start": 108.944,
+      "end": 121.004,
+      "text": "Green Bay tiene que limitar a Drake London."
+    },
+    {
+      "start": 121.666,
+      "end": 130.883,
+      "text": "Y contener a Bijan Robinson para cambiar el guion ofensivo."
+    },
+    {
+      "start": 132.895,
+      "end": 142.496,
+      "text": "Otra clave: reducir las penalizaciones y no regalar series."
+    },
+    {
+      "start": 143.008,
+      "end": 148.459,
+      "text": "Más disciplina y más imaginación ofensiva."
+    },
+    {
+      "start": 149.791,
+      "end": 152.004,
+      "text": "Go Pack Go."
+    }
+  ]
+}
