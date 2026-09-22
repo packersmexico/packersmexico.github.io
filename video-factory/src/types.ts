@@ -10,7 +10,12 @@ export type CaptionCue = {
   text: string;
 };
 
-export type InsightItem = {\n  label: string;\n  text: string;\n};\n\nexport type VideoScene = {
+export type InsightItem = {
+  label: string;
+  text: string;
+};
+
+export type VideoScene = {
   id: string;
   start: number;
   end: number;
@@ -19,6 +24,7 @@ export type InsightItem = {\n  label: string;\n  text: string;\n};\n\nexport typ
   kicker?: string;
   support?: string;
   body?: string;
+  insights?: InsightItem[];
   assetUrl?: string;
   assetCredit?: string;
 };
