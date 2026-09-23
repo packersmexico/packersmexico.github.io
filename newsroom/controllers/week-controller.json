@@ -1,0 +1,17 @@
+{
+  "id": "WEEK_CONTROLLER",
+  "status": "SHADOW",
+  "scope": [
+    "calendar",
+    "weekly requirements",
+    "Wingstop",
+    "Hub route requests"
+  ],
+  "output_stage": "00",
+  "publication_authority": false,
+  "invariants": [
+    "official schedule/recency required",
+    "03 declares route requirement",
+    "router does not authorize publication"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "QUINIELA_CONTROLLER",
+  "status": "SHADOW",
+  "scope": [
+    "capture",
+    "results",
+    "standings",
+    "rollover"
+  ],
+  "writes": "individual case file",
+  "publication_authority": false,
+  "invariants": [
+    "never invent picks",
+    "9 canonical participants",
+    "05 required before publication"
+  ]
+}

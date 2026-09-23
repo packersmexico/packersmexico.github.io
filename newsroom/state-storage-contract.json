@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "mode": "SHADOW",
+  "state_store": {
+    "classification": "PRIVATE_OPERATIONAL",
+    "provider": "GOOGLE_DRIVE",
+    "surface": "NATIVE_SPREADSHEET",
+    "public_repo_must_not_store_live_cases": true,
+    "public_repo_may_store": [
+      "schemas",
+      "controller contracts",
+      "router registry",
+      "sanitized templates",
+      "QA scripts"
+    ]
+  },
+  "workflow": [
+    "00",
+    "01",
+    "02",
+    "03",
+    "03.5",
+    "04",
+    "05"
+  ],
+  "publication_firewall": "05_READY_FOR_CLICK_REQUIRED",
+  "pmx_ana_namespace": "RESERVED_DISABLED",
+  "repository_separation": {
+    "pmx_public_repo": "PRODUCTIVE_PUBLIC_SURFACE",
+    "ibrahim_academic_personal": "SEPARATE",
+    "live_state": "PRIVATE_DRIVE"
+  }
+}

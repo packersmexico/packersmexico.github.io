@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "status": "SHADOW",
+  "timezone": "America/Mexico_City",
+  "workflow": [
+    "00",
+    "01",
+    "02",
+    "03",
+    "03.5",
+    "04",
+    "05"
+  ],
+  "publication_firewall": {
+    "required_stage": "05",
+    "required_state": "READY_FOR_CLICK",
+    "access_is_not_authorization": true,
+    "postpublication_requires_evidence": true
+  },
+  "manual_intake": {
+    "enabled": true,
+    "default_stage": "00",
+    "text_only_terminal_state": "READY_TO_COPY",
+    "visual_output_requires_04": true,
+    "publication_requires_05": true
+  },
+  "controllers": {
+    "SIGNAL_CONTROLLER": {
+      "enabled": true,
+      "scope": [
+        "R01",
+        "R02"
+      ],
+      "deduplicate": true,
+      "output_stage": "00",
+      "may_publish": false
+    },
+    "QUINIELA_CONTROLLER": {
+      "enabled": true,
+      "scope": [
+        "CAPTURE",
+        "RESULTS",
+        "STANDINGS",
+        "ROLLOVER"
+      ],
+      "may_publish": false
+    },
+    "WEEK_CONTROLLER": {
+      "enabled": true,
+      "scope": [
+        "CALENDAR",
+        "WEEKLY_REQUIREMENTS",
+        "WINGSTOP",
+        "HUB_ROUTES"
+      ],
+      "may_publish": false
+    },
+    "DATA_CONTROLLER": {
+      "enabled": true,
+      "scope": [
+        "PUBLICATION_EVIDENCE",
+        "POSTPUBLICATION_QA",
+        "ANALYTICS_HANDOFF"
+      ],
+      "may_publish": false
+    }
+  },
+  "hub_router": {
+    "enabled": true,
+    "owner": "TECHNICAL_ORCHESTRATION",
+    "requirement_declared_by": "03",
+    "prepublication_verification_by": "05",
+    "platforms": [
+      "x",
+      "instagram",
+      "facebook",
+      "tiktok",
+      "whatsapp"
+    ],
+    "path_pattern": "/go/w{week2}-{platform}/"
+  },
+  "future_integration": {
+    "sports_analytics": {
+      "namespace": "PMX-ANA-*",
+      "status": "RESERVED",
+      "implementation_enabled": false,
+      "allowed_reference_fields": [
+        "analysis_id",
+        "dataset_source",
+        "method",
+        "result",
+        "limitations",
+        "visualization_ref"
+      ],
+      "academic_repo_separation_required": true
+    }
+  }
+}
