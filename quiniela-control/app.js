@@ -5,13 +5,8 @@ function setHref(id,v){const e=$(id);if(e&&v)e.href=v}
 function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function fmtSync(v){if(!v)return'—';try{return new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(v)).toUpperCase()+' CDMX'}catch{return v}}
 function weeklyTable(data){
-  const finals=(data.games||[]).filter(g=>g.winner);
-  const names=(data.participants||[]).map(p=>p.name);
-  return names.map(name=>{
-    let correct=0,wrong=0,pending=0;
-    (data.games||[]).forEach(g=>{const pick=g.picks?.[name]; if(!pick){pending++;return} if(!g.winner){pending++;return} if(pick===g.winner)correct++;else wrong++;});
-    return {name,correct,wrong,pending};
-  }).sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong||a.name.localeCompare(b.name));
+  if(Array.isArray(data.weekly_standings)) return [...data.weekly_standings].map(x=>({...x,pending:Math.max(0,(data.results?.total||0)-(data.results?.final||0))})).sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong||a.name.localeCompare(b.name));
+  return (data.participants||[]).map(p=>({name:p.name,correct:0,wrong:0,pending:data.results?.total||0}));
 }
 function renderParticipants(list=[]){
   const wrap=$('participants');wrap.replaceChildren();
