@@ -1,0 +1,15 @@
+{
+  "id": "DATA_CONTROLLER",
+  "status": "SHADOW",
+  "scope": [
+    "publication evidence",
+    "postpublication QA",
+    "analytics handoff"
+  ],
+  "publication_authority": false,
+  "invariants": [
+    "do not claim published without evidence",
+    "store platform state independently",
+    "URL/ID preferred for PASS"
+  ]
+}
