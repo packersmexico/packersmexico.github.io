@@ -15,7 +15,7 @@ export const CaptionLayer: React.FC<{cues?: CaptionCue[]}> = ({cues = []}) => {
         position: 'absolute',
         left: 88,
         right: 88,
-        bottom: 248,
+        bottom: 388,
         textAlign: 'center',
         fontFamily: 'Montserrat, sans-serif',
         fontSize: 38,
