@@ -1,0 +1,336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://packersmexico.github.io/newsroom/case-schema.json",
+  "title": "PACKERS MÉXICO · Newsroom Case",
+  "type": "object",
+  "required": [
+    "pmx_id",
+    "case_type",
+    "intake",
+    "workflow",
+    "publication"
+  ],
+  "properties": {
+    "pmx_id": {
+      "type": "string",
+      "pattern": "^PMX-[A-Z0-9-]+$"
+    },
+    "case_type": {
+      "type": "string",
+      "enum": [
+        "EDITORIAL",
+        "MANUAL",
+        "WEEKLY",
+        "SIGNAL",
+        "QUINIELA",
+        "PARTNERSHIP",
+        "VIDEO",
+        "ANALYSIS_RESERVED"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "intake": {
+      "type": "object",
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "MANUAL",
+            "RADAR",
+            "CALENDAR",
+            "FORM",
+            "SYSTEM"
+          ]
+        },
+        "requested_output": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "canonical",
+        "current_stage",
+        "gate_state"
+      ],
+      "properties": {
+        "canonical": {
+          "const": [
+            "00",
+            "01",
+            "02",
+            "03",
+            "03.5",
+            "04",
+            "05"
+          ]
+        },
+        "current_stage": {
+          "type": "string",
+          "enum": [
+            "00",
+            "01",
+            "02",
+            "03",
+            "03.5",
+            "04",
+            "05",
+            "CLOSED"
+          ]
+        },
+        "gate_state": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "GO",
+            "HOLD",
+            "IGNORE",
+            "PASS",
+            "READY_TO_COPY",
+            "READY_FOR_CLICK",
+            "PUBLISHED",
+            "CLOSED"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "assignment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cta_required": {
+          "type": "boolean"
+        },
+        "route_requirement": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "platform",
+          "path",
+          "status"
+        ],
+        "properties": {
+          "platform": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "REQUESTED",
+              "CREATED",
+              "QA_PASS",
+              "ACTIVE",
+              "HOLD",
+              "RETIRED"
+            ]
+          },
+          "destination": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "utm_source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "utm_medium": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "utm_campaign": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "utm_content": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "firewall",
+        "platforms"
+      ],
+      "properties": {
+        "firewall": {
+          "type": "string",
+          "enum": [
+            "HOLD_05",
+            "READY_FOR_CLICK",
+            "AUTHORIZED",
+            "CLOSED"
+          ]
+        },
+        "platforms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "NOT_APPLICABLE",
+                  "PENDING",
+                  "SCHEDULED",
+                  "PUBLISHING",
+                  "PUBLISHED",
+                  "MANUAL_REQUIRED",
+                  "ERROR",
+                  "USER_CONFIRMED"
+                ]
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "external_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operator": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "published_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "error": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "analysis": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Reserved for future PMX-ANA-* integration. V1 does not execute analytics.",
+      "properties": {
+        "analysis_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dataset_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "result": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limitations": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "visualization_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
