@@ -1,0 +1,22 @@
+{
+  "id": "SIGNAL_CONTROLLER",
+  "status": "SHADOW",
+  "sources": [
+    "R01",
+    "R02"
+  ],
+  "output_stage": "00",
+  "responsibilities": [
+    "detect",
+    "classify",
+    "deduplicate",
+    "attach source evidence"
+  ],
+  "forbidden": [
+    "validate as publishable fact",
+    "write final copy",
+    "publish"
+  ],
+  "case_type": "SIGNAL",
+  "publication_authority": false
+}
