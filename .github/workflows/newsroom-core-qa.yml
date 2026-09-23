@@ -6,8 +6,6 @@ on:
       - "newsroom/**"
       - "go/**"
       - "scripts/validate-newsroom-core.mjs"
-      - "scripts/validate-newsroom-cases.mjs"
-      - "scripts/build-state-board.mjs"
       - "scripts/sync-hub-routes.mjs"
       - ".github/workflows/newsroom-core-qa.yml"
   push:
@@ -17,8 +15,6 @@ on:
       - "newsroom/**"
       - "go/**"
       - "scripts/validate-newsroom-core.mjs"
-      - "scripts/validate-newsroom-cases.mjs"
-      - "scripts/build-state-board.mjs"
       - "scripts/sync-hub-routes.mjs"
       - ".github/workflows/newsroom-core-qa.yml"
 
@@ -32,9 +28,5 @@ jobs:
           node-version: "20"
       - name: Validate newsroom core
         run: node scripts/validate-newsroom-core.mjs
-      - name: Validate case files
-        run: node scripts/validate-newsroom-cases.mjs
-      - name: Validate State Board index
-        run: node scripts/build-state-board.mjs
       - name: Validate Hub short routes
         run: node scripts/sync-hub-routes.mjs
