@@ -25,7 +25,7 @@ PMX_ID:
 
 Implemented on branch:
 - canonical browser-readable weekly manifest at `js/weekly-manifest.js`
-- Week 2 snapshot at `quiniela-control/weeks/week-02.json` with `15/16 FINAL` and final-game hold
+- Week 2 snapshot at `quiniela-control/weeks/week-02.json` with `16/16 FINAL` and F05 results/standings candidate
 - Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
 - canonical Week 3 Jotform verified and wired: `https://form.jotform.com/262630890072052`; Week 2 form preserved
 - Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
@@ -43,16 +43,16 @@ Week 3 capture:
 `OPEN · 2/9 COMPLETE · 32/144 PICKS · CANONICAL FORM · SHAREABLE · CUTOFF POLICY = DIRECTION_MANUAL_CLOSE`
 
 Week 2 results:
-`15/16 FINAL · WAITING NYG @ LAR · NO PUBLICAR RESULTADOS FINALES`
+`16/16 FINAL · NYG 6–28 LAR VERIFIED · LALO/RODRI 11 CORRECT · F05 CANDIDATE READY · 05 HOLD`
 
 Wingstop Week 3:
-`ATL @ GB · JUE 24 SEP · 18:15 CDMX · INPUT READY · 05 HOLD`
+`ATL @ GB · JUE 24 SEP · 18:15 CDMX · FEED + STORY PUBLISHED · POSTPUBLICATION QA PASS`
 
 Open blocker:
 `NONE FOR PICK INTAKE · fixed cutoff remains optional/unset; Direction may close capture manually`
 
 Safe work that can continue:
-`CI validation · W2 result closeout after final game · Figma production candidates · Hub remains on existing public state until 05 gate`
+`CI validation · W2 results/standings F05 QA · W3 capture sync · Week 3 Hub/route QA · no publication bypass`
 
 ## WINGSTOP WEEK 3 PROMO · 2026-09-21
 
@@ -66,7 +66,7 @@ Creative:
 `04 PASS · FIGMA 2775:466376 · FEED 2775:466377 · STORY 2775:474577`
 
 Publication:
-`SCHEDULED TODAY · METRICOOL · AUTO-PUBLISH`
+`PUBLISHED · METRICOOL · AUTO-PUBLISH · VERIFIED`
 
 Feed:
 `IG + FB · 15:00 CDMX · Metricool 379637469`
@@ -78,7 +78,7 @@ CTA:
 `https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
 
 Status:
-`PENDING PLATFORM PUBLICATION CONFIRMATION · DO NOT CLAIM PUBLISHED UNTIL URL/ID IS VERIFIED`
+`POSTPUBLICATION QA PASS · IG/FB FEED + STORY URL/ID VERIFIED`
 
 ## CURRENT PHASE
 
