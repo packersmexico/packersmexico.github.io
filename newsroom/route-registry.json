@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "base_url": "https://packersmexico.github.io",
+  "status": "ACTIVE_REGISTRY",
+  "routes": [
+    {
+      "week": 3,
+      "platform": "x",
+      "path": "/go/w03-x/",
+      "status": "ACTIVE",
+      "utm_source": "x",
+      "utm_medium": "social",
+      "utm_campaign": "wingstop_2026_w03_falcons",
+      "utm_content": "pinned_invite"
+    },
+    {
+      "week": 3,
+      "platform": "instagram",
+      "path": "/go/w03-ig/",
+      "status": "ACTIVE",
+      "utm_source": "instagram",
+      "utm_medium": "story",
+      "utm_campaign": "wingstop_2026_w03_falcons",
+      "utm_content": "invite"
+    },
+    {
+      "week": 3,
+      "platform": "facebook",
+      "path": "/go/w03-fb/",
+      "status": "ACTIVE",
+      "utm_source": "facebook",
+      "utm_medium": "social",
+      "utm_campaign": "wingstop_2026_w03_falcons",
+      "utm_content": "invite"
+    },
+    {
+      "week": 3,
+      "platform": "tiktok",
+      "path": "/go/w03-tt/",
+      "status": "ACTIVE",
+      "utm_source": "tiktok",
+      "utm_medium": "social",
+      "utm_campaign": "wingstop_2026_w03_falcons",
+      "utm_content": "invite"
+    },
+    {
+      "week": 3,
+      "platform": "whatsapp",
+      "path": "/go/w03-wa/",
+      "status": "ACTIVE",
+      "utm_source": "whatsapp",
+      "utm_medium": "community",
+      "utm_campaign": "wingstop_2026_w03_falcons",
+      "utm_content": "invite"
+    }
+  ],
+  "rules": {
+    "03_declares_requirement": true,
+    "router_creates_or_updates": true,
+    "05_verifies_before_click": true,
+    "route_does_not_authorize_publication": true,
+    "destination_must_resolve_to_pmx_controlled_surface": true
+  }
+}
