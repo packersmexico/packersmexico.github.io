@@ -2,7 +2,7 @@ import fs from "node:fs";
 
 const readJSON = (path) => JSON.parse(fs.readFileSync(new URL("../" + path, import.meta.url), "utf8"));
 const config = readJSON("newsroom/orchestrator-config.json");
-const board = readJSON("newsroom/state-board.json");
+const storage = readJSON("newsroom/state-storage-contract.json");
 const routes = readJSON("newsroom/route-registry.json");
 const schema = readJSON("newsroom/case-schema.json");
 
@@ -21,8 +21,9 @@ assert(config.controllers.DATA_CONTROLLER.may_publish === false, "data controlle
 assert(config.future_integration.sports_analytics.namespace === "PMX-ANA-*", "PMX-ANA namespace reservation missing");
 assert(config.future_integration.sports_analytics.implementation_enabled === false, "sports analytics implementation must remain disabled");
 assert(config.future_integration.sports_analytics.academic_repo_separation_required === true, "academic/product repo separation must remain required");
-assert(board.mode === "SHADOW", "state board must start in SHADOW");
-assert(board.publication_firewall === "HOLD_05", "state board publication firewall must start HOLD_05");
+assert(storage.mode === "SHADOW", "state storage must start in SHADOW");
+assert(storage.state_store.classification === "PRIVATE_OPERATIONAL", "live state must remain private operational");
+assert(storage.state_store.public_repo_must_not_store_live_cases === true, "public repo must not store live cases");
 
 const requiredPlatforms = ["x","instagram","facebook","tiktok","whatsapp"];
 for (const platform of requiredPlatforms) {
@@ -38,8 +39,7 @@ for (const platform of requiredPlatforms) {
 assert(schema.properties && schema.properties.analysis, "future analysis reference object missing from case schema");
 assert(schema.properties && schema.properties.evidence, "case evidence contract missing");
 assert(schema.properties && schema.properties.controller, "case controller contract missing");
-assert(board.generated_from === "newsroom/cases/*.json", "state board must be generated from individual case files");
-assert(board.cases.length >= 2, "verified current cases were not seeded");
+assert(storage.repository_separation.live_state === "PRIVATE_DRIVE", "live state must remain in private Drive");
 
 if (errors.length) {
   console.error("NEWSROOM CORE QA · HOLD");
@@ -48,7 +48,7 @@ if (errors.length) {
 }
 
 console.log("NEWSROOM CORE QA · PASS");
-console.log("Mode:", board.mode);
+console.log("Mode:", storage.mode);
 console.log("Workflow:", config.workflow.join(" → "));
 console.log("Controllers:", Object.keys(config.controllers).join(", "));
 console.log("Hub routes W3:", routes.routes.length);
