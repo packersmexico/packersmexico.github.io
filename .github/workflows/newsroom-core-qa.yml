@@ -1,0 +1,26 @@
+name: Newsroom Core QA
+
+on:
+  pull_request:
+    paths:
+      - "newsroom/**"
+      - "scripts/validate-newsroom-core.mjs"
+      - ".github/workflows/newsroom-core-qa.yml"
+  push:
+    branches:
+      - "automation/newsroom-orchestrator-v1"
+    paths:
+      - "newsroom/**"
+      - "scripts/validate-newsroom-core.mjs"
+      - ".github/workflows/newsroom-core-qa.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate newsroom core
+        run: node scripts/validate-newsroom-core.mjs
