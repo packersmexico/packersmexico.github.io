@@ -1,0 +1,48 @@
+{
+  "template_version": "1.0",
+  "instruction": "Duplicate conceptually for a new case; do not publish this template.",
+  "pmx_id": "PMX-YYYYMMDD-SLUG-001",
+  "case_type": "MANUAL",
+  "controller": null,
+  "title": "",
+  "created_at": null,
+  "updated_at": null,
+  "intake": {
+    "mode": "MANUAL",
+    "requested_output": null,
+    "source_ref": null
+  },
+  "workflow": {
+    "canonical": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "03.5",
+      "04",
+      "05"
+    ],
+    "current_stage": "00",
+    "gate_state": "OPEN",
+    "history": []
+  },
+  "assignment": {
+    "platforms": [],
+    "format": null,
+    "cta_required": false,
+    "route_requirement": null
+  },
+  "routes": [],
+  "controller_state": null,
+  "publication": {
+    "firewall": "HOLD_05",
+    "platforms": {},
+    "postpublication_qa": "NOT_APPLICABLE"
+  },
+  "source_of_truth": [],
+  "evidence": {
+    "status": "NONE",
+    "items": []
+  },
+  "analysis": null
+}
