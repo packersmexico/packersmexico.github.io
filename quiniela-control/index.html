@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#081D13">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="Panel operativo de Quiniela de PACKERS MÉXICO para Rodrigo.">
-  <title>PACKERS MÉXICO · Rodrigo · Quiniela</title>
+  <meta name="description" content="Centro de control operativo de Quiniela de PACKERS MÉXICO para Rodrigo.">
+  <title>PACKERS MÉXICO · Rodrigo · Quiniela Control</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,98 +16,71 @@
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
   <header class="site-header">
-    <a href="../" aria-label="PACKERS MÉXICO · Hub">
-      <img class="brand-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
-    </a>
-    <p class="header-label">RODRIGO · QUINIELA</p>
+    <a href="../" aria-label="PACKERS MÉXICO · Hub"><img class="brand-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO"></a>
+    <p class="header-label">RODRIGO · QUINIELA CONTROL</p>
   </header>
 
   <main id="contenido" class="shell">
     <section class="hero" aria-labelledby="title">
-      <p class="eyebrow" id="week-label">WEEK 2 · 2026</p>
+      <p class="eyebrow" id="week-label">SEMANA ACTIVA</p>
       <h1 id="title">QUINIELA<br>CONTROL</h1>
       <div class="hero-status">
-        <span class="big-number" id="capture-count">0/9</span>
-        <span class="big-copy">RESPUESTAS BASE</span>
+        <span class="big-number" id="capture-count">—</span>
+        <span class="big-copy">RESPUESTAS RECIBIDAS</span>
       </div>
-      <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0">
-        <span id="progress-bar" style="width:0"></span>
-      </div>
-      <div class="meta-line">
-        <span id="window-status">CAPTURA ABIERTA</span>
-        <span id="deadline">CIERRE · 16 SEP · 12:00 CDMX</span>
+      <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><span id="progress-bar" style="width:0"></span></div>
+      <div class="meta-line"><span id="window-status">—</span><span id="deadline">—</span></div>
+      <div class="quick-actions hero-actions">
+        <a class="action-link" id="stable-capture" href="./captura/" rel="noopener">ABRIR / COMPARTIR FORMULARIO →</a>
+        <a class="action-link secondary-action" id="direct-form" href="#" rel="noopener">FORMULARIO DIRECTO →</a>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="w1-heading">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">WEEK 1 · CERRADA</p>
-          <h2 id="w1-heading">EMPATE EN LA CIMA</h2>
-        </div>
-        <p class="section-stat" id="w1-final">16/16 FINAL</p>
-      </div>
-      <p class="result-score"><strong id="w1-score">11/16</strong> · EL DOC · ALEX · JENNI · RODRI</p>
+    <section class="section" aria-labelledby="capture-heading">
+      <div class="section-head"><div><p class="eyebrow">CAPTURA EN VIVO</p><h2 id="capture-heading">QUIÉN YA ENVIÓ</h2></div><p class="section-stat"><span id="missing-count">—</span> FALTAN</p></div>
+      <div class="participants" id="participants" aria-label="Estado de participantes"></div>
+      <p class="production-rule" id="capture-rule">Actualización automática del feed operativo.</p>
+    </section>
+
+    <section class="section" aria-labelledby="results-heading">
+      <div class="section-head"><div><p class="eyebrow">RESULTADOS</p><h2 id="results-heading">MONITOR DE JUEGOS</h2></div><p class="section-stat"><span id="final-count">0</span>/<span id="game-count">—</span> FINAL</p></div>
+      <div class="result-grid" id="games"></div>
       <div class="quick-actions">
-        <a class="action-link" id="w1-results-folder" href="#" rel="noopener">VER / DESCARGAR RESULTADOS W1 →</a>
-        <a class="action-link secondary-action" id="w1-summary" href="#" rel="noopener">VER / DESCARGAR SUMMARY W1 →</a>
-        <a class="action-link secondary-action" id="w1-public-picks" href="#" rel="noopener">VER PICKS PUBLICADOS →</a>
+        <a class="action-link" href="./exports/live.html#detail" rel="noopener">TODOS LOS PICKS + ✓/× →</a>
+        <a class="action-link secondary-action" href="./exports/live.html#weekly" rel="noopener">RESULTADOS / RANKING SEMANAL →</a>
+        <a class="action-link secondary-action" href="./exports/live.html#season" rel="noopener">RANKING GENERAL →</a>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="w2-heading">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">WEEK 2 · CAPTURA</p>
-          <h2 id="w2-heading">COMPARTIR FORMULARIO</h2>
-        </div>
-        <p class="section-stat"><span id="missing-count">9</span> FALTAN</p>
-      </div>
-      <p class="production-rule">9 integrantes base · INVITADO opcional · 16 juegos. El SUMMARY W2 se habilita después del cierre 9/9.</p>
-      <div class="participants" id="w2-participants" aria-label="Estado de participantes de Week 2"></div>
-      <div class="quick-actions">
-        <a class="action-link" id="stable-capture" href="./captura/" rel="noopener">ABRIR / COMPARTIR CAPTURA →</a>
-        <a class="action-link secondary-action" id="direct-form" href="#" rel="noopener">ABRIR FORMULARIO DIRECTO →</a>
-      </div>
+    <section class="section" aria-labelledby="ranking-heading">
+      <div class="section-head"><div><p class="eyebrow">TABLA EN VIVO</p><h2 id="ranking-heading">RANKING DE LA SEMANA</h2></div><p class="section-stat" id="ranking-status">PENDING</p></div>
+      <div class="live-ranking" id="weekly-ranking"></div>
     </section>
 
-    <section class="section" aria-labelledby="x-heading">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">OPERACIÓN X</p>
-          <h2 id="x-heading">REVISAR · DESCARGAR PNG · PUBLICAR</h2>
-        </div>
-        <p class="section-stat" id="x-status">PNG LISTOS</p>
-      </div>
-      <div class="operator-steps" aria-label="Flujo de Rodrigo para X">
-        <div><span>01</span><strong>REVISAR IMAGEN</strong></div>
-        <div><span>02</span><strong>DESCARGAR PNG</strong></div>
-        <div><span>03</span><strong>PUBLICAR EN X</strong></div>
+    <section class="section" aria-labelledby="ops-heading">
+      <div class="section-head"><div><p class="eyebrow">OPERACIÓN RODRIGO</p><h2 id="ops-heading">CONTROL DESDE AQUÍ</h2></div><p class="section-stat" id="gate-status">HOLD</p></div>
+      <div class="operator-steps">
+        <div><span>01</span><strong>MONITOREAR CAPTURA</strong></div>
+        <div><span>02</span><strong>REVISAR RESULTADOS</strong></div>
+        <div><span>03</span><strong>DESCARGAR ASSETS</strong></div>
+        <div><span>04</span><strong>PUBLICAR CON PASS</strong></div>
       </div>
       <div class="quick-actions">
-        <a class="action-link" id="x-folder" href="#" rel="noopener">RESULTADOS W1 · PNG →</a>
-        <a class="action-link secondary-action" id="x-summary" href="#" rel="noopener">SUMMARY W1 · PNG →</a>
-        <a class="action-link secondary-action" id="asset-library" href="#" rel="noopener">BIBLIOTECA DE SEMANAS →</a>
+        <a class="action-link" id="data-system" href="#" rel="noopener">ABRIR DATA SYSTEM →</a>
+        <a class="action-link secondary-action" href="./exports/live.html" rel="noopener">ABRIR ASSETS AUTOMÁTICOS →</a>
+        <a class="action-link secondary-action" href="./exports/" rel="noopener">ARCHIVO DE SEMANAS →</a>
       </div>
-      <p class="production-rule">Rodrigo no necesita abrir Figma. Esta biblioteca concentra los PNG de resultados y los SUMMARY semanales listos para X.</p>
+      <p class="production-rule">El panel es operativo. Identidad, masters y reglas permanecen protegidos. Publicación únicamente con READY FOR CLICK / PASS.</p>
     </section>
 
-    <section class="ops-strip" aria-label="Accesos rápidos">
-      <div>
-        <span class="ops-label">ÚLTIMA SINCRONIZACIÓN</span>
-        <strong id="last-sync">—</strong>
-      </div>
+    <section class="ops-strip" aria-label="Estado de sincronización">
+      <div><span class="ops-label">ÚLTIMA SINCRONIZACIÓN</span><strong id="last-sync">—</strong></div>
+      <div><span class="ops-label">MODO</span><strong id="sync-mode">—</strong></div>
       <a class="action-link" href="../" rel="noopener">VOLVER AL HUB →</a>
     </section>
-
-    <p class="privacy-note">Panel operativo. No modificar identidad, masters ni resultados desde aquí.</p>
+    <p class="privacy-note">Panel operativo · PACKERS MÉXICO. Proyecto independiente; no afiliado oficialmente con NFL/Green Bay Packers.</p>
   </main>
-
-  <footer class="site-footer">
-    <p>PACKERS MÉXICO</p>
-    <p class="independence">Proyecto independiente · no afiliado oficialmente con NFL/Green Bay Packers.</p>
-  </footer>
+  <footer class="site-footer"><p>PACKERS MÉXICO</p><p class="independence">Sistema Lambeau · operación reproducible.</p></footer>
 </body>
 </html>
