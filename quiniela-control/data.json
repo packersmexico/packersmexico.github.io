@@ -71,13 +71,7 @@
       "time": "JUE 24 SEP · 18:15 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "GB",
-        "LUIS C.": "GB",
-        "DR PALMA": "GB",
-        "IBRACHO": "GB"
-      }
+      "score": null
     },
     {
       "id": "G02",
@@ -85,13 +79,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "BUF",
-        "LUIS C.": "BUF",
-        "DR PALMA": "BUF",
-        "IBRACHO": "BUF"
-      }
+      "score": null
     },
     {
       "id": "G03",
@@ -99,13 +87,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "CLE",
-        "LUIS C.": "CLE",
-        "DR PALMA": "CLE",
-        "IBRACHO": "CAR"
-      }
+      "score": null
     },
     {
       "id": "G04",
@@ -113,13 +95,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "DET",
-        "LUIS C.": "DET",
-        "DR PALMA": "DET",
-        "IBRACHO": "DET"
-      }
+      "score": null
     },
     {
       "id": "G05",
@@ -127,13 +103,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "IND",
-        "LUIS C.": "IND",
-        "DR PALMA": "HOU",
-        "IBRACHO": "IND"
-      }
+      "score": null
     },
     {
       "id": "G06",
@@ -141,13 +111,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "JAX",
-        "LUIS C.": "JAX",
-        "DR PALMA": "JAX",
-        "IBRACHO": "JAX"
-      }
+      "score": null
     },
     {
       "id": "G07",
@@ -155,13 +119,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "MIA",
-        "LUIS C.": "KC",
-        "DR PALMA": "KC",
-        "IBRACHO": "KC"
-      }
+      "score": null
     },
     {
       "id": "G08",
@@ -169,13 +127,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "TEN",
-        "LUIS C.": "TEN",
-        "DR PALMA": "TEN",
-        "IBRACHO": "NYG"
-      }
+      "score": null
     },
     {
       "id": "G09",
@@ -183,13 +135,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "PIT",
-        "LUIS C.": "CIN",
-        "DR PALMA": "PIT",
-        "IBRACHO": "CIN"
-      }
+      "score": null
     },
     {
       "id": "G10",
@@ -197,13 +143,7 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "SEA",
-        "LUIS C.": "SEA",
-        "DR PALMA": "SEA",
-        "IBRACHO": "SEA"
-      }
+      "score": null
     },
     {
       "id": "G11",
@@ -211,13 +151,7 @@
       "time": "DOM 27 SEP · 14:05 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "SF",
-        "LUIS C.": "SF",
-        "DR PALMA": "ARI",
-        "IBRACHO": "SF"
-      }
+      "score": null
     },
     {
       "id": "G12",
@@ -225,13 +159,7 @@
       "time": "DOM 27 SEP · 14:05 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "TB",
-        "LUIS C.": "TB",
-        "DR PALMA": "MIN",
-        "IBRACHO": "MIN"
-      }
+      "score": null
     },
     {
       "id": "G13",
@@ -239,13 +167,7 @@
       "time": "DOM 27 SEP · 14:25 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "NO",
-        "LUIS C.": "NO",
-        "DR PALMA": "NO",
-        "IBRACHO": "LV"
-      }
+      "score": null
     },
     {
       "id": "G14",
@@ -253,13 +175,7 @@
       "time": "DOM 27 SEP · 14:25 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "DAL",
-        "LUIS C.": "BAL",
-        "DR PALMA": "BAL",
-        "IBRACHO": "BAL"
-      }
+      "score": null
     },
     {
       "id": "G15",
@@ -267,13 +183,7 @@
       "time": "DOM 27 SEP · 18:20 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "LAR",
-        "LUIS C.": "LAR",
-        "DR PALMA": "LAR",
-        "IBRACHO": "LAR"
-      }
+      "score": null
     },
     {
       "id": "G16",
@@ -281,13 +191,7 @@
       "time": "LUN 28 SEP · 18:15 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null,
-      "picks": {
-        "LALO": "PHI",
-        "LUIS C.": "PHI",
-        "DR PALMA": "PHI",
-        "IBRACHO": "PHI"
-      }
+      "score": null
     }
   ],
   "results": {
@@ -295,7 +199,54 @@
     "total": 16,
     "status": "PENDING"
   },
-  "season_base_after_week2": [
+  "weekly_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "ARI",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "LALO",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "ALEX",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "JENNI",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "RODRI",
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 0,
+      "wrong": 0
+    }
+  ],
+  "season_standings": [
     {
       "name": "RODRI",
       "correct": 22,
@@ -342,6 +293,7 @@
       "wrong": 15
     }
   ],
+  "public_picks_authorized": false,
   "publication": {
     "gate": "HOLD",
     "operator": "RODRIGO",
