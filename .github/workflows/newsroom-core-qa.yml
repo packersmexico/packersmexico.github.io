@@ -4,14 +4,18 @@ on:
   pull_request:
     paths:
       - "newsroom/**"
+      - "go/**"
       - "scripts/validate-newsroom-core.mjs"
+      - "scripts/sync-hub-routes.mjs"
       - ".github/workflows/newsroom-core-qa.yml"
   push:
     branches:
       - "automation/newsroom-orchestrator-v1"
     paths:
       - "newsroom/**"
+      - "go/**"
       - "scripts/validate-newsroom-core.mjs"
+      - "scripts/sync-hub-routes.mjs"
       - ".github/workflows/newsroom-core-qa.yml"
 
 jobs:
@@ -24,3 +28,5 @@ jobs:
           node-version: "20"
       - name: Validate newsroom core
         run: node scripts/validate-newsroom-core.mjs
+      - name: Validate Hub short routes
+        run: node scripts/sync-hub-routes.mjs
