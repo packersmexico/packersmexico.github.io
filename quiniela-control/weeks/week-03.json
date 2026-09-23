@@ -55,27 +55,29 @@
   ],
   "results": {
     "final": 0,
-    "total": 16
+    "total": 16,
+    "status": "PENDING"
   },
+  "public_picks_authorized": false,
   "production": {
     "package_status": "AUTO ASSETS · LIVE",
     "outputs": [
       {
         "id": "W3-LIVE-BOARD",
         "label": "TODOS LOS PICKS + ACIERTOS/ERRORES",
-        "status": "LIVE",
+        "status": "GATED UNTIL PUBLIC PICKS AUTHORIZATION",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#detail"
       },
       {
         "id": "W3-LIVE-RANKING",
         "label": "RESULTADOS / RANKING SEMANAL",
-        "status": "LIVE",
+        "status": "AUTO",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#weekly"
       },
       {
         "id": "W3-SEASON",
         "label": "RANKING GENERAL",
-        "status": "LIVE",
+        "status": "AUTO",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#season"
       }
     ]
