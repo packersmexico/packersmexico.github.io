@@ -1,0 +1,23 @@
+name: Quiniela Control QA
+on:
+  pull_request:
+    paths:
+      - 'quiniela-control/**'
+  workflow_dispatch:
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: JavaScript syntax
+        run: |
+          node --check quiniela-control/app.js
+          node --check quiniela-control/exports/live.js
+      - name: JSON validity
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));"
+      - name: Required files
+        run: |
+          test -f quiniela-control/index.html
+          test -f quiniela-control/exports/live.html
+          test -f assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg

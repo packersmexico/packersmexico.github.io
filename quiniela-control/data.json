@@ -1,28 +1,39 @@
 {
-  "pmx_id": "PMX-QUINIELA-W2-001",
+  "pmx_id": "PMX-QUINIELA-W3-001",
   "season": "2026",
-  "week": "WEEK 2",
-  "last_sync": "2026-09-21T06:32:16.087Z",
+  "week": "WEEK 3",
+  "week_number": 3,
+  "last_sync": "2026-09-23T07:12:00-06:00",
+  "sync_mode": "AUTOMATED_HOURLY",
+  "operator": {
+    "name": "RODRIGO",
+    "role": "DATA OWNER + PUBLISHING OPERATOR",
+    "data_system_url": "https://docs.google.com/spreadsheets/d/1AZO7WliW2GbCFPfOh7Gcq0guHbjl6VmAFBECxRvPOhU/edit",
+    "assets_url": "https://packersmexico.github.io/quiniela-control/exports/live.html",
+    "control_url": "https://packersmexico.github.io/quiniela-control/"
+  },
   "capture": {
-    "complete": 9,
+    "form_id": "262630890072052",
+    "form_url": "https://form.jotform.com/262630890072052",
+    "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
+    "complete": 4,
     "total": 9,
-    "window": "CLOSED",
-    "deadline_label": "16 SEP · 12:00 CDMX",
+    "window": "OPEN",
+    "deadline": "2026-09-23T12:00:00-06:00",
+    "deadline_label": "23 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 144,
-    "missing_picks": 0,
-    "invitado": "OPTIONAL",
-    "form_url": "https://form.jotform.com/262568478012058",
-    "stable_url": "https://packersmexico.github.io/quiniela-control/captura/"
+    "received_picks": 64,
+    "missing_picks": 80,
+    "invitado": "OFF"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "ARI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "LALO",
@@ -30,7 +41,7 @@
     },
     {
       "name": "ALEX",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "LUIS C.",
@@ -42,99 +53,299 @@
     },
     {
       "name": "JENNI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "RODRI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "IBRACHO",
       "status": "COMPLETE"
     }
   ],
-  "week1_closeout": {
-    "status": "CLOSED",
-    "results": "16/16 FINAL",
-    "headline": "EMPATE EN LA CIMA",
-    "leaders": [
-      "EL DOC",
-      "ALEX",
-      "JENNI",
-      "RODRI"
-    ],
-    "leader_score": "11/16",
-    "standings": [
-      {
-        "name": "EL DOC",
-        "correct": 11,
-        "rank": 1
-      },
-      {
-        "name": "ALEX",
-        "correct": 11,
-        "rank": 1
-      },
-      {
-        "name": "JENNI",
-        "correct": 11,
-        "rank": 1
-      },
-      {
-        "name": "RODRI",
-        "correct": 11,
-        "rank": 1
-      },
-      {
-        "name": "LALO",
-        "correct": 10,
-        "rank": 5
-      },
-      {
-        "name": "LUIS C.",
-        "correct": 10,
-        "rank": 5
-      },
-      {
-        "name": "DR PALMA",
-        "correct": 10,
-        "rank": 5
-      },
-      {
-        "name": "IBRACHO",
-        "correct": 10,
-        "rank": 5
-      },
-      {
-        "name": "ARI",
-        "correct": 8,
-        "rank": 9
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "ATL @ GB",
+      "time": "JUE 24 SEP · 18:15 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "GB",
+        "LUIS C.": "GB",
+        "DR PALMA": "GB",
+        "IBRACHO": "GB"
       }
-    ],
-    "last_game": {
-      "matchup": "DEN @ KC",
-      "status": "FINAL",
-      "winner": "KC",
-      "score": "DEN 10 · KC 31"
     },
-    "results_sheet_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#results",
-    "summary_x_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
-    "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
-    "results_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
-    "public_picks_url": "https://packersmexico.github.io/quiniela/w01/"
+    {
+      "id": "G02",
+      "matchup": "LAC @ BUF",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "BUF",
+        "LUIS C.": "BUF",
+        "DR PALMA": "BUF",
+        "IBRACHO": "BUF"
+      }
+    },
+    {
+      "id": "G03",
+      "matchup": "CAR @ CLE",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "CLE",
+        "LUIS C.": "CLE",
+        "DR PALMA": "CLE",
+        "IBRACHO": "CAR"
+      }
+    },
+    {
+      "id": "G04",
+      "matchup": "NYJ @ DET",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "DET",
+        "LUIS C.": "DET",
+        "DR PALMA": "DET",
+        "IBRACHO": "DET"
+      }
+    },
+    {
+      "id": "G05",
+      "matchup": "HOU @ IND",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "IND",
+        "LUIS C.": "IND",
+        "DR PALMA": "HOU",
+        "IBRACHO": "IND"
+      }
+    },
+    {
+      "id": "G06",
+      "matchup": "NE @ JAX",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "JAX",
+        "LUIS C.": "JAX",
+        "DR PALMA": "JAX",
+        "IBRACHO": "JAX"
+      }
+    },
+    {
+      "id": "G07",
+      "matchup": "KC @ MIA",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "MIA",
+        "LUIS C.": "KC",
+        "DR PALMA": "KC",
+        "IBRACHO": "KC"
+      }
+    },
+    {
+      "id": "G08",
+      "matchup": "TEN @ NYG",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "TEN",
+        "LUIS C.": "TEN",
+        "DR PALMA": "TEN",
+        "IBRACHO": "NYG"
+      }
+    },
+    {
+      "id": "G09",
+      "matchup": "CIN @ PIT",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "PIT",
+        "LUIS C.": "CIN",
+        "DR PALMA": "PIT",
+        "IBRACHO": "CIN"
+      }
+    },
+    {
+      "id": "G10",
+      "matchup": "SEA @ WAS",
+      "time": "DOM 27 SEP · 11:00 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "SEA",
+        "LUIS C.": "SEA",
+        "DR PALMA": "SEA",
+        "IBRACHO": "SEA"
+      }
+    },
+    {
+      "id": "G11",
+      "matchup": "ARI @ SF",
+      "time": "DOM 27 SEP · 14:05 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "SF",
+        "LUIS C.": "SF",
+        "DR PALMA": "ARI",
+        "IBRACHO": "SF"
+      }
+    },
+    {
+      "id": "G12",
+      "matchup": "MIN @ TB",
+      "time": "DOM 27 SEP · 14:05 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "TB",
+        "LUIS C.": "TB",
+        "DR PALMA": "MIN",
+        "IBRACHO": "MIN"
+      }
+    },
+    {
+      "id": "G13",
+      "matchup": "LV @ NO",
+      "time": "DOM 27 SEP · 14:25 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "NO",
+        "LUIS C.": "NO",
+        "DR PALMA": "NO",
+        "IBRACHO": "LV"
+      }
+    },
+    {
+      "id": "G14",
+      "matchup": "BAL @ DAL",
+      "time": "DOM 27 SEP · 14:25 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "DAL",
+        "LUIS C.": "BAL",
+        "DR PALMA": "BAL",
+        "IBRACHO": "BAL"
+      }
+    },
+    {
+      "id": "G15",
+      "matchup": "LAR @ DEN",
+      "time": "DOM 27 SEP · 18:20 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "LAR",
+        "LUIS C.": "LAR",
+        "DR PALMA": "LAR",
+        "IBRACHO": "LAR"
+      }
+    },
+    {
+      "id": "G16",
+      "matchup": "PHI @ CHI",
+      "time": "LUN 28 SEP · 18:15 CDMX",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null,
+      "picks": {
+        "LALO": "PHI",
+        "LUIS C.": "PHI",
+        "DR PALMA": "PHI",
+        "IBRACHO": "PHI"
+      }
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 16,
+    "status": "PENDING"
   },
-  "operator": {
-    "name": "RODRIGO",
-    "role": "DATA OWNER + X OPERATOR",
-    "x_asset_status": "READY",
-    "x_asset_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#results",
-    "x_summary_url": "https://packersmexico.github.io/quiniela-control/exports/week-01.html#summary",
-    "asset_library_url": "https://packersmexico.github.io/quiniela-control/exports/",
-    "x_asset_folder": "https://drive.google.com/drive/folders/1MAdG0dPqO3P4K2KDPFtgVt3Fmzrblg6I",
-    "instructions": [
-      "REVISAR IMAGEN",
-      "DESCARGAR PNG",
-      "PUBLICAR EN X"
-    ]
+  "season_base_after_week2": [
+    {
+      "name": "RODRI",
+      "correct": 22,
+      "wrong": 10
+    },
+    {
+      "name": "ALEX",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "EL DOC",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "LALO",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "JENNI",
+      "correct": 20,
+      "wrong": 12
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 20,
+      "wrong": 12
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 19,
+      "wrong": 13
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 19,
+      "wrong": 13
+    },
+    {
+      "name": "ARI",
+      "correct": 17,
+      "wrong": 15
+    }
+  ],
+  "publication": {
+    "gate": "HOLD",
+    "operator": "RODRIGO",
+    "published": false,
+    "urls": []
   }
 }

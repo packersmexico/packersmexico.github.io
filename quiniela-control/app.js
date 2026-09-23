@@ -1,110 +1,42 @@
-const DATA_URL = './data.json';
-const CAPTURE_URL = './capture-config.json';
-const REFRESH_MS = 60000;
-
-function setText(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = value;
+const DATA_URL='./data.json'; const REFRESH_MS=60000;
+const $=id=>document.getElementById(id);
+function setText(id,v){const e=$(id);if(e)e.textContent=v}
+function setHref(id,v){const e=$(id);if(e&&v)e.href=v}
+function esc(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function fmtSync(v){if(!v)return'—';try{return new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(v)).toUpperCase()+' CDMX'}catch{return v}}
+function weeklyTable(data){
+  const finals=(data.games||[]).filter(g=>g.winner);
+  const names=(data.participants||[]).map(p=>p.name);
+  return names.map(name=>{
+    let correct=0,wrong=0,pending=0;
+    (data.games||[]).forEach(g=>{const pick=g.picks?.[name]; if(!pick){pending++;return} if(!g.winner){pending++;return} if(pick===g.winner)correct++;else wrong++;});
+    return {name,correct,wrong,pending};
+  }).sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong||a.name.localeCompare(b.name));
 }
-
-function setHref(id, value) {
-  const el = document.getElementById(id);
-  if (el && value) el.href = value;
+function renderParticipants(list=[]){
+  const wrap=$('participants');wrap.replaceChildren();
+  list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase()==='COMPLETE';row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
 }
-
-function formatSync(value) {
-  if (!value) return '—';
-  try {
-    const d = new Date(value);
-    return new Intl.DateTimeFormat('es-MX', {
-      timeZone: 'America/Mexico_City',
-      day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
-    }).format(d).toUpperCase() + ' CDMX';
-  } catch { return value; }
+function renderGames(games=[]){
+  const wrap=$('games');wrap.replaceChildren();
+  games.forEach(g=>{const row=document.createElement('div');row.className='result-row '+(g.winner?'final':'scheduled');row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state">'+(g.winner?'<b>GANÓ '+esc(g.winner)+'</b><span>'+esc(g.score||'FINAL')+'</span>':'<b>PENDIENTE</b><span>'+esc(g.status||'SCHEDULED')+'</span>')+'</div>';wrap.append(row)});
 }
-
-function renderParticipants(participants = []) {
-  const wrap = document.getElementById('w2-participants');
-  if (!wrap) return;
-
-  wrap.replaceChildren();
-
-  participants.forEach((participant) => {
-    const status = String(participant.status || 'PENDING').toUpperCase();
-    const complete = status === 'COMPLETE';
-    const row = document.createElement('div');
-    row.className = `participant ${complete ? 'complete' : 'pending'}`;
-
-    const name = document.createElement('span');
-    name.className = 'participant-name';
-    name.textContent = participant.name || '—';
-
-    const state = document.createElement('span');
-    state.className = 'participant-status';
-    state.textContent = complete ? 'COMPLETADO' : 'FALTA';
-
-    row.append(name, state);
-    wrap.append(row);
-  });
+function renderRanking(data){
+  const rows=weeklyTable(data); const wrap=$('weekly-ranking'); wrap.replaceChildren();
+  const anyFinal=(data.results?.final||0)>0;
+  rows.forEach((r,i)=>{const el=document.createElement('div');el.className='rank-row';el.innerHTML='<span class="rank-pos">'+(i+1)+'</span><strong>'+esc(r.name)+'</strong><span>'+r.correct+' ✓</span><span>'+r.wrong+' ×</span>';wrap.append(el)});
+  setText('ranking-status',anyFinal?((data.results.final===data.results.total)?'FINAL':'EN VIVO'):'PENDING');
 }
-
-function render(data, captureConfig) {
-  const capture = data.capture || {};
-  const w1 = data.week1_closeout || {};
-  const operator = data.operator || {};
-  const participants = Array.isArray(data.participants) ? data.participants : [];
-  const complete = Number(capture.complete || 0);
-  const total = Number(capture.total || 9);
-  const pct = Math.max(0, Math.min(100, total ? (complete / total) * 100 : 0));
-
-  setText('week-label', `${data.week || captureConfig.week || 'WEEK 2'} · ${data.season || captureConfig.season || '2026'}`);
-  setText('capture-count', `${complete}/${total}`);
-  setText('missing-count', String(Math.max(0, total - complete)));
-  setText('window-status', String(capture.window || captureConfig.status || 'OPEN').toUpperCase() === 'OPEN' ? 'CAPTURA ABIERTA' : 'CAPTURA CERRADA');
-  setText('deadline', `CIERRE · ${capture.deadline_label || '16 SEP · 12:00 CDMX'}`);
-  setText('last-sync', formatSync(data.last_sync || captureConfig.last_sync));
-
-  const progress = document.getElementById('progress-bar');
-  const progressWrap = document.querySelector('.progress');
-  if (progress) progress.style.width = `${pct}%`;
-  if (progressWrap) {
-    progressWrap.setAttribute('aria-valuenow', String(complete));
-    progressWrap.setAttribute('aria-valuemax', String(total));
-  }
-
-  renderParticipants(participants);
-
-  setText('w1-final', w1.results || '16/16 FINAL');
-  setText('w1-score', w1.leader_score || '11/16');
-  setHref('w1-results-folder', w1.results_sheet_url || w1.results_folder);
-  setHref('w1-summary', w1.summary_x_url);
-  setHref('w1-public-picks', w1.public_picks_url);
-
-  setHref('stable-capture', capture.stable_url || captureConfig.stable_url || './captura/');
-  setHref('direct-form', capture.form_url || captureConfig.form_url);
-
-  const xState = String(operator.x_asset_status || 'WAITING_FIGMA').toUpperCase();
-  setText('x-status', xState === 'READY' ? 'PNG LISTOS' : 'ASSETS PENDIENTES');
-  setHref('x-folder', operator.x_asset_url || w1.results_sheet_url);
-  setHref('x-summary', operator.x_summary_url || w1.summary_x_url);
-  setHref('asset-library', operator.asset_library_url || w1.asset_library_url);
+function render(data){
+ const c=data.capture||{}, total=Number(c.total||9), complete=Number(c.complete||0), pct=total?Math.round(complete/total*100):0;
+ setText('week-label',data.week+' · '+data.season);setText('capture-count',complete+'/'+total);setText('missing-count',Math.max(0,total-complete));
+ setText('window-status',String(c.window).toUpperCase()==='OPEN'?'CAPTURA ABIERTA':'CAPTURA CERRADA');setText('deadline','CIERRE · '+(c.deadline_label||'—'));
+ setText('final-count',data.results?.final??0);setText('game-count',data.results?.total??(data.games||[]).length);
+ setText('gate-status',data.publication?.gate||'HOLD');setText('last-sync',fmtSync(data.last_sync));setText('sync-mode',(data.sync_mode||'MANUAL').replaceAll('_',' '));
+ setHref('stable-capture',c.stable_url);setHref('direct-form',c.form_url);setHref('data-system',data.operator?.data_system_url);
+ const p=$('progress-bar');if(p)p.style.width=pct+'%';const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total))}
+ renderParticipants(data.participants||[]);renderGames(data.games||[]);renderRanking(data);
+ setText('capture-rule',(c.received_picks||0)+'/'+(c.expected_picks||0)+' picks registrados · '+(c.missing_picks||0)+' pendientes.');
 }
-
-async function loadData() {
-  try {
-    const [dataRes, captureRes] = await Promise.all([
-      fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' }),
-      fetch(`${CAPTURE_URL}?t=${Date.now()}`, { cache: 'no-store' })
-    ]);
-    if (!dataRes.ok) throw new Error(`DATA HTTP ${dataRes.status}`);
-    const data = await dataRes.json();
-    const capture = captureRes.ok ? await captureRes.json() : {};
-    render(data, capture);
-  } catch (err) {
-    setText('last-sync', 'SIN CONEXIÓN AL FEED');
-    console.error(err);
-  }
-}
-
-loadData();
-setInterval(loadData, REFRESH_MS);
+async function load(){try{const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);render(await r.json())}catch(e){setText('last-sync','SIN CONEXIÓN AL FEED');console.error(e)}}
+load();setInterval(load,REFRESH_MS);
