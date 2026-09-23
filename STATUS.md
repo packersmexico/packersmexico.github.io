@@ -29,7 +29,7 @@ Implemented on branch:
 - Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
 - canonical Week 3 Jotform verified and wired: `https://form.jotform.com/262630890072052`; Week 2 form preserved
 - Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
-- GitHub Actions validator added for weekly manifest invariants and publication firewall\n- Weekly Manifest QA run #1: `PASS`\n- Week 3 Jotform build: `COMPLETE · 0 submissions · NO COMPARTIR AÚN`
+- GitHub Actions validator added for weekly manifest invariants and publication firewall\n- Weekly Manifest QA run #1: `PASS`\n- Week 3 Jotform capture: `OPEN · 2/9 COMPLETE · 32/144 PICKS · SHAREABLE · DIRECTION_MANUAL_CLOSE`
 - Quiniela production config reconciled to current certified Figma F05 master
 - Figma Week 3 production-control clone created at node `2770:466376`
 
@@ -40,7 +40,7 @@ Current public Quiniela:
 `WEEK 2 · /quiniela/w02/`
 
 Week 3 capture:
-`OPEN · CANONICAL FORM · SHAREABLE · CUTOFF POLICY = DIRECTION_MANUAL_CLOSE`
+`OPEN · 2/9 COMPLETE · 32/144 PICKS · CANONICAL FORM · SHAREABLE · CUTOFF POLICY = DIRECTION_MANUAL_CLOSE`
 
 Week 2 results:
 `15/16 FINAL · WAITING NYG @ LAR · NO PUBLICAR RESULTADOS FINALES`
