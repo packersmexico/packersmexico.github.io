@@ -195,42 +195,7 @@
     "purpose": "START WEEK 3 BOARD PICK INTAKE",
     "form_url": "https://form.jotform.com/262630890072052"
   },
-  "picks": {
-    "IBRACHO": {
-      "G01": "GB",
-      "G02": "BUF",
-      "G03": "CAR",
-      "G04": "DET",
-      "G05": "IND",
-      "G06": "JAX",
-      "G07": "KC",
-      "G08": "NYG",
-      "G09": "CIN",
-      "G10": "SEA",
-      "G11": "SF",
-      "G12": "MIN",
-      "G13": "LV",
-      "G14": "BAL",
-      "G15": "LAR",
-      "G16": "PHI"
-    },
-    "DR PALMA": {
-      "G01": "GB",
-      "G02": "BUF",
-      "G03": "CLE",
-      "G04": "DET",
-      "G05": "HOU",
-      "G06": "JAX",
-      "G07": "KC",
-      "G08": "TEN",
-      "G09": "PIT",
-      "G10": "SEA",
-      "G11": "ARI",
-      "G12": "MIN",
-      "G13": "NO",
-      "G14": "BAL",
-      "G15": "LAR",
-      "G16": "PHI"
-    }
-  }
+  "picks": {},
+  "picks_storage": "PRIVATE_SOURCE_ONLY_UNTIL_CAPTURE_CLOSE",
+  "picks_publication_policy": "DO_NOT_EXPOSE_IN_PUBLIC_GITHUB_WHILE_CAPTURE_OPEN"
 }
