@@ -1,0 +1,106 @@
+{
+  "pmx_id": "PMX-W3-AUTOMATION-001",
+  "case_type": "WEEKLY",
+  "controller": "QUINIELA_CONTROLLER",
+  "title": "Week 3 Orchestrator · Quiniela capture and weekly state",
+  "created_at": "2026-09-21T09:52:51-06:00",
+  "updated_at": "2026-09-22T21:58:26-06:00",
+  "intake": {
+    "mode": "SYSTEM",
+    "requested_output": "Week 3 operational state",
+    "source_ref": "PR #9 · automation/week-03-orchestrator"
+  },
+  "workflow": {
+    "canonical": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "03.5",
+      "04",
+      "05"
+    ],
+    "current_stage": "00",
+    "gate_state": "OPEN",
+    "history": [
+      {
+        "at": "2026-09-22T21:58:26-06:00",
+        "stage": "00",
+        "state": "OPEN",
+        "note": "Capture remains open; publication firewall unchanged."
+      }
+    ]
+  },
+  "assignment": {
+    "platforms": [],
+    "format": "CONTROL_STATE",
+    "cta_required": false,
+    "route_requirement": null
+  },
+  "routes": [],
+  "controller_state": {
+    "week": 3,
+    "capture": {
+      "status": "OPEN",
+      "complete_participants": 2,
+      "total_participants": 9,
+      "received_picks": 32,
+      "expected_picks": 144,
+      "missing_participants": [
+        "EL DOC",
+        "ARI",
+        "LALO",
+        "ALEX",
+        "LUIS C.",
+        "JENNI",
+        "RODRI"
+      ],
+      "cutoff_policy": "DIRECTION_MANUAL_CLOSE",
+      "form_id": "262630890072052"
+    },
+    "production": {
+      "surface": "FIGMA",
+      "family_node_id": "2524:2",
+      "control_node_id": "2770:466376"
+    },
+    "publication": "NO_PUBLICAR"
+  },
+  "publication": {
+    "firewall": "HOLD_05",
+    "platforms": {},
+    "postpublication_qa": "NOT_APPLICABLE"
+  },
+  "source_of_truth": [
+    {
+      "type": "JOTFORM",
+      "ref": "262630890072052",
+      "note": "2 valid complete submissions at current sync: IBRACHO + DR PALMA."
+    },
+    {
+      "type": "GITHUB_BRANCH",
+      "ref": "automation/week-03-orchestrator",
+      "note": "Week 3 operational snapshot and manifest."
+    },
+    {
+      "type": "GITHUB_PR",
+      "ref": "#9",
+      "note": "Draft review branch; not merged."
+    }
+  ],
+  "evidence": {
+    "status": "VERIFIED",
+    "items": [
+      {
+        "type": "JOTFORM_ANALYSIS",
+        "at": "2026-09-22T21:58:26-06:00",
+        "result": "2/9 complete · 32/144 picks · no duplicates/incomplete among target group"
+      },
+      {
+        "type": "GITHUB_SYNC",
+        "at": "2026-09-22T21:58:26-06:00",
+        "result": "week-03 snapshot and manifest synced"
+      }
+    ]
+  },
+  "analysis": null
+}
