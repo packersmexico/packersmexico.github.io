@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "last_sync": "2026-09-23T07:12:00-06:00",
+  "last_sync": "2026-09-23T13:11:30-06:00",
   "sync_mode": "AUTOMATED_HOURLY",
   "operator": {
     "name": "RODRIGO",
@@ -18,286 +18,51 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 4,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-09-23T12:00:00-06:00",
     "deadline_label": "23 SEP · 12:00 CDMX",
     "expected_picks": 144,
     "received_picks": 64,
     "missing_picks": 80,
+    "missing_participants": ["EL DOC", "ARI", "ALEX", "JENNI", "RODRI"],
     "invitado": "OFF"
   },
   "participants": [
-    {
-      "name": "EL DOC",
-      "status": "PENDING"
-    },
-    {
-      "name": "ARI",
-      "status": "PENDING"
-    },
-    {
-      "name": "LALO",
-      "status": "COMPLETE"
-    },
-    {
-      "name": "ALEX",
-      "status": "PENDING"
-    },
-    {
-      "name": "LUIS C.",
-      "status": "COMPLETE"
-    },
-    {
-      "name": "DR PALMA",
-      "status": "COMPLETE"
-    },
-    {
-      "name": "JENNI",
-      "status": "PENDING"
-    },
-    {
-      "name": "RODRI",
-      "status": "PENDING"
-    },
-    {
-      "name": "IBRACHO",
-      "status": "COMPLETE"
-    }
+    {"name":"EL DOC","status":"PENDING"},
+    {"name":"ARI","status":"PENDING"},
+    {"name":"LALO","status":"COMPLETE"},
+    {"name":"ALEX","status":"PENDING"},
+    {"name":"LUIS C.","status":"COMPLETE"},
+    {"name":"DR PALMA","status":"COMPLETE"},
+    {"name":"JENNI","status":"PENDING"},
+    {"name":"RODRI","status":"PENDING"},
+    {"name":"IBRACHO","status":"COMPLETE"}
   ],
   "games": [
-    {
-      "id": "G01",
-      "matchup": "ATL @ GB",
-      "time": "JUE 24 SEP · 18:15 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G02",
-      "matchup": "LAC @ BUF",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G03",
-      "matchup": "CAR @ CLE",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G04",
-      "matchup": "NYJ @ DET",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G05",
-      "matchup": "HOU @ IND",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G06",
-      "matchup": "NE @ JAX",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G07",
-      "matchup": "KC @ MIA",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G08",
-      "matchup": "TEN @ NYG",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G09",
-      "matchup": "CIN @ PIT",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G10",
-      "matchup": "SEA @ WAS",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G11",
-      "matchup": "ARI @ SF",
-      "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G12",
-      "matchup": "MIN @ TB",
-      "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G13",
-      "matchup": "LV @ NO",
-      "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G14",
-      "matchup": "BAL @ DAL",
-      "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G15",
-      "matchup": "LAR @ DEN",
-      "time": "DOM 27 SEP · 18:20 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    },
-    {
-      "id": "G16",
-      "matchup": "PHI @ CHI",
-      "time": "LUN 28 SEP · 18:15 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
-    }
+    {"id":"G01","matchup":"ATL @ GB","time":"JUE 24 SEP · 18:15 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G02","matchup":"LAC @ BUF","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G03","matchup":"CAR @ CLE","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G04","matchup":"NYJ @ DET","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G05","matchup":"HOU @ IND","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G06","matchup":"NE @ JAX","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G07","matchup":"KC @ MIA","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G08","matchup":"TEN @ NYG","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G09","matchup":"CIN @ PIT","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G10","matchup":"SEA @ WAS","time":"DOM 27 SEP · 11:00 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G11","matchup":"ARI @ SF","time":"DOM 27 SEP · 14:05 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G12","matchup":"MIN @ TB","time":"DOM 27 SEP · 14:05 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G13","matchup":"LV @ NO","time":"DOM 27 SEP · 14:25 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G14","matchup":"BAL @ DAL","time":"DOM 27 SEP · 14:25 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G15","matchup":"LAR @ DEN","time":"DOM 27 SEP · 18:20 CDMX","winner":null,"status":"SCHEDULED","score":null},
+    {"id":"G16","matchup":"PHI @ CHI","time":"LUN 28 SEP · 18:15 CDMX","winner":null,"status":"SCHEDULED","score":null}
   ],
-  "results": {
-    "final": 0,
-    "total": 16,
-    "status": "PENDING"
-  },
-  "weekly_standings": [
-    {
-      "name": "EL DOC",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "ARI",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "LALO",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "ALEX",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "JENNI",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "RODRI",
-      "correct": 0,
-      "wrong": 0
-    },
-    {
-      "name": "IBRACHO",
-      "correct": 0,
-      "wrong": 0
-    }
+  "results":{"final":0,"total":16,"status":"PENDING"},
+  "weekly_standings":[
+    {"name":"EL DOC","correct":0,"wrong":0},{"name":"ARI","correct":0,"wrong":0},{"name":"LALO","correct":0,"wrong":0},{"name":"ALEX","correct":0,"wrong":0},{"name":"LUIS C.","correct":0,"wrong":0},{"name":"DR PALMA","correct":0,"wrong":0},{"name":"JENNI","correct":0,"wrong":0},{"name":"RODRI","correct":0,"wrong":0},{"name":"IBRACHO","correct":0,"wrong":0}
   ],
-  "season_standings": [
-    {
-      "name": "RODRI",
-      "correct": 22,
-      "wrong": 10
-    },
-    {
-      "name": "ALEX",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "EL DOC",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "LALO",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "JENNI",
-      "correct": 20,
-      "wrong": 12
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 20,
-      "wrong": 12
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 19,
-      "wrong": 13
-    },
-    {
-      "name": "IBRACHO",
-      "correct": 19,
-      "wrong": 13
-    },
-    {
-      "name": "ARI",
-      "correct": 17,
-      "wrong": 15
-    }
+  "season_standings":[
+    {"name":"RODRI","correct":22,"wrong":10},{"name":"ALEX","correct":21,"wrong":11},{"name":"EL DOC","correct":21,"wrong":11},{"name":"LALO","correct":21,"wrong":11},{"name":"JENNI","correct":20,"wrong":12},{"name":"LUIS C.","correct":20,"wrong":12},{"name":"DR PALMA","correct":19,"wrong":13},{"name":"IBRACHO","correct":19,"wrong":13},{"name":"ARI","correct":17,"wrong":15}
   ],
   "public_picks_authorized": false,
-  "publication": {
-    "gate": "HOLD",
-    "operator": "RODRIGO",
-    "published": false,
-    "urls": []
-  }
+  "publication":{"gate":"HOLD/DATA_INTEGRITY","operator":"RODRIGO","published":false,"urls":[]}
 }
