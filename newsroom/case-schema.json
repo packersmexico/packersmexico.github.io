@@ -8,7 +8,8 @@
     "case_type",
     "intake",
     "workflow",
-    "publication"
+    "publication",
+    "evidence"
   ],
   "properties": {
     "pmx_id": {
@@ -281,6 +282,16 @@
             },
             "additionalProperties": true
           }
+        },
+        "postpublication_qa": {
+          "type": "string",
+          "enum": [
+            "NOT_APPLICABLE",
+            "PENDING",
+            "PARTIAL",
+            "PASS",
+            "HOLD"
+          ]
         }
       },
       "additionalProperties": true
@@ -330,7 +341,76 @@
         }
       },
       "additionalProperties": false
+    },
+    "controller": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "SIGNAL_CONTROLLER",
+        "QUINIELA_CONTROLLER",
+        "WEEK_CONTROLLER",
+        "DATA_CONTROLLER",
+        null
+      ]
+    },
+    "source_of_truth": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "ref"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string"
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "PARTIAL",
+            "VERIFIED"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "controller_state": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
     }
   },
-  "additionalProperties": true
+  "additionalProperties": true,
+  "version": "1.1"
 }
