@@ -1,0 +1,68 @@
+{
+  "pmx_id": "PMX-QUINIELA-W2-001",
+  "season": "2026",
+  "week": "WEEK 2",
+  "week_number": 2,
+  "snapshot_status": "RESULTS_FINAL_16_16_F05_READY",
+  "last_sync": "2026-09-22T11:00:00-06:00",
+  "capture": {
+    "complete": 9,
+    "total": 9,
+    "window": "CLOSED",
+    "deadline_label": "16 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 144,
+    "missing_picks": 0,
+    "invitado": "OFF"
+  },
+  "participants": [
+    {"name":"EL DOC","status":"COMPLETE"},
+    {"name":"ARI","status":"COMPLETE"},
+    {"name":"LALO","status":"COMPLETE"},
+    {"name":"ALEX","status":"COMPLETE"},
+    {"name":"LUIS C.","status":"COMPLETE"},
+    {"name":"DR PALMA","status":"COMPLETE"},
+    {"name":"JENNI","status":"COMPLETE"},
+    {"name":"RODRI","status":"COMPLETE"},
+    {"name":"IBRACHO","status":"COMPLETE"}
+  ],
+  "results": {
+    "final": 16,
+    "total": 16,
+    "status": "FINAL",
+    "final_game": "NYG @ LAR",
+    "final_game_score": "NYG 6 · LAR 28",
+    "final_game_winner": "LAR",
+    "winners": ["BUF","CAR","NO","MIN","CIN","NE","GB","CLE","PHI","DEN","LV","SEA","DAL","SF","KC","LAR"],
+    "final_correct": [
+      {"name":"LALO","correct":11},
+      {"name":"RODRI","correct":11},
+      {"name":"EL DOC","correct":10},
+      {"name":"ALEX","correct":10},
+      {"name":"LUIS C.","correct":10},
+      {"name":"ARI","correct":9},
+      {"name":"DR PALMA","correct":9},
+      {"name":"JENNI","correct":9},
+      {"name":"IBRACHO","correct":9}
+    ],
+    "week_winners": ["LALO","RODRI"],
+    "publication": "HOLD_BEHIND_05"
+  },
+  "pipeline": {
+    "capture": "PASS · 9/9 · 144/144 · CLOSED",
+    "picks": "PUBLIC PAGE LIVE",
+    "results": "PASS · 16/16 FINAL",
+    "production": "F05 · RESULTS/STANDINGS CANDIDATE READY FOR QA",
+    "publication": "HOLD · 05 APPROVAL REQUIRED"
+  },
+  "production": {
+    "surface": "FIGMA",
+    "family_node_id": "2524:2",
+    "package_status": "RESULTS FINAL · F05 READY · NO PUBLICAR",
+    "outputs": [
+      {"id":"W2-RESULT-WINNER","label":"RESULTADOS WEEK 2","status":"READY FOR F05 QA"},
+      {"id":"W2-RESULT-STANDINGS","label":"STANDINGS WEEK 2","status":"READY FOR F05 QA"}
+    ]
+  },
+  "public_url": "https://packersmexico.github.io/quiniela/w02/"
+}

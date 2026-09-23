@@ -12,6 +12,74 @@ Public Hub: `https://packersmexico.github.io/`
 
 Season Calendar route: `https://packersmexico.github.io/calendario/`
 
+## WEEK 3 ORCHESTRATOR · 2026-09-21
+
+State:
+`IN PROGRESS · TECHNICAL AUTOMATION ACTIVE ON REVIEW BRANCH · WEEKLY MANIFEST QA PASS · NO PUBLIC DEPLOYMENT CLAIMED`
+
+Branch:
+`automation/week-03-orchestrator`
+
+PMX_ID:
+`PMX-W3-AUTOMATION-001`
+
+Implemented on branch:
+- canonical browser-readable weekly manifest at `js/weekly-manifest.js`
+- Week 2 snapshot at `quiniela-control/weeks/week-02.json` with `16/16 FINAL` and F05 results/standings candidate
+- Week 3 snapshot at `quiniela-control/weeks/week-03.json` with verified 16-game slate
+- canonical Week 3 Jotform verified and wired: `https://form.jotform.com/262630890072052`; Week 2 form preserved
+- Week 3 capture config staged at `quiniela-control/capture-config-w03.json`
+- GitHub Actions validator added for weekly manifest invariants and publication firewall\n- Weekly Manifest QA run #1: `PASS`\n- Week 3 Jotform capture: `OPEN · 2/9 COMPLETE · 32/144 PICKS · SHAREABLE · DIRECTION_MANUAL_CLOSE`
+- Quiniela production config reconciled to current certified Figma F05 master
+- Figma Week 3 production-control clone created at node `2770:466376`
+
+Current publication firewall:
+`05 HOLD · READY FOR CLICK REQUIRED`
+
+Current public Quiniela:
+`WEEK 2 · /quiniela/w02/`
+
+Week 3 capture:
+`OPEN · 2/9 COMPLETE · 32/144 PICKS · CANONICAL FORM · SHAREABLE · CUTOFF POLICY = DIRECTION_MANUAL_CLOSE`
+
+Week 2 results:
+`16/16 FINAL · NYG 6–28 LAR VERIFIED · LALO/RODRI 11 CORRECT · F05 CANDIDATE READY · 05 HOLD`
+
+Wingstop Week 3:
+`ATL @ GB · JUE 24 SEP · 18:15 CDMX · FEED + STORY PUBLISHED · POSTPUBLICATION QA PASS`
+
+Open blocker:
+`NONE FOR PICK INTAKE · fixed cutoff remains optional/unset; Direction may close capture manually`
+
+Safe work that can continue:
+`CI validation · W2 results/standings F05 QA · W3 capture sync · Week 3 Hub/route QA · no publication bypass`
+
+## WINGSTOP WEEK 3 PROMO · 2026-09-21
+
+PMX_ID:
+`PMX-W3-WINGSTOP-001`
+
+Game:
+`ATL @ GB · JUE 24 SEP · 18:15 CDMX`
+
+Creative:
+`04 PASS · FIGMA 2775:466376 · FEED 2775:466377 · STORY 2775:474577`
+
+Publication:
+`PUBLISHED · METRICOOL · AUTO-PUBLISH · VERIFIED`
+
+Feed:
+`IG + FB · 15:00 CDMX · Metricool 379637469`
+
+Story:
+`IG + FB · 17:00 CDMX · Metricool 379637543`
+
+CTA:
+`https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
+
+Status:
+`POSTPUBLICATION QA PASS · IG/FB FEED + STORY URL/ID VERIFIED`
+
 ## CURRENT PHASE
 
 `FASE 2C · HUB EXPANSION · WEEKLY AUTO-ROLLOVER + SEASON CALENDAR 2026`

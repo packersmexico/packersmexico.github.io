@@ -6,9 +6,9 @@
   "form_url": "https://form.jotform.com/262630890072052",
   "status": "OPEN",
   "deadline": null,
-  "deadline_label": "CIERRE PENDIENTE · DIRECCIÓN",
-  "cutoff_policy": "DIRECTION_MANUAL_CLOSE",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "share_state": "SHAREABLE",
-  "last_sync": "2026-09-22T21:58:26-06:00"
+  "last_sync": "2026-09-22T21:58:26-06:00",
+  "deadline_label": "CIERRE PENDIENTE · DIRECCIÓN",
+  "cutoff_policy": "DIRECTION_MANUAL_CLOSE"
 }

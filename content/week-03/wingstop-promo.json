@@ -1,0 +1,73 @@
+{
+  "pmx_id": "PMX-W3-WINGSTOP-001",
+  "date_created": "2026-09-21",
+  "game": {
+    "matchup": "ATL @ GB",
+    "date": "2026-09-24",
+    "date_label": "JUE 24 SEP",
+    "time_cdmx": "18:15",
+    "venue_game": "Lambeau Field",
+    "source": "NFL.com / Packers.com · verified 2026-09-21"
+  },
+  "partner": {
+    "venue": "Wingstop Condesa",
+    "wording_locked": "Casa Oficial de Packers en CDMX",
+    "registration_url": "https://share.forms.app/form/6a96032ee64cd5f15d1688aa",
+    "registration_disclaimer": "El registro no equivale a reservación de mesa."
+  },
+  "creative": {
+    "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
+    "family_node_id": "1588:266573",
+    "candidate_section_id": "2775:466376",
+    "feed_node_id": "2775:466377",
+    "story_node_id": "2775:474577",
+    "status": "04_PASS"
+  },
+  "publication": {
+    "status": "PUBLISHED",
+    "timezone": "America/Mexico_City",
+    "feed": {
+      "date_time": "2026-09-21T15:00:00-06:00",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "metricool_id": "379637469",
+      "metricool_uuid": "2703099884129766510",
+      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=2703099884129766510",
+      "status": "PUBLISHED",
+      "public_urls": {
+        "instagram": "https://www.instagram.com/p/DdkFGhpiRGJ/",
+        "facebook": "https://facebook.com/1008281820521576/posts/1870303207652762"
+      }
+    },
+    "story": {
+      "date_time": "2026-09-21T17:00:00-06:00",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "metricool_id": "379637543",
+      "metricool_uuid": "7896584609416300981",
+      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=7896584609416300981",
+      "status": "PUBLISHED",
+      "public_urls": {
+        "instagram": "https://www.instagram.com/stories/packers_mx/3991398205375808176",
+        "facebook": "https://facebook.com/1008281820521576/posts/1635272677938979"
+      }
+    }
+  },
+  "qa": {
+    "identity": "PASS",
+    "copy": "PASS",
+    "fit_technical": "PASS",
+    "internal_labels_public_art": "PASS",
+    "formats": [
+      "1080x1350",
+      "1080x1920"
+    ],
+    "publication_firewall": "05 AUTHORIZED BY USER FOR SAME-DAY RELEASE",
+    "postpublication": "PASS · IG/FB FEED + STORY URL/ID VERIFIED VIA METRICOOL",
+    "verified_at": "2026-09-22T22:12:00-06:00"
+  }
+}
