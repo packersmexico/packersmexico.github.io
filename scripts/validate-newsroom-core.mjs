@@ -36,6 +36,10 @@ for (const platform of requiredPlatforms) {
 }
 
 assert(schema.properties && schema.properties.analysis, "future analysis reference object missing from case schema");
+assert(schema.properties && schema.properties.evidence, "case evidence contract missing");
+assert(schema.properties && schema.properties.controller, "case controller contract missing");
+assert(board.generated_from === "newsroom/cases/*.json", "state board must be generated from individual case files");
+assert(board.cases.length >= 2, "verified current cases were not seeded");
 
 if (errors.length) {
   console.error("NEWSROOM CORE QA · HOLD");
