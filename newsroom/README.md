@@ -59,19 +59,13 @@ The route is infrastructure. It does not itself authorize publication.
 
 ## State persistence
 
-Controllers must update one file per case under `newsroom/cases/<PMX_ID>.json`.
+Live operational cases and the State Board are **not stored in this public repository**.
 
-`newsroom/state-board.json` is a generated index. It is not the write target for concurrent controllers.
+The public repository contains only public-safe orchestration contracts: schemas, controller definitions, Hub routing rules, sanitized templates and QA scripts.
 
-Rebuild locally/CI with:
+The live State Board is maintained on a private operational Google Drive surface under `02 · CASOS REALES`. Controllers may read/write that private state when authorized.
 
-`node scripts/build-state-board.mjs --write`
-
-Validate without mutation with:
-
-`node scripts/build-state-board.mjs`
-
-This separation reduces write collisions between Signal, Quiniela, Week and Data controllers.
+This prevents operational case details, platform evidence and internal state from becoming part of the public GitHub Pages surface.
 
 ## Evidence rule
 
