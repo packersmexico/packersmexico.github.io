@@ -4,23 +4,23 @@
   "week": "WEEK 3",
   "week_number": 3,
   "snapshot_status": "CAPTURE_OPEN",
-  "last_sync": "2026-09-21T11:50:00-06:00",
+  "last_sync": "2026-09-22T21:58:26-06:00",
   "capture": {
-    "complete": 1,
+    "complete": 2,
     "total": 9,
     "window": "OPEN",
     "deadline_label": "CIERRE PENDIENTE · DIRECCIÓN",
     "expected_picks": 144,
-    "received_picks": 16,
-    "missing_picks": 128,
+    "received_picks": 32,
+    "missing_picks": 112,
     "invitado": "OFF",
     "form_status": "OPEN",
     "form_url": "https://form.jotform.com/262630890072052",
     "share_state": "SHAREABLE",
     "form_id": "262630890072052",
     "cutoff_policy": "DIRECTION_MANUAL_CLOSE",
-    "valid_submissions": 1,
-    "last_participant": "IBRACHO"
+    "valid_submissions": 2,
+    "last_participant": "DR PALMA"
   },
   "participants": [
     {
@@ -45,7 +45,7 @@
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "JENNI",
@@ -149,7 +149,7 @@
   },
   "pipeline": {
     "data_system": "PASS · NFL W3 SLATE · 16/16",
-    "capture": "OPEN · 1/9 · 16/144",
+    "capture": "OPEN · 2/9 · 32/144",
     "picks": "WAITING CAPTURE",
     "production": "FIGMA · F05 CERTIFIED",
     "publication": "NO PUBLICAR"
@@ -159,7 +159,7 @@
     "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
     "family_node_id": "2524:2",
     "control_node_id": "2770:466376",
-    "package_status": "CAPTURE OPEN · 1/9 · PRE-CLOSE ELIGIBLE",
+    "package_status": "CAPTURE OPEN · 2/9 · PRE-CLOSE ELIGIBLE",
     "outputs": [
       {
         "id": "W3-PICKS",
@@ -210,6 +210,24 @@
       "G11": "SF",
       "G12": "MIN",
       "G13": "LV",
+      "G14": "BAL",
+      "G15": "LAR",
+      "G16": "PHI"
+    },
+    "DR PALMA": {
+      "G01": "GB",
+      "G02": "BUF",
+      "G03": "CLE",
+      "G04": "DET",
+      "G05": "HOU",
+      "G06": "JAX",
+      "G07": "KC",
+      "G08": "TEN",
+      "G09": "PIT",
+      "G10": "SEA",
+      "G11": "ARI",
+      "G12": "MIN",
+      "G13": "NO",
       "G14": "BAL",
       "G15": "LAR",
       "G16": "PHI"
