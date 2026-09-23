@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "mode": "SHADOW",
+  "updated_at": "2026-09-22T21:30:00-06:00",
+  "publication_firewall": "HOLD_05",
+  "cases": [],
+  "notes": [
+    "V1 initializes the shared case surface without migrating historical chat state automatically.",
+    "Cases enter only from verified current state or new intake.",
+    "PMX-ANA-* remains reserved and disabled."
+  ]
+}
