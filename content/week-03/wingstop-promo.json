@@ -24,7 +24,7 @@
     "status": "04_PASS"
   },
   "publication": {
-    "status": "SCHEDULED",
+    "status": "PUBLISHED",
     "timezone": "America/Mexico_City",
     "feed": {
       "date_time": "2026-09-21T15:00:00-06:00",
@@ -34,7 +34,12 @@
       ],
       "metricool_id": "379637469",
       "metricool_uuid": "2703099884129766510",
-      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=2703099884129766510"
+      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=2703099884129766510",
+      "status": "PUBLISHED",
+      "public_urls": {
+        "instagram": "https://www.instagram.com/p/DdkFGhpiRGJ/",
+        "facebook": "https://facebook.com/1008281820521576/posts/1870303207652762"
+      }
     },
     "story": {
       "date_time": "2026-09-21T17:00:00-06:00",
@@ -44,7 +49,12 @@
       ],
       "metricool_id": "379637543",
       "metricool_uuid": "7896584609416300981",
-      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=7896584609416300981"
+      "planner_url": "https://app.metricool.com/planner/calendar?blogId=4923887&openWithPostUuid=7896584609416300981",
+      "status": "PUBLISHED",
+      "public_urls": {
+        "instagram": "https://www.instagram.com/stories/packers_mx/3991398205375808176",
+        "facebook": "https://facebook.com/1008281820521576/posts/1635272677938979"
+      }
     }
   },
   "qa": {
@@ -56,6 +66,8 @@
       "1080x1350",
       "1080x1920"
     ],
-    "publication_firewall": "05 AUTHORIZED BY USER FOR SAME-DAY RELEASE"
+    "publication_firewall": "05 AUTHORIZED BY USER FOR SAME-DAY RELEASE",
+    "postpublication": "PASS · IG/FB FEED + STORY URL/ID VERIFIED VIA METRICOOL",
+    "verified_at": "2026-09-22T22:12:00-06:00"
   }
 }
