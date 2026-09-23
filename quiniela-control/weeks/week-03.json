@@ -1,0 +1,83 @@
+{
+  "pmx_id": "PMX-QUINIELA-W3-001",
+  "season": "2026",
+  "week": "WEEK 3",
+  "week_number": 3,
+  "snapshot_status": "LIVE",
+  "last_sync": "2026-09-23T07:12:00-06:00",
+  "capture": {
+    "complete": 4,
+    "total": 9,
+    "window": "OPEN",
+    "deadline_label": "23 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 64,
+    "missing_picks": 80,
+    "invitado": "OFF"
+  },
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING"
+    },
+    {
+      "name": "LALO",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "COMPLETE"
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 16
+  },
+  "production": {
+    "package_status": "AUTO ASSETS · LIVE",
+    "outputs": [
+      {
+        "id": "W3-LIVE-BOARD",
+        "label": "TODOS LOS PICKS + ACIERTOS/ERRORES",
+        "status": "LIVE",
+        "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#detail"
+      },
+      {
+        "id": "W3-LIVE-RANKING",
+        "label": "RESULTADOS / RANKING SEMANAL",
+        "status": "LIVE",
+        "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#weekly"
+      },
+      {
+        "id": "W3-SEASON",
+        "label": "RANKING GENERAL",
+        "status": "LIVE",
+        "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#season"
+      }
+    ]
+  }
+}
