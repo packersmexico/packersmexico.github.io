@@ -4,7 +4,7 @@
   window.PMX_WEEKLY_MANIFEST = Object.freeze({
     version: "1.0",
     pmxId: "PMX-W3-AUTOMATION-001",
-    updatedAt: "2026-09-21T11:50:00-06:00",
+    updatedAt: "2026-09-22T21:58:26-06:00",
     timezone: "America/Mexico_City",
     operationalWeek: 3,
 
@@ -43,11 +43,14 @@
         games: 16,
         participants: 9,
         expectedPicks: 144,
-        receivedPicks: 0,
+        completeParticipants: 2,
+        missingParticipants: 7,
+        receivedPicks: 32,
         formId: "262630890072052",
         formUrl: "https://form.jotform.com/262630890072052",
         cutoff: null,
-        shareState: "NO_COMPARTIR_AUN"
+        cutoffPolicy: "DIRECTION_MANUAL_CLOSE",
+        shareState: "SHAREABLE"
       }),
 
       public: Object.freeze({
