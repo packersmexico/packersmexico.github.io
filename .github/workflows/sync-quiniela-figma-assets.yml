@@ -43,7 +43,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add quiniela-control/exports/w3-picks-board.png quiniela-control/exports/w3-results-live.png
+          git add quiniela-control/exports/w3-picks-board.png quiniela-control/exports/w3-results-live.png quiniela-control/exports/w3-ranking-weekly.png quiniela-control/exports/w3-ranking-season.png
           if git diff --cached --quiet; then
             echo "No asset changes"
             exit 0

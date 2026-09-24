@@ -33,5 +33,26 @@ function render(data){
  renderParticipants(data.participants||[]);renderGames(data.games||[]);renderRanking(data);
  setText('capture-rule',(c.received_picks||0)+'/'+(c.expected_picks||0)+' picks registrados · '+(c.missing_picks||0)+' pendientes.');
 }
-async function load(){try{const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);render(await r.json())}catch(e){setText('last-sync','SIN CONEXIÓN AL FEED');console.error(e)}}
-load();setInterval(load,REFRESH_MS);
+async function load(manual=false){
+ const btn=$('refresh-control'), msg=$('refresh-message');
+ if(manual){
+   if(btn) btn.disabled=true;
+   if(msg) msg.textContent='ACTUALIZANDO… revisando captura, resultados y rankings.';
+ }
+ try{
+   const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+   if(!r.ok) throw new Error('HTTP '+r.status);
+   const data=await r.json();
+   render(data);
+   if(msg) msg.textContent=(manual?'ACTUALIZACIÓN COMPLETA · ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync);
+ }catch(e){
+   setText('last-sync','SIN CONEXIÓN AL FEED');
+   if(msg) msg.textContent='NO SE PUDO ACTUALIZAR · intenta otra vez.';
+   console.error(e);
+ }finally{
+   if(btn) btn.disabled=false;
+ }
+}
+const refreshBtn=$('refresh-control');
+if(refreshBtn) refreshBtn.addEventListener('click',()=>load(true));
+load(false);setInterval(()=>load(false),REFRESH_MS);
