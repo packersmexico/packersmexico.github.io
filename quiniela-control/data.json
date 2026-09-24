@@ -18,7 +18,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-09-24T16:00:00-06:00",
     "deadline_label": "24 SEP · 16:00 CDMX",
     "expected_picks": 144,
@@ -28,7 +28,9 @@
     "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
     "existing_duplicate_resolution": "DR PALMA · LATEST VALID KEPT",
     "invitado": "OFF",
-    "capture_status": "9/9_READY"
+    "capture_status": "CLOSED_9_OF_9",
+    "form_status": "DISABLED",
+    "auto_close_reason": "9_OF_9_COMPLETE"
   },
   "participants": [
     {
@@ -75,7 +77,18 @@
       "time": "JUE 24 SEP · 18:15 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "GB",
+        "ARI": "GB",
+        "LALO": "GB",
+        "ALEX": "GB",
+        "LUIS C.": "GB",
+        "DR PALMA": "GB",
+        "JENNI": "GB",
+        "RODRI": "GB",
+        "IBRACHO": "GB"
+      }
     },
     {
       "id": "G02",
@@ -83,7 +96,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "BUF",
+        "ARI": "BUF",
+        "LALO": "BUF",
+        "ALEX": "BUF",
+        "LUIS C.": "BUF",
+        "DR PALMA": "BUF",
+        "JENNI": "LAC",
+        "RODRI": "BUF",
+        "IBRACHO": "BUF"
+      }
     },
     {
       "id": "G03",
@@ -91,7 +115,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "CAR",
+        "ARI": "CLE",
+        "LALO": "CLE",
+        "ALEX": "CAR",
+        "LUIS C.": "CLE",
+        "DR PALMA": "CLE",
+        "JENNI": "CAR",
+        "RODRI": "CAR",
+        "IBRACHO": "CAR"
+      }
     },
     {
       "id": "G04",
@@ -99,7 +134,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "DET",
+        "ARI": "DET",
+        "LALO": "DET",
+        "ALEX": "DET",
+        "LUIS C.": "DET",
+        "DR PALMA": "DET",
+        "JENNI": "DET",
+        "RODRI": "DET",
+        "IBRACHO": "DET"
+      }
     },
     {
       "id": "G05",
@@ -107,7 +153,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "HOU",
+        "ARI": "IND",
+        "LALO": "IND",
+        "ALEX": "HOU",
+        "LUIS C.": "IND",
+        "DR PALMA": "HOU",
+        "JENNI": "HOU",
+        "RODRI": "HOU",
+        "IBRACHO": "IND"
+      }
     },
     {
       "id": "G06",
@@ -115,7 +172,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "JAX",
+        "ARI": "JAX",
+        "LALO": "JAX",
+        "ALEX": "JAX",
+        "LUIS C.": "JAX",
+        "DR PALMA": "JAX",
+        "JENNI": "NE",
+        "RODRI": "JAX",
+        "IBRACHO": "JAX"
+      }
     },
     {
       "id": "G07",
@@ -123,7 +191,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "KC",
+        "ARI": "KC",
+        "LALO": "MIA",
+        "ALEX": "KC",
+        "LUIS C.": "KC",
+        "DR PALMA": "KC",
+        "JENNI": "KC",
+        "RODRI": "KC",
+        "IBRACHO": "KC"
+      }
     },
     {
       "id": "G08",
@@ -131,7 +210,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "NYG",
+        "ARI": "NYG",
+        "LALO": "TEN",
+        "ALEX": "TEN",
+        "LUIS C.": "TEN",
+        "DR PALMA": "TEN",
+        "JENNI": "TEN",
+        "RODRI": "NYG",
+        "IBRACHO": "NYG"
+      }
     },
     {
       "id": "G09",
@@ -139,7 +229,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "CIN",
+        "ARI": "CIN",
+        "LALO": "PIT",
+        "ALEX": "CIN",
+        "LUIS C.": "CIN",
+        "DR PALMA": "PIT",
+        "JENNI": "PIT",
+        "RODRI": "CIN",
+        "IBRACHO": "CIN"
+      }
     },
     {
       "id": "G10",
@@ -147,7 +248,18 @@
       "time": "DOM 27 SEP · 11:00 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "SEA",
+        "ARI": "SEA",
+        "LALO": "SEA",
+        "ALEX": "SEA",
+        "LUIS C.": "SEA",
+        "DR PALMA": "SEA",
+        "JENNI": "SEA",
+        "RODRI": "SEA",
+        "IBRACHO": "SEA"
+      }
     },
     {
       "id": "G11",
@@ -155,7 +267,18 @@
       "time": "DOM 27 SEP · 14:05 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "SF",
+        "ARI": "SF",
+        "LALO": "SF",
+        "ALEX": "SF",
+        "LUIS C.": "SF",
+        "DR PALMA": "ARI",
+        "JENNI": "SF",
+        "RODRI": "SF",
+        "IBRACHO": "SF"
+      }
     },
     {
       "id": "G12",
@@ -163,7 +286,18 @@
       "time": "DOM 27 SEP · 14:05 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "MIN",
+        "ARI": "TB",
+        "LALO": "TB",
+        "ALEX": "MIN",
+        "LUIS C.": "TB",
+        "DR PALMA": "MIN",
+        "JENNI": "MIN",
+        "RODRI": "MIN",
+        "IBRACHO": "MIN"
+      }
     },
     {
       "id": "G13",
@@ -171,7 +305,18 @@
       "time": "DOM 27 SEP · 14:25 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "NO",
+        "ARI": "LV",
+        "LALO": "NO",
+        "ALEX": "NO",
+        "LUIS C.": "NO",
+        "DR PALMA": "NO",
+        "JENNI": "LV",
+        "RODRI": "NO",
+        "IBRACHO": "LV"
+      }
     },
     {
       "id": "G14",
@@ -179,7 +324,18 @@
       "time": "DOM 27 SEP · 14:25 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "BAL",
+        "ARI": "BAL",
+        "LALO": "DAL",
+        "ALEX": "BAL",
+        "LUIS C.": "BAL",
+        "DR PALMA": "BAL",
+        "JENNI": "BAL",
+        "RODRI": "BAL",
+        "IBRACHO": "BAL"
+      }
     },
     {
       "id": "G15",
@@ -187,7 +343,18 @@
       "time": "DOM 27 SEP · 18:20 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "LAR",
+        "ARI": "LAR",
+        "LALO": "LAR",
+        "ALEX": "LAR",
+        "LUIS C.": "LAR",
+        "DR PALMA": "DEN",
+        "JENNI": "DEN",
+        "RODRI": "LAR",
+        "IBRACHO": "LAR"
+      }
     },
     {
       "id": "G16",
@@ -195,7 +362,18 @@
       "time": "LUN 28 SEP · 18:15 CDMX",
       "winner": null,
       "status": "SCHEDULED",
-      "score": null
+      "score": null,
+      "picks": {
+        "EL DOC": "PHI",
+        "ARI": "PHI",
+        "LALO": "PHI",
+        "ALEX": "PHI",
+        "LUIS C.": "PHI",
+        "DR PALMA": "PHI",
+        "JENNI": "PHI",
+        "RODRI": "PHI",
+        "IBRACHO": "PHI"
+      }
     }
   ],
   "results": {
@@ -297,11 +475,190 @@
       "wrong": 15
     }
   ],
-  "public_picks_authorized": false,
+  "public_picks_authorized": true,
   "publication": {
-    "gate": "HOLD/CAPTURE_OPEN",
+    "gate": "READY FOR CLICK",
     "operator": "RODRIGO",
     "published": false,
-    "urls": []
+    "urls": [],
+    "assets_status": "PUBLICATION READY"
+  },
+  "public_picks": {
+    "G01": {
+      "EL DOC": "GB",
+      "ARI": "GB",
+      "LALO": "GB",
+      "ALEX": "GB",
+      "LUIS C.": "GB",
+      "DR PALMA": "GB",
+      "JENNI": "GB",
+      "RODRI": "GB",
+      "IBRACHO": "GB"
+    },
+    "G02": {
+      "EL DOC": "BUF",
+      "ARI": "BUF",
+      "LALO": "BUF",
+      "ALEX": "BUF",
+      "LUIS C.": "BUF",
+      "DR PALMA": "BUF",
+      "JENNI": "LAC",
+      "RODRI": "BUF",
+      "IBRACHO": "BUF"
+    },
+    "G03": {
+      "EL DOC": "CAR",
+      "ARI": "CLE",
+      "LALO": "CLE",
+      "ALEX": "CAR",
+      "LUIS C.": "CLE",
+      "DR PALMA": "CLE",
+      "JENNI": "CAR",
+      "RODRI": "CAR",
+      "IBRACHO": "CAR"
+    },
+    "G04": {
+      "EL DOC": "DET",
+      "ARI": "DET",
+      "LALO": "DET",
+      "ALEX": "DET",
+      "LUIS C.": "DET",
+      "DR PALMA": "DET",
+      "JENNI": "DET",
+      "RODRI": "DET",
+      "IBRACHO": "DET"
+    },
+    "G05": {
+      "EL DOC": "HOU",
+      "ARI": "IND",
+      "LALO": "IND",
+      "ALEX": "HOU",
+      "LUIS C.": "IND",
+      "DR PALMA": "HOU",
+      "JENNI": "HOU",
+      "RODRI": "HOU",
+      "IBRACHO": "IND"
+    },
+    "G06": {
+      "EL DOC": "JAX",
+      "ARI": "JAX",
+      "LALO": "JAX",
+      "ALEX": "JAX",
+      "LUIS C.": "JAX",
+      "DR PALMA": "JAX",
+      "JENNI": "NE",
+      "RODRI": "JAX",
+      "IBRACHO": "JAX"
+    },
+    "G07": {
+      "EL DOC": "KC",
+      "ARI": "KC",
+      "LALO": "MIA",
+      "ALEX": "KC",
+      "LUIS C.": "KC",
+      "DR PALMA": "KC",
+      "JENNI": "KC",
+      "RODRI": "KC",
+      "IBRACHO": "KC"
+    },
+    "G08": {
+      "EL DOC": "NYG",
+      "ARI": "NYG",
+      "LALO": "TEN",
+      "ALEX": "TEN",
+      "LUIS C.": "TEN",
+      "DR PALMA": "TEN",
+      "JENNI": "TEN",
+      "RODRI": "NYG",
+      "IBRACHO": "NYG"
+    },
+    "G09": {
+      "EL DOC": "CIN",
+      "ARI": "CIN",
+      "LALO": "PIT",
+      "ALEX": "CIN",
+      "LUIS C.": "CIN",
+      "DR PALMA": "PIT",
+      "JENNI": "PIT",
+      "RODRI": "CIN",
+      "IBRACHO": "CIN"
+    },
+    "G10": {
+      "EL DOC": "SEA",
+      "ARI": "SEA",
+      "LALO": "SEA",
+      "ALEX": "SEA",
+      "LUIS C.": "SEA",
+      "DR PALMA": "SEA",
+      "JENNI": "SEA",
+      "RODRI": "SEA",
+      "IBRACHO": "SEA"
+    },
+    "G11": {
+      "EL DOC": "SF",
+      "ARI": "SF",
+      "LALO": "SF",
+      "ALEX": "SF",
+      "LUIS C.": "SF",
+      "DR PALMA": "ARI",
+      "JENNI": "SF",
+      "RODRI": "SF",
+      "IBRACHO": "SF"
+    },
+    "G12": {
+      "EL DOC": "MIN",
+      "ARI": "TB",
+      "LALO": "TB",
+      "ALEX": "MIN",
+      "LUIS C.": "TB",
+      "DR PALMA": "MIN",
+      "JENNI": "MIN",
+      "RODRI": "MIN",
+      "IBRACHO": "MIN"
+    },
+    "G13": {
+      "EL DOC": "NO",
+      "ARI": "LV",
+      "LALO": "NO",
+      "ALEX": "NO",
+      "LUIS C.": "NO",
+      "DR PALMA": "NO",
+      "JENNI": "LV",
+      "RODRI": "NO",
+      "IBRACHO": "LV"
+    },
+    "G14": {
+      "EL DOC": "BAL",
+      "ARI": "BAL",
+      "LALO": "DAL",
+      "ALEX": "BAL",
+      "LUIS C.": "BAL",
+      "DR PALMA": "BAL",
+      "JENNI": "BAL",
+      "RODRI": "BAL",
+      "IBRACHO": "BAL"
+    },
+    "G15": {
+      "EL DOC": "LAR",
+      "ARI": "LAR",
+      "LALO": "LAR",
+      "ALEX": "LAR",
+      "LUIS C.": "LAR",
+      "DR PALMA": "DEN",
+      "JENNI": "DEN",
+      "RODRI": "LAR",
+      "IBRACHO": "LAR"
+    },
+    "G16": {
+      "EL DOC": "PHI",
+      "ARI": "PHI",
+      "LALO": "PHI",
+      "ALEX": "PHI",
+      "LUIS C.": "PHI",
+      "DR PALMA": "PHI",
+      "JENNI": "PHI",
+      "RODRI": "PHI",
+      "IBRACHO": "PHI"
+    }
   }
 }
