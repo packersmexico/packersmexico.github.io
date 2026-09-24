@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-24T10:45:00-06:00",
+  "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
+  "assets": [
+    {
+      "node_id": "2885:1064635",
+      "target": "quiniela-control/exports/w3-picks-board.png",
+      "url": "https://www.figma.com/api/mcp/asset/7ae75754-4881-4e4f-9bf7-afb2dba166a9.png"
+    },
+    {
+      "node_id": "2887:1064311",
+      "target": "quiniela-control/exports/w3-results-live.png",
+      "url": "https://www.figma.com/api/mcp/asset/f4b4371f-5ee8-49e9-9bf6-8a63269a590e.png"
+    }
+  ]
+}
