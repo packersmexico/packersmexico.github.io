@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081D13">
+  <meta name="description" content="Estado de la Quiniela Week 3 de PACKERS MÉXICO.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:title" content="QUINIELA · WEEK 3 · PACKERS MÉXICO">
+  <meta property="og:description" content="9/9 integrantes · board completo. Resultados y ranking conforme cierre la jornada.">
+  <meta property="og:url" content="https://packersmexico.github.io/quiniela/w03/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://packersmexico.github.io/quiniela/w03/">
+  <title>QUINIELA · WEEK 3 · PACKERS MÉXICO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--dark:#081D13;--green:#123B31;--gold:#FFC62F;--cream:#F2E8CF;--muted:#9AA99F;--line:#164D36}
+    *{box-sizing:border-box}body{margin:0;background:var(--dark);color:var(--cream);font-family:Montserrat,Arial,sans-serif}
+    .shell{width:min(1080px,calc(100% - 42px));margin:auto;padding:42px 0 70px}.logo{width:min(280px,68vw);height:auto}
+    .kicker{margin:55px 0 8px;color:var(--gold);font-family:"Bebas Neue";font-size:26px;letter-spacing:.03em}.title{margin:0;font-family:"Bebas Neue";font-size:clamp(64px,12vw,112px);line-height:.88;font-weight:400}
+    .rule{height:4px;background:var(--gold);margin:28px 0}.metric{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line)}
+    .metric strong{font-family:"Bebas Neue";font-size:84px;line-height:.9;color:var(--gold);font-weight:400}.metric span{font-size:20px;font-weight:700}.meta{margin:28px 0 0;color:var(--cream);font-size:18px;line-height:1.55}
+    .status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:34px}.status{padding:21px 0;border-top:2px solid var(--line)}.status b{display:block;color:var(--gold);font-size:12px;letter-spacing:.08em}.status span{display:block;margin-top:8px;font-size:17px;font-weight:700}
+    .participants{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 21px;margin-top:28px;padding-top:21px;border-top:1px solid var(--line)}.participants span{font-size:14px;font-weight:700}
+    .actions{display:flex;gap:21px;flex-wrap:wrap;margin-top:48px}.actions a{color:var(--cream);font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:7px}
+    .note{margin-top:46px;color:var(--muted);font-size:12px;line-height:1.5}
+    @media(max-width:680px){.shell{width:min(100% - 34px,1080px);padding-top:28px}.metric{grid-template-columns:1fr;gap:8px}.metric strong{font-size:72px}.status-grid,.participants{grid-template-columns:1fr 1fr}.actions a{width:100%}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <a href="../../" aria-label="PACKERS MÉXICO · Digital Hub"><img class="logo" src="../../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO"></a>
+  <p class="kicker">QUINIELA · WEEK 3</p>
+  <h1 class="title">BOARD COMPLETO</h1>
+  <div class="rule"></div>
+  <div class="metric"><strong id="count">9/9</strong><span id="count-copy">PICKS RECIBIDOS</span></div>
+  <p class="meta" id="description">Los nueve integrantes completaron la Week 3. Los picks permanecen protegidos hasta el cierre operativo.</p>
+  <section class="status-grid" aria-label="Estado de Week 3">
+    <div class="status"><b>CAPTURA</b><span id="capture">ABIERTA</span></div>
+    <div class="status"><b>RESULTADOS</b><span id="results">0/16 FINAL</span></div>
+    <div class="status"><b>PUBLICACIÓN</b><span id="publication">HOLD</span></div>
+  </section>
+  <div class="participants" id="participants" aria-label="Integrantes"></div>
+  <nav class="actions"><a href="../../">← VOLVER AL DIGITAL HUB</a><a href="../w02/">VER WEEK 2 →</a></nav>
+  <p class="note">PACKERS MÉXICO · Proyecto independiente · no afiliado oficialmente con Green Bay Packers ni NFL.</p>
+</main>
+<script>
+(async function(){
+  try{
+    const r=await fetch('../../quiniela-control/data.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json(), c=d.capture||{}, res=d.results||{}, pub=d.publication||{};
+    document.getElementById('count').textContent=(c.complete||0)+'/'+(c.total||9);
+    document.getElementById('count-copy').textContent=(c.received_picks||0)+'/'+(c.expected_picks||144)+' PICKS RECIBIDOS';
+    document.getElementById('capture').textContent=String(c.window||'OPEN').toUpperCase()==='OPEN'?'ABIERTA · CIERRE '+(c.deadline_label||''):'CERRADA';
+    document.getElementById('results').textContent=(res.final||0)+'/'+(res.total||16)+' FINAL';
+    document.getElementById('publication').textContent=String(pub.gate||'HOLD').split('/')[0];
+    if(String(c.window||'').toUpperCase()==='CLOSED') document.getElementById('description').textContent='La captura de Week 3 está cerrada. Resultados y ranking se actualizarán conforme los juegos sean FINAL.';
+    const wrap=document.getElementById('participants');
+    (d.participants||[]).forEach(p=>{const s=document.createElement('span');s.textContent=p.name;wrap.appendChild(s)});
+  }catch(e){console.error(e)}
+})();
+</script>
+</body>
+</html>
