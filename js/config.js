@@ -79,12 +79,13 @@
     gopackgoUrl: "https://youtu.be/BZBuRy3LHUY",
     quiniela: Object.freeze({
       enabled: true,
-      week: "WEEK 2",
-      label: "QUINIELA · WEEK 2",
-      title: "TODOS LOS PICKS",
-      meta: "9 integrantes · 16 partidos · 144 selecciones",
-      description: "Consulta la selección completa del board y revisa los picks de cada integrante.",
-      url: "https://packersmexico.github.io/quiniela/w02/",
+      week: "WEEK 3",
+      label: "QUINIELA · WEEK 3",
+      title: "9/9 PICKS RECIBIDOS",
+      meta: "9 integrantes · 144/144 picks · board completo",
+      description: "La captura de Week 3 está completa. Los picks permanecen protegidos hasta el cierre operativo; después se habilitarán resultados y ranking.",
+      url: "https://packersmexico.github.io/quiniela/w03/",
+      linkLabel: "VER ESTADO WEEK 3 →",
       members: Object.freeze([
         "EL DOC",
         "ARI",
@@ -99,7 +100,7 @@
     }),
     analytics: Object.freeze({
       GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
-      hubVersion: "p0-weekly-auto-v1.1",
+      hubVersion: "p0-weekly-auto-v1.2",
       eventVersion: "1.1"
     }),
     socialUrls: Object.freeze({
