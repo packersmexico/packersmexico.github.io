@@ -4,8 +4,9 @@
   "week_number": 3,
   "form_id": "262630890072052",
   "form_url": "https://form.jotform.com/262630890072052",
-  "status": "CLOSED",
-  "deadline": "2026-09-23T12:00:00-06:00",
+  "status": "OPEN",
+  "deadline": "2026-09-24T16:00:00-06:00",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-  "last_sync": "2026-09-23T13:11:30-06:00"
+  "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
+  "last_sync": "2026-09-24T04:51:00-06:00"
 }
