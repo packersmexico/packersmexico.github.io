@@ -101,7 +101,7 @@
     analytics: Object.freeze({
       GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
       hubVersion: "p0-weekly-auto-v1.2",
-      eventVersion: "1.1"
+      eventVersion: "1.2"
     }),
     socialUrls: Object.freeze({
       facebook: "https://www.facebook.com/share/1J1GHihRNz/",
