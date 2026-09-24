@@ -221,6 +221,7 @@
       });
     }
 
+    setText("quiniela-link", quiniela.linkLabel || "VER QUINIELA COMPLETA →");
     var quinielaLink = configureInternalLink("quiniela-link", quiniela.url, attribution, "URL de quiniela pendiente de validación");
     attachTracking(quinielaLink, "CLICK_QUINIELA", { destination_type: "editorial" });
     section.hidden = false;
