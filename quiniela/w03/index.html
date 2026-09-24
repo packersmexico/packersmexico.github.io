@@ -37,14 +37,14 @@
   <h1 class="title">BOARD COMPLETO</h1>
   <div class="rule"></div>
   <div class="metric"><strong id="count">9/9</strong><span id="count-copy">PICKS RECIBIDOS</span></div>
-  <p class="meta" id="description">Los nueve integrantes completaron la Week 3. Los picks permanecen protegidos hasta el cierre operativo.</p>
+  <p class="meta" id="description">Los nueve integrantes completaron la Week 3. El board de picks ya está cerrado y disponible.</p>
   <section class="status-grid" aria-label="Estado de Week 3">
-    <div class="status"><b>CAPTURA</b><span id="capture">ABIERTA</span></div>
+    <div class="status"><b>CAPTURA</b><span id="capture">CERRADA</span></div>
     <div class="status"><b>RESULTADOS</b><span id="results">0/16 FINAL</span></div>
-    <div class="status"><b>PUBLICACIÓN</b><span id="publication">HOLD</span></div>
+    <div class="status"><b>ASSETS</b><span id="publication">LISTOS</span></div>
   </section>
   <div class="participants" id="participants" aria-label="Integrantes"></div>
-  <nav class="actions"><a href="../../">← VOLVER AL DIGITAL HUB</a><a href="../w02/">VER WEEK 2 →</a></nav>
+  <nav class="actions"><a href="../../quiniela-control/exports/live.html#detail">VER TODOS LOS PICKS →</a><a href="../../quiniela-control/exports/live.html#weekly">VER RESULTADOS →</a><a href="../../">← VOLVER AL DIGITAL HUB</a></nav>
   <p class="note">PACKERS MÉXICO · Proyecto independiente · no afiliado oficialmente con Green Bay Packers ni NFL.</p>
 </main>
 <script>
@@ -57,8 +57,8 @@
     document.getElementById('count-copy').textContent=(c.received_picks||0)+'/'+(c.expected_picks||144)+' PICKS RECIBIDOS';
     document.getElementById('capture').textContent=String(c.window||'OPEN').toUpperCase()==='OPEN'?'ABIERTA · CIERRE '+(c.deadline_label||''):'CERRADA';
     document.getElementById('results').textContent=(res.final||0)+'/'+(res.total||16)+' FINAL';
-    document.getElementById('publication').textContent=String(pub.gate||'HOLD').split('/')[0];
-    if(String(c.window||'').toUpperCase()==='CLOSED') document.getElementById('description').textContent='La captura de Week 3 está cerrada. Resultados y ranking se actualizarán conforme los juegos sean FINAL.';
+    document.getElementById('publication').textContent='LISTOS';
+    if(String(c.window||'').toUpperCase()==='CLOSED') document.getElementById('description').textContent='La captura de Week 3 está cerrada. Los 144 picks están disponibles; resultados y ranking se actualizarán conforme los juegos sean FINAL.';
     const wrap=document.getElementById('participants');
     (d.participants||[]).forEach(p=>{const s=document.createElement('span');s.textContent=p.name;wrap.appendChild(s)});
   }catch(e){console.error(e)}
