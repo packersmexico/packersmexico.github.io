@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "last_sync": "2026-09-24T04:51:00-06:00",
+  "last_sync": "2026-09-24T09:41:00-06:00",
   "sync_mode": "AUTOMATED_HOURLY",
   "operator": {
     "name": "RODRIGO",
@@ -16,22 +16,20 @@
     "form_id": "262630890072052",
     "form_url": "https://form.jotform.com/262630890072052",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 6,
+    "complete": 9,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-09-24T16:00:00-06:00",
     "deadline_label": "24 SEP · 16:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 96,
-    "missing_picks": 48,
-    "missing_participants": [
-      "ARI",
-      "ALEX",
-      "RODRI"
-    ],
+    "received_picks": 144,
+    "missing_picks": 0,
+    "missing_participants": [],
     "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
     "existing_duplicate_resolution": "DR PALMA · LATEST VALID KEPT",
-    "invitado": "OFF"
+    "invitado": "OFF",
+    "capture_status": "9/9_READY",
+    "all_complete_at": "2026-09-24T11:39:03-06:00"
   },
   "participants": [
     {
@@ -40,7 +38,7 @@
     },
     {
       "name": "ARI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "LALO",
@@ -48,7 +46,7 @@
     },
     {
       "name": "ALEX",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "LUIS C.",
@@ -64,7 +62,7 @@
     },
     {
       "name": "RODRI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "IBRACHO",
