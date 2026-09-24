@@ -3,12 +3,12 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "snapshot_status": "9/9_READY",
+  "snapshot_status": "CLOSED_9_OF_9",
   "last_sync": "2026-09-24T09:41:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline_label": "24 SEP · 16:00 CDMX",
     "expected_picks": 144,
     "received_picks": 144,
@@ -17,7 +17,9 @@
     "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
     "existing_duplicate_resolution": "DR PALMA · LATEST VALID KEPT",
     "invitado": "OFF",
-    "capture_status": "9/9_READY"
+    "capture_status": "CLOSED_9_OF_9",
+    "form_status": "DISABLED",
+    "auto_close_reason": "9_OF_9_COMPLETE"
   },
   "participants": [
     {
@@ -62,26 +64,26 @@
     "total": 16,
     "status": "PENDING"
   },
-  "public_picks_authorized": false,
+  "public_picks_authorized": true,
   "production": {
-    "package_status": "HOLD/CAPTURE_OPEN · 9/9 READY",
+    "package_status": "READY FOR CLICK · PNG READY · PUBLICATION READY",
     "outputs": [
       {
         "id": "W3-LIVE-BOARD",
         "label": "TODOS LOS PICKS + ACIERTOS/ERRORES",
-        "status": "GATED UNTIL PUBLIC PICKS AUTHORIZATION",
+        "status": "PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#detail"
       },
       {
         "id": "W3-LIVE-RANKING",
         "label": "RESULTADOS / RANKING SEMANAL",
-        "status": "AUTO",
+        "status": "PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#weekly"
       },
       {
         "id": "W3-SEASON",
         "label": "RANKING GENERAL",
-        "status": "AUTO",
+        "status": "PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#season"
       }
     ]
