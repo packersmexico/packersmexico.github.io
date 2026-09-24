@@ -16,6 +16,7 @@
     "CLICK_GOPACKGO",
     "CLICK_SOCIAL",
     "CLICK_QUINIELA",
+    "SHARE_REDIRECT",
     "VIEW_QUINIELA_W01",
     "QR_OPEN"
   ]);
@@ -148,6 +149,40 @@
     return true;
   }
 
+  function trackThen(eventName, extraParams, callback, timeoutMs) {
+    var done = typeof callback === "function" ? callback : function () {};
+    var timeout = Math.max(250, Math.min(Number(timeoutMs) || 900, 2000));
+
+    if (!allowedEvents.includes(eventName)) {
+      done();
+      return false;
+    }
+
+    var parameters = sanitizeParameters(Object.assign({}, baseParameters(), extraParams || {}));
+    if (trafficClass === "TEST_SETUP") parameters.debug_mode = true;
+    var enabled = isEnabled();
+
+    recordDebugAttempt(eventName, parameters, enabled);
+    if (!enabled) {
+      done();
+      return false;
+    }
+
+    var completed = false;
+    function finish() {
+      if (completed) return;
+      completed = true;
+      done();
+    }
+
+    parameters.transport_type = "beacon";
+    parameters.event_callback = finish;
+    parameters.event_timeout = timeout;
+    window.gtag("event", eventName, parameters);
+    window.setTimeout(finish, timeout + 100);
+    return true;
+  }
+
   function sendPageViewOnce() {
     var key = "standard-page-view";
     if (onceKeys.has(key)) return false;
@@ -206,6 +241,7 @@
     getAttribution: getAttribution,
     getTrafficClass: function () { return trafficClass; },
     trackOnce: trackOnce,
+    trackThen: trackThen,
     sendPageViewOnce: sendPageViewOnce,
     debugEnabled: debugEnabled,
     debugAttempts: debugAttempts
