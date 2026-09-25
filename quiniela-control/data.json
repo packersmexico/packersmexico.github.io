@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "last_sync": "2026-09-24T09:41:00-06:00",
-  "sync_mode": "AUTOMATED_HOURLY",
+  "last_sync": "2026-09-25T08:31:00-06:00",
+  "sync_mode": "MANUAL_VERIFIED_PATCH",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -75,9 +75,9 @@
       "id": "G01",
       "matchup": "ATL @ GB",
       "time": "JUE 24 SEP · 18:15 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "ATL",
+      "status": "FINAL",
+      "score": "ATL 35–14 GB",
       "picks": {
         "EL DOC": "GB",
         "ARI": "GB",
@@ -377,111 +377,111 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 16,
-    "status": "PENDING"
+    "status": "LIVE"
   },
   "weekly_standings": [
     {
       "name": "EL DOC",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "ARI",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "LALO",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "ALEX",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "LUIS C.",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "DR PALMA",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "JENNI",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "RODRI",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     },
     {
       "name": "IBRACHO",
       "correct": 0,
-      "wrong": 0
+      "wrong": 1
     }
   ],
   "season_standings": [
     {
       "name": "RODRI",
       "correct": 22,
-      "wrong": 10
+      "wrong": 11
     },
     {
       "name": "ALEX",
       "correct": 21,
-      "wrong": 11
+      "wrong": 12
     },
     {
       "name": "EL DOC",
       "correct": 21,
-      "wrong": 11
+      "wrong": 12
     },
     {
       "name": "LALO",
       "correct": 21,
-      "wrong": 11
+      "wrong": 12
     },
     {
       "name": "JENNI",
       "correct": 20,
-      "wrong": 12
+      "wrong": 13
     },
     {
       "name": "LUIS C.",
       "correct": 20,
-      "wrong": 12
+      "wrong": 13
     },
     {
       "name": "DR PALMA",
       "correct": 19,
-      "wrong": 13
+      "wrong": 14
     },
     {
       "name": "IBRACHO",
       "correct": 19,
-      "wrong": 13
+      "wrong": 14
     },
     {
       "name": "ARI",
       "correct": 17,
-      "wrong": 15
+      "wrong": 16
     }
   ],
   "public_picks_authorized": true,
   "publication": {
-    "gate": "READY FOR CLICK",
+    "gate": "HOLD",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "PUBLICATION READY"
+    "assets_status": "HOLD · RESULTS VISUAL REFRESH REQUIRED"
   },
   "public_picks": {
     "G01": {
