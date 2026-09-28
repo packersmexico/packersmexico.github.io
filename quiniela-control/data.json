@@ -4,7 +4,7 @@
   "week": "WEEK 3",
   "week_number": 3,
   "last_sync": "2026-09-27T19:51:00-06:00",
-  "sync_mode": "AUTO DÍAS DE JUEGO · 5 MIN + REFRESH MANUAL",
+  "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -88,7 +88,8 @@
         "JENNI": "GB",
         "RODRI": "GB",
         "IBRACHO": "GB"
-      }
+      },
+      "kickoff_iso": "2026-09-24T18:15:00-06:00"
     },
     {
       "id": "G02",
@@ -107,7 +108,8 @@
         "JENNI": "LAC",
         "RODRI": "BUF",
         "IBRACHO": "BUF"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G03",
@@ -126,7 +128,8 @@
         "JENNI": "CAR",
         "RODRI": "CAR",
         "IBRACHO": "CAR"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G04",
@@ -145,7 +148,8 @@
         "JENNI": "DET",
         "RODRI": "DET",
         "IBRACHO": "DET"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G05",
@@ -164,7 +168,8 @@
         "JENNI": "HOU",
         "RODRI": "HOU",
         "IBRACHO": "IND"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G06",
@@ -183,7 +188,8 @@
         "JENNI": "NE",
         "RODRI": "JAX",
         "IBRACHO": "JAX"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G07",
@@ -202,7 +208,8 @@
         "JENNI": "KC",
         "RODRI": "KC",
         "IBRACHO": "KC"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G08",
@@ -221,7 +228,8 @@
         "JENNI": "TEN",
         "RODRI": "NYG",
         "IBRACHO": "NYG"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G09",
@@ -240,7 +248,8 @@
         "JENNI": "PIT",
         "RODRI": "CIN",
         "IBRACHO": "CIN"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G10",
@@ -259,7 +268,8 @@
         "JENNI": "SEA",
         "RODRI": "SEA",
         "IBRACHO": "SEA"
-      }
+      },
+      "kickoff_iso": "2026-09-27T11:00:00-06:00"
     },
     {
       "id": "G11",
@@ -278,7 +288,8 @@
         "JENNI": "SF",
         "RODRI": "SF",
         "IBRACHO": "SF"
-      }
+      },
+      "kickoff_iso": "2026-09-27T14:05:00-06:00"
     },
     {
       "id": "G12",
@@ -297,7 +308,8 @@
         "JENNI": "MIN",
         "RODRI": "MIN",
         "IBRACHO": "MIN"
-      }
+      },
+      "kickoff_iso": "2026-09-27T14:05:00-06:00"
     },
     {
       "id": "G13",
@@ -316,7 +328,8 @@
         "JENNI": "LV",
         "RODRI": "NO",
         "IBRACHO": "LV"
-      }
+      },
+      "kickoff_iso": "2026-09-27T14:25:00-06:00"
     },
     {
       "id": "G14",
@@ -335,7 +348,8 @@
         "JENNI": "BAL",
         "RODRI": "BAL",
         "IBRACHO": "BAL"
-      }
+      },
+      "kickoff_iso": "2026-09-27T14:25:00-06:00"
     },
     {
       "id": "G15",
@@ -354,7 +368,8 @@
         "JENNI": "DEN",
         "RODRI": "LAR",
         "IBRACHO": "LAR"
-      }
+      },
+      "kickoff_iso": "2026-09-27T18:20:00-06:00"
     },
     {
       "id": "G16",
@@ -373,7 +388,8 @@
         "JENNI": "PHI",
         "RODRI": "PHI",
         "IBRACHO": "PHI"
-      }
+      },
+      "kickoff_iso": "2026-09-28T18:15:00-06:00"
     }
   ],
   "results": {
@@ -660,5 +676,59 @@
       "RODRI": "PHI",
       "IBRACHO": "PHI"
     }
-  }
+  },
+  "sync_policy": {
+    "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
+    "primary_check_after_minutes": 210,
+    "fallback_window_until_minutes": 280,
+    "external_request_only_when_game_due": true,
+    "stop_after_week_complete": true
+  },
+  "season_base_before_week": [
+    {
+      "name": "EL DOC",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "ARI",
+      "correct": 17,
+      "wrong": 15
+    },
+    {
+      "name": "LALO",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "ALEX",
+      "correct": 21,
+      "wrong": 11
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 20,
+      "wrong": 12
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 19,
+      "wrong": 13
+    },
+    {
+      "name": "JENNI",
+      "correct": 20,
+      "wrong": 12
+    },
+    {
+      "name": "RODRI",
+      "correct": 22,
+      "wrong": 10
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 19,
+      "wrong": 13
+    }
+  ]
 }
