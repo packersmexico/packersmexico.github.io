@@ -1,0 +1,159 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-20260928-OL-NEW-ADDITIONS-TIKTOK-001",
+  "family": "ANALYSIS",
+  "mode": "STORY",
+  "aspect": "9:16",
+  "headline": "¿POR QUÉ GREEN BAY ESTÁ MOVIENDO LA OL?",
+  "subheadline": "TRES VETERANOS · TRES NECESIDADES",
+  "durationSeconds": 86.505,
+  "sourceLabel": "PACKERS.COM · NFL · JEREMY FOWLER · PMX 01",
+  "destinationLabel": "TIKTOK / REELS · WEEK 4",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 9.8,
+      "type": "HOOK",
+      "kicker": "¿POR QUÉ AHORA?",
+      "title": "GREEN BAY\nMUEVE LA OL",
+      "support": "LA UNIDAD NECESITA ESTABILIDAD",
+      "body": "Las lesiones y la falta de continuidad obligaron a Green Bay a buscar experiencia inmediata.",
+      "insights": [
+        {
+          "label": "CLAVE",
+          "text": "No es un movimiento aislado: son varias respuestas al mismo problema."
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "start": 9.8,
+      "end": 21.5,
+      "type": "ANALYSIS",
+      "kicker": "LA NECESIDAD",
+      "title": "LESIONES +\nPROFUNDIDAD",
+      "support": "ZACH BAKO-BEWELE · AARON BANKS",
+      "body": "Bako-Bewele espera perderse el resto de la temporada y Banks no jugó en la Semana 3.",
+      "insights": [
+        {
+          "label": "IMPACTO",
+          "text": "La línea necesita opciones listas para entrar sin rehacer toda la estructura."
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "start": 21.5,
+      "end": 36.4,
+      "type": "PACKERS_NOTE",
+      "kicker": "REFUERZO 1",
+      "title": "CORDELL\nVOLSON",
+      "support": "PROFUNDIDAD · GUARDIA IZQUIERDO",
+      "body": "48 titularidades en la NFL. Su valor inmediato es funcionar como respaldo veterano y seguro de profundidad.",
+      "insights": [
+        {
+          "label": "QUÉ CUBRE",
+          "text": "Experiencia real en guardia izquierdo."
+        },
+        {
+          "label": "QUÉ ESPERAR",
+          "text": "Competencia y disponibilidad si vuelven las lesiones."
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "start": 36.4,
+      "end": 52.5,
+      "type": "PACKERS_NOTE",
+      "kicker": "REFUERZO 2",
+      "title": "LAKEN\nTOMLINSON",
+      "support": "EXPERIENCIA · ESTABILIDAD INTERIOR",
+      "body": "162 titularidades y Pro Bowl en 2021. Por perfil, puede competir por estabilizar el lado izquierdo.",
+      "insights": [
+        {
+          "label": "QUÉ CUBRE",
+          "text": "Un interior golpeado y con poca continuidad."
+        },
+        {
+          "label": "QUÉ ESPERAR",
+          "text": "Competencia por snaps reales, sin asumir titularidad."
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "start": 52.5,
+      "end": 71.6,
+      "type": "PACKERS_NOTE",
+      "kicker": "REFUERZO 3",
+      "title": "MEKHI\nBECTON",
+      "support": "POTENCIA · FLEXIBILIDAD",
+      "body": "Jeremy Fowler reporta que firmará con Green Bay. Fue pick 11 en 2020, viene de jugar guardia derecho y también tiene experiencia como tackle.",
+      "insights": [
+        {
+          "label": "QUÉ CUBRE",
+          "text": "Más fuerza interior y otra pieza para mover posiciones."
+        },
+        {
+          "label": "QUÉ ESPERAR",
+          "text": "Competencia inmediata y flexibilidad si la OL vuelve a perder piezas."
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "start": 71.6,
+      "end": 86.505,
+      "type": "OUTRO",
+      "kicker": "LO QUE CAMBIA",
+      "title": "NO LLEGAN\nCOMO SALVADORES",
+      "support": "EXPERIENCIA · COMPETENCIA · FLEXIBILIDAD",
+      "body": "Green Bay suma opciones para proteger mejor a Jordan Love y recuperar estabilidad rumbo a Tampa Bay.",
+      "insights": [
+        {
+          "label": "SIGUIENTE PASO",
+          "text": "Ver quién se gana los snaps y cómo se reordena la línea."
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "start": 2,
+      "end": 9.7,
+      "text": "¿Por qué Green Bay está sumando veteranos a la línea ofensiva? Porque esta unidad necesita estabilidad y la necesita ya."
+    },
+    {
+      "start": 9.8,
+      "end": 21.4,
+      "text": "Zach Bako-Bewele sufrió una rotura completa del tendón rotuliano y espera perderse el resto de la temporada. Aaron Banks no pudo jugar en la Semana 3."
+    },
+    {
+      "start": 21.5,
+      "end": 36.3,
+      "text": "Primero llegó Cordell Volson al equipo de prácticas. Tiene 48 titularidades en la NFL y experiencia como guardia izquierdo."
+    },
+    {
+      "start": 36.4,
+      "end": 52.4,
+      "text": "Después llegó Laken Tomlinson. Tiene 162 titularidades, casi toda su carrera como guardia izquierdo, y fue Pro Bowl en 2021."
+    },
+    {
+      "start": 52.5,
+      "end": 69.5,
+      "text": "Y ahora Mekhi Becton. Jeremy Fowler reporta que firmará con Green Bay. Fue la selección número 11 del Draft de 2020."
+    },
+    {
+      "start": 69.6,
+      "end": 71.5,
+      "text": "Viene de jugar como guardia derecho y también tiene experiencia como tackle."
+    },
+    {
+      "start": 71.6,
+      "end": 85.9,
+      "text": "Ninguno llega como salvador. Llegan para aportar experiencia, competencia y flexibilidad a una línea que ya perdió piezas importantes."
+    }
+  ]
+}
