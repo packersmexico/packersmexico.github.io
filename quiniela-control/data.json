@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "last_sync": "2026-09-25T08:31:00-06:00",
-  "sync_mode": "MANUAL_VERIFIED_PATCH",
+  "last_sync": "2026-09-27T19:51:00-06:00",
+  "sync_mode": "AUTO_5_MIN + MANUAL_VIEW_REFRESH",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -94,9 +94,9 @@
       "id": "G02",
       "matchup": "LAC @ BUF",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "BUF",
+      "status": "FINAL",
+      "score": "BUF 24–16 LAC",
       "picks": {
         "EL DOC": "BUF",
         "ARI": "BUF",
@@ -113,9 +113,9 @@
       "id": "G03",
       "matchup": "CAR @ CLE",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "CLE",
+      "status": "FINAL",
+      "score": "CLE 21–18 CAR",
       "picks": {
         "EL DOC": "CAR",
         "ARI": "CLE",
@@ -132,9 +132,9 @@
       "id": "G04",
       "matchup": "NYJ @ DET",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "DET",
+      "status": "FINAL",
+      "score": "DET 31–24 NYJ",
       "picks": {
         "EL DOC": "DET",
         "ARI": "DET",
@@ -151,9 +151,9 @@
       "id": "G05",
       "matchup": "HOU @ IND",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "IND",
+      "status": "FINAL",
+      "score": "IND 19–17 HOU",
       "picks": {
         "EL DOC": "HOU",
         "ARI": "IND",
@@ -170,9 +170,9 @@
       "id": "G06",
       "matchup": "NE @ JAX",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "JAX",
+      "status": "FINAL",
+      "score": "JAX 35–6 NE",
       "picks": {
         "EL DOC": "JAX",
         "ARI": "JAX",
@@ -189,9 +189,9 @@
       "id": "G07",
       "matchup": "KC @ MIA",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "KC",
+      "status": "FINAL",
+      "score": "KC 24–10 MIA",
       "picks": {
         "EL DOC": "KC",
         "ARI": "KC",
@@ -208,9 +208,9 @@
       "id": "G08",
       "matchup": "TEN @ NYG",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "NYG",
+      "status": "FINAL",
+      "score": "NYG 12–7 TEN",
       "picks": {
         "EL DOC": "NYG",
         "ARI": "NYG",
@@ -227,9 +227,9 @@
       "id": "G09",
       "matchup": "CIN @ PIT",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "PIT",
+      "status": "FINAL",
+      "score": "PIT 30–27 CIN",
       "picks": {
         "EL DOC": "CIN",
         "ARI": "CIN",
@@ -246,9 +246,9 @@
       "id": "G10",
       "matchup": "SEA @ WAS",
       "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "WAS",
+      "status": "FINAL",
+      "score": "WAS 33–31 SEA",
       "picks": {
         "EL DOC": "SEA",
         "ARI": "SEA",
@@ -265,9 +265,9 @@
       "id": "G11",
       "matchup": "ARI @ SF",
       "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "SF",
+      "status": "FINAL",
+      "score": "SF 36–30 ARI",
       "picks": {
         "EL DOC": "SF",
         "ARI": "SF",
@@ -284,9 +284,9 @@
       "id": "G12",
       "matchup": "MIN @ TB",
       "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "MIN",
+      "status": "FINAL",
+      "score": "MIN 23–16 TB",
       "picks": {
         "EL DOC": "MIN",
         "ARI": "TB",
@@ -303,9 +303,9 @@
       "id": "G13",
       "matchup": "LV @ NO",
       "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "LV",
+      "status": "FINAL",
+      "score": "LV 35–27 NO",
       "picks": {
         "EL DOC": "NO",
         "ARI": "LV",
@@ -322,9 +322,9 @@
       "id": "G14",
       "matchup": "BAL @ DAL",
       "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "BAL",
+      "status": "FINAL",
+      "score": "BAL 34–31 DAL",
       "picks": {
         "EL DOC": "BAL",
         "ARI": "BAL",
@@ -342,8 +342,8 @@
       "matchup": "LAR @ DEN",
       "time": "DOM 27 SEP · 18:20 CDMX",
       "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "status": "IN_PROGRESS",
+      "score": "LAR 16–0 DEN · HALF",
       "picks": {
         "EL DOC": "LAR",
         "ARI": "LAR",
@@ -377,111 +377,111 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 14,
     "total": 16,
     "status": "LIVE"
   },
   "weekly_standings": [
     {
       "name": "EL DOC",
-      "correct": 0,
-      "wrong": 1
+      "correct": 8,
+      "wrong": 6
     },
     {
       "name": "ARI",
-      "correct": 0,
-      "wrong": 1
+      "correct": 10,
+      "wrong": 4
     },
     {
       "name": "LALO",
-      "correct": 0,
-      "wrong": 1
+      "correct": 7,
+      "wrong": 7
     },
     {
       "name": "ALEX",
-      "correct": 0,
-      "wrong": 1
+      "correct": 7,
+      "wrong": 7
     },
     {
       "name": "LUIS C.",
-      "correct": 0,
-      "wrong": 1
+      "correct": 8,
+      "wrong": 6
     },
     {
       "name": "DR PALMA",
-      "correct": 0,
-      "wrong": 1
+      "correct": 8,
+      "wrong": 6
     },
     {
       "name": "JENNI",
-      "correct": 0,
-      "wrong": 1
+      "correct": 7,
+      "wrong": 7
     },
     {
       "name": "RODRI",
-      "correct": 0,
-      "wrong": 1
+      "correct": 8,
+      "wrong": 6
     },
     {
       "name": "IBRACHO",
-      "correct": 0,
-      "wrong": 1
+      "correct": 10,
+      "wrong": 4
     }
   ],
   "season_standings": [
     {
       "name": "RODRI",
-      "correct": 22,
-      "wrong": 11
-    },
-    {
-      "name": "ALEX",
-      "correct": 21,
-      "wrong": 12
+      "correct": 30,
+      "wrong": 16
     },
     {
       "name": "EL DOC",
-      "correct": 21,
-      "wrong": 12
-    },
-    {
-      "name": "LALO",
-      "correct": 21,
-      "wrong": 12
-    },
-    {
-      "name": "JENNI",
-      "correct": 20,
-      "wrong": 13
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 20,
-      "wrong": 13
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 19,
-      "wrong": 14
+      "correct": 29,
+      "wrong": 17
     },
     {
       "name": "IBRACHO",
-      "correct": 19,
-      "wrong": 14
+      "correct": 29,
+      "wrong": 17
+    },
+    {
+      "name": "ALEX",
+      "correct": 28,
+      "wrong": 18
+    },
+    {
+      "name": "LALO",
+      "correct": 28,
+      "wrong": 18
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 28,
+      "wrong": 18
     },
     {
       "name": "ARI",
-      "correct": 17,
-      "wrong": 16
+      "correct": 27,
+      "wrong": 19
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 27,
+      "wrong": 19
+    },
+    {
+      "name": "JENNI",
+      "correct": 27,
+      "wrong": 19
     }
   ],
   "public_picks_authorized": true,
   "publication": {
-    "gate": "HOLD",
+    "gate": "READY FOR CLICK",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "HOLD · RESULTS VISUAL REFRESH REQUIRED"
+    "assets_status": "LIVE · 14/16 FINAL · FIGMA SYNCED"
   },
   "public_picks": {
     "G01": {
