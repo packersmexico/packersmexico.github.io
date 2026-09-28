@@ -1,0 +1,131 @@
+name: Quiniela Live Results Sync
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quiniela-live-results
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Sync NFL Week 3 results
+        shell: python
+        run: |
+          import json, urllib.request, datetime, pathlib
+
+          data_path = pathlib.Path("quiniela-control/data.json")
+          week_path = pathlib.Path("quiniela-control/weeks/week-03.json")
+          data = json.loads(data_path.read_text(encoding="utf-8"))
+
+          aliases={"JAC":"JAX","WSH":"WAS","LA":"LAR"}
+          def norm(x): return aliases.get(x,x)
+
+          events=[]
+          for d in ("20260924","20260927","20260928"):
+              req=urllib.request.Request(
+                  f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={d}&limit=100",
+                  headers={"User-Agent":"PACKERS-MEXICO-QUINIELA/1.0"}
+              )
+              with urllib.request.urlopen(req, timeout=20) as r:
+                  payload=json.load(r)
+              events.extend(payload.get("events",[]))
+
+          by_match={}
+          for ev in events:
+              comps=ev.get("competitions") or []
+              if not comps: continue
+              comp=comps[0]
+              teams={}
+              for c in comp.get("competitors",[]):
+                  ab=norm((c.get("team") or {}).get("abbreviation",""))
+                  teams[c.get("homeAway")]={
+                      "abbr":ab,
+                      "score":int(c.get("score") or 0),
+                      "winner":bool(c.get("winner"))
+                  }
+              if "away" not in teams or "home" not in teams: continue
+              key=f"{teams['away']['abbr']} @ {teams['home']['abbr']}"
+              st=(ev.get("status") or {}).get("type") or {}
+              by_match[key]={"teams":teams,"completed":bool(st.get("completed")),"detail":st.get("shortDetail") or st.get("detail") or st.get("name") or "SCHEDULED"}
+
+          changed=False
+          for g in data.get("games",[]):
+              e=by_match.get(g.get("matchup"))
+              if not e: continue
+              away,home=e["teams"]["away"],e["teams"]["home"]
+              if e["completed"]:
+                  winner=away if away["score"]>home["score"] else home
+                  loser=home if winner is away else away
+                  score=f"{winner['abbr']} {winner['score']}–{loser['score']} {loser['abbr']}"
+                  new=("FINAL",winner["abbr"],score)
+              else:
+                  score=f"{away['abbr']} {away['score']}–{home['score']} {home['abbr']}"
+                  new=(str(e["detail"]).upper(),None,score)
+              old=(g.get("status"),g.get("winner"),g.get("score"))
+              if new!=old:
+                  g["status"],g["winner"],g["score"]=new
+                  changed=True
+
+          finals=[g for g in data.get("games",[]) if g.get("status")=="FINAL" and g.get("winner")]
+          participants=[p["name"] for p in data.get("participants",[])]
+          weekly=[]
+          for p in participants:
+              correct=sum(1 for g in finals if (g.get("picks") or {}).get(p)==g.get("winner"))
+              weekly.append({"name":p,"correct":correct,"wrong":len(finals)-correct})
+
+          base={
+            "EL DOC":(21,11),"ARI":(17,15),"LALO":(21,11),"ALEX":(21,11),
+            "LUIS C.":(20,12),"DR PALMA":(19,13),"JENNI":(20,12),"RODRI":(22,10),"IBRACHO":(19,13)
+          }
+          season=[{"name":r["name"],"correct":base[r["name"]][0]+r["correct"],"wrong":base[r["name"]][1]+r["wrong"]} for r in weekly]
+          season.sort(key=lambda r:(-r["correct"],r["wrong"],r["name"]))
+
+          new_results={"final":len(finals),"total":len(data.get("games",[])),"status":"FINAL" if len(finals)==len(data.get("games",[])) else "LIVE"}
+          if data.get("results")!=new_results or data.get("weekly_standings")!=weekly or data.get("season_standings")!=season:
+              changed=True
+          data["results"]=new_results
+          data["weekly_standings"]=weekly
+          data["season_standings"]=season
+
+          if changed:
+              now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-6))).isoformat(timespec="seconds")
+              data["last_sync"]=now
+              data["sync_mode"]="AUTO_5_MIN + MANUAL_VIEW_REFRESH"
+              data.setdefault("publication",{})["gate"]="HOLD" if len(finals)<16 else "READY FOR CLICK"
+              data["publication"]["assets_status"]=f"DATA LIVE · {len(finals)}/16 FINAL · FIGMA REFRESH PENDING"
+              data_path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+
+              if week_path.exists():
+                  week=json.loads(week_path.read_text(encoding="utf-8"))
+                  week["last_sync"]=now
+                  week["results"]=new_results
+                  week.setdefault("production",{})["package_status"]=f"DATA LIVE · {len(finals)}/16 FINAL · FIGMA REFRESH PENDING"
+                  week_path.write_text(json.dumps(week,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          else:
+              print("No material result change.")
+
+      - name: Commit data changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quiniela-control/data.json quiniela-control/weeks/week-03.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Quiniela W3: auto-sync NFL results"
+          git push origin HEAD:main

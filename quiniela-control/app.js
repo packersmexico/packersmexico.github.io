@@ -19,7 +19,7 @@ function renderGames(games=[]){
 function renderRanking(data){
   const rows=weeklyTable(data); const wrap=$('weekly-ranking'); wrap.replaceChildren();
   const anyFinal=(data.results?.final||0)>0;
-  rows.forEach((r,i)=>{const el=document.createElement('div');el.className='rank-row';el.innerHTML='<span class="rank-pos">'+(i+1)+'</span><strong>'+esc(r.name)+'</strong><span>'+r.correct+' ✓</span><span>'+r.wrong+' ×</span>';wrap.append(el)});
+  let last=null,rank=0;rows.forEach(r=>{if(last===null||r.correct!==last){rank++;last=r.correct}const el=document.createElement('div');el.className='rank-row';el.innerHTML='<span class="rank-pos">'+rank+'</span><strong>'+esc(r.name)+'</strong><span>'+r.correct+' ✓</span><span>'+r.wrong+' ×</span>';wrap.append(el)});
   setText('ranking-status',anyFinal?((data.results.final===data.results.total)?'FINAL':'EN VIVO'):'PENDING');
 }
 function render(data){
@@ -37,14 +37,14 @@ async function load(manual=false){
  const btn=$('refresh-control'), msg=$('refresh-message');
  if(manual){
    if(btn) btn.disabled=true;
-   if(msg) msg.textContent='ACTUALIZANDO… revisando captura, resultados y rankings.';
+   if(msg) msg.textContent='ACTUALIZANDO VISTA… buscando el último estado sincronizado.';
  }
  try{
    const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
    if(!r.ok) throw new Error('HTTP '+r.status);
    const data=await r.json();
    render(data);
-   if(msg) msg.textContent=(manual?'ACTUALIZACIÓN COMPLETA · ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync);
+   if(msg) msg.textContent=(manual?'VISTA ACTUALIZADA · FUENTE SINCRONIZADA ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync);
  }catch(e){
    setText('last-sync','SIN CONEXIÓN AL FEED');
    if(msg) msg.textContent='NO SE PUDO ACTUALIZAR · intenta otra vez.';
