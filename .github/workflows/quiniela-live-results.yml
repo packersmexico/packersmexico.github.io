@@ -2,7 +2,16 @@ name: Quiniela Live Results Sync
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # Ventanas NFL en hora CDMX convertidas a UTC.
+    # Jueves 17:00-23:59 CDMX
+    - cron: '*/5 23 * * 4'
+    - cron: '*/5 0-5 * * 5'
+    # Domingo 10:00-23:59 CDMX
+    - cron: '*/5 16-23 * * 0'
+    - cron: '*/5 0-5 * * 1'
+    # Lunes 17:00-23:59 CDMX
+    - cron: '*/5 23 * * 1'
+    - cron: '*/5 0-5 * * 2'
   workflow_dispatch:
 
 permissions:
@@ -29,11 +38,19 @@ jobs:
           week_path = pathlib.Path("quiniela-control/weeks/week-03.json")
           data = json.loads(data_path.read_text(encoding="utf-8"))
 
+          total_games=len(data.get("games",[]))
+          if total_games and data.get("results",{}).get("final",0) >= total_games and data.get("results",{}).get("status")=="FINAL":
+              print("Week complete: sync is idle until rollover.")
+              raise SystemExit(0)
+
           aliases={"JAC":"JAX","WSH":"WAS","LA":"LAR"}
           def norm(x): return aliases.get(x,x)
 
           events=[]
-          for d in ("20260924","20260927","20260928"):
+          today=datetime.datetime.now(datetime.timezone.utc).date()
+          dates=[today+datetime.timedelta(days=o) for o in (-1,0,1)]
+          for day in dates:
+              d=day.strftime("%Y%m%d")
               req=urllib.request.Request(
                   f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={d}&limit=100",
                   headers={"User-Agent":"PACKERS-MEXICO-QUINIELA/1.0"}
@@ -102,7 +119,7 @@ jobs:
           if changed:
               now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-6))).isoformat(timespec="seconds")
               data["last_sync"]=now
-              data["sync_mode"]="AUTO_5_MIN + MANUAL_VIEW_REFRESH"
+              data["sync_mode"]="AUTO DÍAS DE JUEGO · 5 MIN + REFRESH MANUAL"
               data.setdefault("publication",{})["gate"]="HOLD" if len(finals)<16 else "READY FOR CLICK"
               data["publication"]["assets_status"]=f"DATA LIVE · {len(finals)}/16 FINAL · FIGMA REFRESH PENDING"
               data_path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
