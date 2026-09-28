@@ -16,10 +16,21 @@ const parseArray = (value, label) => {
   }
 };
 
+const inferSpecPathFromBranch = () => {
+  const branch = env.GITHUB_HEAD_REF || env.GITHUB_REF_NAME || '';
+  const prefix = 'video-factory/spec-';
+  if (!branch.startsWith(prefix)) return undefined;
+  const id = branch.slice(prefix.length);
+  if (!id) return undefined;
+  const candidate = path.join('specs', `${id}.json`);
+  return fs.existsSync(candidate) ? candidate : undefined;
+};
+
 let spec;
-if (env.SPEC_PATH) {
-  const specPath = path.resolve(env.SPEC_PATH);
-  if (!fs.existsSync(specPath)) throw new Error(`SPEC_PATH not found: ${env.SPEC_PATH}`);
+const selectedSpecPath = env.SPEC_PATH || inferSpecPathFromBranch();
+if (selectedSpecPath) {
+  const specPath = path.resolve(selectedSpecPath);
+  if (!fs.existsSync(specPath)) throw new Error(`SPEC_PATH not found: ${selectedSpecPath}`);
   spec = JSON.parse(fs.readFileSync(specPath, 'utf8'));
 } else {
   spec = {
