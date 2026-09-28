@@ -7,7 +7,6 @@
   "headline": "¿POR QUÉ GREEN BAY ESTÁ MOVIENDO LA OL?",
   "subheadline": "TRES VETERANOS · TRES NECESIDADES",
   "durationSeconds": 86.505,
-  "sourceLabel": "PACKERS.COM · NFL · JEREMY FOWLER · PMX 01",
   "destinationLabel": "TIKTOK / REELS · WEEK 4",
   "scenes": [
     {
@@ -60,7 +59,9 @@
           "label": "QUÉ ESPERAR",
           "text": "Competencia y disponibilidad si vuelven las lesiones."
         }
-      ]
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/dpeqvddvsfusbm1gouog",
+      "assetCredit": "FOTO: KELLER NIENAU / PACKERS.COM"
     },
     {
       "id": "S04",
@@ -80,7 +81,9 @@
           "label": "QUÉ ESPERAR",
           "text": "Competencia por snaps reales, sin asumir titularidad."
         }
-      ]
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/49ers/w9midxtjoumddq72kqaj",
+      "assetCredit": "IMAGEN: 49ERS.COM"
     },
     {
       "id": "S05",
@@ -100,7 +103,9 @@
           "label": "QUÉ ESPERAR",
           "text": "Competencia inmediata y flexibilidad si la OL vuelve a perder piezas."
         }
-      ]
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/chargers/gzdscgwi406jhvmxeynm",
+      "assetCredit": "IMAGEN: CHARGERS.COM"
     },
     {
       "id": "S06",
