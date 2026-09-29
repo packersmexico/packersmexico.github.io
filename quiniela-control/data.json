@@ -385,5 +385,15 @@
       "correct": 27,
       "wrong": 21
     }
-  ]
+  ],
+  "notifications": {
+    "center_status": "ACTIVE",
+    "push_status": "PENDING_BACKEND",
+    "operator": "RODRIGO",
+    "milestone_events": [
+      "WEEK_OPEN",
+      "CAPTURE_9_OF_9",
+      "WEEK_FINAL"
+    ]
+  }
 }
