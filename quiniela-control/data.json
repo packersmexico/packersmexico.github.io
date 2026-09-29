@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "last_sync": "2026-09-27T19:51:00-06:00",
-  "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
+  "last_sync": "2026-09-28T21:37:00-06:00",
+  "sync_mode": "FINAL · IDLE HASTA ROLLOVER WEEK 4",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -355,9 +355,9 @@
       "id": "G15",
       "matchup": "LAR @ DEN",
       "time": "DOM 27 SEP · 18:20 CDMX",
-      "winner": null,
-      "status": "IN_PROGRESS",
-      "score": "LAR 16–0 DEN · HALF",
+      "winner": "DEN",
+      "status": "FINAL",
+      "score": "DEN 30–26 LAR",
       "picks": {
         "EL DOC": "LAR",
         "ARI": "LAR",
@@ -375,9 +375,9 @@
       "id": "G16",
       "matchup": "PHI @ CHI",
       "time": "LUN 28 SEP · 18:15 CDMX",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "CHI",
+      "status": "FINAL",
+      "score": "CHI 27–7 PHI",
       "picks": {
         "EL DOC": "PHI",
         "ARI": "PHI",
@@ -393,102 +393,102 @@
     }
   ],
   "results": {
-    "final": 14,
+    "final": 16,
     "total": 16,
-    "status": "LIVE"
+    "status": "FINAL"
   },
   "weekly_standings": [
     {
       "name": "EL DOC",
       "correct": 8,
-      "wrong": 6
+      "wrong": 8
     },
     {
       "name": "ARI",
       "correct": 10,
-      "wrong": 4
+      "wrong": 6
     },
     {
       "name": "LALO",
       "correct": 7,
-      "wrong": 7
+      "wrong": 9
     },
     {
       "name": "ALEX",
       "correct": 7,
-      "wrong": 7
+      "wrong": 9
     },
     {
       "name": "LUIS C.",
       "correct": 8,
-      "wrong": 6
+      "wrong": 8
     },
     {
       "name": "DR PALMA",
-      "correct": 8,
-      "wrong": 6
+      "correct": 9,
+      "wrong": 7
     },
     {
       "name": "JENNI",
-      "correct": 7,
-      "wrong": 7
+      "correct": 8,
+      "wrong": 8
     },
     {
       "name": "RODRI",
       "correct": 8,
-      "wrong": 6
+      "wrong": 8
     },
     {
       "name": "IBRACHO",
       "correct": 10,
-      "wrong": 4
+      "wrong": 6
     }
   ],
   "season_standings": [
     {
       "name": "RODRI",
       "correct": 30,
-      "wrong": 16
+      "wrong": 18
     },
     {
       "name": "EL DOC",
       "correct": 29,
-      "wrong": 17
+      "wrong": 19
     },
     {
       "name": "IBRACHO",
       "correct": 29,
-      "wrong": 17
+      "wrong": 19
     },
     {
       "name": "ALEX",
       "correct": 28,
-      "wrong": 18
+      "wrong": 20
     },
     {
       "name": "LALO",
       "correct": 28,
-      "wrong": 18
+      "wrong": 20
     },
     {
       "name": "LUIS C.",
       "correct": 28,
-      "wrong": 18
+      "wrong": 20
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "JENNI",
+      "correct": 28,
+      "wrong": 20
     },
     {
       "name": "ARI",
       "correct": 27,
-      "wrong": 19
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 27,
-      "wrong": 19
-    },
-    {
-      "name": "JENNI",
-      "correct": 27,
-      "wrong": 19
+      "wrong": 21
     }
   ],
   "public_picks_authorized": true,
@@ -497,7 +497,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "LIVE · 14/16 FINAL · FIGMA SYNCED"
+    "assets_status": "FINAL · 16/16 · FIGMA SYNCED · PUBLICATION READY"
   },
   "public_picks": {
     "G01": {

@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-09-27T19:51:00-06:00",
+  "generated_at": "2026-09-28T21:37:00-06:00",
   "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
   "assets": [
     {
       "node_id": "2885:1064635",
       "target": "quiniela-control/exports/w3-picks-board.png",
-      "url": "https://www.figma.com/api/mcp/asset/0ddd62b1-91f8-4686-9f66-c609bc3f1b95.png"
+      "url": "https://www.figma.com/api/mcp/asset/505a3e08-0872-4990-b27b-f7b0d652c24d.png"
     },
     {
       "node_id": "2887:1064311",
       "target": "quiniela-control/exports/w3-results-live.png",
-      "url": "https://www.figma.com/api/mcp/asset/7984c029-43f3-48c5-8aaa-10b35b6f84ea.png"
+      "url": "https://www.figma.com/api/mcp/asset/6ba12080-5476-4f0f-a026-93a53f38b430.png"
     },
     {
       "node_id": "2910:1117505",
       "target": "quiniela-control/exports/w3-ranking-weekly.png",
-      "url": "https://www.figma.com/api/mcp/asset/7c5e1da0-f9cd-4fbc-becc-c1094db66201.png"
+      "url": "https://www.figma.com/api/mcp/asset/010cb134-65fd-4fd0-b848-f485ff1c3342.png"
     },
     {
       "node_id": "2910:1117559",
       "target": "quiniela-control/exports/w3-ranking-season.png",
-      "url": "https://www.figma.com/api/mcp/asset/ef48bb7b-c51e-40f9-b94b-929632e72e29.png"
+      "url": "https://www.figma.com/api/mcp/asset/73cdb897-13e7-4fb5-b6b8-ea387ba069ee.png"
     }
   ]
 }

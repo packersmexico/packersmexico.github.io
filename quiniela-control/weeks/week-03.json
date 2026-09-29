@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 3",
   "week_number": 3,
-  "snapshot_status": "CLOSED_9_OF_9",
-  "last_sync": "2026-09-27T19:51:00-06:00",
+  "snapshot_status": "FINAL_16_OF_16",
+  "last_sync": "2026-09-28T21:37:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -60,30 +60,30 @@
     }
   ],
   "results": {
-    "final": 14,
+    "final": 16,
     "total": 16,
-    "status": "LIVE"
+    "status": "FINAL"
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "LIVE · 14/16 FINAL · FIGMA SYNCED",
+    "package_status": "FINAL · 16/16 · FIGMA SYNCED · PUBLICATION READY",
     "outputs": [
       {
         "id": "W3-LIVE-BOARD",
         "label": "TODOS LOS PICKS + ACIERTOS/ERRORES",
-        "status": "PUBLICATION READY · LIVE 14/16",
+        "status": "FINAL · PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#detail"
       },
       {
         "id": "W3-LIVE-RANKING",
         "label": "RESULTADOS / RANKING SEMANAL",
-        "status": "PUBLICATION READY · LIVE 14/16",
+        "status": "FINAL · PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#weekly"
       },
       {
         "id": "W3-SEASON",
         "label": "RANKING GENERAL",
-        "status": "PUBLICATION READY · LIVE 14/16",
+        "status": "FINAL · PUBLICATION READY",
         "url": "https://packersmexico.github.io/quiniela-control/exports/live.html#season"
       }
     ]

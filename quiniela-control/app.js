@@ -37,14 +37,14 @@ async function load(manual=false){
  const btn=$('refresh-control'), msg=$('refresh-message');
  if(manual){
    if(btn) btn.disabled=true;
-   if(msg) msg.textContent='ACTUALIZANDO VISTA… buscando el último estado sincronizado.';
+   if(msg) msg.textContent='RECARGANDO PANEL… trayendo el último estado ya sincronizado.';
  }
  try{
    const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
    if(!r.ok) throw new Error('HTTP '+r.status);
    const data=await r.json();
    render(data);
-   if(msg) msg.textContent=(manual?'VISTA ACTUALIZADA · FUENTE SINCRONIZADA ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync);
+   if(msg) msg.textContent=(manual?'PANEL RECARGADO · DATOS FUENTE ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync); if(manual&&$('view-refresh')) $('view-refresh').textContent=fmtSync(new Date().toISOString());
  }catch(e){
    setText('last-sync','SIN CONEXIÓN AL FEED');
    if(msg) msg.textContent='NO SE PUDO ACTUALIZAR · intenta otra vez.';
@@ -53,6 +53,7 @@ async function load(manual=false){
    if(btn) btn.disabled=false;
  }
 }
+if($('view-refresh')) $('view-refresh').textContent='AL ABRIR';
 const refreshBtn=$('refresh-control');
 if(refreshBtn) refreshBtn.addEventListener('click',()=>load(true));
 load(false);setInterval(()=>load(false),REFRESH_MS);
