@@ -53,6 +53,7 @@ async function load(manual=false){
    if(btn) btn.disabled=false;
  }
 }
-if($('view-refresh')) $('view-refresh').textContent='AL ABRIR';\nconst refreshBtn=$('refresh-control');
+if($('view-refresh')) $('view-refresh').textContent='AL ABRIR';
+const refreshBtn=$('refresh-control');
 if(refreshBtn) refreshBtn.addEventListener('click',()=>load(true));
 load(false);setInterval(()=>load(false),REFRESH_MS);
