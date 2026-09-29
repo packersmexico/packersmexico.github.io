@@ -1,10 +1,10 @@
 {
-  "pmx_id": "PMX-QUINIELA-W3-001",
+  "pmx_id": "PMX-QUINIELA-W4-001",
   "season": "2026",
-  "week": "WEEK 3",
-  "week_number": 3,
-  "last_sync": "2026-09-28T21:37:00-06:00",
-  "sync_mode": "FINAL · IDLE HASTA ROLLOVER WEEK 4",
+  "week": "WEEK 4",
+  "week_number": 4,
+  "last_sync": "2026-09-28T22:41:00-06:00",
+  "sync_mode": "CAPTURE OPEN · SMART GAME-END CHECKPOINTS",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -13,435 +13,268 @@
     "control_url": "https://packersmexico.github.io/quiniela-control/"
   },
   "capture": {
-    "form_id": "262630890072052",
-    "form_url": "https://form.jotform.com/262630890072052",
+    "form_id": "262710961066053",
+    "form_url": "https://form.jotform.com/262710961066053",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 9,
+    "complete": 0,
     "total": 9,
-    "window": "CLOSED",
-    "deadline": "2026-09-24T16:00:00-06:00",
-    "deadline_label": "24 SEP · 16:00 CDMX",
+    "window": "OPEN",
+    "deadline": "2026-09-30T12:00:00-06:00",
+    "deadline_label": "30 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 144,
-    "missing_picks": 0,
-    "missing_participants": [],
-    "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
-    "existing_duplicate_resolution": "DR PALMA · LATEST VALID KEPT",
+    "received_picks": 0,
+    "missing_picks": 144,
+    "missing_participants": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
     "invitado": "OFF",
-    "capture_status": "CLOSED_9_OF_9",
-    "form_status": "DISABLED",
-    "auto_close_reason": "9_OF_9_COMPLETE"
+    "capture_status": "OPEN_0_OF_9",
+    "form_status": "ENABLED",
+    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "ARI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "LALO",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "ALEX",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "LUIS C.",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "DR PALMA",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "JENNI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "RODRI",
-      "status": "COMPLETE"
+      "status": "PENDING"
     },
     {
       "name": "IBRACHO",
-      "status": "COMPLETE"
+      "status": "PENDING"
     }
   ],
   "games": [
     {
       "id": "G01",
-      "matchup": "ATL @ GB",
-      "time": "JUE 24 SEP · 18:15 CDMX",
-      "winner": "ATL",
-      "status": "FINAL",
-      "score": "ATL 35–14 GB",
-      "picks": {
-        "EL DOC": "GB",
-        "ARI": "GB",
-        "LALO": "GB",
-        "ALEX": "GB",
-        "LUIS C.": "GB",
-        "DR PALMA": "GB",
-        "JENNI": "GB",
-        "RODRI": "GB",
-        "IBRACHO": "GB"
-      },
-      "kickoff_iso": "2026-09-24T18:15:00-06:00"
+      "matchup": "PIT @ CLE",
+      "time": "JUE 1 OCT · 18:15 CDMX",
+      "kickoff_iso": "2026-10-01T18:15:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G02",
-      "matchup": "LAC @ BUF",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "BUF",
-      "status": "FINAL",
-      "score": "BUF 24–16 LAC",
-      "picks": {
-        "EL DOC": "BUF",
-        "ARI": "BUF",
-        "LALO": "BUF",
-        "ALEX": "BUF",
-        "LUIS C.": "BUF",
-        "DR PALMA": "BUF",
-        "JENNI": "LAC",
-        "RODRI": "BUF",
-        "IBRACHO": "BUF"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "IND @ WAS",
+      "time": "DOM 4 OCT · 07:30 CDMX · LONDON",
+      "kickoff_iso": "2026-10-04T07:30:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G03",
-      "matchup": "CAR @ CLE",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "CLE",
-      "status": "FINAL",
-      "score": "CLE 21–18 CAR",
-      "picks": {
-        "EL DOC": "CAR",
-        "ARI": "CLE",
-        "LALO": "CLE",
-        "ALEX": "CAR",
-        "LUIS C.": "CLE",
-        "DR PALMA": "CLE",
-        "JENNI": "CAR",
-        "RODRI": "CAR",
-        "IBRACHO": "CAR"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "TEN @ BAL",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G04",
-      "matchup": "NYJ @ DET",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "DET",
-      "status": "FINAL",
-      "score": "DET 31–24 NYJ",
-      "picks": {
-        "EL DOC": "DET",
-        "ARI": "DET",
-        "LALO": "DET",
-        "ALEX": "DET",
-        "LUIS C.": "DET",
-        "DR PALMA": "DET",
-        "JENNI": "DET",
-        "RODRI": "DET",
-        "IBRACHO": "DET"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "NE @ BUF",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G05",
-      "matchup": "HOU @ IND",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "IND",
-      "status": "FINAL",
-      "score": "IND 19–17 HOU",
-      "picks": {
-        "EL DOC": "HOU",
-        "ARI": "IND",
-        "LALO": "IND",
-        "ALEX": "HOU",
-        "LUIS C.": "IND",
-        "DR PALMA": "HOU",
-        "JENNI": "HOU",
-        "RODRI": "HOU",
-        "IBRACHO": "IND"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "NYJ @ CHI",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G06",
-      "matchup": "NE @ JAX",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "JAX",
-      "status": "FINAL",
-      "score": "JAX 35–6 NE",
-      "picks": {
-        "EL DOC": "JAX",
-        "ARI": "JAX",
-        "LALO": "JAX",
-        "ALEX": "JAX",
-        "LUIS C.": "JAX",
-        "DR PALMA": "JAX",
-        "JENNI": "NE",
-        "RODRI": "JAX",
-        "IBRACHO": "JAX"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "JAX @ CIN",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G07",
-      "matchup": "KC @ MIA",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "KC",
-      "status": "FINAL",
-      "score": "KC 24–10 MIA",
-      "picks": {
-        "EL DOC": "KC",
-        "ARI": "KC",
-        "LALO": "MIA",
-        "ALEX": "KC",
-        "LUIS C.": "KC",
-        "DR PALMA": "KC",
-        "JENNI": "KC",
-        "RODRI": "KC",
-        "IBRACHO": "KC"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "DAL @ HOU",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G08",
-      "matchup": "TEN @ NYG",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "NYG",
-      "status": "FINAL",
-      "score": "NYG 12–7 TEN",
-      "picks": {
-        "EL DOC": "NYG",
-        "ARI": "NYG",
-        "LALO": "TEN",
-        "ALEX": "TEN",
-        "LUIS C.": "TEN",
-        "DR PALMA": "TEN",
-        "JENNI": "TEN",
-        "RODRI": "NYG",
-        "IBRACHO": "NYG"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "ARI @ NYG",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G09",
-      "matchup": "CIN @ PIT",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "PIT",
-      "status": "FINAL",
-      "score": "PIT 30–27 CIN",
-      "picks": {
-        "EL DOC": "CIN",
-        "ARI": "CIN",
-        "LALO": "PIT",
-        "ALEX": "CIN",
-        "LUIS C.": "CIN",
-        "DR PALMA": "PIT",
-        "JENNI": "PIT",
-        "RODRI": "CIN",
-        "IBRACHO": "CIN"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "LAR @ PHI",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G10",
-      "matchup": "SEA @ WAS",
-      "time": "DOM 27 SEP · 11:00 CDMX",
-      "winner": "WAS",
-      "status": "FINAL",
-      "score": "WAS 33–31 SEA",
-      "picks": {
-        "EL DOC": "SEA",
-        "ARI": "SEA",
-        "LALO": "SEA",
-        "ALEX": "SEA",
-        "LUIS C.": "SEA",
-        "DR PALMA": "SEA",
-        "JENNI": "SEA",
-        "RODRI": "SEA",
-        "IBRACHO": "SEA"
-      },
-      "kickoff_iso": "2026-09-27T11:00:00-06:00"
+      "matchup": "GB @ TB",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G11",
-      "matchup": "ARI @ SF",
-      "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": "SF",
-      "status": "FINAL",
-      "score": "SF 36–30 ARI",
-      "picks": {
-        "EL DOC": "SF",
-        "ARI": "SF",
-        "LALO": "SF",
-        "ALEX": "SF",
-        "LUIS C.": "SF",
-        "DR PALMA": "ARI",
-        "JENNI": "SF",
-        "RODRI": "SF",
-        "IBRACHO": "SF"
-      },
-      "kickoff_iso": "2026-09-27T14:05:00-06:00"
+      "matchup": "MIA @ MIN",
+      "time": "DOM 4 OCT · 14:05 CDMX",
+      "kickoff_iso": "2026-10-04T14:05:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G12",
-      "matchup": "MIN @ TB",
-      "time": "DOM 27 SEP · 14:05 CDMX",
-      "winner": "MIN",
-      "status": "FINAL",
-      "score": "MIN 23–16 TB",
-      "picks": {
-        "EL DOC": "MIN",
-        "ARI": "TB",
-        "LALO": "TB",
-        "ALEX": "MIN",
-        "LUIS C.": "TB",
-        "DR PALMA": "MIN",
-        "JENNI": "MIN",
-        "RODRI": "MIN",
-        "IBRACHO": "MIN"
-      },
-      "kickoff_iso": "2026-09-27T14:05:00-06:00"
+      "matchup": "KC @ LV",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G13",
-      "matchup": "LV @ NO",
-      "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": "LV",
-      "status": "FINAL",
-      "score": "LV 35–27 NO",
-      "picks": {
-        "EL DOC": "NO",
-        "ARI": "LV",
-        "LALO": "NO",
-        "ALEX": "NO",
-        "LUIS C.": "NO",
-        "DR PALMA": "NO",
-        "JENNI": "LV",
-        "RODRI": "NO",
-        "IBRACHO": "LV"
-      },
-      "kickoff_iso": "2026-09-27T14:25:00-06:00"
+      "matchup": "LAC @ SEA",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G14",
-      "matchup": "BAL @ DAL",
-      "time": "DOM 27 SEP · 14:25 CDMX",
-      "winner": "BAL",
-      "status": "FINAL",
-      "score": "BAL 34–31 DAL",
-      "picks": {
-        "EL DOC": "BAL",
-        "ARI": "BAL",
-        "LALO": "DAL",
-        "ALEX": "BAL",
-        "LUIS C.": "BAL",
-        "DR PALMA": "BAL",
-        "JENNI": "BAL",
-        "RODRI": "BAL",
-        "IBRACHO": "BAL"
-      },
-      "kickoff_iso": "2026-09-27T14:25:00-06:00"
+      "matchup": "DEN @ SF",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G15",
-      "matchup": "LAR @ DEN",
-      "time": "DOM 27 SEP · 18:20 CDMX",
-      "winner": "DEN",
-      "status": "FINAL",
-      "score": "DEN 30–26 LAR",
-      "picks": {
-        "EL DOC": "LAR",
-        "ARI": "LAR",
-        "LALO": "LAR",
-        "ALEX": "LAR",
-        "LUIS C.": "LAR",
-        "DR PALMA": "DEN",
-        "JENNI": "DEN",
-        "RODRI": "LAR",
-        "IBRACHO": "LAR"
-      },
-      "kickoff_iso": "2026-09-27T18:20:00-06:00"
+      "matchup": "DET @ CAR",
+      "time": "DOM 4 OCT · 18:20 CDMX",
+      "kickoff_iso": "2026-10-04T18:20:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     },
     {
       "id": "G16",
-      "matchup": "PHI @ CHI",
-      "time": "LUN 28 SEP · 18:15 CDMX",
-      "winner": "CHI",
-      "status": "FINAL",
-      "score": "CHI 27–7 PHI",
-      "picks": {
-        "EL DOC": "PHI",
-        "ARI": "PHI",
-        "LALO": "PHI",
-        "ALEX": "PHI",
-        "LUIS C.": "PHI",
-        "DR PALMA": "PHI",
-        "JENNI": "PHI",
-        "RODRI": "PHI",
-        "IBRACHO": "PHI"
-      },
-      "kickoff_iso": "2026-09-28T18:15:00-06:00"
+      "matchup": "ATL @ NO",
+      "time": "LUN 5 OCT · 18:15 CDMX",
+      "kickoff_iso": "2026-10-05T18:15:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
     }
   ],
   "results": {
-    "final": 16,
+    "final": 0,
     "total": 16,
-    "status": "FINAL"
+    "status": "PENDING"
   },
   "weekly_standings": [
     {
       "name": "EL DOC",
-      "correct": 8,
-      "wrong": 8
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "ARI",
-      "correct": 10,
-      "wrong": 6
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "LALO",
-      "correct": 7,
-      "wrong": 9
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "ALEX",
-      "correct": 7,
-      "wrong": 9
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "LUIS C.",
-      "correct": 8,
-      "wrong": 8
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "DR PALMA",
-      "correct": 9,
-      "wrong": 7
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "JENNI",
-      "correct": 8,
-      "wrong": 8
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "RODRI",
-      "correct": 8,
-      "wrong": 8
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "IBRACHO",
-      "correct": 10,
-      "wrong": 6
+      "correct": 0,
+      "wrong": 0
     }
   ],
   "season_standings": [
@@ -491,191 +324,13 @@
       "wrong": 21
     }
   ],
-  "public_picks_authorized": true,
+  "public_picks_authorized": false,
   "publication": {
-    "gate": "READY FOR CLICK",
+    "gate": "HOLD/CAPTURE_OPEN",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "FINAL · 16/16 · FIGMA SYNCED · PUBLICATION READY"
-  },
-  "public_picks": {
-    "G01": {
-      "EL DOC": "GB",
-      "ARI": "GB",
-      "LALO": "GB",
-      "ALEX": "GB",
-      "LUIS C.": "GB",
-      "DR PALMA": "GB",
-      "JENNI": "GB",
-      "RODRI": "GB",
-      "IBRACHO": "GB"
-    },
-    "G02": {
-      "EL DOC": "BUF",
-      "ARI": "BUF",
-      "LALO": "BUF",
-      "ALEX": "BUF",
-      "LUIS C.": "BUF",
-      "DR PALMA": "BUF",
-      "JENNI": "LAC",
-      "RODRI": "BUF",
-      "IBRACHO": "BUF"
-    },
-    "G03": {
-      "EL DOC": "CAR",
-      "ARI": "CLE",
-      "LALO": "CLE",
-      "ALEX": "CAR",
-      "LUIS C.": "CLE",
-      "DR PALMA": "CLE",
-      "JENNI": "CAR",
-      "RODRI": "CAR",
-      "IBRACHO": "CAR"
-    },
-    "G04": {
-      "EL DOC": "DET",
-      "ARI": "DET",
-      "LALO": "DET",
-      "ALEX": "DET",
-      "LUIS C.": "DET",
-      "DR PALMA": "DET",
-      "JENNI": "DET",
-      "RODRI": "DET",
-      "IBRACHO": "DET"
-    },
-    "G05": {
-      "EL DOC": "HOU",
-      "ARI": "IND",
-      "LALO": "IND",
-      "ALEX": "HOU",
-      "LUIS C.": "IND",
-      "DR PALMA": "HOU",
-      "JENNI": "HOU",
-      "RODRI": "HOU",
-      "IBRACHO": "IND"
-    },
-    "G06": {
-      "EL DOC": "JAX",
-      "ARI": "JAX",
-      "LALO": "JAX",
-      "ALEX": "JAX",
-      "LUIS C.": "JAX",
-      "DR PALMA": "JAX",
-      "JENNI": "NE",
-      "RODRI": "JAX",
-      "IBRACHO": "JAX"
-    },
-    "G07": {
-      "EL DOC": "KC",
-      "ARI": "KC",
-      "LALO": "MIA",
-      "ALEX": "KC",
-      "LUIS C.": "KC",
-      "DR PALMA": "KC",
-      "JENNI": "KC",
-      "RODRI": "KC",
-      "IBRACHO": "KC"
-    },
-    "G08": {
-      "EL DOC": "NYG",
-      "ARI": "NYG",
-      "LALO": "TEN",
-      "ALEX": "TEN",
-      "LUIS C.": "TEN",
-      "DR PALMA": "TEN",
-      "JENNI": "TEN",
-      "RODRI": "NYG",
-      "IBRACHO": "NYG"
-    },
-    "G09": {
-      "EL DOC": "CIN",
-      "ARI": "CIN",
-      "LALO": "PIT",
-      "ALEX": "CIN",
-      "LUIS C.": "CIN",
-      "DR PALMA": "PIT",
-      "JENNI": "PIT",
-      "RODRI": "CIN",
-      "IBRACHO": "CIN"
-    },
-    "G10": {
-      "EL DOC": "SEA",
-      "ARI": "SEA",
-      "LALO": "SEA",
-      "ALEX": "SEA",
-      "LUIS C.": "SEA",
-      "DR PALMA": "SEA",
-      "JENNI": "SEA",
-      "RODRI": "SEA",
-      "IBRACHO": "SEA"
-    },
-    "G11": {
-      "EL DOC": "SF",
-      "ARI": "SF",
-      "LALO": "SF",
-      "ALEX": "SF",
-      "LUIS C.": "SF",
-      "DR PALMA": "ARI",
-      "JENNI": "SF",
-      "RODRI": "SF",
-      "IBRACHO": "SF"
-    },
-    "G12": {
-      "EL DOC": "MIN",
-      "ARI": "TB",
-      "LALO": "TB",
-      "ALEX": "MIN",
-      "LUIS C.": "TB",
-      "DR PALMA": "MIN",
-      "JENNI": "MIN",
-      "RODRI": "MIN",
-      "IBRACHO": "MIN"
-    },
-    "G13": {
-      "EL DOC": "NO",
-      "ARI": "LV",
-      "LALO": "NO",
-      "ALEX": "NO",
-      "LUIS C.": "NO",
-      "DR PALMA": "NO",
-      "JENNI": "LV",
-      "RODRI": "NO",
-      "IBRACHO": "LV"
-    },
-    "G14": {
-      "EL DOC": "BAL",
-      "ARI": "BAL",
-      "LALO": "DAL",
-      "ALEX": "BAL",
-      "LUIS C.": "BAL",
-      "DR PALMA": "BAL",
-      "JENNI": "BAL",
-      "RODRI": "BAL",
-      "IBRACHO": "BAL"
-    },
-    "G15": {
-      "EL DOC": "LAR",
-      "ARI": "LAR",
-      "LALO": "LAR",
-      "ALEX": "LAR",
-      "LUIS C.": "LAR",
-      "DR PALMA": "DEN",
-      "JENNI": "DEN",
-      "RODRI": "LAR",
-      "IBRACHO": "LAR"
-    },
-    "G16": {
-      "EL DOC": "PHI",
-      "ARI": "PHI",
-      "LALO": "PHI",
-      "ALEX": "PHI",
-      "LUIS C.": "PHI",
-      "DR PALMA": "PHI",
-      "JENNI": "PHI",
-      "RODRI": "PHI",
-      "IBRACHO": "PHI"
-    }
+    "assets_status": "WEEK 4 · CAPTURE OPEN"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -686,49 +341,49 @@
   },
   "season_base_before_week": [
     {
-      "name": "EL DOC",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "ARI",
-      "correct": 17,
-      "wrong": 15
-    },
-    {
-      "name": "LALO",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "ALEX",
-      "correct": 21,
-      "wrong": 11
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 20,
-      "wrong": 12
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 19,
-      "wrong": 13
-    },
-    {
-      "name": "JENNI",
-      "correct": 20,
-      "wrong": 12
-    },
-    {
       "name": "RODRI",
-      "correct": 22,
-      "wrong": 10
+      "correct": 30,
+      "wrong": 18
+    },
+    {
+      "name": "EL DOC",
+      "correct": 29,
+      "wrong": 19
     },
     {
       "name": "IBRACHO",
-      "correct": 19,
-      "wrong": 13
+      "correct": 29,
+      "wrong": 19
+    },
+    {
+      "name": "ALEX",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "LALO",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "JENNI",
+      "correct": 28,
+      "wrong": 20
+    },
+    {
+      "name": "ARI",
+      "correct": 27,
+      "wrong": 21
     }
   ]
 }
