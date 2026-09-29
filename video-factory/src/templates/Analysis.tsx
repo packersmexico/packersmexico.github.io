@@ -28,18 +28,18 @@ const SceneBody: React.FC<{scene: VideoScene; enter: number; progress: number}> 
   return (
     <>
       <RemoteAsset src={scene.assetUrl} />
-      <div style={{position:'relative',zIndex:2,width,height:'100%',display:'flex',flexDirection:'column',justifyContent:'center',opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
+      <div style={{position:'relative',zIndex:2,width,height:'100%',display:'flex',flexDirection:'column',justifyContent:'center',paddingBottom:360,boxSizing:'border-box',opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[-112,-140])}px)`}}>
         <div style={{fontSize:25,fontWeight:900,color:brand.cheeseGold,letterSpacing:.7,marginBottom:18}}>{scene.kicker || 'ANÁLISIS'}</div>
         <div style={{height:4,width:144,background:brand.cheeseGold,marginBottom:34}} />
-        <div style={{fontFamily:'Bebas Neue, sans-serif',fontSize:scene.type === 'HOOK' || scene.type === 'OUTRO' ? 118 : 106,lineHeight:.94,maxWidth:hasAsset ? 620 : 900,whiteSpace:'pre-line'}}>{scene.title}</div>
-        {scene.support ? <div style={{fontFamily:'Bebas Neue, sans-serif',fontSize:43,lineHeight:1.05,color:brand.cheeseGold,marginTop:22,maxWidth:hasAsset ? 620 : 900}}>{scene.support}</div> : null}
-        {scene.body ? <div style={{fontSize:29,lineHeight:1.42,color:brand.cream,marginTop:28,maxWidth:hasAsset ? 620 : 880}}>{scene.body}</div> : null}
+        <div style={{fontFamily:'Bebas Neue, sans-serif',fontSize:scene.type === 'HOOK' || scene.type === 'OUTRO' ? 112 : 100,lineHeight:.94,maxWidth:hasAsset ? 620 : 900,whiteSpace:'pre-line'}}>{scene.title}</div>
+        {scene.support ? <div style={{fontFamily:'Bebas Neue, sans-serif',fontSize:40,lineHeight:1.05,color:brand.cheeseGold,marginTop:22,maxWidth:hasAsset ? 620 : 900}}>{scene.support}</div> : null}
+        {scene.body ? <div style={{fontSize:26,lineHeight:1.38,color:brand.cream,marginTop:28,maxWidth:hasAsset ? 620 : 880}}>{scene.body}</div> : null}
         {items.length ? (
           <div style={{marginTop:34,maxWidth:hasAsset ? 620 : 900}}>
             {items.map((item,index)=>(
               <div key={index} style={{display:'grid',gridTemplateColumns:'185px 1fr',gap:21,borderTop:`2px solid rgba(255,198,47,${index === 0 ? .62 : .22})`,padding:'18px 0'}}>
                 <div style={{fontSize:22,fontWeight:900,color:brand.cheeseGold}}>{item.label}</div>
-                <div style={{fontSize:24,lineHeight:1.34,color:brand.muted}}>{item.text}</div>
+                <div style={{fontSize:22,lineHeight:1.3,color:brand.muted}}>{item.text}</div>
               </div>
             ))}
           </div>
