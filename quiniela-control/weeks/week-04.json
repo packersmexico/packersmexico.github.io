@@ -1,0 +1,81 @@
+{
+  "pmx_id": "PMX-QUINIELA-W4-001",
+  "season": "2026",
+  "week": "WEEK 4",
+  "week_number": 4,
+  "snapshot_status": "CAPTURE_OPEN",
+  "last_sync": "2026-09-28T22:41:00-06:00",
+  "capture": {
+    "complete": 0,
+    "total": 9,
+    "window": "OPEN",
+    "deadline_label": "30 SEP · 12:00 CDMX",
+    "expected_picks": 144,
+    "received_picks": 0,
+    "missing_picks": 144,
+    "missing_participants": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
+    "invitado": "OFF",
+    "capture_status": "OPEN_0_OF_9",
+    "form_status": "ENABLED",
+    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
+  },
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING"
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 16,
+    "status": "PENDING"
+  },
+  "public_picks_authorized": false,
+  "production": {
+    "package_status": "CAPTURE OPEN",
+    "outputs": []
+  }
+}
