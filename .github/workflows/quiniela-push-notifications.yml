@@ -116,7 +116,6 @@ jobs:
           fi
 
       - name: Send push milestone
-        if: ${{ vars.PMX_PUSH_API_URL != '' && secrets.PMX_PUSH_SECRET != '' }}
         continue-on-error: true
         env:
           PUSH_API_URL: ${{ vars.PMX_PUSH_API_URL }}
@@ -124,6 +123,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          if [ -z "${PUSH_API_URL:-}" ] || [ -z "${PUSH_SECRET:-}" ]; then
+            echo "Push backend not configured; notification center remains active."
+            exit 0
+          fi
           if [ ! -s .pmx-push-event.json ] || [ "$(cat .pmx-push-event.json)" = "{}" ]; then
             echo "No push event"
             exit 0
