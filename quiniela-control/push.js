@@ -90,8 +90,8 @@ async function initializePush(){
   }
 
   if(!localConfig.enabled || !localConfig.api_base){
-    button.disabled=true;
-    pushStatus('BACKEND PUSH PENDIENTE DE ACTIVACIÓN','hold');
+    button.hidden=true;
+    pushStatus('CENTRO DE AVISOS ACTIVO','idle');
     return;
   }
 
