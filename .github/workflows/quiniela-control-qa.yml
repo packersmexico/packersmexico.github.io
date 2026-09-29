@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'quiniela-control/**'
+      - 'push-backend/**'
+      - '.github/workflows/quiniela-push-notifications.yml'
   workflow_dispatch:
 jobs:
   qa:
@@ -13,11 +15,23 @@ jobs:
         run: |
           node --check quiniela-control/app.js
           node --check quiniela-control/exports/live.js
+          node --check quiniela-control/push.js
+          node --check quiniela-control/push-sw.js
+          node --check push-backend/api/config.js
+          node --check push-backend/api/subscribe.js
+          node --check push-backend/api/notify.js
+          node --check push-backend/api/health.js
+          node --check push-backend/lib/http.js
+          node --check push-backend/lib/redis.js
       - name: JSON validity
         run: |
-          node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));"
+          node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/push-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/notifications.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/package.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/vercel.json','utf8'));"
       - name: Required files
         run: |
           test -f quiniela-control/index.html
           test -f quiniela-control/exports/live.html
+          test -f quiniela-control/push.js
+          test -f quiniela-control/push-sw.js
+          test -f push-backend/api/notify.js
+          test -f push-backend/README.md
           test -f assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg

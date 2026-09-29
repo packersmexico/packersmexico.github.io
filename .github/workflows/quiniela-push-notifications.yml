@@ -1,0 +1,135 @@
+name: Quiniela Operator Notifications
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/capture-config.json'
+      - 'quiniela-control/weeks/week-*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quiniela-operator-notifications
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build milestone notification
+        shell: python
+        run: |
+          import json, pathlib
+
+          data_path=pathlib.Path("quiniela-control/data.json")
+          notices_path=pathlib.Path("quiniela-control/notifications.json")
+          event_path=pathlib.Path(".pmx-push-event.json")
+          data=json.loads(data_path.read_text(encoding="utf-8"))
+
+          week=int(data.get("week_number") or 0)
+          capture=data.get("capture") or {}
+          results=data.get("results") or {}
+          complete=int(capture.get("complete") or 0)
+          total=int(capture.get("total") or 9)
+          final=int(results.get("final") or 0)
+          games_total=int(results.get("total") or 16)
+          window=str(capture.get("window") or "").upper()
+          deadline=str(capture.get("deadline_label") or "—")
+
+          event=None
+          if games_total and final==games_total and str(results.get("status") or "").upper()=="FINAL":
+              event={
+                "eventKey":f"W{week}_FINAL",
+                "title":f"QUINIELA PMX · WEEK {week} FINAL",
+                "body":f"{final}/{games_total} partidos FINAL. Resultados y rankings definitivos están listos.",
+                "url":"https://packersmexico.github.io/quiniela-control/",
+                "tag":f"pmx-quiniela-w{week}-final"
+              }
+          elif total and complete==total and window=="CLOSED":
+              event={
+                "eventKey":f"W{week}_9OF9",
+                "title":f"QUINIELA PMX · WEEK {week} · PICKS COMPLETOS",
+                "body":f"{complete}/{total} participantes · captura cerrada. Picks y piezas ya pueden revisarse en el panel.",
+                "url":"https://packersmexico.github.io/quiniela-control/",
+                "tag":f"pmx-quiniela-w{week}-9of9"
+              }
+          elif window=="OPEN":
+              previous=pathlib.Path(f"quiniela-control/weeks/week-{week-1:02d}.json")
+              prior_final=False
+              if previous.exists():
+                  prev=json.loads(previous.read_text(encoding="utf-8"))
+                  pr=prev.get("results") or {}
+                  prior_final=bool(pr.get("total") and pr.get("final")==pr.get("total") and str(pr.get("status") or "").upper()=="FINAL")
+              prefix=f"Week {week-1} cerrada 16/16. " if prior_final else ""
+              event={
+                "eventKey":f"W{week}_OPEN",
+                "title":f"QUINIELA PMX · WEEK {week} ABIERTA",
+                "body":f"{prefix}Week {week}: {complete}/{total} respuestas · cierre {deadline}.",
+                "url":"https://packersmexico.github.io/quiniela-control/",
+                "tag":f"pmx-quiniela-w{week}-open"
+              }
+
+          if not event:
+              print("No milestone notification for this state.")
+              event_path.write_text("{}",encoding="utf-8")
+              raise SystemExit(0)
+
+          event_path.write_text(json.dumps(event,ensure_ascii=False),encoding="utf-8")
+
+          if notices_path.exists():
+              notices=json.loads(notices_path.read_text(encoding="utf-8"))
+          else:
+              notices={"updated_at":None,"items":[]}
+
+          item={
+            "id":event["eventKey"],
+            "status":"READY",
+            "title":event["title"].replace("QUINIELA PMX · ",""),
+            "body":event["body"],
+            "href":"./",
+            "secondary_href":"./captura/" if event["eventKey"].endswith("_OPEN") else "./exports/live.html",
+            "secondary_label":"ABRIR FORMULARIO" if event["eventKey"].endswith("_OPEN") else "VER PIEZAS"
+          }
+          existing=[x for x in notices.get("items",[]) if x.get("id")!=item["id"]]
+          notices["items"]=[item]+existing[:4]
+          notices["updated_at"]=data.get("last_sync")
+          notices_path.write_text(json.dumps(notices,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+
+      - name: Update operator notification center
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quiniela-control/notifications.json
+          if git diff --cached --quiet; then
+            echo "Notification center unchanged"
+          else
+            git commit -m "Quiniela: refresh operator notification center"
+            git push origin HEAD:main
+          fi
+
+      - name: Send push milestone
+        if: ${{ vars.PMX_PUSH_API_URL != '' && secrets.PMX_PUSH_SECRET != '' }}
+        continue-on-error: true
+        env:
+          PUSH_API_URL: ${{ vars.PMX_PUSH_API_URL }}
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -s .pmx-push-event.json ] || [ "$(cat .pmx-push-event.json)" = "{}" ]; then
+            echo "No push event"
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error \
+            -X POST "${PUSH_API_URL%/}/api/notify" \
+            -H "Authorization: Bearer $PUSH_SECRET" \
+            -H "Content-Type: application/json" \
+            --data-binary @.pmx-push-event.json

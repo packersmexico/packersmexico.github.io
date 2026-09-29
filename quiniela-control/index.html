@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="operator.css">
   <script src="app.js" defer></script>
+  <script src="push.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -36,6 +37,15 @@
         <a class="action-link" id="stable-capture" href="./captura/" rel="noopener">ABRIR / COMPARTIR FORMULARIO →</a>
         <a class="action-link secondary-action" id="direct-form" href="#" rel="noopener">FORMULARIO DIRECTO →</a>
       </div>
+    </section>
+
+    <section class="section notification-section" aria-labelledby="notification-heading">
+      <div class="section-head"><div><p class="eyebrow">AVISOS DEL CONTROLADOR</p><h2 id="notification-heading">NOTIFICACIONES</h2></div><p class="section-stat" id="push-status" data-state="idle">COMPROBANDO</p></div>
+      <p class="production-rule">Sólo avisos operativos: nueva Week disponible, 9/9 picks completos y cierre 16/16.</p>
+      <div class="quick-actions notification-actions">
+        <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
+      </div>
+      <div class="notification-list" id="notification-list" aria-live="polite"></div>
     </section>
 
     <section class="section" aria-labelledby="capture-heading">
