@@ -33,21 +33,31 @@ function render(data){
  renderParticipants(data.participants||[]);renderGames(data.games||[]);renderRanking(data);
  setText('capture-rule',(c.received_picks||0)+'/'+(c.expected_picks||0)+' picks registrados · '+(c.missing_picks||0)+' pendientes.');
 }
+async function refreshPublishedAssets(stamp){
+ const assets=[
+  './exports/w3-picks-board.png',
+  './exports/w3-results-live.png',
+  './exports/w3-ranking-weekly.png',
+  './exports/w3-ranking-season.png'
+ ];
+ await Promise.all(assets.map(src=>fetch(src+'?t='+stamp,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('ASSET '+r.status)})));
+}
 async function load(manual=false){
  const btn=$('refresh-control'), msg=$('refresh-message');
  if(manual){
    if(btn) btn.disabled=true;
-   if(msg) msg.textContent='RECARGANDO PANEL… trayendo el último estado ya sincronizado.';
+   if(msg) msg.textContent='ACTUALIZANDO… trayendo información y piezas más recientes.';
  }
  try{
-   const r=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+   const stamp=Date.now();
+   const [r]=await Promise.all([fetch(DATA_URL+'?t='+stamp,{cache:'no-store'}),refreshPublishedAssets(stamp)]);
    if(!r.ok) throw new Error('HTTP '+r.status);
    const data=await r.json();
    render(data);
-   if(msg) msg.textContent=(manual?'PANEL RECARGADO · DATOS FUENTE ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync); if(manual&&$('view-refresh')) $('view-refresh').textContent=fmtSync(new Date().toISOString());
+   if(msg) msg.textContent=(manual?'INFORMACIÓN Y PIEZAS ACTUALIZADAS · DATOS ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync); if(manual&&$('view-refresh')) $('view-refresh').textContent=fmtSync(new Date().toISOString());
  }catch(e){
    setText('last-sync','SIN CONEXIÓN AL FEED');
-   if(msg) msg.textContent='NO SE PUDO ACTUALIZAR · intenta otra vez.';
+   if(msg) msg.textContent='NO SE PUDO ACTUALIZAR INFORMACIÓN Y PIEZAS · intenta otra vez.';
    console.error(e);
  }finally{
    if(btn) btn.disabled=false;

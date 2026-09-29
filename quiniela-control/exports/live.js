@@ -31,7 +31,7 @@ async function load(manual=false){
   const status=$('refresh-status');
   if(manual){
     if(btn) btn.disabled=true;
-    if(status) status.textContent='ACTUALIZANDO… revisando datos, resultados y archivos.';
+    if(status) status.textContent='ACTUALIZANDO… cargando información y piezas más recientes.';
   }
   try{
     const stamp=Date.now();
@@ -42,7 +42,7 @@ async function load(manual=false){
     $('asset-status').textContent='PUBLICATION READY · '+current.capture.complete+'/'+current.capture.total+' · '+current.results.final+'/'+current.results.total+' FINAL';
     await refreshImages(stamp);
     if(status){
-      status.textContent=(manual?'ACTUALIZACIÓN COMPLETA · ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
+      status.textContent=(manual?'INFORMACIÓN Y PIEZAS ACTUALIZADAS · DATOS ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
     }
   }catch(e){
     console.error(e);
