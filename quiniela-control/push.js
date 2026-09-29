@@ -99,7 +99,8 @@ async function initializePush(){
   const registration=await navigator.serviceWorker.register('./push-sw.js',{scope:'./'});
   let subscription=await currentSubscription(registration);
 
-  if(Notification.permission==='granted' && subscription){
+  const registered=localStorage.getItem('pmxPushRegistered')==='1';
+  if(Notification.permission==='granted' && subscription && registered){
     button.textContent='NOTIFICACIONES ACTIVAS';
     button.disabled=true;
     pushStatus('ACTIVAS EN ESTE DISPOSITIVO','on');
@@ -145,6 +146,7 @@ async function initializePush(){
       const payload=await save.json().catch(()=>({}));
       if(!save.ok)throw new Error(payload.error||('SUBSCRIBE_HTTP_'+save.status));
 
+      localStorage.setItem('pmxPushRegistered','1');
       button.textContent='NOTIFICACIONES ACTIVAS';
       button.disabled=true;
       pushStatus('ACTIVAS EN ESTE DISPOSITIVO','on');
@@ -160,7 +162,7 @@ async function initializePush(){
         'off'
       );
     }
-  },{once:true});
+  });
 }
 
 loadNoticeCenter();
