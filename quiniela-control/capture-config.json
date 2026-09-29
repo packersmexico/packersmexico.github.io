@@ -1,15 +1,15 @@
 {
   "season": "2026",
-  "week": "WEEK 3",
-  "week_number": 3,
-  "form_id": "262630890072052",
-  "form_url": "https://form.jotform.com/262630890072052",
-  "status": "CLOSED",
-  "deadline": "2026-09-24T16:00:00-06:00",
+  "week": "WEEK 4",
+  "week_number": 4,
+  "form_id": "262710961066053",
+  "form_url": "https://form.jotform.com/262710961066053",
+  "status": "OPEN",
+  "deadline": "2026-09-30T12:00:00-06:00",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-  "duplicate_policy": "ONE_EFFECTIVE_SUBMISSION_PER_PARTICIPANT",
-  "last_sync": "2026-09-24T09:41:00-06:00",
-  "capture_status": "CLOSED_9_OF_9",
-  "form_status": "DISABLED",
-  "auto_close_reason": "9_OF_9_COMPLETE"
+  "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
+  "last_sync": "2026-09-28T22:41:00-06:00",
+  "capture_status": "OPEN_0_OF_9",
+  "form_status": "ENABLED",
+  "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
 }
