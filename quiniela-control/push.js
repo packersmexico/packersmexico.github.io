@@ -153,12 +153,20 @@ async function initializePush(){
     }catch(error){
       console.error(error);
       button.disabled=false;
-      const code=String(error?.message||'');
+      const code=String(error?.message||error?.name||'UNKNOWN_PUSH_ERROR');
+      const detail=String(error?.name&&error?.name!=='Error'?error.name:code).slice(0,64);
       pushStatus(
         code==='INVALID_REGISTRATION_CODE'?'CÓDIGO DE VINCULACIÓN INCORRECTO':
         code==='NOTIFICATION_PERMISSION_DENIED'?'PERMISO NO CONCEDIDO':
         code==='REGISTRATION_CODE_REQUIRED'?'ACTIVACIÓN CANCELADA':
-        'NO SE PUDO ACTIVAR · INTENTA DE NUEVO',
+        code==='BACKEND_NOT_READY'?'BACKEND DE NOTIFICACIONES NO LISTO':
+        code.startsWith('CONFIG_HTTP_')?'ERROR DE CONFIGURACIÓN · '+code.replace('CONFIG_HTTP_','HTTP '):
+        code.startsWith('SUBSCRIBE_HTTP_')?'ERROR DE REGISTRO · '+code.replace('SUBSCRIBE_HTTP_','HTTP '):
+        detail==='AbortError'?'ACTIVACIÓN INTERRUMPIDA POR EL NAVEGADOR':
+        detail==='InvalidStateError'?'ESTADO DE PUSH INVÁLIDO · REABRE LA APP':
+        detail==='NotAllowedError'?'PERMISO DE NOTIFICACIONES BLOQUEADO':
+        detail==='NotSupportedError'?'PUSH NO SOPORTADO EN ESTE DISPOSITIVO':
+        'ERROR DE ACTIVACIÓN · '+detail,
         'off'
       );
     }
