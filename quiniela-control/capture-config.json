@@ -7,7 +7,7 @@
   "status": "OPEN",
   "deadline": "2026-09-30T12:00:00-06:00",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-  "duplicate_policy": "ONE_VALID_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
+  "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
   "last_sync": "2026-09-30T00:46:45-06:00",
   "capture_status": "OPEN_4_OF_9",
   "form_status": "ENABLED",
