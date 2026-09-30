@@ -1,0 +1,11 @@
+{
+  "name": "PACKERS MÉXICO · Quiniela Control",
+  "short_name": "Quiniela PMX",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#081D13",
+  "theme_color": "#081D13",
+  "lang": "es-MX"
+}
