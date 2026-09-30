@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "api_base": "",
+  "enabled": true,
+  "api_base": "https://packersmexicogithubio-push-backend-l50dx2q6g-packers-mx.vercel.app",
   "operator": "RODRIGO"
 }
