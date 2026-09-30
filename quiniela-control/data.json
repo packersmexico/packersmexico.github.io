@@ -31,11 +31,11 @@
       "DR PALMA",
       "RODRI"
     ],
-    "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
+    "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
     "capture_status": "OPEN_4_OF_9",
     "form_status": "ENABLED",
-    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
+    "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE"
   },
   "participants": [
     {
