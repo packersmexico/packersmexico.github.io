@@ -1,4 +1,5 @@
 const DATA_URL='./data.json'; const REFRESH_MS=60000;
+let lastSeenSync=null;
 const $=id=>document.getElementById(id);
 function setText(id,v){const e=$(id);if(e)e.textContent=v}
 function setHref(id,v){const e=$(id);if(e&&v)e.href=v}
@@ -53,8 +54,19 @@ async function load(manual=false){
    const [r]=await Promise.all([fetch(DATA_URL+'?t='+stamp,{cache:'no-store'}),refreshPublishedAssets(stamp)]);
    if(!r.ok) throw new Error('HTTP '+r.status);
    const data=await r.json();
+   const previousSync=lastSeenSync;
    render(data);
-   if(msg) msg.textContent=(manual?'INFORMACIÓN Y PIEZAS ACTUALIZADAS · DATOS ':'SINCRONIZACIÓN AUTOMÁTICA · ')+fmtSync(data.last_sync); if(manual&&$('view-refresh')) $('view-refresh').textContent=fmtSync(new Date().toISOString());
+   lastSeenSync=data.last_sync||null;
+   if(msg){
+     if(manual){
+       msg.textContent=(previousSync&&previousSync===lastSeenSync)
+         ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
+         : 'PANEL ACTUALIZADO · ÚLTIMO SYNC '+fmtSync(data.last_sync);
+     }else{
+       msg.textContent='ÚLTIMO ESTADO SINCRONIZADO · '+fmtSync(data.last_sync);
+     }
+   }
+   if(manual&&$('view-refresh')) $('view-refresh').textContent=fmtSync(new Date().toISOString());
  }catch(e){
    setText('last-sync','SIN CONEXIÓN AL FEED');
    if(msg) msg.textContent='NO SE PUDO ACTUALIZAR INFORMACIÓN Y PIEZAS · intenta otra vez.';
