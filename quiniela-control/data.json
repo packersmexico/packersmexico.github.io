@@ -384,12 +384,24 @@
   ],
   "notifications": {
     "center_status": "ACTIVE",
-    "push_status": "PENDING_BACKEND",
+    "push_status": "PENDING_OPERATOR_REGISTRATION",
     "operator": "RODRIGO",
     "milestone_events": [
       "WEEK_OPEN",
       "CAPTURE_9_OF_9",
       "WEEK_FINAL"
     ]
+  },
+  "figma": {
+    "file_key": "RAoegEENwTH2L7gb3yydIq",
+    "week4_stage": "PRESTAGED_AWAITING_9_OF_9",
+    "publication_ready": false,
+    "nodes": {
+      "picks": "3016:1161548",
+      "results": "3016:1162827",
+      "weekly": "3016:1164584",
+      "season": "3016:1164638"
+    },
+    "manifest": "./figma-week-04.json"
   }
 }
