@@ -1,0 +1,34 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V1",
+  "week": 4,
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "page_id": "2057:262482",
+  "state": "PRESTAGED_AWAITING_9_OF_9",
+  "publication_ready": false,
+  "qa": {
+    "structural": "PASS",
+    "schedule_rows": 16,
+    "stale_week3_pick_frames": 0,
+    "stale_week3_result_texts": 0,
+    "visual_review": "PENDING_FINAL_9_OF_9"
+  },
+  "source_master_nodes": {
+    "picks": "2885:1064635",
+    "results": "2887:1064311",
+    "weekly": "2910:1117505",
+    "season": "2910:1117559"
+  },
+  "week4_nodes": {
+    "picks": "3016:1161548",
+    "results": "3016:1162827",
+    "weekly": "3016:1164584",
+    "season": "3016:1164638"
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w4-picks-board.png",
+    "results": "quiniela-control/exports/w4-results-live.png",
+    "weekly": "quiniela-control/exports/w4-ranking-weekly.png",
+    "season": "quiniela-control/exports/w4-ranking-season.png"
+  },
+  "gate": "DO_NOT_EXPORT_OR_PUBLISH_UNTIL_9_UNIQUE_VALID_PARTICIPANTS"
+}
