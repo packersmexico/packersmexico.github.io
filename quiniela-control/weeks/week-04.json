@@ -4,29 +4,25 @@
   "week": "WEEK 4",
   "week_number": 4,
   "snapshot_status": "CAPTURE_OPEN",
-  "last_sync": "2026-09-28T22:41:00-06:00",
+  "last_sync": "2026-09-29T21:50:00-06:00",
   "capture": {
-    "complete": 0,
+    "complete": 4,
     "total": 9,
     "window": "OPEN",
     "deadline_label": "30 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 0,
-    "missing_picks": 144,
+    "received_picks": 64,
+    "missing_picks": 80,
     "missing_participants": [
       "EL DOC",
-      "ARI",
-      "LALO",
       "ALEX",
       "LUIS C.",
       "DR PALMA",
-      "JENNI",
-      "RODRI",
-      "IBRACHO"
+      "RODRI"
     ],
     "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
     "invitado": "OFF",
-    "capture_status": "OPEN_0_OF_9",
+    "capture_status": "OPEN_4_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
   },
@@ -37,11 +33,11 @@
     },
     {
       "name": "ARI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "LALO",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "ALEX",
@@ -57,7 +53,7 @@
     },
     {
       "name": "JENNI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "RODRI",
@@ -65,7 +61,7 @@
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING"
+      "status": "COMPLETE"
     }
   ],
   "results": {
