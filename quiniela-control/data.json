@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 4",
   "week_number": 4,
-  "last_sync": "2026-09-29T21:50:00-06:00",
-  "sync_mode": "JOTFORM VERIFIED · MANUAL PANEL SYNC",
+  "last_sync": "2026-10-01T12:50:00-06:00",
+  "sync_mode": "JOTFORM VERIFIED · AUTO-CLOSE 9/9 · PANEL SYNC",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -16,31 +16,26 @@
     "form_id": "262710961066053",
     "form_url": "https://form.jotform.com/262710961066053",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 4,
+    "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-09-30T12:00:00-06:00",
     "deadline_label": "30 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 64,
-    "missing_picks": 80,
-    "missing_participants": [
-      "EL DOC",
-      "ALEX",
-      "LUIS C.",
-      "DR PALMA",
-      "RODRI"
-    ],
+    "received_picks": 144,
+    "missing_picks": 0,
+    "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_4_OF_9",
-    "form_status": "ENABLED",
-    "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE"
+    "capture_status": "CLOSED_9_OF_9",
+    "form_status": "DISABLED",
+    "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
+    "auto_close_reason": "9_OF_9_COMPLETE"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "ARI",
@@ -52,15 +47,15 @@
     },
     {
       "name": "ALEX",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "JENNI",
@@ -68,7 +63,7 @@
     },
     {
       "name": "RODRI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "IBRACHO",
@@ -320,13 +315,13 @@
       "wrong": 21
     }
   ],
-  "public_picks_authorized": false,
+  "public_picks_authorized": true,
   "publication": {
-    "gate": "HOLD/CAPTURE_OPEN",
+    "gate": "HOLD/WAITING_INTERACTIVE_FIGMA",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "WEEK 4 · CAPTURE OPEN"
+    "assets_status": "WEEK 4 · 9/9 LOCKED · FIGMA PENDING"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -384,7 +379,7 @@
   ],
   "notifications": {
     "center_status": "ACTIVE",
-    "push_status": "PENDING_OPERATOR_REGISTRATION",
+    "push_status": "ACTIVE",
     "operator": "RODRIGO",
     "milestone_events": [
       "WEEK_OPEN",
@@ -394,7 +389,7 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week4_stage": "PRESTAGED_AWAITING_9_OF_9",
+    "week4_stage": "READY_FOR_W4_PICKS_BUILD",
     "publication_ready": false,
     "nodes": {
       "picks": "3016:1161548",
@@ -403,5 +398,191 @@
       "season": "3016:1164638"
     },
     "manifest": "./figma-week-04.json"
+  },
+  "public_picks": {
+    "status": "LOCKED_9_OF_9",
+    "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
+    "games": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16"
+    ],
+    "matrix": {
+      "EL DOC": [
+        "CLE",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "DEN",
+        "DET",
+        "ATL"
+      ],
+      "ARI": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ],
+      "LALO": [
+        "PIT",
+        "WAS",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "PHI",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "CAR",
+        "NO"
+      ],
+      "ALEX": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ],
+      "LUIS C.": [
+        "CLE",
+        "IND",
+        "BAL",
+        "BUF",
+        "NYJ",
+        "CIN",
+        "DAL",
+        "ARI",
+        "PHI",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "CAR",
+        "NO"
+      ],
+      "DR PALMA": [
+        "CLE",
+        "WAS",
+        "BAL",
+        "BUF",
+        "NYJ",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "NO"
+      ],
+      "JENNI": [
+        "PIT",
+        "WAS",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "LAC",
+        "DEN",
+        "CAR",
+        "ATL"
+      ],
+      "RODRI": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "NO"
+      ],
+      "IBRACHO": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ]
+    }
   }
 }
