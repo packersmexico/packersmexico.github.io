@@ -317,11 +317,11 @@
   ],
   "public_picks_authorized": true,
   "publication": {
-    "gate": "HOLD/WAITING_INTERACTIVE_FIGMA",
+    "gate": "HOLD/EXPORT_PENDING",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "WEEK 4 · 9/9 LOCKED · FIGMA PENDING"
+    "assets_status": "WEEK 4 · 9/9 LOCKED · FIGMA PICKS READY · EXPORT PENDING"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -389,7 +389,7 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week4_stage": "READY_FOR_W4_PICKS_BUILD",
+    "week4_stage": "W4_PICKS_FIGMA_QA_PASS",
     "publication_ready": false,
     "nodes": {
       "picks": "3016:1161548",
