@@ -3,14 +3,19 @@
   "week": 4,
   "file_key": "RAoegEENwTH2L7gb3yydIq",
   "page_id": "2057:262482",
-  "state": "PRESTAGED_AWAITING_9_OF_9",
+  "state": "PICKS_FIGMA_QA_PASS",
   "publication_ready": false,
   "qa": {
     "structural": "PASS",
     "schedule_rows": 16,
     "stale_week3_pick_frames": 0,
     "stale_week3_result_texts": 0,
-    "visual_review": "PENDING_FINAL_9_OF_9"
+    "visual_review": "PASS · W4 PICKS BOARD · 144/144 LOGOS",
+    "picks_board": "PASS",
+    "picks_count": 144,
+    "games": 16,
+    "participants": 9,
+    "export": "PENDING"
   },
   "source_master_nodes": {
     "picks": "2885:1064635",
