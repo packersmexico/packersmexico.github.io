@@ -66,8 +66,10 @@
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "9/9 LOCKED · FIGMA PICKS QA PASS · EXPORT PENDING",
-    "outputs": []
+    "package_status": "9/9 LOCKED · FIGMA PICKS QA PASS · PICKS PNG LIVE",
+    "outputs": [
+      "quiniela-control/exports/w4-picks-board.png"
+    ]
   },
   "public_picks": {
     "status": "LOCKED_9_OF_9",

@@ -36,7 +36,7 @@ function render(data){
 }
 async function refreshPublishedAssets(stamp){
  const assets=[
-  './exports/w3-picks-board.png',
+  './exports/w4-picks-board.png',
   './exports/w3-results-live.png',
   './exports/w3-ranking-weekly.png',
   './exports/w3-ranking-season.png'

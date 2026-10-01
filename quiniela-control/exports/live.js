@@ -11,7 +11,7 @@ function formatTime(value){
 
 function refreshImages(stamp){
   const map=[
-    ['picks-image','./w3-picks-board.png'],
+    ['picks-image','./w4-picks-board.png'],
     ['results-live-image','./w3-results-live.png'],
     ['weekly-image','./w3-ranking-weekly.png'],
     ['season-image','./w3-ranking-season.png']

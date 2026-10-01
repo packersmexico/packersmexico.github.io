@@ -3,7 +3,7 @@
   "week": 4,
   "file_key": "RAoegEENwTH2L7gb3yydIq",
   "page_id": "2057:262482",
-  "state": "PICKS_FIGMA_QA_PASS",
+  "state": "PICKS_EXPORTED_TO_HUB",
   "publication_ready": false,
   "qa": {
     "structural": "PASS",
@@ -15,7 +15,8 @@
     "picks_count": 144,
     "games": 16,
     "participants": 9,
-    "export": "PENDING"
+    "export": "PICKS_EXPORTED",
+    "picks_png": "PASS · 1600x2000 · HUB LIVE"
   },
   "source_master_nodes": {
     "picks": "2885:1064635",
@@ -35,5 +36,5 @@
     "weekly": "quiniela-control/exports/w4-ranking-weekly.png",
     "season": "quiniela-control/exports/w4-ranking-season.png"
   },
-  "gate": "DO_NOT_EXPORT_OR_PUBLISH_UNTIL_9_UNIQUE_VALID_PARTICIPANTS"
+  "gate": "9_OF_9_COMPLETE · PICKS_EXPORT_ALLOWED"
 }

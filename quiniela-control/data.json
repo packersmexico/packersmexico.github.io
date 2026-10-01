@@ -321,7 +321,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "WEEK 4 · 9/9 LOCKED · FIGMA PICKS READY · EXPORT PENDING"
+    "assets_status": "WEEK 4 · 9/9 LOCKED · FIGMA PICKS QA PASS · PICKS PNG LIVE"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -389,7 +389,7 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week4_stage": "W4_PICKS_FIGMA_QA_PASS",
+    "week4_stage": "W4_PICKS_EXPORTED_TO_HUB",
     "publication_ready": false,
     "nodes": {
       "picks": "3016:1161548",
