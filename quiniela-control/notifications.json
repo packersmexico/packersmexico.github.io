@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-09-29T21:50:00-06:00",
+  "updated_at": "2026-10-01T12:50:00-06:00",
   "items": [
+    {
+      "id": "W4_9OF9",
+      "status": "READY",
+      "title": "WEEK 4 · PICKS COMPLETOS",
+      "body": "9/9 participantes · captura cerrada. Picks y piezas ya pueden revisarse en el panel.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
     {
       "id": "W4_OPEN",
       "status": "READY",
