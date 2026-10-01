@@ -28,7 +28,13 @@ export default async function handler(req, res) {
   const expectedCode = process.env.RODRIGO_PUSH_CODE;
   if (!expectedCode) return json(res, 503, { ok: false, error: 'PUSH_REGISTRATION_NOT_CONFIGURED' });
 
-  const { registrationCode, subscription, deviceLabel = 'Rodrigo' } = req.body || {};
+  let body = req.body || {};
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); }
+    catch { return json(res, 400, { ok: false, error: 'INVALID_JSON_BODY' }); }
+  }
+
+  const { registrationCode, subscription, deviceLabel = 'Rodrigo' } = body;
   if (!safeEqual(registrationCode, expectedCode)) {
     return json(res, 403, { ok: false, error: 'INVALID_REGISTRATION_CODE' });
   }
