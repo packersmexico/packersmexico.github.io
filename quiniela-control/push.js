@@ -92,6 +92,16 @@ async function currentSubscription(registration){
   return registration.pushManager.getSubscription();
 }
 
+function sameApplicationServerKey(subscription, vapidPublicKey){
+  try{
+    const current=subscription?.options?.applicationServerKey;
+    if(!current)return false;
+    return uint8ToB64Url(current)===String(vapidPublicKey||'').replace(/=+$/,'');
+  }catch(_){
+    return false;
+  }
+}
+
 function registerViaForm(api, registrationCode, subscription){
   return new Promise((resolve,reject)=>{
     const serialized=serializeSubscription(subscription);
@@ -177,6 +187,13 @@ async function initializePush(){
   const api=String(localConfig.api_base).replace(/\/$/,'');
   const registration=await navigator.serviceWorker.register('./push-sw.js',{scope:'./'});
   let subscription=await currentSubscription(registration);
+  const activeKey=localConfig.vapid_public_key||'';
+
+  if(subscription && activeKey && !sameApplicationServerKey(subscription,activeKey)){
+    try{ await subscription.unsubscribe(); }catch(_){}
+    subscription=null;
+    localStorage.removeItem('pmxPushRegistered');
+  }
 
   const registered=localStorage.getItem('pmxPushRegistered')==='1';
   if(Notification.permission==='granted' && subscription && registered){
