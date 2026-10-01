@@ -3,33 +3,28 @@
   "season": "2026",
   "week": "WEEK 4",
   "week_number": 4,
-  "snapshot_status": "CAPTURE_OPEN",
-  "last_sync": "2026-09-29T21:50:00-06:00",
+  "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
+  "last_sync": "2026-10-01T12:50:00-06:00",
   "capture": {
-    "complete": 4,
+    "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline_label": "30 SEP · 12:00 CDMX",
     "expected_picks": 144,
-    "received_picks": 64,
-    "missing_picks": 80,
-    "missing_participants": [
-      "EL DOC",
-      "ALEX",
-      "LUIS C.",
-      "DR PALMA",
-      "RODRI"
-    ],
-    "duplicate_policy": "ONE_SUBMISSION_PER_PARTICIPANT_PER_WEEK",
+    "received_picks": 144,
+    "missing_picks": 0,
+    "missing_participants": [],
+    "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_4_OF_9",
-    "form_status": "ENABLED",
-    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE"
+    "capture_status": "CLOSED_9_OF_9",
+    "form_status": "DISABLED",
+    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
+    "auto_close_reason": "9_OF_9_COMPLETE"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "ARI",
@@ -41,15 +36,15 @@
     },
     {
       "name": "ALEX",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "JENNI",
@@ -57,7 +52,7 @@
     },
     {
       "name": "RODRI",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "name": "IBRACHO",
@@ -69,9 +64,195 @@
     "total": 16,
     "status": "PENDING"
   },
-  "public_picks_authorized": false,
+  "public_picks_authorized": true,
   "production": {
-    "package_status": "CAPTURE OPEN",
+    "package_status": "9/9 LOCKED · FIGMA PENDING",
     "outputs": []
+  },
+  "public_picks": {
+    "status": "LOCKED_9_OF_9",
+    "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
+    "games": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16"
+    ],
+    "matrix": {
+      "EL DOC": [
+        "CLE",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "DEN",
+        "DET",
+        "ATL"
+      ],
+      "ARI": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ],
+      "LALO": [
+        "PIT",
+        "WAS",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "PHI",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "CAR",
+        "NO"
+      ],
+      "ALEX": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ],
+      "LUIS C.": [
+        "CLE",
+        "IND",
+        "BAL",
+        "BUF",
+        "NYJ",
+        "CIN",
+        "DAL",
+        "ARI",
+        "PHI",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "CAR",
+        "NO"
+      ],
+      "DR PALMA": [
+        "CLE",
+        "WAS",
+        "BAL",
+        "BUF",
+        "NYJ",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "NO"
+      ],
+      "JENNI": [
+        "PIT",
+        "WAS",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "NYG",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "LAC",
+        "DEN",
+        "CAR",
+        "ATL"
+      ],
+      "RODRI": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "HOU",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "NO"
+      ],
+      "IBRACHO": [
+        "PIT",
+        "IND",
+        "BAL",
+        "BUF",
+        "CHI",
+        "CIN",
+        "DAL",
+        "ARI",
+        "LAR",
+        "GB",
+        "MIN",
+        "KC",
+        "SEA",
+        "SF",
+        "DET",
+        "ATL"
+      ]
+    }
   }
 }
