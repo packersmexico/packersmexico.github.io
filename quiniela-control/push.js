@@ -141,15 +141,19 @@ async function initializePush(){
       if(permission!=='granted')throw new Error('NOTIFICATION_PERMISSION_DENIED');
 
       stage='CONFIG';
-      const cfgResp=await fetch(api+'/api/config',{cache:'no-store'});
-      if(!cfgResp.ok)throw new Error('CONFIG_HTTP_'+cfgResp.status);
-      const cfg=await cfgResp.json();
-      if(!cfg.enabled || !cfg.vapidPublicKey)throw new Error('BACKEND_NOT_READY');
+      let vapidPublicKey=localConfig.vapid_public_key||'';
+      if(!vapidPublicKey){
+        const cfgResp=await fetch(api+'/api/config',{cache:'no-store'});
+        if(!cfgResp.ok)throw new Error('CONFIG_HTTP_'+cfgResp.status);
+        const cfg=await cfgResp.json();
+        if(!cfg.enabled || !cfg.vapidPublicKey)throw new Error('BACKEND_NOT_READY');
+        vapidPublicKey=cfg.vapidPublicKey;
+      }
 
       stage='SUSCRIPCIÓN';
       subscription=await currentSubscription(registration);
       if(!subscription){
-        const key=b64ToUint8Array(cfg.vapidPublicKey);
+        const key=b64ToUint8Array(vapidPublicKey);
         subscription=await registration.pushManager.subscribe({
           userVisibleOnly:true,
           applicationServerKey:key.buffer
