@@ -210,6 +210,10 @@ async function initializePush(){
 
       stage='SUSCRIPCIÓN';
       subscription=await currentSubscription(registration);
+      if(subscription && localStorage.getItem('pmxPushRegistered')!=='1'){
+        try { await subscription.unsubscribe(); } catch (_) {}
+        subscription=null;
+      }
       if(!subscription){
         const key=b64ToUint8Array(vapidPublicKey);
         subscription=await registration.pushManager.subscribe({
