@@ -228,7 +228,7 @@ async function initializePush(){
         const save=await fetch(api+'/api/subscribe',{
           method:'POST',
           mode:'cors',
-          headers:{'Content-Type':'application/json'},
+          headers:{'Content-Type':'text/plain;charset=UTF-8'},
           body:JSON.stringify({
             registrationCode:code,
             subscription:serializeSubscription(subscription),
