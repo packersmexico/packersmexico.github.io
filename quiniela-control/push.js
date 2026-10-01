@@ -9,6 +9,27 @@ function b64ToUint8Array(value){
   return Uint8Array.from([...raw].map(ch=>ch.charCodeAt(0)));
 }
 
+function uint8ToB64Url(buffer){
+  const bytes=new Uint8Array(buffer);
+  let binary='';
+  bytes.forEach(b=>{binary+=String.fromCharCode(b);});
+  return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+
+function serializeSubscription(subscription){
+  const p256dh=subscription.getKey('p256dh');
+  const auth=subscription.getKey('auth');
+  if(!p256dh || !auth) throw new Error('SUBSCRIPTION_KEYS_MISSING');
+  return {
+    endpoint:subscription.endpoint,
+    expirationTime:subscription.expirationTime??null,
+    keys:{
+      p256dh:uint8ToB64Url(p256dh),
+      auth:uint8ToB64Url(auth)
+    }
+  };
+}
+
 function pushStatus(text,state='idle'){
   const el=push$('push-status');
   if(!el)return;
@@ -114,32 +135,38 @@ async function initializePush(){
   button.addEventListener('click',async()=>{
     button.disabled=true;
     pushStatus('ACTIVANDO…','busy');
+    let stage='PERMISO';
     try{
       const permission=await Notification.requestPermission();
       if(permission!=='granted')throw new Error('NOTIFICATION_PERMISSION_DENIED');
 
+      stage='CONFIG';
       const cfgResp=await fetch(api+'/api/config',{cache:'no-store'});
       if(!cfgResp.ok)throw new Error('CONFIG_HTTP_'+cfgResp.status);
       const cfg=await cfgResp.json();
       if(!cfg.enabled || !cfg.vapidPublicKey)throw new Error('BACKEND_NOT_READY');
 
+      stage='SUSCRIPCIÓN';
       subscription=await currentSubscription(registration);
       if(!subscription){
+        const key=b64ToUint8Array(cfg.vapidPublicKey);
         subscription=await registration.pushManager.subscribe({
           userVisibleOnly:true,
-          applicationServerKey:b64ToUint8Array(cfg.vapidPublicKey)
+          applicationServerKey:key.buffer
         });
       }
 
+      stage='CÓDIGO';
       const code=window.prompt('Código de vinculación de Rodrigo');
       if(!code)throw new Error('REGISTRATION_CODE_REQUIRED');
 
+      stage='REGISTRO';
       const save=await fetch(api+'/api/subscribe',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
           registrationCode:code,
-          subscription:subscription.toJSON(),
+          subscription:serializeSubscription(subscription),
           deviceLabel:navigator.userAgent
         })
       });
@@ -154,7 +181,8 @@ async function initializePush(){
       console.error(error);
       button.disabled=false;
       const code=String(error?.message||error?.name||'UNKNOWN_PUSH_ERROR');
-      const detail=String(error?.name&&error?.name!=='Error'?error.name:code).slice(0,64);
+      const errorName=String(error?.name||'Error');
+      const detail=(errorName+': '+code).slice(0,120);
       pushStatus(
         code==='INVALID_REGISTRATION_CODE'?'CÓDIGO DE VINCULACIÓN INCORRECTO':
         code==='NOTIFICATION_PERMISSION_DENIED'?'PERMISO NO CONCEDIDO':
@@ -162,11 +190,11 @@ async function initializePush(){
         code==='BACKEND_NOT_READY'?'BACKEND DE NOTIFICACIONES NO LISTO':
         code.startsWith('CONFIG_HTTP_')?'ERROR DE CONFIGURACIÓN · '+code.replace('CONFIG_HTTP_','HTTP '):
         code.startsWith('SUBSCRIBE_HTTP_')?'ERROR DE REGISTRO · '+code.replace('SUBSCRIBE_HTTP_','HTTP '):
-        detail==='AbortError'?'ACTIVACIÓN INTERRUMPIDA POR EL NAVEGADOR':
-        detail==='InvalidStateError'?'ESTADO DE PUSH INVÁLIDO · REABRE LA APP':
-        detail==='NotAllowedError'?'PERMISO DE NOTIFICACIONES BLOQUEADO':
-        detail==='NotSupportedError'?'PUSH NO SOPORTADO EN ESTE DISPOSITIVO':
-        'ERROR DE ACTIVACIÓN · '+detail,
+        errorName==='AbortError'?'ACTIVACIÓN INTERRUMPIDA POR EL NAVEGADOR':
+        errorName==='InvalidStateError'?'ESTADO DE PUSH INVÁLIDO · REABRE LA APP':
+        errorName==='NotAllowedError'?'PERMISO DE NOTIFICACIONES BLOQUEADO':
+        errorName==='NotSupportedError'?'PUSH NO SOPORTADO EN ESTE DISPOSITIVO':
+        'ERROR '+stage+' · '+detail,
         'off'
       );
     }
