@@ -64,8 +64,15 @@ export default async function handler(req, res) {
       await redis(['DEL', keys.rodrigoSubscription]);
       return json(res, 410, { ok: false, error: 'SUBSCRIPTION_EXPIRED' });
     }
-    console.error(error);
-    return json(res, 502, { ok: false, error: 'PUSH_DELIVERY_FAILED' });
+    const upstreamStatus = Number(error?.statusCode || 0) || null;
+    const upstreamBody = String(error?.body || error?.message || '').slice(0, 300);
+    console.error('PUSH_DELIVERY_FAILED', { upstreamStatus, upstreamBody });
+    return json(res, 502, {
+      ok: false,
+      error: 'PUSH_DELIVERY_FAILED',
+      upstreamStatus,
+      upstreamBody
+    });
   }
 
   const sentAt = new Date().toISOString();
