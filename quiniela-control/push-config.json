@@ -2,5 +2,5 @@
   "enabled": true,
   "api_base": "https://packersmexicogithubio-push-backend.vercel.app",
   "operator": "RODRIGO",
-  "vapid_public_key": "BDSFvQZmSOEChwMAd-DIfZRtuXV4FuIlCEMcnuoNa4uij82ltCkLfNP6aGa6Z_0QNoGuvnoJEYa5g2xDEXnHGDA"
+  "vapid_public_key": "BOFQ4TJNDAUvmCjWAM8jMBflWHS0zZJxl3OP0k3_YuzsOHMhfYCECFrp1IaHIseACYBTtMs4El6qKAFDCSqH1os"
 }
