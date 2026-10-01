@@ -92,6 +92,64 @@ async function currentSubscription(registration){
   return registration.pushManager.getSubscription();
 }
 
+function registerViaForm(api, registrationCode, subscription){
+  return new Promise((resolve,reject)=>{
+    const serialized=serializeSubscription(subscription);
+    const target='pmx_push_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+    const iframe=document.createElement('iframe');
+    iframe.name=target;
+    iframe.hidden=true;
+
+    const form=document.createElement('form');
+    form.method='POST';
+    form.action=api+'/api/subscribe-form';
+    form.target=target;
+    form.hidden=true;
+
+    const fields={
+      registrationCode,
+      endpoint:serialized.endpoint,
+      expirationTime:serialized.expirationTime??'',
+      p256dh:serialized.keys.p256dh,
+      auth:serialized.keys.auth,
+      deviceLabel:navigator.userAgent
+    };
+    Object.entries(fields).forEach(([name,value])=>{
+      const input=document.createElement('input');
+      input.type='hidden';
+      input.name=name;
+      input.value=String(value??'');
+      form.append(input);
+    });
+
+    const expectedOrigin=new URL(api).origin;
+    let done=false;
+    const cleanup=()=>{
+      window.removeEventListener('message',onMessage);
+      clearTimeout(timer);
+      form.remove();
+      iframe.remove();
+    };
+    const onMessage=(event)=>{
+      if(event.origin!==expectedOrigin)return;
+      if(event.data?.source!=='PMX_PUSH_SUBSCRIBE')return;
+      done=true;
+      cleanup();
+      const payload=event.data.payload||{};
+      if(payload.ok)return resolve(payload);
+      reject(new Error(payload.error||'FORM_SUBSCRIBE_FAILED'));
+    };
+    window.addEventListener('message',onMessage);
+    document.body.append(iframe,form);
+    const timer=setTimeout(()=>{
+      if(done)return;
+      cleanup();
+      reject(new Error('FORM_SUBSCRIBE_TIMEOUT'));
+    },12000);
+    form.submit();
+  });
+}
+
 async function initializePush(){
   const button=push$('push-enable');
   if(!button)return;
@@ -165,17 +223,25 @@ async function initializePush(){
       if(!code)throw new Error('REGISTRATION_CODE_REQUIRED');
 
       stage='REGISTRO';
-      const save=await fetch(api+'/api/subscribe',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          registrationCode:code,
-          subscription:serializeSubscription(subscription),
-          deviceLabel:navigator.userAgent
-        })
-      });
-      const payload=await save.json().catch(()=>({}));
-      if(!save.ok)throw new Error(payload.error||('SUBSCRIBE_HTTP_'+save.status));
+      let payload;
+      try{
+        const save=await fetch(api+'/api/subscribe',{
+          method:'POST',
+          mode:'cors',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            registrationCode:code,
+            subscription:serializeSubscription(subscription),
+            deviceLabel:navigator.userAgent
+          })
+        });
+        payload=await save.json().catch(()=>({}));
+        if(!save.ok)throw new Error(payload.error||('SUBSCRIBE_HTTP_'+save.status));
+      }catch(fetchError){
+        if(fetchError?.name!=='TypeError' && !String(fetchError?.message||'').includes('Load failed')) throw fetchError;
+        stage='REGISTRO FALLBACK';
+        payload=await registerViaForm(api,code,subscription);
+      }
 
       localStorage.setItem('pmxPushRegistered','1');
       button.textContent='NOTIFICACIONES ACTIVAS';
