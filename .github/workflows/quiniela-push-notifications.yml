@@ -118,7 +118,7 @@ jobs:
       - name: Send push milestone
         continue-on-error: true
         env:
-          PUSH_API_URL: ${{ vars.PMX_PUSH_API_URL }}
+          PUSH_API_URL: https://packersmexicogithubio-push-backend.vercel.app
           PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         shell: bash
         run: |
