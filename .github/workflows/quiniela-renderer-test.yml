@@ -1,0 +1,89 @@
+name: Quiniela Renderer Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-renderer/index.html'
+      - 'quiniela-renderer/README.md'
+      - '.github/workflows/quiniela-renderer-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quiniela-renderer-test
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install renderer dependencies
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 pixelmatch@6.0.0 pngjs@7.0.0
+          npx playwright install --with-deps chromium
+      - name: Serve repository
+        run: |
+          python3 -m http.server 4173 >/tmp/pmx-renderer-http.log 2>&1 &
+          echo $! > /tmp/pmx-renderer-http.pid
+          sleep 2
+      - name: Render 1600x2000 sample
+        run: |
+          mkdir -p quiniela-control/exports/renderer-test
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:1600,height:2000},deviceScaleFactor:1});
+            await page.goto('http://127.0.0.1:4173/quiniela-renderer/index.html',{waitUntil:'networkidle',timeout:120000});
+            await page.waitForFunction(()=>window.__PMX_RENDERER_QA__||window.__PMX_RENDERER_ERROR__,null,{timeout:120000});
+            const error=await page.evaluate(()=>window.__PMX_RENDERER_ERROR__||null);
+            if(error) throw new Error(error);
+            const qa=await page.evaluate(()=>window.__PMX_RENDERER_QA__);
+            if(qa.games!==16||qa.participants!==9||qa.picks!==144||qa.width!==1600||qa.height!==2000) throw new Error('STRUCTURAL_QA_FAIL '+JSON.stringify(qa));
+            await page.locator('#board').screenshot({path:'quiniela-control/exports/renderer-test/w4-picks-board.renderer-test.png'});
+            require('fs').writeFileSync('quiniela-control/exports/renderer-test/w4-structural-qa.json',JSON.stringify({...qa,status:'PASS'},null,2));
+            await browser.close();
+          })();
+          NODE
+      - name: Pixel comparison against approved W4 golden master
+        run: |
+          node <<'NODE'
+          (async()=>{
+            const fs=require('fs');
+            const {PNG}=require('pngjs');
+            const pixelmatch=(await import('pixelmatch')).default;
+            const golden=PNG.sync.read(fs.readFileSync('quiniela-control/exports/w4-picks-board.png'));
+            const test=PNG.sync.read(fs.readFileSync('quiniela-control/exports/renderer-test/w4-picks-board.renderer-test.png'));
+            if(golden.width!==test.width||golden.height!==test.height) throw new Error('DIMENSION_MISMATCH');
+            const diff=new PNG({width:golden.width,height:golden.height});
+            const mismatched=pixelmatch(golden.data,test.data,diff.data,golden.width,golden.height,{threshold:0.15,includeAA:false});
+            const ratio=mismatched/(golden.width*golden.height);
+            PNG.sync.write(diff);
+            fs.writeFileSync('quiniela-control/exports/renderer-test/w4-parity-qa.json',JSON.stringify({
+              golden:'quiniela-control/exports/w4-picks-board.png',
+              candidate:'quiniela-control/exports/renderer-test/w4-picks-board.renderer-test.png',
+              width:golden.width,height:golden.height,
+              mismatched_pixels:mismatched,
+              mismatch_ratio:ratio,
+              similarity:1-ratio,
+              gate:'DIRECTION_VISUAL_REVIEW_REQUIRED'
+            },null,2));
+            fs.writeFileSync('quiniela-control/exports/renderer-test/w4-parity-diff.png',PNG.sync.write(diff));
+          })();
+          NODE
+      - name: Commit test outputs
+        run: |
+          git config user.name "PMX Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add quiniela-control/exports/renderer-test/
+          git diff --cached --quiet && exit 0
+          git commit -m "Quiniela renderer: W4 parity test output [skip ci]"
+          git push
