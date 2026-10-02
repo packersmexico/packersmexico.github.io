@@ -1,0 +1,32 @@
+name: Quiniela Milestone Push
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/capture-config.json'
+      - 'quiniela-control/exports/**'
+      - 'quiniela-control/figma-week-*.json'
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quiniela-milestone-push
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait briefly for production alias
+        run: sleep 20
+      - name: Dispatch eligible Quiniela milestones
+        run: |
+          curl --fail --silent --show-error --max-time 30 \
+            "https://packersmexicogithubio-push-backend.vercel.app/api/milestone-sync"
