@@ -4,12 +4,18 @@
   "week_number": 4,
   "form_id": "262710961066053",
   "form_url": "https://form.jotform.com/262710961066053",
-  "status": "OPEN",
+  "status": "CLOSED",
   "deadline": "2026-09-30T12:00:00-06:00",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-09-30T00:46:45-06:00",
-  "capture_status": "OPEN_4_OF_9",
-  "form_status": "ENABLED",
-  "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE"
+  "last_sync": "2026-10-01T21:58:00-06:00",
+  "capture_status": "CLOSED_9_OF_9",
+  "form_status": "DISABLED",
+  "complete": 9,
+  "total": 9,
+  "expected_picks": 144,
+  "received_picks": 144,
+  "missing_picks": 0,
+  "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
+  "auto_close_reason": "9_OF_9_COMPLETE"
 }
