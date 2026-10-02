@@ -1,0 +1,156 @@
+import webpush from 'web-push';
+import { redis, keys } from '../lib/redis.js';
+import { applyCors, json, rejectMethod } from '../lib/http.js';
+
+const RAW_BASE = 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
+
+async function getJson(url) {
+  const response = await fetch(url, { cache: 'no-store', headers: { 'User-Agent': 'PMX-Quiniela-Milestone-Sync' } });
+  if (!response.ok) throw new Error(`UPSTREAM_JSON_${response.status}`);
+  return response.json();
+}
+
+async function assetExists(path) {
+  try {
+    const response = await fetch(`${RAW_BASE}/${path}`, { method: 'HEAD', cache: 'no-store', headers: { 'User-Agent': 'PMX-Quiniela-Milestone-Sync' } });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+function eventPayloads(data) {
+  const week = Number(data?.week_number || 0);
+  if (!week || week <= 4) return [];
+
+  const capture = data?.capture || {};
+  const results = data?.results || {};
+  const events = [];
+
+  const weekOpen =
+    String(capture.window || '').toUpperCase() === 'OPEN' &&
+    Number(capture.complete || 0) < Number(capture.total || 9);
+
+  if (weekOpen) {
+    events.push({
+      eventKey: `WEEK_OPEN_W${week}`,
+      title: `PACKERS MÉXICO · QUINIELA W${week}`,
+      body: `Nueva Week disponible. Captura abierta · ${capture.complete || 0}/${capture.total || 9} recibidos.`,
+      url: 'https://packersmexico.github.io/quiniela-control/captura/',
+      tag: `pmx-week-open-w${week}`
+    });
+  }
+
+  const captureComplete =
+    Number(capture.complete || 0) === Number(capture.total || 9) &&
+    Number(capture.total || 0) > 0 &&
+    String(capture.window || '').toUpperCase() === 'CLOSED';
+
+  if (captureComplete) {
+    events.push({
+      needsAsset: `exports/w${week}-picks-board.png`,
+      eventKey: `CAPTURE_9_OF_9_W${week}`,
+      title: `PACKERS MÉXICO · W${week} PICKS LISTOS`,
+      body: '9/9 participantes. Captura cerrada y pieza de picks actualizada en el Hub.',
+      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
+      tag: `pmx-capture-complete-w${week}`
+    });
+  }
+
+  const finalComplete =
+    Number(results.final || 0) === Number(results.total || 16) &&
+    Number(results.total || 0) > 0;
+
+  if (finalComplete) {
+    events.push({
+      needsAssets: [
+        `exports/w${week}-results-live.png`,
+        `exports/w${week}-ranking-weekly.png`,
+        `exports/w${week}-ranking-season.png`
+      ],
+      eventKey: `WEEK_FINAL_W${week}`,
+      title: `PACKERS MÉXICO · W${week} FINAL`,
+      body: '16/16 FINAL. Resultados y rankings actualizados; rollover de la siguiente Week en proceso.',
+      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
+      tag: `pmx-week-final-w${week}`
+    });
+  }
+
+  return events;
+}
+
+async function sendEvent(record, event, vapid) {
+  const sentKey = keys.sent(event.eventKey);
+  const alreadySent = await redis(['GET', sentKey]);
+  if (alreadySent) return { eventKey: event.eventKey, status: 'ALREADY_SENT', sentAt: alreadySent };
+
+  if (event.needsAsset && !(await assetExists(event.needsAsset))) {
+    return { eventKey: event.eventKey, status: 'WAITING_ASSET', asset: event.needsAsset };
+  }
+  if (Array.isArray(event.needsAssets)) {
+    for (const asset of event.needsAssets) {
+      if (!(await assetExists(asset))) return { eventKey: event.eventKey, status: 'WAITING_ASSET', asset };
+    }
+  }
+
+  webpush.setVapidDetails(vapid.subject, vapid.publicKey, vapid.privateKey);
+  const payload = JSON.stringify({
+    title: event.title,
+    body: event.body,
+    url: event.url,
+    tag: event.tag,
+    eventKey: event.eventKey
+  });
+
+  try {
+    await webpush.sendNotification(record.subscription, payload, { TTL: 86400, urgency: 'normal' });
+  } catch (error) {
+    if (error?.statusCode === 404 || error?.statusCode === 410) {
+      await redis(['DEL', keys.rodrigoSubscription]);
+      return { eventKey: event.eventKey, status: 'SUBSCRIPTION_EXPIRED' };
+    }
+    return {
+      eventKey: event.eventKey,
+      status: 'DELIVERY_FAILED',
+      upstreamStatus: Number(error?.statusCode || 0) || null,
+      upstreamBody: String(error?.body || error?.message || '').slice(0, 200)
+    };
+  }
+
+  const sentAt = new Date().toISOString();
+  await redis(['SET', sentKey, sentAt]);
+  return { eventKey: event.eventKey, status: 'SENT', sentAt };
+}
+
+export default async function handler(req, res) {
+  applyCors(req, res);
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET' && req.method !== 'POST') return rejectMethod(req, res, ['GET', 'POST']);
+
+  const vapid = {
+    publicKey: process.env.VAPID_PUBLIC_KEY,
+    privateKey: process.env.VAPID_PRIVATE_KEY,
+    subject: process.env.VAPID_SUBJECT
+  };
+  if (!vapid.publicKey || !vapid.privateKey || !vapid.subject) {
+    return json(res, 503, { ok: false, error: 'VAPID_NOT_CONFIGURED' });
+  }
+
+  const rawRecord = await redis(['GET', keys.rodrigoSubscription]);
+  if (!rawRecord) return json(res, 200, { ok: true, status: 'RODRIGO_NOT_SUBSCRIBED', events: [] });
+
+  const data = await getJson(`${RAW_BASE}/data.json?t=${Date.now()}`);
+  const record = JSON.parse(rawRecord);
+  const candidates = eventPayloads(data);
+  const results = [];
+  for (const event of candidates) {
+    results.push(await sendEvent(record, event, vapid));
+  }
+
+  return json(res, 200, {
+    ok: true,
+    week: data.week_number,
+    checkedAt: new Date().toISOString(),
+    results
+  });
+}
