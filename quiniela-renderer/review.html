@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081D13">
+<title>PMX · Renderer Review · W4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#081D13;--green:#123B31;--gold:#FFB612;--cream:#F5EFD8;--muted:#8FA397;--line:#144B32}
+*{box-sizing:border-box}body{margin:0;background:#06160f;color:var(--cream);font-family:Montserrat,Arial,sans-serif}
+main{width:min(1280px,calc(100% - 28px));margin:auto;padding:30px 0 60px}
+h1,h2{font-family:"Bebas Neue",sans-serif;margin:0}.eyebrow{color:var(--gold);font-weight:700;margin:0 0 8px}.title{font-size:64px;line-height:.95}
+.summary{border-top:4px solid var(--gold);margin:22px 0 34px;padding-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.metric{border-top:1px solid var(--line);padding-top:10px}.metric b{display:block;font-size:28px;color:var(--gold)}.metric span{color:var(--muted);font-size:13px}
+.note{color:var(--muted);line-height:1.55;max-width:900px}.section{border-top:1px solid var(--line);padding:28px 0}.section h2{font-size:42px}.badge{display:inline-block;color:var(--gold);font-weight:700;margin-top:8px}
+.preview{margin-top:16px;background:#0002;border:1px solid var(--line);overflow:auto}.preview img{display:block;width:100%;height:auto}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid .preview{margin-top:12px}
+a{color:var(--gold);font-weight:700}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.button{display:inline-block;padding:14px 18px;background:var(--gold);color:var(--dark);text-decoration:none}
+@media(max-width:800px){.summary,.grid{grid-template-columns:1fr}.title{font-size:50px}}
+</style>
+</head>
+<body><main>
+<p class="eyebrow">PMX · QUINIELA RENDERER · TEST</p>
+<h1 class="title">W4 · REVISIÓN DE PARIDAD</h1>
+<p class="note">Esta página es únicamente para revisión de Dirección. El renderer todavía no está habilitado para producción ni dispara notificaciones a Rodrigo.</p>
+<div class="summary">
+  <div class="metric"><b>1600×2000</b><span>DIMENSIÓN EXACTA</span></div>
+  <div class="metric"><b>144/144</b><span>PICKS RENDERIZADOS</span></div>
+  <div class="metric"><b>97.40%</b><span>SIMILITUD PIXEL QA</span></div>
+</div>
+<section class="section">
+  <p class="eyebrow">CANDIDATO</p><h2>RENDERER TEST</h2><span class="badge">DIRECTION VISUAL REVIEW REQUIRED</span>
+  <div class="preview"><img src="../quiniela-control/exports/renderer-test/w4-picks-board.renderer-test.png" alt="W4 renderer test candidate"></div>
+</section>
+<section class="section">
+  <div class="grid">
+    <div><p class="eyebrow">MASTER</p><h2>FIGMA GOLDEN</h2><div class="preview"><img src="../quiniela-control/exports/w4-picks-board.png" alt="W4 approved Figma golden master"></div></div>
+    <div><p class="eyebrow">QA</p><h2>PIXEL DIFF</h2><div class="preview"><img src="../quiniela-control/exports/renderer-test/w4-parity-diff.png" alt="W4 pixel parity difference"></div></div>
+  </div>
+</section>
+<p class="note">Criterio de Dirección: si la diferencia visual afecta identidad, jerarquía, logos, legibilidad, proporción o percepción general, marcar HOLD y corregir. Si el candidato conserva la experiencia visual aprobada, Dirección puede marcar PASS para continuar a la fase de automatización W5.</p>
+</main></body></html>
