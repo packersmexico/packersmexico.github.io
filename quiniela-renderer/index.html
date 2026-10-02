@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PMX · Quiniela Renderer · TEST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --field:#081D13;
+  --row:#0A261A;
+  --head:#0D3826;
+  --line:#144B32;
+  --cream:#F5EFD8;
+  --gold:#FFB612;
+  --muted:#8FA397;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;font-family:Montserrat,Arial,sans-serif}
+body{display:flex;justify-content:center;align-items:flex-start}
+.board{
+  position:relative;
+  width:1600px;height:2000px;
+  background:var(--field);overflow:hidden;
+}
+.pmx-logo{position:absolute;left:80px;top:54px;width:235px;height:58.75px;object-fit:contain}
+.kicker{position:absolute;left:80px;top:155px;width:520px;color:var(--cream);font:400 34px/41px "Bebas Neue",sans-serif}
+.rule{position:absolute;left:80px;top:212px;width:1440px;height:4px;background:var(--gold)}
+.title{position:absolute;left:80px;top:255px;width:620px;color:var(--cream);font:400 62px/74px "Bebas Neue",sans-serif}
+.sub{position:absolute;left:80px;top:326px;width:900px;color:var(--gold);font:700 21px/26px Montserrat,sans-serif}
+.grid{position:absolute;left:80px;top:405px;width:1437px}
+.header{
+  display:grid;grid-template-columns:330px repeat(9,123px);height:95px;
+  background:var(--head);border:2px solid var(--line);
+}
+.header > div{display:flex;align-items:center}
+.header .matchup-head{padding-left:16px;color:var(--gold);font:700 18px/22px Montserrat,sans-serif}
+.header .person{justify-content:center;color:var(--cream);font:700 15px/18px Montserrat,sans-serif;border-left:1px solid var(--line);text-align:center}
+.rows{width:1437px}
+.game-row{
+  display:grid;grid-template-columns:330px repeat(9,123px);height:82px;
+  border-bottom:1px solid var(--line);
+}
+.game-row:nth-child(odd){background:var(--row)}
+.game-row:first-child{border-top:1px solid var(--line)}
+.game-cell{position:relative;padding-left:18px}
+.matchup{position:absolute;left:18px;top:10px;width:175px;color:var(--cream);font:700 18px/22px Montserrat,sans-serif}
+.time{position:absolute;left:18px;top:38px;width:230px;color:var(--muted);font:700 13px/16px Montserrat,sans-serif}
+.pick-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--line)}
+.team-logo{width:50px;height:50px;object-fit:contain;display:block}
+.footer{position:absolute;left:1320px;top:1876px;width:200px;color:var(--cream);font:700 17px/21px Montserrat,sans-serif;text-align:right}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--cream);font:700 24px Montserrat,sans-serif}
+@media(max-width:900px){body{justify-content:flex-start}.board{transform-origin:top left;transform:scale(.5);margin-bottom:-1000px}}
+</style>
+</head>
+<body>
+<div id="board" class="board">
+  <img class="pmx-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
+  <div id="kicker" class="kicker">QUINIELA · WEEK 4</div>
+  <div class="rule"></div>
+  <div class="title">TODOS LOS PICKS</div>
+  <div class="sub">9 INTEGRANTES × 16 PARTIDOS · 144 SELECCIONES</div>
+  <div class="grid">
+    <div class="header">
+      <div class="matchup-head">MATCHUP + HORA CDMX</div>
+      <div class="person">EL DOC</div>
+      <div class="person">ARI</div>
+      <div class="person">LALO</div>
+      <div class="person">ALEX</div>
+      <div class="person">LUIS C.</div>
+      <div class="person">PALMA</div>
+      <div class="person">JENNI</div>
+      <div class="person">RODRI</div>
+      <div class="person">IBRACHO</div>
+    </div>
+    <div id="rows" class="rows"></div>
+  </div>
+  <div class="footer">PACKERS MÉXICO</div>
+  <div id="loading" class="loading">CARGANDO TEST…</div>
+</div>
+<script>
+const participants=["EL DOC","ARI","LALO","ALEX","LUIS C.","DR PALMA","JENNI","RODRI","IBRACHO"];
+const espn={WAS:"wsh",SF:"sf",GB:"gb",KC:"kc",TB:"tb",LV:"lv",NO:"no",NE:"ne",NYG:"nyg",NYJ:"nyj",LAR:"lar",LAC:"lac"};
+const logoUrl=abbr=>`https://a.espncdn.com/i/teamlogos/nfl/500/${espn[abbr]||abbr.toLowerCase()}.png`;
+async function main(){
+  const response=await fetch("../quiniela-control/data.json?renderer_test="+Date.now(),{cache:"no-store"});
+  if(!response.ok) throw new Error("DATA_HTTP_"+response.status);
+  const data=await response.json();
+  if(Number(data.week_number)!==4) throw new Error("TEST_EXPECTS_WEEK_4");
+  const matrix=data.public_picks?.matrix||{};
+  if(data.games?.length!==16) throw new Error("EXPECTED_16_GAMES");
+  for(const p of participants) if(!Array.isArray(matrix[p])||matrix[p].length!==16) throw new Error("INVALID_MATRIX_"+p);
+  document.getElementById("kicker").textContent=`QUINIELA · WEEK ${data.week_number}`;
+  const rows=document.getElementById("rows");
+  data.games.forEach((g,i)=>{
+    const row=document.createElement("div"); row.className="game-row";
+    const info=document.createElement("div"); info.className="game-cell";
+    info.innerHTML=`<div class="matchup">${g.matchup}</div><div class="time">${g.time}</div>`;
+    row.appendChild(info);
+    participants.forEach(p=>{
+      const pick=matrix[p][i];
+      const cell=document.createElement("div"); cell.className="pick-cell";
+      const img=document.createElement("img"); img.className="team-logo"; img.alt=pick; img.src=logoUrl(pick);
+      cell.appendChild(img); row.appendChild(cell);
+    });
+    rows.appendChild(row);
+  });
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=resolve;img.onerror=resolve})));
+  document.getElementById("loading").remove();
+  window.__PMX_RENDERER_QA__={
+    week:data.week_number,
+    games:data.games.length,
+    participants:participants.length,
+    picks:document.querySelectorAll(".team-logo").length,
+    width:document.getElementById("board").offsetWidth,
+    height:document.getElementById("board").offsetHeight
+  };
+}
+main().catch(err=>{document.getElementById("loading").textContent="RENDER ERROR · "+err.message;window.__PMX_RENDERER_ERROR__=err.message});
+</script>
+</body>
+</html>
