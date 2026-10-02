@@ -379,14 +379,24 @@
   ],
   "notifications": {
     "center_status": "ACTIVE",
-    "push_status": "ACTIVE",
+    "push_status": "HOLD_VAPID_KEYPAIR_MISMATCH",
+    "delivery_status": "BLOCKED",
     "operator": "RODRIGO",
+    "backend_enabled": true,
+    "vapid_public_key_aligned_frontend_backend": true,
+    "vapid_key_pair_match": false,
+    "vapid_subject_valid": true,
+    "registry_ready": true,
+    "registration_ready": true,
+    "sender_auth_ready": true,
     "milestone_events": [
       "WEEK_OPEN",
       "CAPTURE_9_OF_9",
       "WEEK_FINAL"
     ],
-    "last_delivery_test_requested_at": "2026-10-01T14:37:00-06:00"
+    "last_delivery_test_requested_at": "2026-10-01T14:37:00-06:00",
+    "last_health_check": "2026-10-01T22:00:58-06:00",
+    "blocker": "VAPID_PUBLIC_KEY_AND_PRIVATE_KEY_DO_NOT_MATCH"
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
