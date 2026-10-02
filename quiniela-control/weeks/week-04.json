@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 4",
   "week_number": 4,
-  "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
-  "last_sync": "2026-10-01T12:50:00-06:00",
+  "snapshot_status": "RESULTS_LIVE_1_OF_16",
+  "last_sync": "2026-10-01T21:59:00-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -60,13 +60,13 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 16,
-    "status": "PENDING"
+    "status": "IN_PROGRESS"
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "9/9 LOCKED · FIGMA PICKS QA PASS · PICKS PNG LIVE",
+    "package_status": "9/9 LOCKED · PICKS PNG LIVE · RESULTS 1/16 FINAL · FIGMA RESULTS UPDATE PENDING",
     "outputs": [
       "quiniela-control/exports/w4-picks-board.png"
     ]
@@ -256,5 +256,245 @@
         "ATL"
       ]
     }
-  }
+  },
+  "weekly_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "name": "ARI",
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "name": "LALO",
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "name": "ALEX",
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "name": "JENNI",
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "name": "RODRI",
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 0,
+      "wrong": 1
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 30,
+      "wrong": 19
+    },
+    {
+      "name": "RODRI",
+      "correct": 30,
+      "wrong": 19
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 29,
+      "wrong": 20
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 29,
+      "wrong": 20
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 29,
+      "wrong": 20
+    },
+    {
+      "name": "ALEX",
+      "correct": 28,
+      "wrong": 21
+    },
+    {
+      "name": "JENNI",
+      "correct": 28,
+      "wrong": 21
+    },
+    {
+      "name": "LALO",
+      "correct": 28,
+      "wrong": 21
+    },
+    {
+      "name": "ARI",
+      "correct": 27,
+      "wrong": 22
+    }
+  ],
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "PIT @ CLE",
+      "time": "JUE 1 OCT · 18:15 CDMX",
+      "kickoff_iso": "2026-10-01T18:15:00-06:00",
+      "winner": "CLE",
+      "status": "FINAL",
+      "score": "CLE 27–24 PIT"
+    },
+    {
+      "id": "G02",
+      "matchup": "IND @ WAS",
+      "time": "DOM 4 OCT · 07:30 CDMX · LONDON",
+      "kickoff_iso": "2026-10-04T07:30:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G03",
+      "matchup": "TEN @ BAL",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G04",
+      "matchup": "NE @ BUF",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G05",
+      "matchup": "NYJ @ CHI",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G06",
+      "matchup": "JAX @ CIN",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G07",
+      "matchup": "DAL @ HOU",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G08",
+      "matchup": "ARI @ NYG",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G09",
+      "matchup": "LAR @ PHI",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G10",
+      "matchup": "GB @ TB",
+      "time": "DOM 4 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-04T11:00:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G11",
+      "matchup": "MIA @ MIN",
+      "time": "DOM 4 OCT · 14:05 CDMX",
+      "kickoff_iso": "2026-10-04T14:05:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G12",
+      "matchup": "KC @ LV",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G13",
+      "matchup": "LAC @ SEA",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G14",
+      "matchup": "DEN @ SF",
+      "time": "DOM 4 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-04T14:25:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G15",
+      "matchup": "DET @ CAR",
+      "time": "DOM 4 OCT · 18:20 CDMX",
+      "kickoff_iso": "2026-10-04T18:20:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    },
+    {
+      "id": "G16",
+      "matchup": "ATL @ NO",
+      "time": "LUN 5 OCT · 18:15 CDMX",
+      "kickoff_iso": "2026-10-05T18:15:00-06:00",
+      "winner": null,
+      "status": "SCHEDULED",
+      "score": null
+    }
+  ]
 }
