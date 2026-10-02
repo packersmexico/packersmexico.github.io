@@ -1,0 +1,10 @@
+{
+  "golden": "quiniela-control/exports/w4-picks-board.png",
+  "candidate": "quiniela-control/exports/renderer-test/w4-picks-board.renderer-test.png",
+  "width": 1600,
+  "height": 2000,
+  "mismatched_pixels": 83332,
+  "mismatch_ratio": 0.02604125,
+  "similarity": 0.97395875,
+  "gate": "DIRECTION_VISUAL_REVIEW_REQUIRED"
+}
