@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 4",
   "week_number": 4,
-  "last_sync": "2026-10-04T14:19:06-06:00",
+  "last_sync": "2026-10-04T17:30:34-06:00",
   "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
@@ -166,9 +166,9 @@
       "matchup": "MIA @ MIN",
       "time": "DOM 4 OCT · 14:05 CDMX",
       "kickoff_iso": "2026-10-04T14:05:00-06:00",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
+      "winner": "MIN",
+      "status": "FINAL",
+      "score": "MIN 15–10 MIA"
     },
     {
       "id": "G12",
@@ -217,7 +217,7 @@
     }
   ],
   "results": {
-    "final": 9,
+    "final": 10,
     "total": 16,
     "status": "LIVE"
   },
@@ -225,94 +225,94 @@
     {
       "name": "EL DOC",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "ARI",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "LALO",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "ALEX",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "LUIS C.",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "DR PALMA",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "JENNI",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "RODRI",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     },
     {
       "name": "IBRACHO",
       "correct": 0,
-      "wrong": 9
+      "wrong": 10
     }
   ],
   "season_standings": [
     {
       "name": "RODRI",
       "correct": 30,
-      "wrong": 27
+      "wrong": 28
     },
     {
       "name": "EL DOC",
       "correct": 29,
-      "wrong": 28
+      "wrong": 29
     },
     {
       "name": "IBRACHO",
       "correct": 29,
-      "wrong": 28
+      "wrong": 29
     },
     {
       "name": "ALEX",
       "correct": 28,
-      "wrong": 29
+      "wrong": 30
     },
     {
       "name": "DR PALMA",
       "correct": 28,
-      "wrong": 29
+      "wrong": 30
     },
     {
       "name": "JENNI",
       "correct": 28,
-      "wrong": 29
+      "wrong": 30
     },
     {
       "name": "LALO",
       "correct": 28,
-      "wrong": 29
+      "wrong": 30
     },
     {
       "name": "LUIS C.",
       "correct": 28,
-      "wrong": 29
+      "wrong": 30
     },
     {
       "name": "ARI",
       "correct": 27,
-      "wrong": 30
+      "wrong": 31
     }
   ],
   "public_picks_authorized": true,
@@ -321,7 +321,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "DATA LIVE · 9/16 FINAL · FIGMA REFRESH PENDING"
+    "assets_status": "DATA LIVE · 10/16 FINAL · FIGMA REFRESH PENDING"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",

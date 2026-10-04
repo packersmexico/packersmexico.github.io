@@ -4,7 +4,7 @@
   "week": "WEEK 4",
   "week_number": 4,
   "snapshot_status": "RESULTS_LIVE_1_OF_16",
-  "last_sync": "2026-10-04T14:19:06-06:00",
+  "last_sync": "2026-10-04T17:30:34-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -60,13 +60,13 @@
     }
   ],
   "results": {
-    "final": 9,
+    "final": 10,
     "total": 16,
     "status": "LIVE"
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "DATA LIVE · 9/16 FINAL · FIGMA REFRESH PENDING",
+    "package_status": "DATA LIVE · 10/16 FINAL · FIGMA REFRESH PENDING",
     "outputs": [
       "quiniela-control/exports/w4-picks-board.png"
     ]
