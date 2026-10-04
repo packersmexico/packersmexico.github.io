@@ -77,6 +77,26 @@
     });
   }
 
+  function applyCapsule() {
+    var capsule = config.capsule || {};
+    var enabled = Boolean(capsule.enabled);
+    var className = capsule.className || "theme-rivalries";
+    document.body.classList.toggle(className, enabled);
+    document.documentElement.setAttribute("data-pmx-capsule", enabled ? (capsule.id || "active") : "default");
+
+    var logo = document.querySelector(".brand-logo");
+    if (logo) {
+      logo.src = enabled && capsule.logoUrl
+        ? capsule.logoUrl
+        : (capsule.defaultLogoUrl || "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg");
+    }
+
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute("content", enabled && capsule.themeColor ? capsule.themeColor : "#081D13");
+    }
+  }
+
   function renderGame() {
     var isHome = config.homeAway === "HOME";
     var isAway = config.homeAway === "AWAY";
@@ -230,6 +250,7 @@
   function render() {
     var attribution = window.PMX_ANALYTICS.getAttribution();
     window.PMX_ATTRIBUTION = Object.freeze(Object.assign({}, attribution));
+    applyCapsule();
     renderGame();
 
     var registrationLink = configureLink("registration-link", config.registrationUrl, attribution);
