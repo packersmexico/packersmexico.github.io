@@ -20,7 +20,7 @@ window.PMX_SEASON_2026 = Object.freeze({
     Object.freeze({ week: 2, dateISO: "2026-09-20", dateLabel: "DOM 20 SEP", time: "11:00", opponent: "New York Jets", short: "JETS", site: "AWAY", tv: "FOX", prime: false }),
     Object.freeze({ week: 3, dateISO: "2026-09-24", dateLabel: "JUE 24 SEP", time: "18:15", opponent: "Atlanta Falcons", short: "FALCONS", site: "HOME", tv: "PRIME VIDEO", prime: true, special: "HOME OPENER · ALUMNI WEEKEND" }),
     Object.freeze({ week: 4, dateISO: "2026-10-04", dateLabel: "DOM 04 OCT", time: "11:00", opponent: "Tampa Bay Buccaneers", short: "BUCCANEERS", site: "AWAY", tv: "FOX", prime: false }),
-    Object.freeze({ week: 5, dateISO: "2026-10-11", dateLabel: "DOM 11 OCT", time: "14:25", opponent: "Chicago Bears", short: "BEARS", site: "HOME", tv: "FOX", prime: false, special: "NFL RIVALRIES", uniform: "PACKERS RIVALRIES · CONFIRMADO" }),
+    Object.freeze({ week: 5, dateISO: "2026-10-11", dateLabel: "DOM 11 OCT", time: "11:00", opponent: "Chicago Bears", short: "BEARS", site: "HOME", tv: "FOX", prime: false, special: "NFL RIVALRIES", uniform: "PACKERS RIVALRIES · CONFIRMADO" }),
     Object.freeze({ week: 6, dateISO: "2026-10-18", dateLabel: "DOM 18 OCT", time: "18:20", opponent: "Dallas Cowboys", short: "COWBOYS", site: "HOME", tv: "NBC", prime: true, special: "PACKERS VS. CANCER" }),
     Object.freeze({ week: 7, dateISO: "2026-10-25", dateLabel: "DOM 25 OCT", time: "14:25", opponent: "Detroit Lions", short: "LIONS", site: "AWAY", tv: "FOX", prime: false }),
     Object.freeze({ week: 8, dateISO: "2026-10-29", dateLabel: "JUE 29 OCT", time: "18:15", opponent: "Carolina Panthers", short: "PANTHERS", site: "HOME", tv: "PRIME VIDEO", prime: true, special: "BOB HARLAN TRIBUTE" }),
