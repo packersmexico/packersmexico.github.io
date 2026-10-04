@@ -156,3 +156,37 @@ body.state-data-pending .hero__visual { display: none; }
 }
 
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
+
+
+/* PMX · RIVALRIES WEEK 5 · TEMPORARY CAPSULE
+   Direction-authorized window: 2026-10-05 through 2026-10-11.
+   Canonical Brand Book tokens remain unchanged; this is a reversible body-level override. */
+body.theme-rivalries {
+  --field-dark: #112113;
+  --lambeau-green: #1f482f;
+  --gold: #f6b212;
+  --cream: #f2ede7;
+  --muted: #a2a599;
+  --muted-rule: #5a6259;
+  background-color: var(--field-dark);
+  background-image: radial-gradient(circle at 1px 1px, rgba(242,237,231,.07) 1px, transparent 1.2px);
+  background-size: 13px 13px;
+}
+body.theme-rivalries .site-header,
+body.theme-rivalries .editorial-feature {
+  border-color: var(--gold);
+}
+body.theme-rivalries .hero__visual {
+  background:
+    linear-gradient(135deg, rgba(246,178,18,.10), rgba(17,33,19,.15)),
+    var(--lambeau-green);
+}
+body.theme-rivalries .brand-logo {
+  filter: none;
+}
+body.theme-rivalries .kicker,
+body.theme-rivalries .module-kicker,
+body.theme-rivalries .footer-social-label,
+body.theme-rivalries .social-link__mark {
+  letter-spacing: .06em;
+}
