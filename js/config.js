@@ -60,7 +60,7 @@
       matchupLabel: "PACKERS vs BEARS",
       enabled: rivalryCapsuleEnabled,
       className: "theme-rivalries",
-      logoUrl: "assets/PMX_LOGO_RIVALRIES_W5_2026.svg",
+      logoUrl: "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg",
       defaultLogoUrl: "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg",
       themeColor: "#112113",
       startDate: "2026-10-05",
@@ -96,11 +96,11 @@
       enabled: true,
       week: "WEEK 4",
       label: "QUINIELA · WEEK 4",
-      title: "PICKS PUBLICADOS",
-      meta: "9 participantes · 16 partidos · 144 picks",
-      description: "Así quedaron nuestras selecciones de Week 4. Consulta y compara únicamente los picks publicados.",
+      title: "VE LA QUINIELA",
+      meta: "Selección de la semana · ranking · acumulado",
+      description: "",
       url: "https://packersmexico.github.io/quiniela/w04/",
-      linkLabel: "VER PICKS PUBLICADOS →"
+      linkLabel: "ABRIR QUINIELA →"
     }),
     analytics: Object.freeze({
       GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
