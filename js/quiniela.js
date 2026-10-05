@@ -3,6 +3,7 @@
 
   var data = window.PMX_QUINIELA_DATA;
   var analytics = window.PMX_ANALYTICS;
+  var hubConfig = window.PMX_CONFIG || {};
   var list = document.getElementById("quiniela-games");
   var controls = document.getElementById("member-controls");
   var viewTitle = document.getElementById("view-title");
@@ -20,8 +21,19 @@
   var totalGames = data.games.length;
   var totalPicks = totalGames * data.members.length;
   var stickerAssets = data.memberStickers || {};
-  var teamLogos = data.teamLogos || {};
+  var teamLogos = data.teamLogos || hubConfig.teamLogos || {};
   var slideCount = Math.ceil(totalGames / 2) + 3;
+
+  function applyPublicTheme() {
+    var capsule = hubConfig.capsule || {};
+    if (!capsule.enabled) return;
+    document.body.classList.add(capsule.className || "theme-rivalries");
+    document.documentElement.setAttribute("data-pmx-capsule", capsule.id || "active");
+    var logo = document.querySelector(".brand-logo");
+    if (logo && capsule.logoUrl) logo.src = "../../" + capsule.logoUrl.replace(/^\//, "");
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta && capsule.themeColor) themeMeta.setAttribute("content", capsule.themeColor);
+  }
 
   function createElement(tag, className, text) {
     var node = document.createElement(tag);
@@ -378,6 +390,7 @@
     backLink.href = url.href;
   }
 
+  applyPublicTheme();
   renderEditorialCarousel();
   buildControls();
   selectView("ALL");

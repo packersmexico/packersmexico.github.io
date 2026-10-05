@@ -91,6 +91,13 @@
         : (capsule.defaultLogoUrl || "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg");
     }
 
+    var banner = document.getElementById("capsule-banner");
+    if (banner) {
+      banner.hidden = !enabled;
+      setText("capsule-label", capsule.label || "RIVALRIES");
+      setText("capsule-matchup", capsule.matchupLabel || "");
+    }
+
     var themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) {
       themeMeta.setAttribute("content", enabled && capsule.themeColor ? capsule.themeColor : "#081D13");
@@ -152,30 +159,36 @@
   function renderSocialLinks(attribution) {
     var list = document.getElementById("social-links");
     var labels = {
-      instagram: { mark: "IG", label: "Instagram" },
-      x: { mark: "X", label: "@Packers_Mx" },
-      facebook: { mark: "FB", label: "Facebook" },
-      tiktok: { mark: "TT", label: "TikTok" },
-      youtube: { mark: "YT", label: "YouTube" }
+      instagram: { mark: "IG", label: "Instagram", handle: "@packers_mx" },
+      x: { mark: "X", label: "X", handle: "@Packers_Mx" },
+      facebook: { mark: "FB", label: "Facebook", handle: "PACKERS MÉXICO" },
+      tiktok: { mark: "TT", label: "TikTok", handle: "@packers_mx" },
+      youtube: { mark: "YT", label: "YouTube", handle: "GoPackGo MX" }
     };
     list.replaceChildren();
     Object.keys(labels).forEach(function (network) {
       var item = document.createElement("li");
       var link = document.createElement("a");
       var destination = preserveAttribution(config.socialUrls[network], attribution);
-      link.className = "social-link";
+      link.className = "social-link social-link--" + network;
       link.id = "social-" + network;
       var socialMark = document.createElement("span");
       socialMark.className = "social-link__mark";
       socialMark.textContent = labels[network].mark;
-      var socialLabel = document.createElement("span");
+      var socialText = document.createElement("span");
+      socialText.className = "social-link__text";
+      var socialLabel = document.createElement("strong");
       socialLabel.className = "social-link__label";
       socialLabel.textContent = labels[network].label;
+      var socialHandle = document.createElement("span");
+      socialHandle.className = "social-link__handle";
+      socialHandle.textContent = labels[network].handle;
+      socialText.append(socialLabel, socialHandle);
       var socialArrow = document.createElement("span");
       socialArrow.className = "social-link__arrow";
       socialArrow.setAttribute("aria-hidden", "true");
       socialArrow.textContent = "↗";
-      link.append(socialMark, socialLabel, socialArrow);
+      link.append(socialMark, socialText, socialArrow);
       if (destination) {
         link.href = destination;
         link.target = "_blank";
@@ -234,14 +247,10 @@
     var memberPreview = document.getElementById("quiniela-member-preview");
     if (memberPreview) {
       memberPreview.replaceChildren();
-      (quiniela.members || []).forEach(function (member) {
-        var item = document.createElement("span");
-        item.textContent = member;
-        memberPreview.appendChild(item);
-      });
+      memberPreview.hidden = true;
     }
 
-    setText("quiniela-link", quiniela.linkLabel || "VER QUINIELA COMPLETA →");
+    setText("quiniela-link", quiniela.linkLabel || "VER PICKS PUBLICADOS →");
     var quinielaLink = configureInternalLink("quiniela-link", quiniela.url, attribution, "URL de quiniela pendiente de validación");
     attachTracking(quinielaLink, "CLICK_QUINIELA", { destination_type: "editorial" });
     section.hidden = false;
