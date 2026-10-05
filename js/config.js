@@ -97,7 +97,7 @@
       week: "WEEK 4",
       label: "QUINIELA · WEEK 4",
       title: "VE LA QUINIELA",
-      meta: "Selección de la semana · ranking · acumulado",
+      meta: "",
       description: "",
       url: "https://packersmexico.github.io/quiniela/w04/",
       linkLabel: "ABRIR QUINIELA →"
