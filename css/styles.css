@@ -158,222 +158,47 @@ body.state-data-pending .hero__visual { display: none; }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
 
 
-/* PMX · RIVALRIES WEEK 5 · TEMPORARY CAPSULE
-   Direction-authorized window: 2026-10-05 through 2026-10-11.
-   Canonical Brand Book tokens remain unchanged; this is a reversible body-level override. */
+/* PMX · RIVALRIES WEEK 5 · TEMPORARY CAPSULE · FAM-007 V0.7
+   Direction Visual PASS. Active only 2026-10-05 through 2026-10-11.
+   Canonical Horizontal V1.1 remains unchanged; this override is reversible. */
 body.theme-rivalries {
-  --field-dark: #112113;
-  --lambeau-green: #1f482f;
-  --gold: #f6b212;
-  --cream: #f2ede7;
-  --muted: #a2a599;
-  --muted-rule: #5a6259;
+  --field-dark: #1e3027;
+  --lambeau-green: #1e3027;
+  --gold: #dfa219;
+  --cream: #f2ead3;
+  --muted: #afa38a;
+  --muted-rule: rgba(242,234,211,.38);
   background-color: var(--field-dark);
-  background-image: radial-gradient(circle at 1px 1px, rgba(242,237,231,.07) 1px, transparent 1.2px);
-  background-size: 13px 13px;
+  background-image:
+    repeating-linear-gradient(24deg, rgba(242,234,211,.025) 0 1px, transparent 1px 8px);
 }
 body.theme-rivalries .site-header,
 body.theme-rivalries .editorial-feature {
   border-color: var(--gold);
 }
+body.theme-rivalries .site-header { position: relative; }
+body.theme-rivalries .site-header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  width: 38.2%;
+  height: 4px;
+  background: rgba(242,234,211,.60);
+}
 body.theme-rivalries .hero__visual {
-  background:
-    linear-gradient(135deg, rgba(246,178,18,.10), rgba(17,33,19,.15)),
-    var(--lambeau-green);
+  background: #06140e;
+  border: 1px solid rgba(242,234,211,.15);
 }
-body.theme-rivalries .brand-logo {
-  filter: none;
-}
+body.theme-rivalries .brand-logo { filter: none; }
 body.theme-rivalries .kicker,
 body.theme-rivalries .module-kicker,
 body.theme-rivalries .footer-social-label,
-body.theme-rivalries .social-link__mark {
-  letter-spacing: .06em;
-}
-
-
-/* PMX · HUB V1.4 · RIVALRIES + PUBLIC EDITORIAL SURFACES */
-.capsule-banner {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin: 0 0 var(--space-3);
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid rgba(242,232,207,.26);
-}
-.capsule-banner[hidden] { display: none; }
-.capsule-banner__label {
+body.theme-rivalries .social-link__mark { letter-spacing: .06em; }
+body.theme-rivalries .game-title,
+body.theme-rivalries .editorial-feature__title { color: var(--cream); }
+body.theme-rivalries .cta--primary,
+body.theme-rivalries .editorial-feature__link {
+  border-color: var(--gold);
   color: var(--gold);
-  font-family: "Bebas Neue",Impact,sans-serif;
-  font-size: 25px;
-  line-height: 1;
-  letter-spacing: .04em;
-}
-.capsule-banner__matchup {
-  color: var(--cream);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.editorial-feature__support-copy {
-  max-width: 360px;
-  margin: var(--space-2) 0 0;
-  color: var(--cream);
-  font-size: 14px;
-  line-height: 1.5;
-}
-.social-hub {
-  margin-top: var(--space-4);
-  padding: var(--space-4) 0;
-  border-top: 2px solid var(--gold);
-}
-.social-hub__intro { max-width: 620px; }
-.social-hub__title {
-  margin: var(--space-1) 0 0;
-  color: var(--cream);
-  font-family: "Bebas Neue",Impact,sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: .92;
-}
-.social-hub__copy {
-  margin: var(--space-2) 0 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-.social-hub .social-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin: var(--space-4) 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid rgba(242,232,207,.28);
-}
-.social-hub .social-link {
-  display: grid;
-  grid-template-columns: 44px minmax(0,1fr) auto;
-  gap: var(--space-2);
-  align-items: center;
-  min-height: 72px;
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid rgba(242,232,207,.22);
-  text-decoration: none;
-}
-.social-link__mark {
-  color: var(--gold);
-  font-family: "Bebas Neue",Impact,sans-serif;
-  font-size: 26px;
-  line-height: 1;
-}
-.social-link__text { display: grid; gap: 3px; min-width: 0; }
-.social-link__label {
-  color: var(--cream);
-  font-size: 17px;
-  line-height: 1.1;
-}
-.social-link__handle {
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .03em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.social-link__arrow {
-  color: var(--gold);
-  font-size: 22px;
-  line-height: 1;
-  transition: transform .18s ease;
-}
-.social-link:hover .social-link__arrow,
-.social-link:focus-visible .social-link__arrow { transform: translate(3px,-3px); }
-.site-footer { margin-top: 0; padding-top: var(--space-3); border-top: 1px solid rgba(242,232,207,.16); }
-
-body.theme-rivalries {
-  --field-dark: #112113;
-  --lambeau-green: #1f482f;
-  --gold: #f6b212;
-  --cream: #f2ede7;
-  --muted: #a2a599;
-  --muted-rule: #5a6259;
-  background:
-    linear-gradient(180deg, rgba(31,72,47,.34) 0, rgba(17,33,19,0) 360px),
-    radial-gradient(circle at 1px 1px, rgba(242,237,231,.055) 1px, transparent 1.2px),
-    var(--field-dark);
-  background-size: auto, 13px 13px, auto;
-}
-body.theme-rivalries .site-header {
-  border-bottom-color: var(--gold);
-}
-body.theme-rivalries .capsule-banner {
-  border-bottom-color: rgba(246,178,18,.72);
-}
-body.theme-rivalries .game-title {
-  letter-spacing: .018em;
-}
-body.theme-rivalries .game-title span:first-child { color: var(--cream); }
-body.theme-rivalries .game-title span:last-child { color: var(--gold); }
-body.theme-rivalries .team-lockup {
-  padding: var(--space-1) 0 var(--space-2);
-  border-bottom: 1px solid rgba(246,178,18,.42);
-}
-body.theme-rivalries .team-lockup__logo {
-  width: 64px;
-  height: 64px;
-}
-body.theme-rivalries .team-lockup__logo img {
-  max-width: 60px;
-  max-height: 60px;
-}
-body.theme-rivalries .team-lockup__separator { color: var(--cream); }
-body.theme-rivalries .cta--primary {
-  min-height: 48px;
-  align-items: center;
-  padding: var(--space-2) var(--space-3);
-  border: 0;
-  background: var(--gold);
-  color: var(--field-dark);
-}
-body.theme-rivalries .cta--primary:hover {
-  color: var(--field-dark);
-  filter: brightness(1.05);
-}
-body.theme-rivalries .cta--secondary { border-color: var(--muted-rule); }
-body.theme-rivalries .editorial-feature,
-body.theme-rivalries .social-hub {
-  border-top-color: var(--gold);
-}
-body.theme-rivalries .editorial-feature__title,
-body.theme-rivalries .social-hub__title {
-  color: var(--cream);
-}
-body.theme-rivalries .social-link__mark,
-body.theme-rivalries .social-link__arrow {
-  color: var(--gold);
-}
-body.theme-rivalries .social-hub .social-link:hover .social-link__label,
-body.theme-rivalries .social-hub .social-link:focus-visible .social-link__label {
-  color: var(--gold);
-}
-
-@media (min-width:768px) {
-  .social-hub {
-    display: grid;
-    grid-template-columns: minmax(0,1fr) minmax(360px,1fr);
-    gap: var(--space-5);
-    align-items: start;
-  }
-  .social-hub .social-list { margin-top: 0; }
-}
-@media (min-width:1100px) {
-  .capsule-banner { margin-bottom: var(--space-4); }
-  .capsule-banner__label { font-size: 34px; }
-  .social-hub { margin-top: var(--space-5); padding: var(--space-5) 0; }
-  .social-hub__title { font-size: 68px; }
-  body.theme-rivalries .team-lockup__logo { width: 89px; height: 89px; }
-  body.theme-rivalries .team-lockup__logo img { max-width: 82px; max-height: 82px; }
 }
