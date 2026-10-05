@@ -86,9 +86,7 @@
 
     var logo = document.querySelector(".brand-logo");
     if (logo) {
-      logo.src = enabled && capsule.logoUrl
-        ? capsule.logoUrl
-        : (capsule.defaultLogoUrl || "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg");
+      logo.src = capsule.defaultLogoUrl || "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg";
     }
 
     var banner = document.getElementById("capsule-banner");
