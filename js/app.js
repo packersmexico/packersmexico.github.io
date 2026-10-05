@@ -238,9 +238,19 @@
     }
 
     setText("quiniela-label", quiniela.label || "QUINIELA");
-    setText("quiniela-title", quiniela.title || "TODOS LOS PICKS");
-    setText("quiniela-meta", quiniela.meta || "");
-    setText("quiniela-description", quiniela.description || "");
+    setText("quiniela-title", quiniela.title || "VE LA QUINIELA");
+
+    var quinielaMeta = document.getElementById("quiniela-meta");
+    if (quinielaMeta) {
+      quinielaMeta.textContent = quiniela.meta || "";
+      quinielaMeta.hidden = !quiniela.meta;
+    }
+
+    var quinielaDescription = document.getElementById("quiniela-description");
+    if (quinielaDescription) {
+      quinielaDescription.textContent = quiniela.description || "";
+      quinielaDescription.hidden = !quiniela.description;
+    }
 
     var memberPreview = document.getElementById("quiniela-member-preview");
     if (memberPreview) {
@@ -248,7 +258,7 @@
       memberPreview.hidden = true;
     }
 
-    setText("quiniela-link", quiniela.linkLabel || "VER PICKS PUBLICADOS →");
+    setText("quiniela-link", quiniela.linkLabel || "ABRIR QUINIELA →");
     var quinielaLink = configureInternalLink("quiniela-link", quiniela.url, attribution, "URL de quiniela pendiente de validación");
     attachTracking(quinielaLink, "CLICK_QUINIELA", { destination_type: "editorial" });
     section.hidden = false;
