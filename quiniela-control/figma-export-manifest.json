@@ -1,12 +1,22 @@
 {
-  "generated_at": "2026-10-01T14:01:00-06:00",
+  "generated_at": "2026-10-05T09:05:00-06:00",
   "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
   "week": 4,
   "assets": [
     {
       "node_id": "3016:1161548",
       "target": "quiniela-control/exports/w4-picks-board.png",
-      "url": "https://www.figma.com/api/mcp/asset/5611b0df-4415-4900-952b-9589b1af07a4.png"
+      "url": "https://www.figma.com/api/mcp/asset/f4d9d0de-bcff-4c94-90a8-5b16dbf7907f.png"
+    },
+    {
+      "node_id": "3016:1164584",
+      "target": "quiniela-control/exports/w4-ranking-weekly.png",
+      "url": "https://www.figma.com/api/mcp/asset/9df1be0e-9cd3-43cc-a43a-1d2b44eee589.png"
+    },
+    {
+      "node_id": "3016:1164638",
+      "target": "quiniela-control/exports/w4-ranking-season.png",
+      "url": "https://www.figma.com/api/mcp/asset/b8d37c8a-8088-405a-9ae4-a3f116df893b.png"
     }
   ]
 }
