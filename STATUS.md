@@ -14,50 +14,49 @@ Season Calendar route: `https://packersmexico.github.io/calendario/`
 
 ## CURRENT PHASE
 
-`FASE 2C · HUB EXPANSION · WEEKLY AUTO-ROLLOVER + SEASON CALENDAR 2026`
+`FASE 2D · HUB RIVALRIES WEEK 5 · PUBLIC EDITORIAL SURFACES`
 
 ## STATUS
 
-`CORE HUB WEEKLY AUTO-ROLLOVER DEPLOYED + PUBLIC BROWSER QA PASS · GA4 ACTIVE · CALENDAR 2026 IMPLEMENTED · PUBLIC GOOGLE CALENDAR COMPLETE · SOCIAL 5/5 · SPECIAL THEMES/UNIFORMS MAPPED · 03.5 PROVENANCE PASS / MATERIALIZATION + FAMILY AUTHORIZATION HOLD · FIGMA CALENDAR FAMILY HOLD · EXTERNAL FORM DEPENDENCY · PODCAST W01 TRACKING QA HOLD`
+`RIVALRIES WEEK 5 CAPSULE ACTIVE · HUB AUTO-ROLLOVER WEEK 5 · BEARS LOGO FROM APPROVED FIGMA NFL LOGO PACK · SOCIAL 5/5 REDESIGNED · QUINIELA PUBLIC WEEK 4 ONLY · INTERNAL CONTROL REMOVED FROM PUBLIC SURFACE · GITHUB PAGES DEPLOY PASS`
 
 ## CORE HUB · CURRENT LIVE STATE
 
-Current game resolved automatically from the season schedule using `America/Mexico_City` date.
+Resolved automatically for current CDMX date:
 
-Public browser QA on 2026-09-14:
-- `WEEK 2`
-- `PACKERS @ JETS`
-- `DOM 20 SEP · 11:00 CDMX`
+- `WEEK 5 · NFL RIVALRIES`
+- `BEARS @ PACKERS`
+- `DOM 11 OCT · 14:25 CDMX`
 - `WINGSTOP CONDESA · CDMX`
 - `Casa Oficial de Packers en CDMX`
-- `CONFIRMA TU ASISTENCIA` visible
-- `CÓMO LLEGAR` visible
-- no `VIKINGS` residue in the rendered Hub
-- no visible load/console error detected by browser QA
+- `CONFIRMA TU ASISTENCIA`
+- Packers + Bears matchup logos active
+- temporary Rivalries capsule active from `2026-10-05` through `2026-10-11`
 
-Current resolved game ID:
-`PMX-WS-2026-W02`
+Rivalries capsule:
+- ID: `PMX-RIVALRIES-W5-2026`
+- approved temporary logo asset: `assets/PMX_LOGO_RIVALRIES_W5_2026.svg`
+- canonical Horizontal V1.1 remains unchanged
+- body-level theme is reversible and date-gated
 
-Current opponent:
-`New York Jets`
+Public quiniela:
+- latest published picks: `WEEK 4`
+- route: `https://packersmexico.github.io/quiniela/w04/`
+- public content: 9 participants · 16 games · 144 picks
+- no capture counters, operator controls, deadlines, VAPID/push state or internal control metadata are rendered in the public Hub/quiniela page
 
-Current kickoff:
-`DOM 20 SEP 2026 · 11:00 CDMX`
+Social surface:
+- Instagram · @packers_mx
+- X · @Packers_Mx
+- Facebook · PACKERS MÉXICO
+- TikTok · @packers_mx
+- YouTube · GoPackGo MX
+- redesigned as a dedicated editorial section rather than a low-emphasis footer list
 
-Venue:
-`Wingstop Condesa · CDMX`
-
-Public wording LOCKED:
-`Casa Oficial de Packers en CDMX`
-
-Registration:
-`https://share.forms.app/form/6a96032ee64cd5f15d1688aa`
-
-Promo:
-`OFF`
-
-Special:
-`OFF`
+Implementation:
+- Hub version `p0-weekly-auto-v1.4`
+- deployment commit `0134a9c0dc12db25df9938f9533fe166810d83d3`
+- GitHub Pages build/deploy: `SUCCESS`
 
 ## WEEKLY AUTO-ROLLOVER
 
