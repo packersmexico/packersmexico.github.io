@@ -158,18 +158,18 @@ body.state-data-pending .hero__visual { display: none; }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
 
 
-/* PMX · RIVALRIES WEEK 5 · TEMPORARY CAPSULE
+/* PMX · RIVALRIES WEEK 5 · TEMPORARY CAPSULE · FAM-007 V0.7 · DIRECTION PASS
    Direction-authorized window: 2026-10-05 through 2026-10-11.
    Canonical Brand Book tokens remain unchanged; this is a reversible body-level override. */
 body.theme-rivalries {
-  --field-dark: #112113;
-  --lambeau-green: #1f482f;
-  --gold: #f6b212;
-  --cream: #f2ede7;
-  --muted: #a2a599;
-  --muted-rule: #5a6259;
+  --field-dark: #1e3027;
+  --lambeau-green: #1e3027;
+  --gold: #dfa219;
+  --cream: #f2ead3;
+  --muted: #afa38a;
+  --muted-rule: rgba(242,234,211,.38);
   background-color: var(--field-dark);
-  background-image: radial-gradient(circle at 1px 1px, rgba(242,237,231,.07) 1px, transparent 1.2px);
+  background-image: radial-gradient(circle at 1px 1px, rgba(242,234,211,.05) 1px, transparent 1.2px);
   background-size: 13px 13px;
 }
 body.theme-rivalries .site-header,
@@ -294,15 +294,15 @@ body.theme-rivalries .social-link__mark {
 .site-footer { margin-top: 0; padding-top: var(--space-3); border-top: 1px solid rgba(242,232,207,.16); }
 
 body.theme-rivalries {
-  --field-dark: #112113;
-  --lambeau-green: #1f482f;
-  --gold: #f6b212;
-  --cream: #f2ede7;
-  --muted: #a2a599;
-  --muted-rule: #5a6259;
+  --field-dark: #1e3027;
+  --lambeau-green: #1e3027;
+  --gold: #dfa219;
+  --cream: #f2ead3;
+  --muted: #afa38a;
+  --muted-rule: rgba(242,234,211,.38);
   background:
-    linear-gradient(180deg, rgba(31,72,47,.34) 0, rgba(17,33,19,0) 360px),
-    radial-gradient(circle at 1px 1px, rgba(242,237,231,.055) 1px, transparent 1.2px),
+    linear-gradient(180deg, rgba(30,48,39,.34) 0, rgba(30,48,39,0) 360px),
+    radial-gradient(circle at 1px 1px, rgba(242,234,211,.045) 1px, transparent 1.2px),
     var(--field-dark);
   background-size: auto, 13px 13px, auto;
 }
@@ -310,7 +310,7 @@ body.theme-rivalries .site-header {
   border-bottom-color: var(--gold);
 }
 body.theme-rivalries .capsule-banner {
-  border-bottom-color: rgba(246,178,18,.72);
+  border-bottom-color: rgba(223,162,25,.72);
 }
 body.theme-rivalries .game-title {
   letter-spacing: .018em;
@@ -319,7 +319,7 @@ body.theme-rivalries .game-title span:first-child { color: var(--cream); }
 body.theme-rivalries .game-title span:last-child { color: var(--gold); }
 body.theme-rivalries .team-lockup {
   padding: var(--space-1) 0 var(--space-2);
-  border-bottom: 1px solid rgba(246,178,18,.42);
+  border-bottom: 1px solid rgba(223,162,25,.42);
 }
 body.theme-rivalries .team-lockup__logo {
   width: 64px;

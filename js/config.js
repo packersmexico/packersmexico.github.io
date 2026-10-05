@@ -62,7 +62,7 @@
       className: "theme-rivalries",
       logoUrl: "assets/PMX_LOGO_RIVALRIES_W5_2026.svg",
       defaultLogoUrl: "assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg",
-      themeColor: "#112113",
+      themeColor: "#1e3027",
       startDate: "2026-10-05",
       endDateExclusive: "2026-10-12"
     }),
@@ -94,13 +94,13 @@
     gopackgoUrl: "https://youtu.be/BZBuRy3LHUY",
     quiniela: Object.freeze({
       enabled: true,
-      week: "WEEK 4",
-      label: "QUINIELA · WEEK 4",
-      title: "PICKS PUBLICADOS",
-      meta: "9 participantes · 16 partidos · 144 picks",
-      description: "Así quedaron nuestras selecciones de Week 4. Consulta y compara únicamente los picks publicados.",
-      url: "https://packersmexico.github.io/quiniela/w04/",
-      linkLabel: "VER PICKS PUBLICADOS →"
+      week: activeWeekLabel,
+      label: "QUINIELA · " + activeWeekLabel,
+      title: activeWeekLabel + " · CAPTURA",
+      meta: "9 integrantes · 16 partidos · 144 picks",
+      description: "Consulta el estado vigente de la captura semanal en el enlace estable. El controlador administra apertura, cierre y formulario activo.",
+      url: "https://packersmexico.github.io/quiniela-control/captura/",
+      linkLabel: "ABRIR " + activeWeekLabel + " →"
     }),
     analytics: Object.freeze({
       GA4_MEASUREMENT_ID: "G-QEN5F5YY14",
