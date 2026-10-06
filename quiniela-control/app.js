@@ -11,7 +11,7 @@ function weeklyTable(data){
 }
 function renderParticipants(list=[]){
   const wrap=$('participants');wrap.replaceChildren();
-  list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase()==='COMPLETE';row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
+  list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase().startsWith('COMPLETE');row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
 }
 function renderGames(games=[]){
   const wrap=$('games');wrap.replaceChildren();
@@ -37,9 +37,8 @@ function render(data){
 async function refreshPublishedAssets(stamp){
  const assets=[
   './exports/w4-picks-board.png',
-  './exports/w3-results-live.png',
-  './exports/w3-ranking-weekly.png',
-  './exports/w3-ranking-season.png'
+  './exports/w4-ranking-weekly.png',
+  './exports/w4-ranking-season.png'
  ];
  await Promise.all(assets.map(src=>fetch(src+'?t='+stamp,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('ASSET '+r.status)})));
 }
