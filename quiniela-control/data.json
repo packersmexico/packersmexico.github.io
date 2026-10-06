@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-05T23:27:11-06:00",
+  "last_sync": "2026-10-05T23:37:00-06:00",
   "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
@@ -16,32 +16,95 @@
     "form_id": "262777830600055",
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 0,
+    "complete": 3,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-08T12:00:00-06:00",
     "deadline_label": "8 OCT · 12:00 CDMX",
     "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
     "expected_picks": 135,
-    "received_picks": 0,
-    "missing_picks": 135,
+    "received_picks": 45,
+    "missing_picks": 90,
     "missing_participants": [
       "EL DOC",
-      "ARI",
-      "LALO",
       "ALEX",
       "LUIS C.",
-      "DR PALMA",
       "JENNI",
       "RODRI",
       "IBRACHO"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_0_OF_9",
+    "capture_status": "OPEN_3_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
-    "auto_close_reason": null
+    "auto_close_reason": null,
+    "locked_submissions": {
+      "DR PALMA": {
+        "submission_id": "6670689441121470817",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "LV",
+          "NO",
+          "CLE",
+          "PIT",
+          "HOU",
+          "WAS",
+          "CHI",
+          "DEN",
+          "DET",
+          "SEA",
+          "ATL",
+          "BUF"
+        ]
+      },
+      "ARI": {
+        "submission_id": "6670690414015895408",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "TB",
+          "PHI",
+          "CIN",
+          "LV",
+          "MIN",
+          "NYJ",
+          "IND",
+          "HOU",
+          "NYG",
+          "GB",
+          "DEN",
+          "DET",
+          "SF",
+          "BAL",
+          "BUF"
+        ]
+      },
+      "LALO": {
+        "submission_id": "6670713770706204750",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "MIA",
+          "NE",
+          "NO",
+          "NYJ",
+          "PIT",
+          "TEN",
+          "WAS",
+          "GB",
+          "LAC",
+          "ARI",
+          "SEA",
+          "ATL",
+          "LAR"
+        ]
+      }
+    },
+    "duplicate_count": 0
   },
   "participants": [
     {
@@ -50,11 +113,11 @@
     },
     {
       "name": "ARI",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "LALO",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "ALEX",
@@ -66,7 +129,7 @@
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "JENNI",
@@ -323,7 +386,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "CAPTURE OPEN · 0/9 · 0/135 PICKS · VISUALS NOT READY"
+    "assets_status": "CAPTURE OPEN · 3/9 · 45/135 PICKS · VISUALS NOT READY"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -403,12 +466,12 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "CAPTURE_OPEN_0_OF_9",
+    "week5_stage": "CAPTURE_OPEN_3_OF_9",
     "publication_ready": false,
     "manifest": null
   },
   "public_picks": {
-    "status": "NOT_AUTHORIZED · CAPTURE OPEN",
+    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 3/9 LOCKED",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "games": [
       "G01",

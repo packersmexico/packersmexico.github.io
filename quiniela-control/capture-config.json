@@ -10,25 +10,88 @@
   "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-05T19:31:00-06:00",
-  "capture_status": "OPEN_0_OF_9",
+  "last_sync": "2026-10-05T23:37:00-06:00",
+  "capture_status": "OPEN_3_OF_9",
   "form_status": "ENABLED",
-  "complete": 0,
+  "complete": 3,
   "total": 9,
   "expected_picks": 135,
-  "received_picks": 0,
-  "missing_picks": 135,
+  "received_picks": 45,
+  "missing_picks": 90,
   "missing_participants": [
     "EL DOC",
-    "ARI",
-    "LALO",
     "ALEX",
     "LUIS C.",
-    "DR PALMA",
     "JENNI",
     "RODRI",
     "IBRACHO"
   ],
   "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
-  "auto_close_reason": null
+  "auto_close_reason": null,
+  "locked_submissions": {
+    "DR PALMA": {
+      "submission_id": "6670689441121470817",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "LV",
+        "NO",
+        "CLE",
+        "PIT",
+        "HOU",
+        "WAS",
+        "CHI",
+        "DEN",
+        "DET",
+        "SEA",
+        "ATL",
+        "BUF"
+      ]
+    },
+    "ARI": {
+      "submission_id": "6670690414015895408",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "TB",
+        "PHI",
+        "CIN",
+        "LV",
+        "MIN",
+        "NYJ",
+        "IND",
+        "HOU",
+        "NYG",
+        "GB",
+        "DEN",
+        "DET",
+        "SF",
+        "BAL",
+        "BUF"
+      ]
+    },
+    "LALO": {
+      "submission_id": "6670713770706204750",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "DAL",
+        "JAX",
+        "MIA",
+        "NE",
+        "NO",
+        "NYJ",
+        "PIT",
+        "TEN",
+        "WAS",
+        "GB",
+        "LAC",
+        "ARI",
+        "SEA",
+        "ATL",
+        "LAR"
+      ]
+    }
+  },
+  "duplicate_count": 0
 }
