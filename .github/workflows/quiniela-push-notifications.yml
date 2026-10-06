@@ -28,13 +28,30 @@ jobs:
           import json, pathlib
 
           data_path=pathlib.Path("quiniela-control/data.json")
+          capture_cfg_path=pathlib.Path("quiniela-control/capture-config.json")
           notices_path=pathlib.Path("quiniela-control/notifications.json")
           event_path=pathlib.Path(".pmx-push-event.json")
           data=json.loads(data_path.read_text(encoding="utf-8"))
+          capture_cfg=json.loads(capture_cfg_path.read_text(encoding="utf-8")) if capture_cfg_path.exists() else {}
 
-          week=int(data.get("week_number") or 0)
-          capture=data.get("capture") or {}
-          results=data.get("results") or {}
+          data_week=int(data.get("week_number") or 0)
+          capture_week=int(capture_cfg.get("week_number") or 0)
+          capture_open=str(capture_cfg.get("status") or "").upper()=="OPEN"
+          use_capture_open=bool(capture_open and capture_week>data_week)
+
+          if use_capture_open:
+              week=capture_week
+              capture={
+                "complete":capture_cfg.get("complete",0),
+                "total":capture_cfg.get("total",9),
+                "window":"OPEN",
+                "deadline_label":capture_cfg.get("deadline_label") or "—"
+              }
+              results={}
+          else:
+              week=data_week
+              capture=data.get("capture") or {}
+              results=data.get("results") or {}
           complete=int(capture.get("complete") or 0)
           total=int(capture.get("total") or 9)
           final=int(results.get("final") or 0)
@@ -43,7 +60,24 @@ jobs:
           deadline=str(capture.get("deadline_label") or "—")
 
           event=None
-          if games_total and final==games_total and str(results.get("status") or "").upper()=="FINAL":
+          if use_capture_open:
+              previous=pathlib.Path(f"quiniela-control/weeks/week-{week-1:02d}.json")
+              prior_final=False
+              prior_final_label=""
+              if previous.exists():
+                  prev=json.loads(previous.read_text(encoding="utf-8"))
+                  pr=prev.get("results") or {}
+                  prior_final=bool(pr.get("total") and pr.get("final")==pr.get("total") and str(pr.get("status") or "").upper()=="FINAL")
+                  if prior_final:
+                      prior_final_label=f"Week {week-1} cerrada {pr.get('final')}/{pr.get('total')}. "
+              event={
+                "eventKey":f"W{week}_OPEN",
+                "title":f"QUINIELA PMX · WEEK {week} ABIERTA",
+                "body":f"{prior_final_label}Week {week}: {complete}/{total} respuestas · cierre {deadline}.",
+                "url":"https://packersmexico.github.io/quiniela-control/captura/",
+                "tag":f"pmx-quiniela-w{week}-open"
+              }
+          elif games_total and final==games_total and str(results.get("status") or "").upper()=="FINAL":
               event={
                 "eventKey":f"W{week}_FINAL",
                 "title":f"QUINIELA PMX · WEEK {week} FINAL",
@@ -98,7 +132,7 @@ jobs:
           }
           existing=[x for x in notices.get("items",[]) if x.get("id")!=item["id"]]
           notices["items"]=[item]+existing[:4]
-          notices["updated_at"]=data.get("last_sync")
+          notices["updated_at"]=capture_cfg.get("last_sync") if use_capture_open else data.get("last_sync")
           notices_path.write_text(json.dumps(notices,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
       - name: Update operator notification center
