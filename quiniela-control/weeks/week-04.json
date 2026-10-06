@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 4",
   "week_number": 4,
-  "snapshot_status": "RESULTS_LIVE_15_OF_16",
-  "last_sync": "2026-10-05T19:36:00-06:00",
+  "snapshot_status": "RESULTS_FINAL_16_OF_16",
+  "last_sync": "2026-10-05T23:27:11-06:00",
   "capture": {
     "complete": 9,
     "total": 9,
@@ -60,13 +60,13 @@
     }
   ],
   "results": {
-    "final": 15,
+    "final": 16,
     "total": 16,
-    "status": "LIVE"
+    "status": "FINAL"
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "DATA LIVE · 15/16 FINAL · MNF PENDING · FIGMA REFRESH PENDING",
+    "package_status": "DATA FINAL · 16/16 FINAL · FIGMA REFRESH PENDING",
     "outputs": [
       "quiniela-control/exports/w4-picks-board.png"
     ]
@@ -260,94 +260,94 @@
   "weekly_standings": [
     {
       "name": "EL DOC",
-      "correct": 10,
+      "correct": 11,
       "wrong": 5
     },
     {
       "name": "ARI",
-      "correct": 10,
+      "correct": 11,
       "wrong": 5
     },
     {
       "name": "LALO",
       "correct": 9,
-      "wrong": 6
+      "wrong": 7
     },
     {
       "name": "ALEX",
-      "correct": 11,
+      "correct": 12,
       "wrong": 4
     },
     {
       "name": "LUIS C.",
       "correct": 10,
-      "wrong": 5
+      "wrong": 6
     },
     {
       "name": "DR PALMA",
       "correct": 9,
-      "wrong": 6
+      "wrong": 7
     },
     {
       "name": "JENNI",
-      "correct": 8,
+      "correct": 9,
       "wrong": 7
     },
     {
       "name": "RODRI",
       "correct": 9,
-      "wrong": 6
+      "wrong": 7
     },
     {
       "name": "IBRACHO",
-      "correct": 10,
+      "correct": 11,
       "wrong": 5
     }
   ],
   "season_standings": [
     {
       "name": "ALEX",
-      "correct": 39,
+      "correct": 40,
       "wrong": 24
     },
     {
       "name": "EL DOC",
-      "correct": 39,
+      "correct": 40,
       "wrong": 24
     },
     {
       "name": "IBRACHO",
-      "correct": 39,
+      "correct": 40,
       "wrong": 24
     },
     {
       "name": "RODRI",
       "correct": 39,
-      "wrong": 24
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 38,
       "wrong": 25
     },
     {
       "name": "ARI",
-      "correct": 37,
+      "correct": 38,
+      "wrong": 26
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 38,
       "wrong": 26
     },
     {
       "name": "DR PALMA",
       "correct": 37,
-      "wrong": 26
+      "wrong": 27
+    },
+    {
+      "name": "JENNI",
+      "correct": 37,
+      "wrong": 27
     },
     {
       "name": "LALO",
       "correct": 37,
-      "wrong": 26
-    },
-    {
-      "name": "JENNI",
-      "correct": 36,
       "wrong": 27
     }
   ],
@@ -657,9 +657,9 @@
       "matchup": "ATL @ NO",
       "time": "LUN 5 OCT · 18:15 CDMX",
       "kickoff_iso": "2026-10-05T18:15:00-06:00",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null,
+      "winner": "ATL",
+      "status": "FINAL",
+      "score": "ATL 45–24 NO",
       "picks": {
         "EL DOC": "ATL",
         "ARI": "ATL",
