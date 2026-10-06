@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-01T22:01:00-06:00",
+  "updated_at": "2026-10-05T19:31:00-06:00",
   "items": [
+    {
+      "id": "W5_OPEN",
+      "status": "READY",
+      "title": "WEEK 5 ABIERTA",
+      "body": "Week 5: 0/9 respuestas · cierre 8 OCT · 12:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W4_9OF9",
       "status": "READY",
