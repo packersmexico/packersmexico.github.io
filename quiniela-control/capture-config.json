@@ -10,21 +10,20 @@
   "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-05T23:37:00-06:00",
-  "capture_status": "OPEN_3_OF_9",
+  "last_sync": "2026-10-05T23:39:48-06:00",
+  "capture_status": "OPEN_4_OF_9",
   "form_status": "ENABLED",
-  "complete": 3,
+  "complete": 4,
   "total": 9,
   "expected_picks": 135,
-  "received_picks": 45,
-  "missing_picks": 90,
+  "received_picks": 60,
+  "missing_picks": 75,
   "missing_participants": [
     "EL DOC",
     "ALEX",
     "LUIS C.",
     "JENNI",
-    "RODRI",
-    "IBRACHO"
+    "RODRI"
   ],
   "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
   "auto_close_reason": null,
@@ -91,7 +90,30 @@
         "ATL",
         "LAR"
       ]
+    },
+    "IBRACHO": {
+      "submission_id": "6670744118902933092",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "CLE",
+        "IND",
+        "HOU",
+        "NYG",
+        "GB",
+        "DEN",
+        "DET",
+        "SF",
+        "BAL",
+        "BUF"
+      ]
     }
   },
-  "duplicate_count": 0
+  "duplicate_count": 0,
+  "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
+  "g10_official_time": "DOM 11 OCT · 11:00 CDMX"
 }
