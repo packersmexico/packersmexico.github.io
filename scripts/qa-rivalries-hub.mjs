@@ -24,6 +24,7 @@ for (const target of targets) {
   const consoleErrors = [];
   const pageErrors = [];
   const failedSameOrigin = [];
+  const httpErrors = [];
 
   page.on("console", msg => {
     if (msg.type() === "error") consoleErrors.push(msg.text());
@@ -34,6 +35,9 @@ for (const target of targets) {
     if (url.startsWith("http://127.0.0.1:8000/")) {
       failedSameOrigin.push({ url, error: req.failure()?.errorText || "unknown" });
     }
+  });
+  page.on("response", res => {
+    if (res.status() >= 400) httpErrors.push({ url: res.url(), status: res.status() });
   });
 
   await page.goto("http://127.0.0.1:8000/?pmx_test=1", { waitUntil: "networkidle0", timeout: 30000 });
@@ -76,12 +80,14 @@ for (const target of targets) {
     maps: audit.mapsReady,
     noOverflow: !audit.horizontalOverflow,
     noPageErrors: pageErrors.length === 0,
+    noConsoleErrors: consoleErrors.length === 0,
+    noHttpErrors: httpErrors.length === 0,
     noLocalRequestFailures: failedSameOrigin.length === 0
   };
 
   const pass = Object.values(checks).every(Boolean);
   if (!pass) failed = true;
-  reports.push({ target: target.name, pass, checks, audit, consoleErrors, pageErrors, failedSameOrigin });
+  reports.push({ target: target.name, pass, checks, audit, consoleErrors, pageErrors, httpErrors, failedSameOrigin });
   await page.close();
 }
 
