@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-05T23:37:00-06:00",
+  "last_sync": "2026-10-05T23:39:48-06:00",
   "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
@@ -16,26 +16,25 @@
     "form_id": "262777830600055",
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 3,
+    "complete": 4,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-08T12:00:00-06:00",
     "deadline_label": "8 OCT · 12:00 CDMX",
     "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
     "expected_picks": 135,
-    "received_picks": 45,
-    "missing_picks": 90,
+    "received_picks": 60,
+    "missing_picks": 75,
     "missing_participants": [
       "EL DOC",
       "ALEX",
       "LUIS C.",
       "JENNI",
-      "RODRI",
-      "IBRACHO"
+      "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_3_OF_9",
+    "capture_status": "OPEN_4_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
     "auto_close_reason": null,
@@ -102,9 +101,32 @@
           "ATL",
           "LAR"
         ]
+      },
+      "IBRACHO": {
+        "submission_id": "6670744118902933092",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "IND",
+          "HOU",
+          "NYG",
+          "GB",
+          "DEN",
+          "DET",
+          "SF",
+          "BAL",
+          "BUF"
+        ]
       }
     },
-    "duplicate_count": 0
+    "duplicate_count": 0,
+    "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
+    "g10_official_time": "DOM 11 OCT · 11:00 CDMX"
   },
   "participants": [
     {
@@ -141,7 +163,7 @@
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     }
   ],
   "games": [
@@ -386,7 +408,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "CAPTURE OPEN · 3/9 · 45/135 PICKS · VISUALS NOT READY"
+    "assets_status": "CAPTURE OPEN · 4/9 · 60/135 PICKS · VISUALS NOT READY"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -466,12 +488,12 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "CAPTURE_OPEN_3_OF_9",
+    "week5_stage": "CAPTURE_OPEN_4_OF_9",
     "publication_ready": false,
     "manifest": null
   },
   "public_picks": {
-    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 3/9 LOCKED",
+    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 4/9 LOCKED",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "games": [
       "G01",
