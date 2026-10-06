@@ -12,9 +12,8 @@ function formatTime(value){
 function refreshImages(stamp){
   const map=[
     ['picks-image','./w4-picks-board.png'],
-    ['results-live-image','./w3-results-live.png'],
-    ['weekly-image','./w3-ranking-weekly.png'],
-    ['season-image','./w3-ranking-season.png']
+    ['weekly-image','./w4-ranking-weekly.png'],
+    ['season-image','./w4-ranking-season.png']
   ];
   return Promise.all(map.map(([id,src])=>new Promise(resolve=>{
     const img=$(id);
@@ -39,7 +38,7 @@ async function load(manual=false){
     if(!r.ok) throw new Error('HTTP '+r.status);
     current=await r.json();
     $('asset-week').textContent='QUINIELA · '+current.week+' · '+current.season;
-    $('asset-status').textContent='PUBLICATION READY · '+current.capture.complete+'/'+current.capture.total+' · '+current.results.final+'/'+current.results.total+' FINAL';
+    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · ÚLTIMO CIERRE WEEK 4 · 16/16 FINAL';
     await refreshImages(stamp);
     if(status){
       status.textContent=(manual?'INFORMACIÓN Y PIEZAS ACTUALIZADAS · DATOS ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
