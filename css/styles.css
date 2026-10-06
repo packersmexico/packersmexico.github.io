@@ -377,3 +377,54 @@ body.theme-rivalries .social-hub .social-link:focus-visible .social-link__label 
   body.theme-rivalries .team-lockup__logo { width: 89px; height: 89px; }
   body.theme-rivalries .team-lockup__logo img { max-width: 82px; max-height: 82px; }
 }
+
+
+/* PMX-W5-RIVALRIES-HUB-001 · U002 · FAM-007 V0.7 FINAL OVERRIDE */
+body.theme-rivalries {
+  --field-dark: #1e3027;
+  --lambeau-green: #1e3027;
+  --gold: #dfa219;
+  --cream: #f2ead3;
+  --muted: #afa38a;
+  --muted-rule: rgba(242,234,211,.38);
+  background-color: var(--field-dark);
+  background-image:
+    repeating-linear-gradient(24deg, rgba(187,142,52,.028) 0 1px, transparent 1px 8px),
+    linear-gradient(180deg, #1e3027 0%, #1e3027 100%);
+  background-size: 320px 180px, auto;
+  background-position: right top, 0 0;
+}
+body.theme-rivalries .site-header {
+  border-bottom-color: rgba(242,234,211,.38);
+}
+body.theme-rivalries .brand-logo { filter: none; }
+body.theme-rivalries .capsule-banner {
+  border-bottom-color: rgba(223,162,25,.82);
+}
+body.theme-rivalries .capsule-banner__label,
+body.theme-rivalries .kicker,
+body.theme-rivalries .module-kicker,
+body.theme-rivalries .social-link__mark {
+  color: var(--gold);
+}
+body.theme-rivalries .capsule-banner__matchup { color: var(--cream); }
+body.theme-rivalries .game-title span:first-child { color: var(--cream); }
+body.theme-rivalries .game-title span:last-child { color: var(--gold); }
+body.theme-rivalries .team-lockup {
+  border-bottom-color: rgba(242,234,211,.22);
+}
+body.theme-rivalries .cta--primary {
+  border: 1px solid rgba(187,142,52,.9);
+  background: transparent;
+  color: var(--gold);
+}
+body.theme-rivalries .cta--primary:hover,
+body.theme-rivalries .cta--primary:focus-visible {
+  background: var(--gold);
+  color: var(--field-dark);
+}
+body.theme-rivalries .cta--secondary { border-color: rgba(242,234,211,.38); }
+body.theme-rivalries .editorial-feature,
+body.theme-rivalries .social-hub {
+  border-top-color: rgba(223,162,25,.82);
+}
