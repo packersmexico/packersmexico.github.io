@@ -3,31 +3,30 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "snapshot_status": "CAPTURE_OPEN_3_OF_9",
-  "last_sync": "2026-10-05T23:37:00-06:00",
+  "snapshot_status": "CAPTURE_OPEN_4_OF_9",
+  "last_sync": "2026-10-05T23:39:48-06:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 3,
+    "complete": 4,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-08T12:00:00-06:00",
     "deadline_label": "8 OCT · 12:00 CDMX",
     "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
     "expected_picks": 135,
-    "received_picks": 45,
-    "missing_picks": 90,
+    "received_picks": 60,
+    "missing_picks": 75,
     "missing_participants": [
       "EL DOC",
       "ALEX",
       "LUIS C.",
       "JENNI",
-      "RODRI",
-      "IBRACHO"
+      "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_3_OF_9",
+    "capture_status": "OPEN_4_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
     "auto_close_reason": null,
@@ -94,9 +93,32 @@
           "ATL",
           "LAR"
         ]
+      },
+      "IBRACHO": {
+        "submission_id": "6670744118902933092",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "IND",
+          "HOU",
+          "NYG",
+          "GB",
+          "DEN",
+          "DET",
+          "SF",
+          "BAL",
+          "BUF"
+        ]
       }
     },
-    "duplicate_count": 0
+    "duplicate_count": 0,
+    "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
+    "g10_official_time": "DOM 11 OCT · 11:00 CDMX"
   },
   "participants": [
     {
@@ -133,7 +155,7 @@
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     }
   ],
   "results": {
@@ -143,7 +165,7 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE OPEN · 3/9 · 45/135 PICKS · VISUALS NOT READY",
+    "package_status": "CAPTURE OPEN · 4/9 · 60/135 PICKS · VISUALS NOT READY",
     "outputs": []
   },
   "games": [
@@ -337,12 +359,30 @@
         "SEA",
         "ATL",
         "LAR"
+      ],
+      "IBRACHO": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "CLE",
+        "IND",
+        "HOU",
+        "NYG",
+        "GB",
+        "DEN",
+        "DET",
+        "SF",
+        "BAL",
+        "BUF"
       ]
     },
     "submission_ids": {
       "DR PALMA": "6670689441121470817",
       "ARI": "6670690414015895408",
-      "LALO": "6670713770706204750"
+      "LALO": "6670713770706204750",
+      "IBRACHO": "6670744118902933092"
     }
   }
 }
