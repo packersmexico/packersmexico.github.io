@@ -1,0 +1,37 @@
+name: PMX W5 Rivalries Hub Final QA
+
+on:
+  push:
+    branches:
+      - pmx-w5-rivalries-hub-final
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve Chrome
+        shell: bash
+        run: |
+          CHROME_PATH="$(which google-chrome || which chromium-browser || which chromium || true)"
+          test -n "$CHROME_PATH"
+          echo "CHROME_PATH=$CHROME_PATH" >> "$GITHUB_ENV"
+      - name: Install browser driver
+        run: npm install --no-save puppeteer-core
+      - name: Start static candidate
+        run: |
+          mkdir -p qa-artifacts
+          python3 -m http.server 8000 > /tmp/pmx-hub-server.log 2>&1 &
+          sleep 2
+      - name: Mobile + desktop + W5 content + console QA
+        run: node scripts/qa-rivalries-hub-final.mjs
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmx-w5-rivalries-hub-final-qa
+          path: qa-artifacts/
+          retention-days: 14
