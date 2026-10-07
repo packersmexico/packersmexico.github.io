@@ -3,20 +3,26 @@
   "week": 4,
   "file_key": "RAoegEENwTH2L7gb3yydIq",
   "page_id": "2057:262482",
-  "state": "PICKS_EXPORTED_TO_HUB",
-  "publication_ready": false,
+  "state": "FINAL_RESULTS_EXPORTED_TO_HUB",
+  "publication_ready": true,
   "qa": {
     "structural": "PASS",
     "schedule_rows": 16,
     "stale_week3_pick_frames": 0,
     "stale_week3_result_texts": 0,
-    "visual_review": "PASS · W4 PICKS BOARD · 144/144 LOGOS",
+    "visual_review": "PASS · W4 FINAL · REAL FIGMA SCREENSHOT QA",
     "picks_board": "PASS",
     "picks_count": 144,
     "games": 16,
     "participants": 9,
-    "export": "PICKS_EXPORTED",
-    "picks_png": "PASS · 1600x2000 · HUB LIVE"
+    "results_matrix": "PASS · 16/16 · 144 RESULT MARKS",
+    "weekly_ranking": "PASS · ALEX 12/16",
+    "season_ranking": "PASS · FINAL AFTER W4",
+    "export": "PASS · 4 PNG ASSETS ON MAIN",
+    "picks_png": "PASS · 1600x2000 · HUB LIVE",
+    "results_png": "PASS · 1600x2000 · HUB LIVE",
+    "weekly_png": "PASS · 1080x1350 · HUB LIVE",
+    "season_png": "PASS · 1080x1350 · HUB LIVE"
   },
   "source_master_nodes": {
     "picks": "2885:1064635",
@@ -36,5 +42,5 @@
     "weekly": "quiniela-control/exports/w4-ranking-weekly.png",
     "season": "quiniela-control/exports/w4-ranking-season.png"
   },
-  "gate": "9_OF_9_COMPLETE · PICKS_EXPORT_ALLOWED"
+  "gate": "16_OF_16_FINAL · FIGMA_QA_PASS · HUB_ASSETS_LIVE"
 }
