@@ -10,19 +10,17 @@
   "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-05T23:39:48-06:00",
-  "capture_status": "OPEN_4_OF_9",
+  "last_sync": "2026-10-06T20:12:57-06:00",
+  "capture_status": "OPEN_6_OF_9",
   "form_status": "ENABLED",
-  "complete": 4,
+  "complete": 6,
   "total": 9,
   "expected_picks": 135,
-  "received_picks": 60,
-  "missing_picks": 75,
+  "received_picks": 90,
+  "missing_picks": 45,
   "missing_participants": [
-    "EL DOC",
     "ALEX",
     "LUIS C.",
-    "JENNI",
     "RODRI"
   ],
   "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
@@ -111,9 +109,68 @@
         "BAL",
         "BUF"
       ]
+    },
+    "JENNI": {
+      "submission_id": "6671269814148574857",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "TB",
+        "PHI",
+        "CIN",
+        "NE",
+        "MIN",
+        "CLE",
+        "PIT",
+        "TEN",
+        "WAS",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "BAL",
+        "LAR"
+      ]
+    },
+    "EL DOC": {
+      "submission_id": "6671472801306099783",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "NO",
+        "CLE",
+        "PIT",
+        "HOU",
+        "WAS",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "ATL",
+        "BUF"
+      ]
     }
   },
   "duplicate_count": 0,
   "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
-  "g10_official_time": "DOM 11 OCT · 11:00 CDMX"
+  "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
+  "data_complete_trigger": {
+    "armed": true,
+    "condition": "9_OF_9_AND_135_OF_135",
+    "next_stage": "04 · FIGMA",
+    "variant": "RIVALRIES WEEK",
+    "family": "FAM-007 · Rivalries 2026",
+    "figma_owner": "04",
+    "required_text": [
+      "RIVALRIES WEEK",
+      "WEEK 5",
+      "9/9 PICKS COMPLETOS"
+    ],
+    "photo_mode": "PHOTO_OFF_PREFERRED",
+    "no_canva": true,
+    "no_synthetic_players_or_photos": true,
+    "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
+  }
 }
