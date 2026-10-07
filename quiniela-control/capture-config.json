@@ -172,5 +172,35 @@
     "no_canva": true,
     "no_synthetic_players_or_photos": true,
     "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
+  },
+  "submission_integrity": {
+    "status": "PASS · NO PICK MUTATION REQUIRED",
+    "reconciled_at": "2026-10-07T06:52:00-06:00",
+    "source": "JOTFORM SUBMISSION QUESTION IDS + EXPLICIT GAME-ID LABELS",
+    "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
+    "anomaly": {
+      "description": "Jotform q13 (G10) has order=14 while q14 (G11) has order=13 after schedule correction; display/order position is non-canonical.",
+      "g10": {
+        "question_id": "13",
+        "field_name": "q13_radio11",
+        "game_id": "G10",
+        "matchup": "CHI @ GB"
+      },
+      "g11": {
+        "question_id": "14",
+        "field_name": "q14_radio12",
+        "game_id": "G11",
+        "matchup": "DEN @ LAC"
+      }
+    },
+    "verified_submissions": [
+      "6670689441121470817",
+      "6670690414015895408",
+      "6670713770706204750",
+      "6670744118902933092",
+      "6671269814148574857",
+      "6671472801306099783"
+    ],
+    "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
   }
 }
