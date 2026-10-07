@@ -26,7 +26,7 @@ function renderRanking(data){
 function render(data){
  const c=data.capture||{}, total=Number(c.total||9), complete=Number(c.complete||0), pct=total?Math.round(complete/total*100):0;
  setText('week-label',data.week+' · '+data.season);setText('capture-count',complete+'/'+total);setText('missing-count',Math.max(0,total-complete));
- setText('window-status',String(c.window).toUpperCase()==='OPEN'?'CAPTURA ABIERTA':'CAPTURA CERRADA');setText('deadline','CIERRE · '+(c.deadline_label||'—'));
+ setText('window-status',String(c.window).toUpperCase()==='OPEN'?(data.week+' ABIERTA'):(data.week+' CERRADA'));setText('deadline','CIERRE · '+(c.deadline_label||'—'));
  setText('final-count',data.results?.final??0);setText('game-count',data.results?.total??(data.games||[]).length);
  setText('gate-status',data.publication?.gate||'HOLD');setText('last-sync',fmtSync(data.last_sync));setText('sync-mode',(data.sync_mode||'MANUAL').replaceAll('_',' '));
  setHref('stable-capture',c.stable_url);setHref('direct-form',c.form_url);setHref('data-system',data.operator?.data_system_url);
