@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-05T23:39:48-06:00",
+  "updated_at": "2026-10-06T19:40:50-06:00",
   "items": [
+    {
+      "id": "W4_FINAL",
+      "status": "READY",
+      "title": "WEEK 4 · RESULTADOS FINALES",
+      "body": "16/16 partidos FINAL. ALEX ganó Week 4 con 12/16. Ranking semanal y ranking general ya están actualizados en el panel.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER RESULTADOS"
+    },
     {
       "id": "W5_OPEN",
       "status": "READY",
