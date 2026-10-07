@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-05T23:39:48-06:00",
+  "last_sync": "2026-10-06T20:12:57-06:00",
   "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
@@ -16,25 +16,23 @@
     "form_id": "262777830600055",
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 4,
+    "complete": 6,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-08T12:00:00-06:00",
     "deadline_label": "8 OCT · 12:00 CDMX",
     "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
     "expected_picks": 135,
-    "received_picks": 60,
-    "missing_picks": 75,
+    "received_picks": 90,
+    "missing_picks": 45,
     "missing_participants": [
-      "EL DOC",
       "ALEX",
       "LUIS C.",
-      "JENNI",
       "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_4_OF_9",
+    "capture_status": "OPEN_6_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
     "auto_close_reason": null,
@@ -122,6 +120,48 @@
           "BAL",
           "BUF"
         ]
+      },
+      "JENNI": {
+        "submission_id": "6671269814148574857",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "TB",
+          "PHI",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "PIT",
+          "TEN",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "BAL",
+          "LAR"
+        ]
+      },
+      "EL DOC": {
+        "submission_id": "6671472801306099783",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "NO",
+          "CLE",
+          "PIT",
+          "HOU",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "ATL",
+          "BUF"
+        ]
       }
     },
     "duplicate_count": 0,
@@ -131,7 +171,7 @@
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "ARI",
@@ -155,7 +195,7 @@
     },
     {
       "name": "JENNI",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "RODRI",
@@ -408,7 +448,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "CAPTURE OPEN · 4/9 · 60/135 PICKS · VISUALS NOT READY"
+    "assets_status": "CAPTURE OPEN · 6/9 · 90/135 PICKS · VISUALS NOT READY"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -488,12 +528,29 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "CAPTURE_OPEN_4_OF_9",
+    "week5_stage": "CAPTURE_OPEN_6_OF_9",
     "publication_ready": false,
-    "manifest": null
+    "manifest": null,
+    "rivalries_9_of_9_rule": {
+      "armed": true,
+      "condition": "9_OF_9_AND_135_OF_135",
+      "next_stage": "04 · FIGMA",
+      "variant": "RIVALRIES WEEK",
+      "family": "FAM-007 · Rivalries 2026",
+      "figma_owner": "04",
+      "required_text": [
+        "RIVALRIES WEEK",
+        "WEEK 5",
+        "9/9 PICKS COMPLETOS"
+      ],
+      "photo_mode": "PHOTO_OFF_PREFERRED",
+      "no_canva": true,
+      "no_synthetic_players_or_photos": true,
+      "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
+    }
   },
   "public_picks": {
-    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 4/9 LOCKED",
+    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 6/9 LOCKED",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "games": [
       "G01",
