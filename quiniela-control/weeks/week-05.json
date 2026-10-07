@@ -3,30 +3,28 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "snapshot_status": "CAPTURE_OPEN_4_OF_9",
-  "last_sync": "2026-10-05T23:39:48-06:00",
+  "snapshot_status": "CAPTURE_OPEN_6_OF_9",
+  "last_sync": "2026-10-06T20:12:57-06:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 4,
+    "complete": 6,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-08T12:00:00-06:00",
     "deadline_label": "8 OCT · 12:00 CDMX",
     "operational_target": "MIÉRCOLES 7 OCT · IDEAL 9/9",
     "expected_picks": 135,
-    "received_picks": 60,
-    "missing_picks": 75,
+    "received_picks": 90,
+    "missing_picks": 45,
     "missing_participants": [
-      "EL DOC",
       "ALEX",
       "LUIS C.",
-      "JENNI",
       "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_4_OF_9",
+    "capture_status": "OPEN_6_OF_9",
     "form_status": "ENABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
     "auto_close_reason": null,
@@ -114,6 +112,48 @@
           "BAL",
           "BUF"
         ]
+      },
+      "JENNI": {
+        "submission_id": "6671269814148574857",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "TB",
+          "PHI",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "PIT",
+          "TEN",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "BAL",
+          "LAR"
+        ]
+      },
+      "EL DOC": {
+        "submission_id": "6671472801306099783",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "NO",
+          "CLE",
+          "PIT",
+          "HOU",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "ATL",
+          "BUF"
+        ]
       }
     },
     "duplicate_count": 0,
@@ -123,7 +163,7 @@
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "ARI",
@@ -147,7 +187,7 @@
     },
     {
       "name": "JENNI",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "RODRI",
@@ -165,8 +205,25 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE OPEN · 4/9 · 60/135 PICKS · VISUALS NOT READY",
-    "outputs": []
+    "package_status": "CAPTURE OPEN · 6/9 · 90/135 PICKS · VISUALS NOT READY",
+    "outputs": [],
+    "rivalries_9_of_9_rule": {
+      "armed": true,
+      "condition": "9_OF_9_AND_135_OF_135",
+      "next_stage": "04 · FIGMA",
+      "variant": "RIVALRIES WEEK",
+      "family": "FAM-007 · Rivalries 2026",
+      "figma_owner": "04",
+      "required_text": [
+        "RIVALRIES WEEK",
+        "WEEK 5",
+        "9/9 PICKS COMPLETOS"
+      ],
+      "photo_mode": "PHOTO_OFF_PREFERRED",
+      "no_canva": true,
+      "no_synthetic_players_or_photos": true,
+      "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
+    }
   },
   "games": [
     {
@@ -376,13 +433,49 @@
         "SF",
         "BAL",
         "BUF"
+      ],
+      "JENNI": [
+        "TB",
+        "PHI",
+        "CIN",
+        "NE",
+        "MIN",
+        "CLE",
+        "PIT",
+        "TEN",
+        "WAS",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "BAL",
+        "LAR"
+      ],
+      "EL DOC": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "NO",
+        "CLE",
+        "PIT",
+        "HOU",
+        "WAS",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "ATL",
+        "BUF"
       ]
     },
     "submission_ids": {
       "DR PALMA": "6670689441121470817",
       "ARI": "6670690414015895408",
       "LALO": "6670713770706204750",
-      "IBRACHO": "6670744118902933092"
+      "IBRACHO": "6670744118902933092",
+      "JENNI": "6671269814148574857",
+      "EL DOC": "6671472801306099783"
     }
   }
 }
