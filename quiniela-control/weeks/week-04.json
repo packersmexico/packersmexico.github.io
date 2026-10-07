@@ -66,9 +66,12 @@
   },
   "public_picks_authorized": true,
   "production": {
-    "package_status": "DATA FINAL · 16/16 FINAL · FIGMA REFRESH PENDING",
+    "package_status": "FINAL · 16/16 · FIGMA QA PASS · HUB LIVE",
     "outputs": [
-      "quiniela-control/exports/w4-picks-board.png"
+      "quiniela-control/exports/w4-picks-board.png",
+      "quiniela-control/exports/w4-results-live.png",
+      "quiniela-control/exports/w4-ranking-weekly.png",
+      "quiniela-control/exports/w4-ranking-season.png"
     ]
   },
   "public_picks": {
