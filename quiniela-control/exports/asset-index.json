@@ -50,8 +50,7 @@
       },
       "results": {
         "final": 16,
-        "total": 16,
-        "status": "FINAL"
+        "total": 16
       },
       "assets": {
         "picks": {
@@ -89,8 +88,7 @@
       },
       "results": {
         "final": 16,
-        "total": 16,
-        "status": "FINAL"
+        "total": 16
       },
       "assets": {
         "picks": {
@@ -128,8 +126,7 @@
       },
       "results": {
         "final": 0,
-        "total": 15,
-        "status": "SCHEDULED"
+        "total": 15
       },
       "assets": {
         "picks": {
