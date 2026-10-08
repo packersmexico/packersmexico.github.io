@@ -18,7 +18,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-08T16:00:00-06:00",
     "deadline_label": "8 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX · DIRECCIÓN",
@@ -28,8 +28,8 @@
     "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_9_OF_9_DIRECTION_REOPENED",
-    "form_status": "ENABLED",
+    "capture_status": "CLOSED_9_OF_9_DEADLINE_1600",
+    "form_status": "DISABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {
       "DR PALMA": {
