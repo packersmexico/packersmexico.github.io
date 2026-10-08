@@ -4,15 +4,15 @@
   "week_number": 5,
   "form_id": "262777830600055",
   "form_url": "https://form.jotform.com/262777830600055",
-  "status": "OPEN",
+  "status": "CLOSED",
   "deadline": "2026-10-08T16:00:00-06:00",
   "deadline_label": "8 OCT · 16:00 CDMX",
-  "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX · DIRECCIÓN",
+  "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
   "last_sync": "2026-10-08T20:41:26.587Z",
-  "capture_status": "OPEN_9_OF_9_DIRECTION_REOPENED",
-  "form_status": "ENABLED",
+  "capture_status": "CLOSED_9_OF_9_DEADLINE_1600",
+  "form_status": "DISABLED",
   "complete": 9,
   "total": 9,
   "expected_picks": 135,
@@ -264,7 +264,7 @@
     ],
     "result": "9 unique participants / 10 raw submissions; DR PALMA duplicate ignored; LUIS C. first valid locked"
   },
-  "window": "OPEN",
+  "window": "CLOSED",
   "duplicate_submissions": [
     {
       "participant": "DR PALMA",
