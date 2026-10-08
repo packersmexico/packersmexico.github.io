@@ -20,7 +20,7 @@ function renderLiveResults(data){
   for(const g of games){
     const row=document.createElement('div');row.className='live-game-row';
     const left=document.createElement('strong');left.textContent=g.id+' · '+g.matchup;
-    const right=document.createElement('span');right.textContent=g.status==='FINAL'?('FINAL · '+(g.score||g.winner)):('PENDIENTE · '+g.time);
+    const right=document.createElement('span');right.textContent=g.status==='FINAL'?('FINAL · '+(g.score||g.winner)):g.status==='LIVE'?('EN VIVO · '+(g.live_score||'')+' '+(g.live_detail||'')):('PENDIENTE · '+g.time);
     row.append(left,right);wrap.append(row);
   }
   const note=$('live-results-note');
