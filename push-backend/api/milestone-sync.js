@@ -97,6 +97,24 @@ async function sendEvent(role, record, event, vapid) {
   const alreadySent = await redis(['GET', sentKey]);
   if (alreadySent) return { eventKey: event.eventKey, status: 'ALREADY_SENT', sentAt: alreadySent };
 
+  if (event.needsQA) {
+    const match=String(event.eventKey||'').match(/W(\d+)$/);
+    if (!match) return {eventKey:event.eventKey,status:'WAITING_QA'};
+    let qa;
+    try {qa=await getJson(`${RAW_BASE}/figma-week-${match[1].padStart(2,'0')}.json?t=${Date.now()}`);}
+    catch {return {eventKey:event.eventKey,status:'WAITING_QA'};}
+    if (event.needsQA==='PICKS') {
+      if (qa.qa?.picks_board!=='PASS' || qa.qa?.picks_visual_review!=='PASS' ||
+          !qa.qa?.picks_screenshot_evidence || !qa.picks_node_id ||
+          !String(qa.gate||'').includes('PICKS_QA_PASS'))
+        return {eventKey:event.eventKey,status:'WAITING_QA'};
+    } else {
+      if (qa.publication_ready!==true || !String(qa.qa?.visual_review||'').includes('PASS') ||
+          !String(qa.gate||'').includes('QA_PASS'))
+        return {eventKey:event.eventKey,status:'WAITING_QA'};
+    }
+  }
+
   if (event.needsAsset && !(await assetExists(event.needsAsset))) {
     return { eventKey: event.eventKey, status: 'WAITING_ASSET', asset: event.needsAsset };
   }
