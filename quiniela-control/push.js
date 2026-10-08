@@ -242,7 +242,7 @@ async function initializePush(){
 
       stage='SUSCRIPCIÓN';
       subscription=await currentSubscription(registration);
-      if(subscription && localStorage.getItem(REGISTERED_KEY)!=='1'){
+      if(subscription && !isRegistered()){
         try { await subscription.unsubscribe(); } catch (_) {}
         subscription=null;
       }
