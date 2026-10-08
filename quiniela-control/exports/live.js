@@ -77,9 +77,11 @@ async function load(manual=false){
     if(!r.ok) throw new Error('HTTP '+r.status);
     current=await r.json();
     renderLiveResults(current);
+    const latestApproved=await approvedVisualPackage(Number(current.week_number));
+    const displayedAssets=latestApproved || await approvedVisualPackage(4);
     $('asset-week').textContent='QUINIELA · '+current.week+' · '+current.season;
-    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · PNG DISPONIBLES: WEEK 4 APROBADOS · W5 PENDIENTES';
-    await refreshImages(stamp);
+    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · PNG ACTUAL: '+(latestApproved?'WEEK '+current.week_number+' QA PASS':'SOLO WEEK 4 · NUEVOS PNG PENDIENTES')+'';
+    await refreshImages(stamp,displayedAssets);
     if(status){
       status.textContent=(manual?'DATOS RECARGADOS · PNG APROBADOS REVISADOS · SYNC ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
     }
