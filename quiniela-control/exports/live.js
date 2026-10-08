@@ -63,9 +63,9 @@ async function approvedPickPackage(week){
   }catch(e){return null}
 }
 
-function refreshImages(stamp,manifest){
+function refreshImages(stamp,manifest,picksManifest){
   const map=[
-    ['picks-image',manifest?.output_targets?.picks?'./'+manifest.output_targets.picks.split('/').pop():'./w4-picks-board.png'],
+    ['picks-image',picksManifest?.output_targets?.picks?'./'+picksManifest.output_targets.picks.split('/').pop():manifest?.output_targets?.picks?'./'+manifest.output_targets.picks.split('/').pop():'./w4-picks-board.png'],
     ['results-image',manifest?.output_targets?.results?'./'+manifest.output_targets.results.split('/').pop():'./w4-results-live.png'],
     ['weekly-image',manifest?.output_targets?.weekly?'./'+manifest.output_targets.weekly.split('/').pop():'./w4-ranking-weekly.png'],
     ['season-image',manifest?.output_targets?.season?'./'+manifest.output_targets.season.split('/').pop():'./w4-ranking-season.png']
@@ -77,7 +77,7 @@ function refreshImages(stamp,manifest){
     img.addEventListener('load',done,{once:true});
     img.addEventListener('error',done,{once:true});
     const a=img.closest('.asset')?.querySelector('a[download]');
-    if(a){a.href=src;a.download=a.download.replace(/W[0-9]+/,'W'+(manifest?.week||4));}
+    if(a){a.href=src;a.download=a.download.replace(/W[0-9]+/,'W'+(id==='picks-image'?(picksManifest?.week||manifest?.week||4):(manifest?.week||4)));}
     img.src=src+'?t='+stamp;
   })));
 }
