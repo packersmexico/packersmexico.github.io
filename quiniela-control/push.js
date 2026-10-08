@@ -174,7 +174,7 @@ async function initializePush(){
   const storageKey=()=> 'pmxPushRegistered_'+selectedRole();
   const isRegistered=()=>localStorage.getItem(storageKey())==='1' || (selectedRole()==='RODRIGO' && localStorage.getItem('pmxPushRegistered')==='1');
   const label=push$('push-operator-label');
-  if(label)label.textContent='ADMINISTRADOR: '+OPERATOR;
+  if(label)label.textContent='ADMINISTRADOR: '+selectedRole();
 
   if(!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)){
     button.disabled=true;
@@ -218,7 +218,7 @@ async function initializePush(){
   }
 
   button.disabled=false;
-  roleControl.addEventListener('change',()=>{ const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered(); button.textContent=ready?'NOTIFICACIONES ACTIVAS':'ACTIVAR NOTIFICACIONES';button.disabled=ready;pushStatus(ready?'ACTIVAS PARA '+selectedRole():'LISTAS PARA '+selectedRole(),ready?'on':'idle');});
+  roleControl.addEventListener('change',()=>{ if(label)label.textContent='ADMINISTRADOR: '+selectedRole(); const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered(); button.textContent=ready?'NOTIFICACIONES ACTIVAS':'ACTIVAR NOTIFICACIONES';button.disabled=ready;pushStatus(ready?'ACTIVAS PARA '+selectedRole():'LISTAS PARA '+selectedRole(),ready?'on':'idle');});
   pushStatus(Notification.permission==='denied'?'PERMISO BLOQUEADO EN EL NAVEGADOR':'LISTAS PARA ACTIVAR',Notification.permission==='denied'?'off':'idle');
   if(Notification.permission==='denied'){button.disabled=true;return;}
 
@@ -268,7 +268,7 @@ async function initializePush(){
           headers:{'Content-Type':'text/plain;charset=UTF-8'},
           body:JSON.stringify({
             registrationCode:code,
-            operator:OPERATOR,
+            operator,
             subscription:serializeSubscription(subscription),
             deviceLabel:navigator.userAgent
           })
