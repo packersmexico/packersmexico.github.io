@@ -90,8 +90,8 @@ function eventPayloads(data) {
   return events;
 }
 
-async function sendEvent(record, event, vapid) {
-  const sentKey = keys.sent(event.eventKey);
+async function sendEvent(role, record, event, vapid) {
+  const sentKey = keys.sentFor(role,event.eventKey);
   const alreadySent = await redis(['GET', sentKey]);
   if (alreadySent) return { eventKey: event.eventKey, status: 'ALREADY_SENT', sentAt: alreadySent };
 
@@ -117,8 +117,8 @@ async function sendEvent(record, event, vapid) {
     await webpush.sendNotification(record.subscription, payload, { TTL: 86400, urgency: 'normal' });
   } catch (error) {
     if (error?.statusCode === 404 || error?.statusCode === 410) {
-      await redis(['DEL', keys.rodrigoSubscription]);
-      return { eventKey: event.eventKey, status: 'SUBSCRIPTION_EXPIRED' };
+      await redis(['DEL', keys.subscriptionFor(role)]);
+      return { eventKey: event.eventKey, status: 'SUBSCRIPTION_EXPIRED', operator:role };
     }
     return {
       eventKey: event.eventKey,
@@ -147,21 +147,18 @@ export default async function handler(req, res) {
     return json(res, 503, { ok: false, error: 'VAPID_NOT_CONFIGURED' });
   }
 
-  const rawRecord = await redis(['GET', keys.rodrigoSubscription]);
-  if (!rawRecord) return json(res, 200, { ok: true, status: 'RODRIGO_NOT_SUBSCRIBED', events: [] });
-
   const data = await getJson(`${RAW_BASE}/data.json?t=${Date.now()}`);
-  const record = JSON.parse(rawRecord);
   const candidates = eventPayloads(data);
   const results = [];
-  for (const event of candidates) {
-    results.push(await sendEvent(record, event, vapid));
+  for (const role of ['RODRIGO','IBRA']) {
+    const raw = await redis(['GET', keys.subscriptionFor(role)]);
+    if (!raw) { results.push({operator:role,status:'NOT_SUBSCRIBED'}); continue; }
+    const record = JSON.parse(raw);
+    for (const event of candidates) {
+      const result = await sendEvent(role,record,event,vapid);
+      results.push({operator:role,...result});
+    }
   }
+  return json(res,200,{ok:true,week:data.week_number,checkedAt:new Date().toISOString(),results});
 
-  return json(res, 200, {
-    ok: true,
-    week: data.week_number,
-    checkedAt: new Date().toISOString(),
-    results
-  });
 }
