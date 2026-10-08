@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="operator.css?v=20261008-compact">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="operator.css?v=20261008-qa2">
+  <script src="app.js?v=20261008-qa2" defer></script>
   <script src="push.js?v=20261008-adminfix" defer></script>
 </head>
 <body>
@@ -41,55 +41,55 @@
 
     <section class="section notification-section" aria-labelledby="notification-heading">
       <div class="section-head"><div><p class="eyebrow">AVISOS DEL CONTROLADOR</p><h2 id="notification-heading">NOTIFICACIONES</h2></div><p class="section-stat" id="push-status" data-state="idle">COMPROBANDO</p></div>
-      <p class="production-rule">Avisos administrativos: nueva semana, cierre de captura, picks listos y cierre de resultados. Debes aceptar las notificaciones en cada dispositivo.</p>
+      <details class="hub-fold admin-settings"><summary>Configurar notificaciones</summary>
+      <p class="production-rule">Avisos de apertura, cierre, picks y rankings. Activa cada teléfono por separado.</p>
       <p class="production-rule" id="push-operator-label">ADMINISTRADOR: RODRIGO</p>
       <div class="quick-actions notification-actions">
         <label for="push-operator" class="production-rule">OPERADOR</label>
         <select id="push-operator" aria-label="Selecciona el operador de este dispositivo"><option value="RODRIGO">RODRIGO</option><option value="IBRA">IBRA</option></select>
         <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
       </div>
+      </details>
       <details class="hub-fold"><summary>Historial de avisos</summary><div class="notification-list" id="notification-list" aria-live="polite"></div></details>
     </section>
 
     <section class="section" aria-labelledby="capture-heading">
       <div class="section-head"><div><p class="eyebrow">CAPTURA EN VIVO</p><h2 id="capture-heading">QUIÉN YA ENVIÓ</h2></div><p class="section-stat"><span id="missing-count">—</span> FALTAN</p></div>
+      <details class="hub-fold capture-details" id="capture-details"><summary>Ver integrantes y confirmaciones</summary>
       <div class="participants" id="participants" aria-label="Estado de participantes"></div>
       <p class="production-rule" id="capture-rule">Actualización automática del feed operativo.</p>
+      </details>
     </section>
 
     <section class="section" aria-labelledby="results-heading">
       <div class="section-head"><div><p class="eyebrow">RESULTADOS</p><h2 id="results-heading">MONITOR DE JUEGOS</h2></div><p class="section-stat"><span id="final-count">0</span>/<span id="game-count">—</span> FINAL</p></div>
       <details class="hub-fold"><summary>Ver partidos y marcadores</summary><div class="result-grid" id="games"></div></details>
-      <div class="quick-actions">
-        <a class="action-link" href="./exports/live.html#pmx-weekly-library" rel="noopener">PICKS Y DESCARGAS POR SEMANA →</a>
-        <a class="action-link secondary-action" href="./exports/live.html#live-week-results" rel="noopener">RESULTADOS EN VIVO →</a>
-        <a class="action-link secondary-action" href="./exports/live.html#pmx-weekly-library" rel="noopener">RANKINGS Y ARCHIVO →</a>
-      </div>
+      <div class="quick-actions"><a class="action-link secondary-action" href="./exports/live.html#live-week-results" rel="noopener">ABRIR MARCADORES Y DATOS →</a></div>
     </section>
 
-    <section class="section" aria-labelledby="w4-heading">
+    <section class="section archive-section" aria-labelledby="w4-heading">
+      <details class="hub-fold section-collapse"><summary>SEMANA ANTERIOR · RESULTADOS Y RANKINGS</summary>
       <div class="section-head"><div><p class="eyebrow">ÚLTIMO CIERRE · SEMANA ANTERIOR</p><h2 id="w4-heading">RESULTADOS FINALES</h2></div><p class="section-stat"><span id="w4-final-count">16</span>/16 FINAL</p></div>
       <p class="production-rule" id="w4-summary">Cargando cierre Week 4…</p>
-      <details class="hub-fold"><summary>Ver todos los resultados y rankings de la semana anterior</summary><div class="result-grid" id="w4-games"></div>
+      <div class="result-grid" id="w4-games"></div>
       <div class="section-head"><div><p class="eyebrow">SEMANA ANTERIOR</p><h2>RANKING SEMANAL FINAL</h2></div><p class="section-stat">ALEX · 12/16</p></div>
       <div class="live-ranking" id="w4-weekly-ranking"></div>
       <div class="section-head"><div><p class="eyebrow">TEMPORADA · CIERRE ANTERIOR</p><h2>RANKING GENERAL</h2></div><p class="section-stat">64 PICKS</p></div>
-      <div class="live-ranking" id="w4-season-ranking"></div></details>
-      <div class="quick-actions">
-        <a class="action-link" href="./exports/live.html#pmx-weekly-library" rel="noopener">VER DESCARGAS POR SEMANA →</a>
-        <a class="action-link secondary-action" href="./exports/live.html#pmx-weekly-library" rel="noopener">RANKING SEMANAL →</a>
-        <a class="action-link secondary-action" href="./exports/live.html#pmx-weekly-library" rel="noopener">RANKING GENERAL →</a>
-      </div>
+      <div class="live-ranking" id="w4-season-ranking"></div>
+      <div class="quick-actions"><a class="action-link secondary-action" href="./exports/live.html#pmx-weekly-library" rel="noopener">DESCARGAS DE LA SEMANA ANTERIOR →</a></div>
+      </details>
     </section>
 
     <section class="section" aria-labelledby="ranking-heading">
+      <details class="hub-fold section-collapse"><summary>RANKING EN VIVO · VER ACIERTOS</summary>
       <div class="section-head"><div><p class="eyebrow">TABLA EN VIVO</p><h2 id="ranking-heading">RANKING DE LA SEMANA</h2></div><p class="section-stat" id="ranking-status">PENDING</p></div>
-      <details class="hub-fold"><summary>Ver clasificación y aciertos</summary><div class="live-ranking" id="weekly-ranking"></div></details>
+      <div class="live-ranking" id="weekly-ranking"></div></details>
     </section>
 
     <section class="section" aria-labelledby="ops-heading">
+      <details class="hub-fold section-collapse"><summary>HERRAMIENTAS Y CONTROL OPERATIVO</summary>
       <div class="section-head"><div><p class="eyebrow">OPERACIÓN RODRIGO</p><h2 id="ops-heading">CONTROL DESDE AQUÍ</h2></div><p class="section-stat" id="gate-status">HOLD</p></div>
-      <details class="hub-fold"><summary>Mostrar instrucciones y herramientas</summary><div class="operator-steps">
+      <div class="operator-steps">
         <div><span>01</span><strong>MONITOREAR CAPTURA</strong></div>
         <div><span>02</span><strong>REVISAR RESULTADOS</strong></div>
         <div><span>03</span><strong>DESCARGAR ASSETS</strong></div>
@@ -100,14 +100,17 @@
         <a class="action-link secondary-action" href="./exports/live.html" rel="noopener">ABRIR ASSETS AUTOMÁTICOS →</a>
         <a class="action-link secondary-action" href="./exports/" rel="noopener">ARCHIVO DE SEMANAS →</a>
       </div>
-      </details><p class="production-rule">El panel es operativo. Identidad, masters y reglas permanecen protegidos. Publicación únicamente con READY FOR CLICK / PASS.</p>
+      <p class="production-rule">Panel operativo protegido · publicación únicamente con autorización y PASS.</p>
+      </details>
     </section>
 
     <section class="ops-strip" aria-label="Estado de sincronización">
+      <details class="hub-fold" style="width:100%"><summary>DIAGNÓSTICO Y SINCRONIZACIÓN</summary>
       <div><span class="ops-label">ÚLTIMA ACTUALIZACIÓN DE DATOS</span><strong id="last-sync">—</strong></div>
       <div><span class="ops-label">ÚLTIMA ACTUALIZACIÓN EN PANTALLA</span><strong id="view-refresh">—</strong></div>
       <div><span class="ops-label">MODO</span><strong id="sync-mode">—</strong></div>
       <a class="action-link" href="../" rel="noopener">VOLVER AL HUB →</a>
+      </details>
     </section>
     <p class="privacy-note">Panel operativo · PACKERS MÉXICO. Proyecto independiente; no afiliado oficialmente con NFL/Green Bay Packers.</p>
   </main>
