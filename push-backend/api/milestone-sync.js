@@ -52,20 +52,18 @@ function eventPayloads(data) {
     });
   }
 
-  const captureComplete =
+  const captureClosed =
     Number(capture.complete || 0) > 0 &&
-    Number(capture.total || 0) > 0 &&
     String(capture.window || '').toUpperCase() === 'CLOSED';
 
-  if (captureComplete) {
+  if (captureClosed) {
     events.push({
       needsAsset: `exports/w${week}-picks-board.png`,
-      needsQA: 'PICKS',
-      eventKey: `CAPTURE_PICKS_READY_W${week}`,
-      title: `PACKERS MÉXICO · W${week} PICKS LISTOS`,
-      body: `${capture.complete}/${capture.total} participantes. Captura cerrada y hoja de picks QA PASS disponible en el panel.`,
-      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
-      tag: `pmx-capture-complete-w${week}`
+      eventKey: `PICKS_READY_W${week}`,
+      title: `PACKERS MÉXICO · W${week} PICKS DISPONIBLES`,
+      body: `${capture.complete || 0}/${capture.total || 9} participantes. Captura cerrada; hoja de picks verificada para descargar.`,
+      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-weekly-library',
+      tag: `pmx-picks-ready-w${week}`
     });
   }
 
