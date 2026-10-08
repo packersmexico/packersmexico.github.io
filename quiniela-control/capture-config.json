@@ -10,17 +10,15 @@
   "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX · DIRECCIÓN",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-08T18:25:45.544Z",
-  "capture_status": "OPEN_8_OF_9_DIRECTION_REOPENED",
+  "last_sync": "2026-10-08T20:41:26.587Z",
+  "capture_status": "OPEN_9_OF_9_DIRECTION_REOPENED",
   "form_status": "ENABLED",
-  "complete": 8,
+  "complete": 9,
   "total": 9,
   "expected_picks": 135,
-  "received_picks": 120,
-  "missing_picks": 15,
-  "missing_participants": [
-    "LUIS C."
-  ],
+  "received_picks": 135,
+  "missing_picks": 0,
+  "missing_participants": [],
   "auto_close_condition": "DEADLINE_16_00_ONLY",
   "locked_submissions": {
     "DR PALMA": {
@@ -190,13 +188,34 @@
         "ATL",
         "LAR"
       ]
+    },
+    "LUIS C.": {
+      "submission_id": "6673005185188431549",
+      "status": "LOCKED_FIRST_VALID",
+      "picks": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "NYJ",
+        "PIT",
+        "HOU",
+        "NYG",
+        "GB",
+        "LAC",
+        "DET",
+        "SEA",
+        "ATL",
+        "LAR"
+      ]
     }
   },
   "duplicate_count": 1,
   "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
   "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
   "data_complete_trigger": {
-    "armed": false,
+    "armed": true,
     "condition": "9_OF_9_AND_135_OF_135",
     "next_stage": "04 · FIGMA",
     "variant": "RIVALRIES WEEK",
@@ -213,9 +232,9 @@
     "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
   },
   "submission_integrity": {
-    "status": "8_UNIQUE_RESPONSES_FROM_JOTFORM_ANALYSIS",
-    "reconciled_at": "2026-10-08T18:25:45.544Z",
-    "source": "JOTFORM OCT-08 CURRENT SUBMISSIONS; PICK SEQUENCES BY G01-G15",
+    "status": "9_UNIQUE_RESPONSES_FROM_JOTFORM_ANALYSIS",
+    "reconciled_at": "2026-10-08T20:41:26.587Z",
+    "source": "JOTFORM OCT-08 CURRENT SUBMISSIONS; FIRST VALID PER PARTICIPANT; GAME IDS G01-G15",
     "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
     "anomaly": {
       "description": "Jotform q13 (G10) has order=14 while q14 (G11) has order=13 after schedule correction; display/order position is non-canonical.",
@@ -240,9 +259,10 @@
       "6671269814148574857",
       "6671472801306099783",
       "6672917389016661092",
-      "6672925502612099422"
+      "6672925502612099422",
+      "6673005185188431549"
     ],
-    "result": "8_UNIQUE_RESPONSES · ALEX AND RODRI ADDED · PRIOR SIX PRESERVED"
+    "result": "9 unique participants / 10 raw submissions; DR PALMA duplicate ignored; LUIS C. first valid locked"
   },
   "window": "OPEN",
   "duplicate_submissions": [
@@ -257,5 +277,5 @@
   "duplicate_submission_ids": [
     "6672950551129314740"
   ],
-  "unique_participants": 8
+  "unique_participants": 9
 }
