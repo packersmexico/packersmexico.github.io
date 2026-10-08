@@ -94,7 +94,7 @@ function eventPayloads(data) {
 
 async function sendEvent(role, record, event, vapid, assetIndex) {
   if (event.assetSlots) {
-    const w=Number((event.eventKey.match(/W(\\d+)/)||[])[1]);
+    const w=Number((event.eventKey.match(/W(\d+)/)||[])[1]);
     for (const slot of event.assetSlots) {
       if (assetIndex?.weeks?.[w]?.assets?.[slot]?.state!=='READY')return {eventKey:event.eventKey,status:'WAITING_ASSET_QA',slot};
     }
