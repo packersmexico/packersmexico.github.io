@@ -43,13 +43,26 @@ async function pmxReviewCandidates(container,week){
     const desc=document.createElement('p');desc.className='note';
     desc.textContent=qa.publication_ready===true?'Paquete Figma aprobado y exportado':'REVISIÓN OPERATIVA · 4 PNG verificados. No publicar en redes hasta autorización de Dirección y cierre de captura.';
     section.append(title,desc);
+    const thumb=document.createElement('img');
+    thumb.className='review-thumb';
+    thumb.src='./'+qa.output_targets.picks.split('/').pop();
+    thumb.alt='Vista previa de la hoja de picks Week '+week+' · 9 participantes y 15 partidos';
+    thumb.loading='lazy';
+    section.append(thumb);
+    const mobile=document.createElement('details');
+    mobile.className='library-fold';
+    const mobileSummary=document.createElement('summary');
+    mobileSummary.textContent='Versiones móviles · 3 imágenes';
+    mobile.append(mobileSummary);
     for(const [name,target,size] of nodeList){
       const href='./'+target.split('/').pop();
       const row=document.createElement('div');row.className='pmx-export-row';
       const label=document.createElement('strong');label.textContent=name+' · '+size;row.append(label);
       const link=document.createElement('a');link.href=href;link.download='PMX_W'+week+'_'+target.split('/').pop();link.textContent='REVISAR / DESCARGAR PNG →';row.append(link);
-      section.append(row);
+      if(name==='Hoja principal')section.append(row);
+      else mobile.append(row);
     }
+    section.append(mobile);
     container.append(section);
   }catch(err){console.error('W5 REVIEW',err)}
 }
@@ -62,12 +75,26 @@ async function pmxLoadLibrary(){
     const weeks=d.weeks||{};
     c.replaceChildren();
     const active=Number(d.active_week);
-    if(weeks[active])pmxRenderWeek(c,active,weeks[active],'SEMANA ACTUAL');
     await pmxReviewCandidates(c,active);
+    if(weeks[active]){
+      const current=document.createElement('details');current.className='library-fold';
+      const summary=document.createElement('summary');summary.textContent='Estado de Week '+active+' · datos y siguientes entregables';
+      current.append(summary);pmxRenderWeek(current,active,weeks[active],'SEMANA ACTUAL');c.append(current);
+    }
     const last=Number(d.last_completed_week);
-    if(last && last!==active && weeks[last])pmxRenderWeek(c,last,weeks[last],'ÚLTIMA SEMANA CERRADA');
+    if(last && last!==active && weeks[last]){
+      const prior=document.createElement('details');prior.className='library-fold';
+      const summary=document.createElement('summary');summary.textContent='Último cierre · Week '+last+' · resultados y rankings';
+      prior.append(summary);pmxRenderWeek(prior,last,weeks[last],'ÚLTIMA SEMANA CERRADA');c.append(prior);
+    }
     const older=Object.keys(weeks).map(Number).filter(w=>w!==active&&w!==last).sort((a,b)=>b-a);
-    for(const w of older)pmxRenderWeek(c,w,weeks[w],'ARCHIVO');
+    if(older.length){
+      const archive=document.createElement('details');archive.className='library-fold';
+      const summary=document.createElement('summary');summary.textContent='Archivo histórico · '+older.length+' semanas';
+      archive.append(summary);
+      for(const w of older)pmxRenderWeek(archive,w,weeks[w],'ARCHIVO');
+      c.append(archive);
+    }
   }catch(e){
     c.textContent='NO SE PUDO CONSULTAR EL ÍNDICE DE EXPORTACIONES. No descargar material no verificado.';
     console.error(e);
