@@ -4,15 +4,15 @@
   "week_number": 5,
   "form_id": "262777830600055",
   "form_url": "https://form.jotform.com/262777830600055",
-  "status": "OPEN",
+  "status": "CLOSED",
   "deadline": "2026-10-08T10:00:00-06:00",
   "deadline_label": "8 OCT · 10:00 CDMX",
   "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-08T06:02:00-06:00",
-  "capture_status": "OPEN_6_OF_9",
-  "form_status": "ENABLED",
+  "last_sync": "2026-10-08T10:53:00-06:00",
+  "capture_status": "CLOSED_6_OF_9_DEADLINE",
+  "form_status": "DISABLED",
   "complete": 6,
   "total": 9,
   "expected_picks": 135,
@@ -24,7 +24,7 @@
     "RODRI"
   ],
   "auto_close_condition": "9_UNIQUE_VALID_PARTICIPANTS_OR_DEADLINE",
-  "auto_close_reason": null,
+  "auto_close_reason": "DEADLINE",
   "locked_submissions": {
     "DR PALMA": {
       "submission_id": "6670689441121470817",
@@ -157,7 +157,7 @@
   "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
   "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
   "data_complete_trigger": {
-    "armed": true,
+    "armed": false,
     "condition": "9_OF_9_AND_135_OF_135",
     "next_stage": "04 · FIGMA",
     "variant": "RIVALRIES WEEK",
@@ -202,5 +202,13 @@
       "6671472801306099783"
     ],
     "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
-  }
+  },
+  "closed_at": "2026-10-08T10:53:00-06:00",
+  "closed_complete": 6,
+  "closed_received_picks": 90,
+  "closed_missing_participants": [
+    "ALEX",
+    "LUIS C.",
+    "RODRI"
+  ]
 }
