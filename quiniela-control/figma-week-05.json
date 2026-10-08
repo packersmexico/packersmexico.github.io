@@ -1,0 +1,35 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 5,
+  "season": 2026,
+  "source": "JOTFORM_VERIFIED_G01_G15",
+  "state": "CAPTURE_IN_PROGRESS",
+  "publication_ready": false,
+  "gate": "HOLD",
+  "required_screenshots": true,
+  "qa": {
+    "picks_board": "HOLD",
+    "picks_visual_review": "HOLD",
+    "results_matrix": "HOLD",
+    "weekly_ranking": "HOLD",
+    "season_ranking": "HOLD",
+    "visual_review": "HOLD"
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w5-picks-board.png",
+    "results": "quiniela-control/exports/w5-results-live.png",
+    "weekly": "quiniela-control/exports/w5-ranking-weekly.png",
+    "season": "quiniela-control/exports/w5-ranking-season.png"
+  },
+  "triggers": {
+    "picks": "CAPTURE_CLOSED_LOCKED",
+    "results_rankings": "ALL_GAMES_FINAL_VERIFIED",
+    "notify": "ONLY_ON_REAL_QA_PASS",
+    "social_autopublish": false
+  },
+  "identity": {
+    "logo": "HORIZONTAL_V1.1",
+    "figma_master": "FAM_QUINIELA_APPROVED",
+    "no_generated_logos": true
+  }
+}
