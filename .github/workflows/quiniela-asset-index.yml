@@ -1,0 +1,41 @@
+name: Quiniela Asset Availability Index
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/capture-config.json'
+      - 'quiniela-control/weeks/**'
+      - 'quiniela-control/figma-week-*.json'
+      - 'quiniela-control/exports/*.png'
+      - 'scripts/refresh-quiniela-assets.mjs'
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pmx-quiniela-asset-index
+  cancel-in-progress: false
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate assets against weekly data and Figma approvals
+        run: node scripts/refresh-quiniela-assets.mjs
+      - name: Commit availability only if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quiniela-control/exports/asset-index.json
+          if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
+          git commit -m "Quiniela: update verified weekly download availability"
+          git push origin HEAD:main
