@@ -98,16 +98,22 @@ async function load(manual=false){
     const indexResponse=await fetch('./asset-index.json?t='+stamp,{cache:'no-store'});
     const index=indexResponse.ok?await indexResponse.json():{};
     const priorWeek=Number(index.last_completed_week||Math.max(1,Number(current.week_number)-1));
-    const latestApproved=await approvedVisualPackage(Number(current.week_number));
-    const displayedAssets=latestApproved || await approvedVisualPackage(priorWeek) || await approvedVisualPackage(4);
+    const activeWeek=Number(current.week_number||5);
+    const latestApproved=await approvedVisualPackage(activeWeek);
+    const picksManifest=latestApproved || await approvedPickPackage(activeWeek);
+    let previousApproved=null;
+    for(let w=activeWeek-1;w>=1;w--){previousApproved=await approvedVisualPackage(w);if(previousApproved)break;}
+    const displayedAssets=latestApproved || previousApproved;
     const imageWeek=Number(displayedAssets?.week||4);
     for(const id of ['detail','results-final','weekly','season']){
       const heading=$(id)?.querySelector('.eyebrow');
-      if(heading) heading.textContent=heading.textContent.replace(/WEEK [0-9]+/,'WEEK '+imageWeek);
+      if(heading)heading.textContent=heading.textContent.replace(/WEEK [0-9]+/,'WEEK '+imageWeek);
     }
+    const pickHeading=$('detail')?.querySelector('.eyebrow');
+    if(pickHeading)pickHeading.textContent=picksManifest?'PICKS · WEEK '+picksManifest.week:'PICKS · ARCHIVO · WEEK '+imageWeek;
     $('asset-week').textContent='QUINIELA · '+current.week+' · '+current.season;
-    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · PNG ACTUAL: '+(latestApproved?'WEEK '+current.week_number+' QA PASS':'ÚLTIMO CIERRE WEEK '+(displayedAssets?.week||4)+' · NUEVOS PNG PENDIENTES')+'';
-    await refreshImages(stamp,displayedAssets);
+    $('asset-status').textContent='WEEK '+activeWeek+' · '+current.capture.complete+'/'+current.capture.total+' CAPTURAS · PICKS '+(picksManifest?'W'+picksManifest.week+' QA PASS':'PENDIENTES')+' · RANKINGS '+(displayedAssets?'W'+imageWeek+' QA PASS':'PENDIENTES');
+    await refreshImages(stamp,displayedAssets,picksManifest);
     if(status){
       status.textContent=(manual?'DATOS RECARGADOS · PNG APROBADOS REVISADOS · SYNC ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
     }
