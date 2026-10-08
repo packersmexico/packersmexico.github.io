@@ -32,20 +32,7 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: 'INVALID_NOTIFICATION_PAYLOAD' });
   }
 
-  const sentKey = keys.sent(eventKey);
-  const alreadySent = await redis(['GET', sentKey]);
-  if (alreadySent) {
-    return json(res, 200, { ok: true, duplicate: true, eventKey });
-  }
-
-  const rawRecord = await redis(['GET', keys.rodrigoSubscription]);
-  if (!rawRecord) {
-    return json(res, 404, { ok: false, error: 'RODRIGO_NOT_SUBSCRIBED' });
-  }
-
-  const record = JSON.parse(rawRecord);
   webpush.setVapidDetails(subject, publicKey, privateKey);
-
   const payload = JSON.stringify({
     title: String(title).slice(0, 100),
     body: String(body).slice(0, 240),
@@ -53,29 +40,32 @@ export default async function handler(req, res) {
     tag: String(tag || eventKey).slice(0, 100),
     eventKey
   });
-
-  try {
-    await webpush.sendNotification(record.subscription, payload, {
-      TTL: 86400,
-      urgency: 'normal'
-    });
-  } catch (error) {
-    if (error?.statusCode === 404 || error?.statusCode === 410) {
-      await redis(['DEL', keys.rodrigoSubscription]);
-      return json(res, 410, { ok: false, error: 'SUBSCRIPTION_EXPIRED' });
+  const deliveries = [];
+  for (const role of ['RODRIGO','IBRA']) {
+    const subscriptionKey = keys.subscriptionFor(role);
+    const raw = await redis(['GET', subscriptionKey]);
+    if (!raw) { deliveries.push({operator:role,status:'NOT_SUBSCRIBED'}); continue; }
+    const sentKey = keys.sentFor(role,eventKey);
+    const previously = await redis(['GET',sentKey]);
+    if (previously) { deliveries.push({operator:role,status:'ALREADY_SENT',sentAt:previously}); continue; }
+    try {
+      await webpush.sendNotification(JSON.parse(raw).subscription,payload,{TTL:86400,urgency:'normal'});
+      const sentAt = new Date().toISOString();
+      await redis(['SET',sentKey,sentAt]);
+      deliveries.push({operator:role,status:'SENT',sentAt});
+    } catch (error) {
+      if (error?.statusCode===404 || error?.statusCode===410) {
+        await redis(['DEL',subscriptionKey]);
+        deliveries.push({operator:role,status:'SUBSCRIPTION_EXPIRED'});
+      } else {
+        console.error('PUSH_DELIVERY_FAILED',role,error?.statusCode);
+        deliveries.push({operator:role,status:'DELIVERY_FAILED'});
+      }
     }
-    const upstreamStatus = Number(error?.statusCode || 0) || null;
-    const upstreamBody = String(error?.body || error?.message || '').slice(0, 300);
-    console.error('PUSH_DELIVERY_FAILED', { upstreamStatus, upstreamBody });
-    return json(res, 502, {
-      ok: false,
-      error: 'PUSH_DELIVERY_FAILED',
-      upstreamStatus,
-      upstreamBody
-    });
   }
+  const successes = deliveries.filter(x=>['SENT','ALREADY_SENT'].includes(x.status));
+  const errors = deliveries.filter(x=>['DELIVERY_FAILED','SUBSCRIPTION_EXPIRED'].includes(x.status));
+  const status = successes.length ? (errors.length ? 207 : 200) : (errors.length ? 502 : 404);
+  return json(res,status,{ok:successes.length>0,eventKey,deliveries});
 
-  const sentAt = new Date().toISOString();
-  await redis(['SET', sentKey, sentAt]);
-  return json(res, 200, { ok: true, duplicate: false, eventKey, sentAt });
 }
