@@ -253,5 +253,9 @@
       "policy": "IGNORE_KEEP_FIRST_VALID",
       "reported_at": "2026-10-08 14:57:36"
     }
-  ]
+  ],
+  "duplicate_submission_ids": [
+    "6672950551129314740"
+  ],
+  "unique_participants": 8
 }
