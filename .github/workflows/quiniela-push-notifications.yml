@@ -119,6 +119,16 @@ jobs:
                 "tag":"pmx-w5-reminder-8of9"
               }
 
+          # One-time admin review notice only after actual W5 Figma 9/9 PNG export verification.
+          if week == 5 and complete == 9 and total == 9 and str((data.get("publication") or {}).get("assets_status") or "") == "W5_PICKS_FIGMA_REVIEW_READY_9OF9":
+              event={
+                "eventKey":"W5_FIGMA_PICKS_REVIEW_READY_9OF9_20261008",
+                "title":"QUINIELA PMX · W5 FIGMA LISTO PARA REVISIÓN",
+                "body":"Hoja 9/9 · 135 picks y 3 móviles exportados. Revisa en el panel; NO publicar antes de aprobación de Dirección.",
+                "url":"https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-w5-review",
+                "tag":"pmx-w5-figma-review-ready"
+              }
+
           if not event:
               print("No milestone notification for this state.")
               event_path.write_text("{}",encoding="utf-8")
