@@ -47,7 +47,7 @@ async function approvedVisualPackage(week){
   }catch(e){return null}
 }
 
-function refreshImages(stamp){
+function refreshImages(stamp,manifest){
   const map=[
     ['picks-image','./w4-picks-board.png'],
     ['results-image','./w4-results-live.png'],
