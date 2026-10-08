@@ -104,7 +104,7 @@ function sameApplicationServerKey(subscription, vapidPublicKey){
   }
 }
 
-function registerViaForm(api, registrationCode, subscription){
+function registerViaForm(api, registrationCode, subscription, operator){
   return new Promise((resolve,reject)=>{
     const serialized=serializeSubscription(subscription);
     const target='pmx_push_'+Date.now()+'_'+Math.random().toString(36).slice(2);
@@ -165,7 +165,13 @@ function registerViaForm(api, registrationCode, subscription){
 
 async function initializePush(){
   const button=push$('push-enable');
-  if(!button)return;
+  const roleControl=push$('push-operator');
+  if(!button || !roleControl)return;
+  const queryRole=new URLSearchParams(location.search).get('operador')?.toUpperCase();
+  if(['IBRA','RODRIGO'].includes(queryRole))roleControl.value=queryRole;
+  const selectedRole=()=>roleControl.value==='IBRA'?'IBRA':'RODRIGO';
+  const storageKey=()=> 'pmxPushRegistered_'+selectedRole();
+  const isRegistered=()=>localStorage.getItem(storageKey())==='1' || (selectedRole()==='RODRIGO' && localStorage.getItem('pmxPushRegistered')==='1');
   const label=push$('push-operator-label');
   if(label)label.textContent='ADMINISTRADOR: '+OPERATOR;
 
@@ -209,6 +215,7 @@ async function initializePush(){
   }
 
   button.disabled=false;
+  roleControl.addEventListener('change',()=>{ const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered(); button.textContent=ready?'NOTIFICACIONES ACTIVAS':'ACTIVAR NOTIFICACIONES';button.disabled=ready;pushStatus(ready?'ACTIVAS PARA '+selectedRole():'LISTAS PARA '+selectedRole(),ready?'on':'idle');});
   pushStatus(Notification.permission==='denied'?'PERMISO BLOQUEADO EN EL NAVEGADOR':'LISTAS PARA ACTIVAR',Notification.permission==='denied'?'off':'idle');
   if(Notification.permission==='denied'){button.disabled=true;return;}
 
@@ -267,13 +274,13 @@ async function initializePush(){
       }catch(fetchError){
         if(fetchError?.name!=='TypeError' && !String(fetchError?.message||'').includes('Load failed')) throw fetchError;
         stage='REGISTRO FALLBACK';
-        payload=await registerViaForm(api,code,subscription);
+        payload=await registerViaForm(api,code,subscription,operator);
       }
 
       localStorage.setItem(REGISTERED_KEY,'1');
       button.textContent='NOTIFICACIONES ACTIVAS';
       button.disabled=true;
-      pushStatus('ACTIVAS EN ESTE DISPOSITIVO','on');
+      pushStatus('ACTIVAS PARA '+operator+' EN ESTE DISPOSITIVO','on');
     }catch(error){
       console.error(error);
       button.disabled=false;
