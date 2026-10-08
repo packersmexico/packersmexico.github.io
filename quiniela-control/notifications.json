@@ -2,6 +2,15 @@
   "updated_at": "2026-10-08T20:41:26.587Z",
   "items": [
     {
+      "id": "W5_FIGMA_PICKS_REVIEW_READY_9OF9_20261008",
+      "status": "READY",
+      "title": "W5 FIGMA LISTO PARA REVISIÓN",
+      "body": "Hoja 9/9 · 135 picks y 3 móviles exportados. Revisa en el panel; NO publicar antes de aprobación de Dirección.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
+    {
       "id": "W5_OPEN",
       "status": "READY",
       "title": "WEEK 5 ABIERTA",
