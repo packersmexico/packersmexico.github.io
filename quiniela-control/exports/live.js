@@ -47,6 +47,22 @@ async function approvedVisualPackage(week){
   }catch(e){return null}
 }
 
+async function approvedPickPackage(week){
+  try{
+    const r=await fetch('../figma-week-'+String(week).padStart(2,'0')+'.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return null;
+    const m=await r.json();
+    if(Number(m.week)!==Number(week))return null;
+    if(m.qa?.picks_board!=='PASS' || m.qa?.picks_visual_review!=='PASS')return null;
+    if(!String(m.gate||'').includes('PICKS_QA_PASS'))return null;
+    if(!m.picks_node_id || !m.qa?.picks_screenshot_evidence)return null;
+    const path=m.output_targets?.picks;
+    if(!path || !/^quiniela-control\/exports\/w[0-9]+-picks-board\.png$/.test(path))return null;
+    const test=await fetch('./'+path.split('/').pop()+'?t='+Date.now(),{method:'HEAD',cache:'no-store'});
+    return test.ok?m:null;
+  }catch(e){return null}
+}
+
 function refreshImages(stamp,manifest){
   const map=[
     ['picks-image',manifest?.output_targets?.picks?'./'+manifest.output_targets.picks.split('/').pop():'./w4-picks-board.png'],
