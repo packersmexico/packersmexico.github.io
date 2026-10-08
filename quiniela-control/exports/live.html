@@ -10,16 +10,58 @@
 *{box-sizing:border-box}body{margin:0;background:#06160f;color:var(--cream);font-family:Montserrat,Arial,sans-serif}.shell{width:min(1180px,calc(100% - 28px));margin:auto;padding:30px 0 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px}.top img{width:220px}.top a{color:var(--cream);font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold)}h1,h2{font-family:'Bebas Neue';margin:0}.eyebrow{font-family:'Bebas Neue';font-size:24px;color:var(--gold);margin:34px 0 6px}.title{font-size:72px;line-height:.9}.asset{border-top:1px solid var(--line);padding:34px 0}.asset-head{display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap}.asset h2{font-size:44px}.meta{color:var(--muted);font-size:13px;font-weight:700}.preview{margin-top:18px;border:1px solid var(--line);background:#0002;overflow:auto}.preview svg,.preview img{display:block;width:100%;height:auto}.preview svg{min-width:720px}.preview img{background:#081D13}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}.button{border:0;background:var(--gold);color:var(--dark);font-weight:700;padding:14px 18px;cursor:pointer}.status{display:inline-block;margin-top:18px;color:var(--gold);font-weight:700}.note{color:var(--muted);font-size:13px}.refresh-box{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:22px 0 8px}.refresh-status{font-size:13px;color:var(--muted);font-weight:600}.refresh-button[disabled]{opacity:.55;cursor:wait}
 @media(max-width:680px){.top img{width:170px}.title{font-size:54px}.button{width:100%}}
 .pmx-export-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:16px 0;font-size:14px}.pmx-export-row a{color:var(--gold);font-weight:700}.pmx-export-row span{color:var(--muted)}
+
+/* Reduced-scroll weekly downloads; archives are opt-in */
+.shell{width:min(880px,calc(100% - 28px));padding:20px 0 44px}
+.top img{width:166px;max-width:55vw}
+.top a{font-size:12px}
+.eyebrow{font-size:19px;margin:17px 0 3px}
+.title{font-size:54px}
+.asset{padding:17px 0}
+.asset h2{font-size:34px}
+.asset .eyebrow{margin:5px 0}
+.meta{font-size:11px}
+.refresh-box{margin:12px 0 18px;gap:9px}
+.button{padding:11px 14px;font-size:12px}
+.status{margin-top:9px;font-size:12px;line-height:1.55}
+.preview{max-width:500px;margin-top:10px;border-color:var(--line)}
+.preview img{max-height:480px;object-fit:contain;object-position:top center}
+.gallery-fold,.library-fold{border-top:1px solid var(--line);margin:16px 0}
+.gallery-fold>summary,.library-fold>summary{padding:14px 0;cursor:pointer;font-weight:700;font-size:13px;color:var(--cream);list-style:none}
+.gallery-fold>summary::-webkit-details-marker,.library-fold>summary::-webkit-details-marker{display:none}
+.gallery-fold>summary:after,.library-fold>summary:after{content:' +';color:var(--gold)}
+.gallery-fold[open]>summary:after,.library-fold[open]>summary:after{content:' −'}
+.library-fold>.asset{padding:6px 0 14px}
+#pmx-weekly-library>.asset:first-child{border-top:2px solid var(--gold)}
+.pmx-export-row{padding:10px 0;gap:7px 15px}
+.pmx-export-row strong{font-size:13px}
+.pmx-export-row a{font-size:12px}
+.pmx-export-row span{font-size:11px}
+.archive-gallery .asset-head h2{font-size:28px}
+.archive-gallery .preview{max-width:430px}
+@media(max-width:650px){
+ .shell{width:calc(100% - 26px);padding:14px 0 35px}
+ .top{gap:12px}
+ .top img{width:140px}
+ .title{font-size:46px}
+ .asset h2{font-size:30px}
+ .refresh-box .button{width:auto;min-height:43px}
+ .pmx-export-row{align-items:flex-start;flex-direction:column;gap:8px}
+ .pmx-export-row a{padding:0 0 6px}
+ .preview img{max-height:360px}
+}
 </style>
-<script src="live.js?v=20261008" defer></script><script src="assets-library.js?v=20261008" defer></script>
+<script src="live.js?v=20261008-compact" defer></script><script src="assets-library.js?v=20261008-compact" defer></script>
 </head>
 <body><main class="shell">
 <div class="top"><img src="../../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO"><a href="../">VOLVER AL PANEL</a></div>
-<p class="eyebrow" id="asset-week">QUINIELA · SEMANA ACTIVA</p><h1 class="title">ASSETS AUTOMÁTICOS</h1><span class="status" id="asset-status">CARGANDO…</span><div class="refresh-box"><button class="button refresh-button" id="refresh-now" type="button">RECARGAR DATOS Y VERIFICAR PNG APROBADOS ↻</button><span id="refresh-status" class="refresh-status" aria-live="polite">Estado automático + actualización manual disponible.</span></div>
+<p class="eyebrow" id="asset-week">QUINIELA · SEMANA ACTIVA</p><h1 class="title">PICKS Y RESULTADOS</h1><span class="status" id="asset-status">CARGANDO…</span><div class="refresh-box"><button class="button refresh-button" id="refresh-now" type="button">RECARGAR DATOS Y VERIFICAR PNG APROBADOS ↻</button><span id="refresh-status" class="refresh-status" aria-live="polite">Estado automático + actualización manual disponible.</span></div>
 <section id="pmx-weekly-library" aria-label="Descargas de semana actual y anteriores"><p class="note">Consultando imágenes aprobadas por semana…</p></section>
 <section class="asset" id="live-week-results"><p class="eyebrow">SEMANA ACTUAL · DATOS</p><h2 id="live-title">RESULTADOS EN VIVO</h2><p class="meta" id="live-game-count">CARGANDO</p><div id="live-game-list" aria-live="polite"></div><p class="note" id="live-results-note">Los resultados se muestran desde GitHub; solo los PNG aprobados por 04/Figma se consideran listos para publicación.</p></section>
+<details class="gallery-fold" id="preview-archive"><summary>Previsualizaciones completas · última semana cerrada</summary><div class="archive-gallery">
 <section class="asset" id="detail"><div class="asset-head"><div><p class="eyebrow">ÚLTIMO CIERRE · WEEK 4</p><h2>TODOS LOS PICKS</h2></div><p class="meta">FIGMA MASTER · 1600 × 2000 · PNG</p></div><div class="preview"><img id="picks-image" src="./w4-picks-board.png" alt="Week 4 · Todos los picks"></div><div class="actions"><a class="button" href="./w4-picks-board.png" download="PMX_W4_TODOS_LOS_PICKS.png">DESCARGAR PNG · PICKS</a></div></section>
 <section class="asset" id="results-final"><div class="asset-head"><div><p class="eyebrow">RESULTADOS · WEEK 4</p><h2>PICKS + ✓/× FINAL</h2></div><p class="meta">FIGMA MASTER · 1600 × 2000 · PNG</p></div><div class="preview"><img id="results-image" src="./w4-results-live.png" alt="Week 4 · Resultados finales de todos los picks"></div><div class="actions"><a class="button" href="./w4-results-live.png" download="PMX_W4_RESULTADOS_FINALES.png">DESCARGAR PNG · RESULTADOS</a></div></section>\n<section class="asset" id="weekly"><div class="asset-head"><div><p class="eyebrow">RESULTADOS · WEEK 4</p><h2>RANKING SEMANAL</h2></div><p class="meta">FIGMA MASTER · 1080 × 1350 · PNG</p></div><div class="preview"><img id="weekly-image" src="./w4-ranking-weekly.png" alt="Week 4 · Ranking semanal final"></div><div class="actions"><a class="button" href="./w4-ranking-weekly.png" download="PMX_W4_RANKING_SEMANAL.png">DESCARGAR PNG · RANKING SEMANAL</a></div></section>
 <section class="asset" id="season"><div class="asset-head"><div><p class="eyebrow">TEMPORADA · TRAS WEEK 4</p><h2>RANKING GENERAL</h2></div><p class="meta">FIGMA MASTER · 1080 × 1350 · PNG</p></div><div class="preview"><img id="season-image" src="./w4-ranking-season.png" alt="Temporada 2026 · Ranking general acumulado tras Week 4"></div><div class="actions"><a class="button" href="./w4-ranking-season.png" download="PMX_W4_RANKING_GENERAL.png">DESCARGAR PNG · RANKING GENERAL</a></div></section>
-<p class="note">WEEK 4 · 16/16 FINAL · RESULTADOS Y RANKINGS ACTUALIZADOS. WEEK 5 permanece en captura y no sustituye estos assets hasta tener resultados.</p>
+</div></details>
+<p class="note">Los resultados y rankings de la última semana cerrada permanecen disponibles. La hoja de picks de la semana activa está arriba; su publicación necesita autorización editorial.</p>
 </main></body></html>
