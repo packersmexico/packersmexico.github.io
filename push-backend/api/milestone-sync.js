@@ -53,16 +53,17 @@ function eventPayloads(data) {
   }
 
   const captureComplete =
-    Number(capture.complete || 0) === Number(capture.total || 9) &&
+    Number(capture.complete || 0) > 0 &&
     Number(capture.total || 0) > 0 &&
     String(capture.window || '').toUpperCase() === 'CLOSED';
 
   if (captureComplete) {
     events.push({
       needsAsset: `exports/w${week}-picks-board.png`,
-      eventKey: `CAPTURE_9_OF_9_W${week}`,
+      needsQA: 'PICKS',
+      eventKey: `CAPTURE_PICKS_READY_W${week}`,
       title: `PACKERS MÉXICO · W${week} PICKS LISTOS`,
-      body: '9/9 participantes. Captura cerrada y pieza de picks actualizada en el Hub.',
+      body: `${capture.complete}/${capture.total} participantes. Captura cerrada y hoja de picks QA PASS disponible en el panel.`,
       url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
       tag: `pmx-capture-complete-w${week}`
     });
@@ -74,6 +75,7 @@ function eventPayloads(data) {
 
   if (finalComplete) {
     events.push({
+      needsQA: 'FINAL',
       needsAssets: [
         `exports/w${week}-results-live.png`,
         `exports/w${week}-ranking-weekly.png`,
