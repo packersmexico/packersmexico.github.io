@@ -599,7 +599,9 @@
     "blocker": null,
     "last_delivery_event": "W5_DEADLINE_CLOSED_6_OF_9",
     "last_live_submission_check": "2026-10-08T18:25:45.544Z",
-    "latest_confirmed_participants": 8
+    "latest_confirmed_participants": 8,
+    "push_reminder_request": "W5_REMINDER_8OF9_20261008_1600",
+    "push_reminder_requested_at": "2026-10-08T18:32:39.556Z"
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
