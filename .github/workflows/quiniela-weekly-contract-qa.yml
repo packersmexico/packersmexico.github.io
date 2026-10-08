@@ -1,0 +1,42 @@
+name: Quiniela Weekly Contract QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/**'
+      - 'push-backend/api/subscribe.js'
+      - 'push-backend/api/notify.js'
+      - 'scripts/qa-quiniela-contract.mjs'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'quiniela-control/**'
+      - 'push-backend/**'
+      - 'scripts/qa-quiniela-contract.mjs'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate frontend JavaScript
+        run: |
+          node --check quiniela-control/app.js
+          node --check quiniela-control/push.js
+          node --check quiniela-control/exports/live.js
+          node --check quiniela-control/exports/assets-library.js
+      - name: Validate push backend modules and production scripts
+        run: |
+          node --check push-backend/api/subscribe.js
+          node --check push-backend/api/subscribe-form.js
+          node --check push-backend/api/notify.js
+          node --check push-backend/api/milestone-sync.js
+          node --check scripts/refresh-quiniela-assets.mjs
+          node --check scripts/prepare-quiniela-figma-handoff.mjs
+          python3 -m py_compile scripts/sync-quiniela-live.py
+      - name: Enforce weekly data and image QA contract
+        run: node scripts/qa-quiniela-contract.mjs
