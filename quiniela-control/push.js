@@ -120,7 +120,7 @@ function registerViaForm(api, registrationCode, subscription, operator){
 
     const fields={
       registrationCode,
-      operator:OPERATOR,
+      operator,
       endpoint:serialized.endpoint,
       expirationTime:serialized.expirationTime??'',
       p256dh:serialized.keys.p256dh,
@@ -167,6 +167,7 @@ async function initializePush(){
   const button=push$('push-enable');
   const roleControl=push$('push-operator');
   if(!button || !roleControl)return;
+  roleControl.value=OPERATOR;
   const queryRole=new URLSearchParams(location.search).get('operador')?.toUpperCase();
   if(['IBRA','RODRIGO'].includes(queryRole))roleControl.value=queryRole;
   const selectedRole=()=>roleControl.value==='IBRA'?'IBRA':'RODRIGO';
@@ -203,10 +204,12 @@ async function initializePush(){
   if(subscription && activeKey && !sameApplicationServerKey(subscription,activeKey)){
     try{ await subscription.unsubscribe(); }catch(_){}
     subscription=null;
-    localStorage.removeItem(REGISTERED_KEY);
+    localStorage.removeItem('pmxPushRegistered');
+    localStorage.removeItem('pmxPushRegistered_IBRA');
+    localStorage.removeItem('pmxPushRegistered_RODRIGO');
   }
 
-  const registered=localStorage.getItem(REGISTERED_KEY)==='1';
+  const registered=isRegistered();
   if(Notification.permission==='granted' && subscription && registered){
     button.textContent='NOTIFICACIONES ACTIVAS';
     button.disabled=true;
@@ -252,7 +255,8 @@ async function initializePush(){
       }
 
       stage='CÓDIGO';
-      const code=window.prompt('Código de vinculación de '+(OPERATOR==='IBRA'?'Ibra':'Rodrigo'));
+      const operator=selectedRole();
+      const code=window.prompt('Código de vinculación de '+operator);
       if(!code)throw new Error('REGISTRATION_CODE_REQUIRED');
 
       stage='REGISTRO';
@@ -277,7 +281,8 @@ async function initializePush(){
         payload=await registerViaForm(api,code,subscription,operator);
       }
 
-      localStorage.setItem(REGISTERED_KEY,'1');
+      if(payload.operator!==operator)throw new Error('OPERATOR_MISMATCH');
+      localStorage.setItem(storageKey(),'1');
       button.textContent='NOTIFICACIONES ACTIVAS';
       button.disabled=true;
       pushStatus('ACTIVAS PARA '+operator+' EN ESTE DISPOSITIVO','on');
