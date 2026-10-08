@@ -122,3 +122,55 @@ h2{font-size:31px}
  .participant-status{font-size:9px}
  .notification-actions .push-enable{width:100%}
 }
+
+
+/* PMX Quiniela · QA móvil 2 · Claridad > densidad */
+.section:has(>.section-collapse){padding:5px 0 6px}
+.section-collapse{margin:0;border-top:0}
+.section-collapse>summary{min-height:48px;display:flex;align-items:center;font-size:15px;color:var(--cream);letter-spacing:0}
+.section-collapse[open]{padding-bottom:18px}
+.section-collapse[open]>.section-head{margin-top:18px}
+.notification-section{padding:15px 0}
+.notification-section>.section-head{align-items:center!important}
+.notification-section>.section-head h2{font-size:27px}
+#push-status[data-state="on"]{font-size:12px;max-width:49%;text-align:right}
+.admin-settings,.capture-details{margin-top:8px}
+.admin-settings>summary,.capture-details>summary{font-size:14px;min-height:46px}
+.admin-settings[open]{padding-bottom:13px}
+.participant-name{font-size:13px}
+.participant-status{font-size:11px}
+.eyebrow,.section-head .eyebrow{font-size:12px}
+.production-rule,.refresh-message{font-size:12px;line-height:1.55}
+.meta-line{font-size:12px}
+.section-stat{font-size:12px}
+#capture-rule{padding-bottom:9px}
+.hero-actions .main-download{background:var(--gold);color:var(--field-dark);padding:12px!important;text-decoration:none;min-height:48px!important;font-weight:800;font-size:14px!important}
+.hero-actions .main-download:hover,.hero-actions .main-download:focus-visible{background:var(--cream);color:var(--field-dark)}
+.hero-actions #refresh-control{
+ background:transparent!important;color:var(--gold)!important;
+ border:1px solid var(--gold)!important;box-shadow:none!important;
+ font-size:12px!important;min-height:46px!important
+}
+.hero-actions #refresh-control:hover,.hero-actions #refresh-control:focus-visible{background:#123B31!important;color:var(--cream)!important}
+.hero-actions .secondary-action{font-size:13px!important;min-height:46px!important}
+.ops-strip{padding:2px 0 8px}
+.ops-strip .hub-fold{margin:0;width:100%}
+.ops-strip .hub-fold>summary{font-size:13px;min-height:44px}
+.ops-strip .hub-fold[open]{padding:8px 0 12px}
+.ops-strip .ops-label{font-size:11px}
+.privacy-note{margin:15px 0 0;line-height:1.45}
+.site-footer{padding:0 0 20px}
+.site-footer p{font-size:11px}
+.site-footer .independence{font-size:11px}
+@media(min-width:760px){
+ .section-collapse>summary{font-size:17px}
+ .hero-actions .main-download{font-size:15px!important}
+ .participants{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .participant-name{font-size:14px}
+}
+@media(max-width:370px){
+ .hero-actions{grid-template-columns:1fr}
+ .hero-actions .main-download{grid-column:1}
+ .participant-name{font-size:12px}
+ #push-status[data-state="on"]{max-width:55%;font-size:11px}
+}
