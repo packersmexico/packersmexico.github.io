@@ -41,6 +41,17 @@ function eventPayloads(data) {
     });
   }
 
+  if (week === 5 && weekOpen && Number(capture.complete) === 8 &&
+      Date.now() < new Date('2026-10-08T16:00:00-06:00').getTime()) {
+    events.push({
+      eventKey: 'W5_REMINDER_8OF9_20261008_1600',
+      title: 'QUINIELA PMX · WEEK 5 · FALTA UNO',
+      body: 'Rodri y Alex ya enviaron. Falta LUIS C. · cierre 16:00 CDMX.',
+      url: 'https://packersmexico.github.io/quiniela-control/captura/',
+      tag: 'pmx-w5-reminder-8of9'
+    });
+  }
+
   const captureComplete =
     Number(capture.complete || 0) === Number(capture.total || 9) &&
     Number(capture.total || 0) > 0 &&
