@@ -1,0 +1,35 @@
+name: Quiniela Four Asset Stage Handoff
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/data.json'
+      - 'scripts/prepare-quiniela-figma-handoff.mjs'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: quiniela-production-handoff
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate source and stage four production deliverables
+        run: node scripts/prepare-quiniela-figma-handoff.mjs
+      - name: Commit new stage handoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quiniela-control/production/week-*-figma-handoff.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Quiniela: refresh four-asset Figma production stage"
+          git push origin HEAD:main
