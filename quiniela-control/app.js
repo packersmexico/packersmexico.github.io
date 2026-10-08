@@ -1,4 +1,4 @@
-const DATA_URL='./data.json'; const W4_URL='./weeks/week-04.json'; const REFRESH_MS=60000;
+const DATA_URL='./data.json'; const REFRESH_MS=60000;
 let lastSeenSync=null;
 const $=id=>document.getElementById(id);
 function setText(id,v){const e=$(id);if(e)e.textContent=v}
@@ -16,11 +16,15 @@ function renderRankList(id,rows=[]){
   let last=null,rank=0;
   sorted.forEach(r=>{if(last===null||r.correct!==last){rank++;last=r.correct}const el=document.createElement('div');el.className='rank-row';el.innerHTML='<span class="rank-pos">'+rank+'</span><strong>'+esc(r.name)+'</strong><span>'+r.correct+' ✓</span><span>'+r.wrong+' ×</span>';wrap.append(el)});
 }
-function renderW4(w4){
+function renderPrevious(w4){
   if(!w4) return;
-  setText('w4-final-count',w4.results?.final??16);
+  const n=Number(w4.week_number||4);
+  setText('w4-heading','RESULTADOS · WEEK '+n);
+  const area=document.querySelector('#w4-heading')?.closest('.section');
+  if(area){ const e=area.querySelector('.eyebrow');if(e)e.textContent='ÚLTIMO CIERRE · WEEK '+n;const heads=area.querySelectorAll('.section-head .eyebrow');if(heads[1])heads[1].textContent='WEEK '+n;if(heads[2])heads[2].textContent='TEMPORADA · TRAS WEEK '+n; const spans=area.querySelectorAll('.section-stat'); if(spans[0])spans[0].textContent=(w4.results?.final||0)+'/'+(w4.results?.total||0)+' FINAL'; if(spans[2])spans[2].textContent=(w4.results?.total||0)*n+' PICKS'; }
+  setText('w4-final-count',w4.results?.final??0);
   const leader=[...(w4.weekly_standings||[])].sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong)[0];
-  setText('w4-summary','Week 4 cerrada '+(w4.results?.final??0)+'/'+(w4.results?.total??16)+' FINAL · '+(leader?leader.name+' ganó la semana con '+leader.correct+'/'+w4.results.total:'ranking final disponible')+'.');
+  setText('w4-summary','Week '+n+' · '+(w4.results?.final??0)+'/'+(w4.results?.total??16)+' FINAL · '+(leader?leader.name+' ganó la semana con '+leader.correct+'/'+w4.results.total:'ranking final disponible')+'.');
   const wrap=$('w4-games'); if(wrap){wrap.replaceChildren();(w4.games||[]).forEach(g=>{const row=document.createElement('div');row.className='result-row final';row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state"><b>GANÓ '+esc(g.winner||'—')+'</b><span>'+esc(g.score||'FINAL')+'</span></div>';wrap.append(row)})}
   renderRankList('w4-weekly-ranking',w4.weekly_standings||[]);
   renderRankList('w4-season-ranking',w4.season_standings||[]);
@@ -67,13 +71,15 @@ async function load(manual=false){
  }
  try{
    const stamp=Date.now();
-   const [r,w4r]=await Promise.all([fetch(DATA_URL+'?t='+stamp,{cache:'no-store'}),fetch(W4_URL+'?t='+stamp,{cache:'no-store'}),refreshPublishedAssets(stamp)]);
+   const r=await fetch(DATA_URL+'?t='+stamp,{cache:'no-store'});
    if(!r.ok) throw new Error('HTTP '+r.status);
-   if(!w4r.ok) throw new Error('W4 HTTP '+w4r.status);
    const data=await r.json();
+   const previousWeek=Math.max(1,Number(data.week_number||5)-1);
+   const w4r=await fetch('./weeks/week-'+String(previousWeek).padStart(2,'0')+'.json?t='+stamp,{cache:'no-store'});
+   if(!w4r.ok) throw new Error('PREVIOUS WEEK HTTP '+w4r.status);
    const w4=await w4r.json();
    const previousSync=lastSeenSync;
-   render(data); renderW4(w4);
+   render(data); renderPrevious(w4);
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(manual){
