@@ -1,1 +1,28 @@
-<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081D13"><title>PACKERS MÉXICO · Quiniela · Assets</title><style>body{margin:0;background:#081D13;color:#F2E8CF;font-family:Arial,sans-serif}.shell{max-width:800px;margin:auto;padding:40px 20px}a{display:block;color:#F2E8CF;text-decoration:none;border-bottom:1px solid #164D36;padding:18px 0;font-weight:700}h1{color:#FFC62F}.muted{color:#9AA99F}</style></head><body><main class="shell"><h1>QUINIELA · ASSETS</h1><a href="./live.html">SEMANA ACTIVA · ASSETS AUTOMÁTICOS →</a><a href="./week-01.html">WEEK 1 · ARCHIVO →</a><p class="muted">Los assets de la semana activa se actualizan con el feed operativo.</p><a href="../">← VOLVER AL PANEL</a></main></body></html>
+<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081D13"><title>PACKERS MÉXICO · Quiniela · Archivo</title><style>body{margin:0;background:#081D13;color:#F2E8CF;font-family:Montserrat,Arial,sans-serif}.shell{max-width:840px;margin:auto;padding:32px 20px 64px}h1{font-family:Impact,'Bebas Neue',sans-serif;color:#FFC62F;font-size:52px;margin:28px 0 20px}.brand{max-width:270px;width:65%}a{display:block;color:#F2E8CF;text-decoration:none;border-bottom:1px solid #164D36;padding:15px 0;font-weight:700}h2{font-size:21px;margin:40px 0 10px}.muted{color:#9AA99F;font-size:14px;line-height:1.6}</style></head><body><main class="shell"><img class="brand" src="../../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO"><h1>QUINIELA · DESCARGAS</h1><a href="./live.html">SEMANA ACTIVA Y ÚLTIMO CIERRE →</a><section id="current-picks"><h2>PICKS DE SEMANA ACTUAL</h2><p class="muted" id="current-picks-status">Comprobando entrega aprobada en Figma…</p></section><section><h2>ARCHIVO FINAL APROBADO</h2><div id="archive"><p class="muted">Comprobando resultados anteriores…</p></div></section><a href="./week-01.html">WEEK 1 · ARCHIVO ORIGINAL →</a><a href="../">← VOLVER AL PANEL</a><p class="muted">Las imágenes solo aparecen después de exportación real desde Figma, validación visual y existencia del PNG. No se incluyen archivos incompletos ni placeholders.</p></main><script>
+const base='./';const byId=id=>document.getElementById(id);
+async function getJSON(url){const r=await fetch(url+'?t='+Date.now(),{cache:'no-store'});return r.ok?r.json():null;}
+async function exists(file){try{const r=await fetch(base+file,{method:'HEAD',cache:'no-store'});return r.ok}catch{return false}}
+function addLink(parent,filename,label){const a=document.createElement('a');a.href=base+filename;a.download=filename;a.textContent=label+' · DESCARGAR PNG →';parent.append(a);}
+async function load(){
+  const data=await getJSON('../data.json');const current=Number(data?.week_number||5);
+  const kinds=[['picks','HOJA DE PICKS'],['results','RESULTADOS'],['weekly','RANKING SEMANAL'],['season','RANKING GENERAL']];
+  const archive=byId('archive');archive.replaceChildren();
+  let fullCount=0;
+  for(let w=current;w>=1;w--){
+    const m=await getJSON('../figma-week-'+String(w).padStart(2,'0')+'.json');
+    if(!m||Number(m.week)!==w)continue;
+    const full=m.publication_ready===true && String(m.qa?.visual_review||'').includes('PASS') && String(m.gate||'').includes('QA_PASS');
+    if(w===current && m.qa?.picks_board==='PASS' && m.qa?.picks_visual_review==='PASS' && m.qa?.picks_screenshot_evidence && m.picks_node_id && String(m.gate||'').includes('PICKS_QA_PASS')){
+      const file=m.output_targets?.picks?.split('/').pop();if(file && await exists(file)){byId('current-picks-status').textContent='WEEK '+w+' · CAPTURA CERRADA · QA PASS';addLink(byId('current-picks'),file,'WEEK '+w+' · HOJA DE PICKS');}
+    }
+    if(!full)continue;
+    let valid=true;for(const [k] of kinds){const file=m.output_targets?.[k]?.split('/').pop();if(!file||!(await exists(file))){valid=false;break}}
+    if(!valid)continue;
+    const title=document.createElement('h2');title.textContent='WEEK '+w+' · '+(w===current?'ÚLTIMA SEMANA CERRADA':'HISTÓRICO');archive.append(title);
+    for(const [k,label] of kinds)addLink(archive,m.output_targets[k].split('/').pop(),'WEEK '+w+' · '+label);
+    fullCount++;
+  }
+  if(!fullCount){const p=document.createElement('p');p.className='muted';p.textContent='No hay paquetes completos validados todavía.';archive.append(p)}
+}
+load().catch(e=>{byId('archive').textContent='No se pudo validar el archivo. Intenta de nuevo.';});
+</script></body></html>
