@@ -1,4 +1,6 @@
 const PUSH_CONFIG_URL='./push-config.json';
+const OPERATOR=new URLSearchParams(window.location.search).get('admin')?.toLowerCase()==='ibra'?'IBRA':'RODRIGO';
+const REGISTERED_KEY=OPERATOR==='IBRA'?'pmxPushRegistered_IBRA':'pmxPushRegistered';
 const NOTIFICATIONS_URL='./notifications.json';
 const push$=id=>document.getElementById(id);
 
@@ -118,6 +120,7 @@ function registerViaForm(api, registrationCode, subscription){
 
     const fields={
       registrationCode,
+      operator:OPERATOR,
       endpoint:serialized.endpoint,
       expirationTime:serialized.expirationTime??'',
       p256dh:serialized.keys.p256dh,
@@ -163,6 +166,8 @@ function registerViaForm(api, registrationCode, subscription){
 async function initializePush(){
   const button=push$('push-enable');
   if(!button)return;
+  const label=push$('push-operator-label');
+  if(label)label.textContent='ADMINISTRADOR: '+OPERATOR;
 
   if(!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)){
     button.disabled=true;
@@ -192,10 +197,10 @@ async function initializePush(){
   if(subscription && activeKey && !sameApplicationServerKey(subscription,activeKey)){
     try{ await subscription.unsubscribe(); }catch(_){}
     subscription=null;
-    localStorage.removeItem('pmxPushRegistered');
+    localStorage.removeItem(REGISTERED_KEY);
   }
 
-  const registered=localStorage.getItem('pmxPushRegistered')==='1';
+  const registered=localStorage.getItem(REGISTERED_KEY)==='1';
   if(Notification.permission==='granted' && subscription && registered){
     button.textContent='NOTIFICACIONES ACTIVAS';
     button.disabled=true;
@@ -227,7 +232,7 @@ async function initializePush(){
 
       stage='SUSCRIPCIÓN';
       subscription=await currentSubscription(registration);
-      if(subscription && localStorage.getItem('pmxPushRegistered')!=='1'){
+      if(subscription && localStorage.getItem(REGISTERED_KEY)!=='1'){
         try { await subscription.unsubscribe(); } catch (_) {}
         subscription=null;
       }
@@ -240,7 +245,7 @@ async function initializePush(){
       }
 
       stage='CÓDIGO';
-      const code=window.prompt('Código de vinculación de Rodrigo');
+      const code=window.prompt('Código de vinculación de '+(OPERATOR==='IBRA'?'Ibra':'Rodrigo'));
       if(!code)throw new Error('REGISTRATION_CODE_REQUIRED');
 
       stage='REGISTRO';
@@ -252,6 +257,7 @@ async function initializePush(){
           headers:{'Content-Type':'text/plain;charset=UTF-8'},
           body:JSON.stringify({
             registrationCode:code,
+            operator:OPERATOR,
             subscription:serializeSubscription(subscription),
             deviceLabel:navigator.userAgent
           })
@@ -264,7 +270,7 @@ async function initializePush(){
         payload=await registerViaForm(api,code,subscription);
       }
 
-      localStorage.setItem('pmxPushRegistered','1');
+      localStorage.setItem(REGISTERED_KEY,'1');
       button.textContent='NOTIFICACIONES ACTIVAS';
       button.disabled=true;
       pushStatus('ACTIVAS EN ESTE DISPOSITIVO','on');
