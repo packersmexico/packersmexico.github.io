@@ -52,7 +52,10 @@ for g in active:
         lose=h if win is a else a
         status,winner,score='FINAL',win['abbr'],f"{win['abbr']} {win['score']}–{lose['score']} {lose['abbr']}"
     else:
-        status,winner,score='IN_PROGRESS',None,f"{a['abbr']} {a['score']}–{h['score']} {h['abbr']}"
+        if str(e.get('state','')).upper()=='STATUS_SCHEDULED':
+            status,winner,score='SCHEDULED',None,None
+        else:
+            status,winner,score='IN_PROGRESS',None,f"{a['abbr']} {a['score']}–{h['score']} {h['abbr']}"
     before=(g.get('status'),g.get('winner'),g.get('score'))
     after=(status,winner,score)
     if before!=after:
