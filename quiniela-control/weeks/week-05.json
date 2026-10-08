@@ -3,25 +3,25 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "snapshot_status": "CAPTURE_OPEN_8_OF_9_DIRECTION_REOPENED",
+  "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
   "last_sync": "2026-10-08T18:26:07.831Z",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-08T16:00:00-06:00",
     "deadline_label": "8 OCT · 16:00 CDMX",
-    "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
+    "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX",
     "expected_picks": 135,
     "received_picks": 135,
     "missing_picks": 0,
     "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_9_OF_9_DIRECTION_REOPENED",
-    "form_status": "ENABLED",
+    "capture_status": "CLOSED_9_OF_9_DEADLINE_1600",
+    "form_status": "DISABLED",
     "auto_close_condition": "DEADLINE_ONLY",
     "locked_submissions": {
       "DR PALMA": {
@@ -263,7 +263,8 @@
       "6672950551129314740"
     ],
     "unique_participants": 9,
-    "last_sync": "2026-10-08T20:41:26.587Z"
+    "last_sync": "2026-10-08T20:41:26.587Z",
+    "status": "CLOSED"
   },
   "participants": [
     {
@@ -310,7 +311,7 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE OPEN · 9/9 · 135/135 PICKS · W5 FIGMA PENDING · AWAIT 16:00 CDMX CLOSE",
+    "package_status": "CAPTURE CLOSED · 9/9 · 135 PICKS · FIGMA REVIEW HOLD",
     "outputs": [],
     "rivalries_9_of_9_rule": {
       "armed": true,
@@ -468,7 +469,7 @@
     }
   ],
   "locked_picks": {
-    "status": "OPEN_PARTIAL_LOCK_8_OF_9_NOT_PUBLIC",
+    "status": "CLOSED_9_OF_9",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "matrix": {
       "DR PALMA": [
@@ -606,6 +607,23 @@
         "SEA",
         "ATL",
         "LAR"
+      ],
+      "LUIS C.": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "NYJ",
+        "PIT",
+        "HOU",
+        "NYG",
+        "GB",
+        "LAC",
+        "DET",
+        "SEA",
+        "ATL",
+        "LAR"
       ]
     },
     "submission_ids": {
@@ -616,7 +634,8 @@
       "JENNI": "6671269814148574857",
       "EL DOC": "6671472801306099783",
       "ALEX": "6672917389016661092",
-      "RODRI": "6672925502612099422"
+      "RODRI": "6672925502612099422",
+      "LUIS C.": "6673005185188431549"
     },
     "mapping_rule": "QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
     "integrity_status": "8 unique form responses verified; no previous picks changed"
