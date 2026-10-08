@@ -1,23 +1,22 @@
-name: Quiniela Smart Result Checkpoints
-
+name: Quiniela Live Score Monitor
 on:
   schedule:
-    # UTC checks every 20 minutes only near game windows; zero API requests otherwise.
-    - cron: '*/20 12-23 * * 0'
-    - cron: '*/20 0-5,16-23 * * 1'
-    - cron: '*/20 0-5 * * 2'
-    - cron: '*/20 22-23 * * 4'
-    - cron: '*/20 0-6 * * 5'
-    - cron: '*/20 16-23 * * 6'
+    - cron: '*/15 0-7 * * 5'
+    - cron: '*/15 15-23 * * 6'
+    - cron: '*/15 0-7 * * 0'
+    - cron: '*/15 12-23 * * 0'
+    - cron: '*/15 0-8 * * 1'
+    - cron: '*/15 0-8 * * 2'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-quiniela-live.py'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 concurrency:
   group: quiniela-smart-results
   cancel-in-progress: false
-
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -25,178 +24,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-
-      - name: Check only games expected to be ending
-        shell: python
-        run: |
-          import json, urllib.request, datetime, pathlib, sys
-
-          data_path = pathlib.Path("quiniela-control/data.json")
-          data = json.loads(data_path.read_text(encoding="utf-8"))
-          week_number = int(data.get("week_number") or 0)
-          week_path = pathlib.Path(f"quiniela-control/weeks/week-{week_number:02d}.json")
-
-          games = data.get("games", [])
-          total_games = len(games)
-          finals_before = [g for g in games if g.get("status") == "FINAL" and g.get("winner")]
-
-          if total_games and len(finals_before) >= total_games:
-              print("Week complete: no external request. Waiting for rollover.")
-              raise SystemExit(0)
-
-          now = datetime.datetime.now(datetime.timezone.utc)
-
-          def parse_iso(value):
-              if not value:
-                  return None
-              return datetime.datetime.fromisoformat(value.replace("Z","+00:00")).astimezone(datetime.timezone.utc)
-
-          # Only query when a non-final game is plausibly at/after the end of regulation.
-          # Primary check starts at +3h10. Fallback checkpoints remain eligible through +4h40
-          # for overtime, weather delays, replay delays, etc.
-          candidates = []
-          for g in games:
-              if g.get("status") == "FINAL" and g.get("winner"):
-                  continue
-              kickoff = parse_iso(g.get("kickoff_iso"))
-              if not kickoff:
-                  continue
-              age = now - kickoff
-              if datetime.timedelta(minutes=-20) <= age <= datetime.timedelta(hours=5, minutes=30):
-                  candidates.append(g)
-
-          if not candidates:
-              print("No game is inside an expected-end window. No NFL request made.")
-              raise SystemExit(0)
-
-          aliases = {"JAC":"JAX","WSH":"WAS","LA":"LAR"}
-          def norm(x): return aliases.get(x,x)
-
-          # Query only the calendar date(s) of candidate games.
-          candidate_dates = sorted({
-              parse_iso(g["kickoff_iso"]).date().strftime("%Y%m%d")
-              for g in candidates if g.get("kickoff_iso")
-          })
-
-          events = []
-          for d in candidate_dates:
-              req = urllib.request.Request(
-                  f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={d}&limit=100",
-                  headers={"User-Agent":"PACKERS-MEXICO-QUINIELA/1.0"}
-              )
-              with urllib.request.urlopen(req, timeout=20) as r:
-                  payload = json.load(r)
-              events.extend(payload.get("events", []))
-
-          by_match = {}
-          for ev in events:
-              comps = ev.get("competitions") or []
-              if not comps:
-                  continue
-              comp = comps[0]
-              teams = {}
-              for c in comp.get("competitors", []):
-                  ab = norm((c.get("team") or {}).get("abbreviation",""))
-                  teams[c.get("homeAway")] = {
-                      "abbr": ab,
-                      "score": int(c.get("score") or 0)
-                  }
-              if "away" not in teams or "home" not in teams:
-                  continue
-              key = f"{teams['away']['abbr']} @ {teams['home']['abbr']}"
-              st = (ev.get("status") or {}).get("type") or {}
-              by_match[key] = {
-                  "teams": teams,
-                  "completed": bool(st.get("completed")),
-                  "live": st.get("state") == "in",
-                  "short_detail": str(st.get("shortDetail") or st.get("detail") or "")
-              }
-
-          changed = False
-          newly_final = []
-
-          for g in candidates:
-              e = by_match.get(g.get("matchup"))
-              if not e:
-                  continue
-              away, home = e["teams"]["away"], e["teams"]["home"]
-              if not e["completed"]:
-                  if e.get("live"):
-                      live_score = f"{away['abbr']} {away['score']}–{home['score']} {home['abbr']}"
-                      if (g.get("status"), g.get("live_score")) != ("LIVE", live_score):
-                          g["status"] = "LIVE"
-                          g["live_score"] = live_score
-                          g["live_detail"] = e.get("short_detail") or ""
-                          changed = True
-                  continue
-              if away["score"] == home["score"]:
-                  print("Score tied: hold until confirmed win/tie result", g["id"])
-                  continue
-              winner = away if away["score"] > home["score"] else home
-              loser = home if winner is away else away
-              score = f"{winner['abbr']} {winner['score']}–{loser['score']} {loser['abbr']}"
-
-              if (g.get("status"), g.get("winner"), g.get("score")) != ("FINAL", winner["abbr"], score):
-                  g["status"] = "FINAL"
-                  g.pop("live_score", None)
-                  g.pop("live_detail", None)
-                  g["winner"] = winner["abbr"]
-                  g["score"] = score
-                  changed = True
-                  newly_final.append(g["id"])
-
-          if not changed:
-              print("Scoreboard check complete; no material LIVE/FINAL changes.")
-              raise SystemExit(0)
-
-          finals = [g for g in games if g.get("status") == "FINAL" and g.get("winner")]
-          participants = [p["name"] for p in data.get("participants", [])]
-
-          weekly = []
-          for p in participants:
-              picks = ((data.get("capture") or {}).get("locked_submissions") or {}).get(p, {}).get("picks") or []
-              correct = sum(1 for i,g in enumerate(games) if g.get("status")=="FINAL" and g.get("winner") and i<len(picks) and picks[i]==g.get("winner"))
-              weekly.append({"name":p, "correct":correct, "wrong":len(finals)-correct if len(picks)==total_games else 0})
-
-          base_rows = data.get("season_base_before_week") or []
-          base = {r["name"]:(int(r.get("correct",0)), int(r.get("wrong",0))) for r in base_rows}
-
-          season = []
-          for r in weekly:
-              b = base.get(r["name"], (0,0))
-              season.append({
-                  "name":r["name"],
-                  "correct":b[0]+r["correct"],
-                  "wrong":b[1]+r["wrong"]
-              })
-          season.sort(key=lambda r:(-r["correct"], r["wrong"], r["name"]))
-
-          results = {
-              "final":len(finals),
-              "total":total_games,
-              "status":"FINAL" if len(finals) == total_games else "LIVE"
-          }
-
-          now_cdmx = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-6))).isoformat(timespec="seconds")
-          data["last_sync"] = now_cdmx
-          data["sync_mode"] = "AUTO LIVE SCOREBOARD 20-MIN + FINAL CHECK"
-          data["results"] = results
-          data["weekly_standings"] = weekly
-          data["season_standings"] = season
-          data.setdefault("publication", {})["gate"] = "HOLD"  # Visual QA + 05 authorization required
-          data["publication"]["assets_status"] = f"DATA LIVE · {len(finals)}/{total_games} FINAL · FIGMA QA AND PNG EXPORT PENDING"
-          data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
-
-          if week_path.exists():
-              week = json.loads(week_path.read_text(encoding="utf-8"))
-              week["last_sync"] = now_cdmx
-              week["results"] = results
-              week.setdefault("production", {})["package_status"] = f"DATA LIVE · {len(finals)}/{total_games} FINAL · FIGMA REFRESH PENDING"
-              week_path.write_text(json.dumps(week, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
-
-          print("New FINAL:", ",".join(newly_final), "LIVE games:", sum(g.get("status")=="LIVE" for g in games))
-
-      - name: Commit only material FINAL changes
+      - name: Poll only games that are currently live/recent
+        run: python3 scripts/sync-quiniela-live.py
+      - name: Persist verified scoring changes
         shell: bash
         run: |
           set -euo pipefail
@@ -204,8 +34,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add quiniela-control/data.json quiniela-control/weeks/
           if git diff --cached --quiet; then
-            echo "No material result change"
+            echo "No new score material"
             exit 0
           fi
-          git commit -m "Quiniela: sync newly final games"
+          git commit -m "Quiniela: sync observed live and final NFL scores"
           git push origin HEAD:main
