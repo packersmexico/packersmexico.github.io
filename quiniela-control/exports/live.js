@@ -49,7 +49,8 @@ async function approvedVisualPackage(week){
 
 function refreshImages(stamp){
   const map=[
-    ['picks-image','./w4-picks-board.png'],\n    ['results-image','./w4-results-live.png'],
+    ['picks-image','./w4-picks-board.png'],
+    ['results-image','./w4-results-live.png'],
     ['weekly-image','./w4-ranking-weekly.png'],
     ['season-image','./w4-ranking-season.png']
   ];
