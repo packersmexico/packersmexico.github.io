@@ -25,16 +25,17 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return rejectMethod(req, res, ['POST']);
   if (!isAllowedOrigin(req)) return json(res, 403, { ok: false, error: 'ORIGIN_NOT_ALLOWED' });
 
-  const expectedCode = process.env.RODRIGO_PUSH_CODE;
-  if (!expectedCode) return json(res, 503, { ok: false, error: 'PUSH_REGISTRATION_NOT_CONFIGURED' });
-
   let body = req.body || {};
   if (typeof body === 'string') {
     try { body = JSON.parse(body); }
     catch { return json(res, 400, { ok: false, error: 'INVALID_JSON_BODY' }); }
   }
 
-  const { registrationCode, subscription, deviceLabel = 'Rodrigo' } = body;
+  const { registrationCode, subscription, deviceLabel = 'Dispositivo', operator = 'RODRIGO' } = body;
+  const role = String(operator).trim().toUpperCase();
+  if (!['RODRIGO','IBRA'].includes(role)) return json(res, 400, { ok:false, error:'INVALID_OPERATOR' });
+  const expectedCode = role === 'IBRA' ? process.env.IBRA_PUSH_CODE : process.env.RODRIGO_PUSH_CODE;
+  if (!expectedCode) return json(res, 503, { ok:false, error:'OPERATOR_REGISTRATION_NOT_CONFIGURED' });
   if (!safeEqual(registrationCode, expectedCode)) {
     return json(res, 403, { ok: false, error: 'INVALID_REGISTRATION_CODE' });
   }
@@ -43,12 +44,12 @@ export default async function handler(req, res) {
   }
 
   const record = {
-    operator: 'RODRIGO',
+    operator: role,
     deviceLabel: String(deviceLabel).slice(0, 80),
     subscription,
     registeredAt: new Date().toISOString()
   };
 
-  await redis(['SET', keys.rodrigoSubscription, JSON.stringify(record)]);
-  return json(res, 200, { ok: true, operator: 'RODRIGO', registeredAt: record.registeredAt });
+  await redis(['SET', keys.subscriptionFor(role), JSON.stringify(record)]);
+  return json(res, 200, { ok: true, operator: role, registeredAt: record.registeredAt });
 }
