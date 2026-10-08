@@ -23,6 +23,36 @@ function pmxRenderWeek(container,week,record,heading){
   }
   container.append(section);
 }
+async function pmxReviewCandidates(container,week){
+  try{
+    const url='../figma-week-'+String(week).padStart(2,'0')+'.json?t='+Date.now();
+    const r=await fetch(url,{cache:'no-store'});
+    if(!r.ok) return;
+    const qa=await r.json();
+    if(Number(qa.week)!==Number(week) || !String(qa.qa?.export||'').startsWith('PASS') || !String(qa.qa?.picks_visual_review||'').startsWith('PASS')) return;
+    const nodeList=[
+      ['Hoja principal',qa.output_targets?.picks,'1600 × 2000'],
+      ['Mobile 1',qa.output_targets?.mobile1,'1080 × 1920'],
+      ['Mobile 2',qa.output_targets?.mobile2,'1080 × 1920'],
+      ['Mobile 3',qa.output_targets?.mobile3,'1080 × 1920']
+    ];
+    if(nodeList.some(([,path])=>!/^quiniela-control\/exports\/w\d+-picks-(?:board|mobile-[123])\.png$/.test(path||''))) return;
+    const section=document.createElement('section');
+    section.className='asset';section.id='pmx-w5-review';
+    const title=document.createElement('h2');title.textContent='WEEK '+week+' · HOJA DE PICKS · 9/9';
+    const desc=document.createElement('p');desc.className='note';
+    desc.textContent=qa.publication_ready===true?'Paquete Figma aprobado y exportado':'REVISIÓN OPERATIVA · 4 PNG verificados. No publicar en redes hasta autorización de Dirección y cierre de captura.';
+    section.append(title,desc);
+    for(const [name,target,size] of nodeList){
+      const href='./'+target.split('/').pop();
+      const row=document.createElement('div');row.className='pmx-export-row';
+      const label=document.createElement('strong');label.textContent=name+' · '+size;row.append(label);
+      const link=document.createElement('a');link.href=href;link.download='PMX_W'+week+'_'+target.split('/').pop();link.textContent='REVISAR / DESCARGAR PNG →';row.append(link);
+      section.append(row);
+    }
+    container.append(section);
+  }catch(err){console.error('W5 REVIEW',err)}
+}
 async function pmxLoadLibrary(){
   const c=document.getElementById('pmx-weekly-library');if(!c)return;
   try{
@@ -33,6 +63,7 @@ async function pmxLoadLibrary(){
     c.replaceChildren();
     const active=Number(d.active_week);
     if(weeks[active])pmxRenderWeek(c,active,weeks[active],'SEMANA ACTUAL');
+    await pmxReviewCandidates(c,active);
     const last=Number(d.last_completed_week);
     if(last && last!==active && weeks[last])pmxRenderWeek(c,last,weeks[last],'ÚLTIMA SEMANA CERRADA');
     const older=Object.keys(weeks).map(Number).filter(w=>w!==active&&w!==last).sort((a,b)=>b-a);
