@@ -60,6 +60,8 @@ function refreshImages(stamp,manifest){
     const done=()=>resolve();
     img.addEventListener('load',done,{once:true});
     img.addEventListener('error',done,{once:true});
+    const a=img.closest('.asset')?.querySelector('a[download]');
+    if(a) a.href=src;
     img.src=src+'?t='+stamp;
   })));
 }
