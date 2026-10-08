@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="operator.css">
   <script src="app.js" defer></script>
-  <script src="push.js?v=20261001-1" defer></script>
+  <script src="push.js?v=20261008-admins" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <a href="../" aria-label="PACKERS MÉXICO · Hub"><img class="brand-logo" src="../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO"></a>
-    <p class="header-label">RODRIGO · QUINIELA CONTROL</p>
+    <p class="header-label">EQUIPO · QUINIELA CONTROL</p>
   </header>
 
   <main id="contenido" class="shell">
@@ -40,9 +40,11 @@
 
     <section class="section notification-section" aria-labelledby="notification-heading">
       <div class="section-head"><div><p class="eyebrow">AVISOS DEL CONTROLADOR</p><h2 id="notification-heading">NOTIFICACIONES</h2></div><p class="section-stat" id="push-status" data-state="idle">COMPROBANDO</p></div>
-      <p class="production-rule">Sólo avisos operativos: nueva Week disponible, 9/9 picks completos y cierre 16/16.</p>
+      <p class="production-rule">Avisos administrativos: nueva semana, cierre de captura, picks listos y cierre de resultados. Debes aceptar las notificaciones en cada dispositivo.</p>
+      <p class="production-rule" id="push-operator-label">ADMINISTRADOR: RODRIGO</p>
       <div class="quick-actions notification-actions">
         <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
+        <a class="action-link secondary-action" href="./?admin=ibra" rel="noopener">REGISTRO DE IBRA →</a>
       </div>
       <div class="notification-list" id="notification-list" aria-live="polite"></div>
     </section>
