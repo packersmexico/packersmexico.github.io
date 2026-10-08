@@ -27,6 +27,26 @@ function renderLiveResults(data){
   if(note)note.textContent='Fuente: última sincronización '+formatTime(data.last_sync)+'. Datos y aciertos no autorizan imágenes ni publicación automática.';
 }
 
+async function approvedVisualPackage(week){
+  try{
+    const url='../figma-week-'+String(week).padStart(2,'0')+'.json?t='+Date.now();
+    const r=await fetch(url,{cache:'no-store'});
+    if(!r.ok)return null;
+    const m=await r.json();
+    if(Number(m.week)!==Number(week) || m.publication_ready!==true)return null;
+    if(!String(m.qa?.visual_review||'').includes('PASS'))return null;
+    if(!String(m.gate||'').includes('QA_PASS'))return null;
+    const keys=['picks','results','weekly','season'];
+    for(const k of keys){
+      const target=m.output_targets?.[k];
+      if(!target || !/^quiniela-control\/exports\/[\w-]+\.png$/.test(target))return null;
+      const test=await fetch('./'+target.split('/').pop()+'?t='+Date.now(),{method:'HEAD',cache:'no-store'});
+      if(!test.ok)return null;
+    }
+    return m;
+  }catch(e){return null}
+}
+
 function refreshImages(stamp){
   const map=[
     ['picks-image','./w4-picks-board.png'],\n    ['results-image','./w4-results-live.png'],
