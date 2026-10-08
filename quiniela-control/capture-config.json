@@ -192,7 +192,7 @@
       ]
     }
   },
-  "duplicate_count": 0,
+  "duplicate_count": 1,
   "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
   "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
   "data_complete_trigger": {
@@ -244,5 +244,14 @@
     ],
     "result": "8_UNIQUE_RESPONSES · ALEX AND RODRI ADDED · PRIOR SIX PRESERVED"
   },
-  "window": "OPEN"
+  "window": "OPEN",
+  "duplicate_submissions": [
+    {
+      "participant": "DR PALMA",
+      "submission_id": "6672950551129314740",
+      "original_id": "6670689441121470817",
+      "policy": "IGNORE_KEEP_FIRST_VALID",
+      "reported_at": "2026-10-08 14:57:36"
+    }
+  ]
 }
