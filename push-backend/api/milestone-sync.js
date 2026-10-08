@@ -81,7 +81,7 @@ function eventPayloads(data) {
       ],
       eventKey: `WEEK_FINAL_W${week}`,
       title: `PACKERS MÉXICO · W${week} FINAL`,
-      body: '16/16 FINAL. Resultados y rankings actualizados; rollover de la siguiente Week en proceso.',
+      body: `${results.final}/${results.total} FINAL. Resultados y rankings actualizados; rollover de la siguiente Week en proceso.`,
       url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
       tag: `pmx-week-final-w${week}`
     });
