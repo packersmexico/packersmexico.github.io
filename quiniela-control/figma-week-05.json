@@ -3,33 +3,54 @@
   "week": 5,
   "season": 2026,
   "source": "JOTFORM_VERIFIED_G01_G15",
-  "state": "CAPTURE_IN_PROGRESS",
+  "state": "FIGMA_PICKS_COMPLETED · EXPORT_PENDING_GITHUB · DIRECTION_REVIEW",
   "publication_ready": false,
-  "gate": "HOLD",
+  "gate": "FIGMA_TECHNICAL_QA_PASS · HUMAN_DIRECTION_REVIEW_PENDING",
   "required_screenshots": true,
   "qa": {
-    "picks_board": "HOLD",
-    "picks_visual_review": "HOLD",
+    "picks_board": "PASS · MAIN 135/135 · MOBILE 45/45 EACH",
+    "picks_visual_review": "REVIEW READY · DIRECTION REQUIRED · 4 REAL FIGMA SCREENSHOTS CAPTURED",
     "results_matrix": "HOLD",
     "weekly_ranking": "HOLD",
     "season_ranking": "HOLD",
-    "visual_review": "HOLD"
+    "visual_review": "HOLD · DIRECTION VISUAL REVIEW PENDING",
+    "structural": "PASS · 4 EXISTING FRAMES · 135/135 VERIFIABLE G01-G15",
+    "source_integrity": "PASS · 9 FIRST VALID PARTICIPANTS · DR PALMA DUPLICATE IGNORED",
+    "logo": "PASS · PMX HORIZONTAL V1.1 AND ALL APPROVED NFL TEAM VECTORS",
+    "screenshot_nodes": [
+      "3147:903160",
+      "3266:998885",
+      "3266:1003379",
+      "3266:1007642"
+    ],
+    "export": "FIGMA_EXPORTS_CREATED · GITHUB SYNC NOT YET VERIFIED"
   },
   "output_targets": {
     "picks": "quiniela-control/exports/w5-picks-board.png",
     "results": "quiniela-control/exports/w5-results-live.png",
     "weekly": "quiniela-control/exports/w5-ranking-weekly.png",
-    "season": "quiniela-control/exports/w5-ranking-season.png"
+    "season": "quiniela-control/exports/w5-ranking-season.png",
+    "mobile1": "quiniela-control/exports/w5-picks-mobile-1.png",
+    "mobile2": "quiniela-control/exports/w5-picks-mobile-2.png",
+    "mobile3": "quiniela-control/exports/w5-picks-mobile-3.png"
   },
   "triggers": {
-    "picks": "CAPTURE_CLOSED_LOCKED",
+    "picks": "CAPTURE_CLOSED_LOCKED · FIGMA_EXPORT_CANDIDATE_READY",
     "results_rankings": "ALL_GAMES_FINAL_VERIFIED",
-    "notify": "ONLY_ON_REAL_QA_PASS",
+    "notify": "PUSH_REVIEW_READY_AFTER_GITHUB_EXPORT_VERIFIED",
     "social_autopublish": false
   },
   "identity": {
     "logo": "HORIZONTAL_V1.1",
     "figma_master": "FAM_QUINIELA_APPROVED",
     "no_generated_logos": true
+  },
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "page_id": "2057:262482",
+  "week5_nodes": {
+    "picks": "3147:903160",
+    "mobile1": "3266:998885",
+    "mobile2": "3266:1003379",
+    "mobile3": "3266:1007642"
   }
 }
