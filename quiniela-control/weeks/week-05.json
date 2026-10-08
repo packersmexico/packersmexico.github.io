@@ -3,30 +3,28 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "snapshot_status": "CAPTURE_CLOSED_6_OF_9_DEADLINE",
-  "last_sync": "2026-10-08T10:53:00-06:00",
+  "snapshot_status": "CAPTURE_OPEN_8_OF_9_DIRECTION_REOPENED",
+  "last_sync": "2026-10-08T18:26:07.831Z",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 6,
+    "complete": 8,
     "total": 9,
-    "window": "CLOSED",
-    "deadline": "2026-10-08T10:00:00-06:00",
-    "deadline_label": "8 OCT · 10:00 CDMX",
+    "window": "OPEN",
+    "deadline": "2026-10-08T16:00:00-06:00",
+    "deadline_label": "8 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
     "expected_picks": 135,
-    "received_picks": 90,
-    "missing_picks": 45,
+    "received_picks": 120,
+    "missing_picks": 15,
     "missing_participants": [
-      "ALEX",
-      "LUIS C.",
-      "RODRI"
+      "LUIS C."
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "CLOSED_6_OF_9_DEADLINE",
-    "form_status": "DISABLED",
-    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
+    "capture_status": "OPEN_8_OF_9_DIRECTION_REOPENED",
+    "form_status": "ENABLED",
+    "auto_close_condition": "DEADLINE_ONLY",
     "auto_close_reason": "DEADLINE",
     "locked_submissions": {
       "DR PALMA": {
@@ -188,8 +186,7 @@
         "6671472801306099783"
       ],
       "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
-    },
-    "closed_at": "2026-10-08T10:53:00-06:00"
+    }
   },
   "participants": [
     {
@@ -236,7 +233,7 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE CLOSED · 6/9 · 90/135 PICKS · 3 PARTICIPANTS MISSING · FINAL VISUAL DECISION PENDING",
+    "package_status": "CAPTURE OPEN · 8/9 · 120/135 PICKS · W5 FIGMA PENDING",
     "outputs": [],
     "rivalries_9_of_9_rule": {
       "armed": false,
