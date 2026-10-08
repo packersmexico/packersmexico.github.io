@@ -10,11 +10,9 @@
   },
   "capture": {
     "status": "OPEN",
-    "complete": 8,
+    "complete": 9,
     "total": 9,
-    "missing": [
-      "LUIS C."
-    ]
+    "missing": []
   },
   "games": [
     {
@@ -218,6 +216,23 @@
       "BAL",
       "BUF"
     ],
+    "LUIS C.": [
+      "DAL",
+      "JAX",
+      "CIN",
+      "NE",
+      "MIN",
+      "NYJ",
+      "PIT",
+      "HOU",
+      "NYG",
+      "GB",
+      "LAC",
+      "DET",
+      "SEA",
+      "ATL",
+      "LAR"
+    ],
     "DR PALMA": [
       "DAL",
       "JAX",
@@ -314,9 +329,9 @@
     },
     {
       "name": "LUIS C.",
-      "status": "NO_PICK",
-      "correct": null,
-      "wrong": null
+      "status": "VALID",
+      "correct": 0,
+      "wrong": 0
     },
     {
       "name": "DR PALMA",
@@ -370,9 +385,9 @@
     },
     {
       "name": "LUIS C.",
-      "status": "NO_PICK",
-      "correct": null,
-      "wrong": null
+      "status": "VALID",
+      "correct": 38,
+      "wrong": 26
     },
     {
       "name": "DR PALMA",
