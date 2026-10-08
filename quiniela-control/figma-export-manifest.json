@@ -1,27 +1,28 @@
 {
-  "generated_at": "2026-10-06T19:40:50-06:00",
+  "generated_at": "2026-10-08T15:24:38-06:00",
   "figma_file_key": "RAoegEENwTH2L7gb3yydIq",
-  "week": 4,
+  "week": 5,
+  "publication_gate": "DIRECTION_REVIEW_PENDING · NO SOCIAL AUTOPUBLISH",
   "assets": [
     {
-      "node_id": "3016:1161548",
-      "target": "quiniela-control/exports/w4-picks-board.png",
-      "url": "https://www.figma.com/api/mcp/asset/eeee2027-5d4d-49c4-ba14-ac25fcd43676.png"
+      "node_id": "3147:903160",
+      "target": "quiniela-control/exports/w5-picks-board.png",
+      "url": "https://www.figma.com/api/mcp/asset/cc4fd303-4b65-4175-b8a3-2520835da2e8.png"
     },
     {
-      "node_id": "3016:1162827",
-      "target": "quiniela-control/exports/w4-results-live.png",
-      "url": "https://www.figma.com/api/mcp/asset/f9ff6060-0a6f-4131-b9d9-489f9f7f708b.png"
+      "node_id": "3266:998885",
+      "target": "quiniela-control/exports/w5-picks-mobile-1.png",
+      "url": "https://www.figma.com/api/mcp/asset/a7ecb310-c365-4166-849a-98f90a76f31e.png"
     },
     {
-      "node_id": "3016:1164584",
-      "target": "quiniela-control/exports/w4-ranking-weekly.png",
-      "url": "https://www.figma.com/api/mcp/asset/3974d7dc-5617-4f2b-ab2b-f0f2af84c6e1.png"
+      "node_id": "3266:1003379",
+      "target": "quiniela-control/exports/w5-picks-mobile-2.png",
+      "url": "https://www.figma.com/api/mcp/asset/47707526-6b58-40ee-a301-ecc1005c8c5d.png"
     },
     {
-      "node_id": "3016:1164638",
-      "target": "quiniela-control/exports/w4-ranking-season.png",
-      "url": "https://www.figma.com/api/mcp/asset/3fab7bad-babb-481c-8636-70b87ff9704e.png"
+      "node_id": "3266:1007642",
+      "target": "quiniela-control/exports/w5-picks-mobile-3.png",
+      "url": "https://www.figma.com/api/mcp/asset/7ec0a4d6-c6f6-425d-8997-286eb10a8db3.png"
     }
   ]
 }
