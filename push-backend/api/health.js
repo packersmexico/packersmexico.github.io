@@ -44,6 +44,7 @@ export default async function handler(req, res) {
       (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)
     ),
     registration: Boolean(process.env.RODRIGO_PUSH_CODE),
+    adminRegistration: { rodrigo:Boolean(process.env.RODRIGO_PUSH_CODE), ibra:Boolean(process.env.IBRA_PUSH_CODE) },
     senderAuth: Boolean(process.env.PMX_PUSH_SECRET)
   });
 }
