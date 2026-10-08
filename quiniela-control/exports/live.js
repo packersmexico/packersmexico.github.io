@@ -61,7 +61,7 @@ function refreshImages(stamp,manifest){
     img.addEventListener('load',done,{once:true});
     img.addEventListener('error',done,{once:true});
     const a=img.closest('.asset')?.querySelector('a[download]');
-    if(a) a.href=src;
+    if(a){a.href=src;a.download=a.download.replace(/W[0-9]+/,'W'+(manifest?.week||4));}
     img.src=src+'?t='+stamp;
   })));
 }
