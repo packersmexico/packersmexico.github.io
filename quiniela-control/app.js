@@ -1,4 +1,4 @@
-const DATA_URL='./data.json'; const REFRESH_MS=60000;
+const DATA_URL='./data.json'; const W4_URL='./weeks/week-04.json'; const REFRESH_MS=60000;
 let lastSeenSync=null;
 const $=id=>document.getElementById(id);
 function setText(id,v){const e=$(id);if(e)e.textContent=v}
@@ -9,6 +9,23 @@ function weeklyTable(data){
   if(Array.isArray(data.weekly_standings)) return [...data.weekly_standings].map(x=>({...x,pending:Math.max(0,(data.results?.total||0)-(data.results?.final||0))})).sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong||a.name.localeCompare(b.name));
   return (data.participants||[]).map(p=>({name:p.name,correct:0,wrong:0,pending:data.results?.total||0}));
 }
+
+function renderRankList(id,rows=[]){
+  const wrap=$(id); if(!wrap) return; wrap.replaceChildren();
+  const sorted=[...rows].sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong||a.name.localeCompare(b.name));
+  let last=null,rank=0;
+  sorted.forEach(r=>{if(last===null||r.correct!==last){rank++;last=r.correct}const el=document.createElement('div');el.className='rank-row';el.innerHTML='<span class="rank-pos">'+rank+'</span><strong>'+esc(r.name)+'</strong><span>'+r.correct+' ✓</span><span>'+r.wrong+' ×</span>';wrap.append(el)});
+}
+function renderW4(w4){
+  if(!w4) return;
+  setText('w4-final-count',w4.results?.final??16);
+  const leader=[...(w4.weekly_standings||[])].sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong)[0];
+  setText('w4-summary','Week 4 cerrada '+(w4.results?.final??0)+'/'+(w4.results?.total??16)+' FINAL · '+(leader?leader.name+' ganó la semana con '+leader.correct+'/'+w4.results.total:'ranking final disponible')+'.');
+  const wrap=$('w4-games'); if(wrap){wrap.replaceChildren();(w4.games||[]).forEach(g=>{const row=document.createElement('div');row.className='result-row final';row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state"><b>GANÓ '+esc(g.winner||'—')+'</b><span>'+esc(g.score||'FINAL')+'</span></div>';wrap.append(row)})}
+  renderRankList('w4-weekly-ranking',w4.weekly_standings||[]);
+  renderRankList('w4-season-ranking',w4.season_standings||[]);
+}
+
 function renderParticipants(list=[]){
   const wrap=$('participants');wrap.replaceChildren();
   list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase().startsWith('COMPLETE');row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
@@ -50,11 +67,13 @@ async function load(manual=false){
  }
  try{
    const stamp=Date.now();
-   const [r]=await Promise.all([fetch(DATA_URL+'?t='+stamp,{cache:'no-store'}),refreshPublishedAssets(stamp)]);
+   const [r,w4r]=await Promise.all([fetch(DATA_URL+'?t='+stamp,{cache:'no-store'}),fetch(W4_URL+'?t='+stamp,{cache:'no-store'}),refreshPublishedAssets(stamp)]);
    if(!r.ok) throw new Error('HTTP '+r.status);
+   if(!w4r.ok) throw new Error('W4 HTTP '+w4r.status);
    const data=await r.json();
+   const w4=await w4r.json();
    const previousSync=lastSeenSync;
-   render(data);
+   render(data); renderW4(w4);
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(manual){
