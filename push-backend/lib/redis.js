@@ -29,5 +29,8 @@ export async function redis(command) {
 
 export const keys = Object.freeze({
   rodrigoSubscription: 'pmx:quiniela:push:operator:rodrigo',
+  ibraSubscription: 'pmx:quiniela:push:operator:ibra',
+  subscriptionFor(role) { return role === 'IBRA' ? this.ibraSubscription : role === 'RODRIGO' ? this.rodrigoSubscription : null; },
+  sentFor(role,eventKey) { return `pmx:quiniela:push:sent:${role}:${eventKey}`; },
   sent: eventKey => `pmx:quiniela:push:sent:${eventKey}`
 });
