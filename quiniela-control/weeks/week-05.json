@@ -25,7 +25,6 @@
     "capture_status": "OPEN_8_OF_9_DIRECTION_REOPENED",
     "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_ONLY",
-    "auto_close_reason": "DEADLINE",
     "locked_submissions": {
       "DR PALMA": {
         "submission_id": "6670689441121470817",
@@ -152,13 +151,55 @@
           "ATL",
           "BUF"
         ]
+      },
+      "ALEX": {
+        "submission_id": "6672917389016661092",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "PIT",
+          "HOU",
+          "NYG",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "BAL",
+          "BUF"
+        ]
+      },
+      "RODRI": {
+        "submission_id": "6672925502612099422",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "NYJ",
+          "PIT",
+          "HOU",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "ATL",
+          "LAR"
+        ]
       }
     },
     "duplicate_count": 0,
     "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
     "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
     "submission_integrity": {
-      "status": "PASS · NO PICK MUTATION REQUIRED",
+      "status": "8_UNIQUE_RESPONSES_RECONCILED",
       "reconciled_at": "2026-10-07T06:52:00-06:00",
       "source": "JOTFORM SUBMISSION QUESTION IDS + EXPLICIT GAME-ID LABELS",
       "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
@@ -183,9 +224,11 @@
         "6670713770706204750",
         "6670744118902933092",
         "6671269814148574857",
-        "6671472801306099783"
+        "6671472801306099783",
+        "6672917389016661092",
+        "6672925502612099422"
       ],
-      "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
+      "result": "8 valid submissions · only LUIS C. pending"
     }
   },
   "participants": [
@@ -203,7 +246,7 @@
     },
     {
       "name": "ALEX",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "LUIS C.",
@@ -219,7 +262,7 @@
     },
     {
       "name": "RODRI",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "IBRACHO",
@@ -391,7 +434,7 @@
     }
   ],
   "locked_picks": {
-    "status": "CLOSED_PARTIAL_LOCK · 6_OF_9 · NOT PUBLIC",
+    "status": "OPEN_PARTIAL_LOCK_8_OF_9_NOT_PUBLIC",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "matrix": {
       "DR PALMA": [
@@ -495,6 +538,40 @@
         "SEA",
         "ATL",
         "BUF"
+      ],
+      "ALEX": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "CLE",
+        "PIT",
+        "HOU",
+        "NYG",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "BAL",
+        "BUF"
+      ],
+      "RODRI": [
+        "DAL",
+        "JAX",
+        "CIN",
+        "NE",
+        "MIN",
+        "NYJ",
+        "PIT",
+        "HOU",
+        "WAS",
+        "GB",
+        "DEN",
+        "DET",
+        "SEA",
+        "ATL",
+        "LAR"
       ]
     },
     "submission_ids": {
@@ -503,9 +580,11 @@
       "LALO": "6670713770706204750",
       "IBRACHO": "6670744118902933092",
       "JENNI": "6671269814148574857",
-      "EL DOC": "6671472801306099783"
+      "EL DOC": "6671472801306099783",
+      "ALEX": "6672917389016661092",
+      "RODRI": "6672925502612099422"
     },
     "mapping_rule": "QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
-    "integrity_status": "PASS · G10/G11 VERIFIED AGAINST ORIGINAL JOTFORM SUBMISSIONS"
+    "integrity_status": "8 unique form responses verified; no previous picks changed"
   }
 }
