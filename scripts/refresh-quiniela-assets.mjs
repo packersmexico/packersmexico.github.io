@@ -35,7 +35,10 @@ for(let w=1;w<=current;w++){
     const actual=figma?.output_targets?.[key]||defaultPath;
     const isCorrectPath=actual===defaultPath && !path.isAbsolute(actual);
     const visual=String(figma?.qa?.[`${key}_visual_review`]||figma?.qa?.visual_review||'');
-    const approved=Boolean(figma && Number(figma.week)===w && figma.publication_ready===true && visual.includes('PASS') && String(figma.gate||'').includes('QA_PASS'));
+    const perAsset=figma?.asset_approvals?.[key];
+    const individual=perAsset?.figma_qa==='PASS' && perAsset?.direction_review==='PASS' && perAsset?.export_verified===true;
+    const legacy=figma?.publication_ready===true && visual.includes('PASS') && String(figma.gate||'').includes('QA_PASS');
+    const approved=Boolean(figma && Number(figma.week)===w && (individual||legacy));
     const exists=isCorrectPath&&validPng(actual,slot.width,slot.height);
     const state=!eligible?'WAITING_EVENT':approved&&exists?'READY':'QA_PENDING';
     assets[key]={state,href:state==='READY'?('./'+path.basename(actual)):null,expected:slot.file+'.png',size:`${slot.width}x${slot.height}`};
