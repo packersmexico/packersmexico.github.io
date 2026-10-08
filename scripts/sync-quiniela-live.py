@@ -15,7 +15,7 @@ for g in games:
     kick=parse(g.get('kickoff_iso'))
     if not kick or (g.get('status')=='FINAL' and g.get('winner')):continue
     age=now-kick
-    if datetime.timedelta(minutes=-10)<=age<=datetime.timedelta(hours=6):active.append(g)
+    if datetime.timedelta(minutes=-10)<=age<=datetime.timedelta(hours=8) or (datetime.timedelta(hours=8)<age<=datetime.timedelta(days=3) and now.minute<15):active.append(g)
 if not active:
     print('No live/recent non-final games due; no API call.');sys.exit(0)
 dates=sorted({parse(g['kickoff_iso']).strftime('%Y%m%d') for g in active})
@@ -59,7 +59,7 @@ for g in active:
         changed.append(g['id'])
 if not changed:
     print('No confirmed scoreboard delta.');sys.exit(0)
-finals=[g for g in games if g.get('status')=='FINAL' and g.get('winner')]
+finals=[g for g in games if g.get('status')=='TIE' or (g.get('status')=='FINAL' and g.get('winner'))]
 sub=(data.get('capture') or {}).get('locked_submissions') or {}
 weekly=[]
 for p in data.get('participants',[]):
