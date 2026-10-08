@@ -163,8 +163,9 @@ jobs:
 
           weekly = []
           for p in participants:
-              correct = sum(1 for g in finals if (g.get("picks") or {}).get(p) == g.get("winner"))
-              weekly.append({"name":p, "correct":correct, "wrong":len(finals)-correct})
+              picks = ((data.get("capture") or {}).get("locked_submissions") or {}).get(p, {}).get("picks") or []
+              correct = sum(1 for i,g in enumerate(games) if g.get("status")=="FINAL" and g.get("winner") and i<len(picks) and picks[i]==g.get("winner"))
+              weekly.append({"name":p, "correct":correct, "wrong":len(finals)-correct if len(picks)==total_games else 0})
 
           base_rows = data.get("season_base_before_week") or []
           base = {r["name"]:(int(r.get("correct",0)), int(r.get("wrong",0))) for r in base_rows}
