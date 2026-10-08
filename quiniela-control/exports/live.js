@@ -9,6 +9,24 @@ function formatTime(value){
   }catch{return value;}
 }
 
+function renderLiveResults(data){
+  const wrap=$('live-game-list');
+  if(!wrap)return;
+  wrap.replaceChildren();
+  const games=data.games||[];
+  const finals=games.filter(g=>g.status==='FINAL' && g.winner);
+  $('live-game-count').textContent=finals.length+'/'+games.length+' FINAL';
+  $('live-title').textContent=(data.week||'SEMANA ACTUAL')+' · RESULTADOS EN VIVO';
+  for(const g of games){
+    const row=document.createElement('div');row.className='live-game-row';
+    const left=document.createElement('strong');left.textContent=g.id+' · '+g.matchup;
+    const right=document.createElement('span');right.textContent=g.status==='FINAL'?('FINAL · '+(g.score||g.winner)):('PENDIENTE · '+g.time);
+    row.append(left,right);wrap.append(row);
+  }
+  const note=$('live-results-note');
+  if(note)note.textContent='Fuente: última sincronización '+formatTime(data.last_sync)+'. Datos y aciertos no autorizan imágenes ni publicación automática.';
+}
+
 function refreshImages(stamp){
   const map=[
     ['picks-image','./w4-picks-board.png'],\n    ['results-image','./w4-results-live.png'],
