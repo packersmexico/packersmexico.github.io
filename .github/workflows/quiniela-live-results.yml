@@ -2,38 +2,13 @@ name: Quiniela Smart Result Checkpoints
 
 on:
   schedule:
-    # Checkpoints near expected game endings. Most runs exit before any external request
-    # unless data.json has a non-FINAL game whose kickoff falls inside the expected-end window.
-
-    # Thursday Night Football: ~3h30 after typical kickoff + one OT/delay fallback.
-    - cron: '45 3 * * 5'
-    - cron: '15 4 * * 5'
-
-    # Saturday windows used late in the season; no API call occurs if no matching game exists.
-    - cron: '30 21 * * 6'
-    - cron: '15 1 * * 0'
-    - cron: '45 4 * * 0'
-
-    # Sunday international / morning window.
-    - cron: '0 17 * * 0'
-    - cron: '30 17 * * 0'
-
-    # Sunday early window.
-    - cron: '30 20 * * 0'
-    - cron: '0 21 * * 0'
-
-    # Sunday late window.
-    - cron: '50 23 * * 0'
-    - cron: '20 0 * * 1'
-
-    # Sunday Night Football.
-    - cron: '50 3 * * 1'
-    - cron: '20 4 * * 1'
-
-    # Monday Night Football.
-    - cron: '45 3 * * 2'
-    - cron: '15 4 * * 2'
-
+    # UTC checks every 20 minutes only near game windows; zero API requests otherwise.
+    - cron: '*/20 12-23 * * 0'
+    - cron: '*/20 0-5,16-23 * * 1'
+    - cron: '*/20 0-5 * * 2'
+    - cron: '*/20 22-23 * * 4'
+    - cron: '*/20 0-6 * * 5'
+    - cron: '*/20 16-23 * * 6'
   workflow_dispatch:
 
 permissions:
@@ -87,7 +62,7 @@ jobs:
               if not kickoff:
                   continue
               age = now - kickoff
-              if datetime.timedelta(hours=3, minutes=10) <= age <= datetime.timedelta(hours=4, minutes=40):
+              if datetime.timedelta(minutes=-20) <= age <= datetime.timedelta(hours=5, minutes=30):
                   candidates.append(g)
 
           if not candidates:
@@ -132,7 +107,9 @@ jobs:
               st = (ev.get("status") or {}).get("type") or {}
               by_match[key] = {
                   "teams": teams,
-                  "completed": bool(st.get("completed"))
+                  "completed": bool(st.get("completed")),
+                  "live": st.get("state") == "in",
+                  "short_detail": str(st.get("shortDetail") or st.get("detail") or "")
               }
 
           changed = False
@@ -140,9 +117,18 @@ jobs:
 
           for g in candidates:
               e = by_match.get(g.get("matchup"))
-              if not e or not e["completed"]:
+              if not e:
                   continue
               away, home = e["teams"]["away"], e["teams"]["home"]
+              if not e["completed"]:
+                  if e.get("live"):
+                      live_score = f"{away['abbr']} {away['score']}–{home['score']} {home['abbr']}"
+                      if (g.get("status"), g.get("live_score")) != ("LIVE", live_score):
+                          g["status"] = "LIVE"
+                          g["live_score"] = live_score
+                          g["live_detail"] = e.get("short_detail") or ""
+                          changed = True
+                  continue
               if away["score"] == home["score"]:
                   print("Score tied: hold until confirmed win/tie result", g["id"])
                   continue
@@ -152,13 +138,15 @@ jobs:
 
               if (g.get("status"), g.get("winner"), g.get("score")) != ("FINAL", winner["abbr"], score):
                   g["status"] = "FINAL"
+                  g.pop("live_score", None)
+                  g.pop("live_detail", None)
                   g["winner"] = winner["abbr"]
                   g["score"] = score
                   changed = True
                   newly_final.append(g["id"])
 
           if not changed:
-              print("Expected-end check completed; no new FINAL yet. Fallback checkpoint will handle overtime/delay if needed.")
+              print("Scoreboard check complete; no material LIVE/FINAL changes.")
               raise SystemExit(0)
 
           finals = [g for g in games if g.get("status") == "FINAL" and g.get("winner")]
@@ -191,7 +179,7 @@ jobs:
 
           now_cdmx = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-6))).isoformat(timespec="seconds")
           data["last_sync"] = now_cdmx
-          data["sync_mode"] = "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL"
+          data["sync_mode"] = "AUTO LIVE SCOREBOARD 20-MIN + FINAL CHECK"
           data["results"] = results
           data["weekly_standings"] = weekly
           data["season_standings"] = season
@@ -206,7 +194,7 @@ jobs:
               week.setdefault("production", {})["package_status"] = f"DATA LIVE · {len(finals)}/{total_games} FINAL · FIGMA REFRESH PENDING"
               week_path.write_text(json.dumps(week, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
-          print("New FINAL:", ",".join(newly_final))
+          print("New FINAL:", ",".join(newly_final), "LIVE games:", sum(g.get("status")=="LIVE" for g in games))
 
       - name: Commit only material FINAL changes
         shell: bash
