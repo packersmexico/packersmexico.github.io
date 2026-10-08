@@ -550,11 +550,11 @@
   ],
   "public_picks_authorized": false,
   "publication": {
-    "gate": "HOLD",
+    "gate": "HOLD · DIRECTION_VISUAL_REVIEW_REQUIRED",
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "W5 CAPTURE OPEN · 8/9 · 120/135 PICKS · LUIS C. MISSING · W5 FIGMA VISUALS PENDING QA"
+    "assets_status": "W5_PICKS_FIGMA_REVIEW_READY_9OF9"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -634,7 +634,9 @@
     "last_live_submission_check": "2026-10-08T18:25:45.544Z",
     "latest_confirmed_participants": 8,
     "push_reminder_request": "W5_REMINDER_8OF9_20261008_1600",
-    "push_reminder_requested_at": "2026-10-08T18:32:39.556Z"
+    "push_reminder_requested_at": "2026-10-08T18:32:39.556Z",
+    "figma_picks_preview_ready_at": "2026-10-08T15:27:36-06:00",
+    "figma_picks_preview_key": "W5_FIGMA_PICKS_REVIEW_READY_9OF9_20261008"
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
