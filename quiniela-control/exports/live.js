@@ -51,7 +51,7 @@ function refreshImages(stamp,manifest){
   const map=[
     ['picks-image',manifest?.output_targets?.picks?'./'+manifest.output_targets.picks.split('/').pop():'./w4-picks-board.png'],
     ['results-image',manifest?.output_targets?.results?'./'+manifest.output_targets.results.split('/').pop():'./w4-results-live.png'],
-    ['weekly-image','./w4-ranking-weekly.png'],
+    ['weekly-image',manifest?.output_targets?.weekly?'./'+manifest.output_targets.weekly.split('/').pop():'./w4-ranking-weekly.png'],
     ['season-image','./w4-ranking-season.png']
   ];
   return Promise.all(map.map(([id,src])=>new Promise(resolve=>{
