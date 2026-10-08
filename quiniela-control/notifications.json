@@ -2,6 +2,15 @@
   "updated_at": "2026-10-08T18:25:45.544Z",
   "items": [
     {
+      "id": "W5_REMINDER_8OF9_20261008_1600",
+      "status": "READY",
+      "title": "WEEK 5 · FALTA UNO",
+      "body": "Rodri y Alex ya enviaron. Falta LUIS C. · captura abierta hasta hoy 16:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
+    {
       "id": "W5_OPEN",
       "status": "READY",
       "title": "WEEK 5 ABIERTA",
