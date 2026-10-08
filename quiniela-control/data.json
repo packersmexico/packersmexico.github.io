@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-08T06:02:00-06:00",
+  "last_sync": "2026-10-08T10:53:00-06:00",
   "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
   "operator": {
     "name": "RODRIGO",
@@ -18,7 +18,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 6,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-08T10:00:00-06:00",
     "deadline_label": "8 OCT · 10:00 CDMX",
     "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
@@ -32,10 +32,10 @@
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_6_OF_9",
-    "form_status": "ENABLED",
+    "capture_status": "CLOSED_6_OF_9_DEADLINE",
+    "form_status": "DISABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
-    "auto_close_reason": null,
+    "auto_close_reason": "DEADLINE",
     "locked_submissions": {
       "DR PALMA": {
         "submission_id": "6670689441121470817",
@@ -196,7 +196,8 @@
         "6671472801306099783"
       ],
       "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
-    }
+    },
+    "closed_at": "2026-10-08T10:53:00-06:00"
   },
   "participants": [
     {
@@ -478,7 +479,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "CAPTURE OPEN · 6/9 · 90/135 PICKS · VISUALS NOT READY"
+    "assets_status": "CAPTURE CLOSED · 6/9 · 90/135 PICKS · 3 PARTICIPANTS MISSING · FIGMA FINALIZATION REQUIRES DIRECTION"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -554,15 +555,15 @@
     "last_delivery_test_requested_at": "2026-10-05T19:30:08-06:00",
     "last_health_check": "2026-10-05T19:28:56-06:00",
     "blocker": null,
-    "last_delivery_event": "W5_OPEN"
+    "last_delivery_event": "W5_DEADLINE_CLOSED_6_OF_9"
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "CAPTURE_OPEN_6_OF_9",
+    "week5_stage": "CAPTURE_CLOSED_6_OF_9_DEADLINE",
     "publication_ready": false,
     "manifest": null,
     "rivalries_9_of_9_rule": {
-      "armed": true,
+      "armed": false,
       "condition": "9_OF_9_AND_135_OF_135",
       "next_stage": "04 · FIGMA",
       "variant": "RIVALRIES WEEK",
@@ -580,7 +581,7 @@
     }
   },
   "public_picks": {
-    "status": "NOT_AUTHORIZED · CAPTURE OPEN · 6/9 LOCKED",
+    "status": "NOT_AUTHORIZED · CAPTURE CLOSED · 6/9 LOCKED · 3 MISSING",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "games": [
       "G01",
