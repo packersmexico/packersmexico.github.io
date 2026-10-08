@@ -109,6 +109,16 @@ jobs:
                 "tag":f"pmx-quiniela-w{week}-open"
               }
 
+          # Single W5 reminder keyed distinctly from general Week-open alert.
+          if week == 5 and complete == 8 and total == 9 and window == "OPEN":
+              event={
+                "eventKey":"W5_REMINDER_8OF9_20261008_1600",
+                "title":"QUINIELA PMX · WEEK 5 · FALTA UNO",
+                "body":"Rodri y Alex ya enviaron. Falta LUIS C. · captura abierta hasta hoy 16:00 CDMX.",
+                "url":"https://packersmexico.github.io/quiniela-control/captura/",
+                "tag":"pmx-w5-reminder-8of9"
+              }
+
           if not event:
               print("No milestone notification for this state.")
               event_path.write_text("{}",encoding="utf-8")
@@ -150,7 +160,6 @@ jobs:
           fi
 
       - name: Send push milestone
-        continue-on-error: true
         env:
           PUSH_API_URL: https://packersmexicogithubio-push-backend.vercel.app
           PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
@@ -158,8 +167,8 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${PUSH_API_URL:-}" ] || [ -z "${PUSH_SECRET:-}" ]; then
-            echo "Push backend not configured; notification center remains active."
-            exit 0
+            echo "::error::Push backend secret/config missing; notification NOT sent."
+            exit 1
           fi
           if [ ! -s .pmx-push-event.json ] || [ "$(cat .pmx-push-event.json)" = "{}" ]; then
             echo "No push event"
