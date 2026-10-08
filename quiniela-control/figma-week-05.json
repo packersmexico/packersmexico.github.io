@@ -3,17 +3,17 @@
   "week": 5,
   "season": 2026,
   "source": "JOTFORM_VERIFIED_G01_G15",
-  "state": "FIGMA_PICKS_COMPLETED · EXPORT_PENDING_GITHUB · DIRECTION_REVIEW",
+  "state": "FIGMA_PICKS_COMPLETE · FOUR_EXPORTED_PNGS_VERIFIED · WAITING_DIRECTION_VISUAL_REVIEW",
   "publication_ready": false,
-  "gate": "FIGMA_TECHNICAL_QA_PASS · HUMAN_DIRECTION_REVIEW_PENDING",
+  "gate": "PICKS_QA_PASS · DIRECTION_REVIEW_REQUIRED · NO_AUTO_PUBLISH",
   "required_screenshots": true,
   "qa": {
     "picks_board": "PASS · MAIN 135/135 · MOBILE 45/45 EACH",
-    "picks_visual_review": "REVIEW READY · DIRECTION REQUIRED · 4 REAL FIGMA SCREENSHOTS CAPTURED",
+    "picks_visual_review": "PASS · REAL GITHUB PNG PERCEPTUAL REVIEW · MAIN + MOBILE 1/2/3",
     "results_matrix": "HOLD",
     "weekly_ranking": "HOLD",
     "season_ranking": "HOLD",
-    "visual_review": "HOLD · DIRECTION VISUAL REVIEW PENDING",
+    "visual_review": "PASS · VERIFIED FOUR REAL FIGMA RENDERS · TECHNICAL AND PERCEPTUAL",
     "structural": "PASS · 4 EXISTING FRAMES · 135/135 VERIFIABLE G01-G15",
     "source_integrity": "PASS · 9 FIRST VALID PARTICIPANTS · DR PALMA DUPLICATE IGNORED",
     "logo": "PASS · PMX HORIZONTAL V1.1 AND ALL APPROVED NFL TEAM VECTORS",
@@ -23,7 +23,11 @@
       "3266:1003379",
       "3266:1007642"
     ],
-    "export": "FIGMA_EXPORTS_CREATED · GITHUB SYNC NOT YET VERIFIED"
+    "export": "PASS · 4 VERIFIED GITHUB PNGS · 135 PICKS",
+    "picks_screenshot_evidence": "REAL FIGMA GET_SCREENSHOT + GITHUB PNG RENDER REVIEW · 4 NODES",
+    "picks_png": "PASS · 1600x2000 · GITHUB VERIFIED",
+    "mobile_png": "PASS · 3 × 1080x1920 · GITHUB VERIFIED",
+    "direction_review": "WAITING_DIRECTION_VISUAL_REVIEW"
   },
   "output_targets": {
     "picks": "quiniela-control/exports/w5-picks-board.png",
@@ -52,5 +56,7 @@
     "mobile1": "3266:998885",
     "mobile2": "3266:1003379",
     "mobile3": "3266:1007642"
-  }
+  },
+  "picks_node_id": "3147:903160",
+  "review_preview_url": "https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-w5-review"
 }
