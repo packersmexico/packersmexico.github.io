@@ -3,14 +3,14 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "snapshot_status": "CAPTURE_OPEN_6_OF_9",
-  "last_sync": "2026-10-08T06:02:00-06:00",
+  "snapshot_status": "CAPTURE_CLOSED_6_OF_9_DEADLINE",
+  "last_sync": "2026-10-08T10:53:00-06:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 6,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-08T10:00:00-06:00",
     "deadline_label": "8 OCT · 10:00 CDMX",
     "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
@@ -24,10 +24,10 @@
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "OPEN_6_OF_9",
-    "form_status": "ENABLED",
+    "capture_status": "CLOSED_6_OF_9_DEADLINE",
+    "form_status": "DISABLED",
     "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
-    "auto_close_reason": null,
+    "auto_close_reason": "DEADLINE",
     "locked_submissions": {
       "DR PALMA": {
         "submission_id": "6670689441121470817",
@@ -188,7 +188,8 @@
         "6671472801306099783"
       ],
       "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
-    }
+    },
+    "closed_at": "2026-10-08T10:53:00-06:00"
   },
   "participants": [
     {
@@ -235,10 +236,10 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE OPEN · 6/9 · 90/135 PICKS · VISUALS NOT READY",
+    "package_status": "CAPTURE CLOSED · 6/9 · 90/135 PICKS · 3 PARTICIPANTS MISSING · FINAL VISUAL DECISION PENDING",
     "outputs": [],
     "rivalries_9_of_9_rule": {
-      "armed": true,
+      "armed": false,
       "condition": "9_OF_9_AND_135_OF_135",
       "next_stage": "04 · FIGMA",
       "variant": "RIVALRIES WEEK",
@@ -393,7 +394,7 @@
     }
   ],
   "locked_picks": {
-    "status": "PARTIAL_LOCK · NOT PUBLIC",
+    "status": "CLOSED_PARTIAL_LOCK · 6_OF_9 · NOT PUBLIC",
     "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
     "matrix": {
       "DR PALMA": [
