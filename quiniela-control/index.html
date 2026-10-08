@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="operator.css">
+  <link rel="stylesheet" href="operator.css?v=20261008-compact">
   <script src="app.js" defer></script>
-  <script src="push.js?v=20261008-admins" defer></script>
+  <script src="push.js?v=20261008-adminfix" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -25,7 +25,7 @@
   <main id="contenido" class="shell">
     <section class="hero" aria-labelledby="title">
       <p class="eyebrow" id="week-label">SEMANA ACTIVA</p>
-      <h1 id="title">QUINIELA<br>CONTROL</h1>
+      <h1 id="title">QUINIELA <span>CONTROL</span></h1>
       <div class="hero-status">
         <span class="big-number" id="capture-count">—</span>
         <span class="big-copy">RESPUESTAS RECIBIDAS</span>
@@ -34,8 +34,8 @@
       <div class="meta-line"><span id="window-status">—</span><span id="deadline">—</span></div><p class="production-rule refresh-message" id="refresh-message" aria-live="polite">Jotform y resultados se sincronizan desde el controlador. Usa “Recargar panel” para traer el último estado ya sincronizado y los PNG publicados.</p>
       <div class="quick-actions hero-actions">
         <button class="action-link refresh-control" id="refresh-control" type="button">RECARGAR PANEL ↻</button>
-        <a class="action-link" id="stable-capture" href="./captura/" rel="noopener">ABRIR / COMPARTIR FORMULARIO →</a>
-        <a class="action-link secondary-action" id="direct-form" href="#" rel="noopener">FORMULARIO DIRECTO →</a>
+        <a class="action-link main-download" href="./exports/live.html#pmx-w5-review" rel="noopener">PICKS WEEK 5 · DESCARGAR →</a>
+        <a class="action-link secondary-action" id="stable-capture" href="./captura/" rel="noopener">FORMULARIO →</a>
       </div>
     </section>
 
@@ -49,7 +49,7 @@
         <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
         <a class="action-link secondary-action" href="./?admin=ibra" rel="noopener">REGISTRO DE IBRA →</a>
       </div>
-      <div class="notification-list" id="notification-list" aria-live="polite"></div>
+      <details class="hub-fold"><summary>Historial de avisos</summary><div class="notification-list" id="notification-list" aria-live="polite"></div></details>
     </section>
 
     <section class="section" aria-labelledby="capture-heading">
@@ -60,7 +60,7 @@
 
     <section class="section" aria-labelledby="results-heading">
       <div class="section-head"><div><p class="eyebrow">RESULTADOS</p><h2 id="results-heading">MONITOR DE JUEGOS</h2></div><p class="section-stat"><span id="final-count">0</span>/<span id="game-count">—</span> FINAL</p></div>
-      <div class="result-grid" id="games"></div>
+      <details class="hub-fold"><summary>Ver partidos y marcadores</summary><div class="result-grid" id="games"></div></details>
       <div class="quick-actions">
         <a class="action-link" href="./exports/live.html#pmx-weekly-library" rel="noopener">PICKS Y DESCARGAS POR SEMANA →</a>
         <a class="action-link secondary-action" href="./exports/live.html#live-week-results" rel="noopener">RESULTADOS EN VIVO →</a>
@@ -71,11 +71,11 @@
     <section class="section" aria-labelledby="w4-heading">
       <div class="section-head"><div><p class="eyebrow">ÚLTIMO CIERRE · SEMANA ANTERIOR</p><h2 id="w4-heading">RESULTADOS FINALES</h2></div><p class="section-stat"><span id="w4-final-count">16</span>/16 FINAL</p></div>
       <p class="production-rule" id="w4-summary">Cargando cierre Week 4…</p>
-      <div class="result-grid" id="w4-games"></div>
+      <details class="hub-fold"><summary>Ver todos los resultados y rankings de la semana anterior</summary><div class="result-grid" id="w4-games"></div>
       <div class="section-head"><div><p class="eyebrow">SEMANA ANTERIOR</p><h2>RANKING SEMANAL FINAL</h2></div><p class="section-stat">ALEX · 12/16</p></div>
       <div class="live-ranking" id="w4-weekly-ranking"></div>
       <div class="section-head"><div><p class="eyebrow">TEMPORADA · CIERRE ANTERIOR</p><h2>RANKING GENERAL</h2></div><p class="section-stat">64 PICKS</p></div>
-      <div class="live-ranking" id="w4-season-ranking"></div>
+      <div class="live-ranking" id="w4-season-ranking"></div></details>
       <div class="quick-actions">
         <a class="action-link" href="./exports/live.html#pmx-weekly-library" rel="noopener">VER DESCARGAS POR SEMANA →</a>
         <a class="action-link secondary-action" href="./exports/live.html#pmx-weekly-library" rel="noopener">RANKING SEMANAL →</a>
@@ -85,12 +85,12 @@
 
     <section class="section" aria-labelledby="ranking-heading">
       <div class="section-head"><div><p class="eyebrow">TABLA EN VIVO</p><h2 id="ranking-heading">RANKING DE LA SEMANA</h2></div><p class="section-stat" id="ranking-status">PENDING</p></div>
-      <div class="live-ranking" id="weekly-ranking"></div>
+      <details class="hub-fold"><summary>Ver clasificación y aciertos</summary><div class="live-ranking" id="weekly-ranking"></div></details>
     </section>
 
     <section class="section" aria-labelledby="ops-heading">
       <div class="section-head"><div><p class="eyebrow">OPERACIÓN RODRIGO</p><h2 id="ops-heading">CONTROL DESDE AQUÍ</h2></div><p class="section-stat" id="gate-status">HOLD</p></div>
-      <div class="operator-steps">
+      <details class="hub-fold"><summary>Mostrar instrucciones y herramientas</summary><div class="operator-steps">
         <div><span>01</span><strong>MONITOREAR CAPTURA</strong></div>
         <div><span>02</span><strong>REVISAR RESULTADOS</strong></div>
         <div><span>03</span><strong>DESCARGAR ASSETS</strong></div>
@@ -101,7 +101,7 @@
         <a class="action-link secondary-action" href="./exports/live.html" rel="noopener">ABRIR ASSETS AUTOMÁTICOS →</a>
         <a class="action-link secondary-action" href="./exports/" rel="noopener">ARCHIVO DE SEMANAS →</a>
       </div>
-      <p class="production-rule">El panel es operativo. Identidad, masters y reglas permanecen protegidos. Publicación únicamente con READY FOR CLICK / PASS.</p>
+      </details><p class="production-rule">El panel es operativo. Identidad, masters y reglas permanecen protegidos. Publicación únicamente con READY FOR CLICK / PASS.</p>
     </section>
 
     <section class="ops-strip" aria-label="Estado de sincronización">
