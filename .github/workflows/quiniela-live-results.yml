@@ -192,8 +192,8 @@ jobs:
           data["results"] = results
           data["weekly_standings"] = weekly
           data["season_standings"] = season
-          data.setdefault("publication", {})["gate"] = "READY FOR CLICK" if len(finals) == total_games else "HOLD"
-          data["publication"]["assets_status"] = f"DATA LIVE · {len(finals)}/{total_games} FINAL · FIGMA REFRESH PENDING"
+          data.setdefault("publication", {})["gate"] = "HOLD"  # Visual QA + 05 authorization required
+          data["publication"]["assets_status"] = f"DATA LIVE · {len(finals)}/{total_games} FINAL · FIGMA QA AND PNG EXPORT PENDING"
           data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
           if week_path.exists():
