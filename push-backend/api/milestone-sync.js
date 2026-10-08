@@ -59,6 +59,7 @@ function eventPayloads(data) {
   if (captureClosed) {
     events.push({
       needsAsset: `exports/w${week}-picks-board.png`,
+      assetSlots: ['picks'],
       eventKey: `PICKS_READY_W${week}`,
       title: `PACKERS MÉXICO · W${week} PICKS DISPONIBLES`,
       body: `${capture.complete || 0}/${capture.total || 9} participantes. Captura cerrada; hoja de picks verificada para descargar.`,
@@ -74,6 +75,7 @@ function eventPayloads(data) {
   if (finalComplete) {
     events.push({
       needsQA: 'FINAL',
+      assetSlots: ['results','weekly','season'],
       needsAssets: [
         `exports/w${week}-results-live.png`,
         `exports/w${week}-ranking-weekly.png`,
@@ -90,7 +92,13 @@ function eventPayloads(data) {
   return events;
 }
 
-async function sendEvent(role, record, event, vapid) {
+async function sendEvent(role, record, event, vapid, assetIndex) {
+  if (event.assetSlots) {
+    const w=Number((event.eventKey.match(/W(\\d+)/)||[])[1]);
+    for (const slot of event.assetSlots) {
+      if (assetIndex?.weeks?.[w]?.assets?.[slot]?.state!=='READY')return {eventKey:event.eventKey,status:'WAITING_ASSET_QA',slot};
+    }
+  }
   const sentKey = keys.sentFor(role,event.eventKey);
   const alreadySent = await redis(['GET', sentKey]);
   if (alreadySent) return { eventKey: event.eventKey, status: 'ALREADY_SENT', sentAt: alreadySent };
@@ -167,13 +175,14 @@ export default async function handler(req, res) {
 
   const data = await getJson(`${RAW_BASE}/data.json?t=${Date.now()}`);
   const candidates = eventPayloads(data);
+  const assetIndex=await getJson(`${RAW_BASE}/exports/asset-index.json?t=${Date.now()}`);
   const results = [];
   for (const role of ['RODRIGO','IBRA']) {
     const raw = await redis(['GET', keys.subscriptionFor(role)]);
     if (!raw) { results.push({operator:role,status:'NOT_SUBSCRIBED'}); continue; }
     const record = JSON.parse(raw);
     for (const event of candidates) {
-      const result = await sendEvent(role,record,event,vapid);
+      const result = await sendEvent(role,record,event,vapid,assetIndex);
       results.push({operator:role,...result});
     }
   }
