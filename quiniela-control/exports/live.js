@@ -55,11 +55,12 @@ async function load(manual=false){
     const r=await fetch(DATA+'?t='+stamp,{cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     current=await r.json();
+    renderLiveResults(current);
     $('asset-week').textContent='QUINIELA · '+current.week+' · '+current.season;
-    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · ÚLTIMO CIERRE WEEK 4 · 16/16 FINAL';
+    $('asset-status').textContent='SEMANA ACTIVA · '+current.capture.complete+'/'+current.capture.total+' · PNG DISPONIBLES: WEEK 4 APROBADOS · W5 PENDIENTES';
     await refreshImages(stamp);
     if(status){
-      status.textContent=(manual?'INFORMACIÓN Y PIEZAS ACTUALIZADAS · DATOS ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
+      status.textContent=(manual?'DATOS RECARGADOS · PNG APROBADOS REVISADOS · SYNC ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
     }
   }catch(e){
     console.error(e);
