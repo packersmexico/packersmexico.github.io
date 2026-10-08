@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """PMX live NFL sync. Only observed FINAL results count for ranking."""
-import json, urllib.request, datetime, pathlib, os, sys
+import json, urllib.request, datetime, pathlib, sys
+from zoneinfo import ZoneInfo
 UTC=datetime.timezone.utc
 DATA=pathlib.Path('quiniela-control/data.json')
 data=json.loads(DATA.read_text(encoding='utf8'))
@@ -18,7 +19,7 @@ for g in games:
     if datetime.timedelta(minutes=-10)<=age<=datetime.timedelta(hours=8) or (datetime.timedelta(hours=8)<age<=datetime.timedelta(days=3) and now.minute<15):active.append(g)
 if not active:
     print('No live/recent non-final games due; no API call.');sys.exit(0)
-dates=sorted({parse(g['kickoff_iso']).strftime('%Y%m%d') for g in active})
+dates=sorted({parse(g['kickoff_iso']).astimezone(ZoneInfo('America/New_York')).strftime('%Y%m%d') for g in active})
 events=[]
 for day in dates:
     url=f'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={day}&limit=100'
