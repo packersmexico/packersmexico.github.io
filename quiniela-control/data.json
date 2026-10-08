@@ -3,8 +3,8 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-08T10:53:00-06:00",
-  "sync_mode": "AUTO AL CIERRE ESTIMADO DE JUEGOS + REFRESH MANUAL",
+  "last_sync": "2026-10-08T18:25:45.544Z",
+  "sync_mode": "JOTFORM VERIFIED 8/9 + GAME FINAL CHECKPOINTS",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -16,26 +16,23 @@
     "form_id": "262777830600055",
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 6,
+    "complete": 8,
     "total": 9,
-    "window": "CLOSED",
-    "deadline": "2026-10-08T10:00:00-06:00",
-    "deadline_label": "8 OCT · 10:00 CDMX",
-    "operational_target": "JUEVES 8 OCT · CIERRE MÁXIMO 10:00 CDMX",
+    "window": "OPEN",
+    "deadline": "2026-10-08T16:00:00-06:00",
+    "deadline_label": "8 OCT · 16:00 CDMX",
+    "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX · DIRECCIÓN",
     "expected_picks": 135,
-    "received_picks": 90,
-    "missing_picks": 45,
+    "received_picks": 120,
+    "missing_picks": 15,
     "missing_participants": [
-      "ALEX",
-      "LUIS C.",
-      "RODRI"
+      "LUIS C."
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "invitado": "OFF",
-    "capture_status": "CLOSED_6_OF_9_DEADLINE",
-    "form_status": "DISABLED",
-    "auto_close_condition": "9_OF_9_COMPLETE_OR_DEADLINE",
-    "auto_close_reason": "DEADLINE",
+    "capture_status": "OPEN_8_OF_9_DIRECTION_REOPENED",
+    "form_status": "ENABLED",
+    "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {
       "DR PALMA": {
         "submission_id": "6670689441121470817",
@@ -162,15 +159,57 @@
           "ATL",
           "BUF"
         ]
+      },
+      "ALEX": {
+        "submission_id": "6672917389016661092",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "CLE",
+          "PIT",
+          "HOU",
+          "NYG",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "BAL",
+          "BUF"
+        ]
+      },
+      "RODRI": {
+        "submission_id": "6672925502612099422",
+        "status": "LOCKED_FIRST_VALID",
+        "picks": [
+          "DAL",
+          "JAX",
+          "CIN",
+          "NE",
+          "MIN",
+          "NYJ",
+          "PIT",
+          "HOU",
+          "WAS",
+          "GB",
+          "DEN",
+          "DET",
+          "SEA",
+          "ATL",
+          "LAR"
+        ]
       }
     },
     "duplicate_count": 0,
     "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
     "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
     "submission_integrity": {
-      "status": "PASS · NO PICK MUTATION REQUIRED",
-      "reconciled_at": "2026-10-07T06:52:00-06:00",
-      "source": "JOTFORM SUBMISSION QUESTION IDS + EXPLICIT GAME-ID LABELS",
+      "status": "8_UNIQUE_RESPONSES_FROM_JOTFORM_ANALYSIS",
+      "reconciled_at": "2026-10-08T18:25:45.544Z",
+      "source": "JOTFORM OCT-08 CURRENT SUBMISSIONS; PICK SEQUENCES BY G01-G15",
       "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
       "anomaly": {
         "description": "Jotform q13 (G10) has order=14 while q14 (G11) has order=13 after schedule correction; display/order position is non-canonical.",
@@ -193,11 +232,14 @@
         "6670713770706204750",
         "6670744118902933092",
         "6671269814148574857",
-        "6671472801306099783"
+        "6671472801306099783",
+        "6672917389016661092",
+        "6672925502612099422"
       ],
-      "result": "ALL_6_LOCKED_SUBMISSIONS_MATCH_CURRENT_GITHUB_G10_G11_VALUES"
+      "result": "8_UNIQUE_RESPONSES · ALEX AND RODRI ADDED · PRIOR SIX PRESERVED"
     },
-    "closed_at": "2026-10-08T10:53:00-06:00"
+    "status": "OPEN",
+    "last_sync": "2026-10-08T18:25:45.544Z"
   },
   "participants": [
     {
@@ -214,7 +256,7 @@
     },
     {
       "name": "ALEX",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "LUIS C.",
@@ -230,7 +272,7 @@
     },
     {
       "name": "RODRI",
-      "status": "PENDING"
+      "status": "COMPLETE_LOCKED"
     },
     {
       "name": "IBRACHO",
@@ -479,7 +521,7 @@
     "operator": "RODRIGO",
     "published": false,
     "urls": [],
-    "assets_status": "CAPTURE CLOSED · 6/9 · 90/135 PICKS · 3 PARTICIPANTS MISSING · FIGMA FINALIZATION REQUIRES DIRECTION"
+    "assets_status": "W5 CAPTURE OPEN · 8/9 · 120/135 PICKS · LUIS C. MISSING · W5 FIGMA VISUALS PENDING QA"
   },
   "sync_policy": {
     "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
@@ -555,7 +597,9 @@
     "last_delivery_test_requested_at": "2026-10-05T19:30:08-06:00",
     "last_health_check": "2026-10-05T19:28:56-06:00",
     "blocker": null,
-    "last_delivery_event": "W5_DEADLINE_CLOSED_6_OF_9"
+    "last_delivery_event": "W5_DEADLINE_CLOSED_6_OF_9",
+    "last_live_submission_check": "2026-10-08T18:25:45.544Z",
+    "latest_confirmed_participants": 8
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
