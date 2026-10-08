@@ -143,6 +143,9 @@ jobs:
               if not e or not e["completed"]:
                   continue
               away, home = e["teams"]["away"], e["teams"]["home"]
+              if away["score"] == home["score"]:
+                  print("Score tied: hold until confirmed win/tie result", g["id"])
+                  continue
               winner = away if away["score"] > home["score"] else home
               loser = home if winner is away else away
               score = f"{winner['abbr']} {winner['score']}–{loser['score']} {loser['abbr']}"
