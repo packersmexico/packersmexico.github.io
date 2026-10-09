@@ -139,6 +139,15 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg
 
+      - name: Materialize durable Dr Palma audio + music bed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p public /tmp/pmx-source
+          gh run download 37883320031 -n "pmx-video-PMX-VF-CI-001" -D /tmp/pmx-source
+          ffmpeg -y -i "/tmp/pmx-source/PMX-VF-CI-001.mp4" -vn -c:a aac -b:a 192k public/drpalma-final.m4a
+          ffmpeg -y -f lavfi -i "sine=frequency=110:sample_rate=44100:duration=180" -f lavfi -i "sine=frequency=146.83:sample_rate=44100:duration=180" -f lavfi -i "sine=frequency=164.81:sample_rate=44100:duration=180" -filter_complex "[0:a]volume=0.05[a0];[1:a]volume=0.035[a1];[2:a]volume=0.025[a2];[a0][a1][a2]amix=inputs=3:normalize=0,aecho=0.8:0.4:60:0.18,lowpass=f=1800,afade=t=in:st=0:d=2,afade=t=out:st=178:d=2" -c:a aac -b:a 96k public/drpalma-bed.m4a
+
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
