@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-W5-DRPALMA-NFL-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "3 PARTIDOS PARA VER",
+  "subheadline": "DR. PALMA · WEEK 5",
+  "durationSeconds": 103.712,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL CUT 01 PASS",
+  "destinationLabel": "WEEK 5 · 2026",
+  "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-a410-81f5-801b-44f270ee8a7f/raw?se=2026-10-09T03%3A09%3A29Z&sp=r&sv=2026-02-06&sr=b&scid=b8294e3e-79af-5e82-ac09-3aaa82912b6b&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A29%3A09Z&ske=2026-10-10T01%3A29%3A09Z&sks=b&skv=2026-02-06&sig=JlPJTX9kMsjdiAVM3Gx2zhb9Y7WDxCl6vMpQV24HT5g%3D",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 18.055,
+      "type": "HOOK",
+      "kicker": "CUANDO PACKERS NO ESTÉ JUGANDO",
+      "title": "3 PARTIDOS PARA VER",
+      "support": "WEEK 5 · DR. PALMA",
+      "body": "Tres juegos que el Dr. Palma recomienda seguir esta semana.",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
+      "assetCredit": "Staff Sgt. Charles Casner · U.S. Air National Guard · dominio público (EE.UU.) · archivo 2025"
+    },
+    {
+      "id": "S02",
+      "start": 18.055,
+      "end": 37.25,
+      "type": "MATCHUP",
+      "kicker": "JUEGO 1 · LONDRES",
+      "title": "PHI @ JAX",
+      "support": "DOM 11 OCT · 07:30 CDMX",
+      "body": "Dr. Palma pone atención en Philadelphia ante Jacksonville.",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
+      "assetCredit": "Staff Sgt. Charles Casner · U.S. Air National Guard · dominio público (EE.UU.) · archivo 2025"
+    },
+    {
+      "id": "S03",
+      "start": 37.25,
+      "end": 73.379,
+      "type": "MATCHUP",
+      "kicker": "JUEGO 2",
+      "title": "SF @ SEA",
+      "support": "DOM 11 OCT · 14:25 CDMX",
+      "body": "Un duelo divisional de alto nivel en la lectura del Dr. Palma.",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/49ers_offense_vs_Bears_2024.jpg",
+      "assetCredit": "ZappaOMatic · Wikimedia Commons · CC0 1.0 · archivo 2024"
+    },
+    {
+      "id": "S04",
+      "start": 73.379,
+      "end": 103.712,
+      "type": "OUTRO",
+      "kicker": "JUEGO 3 · MNF",
+      "title": "BUF @ LAR",
+      "support": "LUN 12 OCT · 18:15 CDMX",
+      "body": "Josh Allen y Matthew Stafford en el cierre recomendado por el Dr. Palma. ¿Cuál vas a ver?",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Josh-Allen-TD-celly-2025.jpg",
+      "assetCredit": "WuTang94 · Wikimedia Commons · CC0 1.0 · archivo 2025"
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 18.055,
+      "text": "Familia Packers MX, semana 5. Aquí van las recomendaciones del doctor Palma: tres partidos muy buenos."
+    },
+    {
+      "start": 18.055,
+      "end": 37.25,
+      "text": "Hay que madrugar: desde Londres, los Jacksonville Jaguars reciben a los Philadelphia Eagles. Es un partido muy cargado hacia los Jaguars."
+    },
+    {
+      "start": 37.25,
+      "end": 45.984,
+      "text": "A las 2:25, Seattle Seahawks contra San Francisco 49ers."
+    },
+    {
+      "start": 45.984,
+      "end": 63.939,
+      "text": "San Francisco, hasta ahorita, es el equipo más completo de la liga y el que mejor juega al fútbol americano."
+    },
+    {
+      "start": 63.939,
+      "end": 73.379,
+      "text": "Brock Purdy no ha sido tocado. Espero un clásico; vaya que son un buen equipo."
+    },
+    {
+      "start": 73.379,
+      "end": 86.339,
+      "text": "Y finalmente, el lunes por la noche: Los Angeles Rams ante Buffalo Bills."
+    },
+    {
+      "start": 86.339,
+      "end": 96.099,
+      "text": "Probablemente un clásico de muchos puntos, con Josh Allen y Matthew Stafford."
+    },
+    {
+      "start": 96.099,
+      "end": 103.712,
+      "text": "Imperdible para cerrar la semana 5 de la temporada regular."
+    }
+  ]
+}
