@@ -9,7 +9,7 @@ const PhotoLayer: React.FC<{scene: VideoScene}> = ({scene}) => {
     <>
       <Img src={scene.assetUrl} style={{position:'absolute',right:0,top:0,width:'58%',height:'100%',objectFit:'cover',objectPosition:'center',filter:'saturate(.96) contrast(1.10) brightness(.96)'}} />
       <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg, rgba(13,45,32,.99) 0%, rgba(13,45,32,.96) 43%, rgba(13,45,32,.50) 69%, rgba(13,45,32,.16) 100%)'}} />
-      {scene.assetCredit ? <div style={{position:'absolute',right:34,bottom:118,maxWidth:620,textAlign:'right',color:'rgba(242,232,207,.82)',fontSize:25,fontWeight:900,textShadow:'0 2px 8px rgba(0,0,0,.8)'}}>{scene.assetCredit}</div> : null}
+      {scene.assetCredit ? <div style={{position:'absolute',right:34,top:150,maxWidth:430,textAlign:'right',color:'rgba(242,232,207,.78)',fontSize:16,fontWeight:800,textShadow:'0 2px 8px rgba(0,0,0,.8)'}}>{scene.assetCredit}</div> : null}
     </>
   );
 };
@@ -65,17 +65,16 @@ const InsightStack: React.FC<{scene: VideoScene; top: number}> = ({scene, top}) 
 };
 
 const HookLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
-  <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
-    <div style={{position:'absolute',left:64,top:180,width:650,color:brand.cheeseGold,fontSize:34,fontWeight:800}}>
+  <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[20,0])}px)`}}>
+    <div style={{position:'absolute',left:70,top:210,width:620,color:brand.cheeseGold,fontSize:30,fontWeight:900,letterSpacing:1}}>
       {scene.kicker || 'LA OPINIÓN DEL DR PALMA'}
     </div>
-    <div style={{position:'absolute',left:64,top:244,width:660,height:6,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:64,top:304,width:690,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:148,lineHeight:.9}}>
+    <div style={{position:'absolute',left:70,top:270,width:610,height:6,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:70,top:340,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:156,lineHeight:.88,letterSpacing:.4}}>
       {scene.title}
     </div>
-    {scene.support ? <div style={{position:'absolute',left:66,top:730,width:650,color:brand.cheeseGold,fontSize:38,fontWeight:900}}>{scene.support}</div> : null}
-    {scene.body ? <div style={{position:'absolute',left:66,top:820,width:610,color:brand.cream,fontSize:34,lineHeight:1.28,fontWeight:700}}>{scene.body}</div> : null}
-    <InsightStack scene={scene} top={1010} />
+    {scene.support ? <div style={{position:'absolute',left:72,top:785,width:610,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:46,lineHeight:1}}>{scene.support}</div> : null}
+    {scene.body ? <div style={{position:'absolute',left:72,top:875,width:580,color:brand.cream,fontSize:30,lineHeight:1.28,fontWeight:750}}>{scene.body}</div> : null}
   </div>
 );
 
