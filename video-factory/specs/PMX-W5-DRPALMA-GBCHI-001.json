@@ -1,0 +1,219 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-W5-DRPALMA-GBCHI-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "CLAVES DEL GB VS CHICAGO",
+  "subheadline": "DR. PALMA · RIVALRIES WEEK",
+  "durationSeconds": 91.8,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL V04 · MUSIC CC0 · FINAL V05",
+  "destinationLabel": "RIVALRIES WEEK · WEEK 5",
+  "audioUrl": "static:drpalma-final.m4a",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 10.815,
+      "type": "HOOK",
+      "kicker": "CHI @ GB · LAMBEAU FIELD",
+      "title": "PACKERS VS BEARS",
+      "support": "CLAVES DEL DR. PALMA",
+      "body": "RIVALRIES WEEK · WEEK 5",
+      "insights": [
+        {
+          "label": "SEDE",
+          "text": "Lambeau Field · Green Bay"
+        },
+        {
+          "label": "RIVAL",
+          "text": "Chicago 3-1 · Green Bay 2-2"
+        },
+        {
+          "label": "VOZ",
+          "text": "Opinión del Dr. Palma"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/xrgy4u9rk1vksh6k5kxr.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S02",
+      "start": 10.815,
+      "end": 25.67,
+      "type": "MATCHUP",
+      "kicker": "CLAVE 1",
+      "title": "DARLE TIEMPO A LOVE",
+      "support": "PROTECCIÓN + PASE CORTO",
+      "body": "Pases cortos, precisión y evitar drops para darle ritmo a la ofensiva.",
+      "insights": [
+        {
+          "label": "FOCO",
+          "text": "Protección a Jordan Love"
+        },
+        {
+          "label": "EJECUCIÓN",
+          "text": "Jugadas precisas"
+        },
+        {
+          "label": "ERROR A EVITAR",
+          "text": "Drops"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/fko41hnw1xqjys0nw5ra.jpg",
+      "assetCredit": "Evan Siegle, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S03",
+      "start": 25.67,
+      "end": 48.945,
+      "type": "MATCHUP",
+      "kicker": "CLAVE 2",
+      "title": "EXTENDER POSESIONES",
+      "support": "RELOJ + JUEGO TERRESTRE",
+      "body": "Sostener drives con carrera o pases cortos para darle descanso a la defensa.",
+      "insights": [
+        {
+          "label": "OBJETIVO",
+          "text": "Consumir reloj"
+        },
+        {
+          "label": "VÍA 1",
+          "text": "Juego terrestre funcional"
+        },
+        {
+          "label": "VÍA 2",
+          "text": "Pase corto"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/jvg6e7erjvmbfsgrftlw.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S04",
+      "start": 48.945,
+      "end": 65.87,
+      "type": "MATCHUP",
+      "kicker": "CLAVE 3",
+      "title": "FORZAR A CHICAGO A PASAR",
+      "support": "TYSON BAGENT · QB TITULAR W5",
+      "body": "La lectura del Dr. Palma es reducir el impacto terrestre y obligar a Chicago a jugar por aire.",
+      "insights": [
+        {
+          "label": "DATO",
+          "text": "Tyson Bagent fue anunciado titular para Week 5"
+        },
+        {
+          "label": "PLAN",
+          "text": "Forzar situaciones de pase"
+        },
+        {
+          "label": "ATRIBUCIÓN",
+          "text": "Lectura táctica del Dr. Palma"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/fko41hnw1xqjys0nw5ra.jpg",
+      "assetCredit": "Evan Siegle, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S05",
+      "start": 65.87,
+      "end": 82.705,
+      "type": "MATCHUP",
+      "kicker": "DETALLES QUE PUEDEN DECIDIRLO",
+      "title": "CARRERA + EQUIPOS ESPECIALES",
+      "support": "PARTIDO CERRADO",
+      "body": "El Dr. Palma insiste en encontrar carrera funcional y evitar que equipos especiales definan el juego.",
+      "insights": [
+        {
+          "label": "CARRERA",
+          "text": "Green Bay necesita una respuesta sostenible"
+        },
+        {
+          "label": "ST",
+          "text": "Equipos especiales vuelven a ser factor"
+        },
+        {
+          "label": "GUION",
+          "text": "Espera un juego cerrado"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/xrgy4u9rk1vksh6k5kxr.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S06",
+      "start": 82.705,
+      "end": 91.8,
+      "type": "OUTRO",
+      "kicker": "APUESTAS · OPINIÓN DEL DR. PALMA",
+      "title": "NO FORZAR LA APUESTA",
+      "support": "EN EL AUDIO MENCIONA PACKERS +4.5",
+      "body": "Dice que no recomienda apostar este juego; sólo considera que Packers +4.5 podría ser una línea jugable.",
+      "insights": [
+        {
+          "label": "IMPORTANTE",
+          "text": "La línea +4.5 corresponde al momento de grabación"
+        },
+        {
+          "label": "MERCADO",
+          "text": "La línea cambió después; no presentarla como cuota actual"
+        },
+        {
+          "label": "JUEGO RESPONSABLE",
+          "text": "18+ · entretenimiento · sin garantía"
+        }
+      ],
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/jvg6e7erjvmbfsgrftlw.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 10.815,
+      "text": "El juego terrestre se vio un poco mejor, como por tres jugadas, pero el actuar de los corredores no fue el adecuado."
+    },
+    {
+      "start": 10.815,
+      "end": 25.67,
+      "text": "Las claves para ganarle a Chicago: darle tiempo a Jordan Love, pases cortos, jugadas precisas y no tener drops."
+    },
+    {
+      "start": 25.67,
+      "end": 48.945,
+      "text": "Extender el reloj y establecer juego terrestre o pases cortos es esencial para darle descanso a nuestra defensa."
+    },
+    {
+      "start": 48.945,
+      "end": 60.75,
+      "text": "Tenemos más posibilidades de diezmar la ofensiva de los Chicago Bears si los hacemos pasar constantemente."
+    },
+    {
+      "start": 60.75,
+      "end": 65.87,
+      "text": "Green Bay tiene que sacarse de la chistera ataque terrestre."
+    },
+    {
+      "start": 65.87,
+      "end": 73.425,
+      "text": "Por lo menos esta vez tendremos equipos especiales. Se viene un clásico."
+    },
+    {
+      "start": 73.425,
+      "end": 82.705,
+      "text": "Espero que un pateador no defina el resultado. Yo espero un juego cerrado."
+    },
+    {
+      "start": 82.705,
+      "end": 87,
+      "text": "No recomiendo apostar en este partido."
+    },
+    {
+      "start": 87,
+      "end": 91.8,
+      "text": "Tal vez Packers más 4.5 pudiera ser una buena línea."
+    }
+  ],
+  "musicUrl": "static:drpalma-bed.m4a"
+}
