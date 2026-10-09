@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-W5-DRPALMA-GBCHI-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "3 CLAVES · BEARS @ PACKERS",
+  "subheadline": "DR. PALMA · WEEK 5",
+  "durationSeconds": 82.737,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL CUT 01 PASS",
+  "destinationLabel": "WEEK 5 · 2026",
+  "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-b09c-81f5-b35c-8aad035a1f4f/raw?se=2026-10-09T03%3A09%3A27Z&sp=r&sv=2026-02-06&sr=b&scid=986aeef6-be94-59ca-9a38-41d0b8f0a34c&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A37%3A48Z&ske=2026-10-10T01%3A37%3A48Z&sks=b&skv=2026-02-06&sig=fIWsW2hzFveaVbPixJHL8CHzILF1ePV6tFenCgzjaeU%3D",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 10.815,
+      "type": "HOOK",
+      "kicker": "CHI @ GB · LAMBEAU FIELD",
+      "title": "BEARS @ PACKERS",
+      "support": "WEEK 5 · GREEN BAY",
+      "body": "Dr. Palma abre con una lectura del juego terrestre tras Week 4.",
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/xrgy4u9rk1vksh6k5kxr.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S02",
+      "start": 10.815,
+      "end": 25.67,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 1",
+      "title": "DARLE TIEMPO A LOVE",
+      "support": "PROTECCIÓN + PASE CORTO",
+      "body": "La primera clave del Dr. Palma: proteger a Jordan Love y ejecutar con precisión.",
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/fko41hnw1xqjys0nw5ra.jpg",
+      "assetCredit": "Evan Siegle, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S03",
+      "start": 25.67,
+      "end": 48.945,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 2",
+      "title": "EXTENDER POSESIONES",
+      "support": "RELOJ + JUEGO TERRESTRE",
+      "body": "Sostener drives para darle descanso a la defensa.",
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/jvg6e7erjvmbfsgrftlw.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S04",
+      "start": 48.945,
+      "end": 65.87,
+      "type": "PACKERS_NOTE",
+      "kicker": "CLAVE 3",
+      "title": "FORZAR A CHICAGO A PASAR",
+      "support": "LECTURA DEL DR. PALMA",
+      "body": "La idea: reducir el impacto terrestre de Chicago y obligarlo a jugar por aire.",
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/fko41hnw1xqjys0nw5ra.jpg",
+      "assetCredit": "Evan Siegle, packers.com · archivo Week 4"
+    },
+    {
+      "id": "S05",
+      "start": 65.87,
+      "end": 82.737,
+      "type": "OUTRO",
+      "kicker": "CIERRE",
+      "title": "SE VIENE UN CLÁSICO",
+      "support": "BEARS @ PACKERS · LAMBEAU FIELD",
+      "body": "Equipos especiales, juego cerrado y ejecución. ¿Qué decidirá el partido?",
+      "assetUrl": "https://static.clubs.nfl.com/image/upload/t_new_photo_album/t_lazy/f_auto/packers/jvg6e7erjvmbfsgrftlw.jpg",
+      "assetCredit": "Keller Nienau, packers.com · archivo Week 4"
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 10.815,
+      "text": "El juego terrestre se vio un poco mejor, pero el actuar de los corredores no fue el adecuado."
+    },
+    {
+      "start": 10.815,
+      "end": 25.67,
+      "text": "Las claves para ganarle a Chicago: darle tiempo a Jordan Love, pases cortos, jugadas precisas, no tener drops."
+    },
+    {
+      "start": 25.67,
+      "end": 48.945,
+      "text": "Extender el reloj y establecer juego terrestre o pases cortos es esencial para darle descanso a nuestra defensa."
+    },
+    {
+      "start": 48.945,
+      "end": 60.75,
+      "text": "Tenemos más posibilidades de diezmar la ofensiva de los Chicago Bears si los hacemos pasar constantemente."
+    },
+    {
+      "start": 60.75,
+      "end": 65.87,
+      "text": "Green Bay tiene que sacarse de la chistera ataque terrestre."
+    },
+    {
+      "start": 65.87,
+      "end": 73.425,
+      "text": "Por lo menos esta vez tendremos equipos especiales. Se viene un clásico."
+    },
+    {
+      "start": 73.425,
+      "end": 82.737,
+      "text": "Espero que un pateador no defina el resultado. Yo espero un juego cerrado."
+    }
+  ]
+}
