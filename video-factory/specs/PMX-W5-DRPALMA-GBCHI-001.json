@@ -7,9 +7,9 @@
   "headline": "CLAVES DEL GB VS CHICAGO",
   "subheadline": "DR. PALMA · RIVALRIES WEEK",
   "durationSeconds": 91.8,
-  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL V04 · MUSIC CC0",
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL V04 · MUSIC CC0 · FINAL V05",
   "destinationLabel": "RIVALRIES WEEK · WEEK 5",
-  "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-1f44-81f5-8831-34dffe913247/raw?se=2026-10-09T04%3A22%3A35Z&sp=r&sv=2026-02-06&sr=b&scid=ca8f09d7-2458-527b-9e9d-4fc5635ba349&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A20%3A15Z&ske=2026-10-10T01%3A20%3A15Z&sks=b&skv=2026-02-06&sig=x6DdIU8jmdmIni0yYqcXZfa6QsvUFKdoE7AWOni28PY%3D",
+  "audioUrl": "static:drpalma-final.m4a",
   "scenes": [
     {
       "id": "S01",
@@ -215,5 +215,5 @@
       "text": "Tal vez Packers más 4.5 pudiera ser una buena línea."
     }
   ],
-  "musicUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Chill_Beat.ogg"
+  "musicUrl": "static:drpalma-bed.m4a"
 }
