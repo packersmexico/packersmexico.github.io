@@ -5,136 +5,220 @@
   "mode": "WEEKLY_PREVIEW",
   "aspect": "9:16",
   "headline": "RECOMENDACIONES DEL DR. PALMA",
-  "subheadline": "WEEK 5 · 3 PARTIDOS PARA VER",
-  "durationSeconds": 194.29,
-  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · DIRECTION OVERRIDE V02",
-  "destinationLabel": "RIVALRIES WEEK · WEEK 5",
-  "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-2b98-81f5-9bd8-dbe045780046/raw?se=2026-10-09T04%3A19%3A12Z&sp=r&sv=2026-02-06&sr=b&scid=72c9112b-fae1-5c35-84c9-0639219c0487&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A24%3A19Z&ske=2026-10-10T01%3A24%3A19Z&sks=b&skv=2026-02-06&sig=6hmvuTqakstyeR/D2Bwfxum7MVa38O9fgolX6JOfxnE%3D",
+  "subheadline": "WEEK 5 · JUEGOS + PICKS",
+  "durationSeconds": 165.366,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · DIRECTION OVERRIDE V03",
+  "destinationLabel": "WEEK 5 · 2026",
+  "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-994c-81f5-812f-c6618939e9bb/raw?se=2026-10-09T04%3A22%3A54Z&sp=r&sv=2026-02-06&sr=b&scid=0120ee82-cc99-5b23-b2d5-45c9f9769253&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A33%3A02Z&ske=2026-10-10T01%3A33%3A02Z&sks=b&skv=2026-02-06&sig=ClwSl0iYbsw%2BPWau8WmRnGX4iPcR5EFl/%2BK9w%2BWXFQU%3D",
   "scenes": [
     {
       "id": "S01",
       "start": 0,
-      "end": 14,
+      "end": 18.055,
       "type": "HOOK",
-      "kicker": "RIVALRIES WEEK · WEEK 5",
-      "title": "RECOMENDACIONES DEL DR. PALMA",
-      "support": "3 PARTIDOS PARA VER",
-      "body": "Cuando no estén jugando los Packers.",
+      "kicker": "WEEK 5",
+      "title": "3 PARTIDOS PARA VER",
+      "support": "CUANDO PACKERS NO ESTÉ JUGANDO",
+      "body": "Dr. Palma abre con tres recomendaciones de la jornada.",
       "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
-      "assetCredit": "Charles Casner · dominio público (EE.UU.) · archivo 2025"
+      "assetCredit": "Staff Sgt. Charles Casner · U.S. Air National Guard · dominio público (EE.UU.) · archivo 2025"
     },
     {
       "id": "S02",
-      "start": 14,
-      "end": 52,
+      "start": 18.055,
+      "end": 37.41,
       "type": "MATCHUP",
       "kicker": "JUEGO 1 · LONDRES",
       "title": "PHI @ JAX",
       "support": "DOM 11 OCT · 07:30 CDMX",
-      "body": "Philadelphia llega a una prueba importante ante Jacksonville.",
+      "body": "Dr. Palma ve el duelo cargado hacia Jacksonville, pero considera que Philadelphia llega a una prueba importante.",
       "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
-      "assetCredit": "Charles Casner · dominio público · archivo 2025",
-      "insights": [
-        {
-          "label": "LECTURA DR. PALMA",
-          "text": "Duelo cargado hacia Jaguars."
-        }
-      ]
+      "assetCredit": "Staff Sgt. Charles Casner · U.S. Air National Guard · dominio público · archivo 2025"
     },
     {
       "id": "S03",
-      "start": 52,
-      "end": 113,
+      "start": 37.41,
+      "end": 74.499,
       "type": "MATCHUP",
       "kicker": "JUEGO 2 · NFC WEST",
       "title": "SF @ SEA",
       "support": "DOM 11 OCT · 14:25 CDMX",
-      "body": "Duelo divisional de alto nivel y con implicaciones tempranas de playoffs.",
+      "body": "Para el Dr. Palma es un clásico divisional de nivel playoff; destaca el nivel de San Francisco y menciona a Brock Purdy.",
       "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/49ers_offense_vs_Bears_2024.jpg",
-      "assetCredit": "ZappaOMatic · Wikimedia Commons · CC0 · archivo 2024",
-      "insights": [
-        {
-          "label": "FOCO",
-          "text": "San Francisco llega con evaluación muy alta del Dr. Palma."
-        }
-      ]
+      "assetCredit": "ZappaOMatic · Wikimedia Commons · CC0 1.0 · archivo 2024"
     },
     {
       "id": "S04",
-      "start": 113,
-      "end": 150,
+      "start": 74.499,
+      "end": 105.443,
       "type": "MATCHUP",
       "kicker": "JUEGO 3 · MONDAY NIGHT",
       "title": "BUF @ LAR",
       "support": "LUN 12 OCT · 18:15 CDMX",
-      "body": "Josh Allen vs. Matthew Stafford: foco total en los quarterbacks.",
+      "body": "Josh Allen y Matthew Stafford concentran el foco del cierre de Week 5 en la lectura del Dr. Palma.",
       "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Josh-Allen-TD-celly-2025.jpg",
-      "assetCredit": "WuTang94 · Wikimedia Commons · CC0 · archivo 2025",
+      "assetCredit": "WuTang94 · Wikimedia Commons · CC0 1.0 · archivo 2025"
+    },
+    {
+      "id": "S05",
+      "start": 105.443,
+      "end": 119.843,
+      "type": "PACKERS_NOTE",
+      "kicker": "PICK · DR. PALMA",
+      "title": "DALLAS COWBOYS",
+      "support": "VS TAMPA BAY · TNF",
+      "body": "Dr. Palma recomienda una línea ofensiva de Dallas y proyecta un partido fuerte de los Cowboys. El número exacto del primer pick no se sobreimprime porque el ASR es ambiguo; se conserva el audio original.",
       "insights": [
         {
-          "label": "QB",
-          "text": "Josh Allen vs. Matthew Stafford"
+          "label": "DATO EN AUDIO",
+          "text": "Menciona que Dak Prescott suele producir más de 30 puntos en casa en horario estelar."
         }
       ]
     },
     {
-      "id": "S05",
-      "start": 150,
-      "end": 194.29,
+      "id": "S06",
+      "start": 120.163,
+      "end": 137.413,
+      "type": "PACKERS_NOTE",
+      "kicker": "PICK · DR. PALMA",
+      "title": "CLEVELAND BROWNS",
+      "support": "UNDERDOG",
+      "body": "Su rango preferido en el audio: Browns +2.5; considera aceptable estirarlo a +3.5 o +4.5.",
+      "insights": [
+        {
+          "label": "LÍNEAS DEL AUDIO",
+          "text": "+2.5 · +3.5 · +4.5"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "start": 137.413,
+      "end": 147.493,
+      "type": "PACKERS_NOTE",
+      "kicker": "PICK · DR. PALMA",
+      "title": "HOUSTON TEXANS",
+      "support": "MONEYLINE",
+      "body": "Dr. Palma dice que le gusta el valor del moneyline y cree que Houston puede conseguir la victoria.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "Moneyline · opinión del Dr. Palma"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "start": 148.568,
+      "end": 155.942,
+      "type": "PACKERS_NOTE",
+      "kicker": "PICK · DR. PALMA",
+      "title": "NEW ORLEANS SAINTS",
+      "support": "SPREAD POSITIVO",
+      "body": "Si New Orleans aparece con spread positivo, el Dr. Palma recomienda considerar ese lado.",
+      "insights": [
+        {
+          "label": "CONDICIÓN",
+          "text": "Sólo si el spread es positivo"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "start": 156.982,
+      "end": 165.366,
       "type": "OUTRO",
-      "kicker": "DR. PALMA · OPINIÓN",
-      "title": "WEEK 5",
-      "support": "RECOMENDACIONES COMPLETAS",
-      "body": "La parte final conserva el audio original y sus opiniones personales. No representa una garantía de resultado.",
-      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Josh-Allen-TD-celly-2025.jpg",
-      "assetCredit": "WuTang94 · Wikimedia Commons · CC0 · archivo 2025"
+      "kicker": "APUESTAS · OPINIÓN DR. PALMA",
+      "title": "WEEK 5 · PICKS COMPLETOS",
+      "support": "LÍNEAS MENCIONADAS EN AUDIO · NO CUOTAS EN VIVO",
+      "body": "Los picks son opinión personal del Dr. Palma, no garantía de resultado. Las líneas pueden cambiar. +18 · juega responsablemente."
     }
   ],
   "captions": [
     {
-      "start": 0.32,
-      "end": 12.08,
-      "text": "Semana 5: partidos muy interesantes cuando nuestros Packers no estén jugando."
+      "start": 0,
+      "end": 18.055,
+      "text": "Semana 5: aquí van las recomendaciones del Dr. Palma para cuando Packers no esté jugando."
     },
     {
-      "start": 12.08,
-      "end": 18.38,
-      "text": "Aquí van las recomendaciones del Dr. Palma: tres partidos muy buenos."
+      "start": 18.215,
+      "end": 22.695,
+      "text": "Hay que madrugar: el primer juego es desde Londres."
     },
     {
-      "start": 18.54,
-      "end": 31.41,
-      "text": "Hay que madrugar: Jacksonville recibe a Philadelphia en Londres."
+      "start": 22.775,
+      "end": 31.09,
+      "text": "Jacksonville Jaguars recibe a Philadelphia Eagles. El Dr. Palma ve el partido cargado hacia Jaguars."
     },
     {
-      "start": 31.41,
-      "end": 37.73,
-      "text": "Los Eagles siempre han competido; es un partido importante para ellos."
+      "start": 31.09,
+      "end": 37.41,
+      "text": "Los Eagles siempre han competido y es un partido importante para ellos."
     },
     {
-      "start": 51.25,
-      "end": 59.98,
-      "text": "Seattle Seahawks contra San Francisco 49ers. Partido imperdible."
+      "start": 37.41,
+      "end": 46.144,
+      "text": "A las 2:25: Seattle Seahawks contra San Francisco 49ers. Partido imperdible."
     },
     {
-      "start": 66.89,
-      "end": 85.81,
-      "text": "El Dr. Palma ve a San Francisco como uno de los equipos más completos."
+      "start": 47.104,
+      "end": 65.059,
+      "text": "Dr. Palma: San Francisco está entre los equipos que mejor están jugando y espera un duelo de nivel playoff."
     },
     {
-      "start": 85.81,
-      "end": 95.25,
-      "text": "Espera un clásico y un partido de alto nivel."
+      "start": 65.059,
+      "end": 74.499,
+      "text": "Menciona a Brock Purdy y espera un clásico divisional."
     },
     {
-      "start": 111.95,
-      "end": 125,
+      "start": 75.144,
+      "end": 88.104,
       "text": "Monday Night: Los Angeles Rams ante Buffalo Bills."
     },
     {
-      "start": 125,
-      "end": 135.75,
-      "text": "Josh Allen y Matthew Stafford protagonizan el cierre de Week 5."
+      "start": 89.059,
+      "end": 98.819,
+      "text": "Dr. Palma proyecta muchos puntos y pone el foco en Josh Allen y Matthew Stafford."
+    },
+    {
+      "start": 99.139,
+      "end": 105.443,
+      "text": "Imperdible para cerrar la semana 5 de la temporada regular."
+    },
+    {
+      "start": 105.443,
+      "end": 112.723,
+      "text": "Cowboys: el Dr. Palma menciona una línea ofensiva y cree que Dallas puede imponerse a Tampa Bay."
+    },
+    {
+      "start": 113.683,
+      "end": 119.843,
+      "text": "Añade que Dak Prescott suele producir más de 30 puntos en casa en horario estelar."
+    },
+    {
+      "start": 120.163,
+      "end": 129.728,
+      "text": "Cleveland aparece como underdog y es uno de los equipos que más le gustan al Dr. Palma."
+    },
+    {
+      "start": 129.728,
+      "end": 137.413,
+      "text": "Browns +2.5; también considera +3.5 o +4.5 como rangos jugables."
+    },
+    {
+      "start": 137.413,
+      "end": 147.493,
+      "text": "Houston Texans: le gusta el valor del moneyline y cree que pueden conseguir la victoria."
+    },
+    {
+      "start": 148.568,
+      "end": 155.942,
+      "text": "New Orleans Saints: si tienen spread positivo, recomienda considerar ese lado."
+    },
+    {
+      "start": 156.982,
+      "end": 165.366,
+      "text": "Picks del Dr. Palma: opinión personal. Las líneas cambian y no garantizan resultados."
     }
   ]
 }
