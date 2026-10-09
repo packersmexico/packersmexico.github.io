@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build one private operator push event per newly locked valid participant.
 
+Trigger QA: a detector-only commit must emit zero participant notifications.
 Reads canonical GitHub snapshots; never changes form submissions, picks, rankings,
 or publication state. No new notification for duplicate/corrected submissions.
 """
