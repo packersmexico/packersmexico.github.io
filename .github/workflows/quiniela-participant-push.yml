@@ -1,0 +1,72 @@
+name: Quiniela New Participant Push
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/capture-config.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quiniela-new-participant-push
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test first-valid participant alert detection
+        run: python3 scripts/quiniela-participant-events.py --self-test
+      - name: Build events only for newly received first-valid submissions
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          mkdir -p .pmx-notify
+          for spec in 'data.json before-data.json' 'capture-config.json before-config.json'; do
+            set -- $spec
+            if [ -n "${BEFORE_SHA}" ] && git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null &&
+               git show "${BEFORE_SHA}:quiniela-control/$1" > ".pmx-notify/$2" 2>/dev/null; then
+              echo "Found prior snapshot $1"
+            else
+              echo '{}' > ".pmx-notify/$2"
+              echo "::warning::Prior snapshot missing for $1"
+            fi
+          done
+          python3 scripts/quiniela-participant-events.py \
+            .pmx-notify/before-data.json \
+            .pmx-notify/before-config.json \
+            quiniela-control/data.json \
+            quiniela-control/capture-config.json \
+            .pmx-notify/events.jsonl
+      - name: Send each new unique-participant alert to Rodrigo and Ibra
+        env:
+          PUSH_API_URL: https://packersmexicogithubio-push-backend.vercel.app
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          if [ ! -s .pmx-notify/events.jsonl ]; then
+            echo "No new first-valid participants; no push sent."
+            exit 0
+          fi
+          if [ -z "${PUSH_SECRET:-}" ]; then
+            echo "::error::PMX_PUSH_SECRET is not configured; no notifications sent."
+            exit 1
+          fi
+          while IFS= read -r event; do
+            [ -n "$event" ] || continue
+            curl --fail-with-body --silent --show-error --max-time 30 --retry 2 \
+              -X POST "${PUSH_API_URL%/}/api/notify" \
+              -H "Authorization: Bearer $PUSH_SECRET" \
+              -H "Content-Type: application/json" \
+              --data "$event"
+            echo
+          done < .pmx-notify/events.jsonl
