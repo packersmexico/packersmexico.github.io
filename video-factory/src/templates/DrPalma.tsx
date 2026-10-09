@@ -66,11 +66,11 @@ const InsightStack: React.FC<{scene: VideoScene; top: number}> = ({scene, top}) 
 
 const HookLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
   <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[20,0])}px)`}}>
-    <div style={{position:'absolute',left:70,top:210,width:620,color:brand.cheeseGold,fontSize:30,fontWeight:900,letterSpacing:1}}>
+    <div style={{position:'absolute',left:70,top:205,width:620,color:brand.cheeseGold,fontSize:24,lineHeight:1.05,fontWeight:900,letterSpacing:.8}}>
       {scene.kicker || 'LA OPINIÓN DEL DR PALMA'}
     </div>
-    <div style={{position:'absolute',left:70,top:270,width:610,height:6,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:70,top:340,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:156,lineHeight:.88,letterSpacing:.4}}>
+    <div style={{position:'absolute',left:70,top:300,width:610,height:6,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:70,top:360,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:156,lineHeight:.88,letterSpacing:.4}}>
       {scene.title}
     </div>
     {scene.support ? <div style={{position:'absolute',left:72,top:785,width:610,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:46,lineHeight:1}}>{scene.support}</div> : null}
