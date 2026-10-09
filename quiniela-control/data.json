@@ -258,7 +258,7 @@
       ],
       "result": "9 unique participants / 10 raw submissions; DR PALMA duplicate ignored; LUIS C. first valid locked"
     },
-    "status": "OPEN",
+    "status": "CLOSED",
     "last_sync": "2026-10-08T20:41:26.587Z",
     "duplicate_submissions": [
       {
@@ -640,7 +640,7 @@
   },
   "figma": {
     "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "CAPTURE_CLOSED_6_OF_9_DEADLINE",
+    "week5_stage": "FIGMA_PICKS_COMPLETE · WAITING_DIRECTION_VISUAL_REVIEW",
     "publication_ready": false,
     "manifest": null,
     "rivalries_9_of_9_rule": {
