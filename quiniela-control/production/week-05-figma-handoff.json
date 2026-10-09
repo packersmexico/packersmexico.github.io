@@ -9,7 +9,7 @@
     "never_approve_without_real_canvas_qa": true
   },
   "capture": {
-    "status": "OPEN",
+    "status": "CLOSED",
     "complete": 9,
     "total": 9,
     "missing": []
@@ -415,7 +415,7 @@
     }
   ],
   "stages": {
-    "picks": "WAITING_CAPTURE_CLOSE",
+    "picks": "READY_FOR_04",
     "results": "WAITING_ALL_FINAL",
     "weekly": "WAITING_ALL_FINAL",
     "season": "WAITING_ALL_FINAL"
