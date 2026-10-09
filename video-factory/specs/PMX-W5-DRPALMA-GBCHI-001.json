@@ -7,7 +7,7 @@
   "headline": "CLAVES DEL GB VS CHICAGO",
   "subheadline": "DR. PALMA · RIVALRIES WEEK",
   "durationSeconds": 91.8,
-  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · DIRECTION OVERRIDE V03",
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL V04 · MUSIC CC0",
   "destinationLabel": "RIVALRIES WEEK · WEEK 5",
   "audioUrl": "https://sdmntprcentralus.oaiusercontent.com/files/00000000-1f44-81f5-8831-34dffe913247/raw?se=2026-10-09T04%3A22%3A35Z&sp=r&sv=2026-02-06&sr=b&scid=ca8f09d7-2458-527b-9e9d-4fc5635ba349&skoid=de71a0d5-fb02-4fce-be69-9296aced242b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-09T01%3A20%3A15Z&ske=2026-10-10T01%3A20%3A15Z&sks=b&skv=2026-02-06&sig=x6DdIU8jmdmIni0yYqcXZfa6QsvUFKdoE7AWOni28PY%3D",
   "scenes": [
@@ -17,9 +17,9 @@
       "end": 10.815,
       "type": "HOOK",
       "kicker": "CHI @ GB · LAMBEAU FIELD",
-      "title": "BEARS @ PACKERS",
-      "support": "WEEK 5 · GREEN BAY",
-      "body": "Week 4 dejó señales, no certezas. El Dr. Palma parte del juego terrestre y de la ejecución.",
+      "title": "PACKERS VS BEARS",
+      "support": "CLAVES DEL DR. PALMA",
+      "body": "RIVALRIES WEEK · WEEK 5",
       "insights": [
         {
           "label": "SEDE",
@@ -41,7 +41,7 @@
       "id": "S02",
       "start": 10.815,
       "end": 25.67,
-      "type": "PACKERS_NOTE",
+      "type": "MATCHUP",
       "kicker": "CLAVE 1",
       "title": "DARLE TIEMPO A LOVE",
       "support": "PROTECCIÓN + PASE CORTO",
@@ -67,7 +67,7 @@
       "id": "S03",
       "start": 25.67,
       "end": 48.945,
-      "type": "PACKERS_NOTE",
+      "type": "MATCHUP",
       "kicker": "CLAVE 2",
       "title": "EXTENDER POSESIONES",
       "support": "RELOJ + JUEGO TERRESTRE",
@@ -93,7 +93,7 @@
       "id": "S04",
       "start": 48.945,
       "end": 65.87,
-      "type": "PACKERS_NOTE",
+      "type": "MATCHUP",
       "kicker": "CLAVE 3",
       "title": "FORZAR A CHICAGO A PASAR",
       "support": "TYSON BAGENT · QB TITULAR W5",
@@ -119,7 +119,7 @@
       "id": "S05",
       "start": 65.87,
       "end": 82.705,
-      "type": "ANALYSIS",
+      "type": "MATCHUP",
       "kicker": "DETALLES QUE PUEDEN DECIDIRLO",
       "title": "CARRERA + EQUIPOS ESPECIALES",
       "support": "PARTIDO CERRADO",
@@ -214,5 +214,6 @@
       "end": 91.8,
       "text": "Tal vez Packers más 4.5 pudiera ser una buena línea."
     }
-  ]
+  ],
+  "musicUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Chill_Beat.ogg"
 }
