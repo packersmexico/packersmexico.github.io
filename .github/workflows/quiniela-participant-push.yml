@@ -6,6 +6,7 @@ on:
     paths:
       - 'quiniela-control/data.json'
       - 'quiniela-control/capture-config.json'
+      - 'scripts/quiniela-participant-events.py'
   workflow_dispatch:
 
 permissions:
