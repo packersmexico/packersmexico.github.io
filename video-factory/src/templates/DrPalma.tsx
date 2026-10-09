@@ -3,6 +3,17 @@ import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, use
 import {brand} from '../brand';
 import type {VideoScene, VideoSpec} from '../types';
 
+const PhotoLayer: React.FC<{scene: VideoScene}> = ({scene}) => {
+  if (!scene.assetUrl) return null;
+  return (
+    <>
+      <Img src={scene.assetUrl} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',filter:'saturate(.9) contrast(1.08)'}} />
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg, rgba(8,29,19,.96) 0%, rgba(8,29,19,.88) 44%, rgba(8,29,19,.38) 72%, rgba(8,29,19,.18) 100%)'}} />
+      {scene.assetCredit ? <div style={{position:'absolute',right:28,bottom:270,maxWidth:520,textAlign:'right',color:'rgba(242,232,207,.82)',fontSize:17,fontWeight:600,textShadow:'0 2px 8px rgba(0,0,0,.8)'}}>{scene.assetCredit}</div> : null}
+    </>
+  );
+};
+
 const fallbackScene = (spec: VideoSpec): VideoScene => ({
   id: 'fallback',
   start: 0,
@@ -118,6 +129,7 @@ export const DrPalma: React.FC<{spec: VideoSpec}> = ({spec}) => {
   return (
     <AbsoluteFill style={{background:brand.fieldDark,color:brand.cream,fontFamily:'Montserrat, sans-serif',overflow:'hidden'}}>
       <div style={{position:'absolute',inset:0,background:`linear-gradient(180deg, ${brand.fieldDark} 0%, ${brand.fieldDark} 70%, ${brand.lambeauGreen} 100%)`}} />
+      <PhotoLayer scene={scene} />
       <SceneHeader right={scene.type === 'OUTRO' ? `CIERRE · ${footerLabel}` : headerLabel} />
       {scene.type === 'HOOK' || scene.type === 'OUTRO'
         ? <HookLayout scene={scene} enter={enter} />
