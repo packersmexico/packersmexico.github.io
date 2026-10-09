@@ -3,6 +3,17 @@ import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, use
 import {brand} from '../brand';
 import type {VideoScene, VideoSpec} from '../types';
 
+const PhotoLayer: React.FC<{scene: VideoScene}> = ({scene}) => {
+  if (!scene.assetUrl) return null;
+  return (
+    <>
+      <Img src={scene.assetUrl} style={{position:'absolute',right:0,top:0,width:'58%',height:'100%',objectFit:'cover',objectPosition:'center',filter:'saturate(.96) contrast(1.10) brightness(.96)'}} />
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg, rgba(13,45,32,.99) 0%, rgba(13,45,32,.96) 43%, rgba(13,45,32,.50) 69%, rgba(13,45,32,.16) 100%)'}} />
+      {scene.assetCredit ? <div style={{position:'absolute',right:34,top:150,maxWidth:430,textAlign:'right',color:'rgba(242,232,207,.78)',fontSize:16,fontWeight:800,textShadow:'0 2px 8px rgba(0,0,0,.8)'}}>{scene.assetCredit}</div> : null}
+    </>
+  );
+};
+
 const fallbackScene = (spec: VideoSpec): VideoScene => ({
   id: 'fallback',
   start: 0,
@@ -16,8 +27,8 @@ const fallbackScene = (spec: VideoSpec): VideoScene => ({
 
 const SceneHeader: React.FC<{right: string}> = ({right}) => (
   <>
-    <Img src={staticFile(brand.logo)} style={{position:'absolute',left:64,top:55,width:220,height:55,objectFit:'contain'}} />
-    <div style={{position:'absolute',right:65,top:68,width:320,textAlign:'right',color:brand.cheeseGold,fontSize:18,fontWeight:700}}>
+    <Img src={staticFile(brand.logo)} style={{position:'absolute',left:64,top:54,width:280,height:70,objectFit:'contain'}} />
+    <div style={{position:'absolute',right:64,top:72,width:390,textAlign:'right',color:brand.cheeseGold,fontSize:18,fontWeight:700}}>
       {right}
     </div>
   </>
@@ -25,13 +36,13 @@ const SceneHeader: React.FC<{right: string}> = ({right}) => (
 
 const SeriesFooter: React.FC<{progress: number; label: string}> = ({progress, label}) => (
   <>
-    <div style={{position:'absolute',left:64,top:1416,color:brand.cheeseGold,fontSize:21,fontWeight:800}}>
+    <div style={{position:'absolute',left:64,top:1710,color:brand.cheeseGold,fontSize:22,fontWeight:900}}>
       DR PALMA · ANÁLISIS PMX
     </div>
-    <div style={{position:'absolute',left:64,right:64,top:1548,height:3,background:'rgba(242,232,207,.16)'}}>
+    <div style={{position:'absolute',left:64,right:64,top:1748,height:4,background:'rgba(242,232,207,.16)'}}>
       <div style={{height:'100%',width:`${progress * 100}%`,background:brand.cheeseGold}} />
     </div>
-    <div style={{position:'absolute',left:64,top:1584,color:brand.muted,fontSize:20,fontWeight:700,letterSpacing:.7}}>
+    <div style={{position:'absolute',left:64,top:1782,color:brand.cream,fontSize:20,fontWeight:800,letterSpacing:.7}}>
       LA OPINIÓN DEL DR PALMA · {label}
     </div>
   </>
@@ -41,12 +52,12 @@ const InsightStack: React.FC<{scene: VideoScene; top: number}> = ({scene, top}) 
   const items = scene.insights?.slice(0, 3) ?? [];
   if (!items.length) return null;
   return (
-    <div style={{position:'absolute',left:64,right:64,top,display:'flex',flexDirection:'column',gap:18}}>
+    <div style={{position:'absolute',left:64,width:610,top,display:'flex',flexDirection:'column',gap:18}}>
       {items.map((item, index) => (
-        <div key={index} style={{position:'relative',background:'rgba(18,59,49,.92)',border:'1px solid rgba(255,198,47,.18)',borderRadius:28,padding:'22px 28px 22px 44px',minHeight:118}}>
+        <div key={index} style={{position:'relative',background:'rgba(8,29,19,.72)',border:'1px solid rgba(213,169,40,.34)',borderRadius:18,padding:'18px 22px 18px 36px',minHeight:104}}>
           <div style={{position:'absolute',left:0,top:0,bottom:0,width:10,background:brand.cheeseGold,borderTopLeftRadius:28,borderBottomLeftRadius:28}} />
-          <div style={{color:brand.cheeseGold,fontSize:24,fontWeight:900,marginBottom:8}}>{item.label}</div>
-          <div style={{color:brand.cream,fontSize:25,lineHeight:1.35}}>{item.text}</div>
+          <div style={{color:brand.cheeseGold,fontSize:28,fontWeight:900,marginBottom:8}}>{item.label}</div>
+          <div style={{color:brand.cream,fontSize:31,lineHeight:1.22,fontWeight:700}}>{item.text}</div>
         </div>
       ))}
     </div>
@@ -54,49 +65,48 @@ const InsightStack: React.FC<{scene: VideoScene; top: number}> = ({scene, top}) 
 };
 
 const HookLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
-  <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
-    <div style={{position:'absolute',left:64,top:160,width:760,color:brand.cheeseGold,fontSize:24,fontWeight:800}}>
+  <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[20,0])}px)`}}>
+    <div style={{position:'absolute',left:70,top:205,width:620,color:brand.cheeseGold,fontSize:24,lineHeight:1.05,fontWeight:900,letterSpacing:.8}}>
       {scene.kicker || 'LA OPINIÓN DEL DR PALMA'}
     </div>
-    <div style={{position:'absolute',left:64,top:220,width:952,height:4,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:64,top:300,width:880,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:108,lineHeight:1}}>
+    <div style={{position:'absolute',left:70,top:300,width:610,height:6,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:70,top:360,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:156,lineHeight:.88,letterSpacing:.4}}>
       {scene.title}
     </div>
-    {scene.support ? <div style={{position:'absolute',left:66,top:575,width:760,color:brand.cheeseGold,fontSize:27,fontWeight:800}}>{scene.support}</div> : null}
-    {scene.body ? <div style={{position:'absolute',left:66,top:640,width:830,color:brand.cream,fontSize:30,lineHeight:1.42}}>{scene.body}</div> : null}
-    <InsightStack scene={scene} top={790} />
+    {scene.support ? <div style={{position:'absolute',left:72,top:785,width:610,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:46,lineHeight:1}}>{scene.support}</div> : null}
+    {scene.body ? <div style={{position:'absolute',left:72,top:875,width:580,color:brand.cream,fontSize:30,lineHeight:1.28,fontWeight:750}}>{scene.body}</div> : null}
   </div>
 );
 
 const MatchupLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
   <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
-    <div style={{position:'absolute',left:64,top:160,width:620,color:brand.cheeseGold,fontSize:23,fontWeight:800}}>
+    <div style={{position:'absolute',left:64,top:190,width:610,color:brand.cheeseGold,fontSize:32,fontWeight:800}}>
       {scene.kicker || 'MATCHUP CLAVE'}
     </div>
     <div style={{position:'absolute',left:64,top:220,width:952,height:4,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:64,top:300,width:860,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:112,lineHeight:.96}}>
+    <div style={{position:'absolute',left:64,top:320,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:142,lineHeight:.90}}>
       {scene.title}
     </div>
-    {scene.support ? <div style={{position:'absolute',left:64,top:510,width:860,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:46,lineHeight:1}}>{scene.support}</div> : null}
-    <div style={{position:'absolute',left:64,top:650,width:952,height:4,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:64,top:710,width:420,color:brand.cheeseGold,fontSize:20,fontWeight:800}}>LECTURA DR PALMA</div>
-    {scene.body ? <div style={{position:'absolute',left:64,top:755,width:860,color:brand.cream,fontSize:30,lineHeight:1.42}}>{scene.body}</div> : null}
-    <InsightStack scene={scene} top={900} />
+    {scene.support ? <div style={{position:'absolute',left:64,top:680,width:620,color:brand.cheeseGold,fontFamily:'Bebas Neue, sans-serif',fontSize:36,lineHeight:1.05}}>{scene.support}</div> : null}
+    <div style={{position:'absolute',left:64,top:760,width:620,height:5,background:brand.cheeseGold}} />
+    <div style={{position:'absolute',left:64,top:810,width:420,color:brand.cheeseGold,fontSize:20,fontWeight:800}}>LECTURA DR PALMA</div>
+    {scene.body ? <div style={{position:'absolute',left:64,top:860,width:600,color:brand.cream,fontSize:32,lineHeight:1.27,fontWeight:700}}>{scene.body}</div> : null}
+    <InsightStack scene={scene} top={1040} />
   </div>
 );
 
 const TakeLayout: React.FC<{scene: VideoScene; enter: number}> = ({scene, enter}) => (
   <div style={{opacity:enter,transform:`translateY(${interpolate(enter,[0,1],[28,0])}px)`}}>
-    <div style={{position:'absolute',left:64,top:160,width:650,color:brand.cheeseGold,fontSize:23,fontWeight:800}}>
+    <div style={{position:'absolute',left:64,top:190,width:610,color:brand.cheeseGold,fontSize:32,fontWeight:800}}>
       {scene.kicker || 'TAKE · DR PALMA'}
     </div>
     <div style={{position:'absolute',left:64,top:220,width:952,height:4,background:brand.cheeseGold}} />
-    <div style={{position:'absolute',left:64,top:300,width:900,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:102,lineHeight:.96}}>
+    <div style={{position:'absolute',left:64,top:315,width:650,color:brand.cream,fontFamily:'Bebas Neue, sans-serif',fontSize:126,lineHeight:.92}}>
       {scene.title}
     </div>
-    {scene.support ? <div style={{position:'absolute',left:66,top:535,width:850,color:brand.cheeseGold,fontSize:25,fontWeight:800}}>{scene.support}</div> : null}
-    {scene.body ? <div style={{position:'absolute',left:66,top:600,width:840,color:brand.cream,fontSize:29,lineHeight:1.42}}>{scene.body}</div> : null}
-    <InsightStack scene={scene} top={755} />
+    {scene.support ? <div style={{position:'absolute',left:66,top:670,width:620,color:brand.cheeseGold,fontSize:34,fontWeight:900}}>{scene.support}</div> : null}
+    {scene.body ? <div style={{position:'absolute',left:66,top:760,width:600,color:brand.cream,fontSize:33,lineHeight:1.28,fontWeight:700}}>{scene.body}</div> : null}
+    <InsightStack scene={scene} top={980} />
   </div>
 );
 
@@ -117,7 +127,8 @@ export const DrPalma: React.FC<{spec: VideoSpec}> = ({spec}) => {
 
   return (
     <AbsoluteFill style={{background:brand.fieldDark,color:brand.cream,fontFamily:'Montserrat, sans-serif',overflow:'hidden'}}>
-      <div style={{position:'absolute',inset:0,background:`linear-gradient(180deg, ${brand.fieldDark} 0%, ${brand.fieldDark} 70%, ${brand.lambeauGreen} 100%)`}} />
+      <div style={{position:'absolute',inset:0,background:'radial-gradient(circle at 82% 18%, rgba(242,232,207,.11), transparent 29%), repeating-linear-gradient(18deg, rgba(242,232,207,.025) 0 2px, transparent 2px 10px), linear-gradient(145deg, #0D2D20 0%, #173C2C 54%, #254D3A 100%)'}} />
+      <PhotoLayer scene={scene} />
       <SceneHeader right={scene.type === 'OUTRO' ? `CIERRE · ${footerLabel}` : headerLabel} />
       {scene.type === 'HOOK' || scene.type === 'OUTRO'
         ? <HookLayout scene={scene} enter={enter} />

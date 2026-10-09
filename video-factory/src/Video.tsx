@@ -25,11 +25,13 @@ export const PMXVideo: React.FC<VideoSpec> = (spec) => {
           : Analysis;
 
   const audioSrc = resolveAudio(spec.audioUrl);
+  const musicSrc = resolveAudio(spec.musicUrl);
 
   return (
     <AbsoluteFill>
       <Template spec={spec} />
-      {audioSrc ? <Audio src={audioSrc} /> : null}
+      {musicSrc ? <Audio src={musicSrc} volume={0.07} loop /> : null}
+      {audioSrc ? <Audio src={audioSrc} volume={1} /> : null}
       <CaptionLayer cues={spec.captions} />
     </AbsoluteFill>
   );
