@@ -4,7 +4,7 @@
   "week": "WEEK 5",
   "week_number": 5,
   "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
-  "last_sync": "2026-10-08T18:26:07.831Z",
+  "last_sync": "2026-10-09T04:53:00.050428+00:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
@@ -305,13 +305,15 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 15,
-    "status": "SCHEDULED"
+    "status": "LIVE",
+    "in_progress": 0,
+    "ties": 0
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "CAPTURE CLOSED · 9/9 · 135 PICKS · FIGMA REVIEW HOLD",
+    "package_status": "DATA LIVE 1/15 FINAL · FIGMA QA REQUIRED",
     "outputs": [],
     "rivalries_9_of_9_rule": {
       "armed": true,
@@ -337,9 +339,9 @@
       "matchup": "TB @ DAL",
       "time": "JUE 8 OCT · 18:15 CDMX · TNF",
       "kickoff_iso": "2026-10-08T18:15:00-06:00",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
+      "winner": "TB",
+      "status": "FINAL",
+      "score": "TB 24–16 DAL"
     },
     {
       "id": "G02",
@@ -639,5 +641,117 @@
     },
     "mapping_rule": "QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
     "integrity_status": "8 unique form responses verified; no previous picks changed"
-  }
+  },
+  "weekly_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 1,
+      "wrong": 0,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 1,
+      "wrong": 0,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 0,
+      "wrong": 1,
+      "status": "VALID"
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "ALEX",
+      "correct": 40,
+      "wrong": 25,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 40,
+      "wrong": 25,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 40,
+      "wrong": 25,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 39,
+      "wrong": 26,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 39,
+      "wrong": 26,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 38,
+      "wrong": 27,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 38,
+      "wrong": 27,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 37,
+      "wrong": 28,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 37,
+      "wrong": 28,
+      "status": "VALID"
+    }
+  ]
 }
