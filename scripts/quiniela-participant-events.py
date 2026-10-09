@@ -23,9 +23,18 @@ def load(path: str) -> dict:
 def select_capture(data: dict, config: dict) -> tuple[int, dict]:
     data_week = int(data.get("week_number") or 0)
     cfg_week = int(config.get("week_number") or 0)
-    if cfg_week > data_week and str(config.get("status") or config.get("window") or "").upper() in ("OPEN", "CLOSED"):
+    valid_cfg_status = str(config.get("status") or config.get("window") or "").upper() in ("OPEN", "CLOSED")
+    live = data.get("capture") or {}
+    if valid_cfg_status and cfg_week > data_week:
         return cfg_week, config
-    return data_week, data.get("capture") or {}
+    if valid_cfg_status and cfg_week == data_week and cfg_week > 0:
+        cfg_names = set(valid_submissions(config))
+        live_names = set(valid_submissions(live))
+        if cfg_names > live_names:
+            return cfg_week, config
+        if len(cfg_names) > len(live_names):
+            return cfg_week, config
+    return data_week, live
 
 
 def valid_submissions(capture: dict, expected_games: int | None = None) -> dict:
@@ -107,7 +116,10 @@ def self_test() -> None:
     cfg = {"week_number": 7, "status": "OPEN", "total": 9, "expected_picks": 135,
            "locked_submissions": {"RODRI": sub("201")}}
     assert len(build(after, {}, after, cfg)) == 1
-    print("PASS: unique submission, no prior replay, duplicate ignored, new week, config-only handoff, privacy")
+    cfg_next = json.loads(json.dumps(cfg))
+    cfg_next["locked_submissions"]["LUIS C."] = sub("202")
+    assert len(build(fresh, cfg, fresh, cfg_next)) == 1
+    print("PASS: unique submission, no prior replay, duplicate ignored, new week, config-only and same-week updates, privacy")
 
 
 if __name__ == "__main__":
