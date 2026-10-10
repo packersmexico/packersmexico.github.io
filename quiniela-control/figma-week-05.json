@@ -3,9 +3,9 @@
   "week": 5,
   "season": 2026,
   "source": "JOTFORM_VERIFIED_G01_G15",
-  "state": "FIGMA_PICKS_COMPLETE · FOUR_EXPORTED_PNGS_VERIFIED · WAITING_DIRECTION_VISUAL_REVIEW",
+  "state": "PICKS_PUBLISHED_USER_CONFIRMED · FOUR_EXPORTED_PNGS_VERIFIED",
   "publication_ready": false,
-  "gate": "PICKS_QA_PASS · DIRECTION_REVIEW_REQUIRED · NO_AUTO_PUBLISH",
+  "gate": "DIRECTION_VISUAL_PASS · PUBLISHED_USER_CONFIRMED · NO_REPOST",
   "required_screenshots": true,
   "qa": {
     "picks_board": "PASS · MAIN 135/135 · MOBILE 45/45 EACH",
@@ -27,7 +27,8 @@
     "picks_screenshot_evidence": "REAL FIGMA GET_SCREENSHOT + GITHUB PNG RENDER REVIEW · 4 NODES",
     "picks_png": "PASS · 1600x2000 · GITHUB VERIFIED",
     "mobile_png": "PASS · 3 × 1080x1920 · GITHUB VERIFIED",
-    "direction_review": "WAITING_DIRECTION_VISUAL_REVIEW"
+    "direction_review": "PASS · DIRECTION USER CONFIRMED · 2026-10-09",
+    "publication_evidence": "USER_CONFIRMED · STORIES Y REDES; platform-specific URLs/date not independently verified"
   },
   "output_targets": {
     "picks": "quiniela-control/exports/w5-picks-board.png",
@@ -39,7 +40,7 @@
     "mobile3": "quiniela-control/exports/w5-picks-mobile-3.png"
   },
   "triggers": {
-    "picks": "CAPTURE_CLOSED_LOCKED · FIGMA_EXPORT_CANDIDATE_READY",
+    "picks": "COMPLETE_9_9 · VISUAL_PASS · PUBLISHED_USER_CONFIRMED · NO_RERENDER",
     "results_rankings": "ALL_GAMES_FINAL_VERIFIED",
     "notify": "PUSH_REVIEW_READY_AFTER_GITHUB_EXPORT_VERIFIED",
     "social_autopublish": false
@@ -58,5 +59,13 @@
     "mobile3": "3266:1007642"
   },
   "picks_node_id": "3147:903160",
-  "review_preview_url": "https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-w5-review"
+  "review_preview_url": "https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-w5-review",
+  "publication": {
+    "status": "PUBLISHED_USER_CONFIRMED",
+    "distribution": "STORIES_AND_SOCIAL_NETWORKS",
+    "platforms": "NOT_SPECIFIED_BY_USER",
+    "exact_publication_time": null,
+    "platform_post_qa": "KNOWN_PARTIAL",
+    "auto_republish": false
+  }
 }
