@@ -133,9 +133,7 @@
           "state": "READY",
           "href": "./w5-picks-board.png",
           "expected": "picks-board.png",
-          "size": "1600x2000",
-          "direction_approval": "PASS · USER CONFIRMED",
-          "social_publication": "PUBLISHED_USER_CONFIRMED · STORIES_AND_REDES · NO_REPOST"
+          "size": "1600x2000"
         },
         "results": {
           "state": "WAITING_EVENT",
