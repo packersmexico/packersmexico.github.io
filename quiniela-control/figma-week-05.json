@@ -67,5 +67,17 @@
     "exact_publication_time": null,
     "platform_post_qa": "KNOWN_PARTIAL",
     "auto_republish": false
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma nodes 3147:903160 / 3266:998885 / 3266:1003379 / 3266:1007642; four PNGs previously verified at original dimensions; Direction explicitly approved and confirmed Stories/social publication; no duplicate post",
+      "approved_by": "00 · Dirección · user confirmation",
+      "approved_date": "2026-10-09",
+      "distribution": "PUBLISHED_USER_CONFIRMED · NO_REPOST",
+      "output_file": "quiniela-control/exports/w5-picks-board.png"
+    }
   }
 }
