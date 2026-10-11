@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 5",
   "week_number": 5,
-  "last_sync": "2026-10-09T04:53:00.050428+00:00",
+  "last_sync": "2026-10-11T16:59:02.945316+00:00",
   "sync_mode": "AUTO_LIVE_15MIN_ESPN_VERIFIED_FINAL",
   "operator": {
     "name": "RODRIGO",
@@ -328,8 +328,8 @@
       "time": "DOM 11 OCT · 07:30 CDMX · LONDON",
       "kickoff_iso": "2026-10-11T07:30:00-06:00",
       "winner": null,
-      "status": "SCHEDULED",
-      "score": null
+      "status": "IN_PROGRESS",
+      "score": "PHI 14–16 JAX"
     },
     {
       "id": "G03",
@@ -453,7 +453,7 @@
     "final": 1,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0
   },
   "weekly_standings": [

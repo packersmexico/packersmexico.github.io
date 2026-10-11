@@ -4,7 +4,7 @@
   "week": "WEEK 5",
   "week_number": 5,
   "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
-  "last_sync": "2026-10-09T04:53:00.050428+00:00",
+  "last_sync": "2026-10-11T16:59:02.945316+00:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
@@ -308,7 +308,7 @@
     "final": 1,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0
   },
   "public_picks_authorized": false,
@@ -349,8 +349,8 @@
       "time": "DOM 11 OCT · 07:30 CDMX · LONDON",
       "kickoff_iso": "2026-10-11T07:30:00-06:00",
       "winner": null,
-      "status": "SCHEDULED",
-      "score": null
+      "status": "IN_PROGRESS",
+      "score": "PHI 14–16 JAX"
     },
     {
       "id": "G03",
