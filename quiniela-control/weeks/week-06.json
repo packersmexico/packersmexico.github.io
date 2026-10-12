@@ -1,0 +1,289 @@
+{
+  "pmx_id": "PMX-QUINIELA-W6-001",
+  "season": "2026",
+  "week": "WEEK 6",
+  "week_number": 6,
+  "snapshot_status": "CAPTURE_FORM_CREATED_QA_PENDING",
+  "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
+  "calendar_verified_at": "2026-10-12",
+  "capture": {
+    "form_id": "262845110194050",
+    "form_url": "https://form.jotform.com/262845110194050",
+    "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
+    "complete": 0,
+    "total": 9,
+    "window": "PENDING_QA",
+    "deadline": "2026-10-15T16:00:00-06:00",
+    "deadline_label": "15 OCT · 16:00 CDMX",
+    "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
+    "expected_picks": 126,
+    "received_picks": 0,
+    "missing_picks": 126,
+    "missing_participants": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
+    "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
+    "green_bay_game_id": "G13",
+    "green_bay_default_pick": "GB",
+    "form_status": "ENABLED_JOTFORM_QA_REQUIRED",
+    "auto_close_condition": "DEADLINE_16_00_ONLY",
+    "locked_submissions": {},
+    "unique_participants": 0,
+    "duplicate_count": 0,
+    "invitado": "OFF",
+    "submission_integrity": {
+      "status": "NO_SUBMISSIONS_EXPECTED_BEFORE_GO_LIVE",
+      "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
+      "locked_picks_immutable": true
+    }
+  },
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING"
+    }
+  ],
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "SEA @ DEN",
+      "time": "JUE 15 OCT · 18:15 CDMX · TNF",
+      "kickoff_iso": "2026-10-15T18:15:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G02",
+      "matchup": "HOU @ JAX",
+      "time": "DOM 18 OCT · 07:30 CDMX · LONDON",
+      "kickoff_iso": "2026-10-18T07:30:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G03",
+      "matchup": "CHI @ ATL",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G04",
+      "matchup": "BAL @ CLE",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G05",
+      "matchup": "TEN @ IND",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G06",
+      "matchup": "NYJ @ NE",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G07",
+      "matchup": "NO @ NYG",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G08",
+      "matchup": "CAR @ PHI",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G09",
+      "matchup": "PIT @ TB",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G10",
+      "matchup": "AZ @ LAR",
+      "time": "DOM 18 OCT · 14:05 CDMX",
+      "kickoff_iso": "2026-10-18T14:05:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G11",
+      "matchup": "LAC @ KC",
+      "time": "DOM 18 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-18T14:25:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G12",
+      "matchup": "BUF @ LV",
+      "time": "DOM 18 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-18T14:25:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G13",
+      "matchup": "DAL @ GB",
+      "time": "DOM 18 OCT · 18:20 CDMX · SNF",
+      "kickoff_iso": "2026-10-18T18:20:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G14",
+      "matchup": "WAS @ SF",
+      "time": "LUN 19 OCT · 18:15 CDMX · MNF",
+      "kickoff_iso": "2026-10-19T18:15:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 14,
+    "status": "SCHEDULED",
+    "in_progress": 0,
+    "ties": 0,
+    "scored": 0,
+    "pushes": 0
+  },
+  "locked_picks": {},
+  "weekly_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "ARI",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "LALO",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "ALEX",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "JENNI",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "RODRI",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 0,
+      "wrong": 0,
+      "status": "NO_PICKS"
+    }
+  ],
+  "season_standings": [],
+  "season_base_before_week_status": "PENDING_W5_FINAL; DO_NOT_SEED_FROM_14_OF_15",
+  "production": {
+    "package_status": "CAPTURE_SETUP; ASSETS NOT RELEASED",
+    "family": "NORMAL_QUINIELA_SYSTEM",
+    "auto_publish": false
+  },
+  "public_picks_authorized": false
+}
