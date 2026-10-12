@@ -1,4 +1,5 @@
 name: Quiniela Operator Notifications
+# Dashboard notifications only. Push is sent centrally by milestone-sync, never here.
 
 on:
   push:
@@ -169,23 +170,3 @@ jobs:
             git push origin HEAD:main
           fi
 
-      - name: Send push milestone
-        env:
-          PUSH_API_URL: https://packersmexicogithubio-push-backend.vercel.app
-          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [ -z "${PUSH_API_URL:-}" ] || [ -z "${PUSH_SECRET:-}" ]; then
-            echo "::error::Push backend secret/config missing; notification NOT sent."
-            exit 1
-          fi
-          if [ ! -s .pmx-push-event.json ] || [ "$(cat .pmx-push-event.json)" = "{}" ]; then
-            echo "No push event"
-            exit 0
-          fi
-          curl --fail-with-body --silent --show-error \
-            -X POST "${PUSH_API_URL%/}/api/notify" \
-            -H "Authorization: Bearer $PUSH_SECRET" \
-            -H "Content-Type: application/json" \
-            --data-binary @.pmx-push-event.json
