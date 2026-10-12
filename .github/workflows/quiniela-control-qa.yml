@@ -8,6 +8,7 @@ on:
       - 'scripts/test_quiniela_scoring.py'
       - 'push-backend/**'
       - '.github/workflows/quiniela-push-notifications.yml'
+      - '.github/workflows/quiniela-milestone-push.yml'
   workflow_dispatch:
 jobs:
   qa:
@@ -23,6 +24,8 @@ jobs:
           node --check push-backend/api/config.js
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/notify.js
+          node --check push-backend/api/milestone-sync.js
+          node --check push-backend/lib/milestone-events.js
           node --check push-backend/api/health.js
           node --check push-backend/lib/http.js
           node --check push-backend/lib/redis.js
@@ -33,6 +36,8 @@ jobs:
         run: |
           python3 -m py_compile scripts/quiniela_scoring.py scripts/sync-quiniela-live.py
           python3 -m unittest discover -s scripts -p 'test_quiniela_scoring.py' -v
+      - name: Operator alerts V2 · W6 opening, 9/9, MNF, files, publication
+        run: node --test push-backend/tests/milestone-events.test.mjs
       - name: Required files
         run: |
           test -f quiniela-control/index.html
