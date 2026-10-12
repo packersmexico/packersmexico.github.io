@@ -1,0 +1,45 @@
+name: PMX W6 Push Delivery Recheck 20261012
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pmx-w6-push-delivery-recheck-20261012.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pmx-quiniela-w6-operator-delivery-recheck
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send distinct W6 opening notice to Rodrigo and Ibra
+        env:
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PUSH_SECRET:-}" ]; then
+            echo '::error::Missing PMX_PUSH_SECRET: no notification sent.'
+            exit 1
+          fi
+          cat > /tmp/pmx-w6-delivery-check.json <<'JSON'
+          {
+            "eventKey": "W6_OPEN_OPERATOR_DELIVERY_CHECK_20261012",
+            "title": "PACKERS MÉXICO · WEEK 6 ABIERTA",
+            "body": "Aviso para Rodrigo e Ibra: Week 6 ya está abierta. Compartan el enlace de captura con los participantes. Cierre: jueves 15 OCT · 16:00 CDMX.",
+            "url": "https://packersmexico.github.io/quiniela-control/captura/",
+            "tag": "pmx-w6-open-operator-delivery-check-20261012"
+          }
+          JSON
+          curl --fail-with-body --silent --show-error --max-time 35 \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify' \
+            -H "Authorization: Bearer $PUSH_SECRET" \
+            -H 'Content-Type: application/json' \
+            --data-binary @/tmp/pmx-w6-delivery-check.json \
+            -o /tmp/pmx-delivery-result.json
+          node -e 'const fs=require("node:fs");const x=JSON.parse(fs.readFileSync("/tmp/pmx-delivery-result.json","utf8")); const valid=["RODRIGO","IBRA"];for(const role of valid){const v=(x.deliveries||[]).find(y=>y.operator===role);console.log(`${role}: ${v?.status||"MISSING"}`);} const all=valid.every(role=>["SENT","ALREADY_SENT"].includes(x.deliveries?.find(y=>y.operator===role)?.status));if(!all){console.error("::error::Not all operator pushes accepted; inspect subscription and notification permission."); process.exit(1);} console.log("Both operator web-push requests accepted (device display still requires mobile confirmation).");'
