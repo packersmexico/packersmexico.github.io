@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 6",
   "week_number": 6,
-  "snapshot_status": "CAPTURE_FORM_CREATED_QA_PENDING",
+  "snapshot_status": "CAPTURE_OPEN · FORM_JOTFORM_VALIDATED · W5_PENDING_FINAL",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "calendar_verified_at": "2026-10-12",
   "capture": {
@@ -12,7 +12,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 0,
     "total": 9,
-    "window": "PENDING_QA",
+    "window": "OPEN",
     "deadline": "2026-10-15T16:00:00-06:00",
     "deadline_label": "15 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
@@ -34,17 +34,18 @@
     "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
     "green_bay_game_id": "G13",
     "green_bay_default_pick": "GB",
-    "form_status": "ENABLED_JOTFORM_QA_REQUIRED",
+    "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {},
     "unique_participants": 0,
     "duplicate_count": 0,
     "invitado": "OFF",
     "submission_integrity": {
-      "status": "NO_SUBMISSIONS_EXPECTED_BEFORE_GO_LIVE",
+      "status": "FORM_14_QUESTIONS_REQUIRED_VERIFIED_BY_JOTFORM_CONNECTOR; NO_SUBMISSIONS_YET",
       "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
       "locked_picks_immutable": true
-    }
+    },
+    "capture_status": "OPEN_0_OF_9_DEADLINE_20261015_1600"
   },
   "participants": [
     {
@@ -281,7 +282,7 @@
   "season_standings": [],
   "season_base_before_week_status": "PENDING_W5_FINAL; DO_NOT_SEED_FROM_14_OF_15",
   "production": {
-    "package_status": "CAPTURE_SETUP; ASSETS NOT RELEASED",
+    "package_status": "W6 CAPTURE OPEN · 04 VISUAL PICKS WAITING_9_OF_9",
     "family": "NORMAL_QUINIELA_SYSTEM",
     "auto_publish": false
   },
