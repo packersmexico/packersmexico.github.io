@@ -1,0 +1,56 @@
+name: Quiniela Progressive Editorial Preproduction
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/capture-config.json'
+      - 'quiniela-control/weeks/week-*.json'
+      - 'scripts/stage-quiniela-editorial.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pmx-quiniela-progressive-04-preproduction
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Test rules, privacy and final-vs-progressive gating
+        run: node scripts/stage-quiniela-editorial.mjs --self-test
+      - name: Rebuild latest drafts and persist with non-forced retry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Refresh canonical input between retries: other W5/asset workflows can write main.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/stage-quiniela-editorial.mjs
+            git add -- quiniela-control/production/week-*-results-workfile.json quiniela-control/production/week-*-picks-progress-workfile.json
+            if git diff --cached --quiet; then
+              echo "DATA WORKFILES UP TO DATE · no commit"
+              exit 0
+            fi
+            git commit -m "Quiniela: refresh progressive 04 data workfiles [skip ci]"
+            if git push origin HEAD:main; then
+              echo "04 DATA WORKFILES PERSISTED"
+              exit 0
+            fi
+            echo "::warning::main advanced during stage; retrying latest inputs (attempt $attempt)"
+            sleep 4
+          done
+          echo '::error::Could not commit progressive data workfiles after 3 attempts'
+          exit 1
