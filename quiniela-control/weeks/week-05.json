@@ -4,7 +4,7 @@
   "week": "WEEK 5",
   "week_number": 5,
   "snapshot_status": "CAPTURE_CLOSED_9_OF_9",
-  "last_sync": "2026-10-12T00:05:42.607082+00:00",
+  "last_sync": "2026-10-12T04:02:27.544614+00:00",
   "capture": {
     "form_url": "https://form.jotform.com/262777830600055",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
@@ -305,7 +305,7 @@
     }
   ],
   "results": {
-    "final": 13,
+    "final": 14,
     "total": 15,
     "status": "LIVE",
     "in_progress": 0,
@@ -313,7 +313,7 @@
   },
   "public_picks_authorized": false,
   "production": {
-    "package_status": "DATA LIVE 13/15 FINAL · FIGMA QA REQUIRED",
+    "package_status": "DATA LIVE 14/15 FINAL · FIGMA QA REQUIRED",
     "outputs": [],
     "rivalries_9_of_9_rule": {
       "armed": true,
@@ -456,9 +456,9 @@
       "matchup": "BAL @ ATL",
       "time": "DOM 11 OCT · 18:20 CDMX · SNF",
       "kickoff_iso": "2026-10-11T18:20:00-06:00",
-      "winner": null,
-      "status": "SCHEDULED",
-      "score": null
+      "winner": "BAL",
+      "status": "FINAL",
+      "score": "BAL 30–23 ATL"
     },
     {
       "id": "G15",
@@ -646,54 +646,54 @@
     {
       "name": "EL DOC",
       "correct": 8,
-      "wrong": 5,
+      "wrong": 6,
       "status": "VALID"
     },
     {
       "name": "ARI",
-      "correct": 9,
+      "correct": 10,
       "wrong": 4,
       "status": "VALID"
     },
     {
       "name": "LALO",
       "correct": 5,
-      "wrong": 8,
+      "wrong": 9,
       "status": "VALID"
     },
     {
       "name": "ALEX",
-      "correct": 9,
+      "correct": 10,
       "wrong": 4,
       "status": "VALID"
     },
     {
       "name": "LUIS C.",
       "correct": 9,
-      "wrong": 4,
+      "wrong": 5,
       "status": "VALID"
     },
     {
       "name": "DR PALMA",
       "correct": 6,
-      "wrong": 7,
+      "wrong": 8,
       "status": "VALID"
     },
     {
       "name": "JENNI",
-      "correct": 8,
+      "correct": 9,
       "wrong": 5,
       "status": "VALID"
     },
     {
       "name": "RODRI",
       "correct": 10,
-      "wrong": 3,
+      "wrong": 4,
       "status": "VALID"
     },
     {
       "name": "IBRACHO",
-      "correct": 9,
+      "correct": 10,
       "wrong": 4,
       "status": "VALID"
     }
@@ -701,56 +701,56 @@
   "season_standings": [
     {
       "name": "ALEX",
-      "correct": 49,
+      "correct": 50,
       "wrong": 28,
       "status": "VALID"
     },
     {
       "name": "IBRACHO",
-      "correct": 49,
+      "correct": 50,
       "wrong": 28,
       "status": "VALID"
     },
     {
       "name": "RODRI",
       "correct": 49,
-      "wrong": 28,
-      "status": "VALID"
-    },
-    {
-      "name": "EL DOC",
-      "correct": 48,
       "wrong": 29,
       "status": "VALID"
     },
     {
       "name": "ARI",
-      "correct": 47,
+      "correct": 48,
+      "wrong": 30,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 48,
       "wrong": 30,
       "status": "VALID"
     },
     {
       "name": "LUIS C.",
       "correct": 47,
-      "wrong": 30,
+      "wrong": 31,
       "status": "VALID"
     },
     {
       "name": "JENNI",
-      "correct": 45,
+      "correct": 46,
       "wrong": 32,
       "status": "VALID"
     },
     {
       "name": "DR PALMA",
       "correct": 43,
-      "wrong": 34,
+      "wrong": 35,
       "status": "VALID"
     },
     {
       "name": "LALO",
       "correct": 42,
-      "wrong": 35,
+      "wrong": 36,
       "status": "VALID"
     }
   ]
