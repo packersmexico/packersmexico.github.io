@@ -1,0 +1,288 @@
+{
+  "schema": "PMX_QUINIELA_04_RESULTS_WORKFILE_V1",
+  "week": 5,
+  "season": "2026",
+  "kind": "DATA_ONLY_FOR_EXISTING_FIGMA_MASTER",
+  "governance": {
+    "owner": "04",
+    "auto_publish": false,
+    "not_an_asset": true,
+    "figma_master_required": true,
+    "qa_required": true,
+    "no_downloadable_png_without_04_PASS": true
+  },
+  "status": "PARTIAL_RESULTS_IN_PROGRESS",
+  "source": "quiniela-control/data.json",
+  "last_sync": "2026-10-12T04:02:27.544614+00:00",
+  "progress": {
+    "decided": 14,
+    "total": 15,
+    "scoreable": 13,
+    "pushes": 1,
+    "remaining": 1
+  },
+  "headline": "RESULTADOS · WEEK 5",
+  "games": [
+    {
+      "game_id": "G01",
+      "matchup": "TB @ DAL",
+      "kickoff": "JUE 8 OCT · 18:15 CDMX · TNF",
+      "state": "DECIDED",
+      "score": "TB 24–16 DAL",
+      "winner": "TB",
+      "is_push": false,
+      "visual_label": "GANÓ TB"
+    },
+    {
+      "game_id": "G02",
+      "matchup": "PHI @ JAX",
+      "kickoff": "DOM 11 OCT · 07:30 CDMX · LONDON",
+      "state": "DECIDED",
+      "score": "JAX 19–17 PHI",
+      "winner": "JAX",
+      "is_push": false,
+      "visual_label": "GANÓ JAX"
+    },
+    {
+      "game_id": "G03",
+      "matchup": "CIN @ MIA",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "CIN 31–24 MIA",
+      "winner": "CIN",
+      "is_push": false,
+      "visual_label": "GANÓ CIN"
+    },
+    {
+      "game_id": "G04",
+      "matchup": "LV @ NE",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "NE 45–17 LV",
+      "winner": "NE",
+      "is_push": false,
+      "visual_label": "GANÓ NE"
+    },
+    {
+      "game_id": "G05",
+      "matchup": "MIN @ NO",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "MIN 23–13 NO",
+      "winner": "MIN",
+      "is_push": false,
+      "visual_label": "GANÓ MIN"
+    },
+    {
+      "game_id": "G06",
+      "matchup": "CLE @ NYJ",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "NYJ 17–12 CLE",
+      "winner": "NYJ",
+      "is_push": false,
+      "visual_label": "GANÓ NYJ"
+    },
+    {
+      "game_id": "G07",
+      "matchup": "IND @ PIT",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "PIT 34–22 IND",
+      "winner": "PIT",
+      "is_push": false,
+      "visual_label": "GANÓ PIT"
+    },
+    {
+      "game_id": "G08",
+      "matchup": "HOU @ TEN",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "HOU 26–3 TEN",
+      "winner": "HOU",
+      "is_push": false,
+      "visual_label": "GANÓ HOU"
+    },
+    {
+      "game_id": "G09",
+      "matchup": "NYG @ WAS",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "PUSH",
+      "score": "NYG 27–27 WAS",
+      "winner": null,
+      "is_push": true,
+      "visual_label": "EMPATE · PUSH"
+    },
+    {
+      "game_id": "G10",
+      "matchup": "CHI @ GB",
+      "kickoff": "DOM 11 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "GB 31–7 CHI",
+      "winner": "GB",
+      "is_push": false,
+      "visual_label": "GANÓ GB"
+    },
+    {
+      "game_id": "G11",
+      "matchup": "DEN @ LAC",
+      "kickoff": "DOM 11 OCT · 14:05 CDMX",
+      "state": "DECIDED",
+      "score": "DEN 23–17 LAC",
+      "winner": "DEN",
+      "is_push": false,
+      "visual_label": "GANÓ DEN"
+    },
+    {
+      "game_id": "G12",
+      "matchup": "DET @ ARI",
+      "kickoff": "DOM 11 OCT · 14:25 CDMX",
+      "state": "DECIDED",
+      "score": "DET 45–21 ARI",
+      "winner": "DET",
+      "is_push": false,
+      "visual_label": "GANÓ DET"
+    },
+    {
+      "game_id": "G13",
+      "matchup": "SF @ SEA",
+      "kickoff": "DOM 11 OCT · 14:25 CDMX",
+      "state": "DECIDED",
+      "score": "SF 32–29 SEA",
+      "winner": "SF",
+      "is_push": false,
+      "visual_label": "GANÓ SF"
+    },
+    {
+      "game_id": "G14",
+      "matchup": "BAL @ ATL",
+      "kickoff": "DOM 11 OCT · 18:20 CDMX · SNF",
+      "state": "DECIDED",
+      "score": "BAL 30–23 ATL",
+      "winner": "BAL",
+      "is_push": false,
+      "visual_label": "GANÓ BAL"
+    },
+    {
+      "game_id": "G15",
+      "matchup": "BUF @ LAR",
+      "kickoff": "LUN 12 OCT · 18:15 CDMX · MNF",
+      "state": "PENDING",
+      "score": null,
+      "winner": null,
+      "is_push": false,
+      "visual_label": "EN ESPERA DE FINAL"
+    }
+  ],
+  "rankings": {
+    "state": "PROVISIONAL_DO_NOT_PUBLISH",
+    "weekly": [
+      {
+        "name": "EL DOC",
+        "correct": 8,
+        "wrong": 5
+      },
+      {
+        "name": "ARI",
+        "correct": 10,
+        "wrong": 3
+      },
+      {
+        "name": "LALO",
+        "correct": 5,
+        "wrong": 8
+      },
+      {
+        "name": "ALEX",
+        "correct": 10,
+        "wrong": 3
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 6,
+        "wrong": 7
+      },
+      {
+        "name": "JENNI",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "RODRI",
+        "correct": 10,
+        "wrong": 3
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 10,
+        "wrong": 3
+      }
+    ],
+    "season": [
+      {
+        "name": "ALEX",
+        "correct": 50,
+        "wrong": 27
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 50,
+        "wrong": 27
+      },
+      {
+        "name": "RODRI",
+        "correct": 49,
+        "wrong": 28
+      },
+      {
+        "name": "ARI",
+        "correct": 48,
+        "wrong": 29
+      },
+      {
+        "name": "EL DOC",
+        "correct": 48,
+        "wrong": 29
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 47,
+        "wrong": 30
+      },
+      {
+        "name": "JENNI",
+        "correct": 46,
+        "wrong": 31
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 43,
+        "wrong": 34
+      },
+      {
+        "name": "LALO",
+        "correct": 42,
+        "wrong": 35
+      }
+    ]
+  },
+  "visual_slots": {
+    "results": {
+      "file": "w5-results-live.png",
+      "state": "DRAFT_ONLY"
+    },
+    "weekly": {
+      "file": "w5-ranking-weekly.png",
+      "state": "DRAFT_ONLY"
+    },
+    "season": {
+      "file": "w5-ranking-season.png",
+      "state": "DRAFT_ONLY"
+    }
+  }
+}
