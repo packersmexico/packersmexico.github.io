@@ -1,5 +1,6 @@
 import webpush from 'web-push';
 import { redis, keys } from '../lib/redis.js';
+import { milestoneEvents } from '../lib/milestone-events.js';
 import { applyCors, json, rejectMethod } from '../lib/http.js';
 
 const RAW_BASE = 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
@@ -17,79 +18,6 @@ async function assetExists(path) {
   } catch {
     return false;
   }
-}
-
-function eventPayloads(data) {
-  const week = Number(data?.week_number || 0);
-  if (!week || week <= 4) return [];
-
-  const capture = data?.capture || {};
-  const results = data?.results || {};
-  const events = [];
-
-  const weekOpen =
-    String(capture.window || '').toUpperCase() === 'OPEN' &&
-    Number(capture.complete || 0) < Number(capture.total || 9);
-
-  if (weekOpen) {
-    events.push({
-      eventKey: `WEEK_OPEN_W${week}`,
-      title: `PACKERS MÉXICO · QUINIELA W${week}`,
-      body: `Nueva Week disponible. Captura abierta · ${capture.complete || 0}/${capture.total || 9} recibidos.`,
-      url: 'https://packersmexico.github.io/quiniela-control/captura/',
-      tag: `pmx-week-open-w${week}`
-    });
-  }
-
-  if (week === 5 && weekOpen && Number(capture.complete) === 8 &&
-      Date.now() < new Date('2026-10-08T16:00:00-06:00').getTime()) {
-    events.push({
-      eventKey: 'W5_REMINDER_8OF9_20261008_1600',
-      title: 'QUINIELA PMX · WEEK 5 · FALTA UNO',
-      body: 'Rodri y Alex ya enviaron. Falta LUIS C. · cierre 16:00 CDMX.',
-      url: 'https://packersmexico.github.io/quiniela-control/captura/',
-      tag: 'pmx-w5-reminder-8of9'
-    });
-  }
-
-  const captureClosed =
-    Number(capture.complete || 0) > 0 &&
-    String(capture.window || '').toUpperCase() === 'CLOSED';
-
-  if (captureClosed) {
-    events.push({
-      needsAsset: `exports/w${week}-picks-board.png`,
-      assetSlots: ['picks'],
-      eventKey: `PICKS_READY_W${week}`,
-      title: `PACKERS MÉXICO · W${week} PICKS DISPONIBLES`,
-      body: `${capture.complete || 0}/${capture.total || 9} participantes. Captura cerrada; hoja de picks verificada para descargar.`,
-      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html#pmx-weekly-library',
-      tag: `pmx-picks-ready-w${week}`
-    });
-  }
-
-  const finalComplete =
-    Number(results.final || 0) === Number(results.total || 16) &&
-    Number(results.total || 0) > 0;
-
-  if (finalComplete) {
-    events.push({
-      needsQA: 'FINAL',
-      assetSlots: ['results','weekly','season'],
-      needsAssets: [
-        `exports/w${week}-results-live.png`,
-        `exports/w${week}-ranking-weekly.png`,
-        `exports/w${week}-ranking-season.png`
-      ],
-      eventKey: `WEEK_FINAL_W${week}`,
-      title: `PACKERS MÉXICO · W${week} FINAL`,
-      body: `${results.final}/${results.total} FINAL. Resultados y rankings actualizados; rollover de la siguiente Week en proceso.`,
-      url: 'https://packersmexico.github.io/quiniela-control/exports/live.html',
-      tag: `pmx-week-final-w${week}`
-    });
-  }
-
-  return events;
 }
 
 async function sendEvent(role, record, event, vapid, assetIndex) {
@@ -173,9 +101,19 @@ export default async function handler(req, res) {
     return json(res, 503, { ok: false, error: 'VAPID_NOT_CONFIGURED' });
   }
 
-  const data = await getJson(`${RAW_BASE}/data.json?t=${Date.now()}`);
-  const candidates = eventPayloads(data);
-  const assetIndex=await getJson(`${RAW_BASE}/exports/asset-index.json?t=${Date.now()}`);
+  const [data,captureConfig,assetIndex] = await Promise.all([
+    getJson(RAW_BASE+'/data.json?t='+Date.now()),
+    getJson(RAW_BASE+'/capture-config.json?t='+Date.now()),
+    getJson(RAW_BASE+'/exports/asset-index.json?t='+Date.now())
+  ]);
+  const stages={};
+  const readyWeeks=Object.entries(assetIndex.weeks||{}).filter(([week,record])=>
+    Number(week)>=6 && Object.values(record.assets||{}).some(a=>a.state==='READY'));
+  await Promise.all(readyWeeks.map(async ([week])=>{
+    try {stages[week]=await getJson(RAW_BASE+'/figma-week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());}
+    catch {stages[week]=null;}
+  }));
+  const candidates=milestoneEvents({data,captureConfig,assetIndex,stages});
   const results = [];
   for (const role of ['RODRIGO','IBRA']) {
     const raw = await redis(['GET', keys.subscriptionFor(role)]);
@@ -186,6 +124,6 @@ export default async function handler(req, res) {
       results.push({operator:role,...result});
     }
   }
-  return json(res,200,{ok:true,week:data.week_number,checkedAt:new Date().toISOString(),results});
+  return json(res,200,{ok:true,week:data.week_number,captureWeek:captureConfig.week_number,checkedAt:new Date().toISOString(),events:candidates.map(x=>x.eventKey),results});
 
 }
