@@ -16,16 +16,33 @@ const slots={
 const live=read(`${root}/data.json`);
 if(!live||!Number.isInteger(Number(live.week_number)))throw Error('ACTIVE_DATA_INVALID');
 const current=Number(live.week_number);
+const currentCapture=read(`${root}/capture-config.json`)||{};
+const captureWeek=Number(currentCapture.week_number||current);
+if(!Number.isInteger(captureWeek)||captureWeek<current||captureWeek>current+1){
+  throw Error('UNEXPECTED_CAPTURE_WEEK_ADVANCE');
+}
+const active=Math.max(current,captureWeek);
 const weeks={};
-for(let w=1;w<=current;w++){
+for(let w=1;w<=active;w++){
   const wk=read(`${root}/weeks/week-${String(w).padStart(2,'0')}.json`);
   const data=w===current?live:wk;
   if(!data)continue;
-  const capture=data.capture||{};
+  // Upcoming capture W6 can be OPEN while live score monitor is still on W5.
+  const capture=w===captureWeek&&captureWeek>current?currentCapture:(data.capture||{});
   const results=data.results||{};
   const complete=Number(capture.complete||0),target=Number(capture.total||9);
   const total=Number(results.total||data.games?.length||0),final=Number(results.final||0);
-  const picksGate=String(capture.window||'').toUpperCase()==='CLOSED'&&complete>0&&complete<=target;
+  const captureClosed=String(capture.status||capture.window||'').toUpperCase()==='CLOSED';
+  const firstValid=capture.locked_submissions||{};
+  // W6+ must be fully captured and validated. Keep historic approved W4/W5 intact.
+  const strictFuture=w>=6;
+  const fullRoster=Array.isArray(data.participants)&&data.participants.length===target;
+  const lockedCount=Object.keys(firstValid).filter(name=>
+    data.participants?.some(p=>p.name===name) &&
+    Array.isArray(firstValid[name]?.picks) &&
+    firstValid[name].picks.length===data.games?.length).length;
+  const picksGate=captureClosed && complete===target &&
+    (strictFuture ? fullRoster&&lockedCount===target : complete>0);
   const resultsGate=total>0&&total===final&&String(results.status||'').toUpperCase()==='FINAL';
   const figma=read(`${root}/figma-week-${String(w).padStart(2,'0')}.json`);
   const assets={};
@@ -43,10 +60,14 @@ for(let w=1;w<=current;w++){
     const state=!eligible?'WAITING_EVENT':approved&&exists?'READY':'QA_PENDING';
     assets[key]={state,href:state==='READY'?('./'+path.basename(actual)):null,expected:slot.file+'.png',size:`${slot.width}x${slot.height}`};
   }
-  weeks[w]={week:w,capture:{complete,total:target,window:capture.window||'UNKNOWN'},results:{final,total},assets};
+  weeks[w]={week:w,capture:{complete,total:target,window:capture.status||capture.window||'UNKNOWN'},results:{final,total},assets};
 }
 const completed=Object.keys(weeks).map(Number).filter(w=>weeks[w].results.total>0&&weeks[w].results.final===weeks[w].results.total);
-const index={schema:'PMX_QUINIELA_ASSET_INDEX_V1',active_week:current,last_completed_week:completed.length?Math.max(...completed):null,weeks};
+const activeResults=weeks[current]?.results||{};
+const inProgress=current<active && activeResults.total>0&&activeResults.final<activeResults.total?current:null;
+const index={schema:'PMX_QUINIELA_ASSET_INDEX_V1',active_week:active,
+  score_week:current,capture_week:captureWeek,in_progress_week:inProgress,
+  last_completed_week:completed.length?Math.max(...completed):null,weeks};
 const serialized=JSON.stringify(index,null,2)+'\n';
 if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==serialized){fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,serialized);}
-console.log(JSON.stringify({active_week:current,last_completed_week:index.last_completed_week,active_assets:index.weeks[current]?.assets}));
+console.log(JSON.stringify({active_week:active,score_week:current,capture_week:captureWeek,in_progress_week:inProgress,last_completed_week:index.last_completed_week,active_assets:index.weeks[active]?.assets}));

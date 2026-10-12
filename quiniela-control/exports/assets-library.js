@@ -81,13 +81,24 @@ async function pmxLoadLibrary(){
       const summary=document.createElement('summary');summary.textContent='Estado de Week '+active+' · datos y siguientes entregables';
       current.append(summary);pmxRenderWeek(current,active,weeks[active],'SEMANA ACTUAL');c.append(current);
     }
+    // While W6 capture is open, keep unfinished W5 results visible in a
+    // separate fold rather than hiding them inside historic archives.
+    const inProgress=Number(d.in_progress_week);
+    if(inProgress && inProgress!==active && weeks[inProgress]){
+      const pending=document.createElement('details');pending.className='library-fold';
+      const summary=document.createElement('summary');
+      summary.textContent='Resultados en construcción · Week '+inProgress+' · '+weeks[inProgress].results.final+'/'+weeks[inProgress].results.total;
+      pending.append(summary);
+      pmxRenderWeek(pending,inProgress,weeks[inProgress],'RESULTADOS EN PROGRESO · NO PUBLICAR');
+      c.append(pending);
+    }
     const last=Number(d.last_completed_week);
     if(last && last!==active && weeks[last]){
       const prior=document.createElement('details');prior.className='library-fold';
       const summary=document.createElement('summary');summary.textContent='Último cierre · Week '+last+' · resultados y rankings';
       prior.append(summary);pmxRenderWeek(prior,last,weeks[last],'ÚLTIMA SEMANA CERRADA');c.append(prior);
     }
-    const older=Object.keys(weeks).map(Number).filter(w=>w!==active&&w!==last).sort((a,b)=>b-a);
+    const older=Object.keys(weeks).map(Number).filter(w=>w!==active&&w!==last&&w!==inProgress).sort((a,b)=>b-a);
     if(older.length){
       const archive=document.createElement('details');archive.className='library-fold';
       const summary=document.createElement('summary');summary.textContent='Archivo histórico · '+older.length+' semanas';
