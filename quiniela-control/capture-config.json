@@ -1,281 +1,54 @@
 {
   "season": "2026",
-  "week": "WEEK 5",
-  "week_number": 5,
-  "form_id": "262777830600055",
-  "form_url": "https://form.jotform.com/262777830600055",
-  "status": "CLOSED",
-  "deadline": "2026-10-08T16:00:00-06:00",
-  "deadline_label": "8 OCT · 16:00 CDMX",
-  "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX",
+  "week": "WEEK 6",
+  "week_number": 6,
+  "form_id": "262845110194050",
+  "form_url": "https://form.jotform.com/262845110194050",
+  "status": "OPEN",
+  "deadline": "2026-10-15T16:00:00-06:00",
+  "deadline_label": "15 OCT · 16:00 CDMX",
+  "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
   "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
   "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-  "last_sync": "2026-10-08T20:41:26.587Z",
-  "capture_status": "CLOSED_9_OF_9_DEADLINE_1600",
-  "form_status": "DISABLED",
-  "complete": 9,
+  "default_green_bay_policy": "GB_PRESELECTED_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
+  "default_green_bay_game_id": "G13",
+  "default_green_bay_pick": "GB",
+  "capture_status": "OPEN · WEEK6 · 0_OF_9 · 0_OF_126",
+  "form_status": "ENABLED",
+  "complete": 0,
   "total": 9,
-  "expected_picks": 135,
-  "received_picks": 135,
-  "missing_picks": 0,
-  "missing_participants": [],
+  "expected_picks": 126,
+  "received_picks": 0,
+  "missing_picks": 126,
+  "missing_participants": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
   "auto_close_condition": "DEADLINE_16_00_ONLY",
-  "locked_submissions": {
-    "DR PALMA": {
-      "submission_id": "6670689441121470817",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "LV",
-        "NO",
-        "CLE",
-        "PIT",
-        "HOU",
-        "WAS",
-        "CHI",
-        "DEN",
-        "DET",
-        "SEA",
-        "ATL",
-        "BUF"
-      ]
-    },
-    "ARI": {
-      "submission_id": "6670690414015895408",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "TB",
-        "PHI",
-        "CIN",
-        "LV",
-        "MIN",
-        "NYJ",
-        "IND",
-        "HOU",
-        "NYG",
-        "GB",
-        "DEN",
-        "DET",
-        "SF",
-        "BAL",
-        "BUF"
-      ]
-    },
-    "LALO": {
-      "submission_id": "6670713770706204750",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "MIA",
-        "NE",
-        "NO",
-        "NYJ",
-        "PIT",
-        "TEN",
-        "WAS",
-        "GB",
-        "LAC",
-        "ARI",
-        "SEA",
-        "ATL",
-        "LAR"
-      ]
-    },
-    "IBRACHO": {
-      "submission_id": "6670744118902933092",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "NE",
-        "MIN",
-        "CLE",
-        "IND",
-        "HOU",
-        "NYG",
-        "GB",
-        "DEN",
-        "DET",
-        "SF",
-        "BAL",
-        "BUF"
-      ]
-    },
-    "JENNI": {
-      "submission_id": "6671269814148574857",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "TB",
-        "PHI",
-        "CIN",
-        "NE",
-        "MIN",
-        "CLE",
-        "PIT",
-        "TEN",
-        "WAS",
-        "GB",
-        "DEN",
-        "DET",
-        "SEA",
-        "BAL",
-        "LAR"
-      ]
-    },
-    "EL DOC": {
-      "submission_id": "6671472801306099783",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "NE",
-        "NO",
-        "CLE",
-        "PIT",
-        "HOU",
-        "WAS",
-        "GB",
-        "DEN",
-        "DET",
-        "SEA",
-        "ATL",
-        "BUF"
-      ]
-    },
-    "ALEX": {
-      "submission_id": "6672917389016661092",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "NE",
-        "MIN",
-        "CLE",
-        "PIT",
-        "HOU",
-        "NYG",
-        "GB",
-        "DEN",
-        "DET",
-        "SEA",
-        "BAL",
-        "BUF"
-      ]
-    },
-    "RODRI": {
-      "submission_id": "6672925502612099422",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "NE",
-        "MIN",
-        "NYJ",
-        "PIT",
-        "HOU",
-        "WAS",
-        "GB",
-        "DEN",
-        "DET",
-        "SEA",
-        "ATL",
-        "LAR"
-      ]
-    },
-    "LUIS C.": {
-      "submission_id": "6673005185188431549",
-      "status": "LOCKED_FIRST_VALID",
-      "picks": [
-        "DAL",
-        "JAX",
-        "CIN",
-        "NE",
-        "MIN",
-        "NYJ",
-        "PIT",
-        "HOU",
-        "NYG",
-        "GB",
-        "LAC",
-        "DET",
-        "SEA",
-        "ATL",
-        "LAR"
-      ]
-    }
-  },
-  "duplicate_count": 1,
-  "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
-  "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
-  "data_complete_trigger": {
-    "armed": true,
-    "condition": "9_OF_9_AND_135_OF_135",
-    "next_stage": "04 · FIGMA",
-    "variant": "RIVALRIES WEEK",
-    "family": "FAM-007 · Rivalries 2026",
-    "figma_owner": "04",
-    "required_text": [
-      "RIVALRIES WEEK",
-      "WEEK 5",
-      "9/9 PICKS COMPLETOS"
-    ],
-    "photo_mode": "PHOTO_OFF_PREFERRED",
-    "no_canva": true,
-    "no_synthetic_players_or_photos": true,
-    "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
-  },
+  "locked_submissions": {},
+  "duplicate_count": 0,
+  "duplicate_submission_ids": [],
+  "unique_participants": 0,
   "submission_integrity": {
-    "status": "9_UNIQUE_RESPONSES_FROM_JOTFORM_ANALYSIS",
-    "reconciled_at": "2026-10-08T20:41:26.587Z",
-    "source": "JOTFORM OCT-08 CURRENT SUBMISSIONS; FIRST VALID PER PARTICIPANT; GAME IDS G01-G15",
-    "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
-    "anomaly": {
-      "description": "Jotform q13 (G10) has order=14 while q14 (G11) has order=13 after schedule correction; display/order position is non-canonical.",
-      "g10": {
-        "question_id": "13",
-        "field_name": "q13_radio11",
-        "game_id": "G10",
-        "matchup": "CHI @ GB"
-      },
-      "g11": {
-        "question_id": "14",
-        "field_name": "q14_radio12",
-        "game_id": "G11",
-        "matchup": "DEN @ LAC"
-      }
-    },
-    "verified_submissions": [
-      "6670689441121470817",
-      "6670690414015895408",
-      "6670713770706204750",
-      "6670744118902933092",
-      "6671269814148574857",
-      "6671472801306099783",
-      "6672917389016661092",
-      "6672925502612099422",
-      "6673005185188431549"
-    ],
-    "result": "9 unique participants / 10 raw submissions; DR PALMA duplicate ignored; LUIS C. first valid locked"
+    "status": "FORM_CREATED_VALIDATED_LABELS_AND_REQUIRED_BY_JOTFORM; FIRST_VALID_SUBMISSIONS_AWAITED",
+    "form_questions": 14,
+    "mapping_rule": "JOTFORM_QUESTION_ID_PLUS_LITERAL_GAME_ID_G01_TO_G14_NOT_DISPLAY_ORDER",
+    "first_valid_only": true,
+    "lock_after_first_valid": true,
+    "week5_preservation": "WEEK5_MAIN_DATA_14_OF_15_PRESERVED_UNTIL_MNF_FINAL",
+    "source": "NFL WEEK6 OFFICIAL SCHEDULE 2026-10-12"
   },
-  "window": "CLOSED",
-  "duplicate_submissions": [
-    {
-      "participant": "DR PALMA",
-      "submission_id": "6672950551129314740",
-      "original_id": "6670689441121470817",
-      "policy": "IGNORE_KEEP_FIRST_VALID",
-      "reported_at": "2026-10-08 14:57:36"
-    }
-  ],
-  "duplicate_submission_ids": [
-    "6672950551129314740"
-  ],
-  "unique_participants": 9
+  "window": "OPEN",
+  "invitado": "OFF",
+  "last_sync": "2026-10-12T17:43:17+00:00",
+  "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-6",
+  "form_create_record": "JOTFORM_VALIDATED_2026-10-12",
+  "capacity_note": "W5 data.json still canonical for unfinished G15; W6 capture-config is ahead by exactly one week"
 }
