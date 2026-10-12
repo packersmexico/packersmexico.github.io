@@ -209,18 +209,24 @@ async function initializePush(){
     localStorage.removeItem('pmxPushRegistered_RODRIGO');
   }
 
-  const registered=isRegistered();
-  if(Notification.permission==='granted' && subscription && registered){
-    button.textContent='NOTIFICACIONES ACTIVAS';
-    button.disabled=true;
-    pushStatus('ACTIVAS EN ESTE DISPOSITIVO','on');
-    return;
-  }
-
-  button.disabled=false;
-  roleControl.addEventListener('change',()=>{ if(label)label.textContent='ADMINISTRADOR: '+selectedRole(); const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered(); button.textContent=ready?'NOTIFICACIONES ACTIVAS':'ACTIVAR NOTIFICACIONES';button.disabled=ready;pushStatus(ready?'ACTIVAS PARA '+selectedRole():'LISTAS PARA '+selectedRole(),ready?'on':'idle');});
-  pushStatus(Notification.permission==='denied'?'PERMISO BLOQUEADO EN EL NAVEGADOR':'LISTAS PARA ACTIVAR',Notification.permission==='denied'?'off':'idle');
-  if(Notification.permission==='denied'){button.disabled=true;return;}
+  // Browser permission/localStorage is NOT proof that the backend still
+  // recognizes this endpoint. After a WebPush 404/410 the backend deletes it.
+  // Keep renewal accessible even when the browser previously said "active".
+  const showLocalState=()=>{
+    if(label)label.textContent='ADMINISTRADOR: '+selectedRole();
+    const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered();
+    button.textContent=ready?'RENOVAR NOTIFICACIONES':'ACTIVAR NOTIFICACIONES';
+    button.disabled=Notification.permission==='denied';
+    pushStatus(
+      Notification.permission==='denied'?'PERMISO BLOQUEADO EN EL NAVEGADOR':
+      ready?'REGISTRO LOCAL · RENUEVA SI NO LLEGAN AVISOS':
+      'LISTAS PARA ACTIVAR',
+      Notification.permission==='denied'?'off':ready?'on':'idle'
+    );
+  };
+  roleControl.addEventListener('change',showLocalState);
+  showLocalState();
+  if(Notification.permission==='denied')return;
 
   button.addEventListener('click',async()=>{
     button.disabled=true;
@@ -240,24 +246,27 @@ async function initializePush(){
         vapidPublicKey=cfg.vapidPublicKey;
       }
 
-      stage='SUSCRIPCIÓN';
-      subscription=await currentSubscription(registration);
-      if(subscription && !isRegistered()){
-        try { await subscription.unsubscribe(); } catch (_) {}
-        subscription=null;
-      }
-      if(!subscription){
-        const key=b64ToUint8Array(vapidPublicKey);
-        subscription=await registration.pushManager.subscribe({
-          userVisibleOnly:true,
-          applicationServerKey:key.buffer
-        });
-      }
-
+      // Ask for the operator code BEFORE invalidating a local subscription.
       stage='CÓDIGO';
       const operator=selectedRole();
       const code=window.prompt('Código de vinculación de '+operator);
       if(!code)throw new Error('REGISTRATION_CODE_REQUIRED');
+
+      // Explicit renewal creates a fresh push endpoint. Re-sending an expired
+      // endpoint would appear registered in the UI but still return 404/410.
+      stage='SUSCRIPCIÓN';
+      subscription=await currentSubscription(registration);
+      if(subscription){
+        const removed=await subscription.unsubscribe();
+        if(!removed)throw new Error('OLD_SUBSCRIPTION_UNSUBSCRIBE_FAILED');
+        subscription=null;
+      }
+      localStorage.removeItem(storageKey());
+      const key=b64ToUint8Array(vapidPublicKey);
+      subscription=await registration.pushManager.subscribe({
+        userVisibleOnly:true,
+        applicationServerKey:key.buffer
+      });
 
       stage='REGISTRO';
       let payload;
@@ -283,12 +292,13 @@ async function initializePush(){
 
       if(payload.operator!==operator)throw new Error('OPERATOR_MISMATCH');
       localStorage.setItem(storageKey(),'1');
-      button.textContent='NOTIFICACIONES ACTIVAS';
-      button.disabled=true;
-      pushStatus('ACTIVAS PARA '+operator+' EN ESTE DISPOSITIVO','on');
+      button.textContent='RENOVAR NOTIFICACIONES';
+      button.disabled=false;
+      pushStatus('SUSCRIPCIÓN RENOVADA PARA '+operator+' · ENVÍO DE PRUEBA PENDIENTE','on');
     }catch(error){
       console.error(error);
       button.disabled=false;
+      button.textContent='ACTIVAR / RENOVAR NOTIFICACIONES';
       const code=String(error?.message||error?.name||'UNKNOWN_PUSH_ERROR');
       const errorName=String(error?.name||'Error');
       const detail=(errorName+': '+code).slice(0,120);
