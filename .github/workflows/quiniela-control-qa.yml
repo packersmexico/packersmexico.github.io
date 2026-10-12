@@ -6,6 +6,8 @@ on:
       - 'scripts/quiniela_scoring.py'
       - 'scripts/sync-quiniela-live.py'
       - 'scripts/test_quiniela_scoring.py'
+      - 'scripts/stage-quiniela-editorial.mjs'
+      - '.github/workflows/quiniela-progressive-editorial.yml'
       - 'push-backend/**'
       - '.github/workflows/quiniela-push-notifications.yml'
       - '.github/workflows/quiniela-milestone-push.yml'
@@ -38,6 +40,11 @@ jobs:
           python3 -m unittest discover -s scripts -p 'test_quiniela_scoring.py' -v
       - name: Operator alerts V2 · W6 opening, 9/9, MNF, files, publication
         run: node --test push-backend/tests/milestone-events.test.mjs
+      - name: Progressive W5 results and privacy-masked W6 picks preview · QA
+        run: |
+          node --check scripts/stage-quiniela-editorial.mjs
+          node scripts/stage-quiniela-editorial.mjs --self-test
+          node scripts/stage-quiniela-editorial.mjs
       - name: Required files
         run: |
           test -f quiniela-control/index.html
