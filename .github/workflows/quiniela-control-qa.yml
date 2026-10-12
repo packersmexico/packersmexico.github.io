@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'quiniela-control/**'
+      - 'scripts/quiniela_scoring.py'
+      - 'scripts/sync-quiniela-live.py'
+      - 'scripts/test_quiniela_scoring.py'
       - 'push-backend/**'
       - '.github/workflows/quiniela-push-notifications.yml'
   workflow_dispatch:
@@ -26,6 +29,10 @@ jobs:
       - name: JSON validity
         run: |
           node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/push-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/notifications.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/package.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/vercel.json','utf8'));"
+      - name: Quiniela PUSH scoring, W5 regression and locked-picks integrity
+        run: |
+          python3 -m py_compile scripts/quiniela_scoring.py scripts/sync-quiniela-live.py
+          python3 -m unittest discover -s scripts -p 'test_quiniela_scoring.py' -v
       - name: Required files
         run: |
           test -f quiniela-control/index.html
