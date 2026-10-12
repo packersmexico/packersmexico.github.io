@@ -45,6 +45,30 @@ jobs:
           node --check scripts/stage-quiniela-editorial.mjs
           node scripts/stage-quiniela-editorial.mjs --self-test
           node scripts/stage-quiniela-editorial.mjs
+      - name: Library QA · capture W6 ahead while W5 score incomplete
+        run: |
+          node --check scripts/refresh-quiniela-assets.mjs
+          node --check quiniela-control/exports/assets-library.js
+          node scripts/refresh-quiniela-assets.mjs
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+          const d=read('quiniela-control/data.json');
+          const c=read('quiniela-control/capture-config.json');
+          const ix=read('quiniela-control/exports/asset-index.json');
+          assert.equal(ix.score_week,d.week_number);
+          assert.equal(ix.capture_week,c.week_number);
+          assert.equal(ix.active_week,Math.max(d.week_number,c.week_number));
+          assert(ix.weeks[c.week_number]);
+          assert(ix.weeks[d.week_number]);
+          if(c.week_number>d.week_number&&d.results.final<d.results.total)
+            assert.equal(ix.in_progress_week,d.week_number);
+          const future=ix.weeks[c.week_number];
+          if(c.week_number>d.week_number&&c.complete!==c.total)
+            assert.notEqual(future.assets.picks.state,'READY');
+          console.log('PASS: Week6 upcoming capture + W5 results + asset QA gates');
+          NODE
       - name: Required files
         run: |
           test -f quiniela-control/index.html
