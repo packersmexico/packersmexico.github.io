@@ -41,7 +41,7 @@
 | Formulario WN abierto | Nuevo `capture-config.json` con semana, formulario único verificable y `status: OPEN` | WN ABIERTA, 0/9, fecha de cierre y URL estable `/quiniela-control/captura/` |
 | Nuevo participante | **Primer envío válido** del roster, con ID único de Jotform y 14 respuestas G01–G14 (W6). Nunca emitir por duplicado o mero cambio de picks. | Nombre y avance de participantes, no revelar los picks; acceso a panel, no a Jotform |
 | Semana finalizada | Resultados oficiales de **todos los partidos decididos después del MNF**, incluidos empates PUSH con ganador nulo; `results.final = results.total` y `status: FINAL` | Cierre de la Week y tabla de resultados actualizada. **No esperar imágenes** |
-| Archivo disponible para descargar / preparar publicación | PNG real válido, index `assets[slot].state: READY`, evidencia de QA Figma y PASS de Dirección | Identificar slot PICS, RESULTADOS, RANKING SEMANAL o TEMPORADA, enlazar panel de descargas. **READY ≠ publicado** |
+| Archivo disponible para descargar / preparar publicación | PNG real válido, index `assets[slot].state: READY`, evidencia de QA Figma y PASS de Dirección | Identificar slot PICKS, RESULTADOS, RANKING SEMANAL o TEMPORADA, enlazar panel de descargas. **READY ≠ publicado** |
 | Publicación confirmada | Registro explícito de 05 en `figma-week-NN.json:asset_approvals[slot].distribution` = `PUBLISHED_USER_CONFIRMED` o `PUBLISHED_VERIFIED`, con `figma_qa:PASS`, `direction_review:PASS`, `export_verified:true` y evidencia no vacía; archivo READY | Aviso distinto de publicación efectivamente realizada, sin repetir posts |
 
 - EventKeys estables e idempotencia Redis por **RODRIGO** y **IBRA**. No repetir mensajes ya consumidos al recalcular resultados o regenerar un asset index.
