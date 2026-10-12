@@ -2,6 +2,7 @@
 """PMX live NFL sync. Only observed FINAL results count for ranking."""
 import json, urllib.request, datetime, pathlib, sys
 from zoneinfo import ZoneInfo
+from quiniela_scoring import calculate_standings
 UTC=datetime.timezone.utc
 DATA=pathlib.Path('quiniela-control/data.json')
 data=json.loads(DATA.read_text(encoding='utf8'))
@@ -43,7 +44,7 @@ for g in active:
     if not e:continue
     a=e['teams']['away'];h=e['teams']['home']
     completed=e['completed']
-    # Never fabricate winner for a tie. Tie requires adjudication in the canonical standings rules.
+    # Official TIE has no winner. Direction-approved PUSH is handled by calculate_standings.
     tie=completed and a['score']==h['score']
     if tie:
         status,winner,score='TIE',None,f"{a['abbr']} {a['score']}–{h['score']} {h['abbr']}"
@@ -63,22 +64,19 @@ for g in active:
         changed.append(g['id'])
 if not changed:
     print('No confirmed scoreboard delta.');sys.exit(0)
-finals=[g for g in games if g.get('status')=='TIE' or (g.get('status')=='FINAL' and g.get('winner'))]
-sub=(data.get('capture') or {}).get('locked_submissions') or {}
-weekly=[]
-for p in data.get('participants',[]):
-    name=p['name']
-    picks=(sub.get(name) or {}).get('picks') or []
-    valid=len(picks)==len(games)
-    correct=sum(picks[i]==g['winner'] for i,g in enumerate(games) if g.get('status')=='FINAL' and g.get('winner')) if valid else 0
-    weekly.append({'name':name,'correct':correct,'wrong':len(finals)-correct if valid else 0,'status':'VALID' if valid else 'NO_PICKS'})
-base={x['name']:x for x in data.get('season_base_before_week',[])}
-season=[]
-for w in weekly:
-    b=base.get(w['name'],{})
-    season.append({'name':w['name'],'correct':int(b.get('correct',0))+w['correct'],'wrong':int(b.get('wrong',0))+w['wrong'],'status':w['status']})
-season.sort(key=lambda x:(-x['correct'],x['wrong'],x['name']))
-result={'final':len(finals),'total':len(games),'status':'FINAL' if len(finals)==len(games) else 'LIVE','in_progress':sum(g.get('status')=='IN_PROGRESS' for g in games),'ties':sum(g.get('status')=='TIE' for g in games)}
+weekly,season,counts=calculate_standings(
+    games,
+    data.get('participants',[]),
+    (data.get('capture') or {}).get('locked_submissions') or {},
+    data.get('season_base_before_week',[])
+)
+# 'final' is decided games (including TIE); 'scored' excludes all TIE PUSHes.
+result={
+    'final':counts['decided'],'total':len(games),
+    'status':'FINAL' if counts['decided']==len(games) else 'LIVE',
+    'in_progress':sum(g.get('status')=='IN_PROGRESS' for g in games),
+    'ties':counts['pushes'],'scored':counts['scored'],'pushes':counts['pushes']
+}
 data.update(last_sync=now.isoformat(),sync_mode='AUTO_LIVE_15MIN_ESPN_VERIFIED_FINAL',results=result,weekly_standings=weekly,season_standings=season)
 pub=data.setdefault('publication',{})
 pub['gate']='HOLD';pub['assets_status']=f"DATA LIVE {result['final']}/{result['total']} FINAL · FIGMA QA REQUIRED"
