@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="operator.css?v=20261008-qa2">
-  <script src="app.js?v=20261008-qa2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261013-desk">
+  <link rel="stylesheet" href="operator.css?v=20261013-desk">
+  <script src="app.js?v=20261013-desk" defer></script>
   <script src="push.js?v=20261012-renew-expired" defer></script>
 </head>
 <body>
@@ -34,9 +34,27 @@
       <div class="meta-line"><span id="window-status">—</span><span id="deadline">—</span></div><p class="production-rule refresh-message" id="refresh-message" aria-live="polite">Jotform y resultados se sincronizan desde el controlador. Usa “Recargar panel” para traer el último estado ya sincronizado y los PNG publicados.</p>
       <div class="quick-actions hero-actions">
         <button class="action-link refresh-control" id="refresh-control" type="button">RECARGAR PANEL ↻</button>
-        <a class="action-link main-download" id="current-picks-link" href="./exports/live.html#pmx-weekly-library" rel="noopener">PICKS Y DESCARGAS →</a>
+        <a class="action-link main-download" id="current-picks-link" href="#pmx-assets">VER DESCARGAS →</a>
         <a class="action-link secondary-action" id="stable-capture" href="./captura/" rel="noopener">FORMULARIO →</a>
       </div>
+    </section>
+
+    <!-- Asset desk: one primary task, four outputs, mobile first. Public PNGs only when released. -->
+    <section class="pmx-assets" id="pmx-assets" aria-labelledby="pmx-assets-title">
+      <div class="pmx-assets-header">
+        <div><p class="eyebrow">ENTREGABLES DE LA SEMANA CERRADA</p><h2 id="pmx-assets-title">IMÁGENES · <span>WEEK 5</span></h2>
+        <p class="pmx-assets-intro">15 partidos finales · 14 puntuables · 1 PUSH. Descargas reales y revisión de piezas, sin archivos de relleno.</p></div>
+        <a class="pmx-quiet-link" href="./exports/live.html#pmx-weekly-library">VER ARCHIVO COMPLETO ↗</a>
+      </div>
+      <div class="pmx-assets-grid">
+        <a id="pmx-picks-thumb" class="pmx-picks-thumb" href="./exports/w5-picks-board.png" download="PMX_W5_PICKS.png" aria-label="Descargar imagen de picks Week 5">
+          <img src="./exports/w5-picks-board.png" alt="Quiniela Week 5, 135 selecciones de nueve participantes" width="1600" height="2000" loading="lazy">
+          <span>W5 · 135 SELECCIONES</span>
+        </a>
+        <div class="pmx-download-list" id="pmx-download-list" aria-live="polite"><p class="pmx-assets-intro">Comprobando archivos autorizados…</p></div>
+      </div>
+      <details class="pmx-mobile-files" id="pmx-mobile-files"><summary>VERSIONES MÓVILES · 3 PNG</summary><div id="pmx-mobile-links"></div></details>
+      <p class="pmx-rights-note">Los archivos de revisión privada se abren en Figma o en el repositorio autorizado. El panel público no redistribuye logos de terceros mientras 03.5 mantenga el bloqueo.</p>
     </section>
 
     <section class="section notification-section" aria-labelledby="notification-heading">
@@ -53,6 +71,7 @@
       <details class="hub-fold"><summary>Historial de avisos</summary><div class="notification-list" id="notification-list" aria-live="polite"></div></details>
     </section>
 
+    <details class="pmx-more"><summary>DATOS EN VIVO, RANKINGS Y HERRAMIENTAS <span>ABRIR ↘</span></summary>
     <section class="section" aria-labelledby="capture-heading">
       <div class="section-head"><div><p class="eyebrow">CAPTURA EN VIVO</p><h2 id="capture-heading">QUIÉN YA ENVIÓ</h2></div><p class="section-stat"><span id="missing-count">—</span> FALTAN</p></div>
       <details class="hub-fold capture-details" id="capture-details"><summary>Ver integrantes y confirmaciones</summary>
@@ -112,8 +131,10 @@
       <a class="action-link" href="../" rel="noopener">VOLVER AL HUB →</a>
       </details>
     </section>
+    </details>
     <p class="privacy-note">Panel operativo · PACKERS MÉXICO. Proyecto independiente; no afiliado oficialmente con NFL/Green Bay Packers.</p>
   </main>
   <footer class="site-footer"><p>PACKERS MÉXICO</p><p class="independence">Sistema Lambeau · operación reproducible.</p></footer>
+<script src="./panel-assets.js?v=20261013-desk" defer></script>
 </body>
 </html>
