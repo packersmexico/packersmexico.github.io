@@ -11,15 +11,15 @@
     "qa_required": true,
     "no_downloadable_png_without_04_PASS": true
   },
-  "status": "PARTIAL_RESULTS_IN_PROGRESS",
+  "status": "ALL_RESULTS_FINAL_READY_FOR_04",
   "source": "quiniela-control/data.json",
-  "last_sync": "2026-10-12T04:02:27.544614+00:00",
+  "last_sync": "2026-10-12T22:16:39-06:00",
   "progress": {
-    "decided": 14,
+    "decided": 15,
     "total": 15,
-    "scoreable": 13,
+    "scoreable": 14,
     "pushes": 1,
-    "remaining": 1
+    "remaining": 0
   },
   "headline": "RESULTADOS · WEEK 5",
   "games": [
@@ -167,122 +167,122 @@
       "game_id": "G15",
       "matchup": "BUF @ LAR",
       "kickoff": "LUN 12 OCT · 18:15 CDMX · MNF",
-      "state": "PENDING",
-      "score": null,
-      "winner": null,
+      "state": "DECIDED",
+      "score": "BUF 37–34 LAR",
+      "winner": "BUF",
       "is_push": false,
-      "visual_label": "EN ESPERA DE FINAL"
+      "visual_label": "GANÓ BUF"
     }
   ],
   "rankings": {
-    "state": "PROVISIONAL_DO_NOT_PUBLISH",
+    "state": "DATA_FINAL_NEEDS_VISUAL_QA",
     "weekly": [
       {
         "name": "EL DOC",
-        "correct": 8,
+        "correct": 9,
         "wrong": 5
       },
       {
         "name": "ARI",
-        "correct": 10,
+        "correct": 11,
         "wrong": 3
       },
       {
         "name": "LALO",
         "correct": 5,
-        "wrong": 8
+        "wrong": 9
       },
       {
         "name": "ALEX",
-        "correct": 10,
+        "correct": 11,
         "wrong": 3
       },
       {
         "name": "LUIS C.",
         "correct": 9,
-        "wrong": 4
+        "wrong": 5
       },
       {
         "name": "DR PALMA",
-        "correct": 6,
+        "correct": 7,
         "wrong": 7
       },
       {
         "name": "JENNI",
         "correct": 9,
-        "wrong": 4
+        "wrong": 5
       },
       {
         "name": "RODRI",
         "correct": 10,
-        "wrong": 3
+        "wrong": 4
       },
       {
         "name": "IBRACHO",
-        "correct": 10,
+        "correct": 11,
         "wrong": 3
       }
     ],
     "season": [
       {
         "name": "ALEX",
-        "correct": 50,
+        "correct": 51,
         "wrong": 27
       },
       {
         "name": "IBRACHO",
-        "correct": 50,
+        "correct": 51,
         "wrong": 27
       },
       {
-        "name": "RODRI",
-        "correct": 49,
-        "wrong": 28
-      },
-      {
         "name": "ARI",
-        "correct": 48,
+        "correct": 49,
         "wrong": 29
       },
       {
         "name": "EL DOC",
-        "correct": 48,
+        "correct": 49,
+        "wrong": 29
+      },
+      {
+        "name": "RODRI",
+        "correct": 49,
         "wrong": 29
       },
       {
         "name": "LUIS C.",
         "correct": 47,
-        "wrong": 30
+        "wrong": 31
       },
       {
         "name": "JENNI",
         "correct": 46,
-        "wrong": 31
+        "wrong": 32
       },
       {
         "name": "DR PALMA",
-        "correct": 43,
+        "correct": 44,
         "wrong": 34
       },
       {
         "name": "LALO",
         "correct": 42,
-        "wrong": 35
+        "wrong": 36
       }
     ]
   },
   "visual_slots": {
     "results": {
       "file": "w5-results-live.png",
-      "state": "DRAFT_ONLY"
+      "state": "READY_FOR_04"
     },
     "weekly": {
       "file": "w5-ranking-weekly.png",
-      "state": "DRAFT_ONLY"
+      "state": "READY_FOR_04"
     },
     "season": {
       "file": "w5-ranking-season.png",
-      "state": "DRAFT_ONLY"
+      "state": "READY_FOR_04"
     }
   }
 }
