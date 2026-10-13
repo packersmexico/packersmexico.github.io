@@ -7,6 +7,9 @@ on:
       - 'push-backend/api/subscribe.js'
       - 'push-backend/api/notify.js'
       - 'scripts/qa-quiniela-contract.mjs'
+      - 'scripts/prepare-quiniela-figma-handoff.mjs'
+      - '.github/workflows/quiniela-production-handoff.yml'
+      - '.github/workflows/quiniela-asset-index.yml'
   workflow_dispatch:
   pull_request:
     paths:
@@ -40,3 +43,24 @@ jobs:
           python3 -m py_compile scripts/sync-quiniela-live.py
       - name: Enforce weekly data and image QA contract
         run: node scripts/qa-quiniela-contract.mjs
+      - name: W5 PUSH 15-of-15 Figma data contract without private selections
+        run: |
+          node scripts/prepare-quiniela-figma-handoff.mjs
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const h=JSON.parse(fs.readFileSync('quiniela-control/production/week-05-figma-handoff.json','utf8'));
+          const g=h.games;
+          assert.equal(g.length,15);
+          assert.equal(g.filter(x=>x.status==='FINAL').length,14);
+          assert.equal(g.filter(x=>x.status==='TIE').length,1);
+          assert.equal(h.stages.results,'READY_FOR_04');
+          assert.equal(h.stages.weekly,'READY_FOR_04');
+          assert.equal(h.stages.season,'READY_FOR_04');
+          assert.equal(h.weekly.length,9);
+          assert.equal(h.weekly.filter(x=>x.correct===11).length,3);
+          assert.equal(h.matrix,undefined,'Private picks must not be published in the 04 handoff');
+          const txt=JSON.stringify(h);
+          assert(!txt.includes('submission_id') && !txt.includes('"picks":'),'Never leak first-valid submissions');
+          console.log('PASS W5: 15/15 decided, 14 scored, G09 PUSH, three shared weekly leaders; no private picks in public handoff');
+          NODE
