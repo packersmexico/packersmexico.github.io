@@ -14,13 +14,14 @@ function renderLiveResults(data){
   if(!wrap)return;
   wrap.replaceChildren();
   const games=data.games||[];
-  const finals=games.filter(g=>g.status==='FINAL' && g.winner);
-  $('live-game-count').textContent=finals.length+'/'+games.length+' FINAL';
+  const finals=games.filter(g=>['FINAL','TIE'].includes(g.status) && g.winner);
+  const pushes=finals.filter(g=>g.status==='TIE'||g.winner==='TIE').length;
+  $('live-game-count').textContent=finals.length+'/'+games.length+' FINAL'+(pushes?' · '+(finals.length-pushes)+' PUNTUABLES · '+pushes+' PUSH':'');
   $('live-title').textContent=(data.week||'SEMANA ACTUAL')+' · RESULTADOS EN VIVO';
   for(const g of games){
     const row=document.createElement('div');row.className='live-game-row';
     const left=document.createElement('strong');left.textContent=g.id+' · '+g.matchup;
-    const right=document.createElement('span');right.textContent=g.status==='FINAL'?('FINAL · '+(g.score||g.winner)):g.status==='LIVE'?('EN VIVO · '+(g.live_score||'')+' '+(g.live_detail||'')):('PENDIENTE · '+g.time);
+    const right=document.createElement('span');right.textContent=(g.status==='TIE'||g.winner==='TIE')?('FINAL · '+(g.score||'EMPATE')+' · PUSH'):g.status==='FINAL'?('FINAL · '+(g.score||g.winner)):g.status==='LIVE'?('EN VIVO · '+(g.live_score||'')+' '+(g.live_detail||'')):('PENDIENTE · '+g.time);
     row.append(left,right);wrap.append(row);
   }
   const note=$('live-results-note');

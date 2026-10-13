@@ -54,11 +54,14 @@ for(let w=1;w<=active;w++){
     const visual=String(figma?.qa?.[`${key}_visual_review`]||figma?.qa?.visual_review||'');
     const perAsset=figma?.asset_approvals?.[key];
     const individual=perAsset?.figma_qa==='PASS' && perAsset?.direction_review==='PASS' && perAsset?.export_verified===true;
-    const legacy=figma?.publication_ready===true && visual.includes('PASS') && String(figma.gate||'').includes('QA_PASS');
+    const legacy=figma?.publication_ready===true && visual.startsWith('PASS') && String(figma.gate||'').includes('QA_PASS');
     const approved=Boolean(figma && Number(figma.week)===w && (individual||legacy));
     const exists=isCorrectPath&&validPng(actual,slot.width,slot.height);
-    const state=!eligible?'WAITING_EVENT':approved&&exists?'READY':'QA_PENDING';
+    const delivery=key==='results'?figma?.results_delivery:null;
+    const rightsBlocked=delivery?.state==='RIGHTS_HOLD';
+    const state=rightsBlocked?'RIGHTS_HOLD':!eligible?'WAITING_EVENT':approved&&exists?'READY':'QA_PENDING';
     assets[key]={state,href:state==='READY'?('./'+path.basename(actual)):null,expected:slot.file+'.png',size:`${slot.width}x${slot.height}`};
+    if(rightsBlocked)Object.assign(assets[key],{expected:path.basename(defaultPath),planned_href:'./'+path.basename(defaultPath),private_qa:String(figma?.qa?.results_live||'').startsWith('PRIVATE_PASS')?'PASS':'PENDING',publication_rights:'PENDING_03_5_U004',sha256:delivery.sha256});
   }
   weeks[w]={week:w,capture:{complete,total:target,window:capture.status||capture.window||'UNKNOWN'},results:{final,total},assets};
 }
