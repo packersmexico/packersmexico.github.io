@@ -54,7 +54,9 @@ const valid=Object.entries(subs).filter(([n,v])=>Array.isArray(v.picks)&&v.picks
 assert.equal(valid.length,data.capture.complete,'Submission total does not match locked pick matrix');
 assert.equal(data.capture.received_picks,valid.length*data.games.length);
 assert.equal(data.capture.expected_picks,data.capture.total*data.games.length);
-assert.equal(index.active_week,Number(data.week_number));
+assert.equal(index.score_week,currentWeek,'Scoring week must track data.json');
+assert.equal(index.capture_week,captureWeek,'Capture week must track capture-config');
+assert.equal(index.active_week,Math.max(currentWeek,captureWeek),'Active week must include open next-week capture');
 const html=r(root+'/index.html');
 const gallery=r(root+'/exports/live.html');
 assert(html.includes(logo)&&gallery.includes(logo),'Missing approved PMX horizontal logo');

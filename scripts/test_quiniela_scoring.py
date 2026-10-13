@@ -49,11 +49,16 @@ class TiePushTests(unittest.TestCase):
         self.assertEqual(data["games"][8]["status"], "TIE")
         self.assertIsNone(data["games"][8]["winner"])
         self.assertEqual(data["games"][8]["score"], "NYG 27–27 WAS")
-        self.assertEqual(data["results"]["final"], 14)
-        self.assertEqual(data["results"]["scored"], 13)
+        self.assertEqual(data["results"]["final"], 15)
+        self.assertEqual(data["results"]["scored"], 14)
         self.assertEqual(data["results"]["ties"], 1)
         self.assertEqual(data["results"]["pushes"], 1)
         self.assertEqual(data["results"]["total"], 15)
+        self.assertEqual(data["results"]["status"], "FINAL")
+        self.assertEqual(data["games"][14]["id"], "G15")
+        self.assertEqual(data["games"][14]["status"], "FINAL")
+        self.assertEqual(data["games"][14]["winner"], "BUF")
+        self.assertEqual(data["games"][14]["score"], "BUF 37–34 LAR")
         self.assertEqual(data["capture"]["expected_picks"], 135)
         self.assertEqual(data["capture"]["received_picks"], 135)
         self.assertEqual(len(data["capture"]["locked_submissions"]), 9)
@@ -64,17 +69,18 @@ class TiePushTests(unittest.TestCase):
             data["games"], data["participants"], original,
             data["season_base_before_week"],
         )
-        self.assertEqual(counts, {"decided": 14, "scored": 13, "pushes": 1})
+        self.assertEqual(counts, {"decided": 15, "scored": 14, "pushes": 1})
         self.assertEqual(weekly, data["weekly_standings"])
         self.assertEqual(season, data["season_standings"])
         self.assertEqual(weekly, archived["weekly_standings"])
         self.assertEqual(season, archived["season_standings"])
+        self.assertEqual({p["name"] for p in weekly if p["correct"] == 11}, {"ARI", "ALEX", "IBRACHO"})
         self.assertEqual(data["games"], archived["games"])
         self.assertEqual(original, data["capture"]["locked_submissions"])
         self.assertEqual(original, archived["capture"]["locked_submissions"])
         self.assertEqual(
             {p["name"]: sum([p["correct"], p["wrong"]]) for p in weekly},
-            {p["name"]: 13 for p in weekly},
+            {p["name"]: 14 for p in weekly},
         )
 
     def test_future_final_counts_only_scoreable_games(self):
