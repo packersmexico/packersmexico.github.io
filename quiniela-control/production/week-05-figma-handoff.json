@@ -147,116 +147,117 @@
     "RODRI",
     "IBRACHO"
   ],
+  "matrix_status": "PRIVATE_SOURCE_REQUIRED_FOR_PICKS; NO_MATRIX_IN_PUBLIC_HANDOFF",
   "weekly": [
     {
       "name": "EL DOC",
+      "status": "VALID",
       "correct": 9,
-      "wrong": 5,
-      "status": "VALID"
+      "wrong": 5
     },
     {
       "name": "ARI",
+      "status": "VALID",
       "correct": 11,
-      "wrong": 3,
-      "status": "VALID"
+      "wrong": 3
     },
     {
       "name": "LALO",
+      "status": "VALID",
       "correct": 5,
-      "wrong": 9,
-      "status": "VALID"
+      "wrong": 9
     },
     {
       "name": "ALEX",
+      "status": "VALID",
       "correct": 11,
-      "wrong": 3,
-      "status": "VALID"
+      "wrong": 3
     },
     {
       "name": "LUIS C.",
+      "status": "VALID",
       "correct": 9,
-      "wrong": 5,
-      "status": "VALID"
+      "wrong": 5
     },
     {
       "name": "DR PALMA",
+      "status": "VALID",
       "correct": 7,
-      "wrong": 7,
-      "status": "VALID"
+      "wrong": 7
     },
     {
       "name": "JENNI",
+      "status": "VALID",
       "correct": 9,
-      "wrong": 5,
-      "status": "VALID"
+      "wrong": 5
     },
     {
       "name": "RODRI",
+      "status": "VALID",
       "correct": 10,
-      "wrong": 4,
-      "status": "VALID"
+      "wrong": 4
     },
     {
       "name": "IBRACHO",
+      "status": "VALID",
       "correct": 11,
-      "wrong": 3,
-      "status": "VALID"
+      "wrong": 3
     }
   ],
   "season_standings": [
     {
-      "name": "ALEX",
-      "correct": 51,
-      "wrong": 27,
-      "status": "VALID"
-    },
-    {
-      "name": "IBRACHO",
-      "correct": 51,
-      "wrong": 27,
-      "status": "VALID"
+      "name": "EL DOC",
+      "status": "VALID",
+      "correct": 49,
+      "wrong": 29
     },
     {
       "name": "ARI",
+      "status": "VALID",
       "correct": 49,
-      "wrong": 29,
-      "status": "VALID"
-    },
-    {
-      "name": "EL DOC",
-      "correct": 49,
-      "wrong": 29,
-      "status": "VALID"
-    },
-    {
-      "name": "RODRI",
-      "correct": 49,
-      "wrong": 29,
-      "status": "VALID"
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 47,
-      "wrong": 31,
-      "status": "VALID"
-    },
-    {
-      "name": "JENNI",
-      "correct": 46,
-      "wrong": 32,
-      "status": "VALID"
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 44,
-      "wrong": 34,
-      "status": "VALID"
+      "wrong": 29
     },
     {
       "name": "LALO",
+      "status": "VALID",
       "correct": 42,
-      "wrong": 36,
-      "status": "VALID"
+      "wrong": 36
+    },
+    {
+      "name": "ALEX",
+      "status": "VALID",
+      "correct": 51,
+      "wrong": 27
+    },
+    {
+      "name": "LUIS C.",
+      "status": "VALID",
+      "correct": 47,
+      "wrong": 31
+    },
+    {
+      "name": "DR PALMA",
+      "status": "VALID",
+      "correct": 44,
+      "wrong": 34
+    },
+    {
+      "name": "JENNI",
+      "status": "VALID",
+      "correct": 46,
+      "wrong": 32
+    },
+    {
+      "name": "RODRI",
+      "status": "VALID",
+      "correct": 49,
+      "wrong": 29
+    },
+    {
+      "name": "IBRACHO",
+      "status": "VALID",
+      "correct": 51,
+      "wrong": 27
     }
   ],
   "stages": {
@@ -270,6 +271,5 @@
     "results": "w5-results-live.png",
     "weekly": "w5-ranking-weekly.png",
     "season": "w5-ranking-season.png"
-  },
-  "matrix_status": "PRIVATE_SOURCE_REQUIRED_FOR_PICKS; NO_MATRIX_IN_PUBLIC_HANDOFF"
+  }
 }
