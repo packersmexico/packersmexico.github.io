@@ -9,6 +9,7 @@ on:
       - 'quiniela-control/capture-config.json'
       - 'quiniela-control/exports/**'
       - 'quiniela-control/figma-week-*.json'
+      - 'quiniela-control/notifications.json'
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
@@ -30,3 +31,32 @@ jobs:
         run: |
           curl --fail --silent --show-error --max-time 30 \
             "https://packersmexicogithubio-push-backend.vercel.app/api/milestone-sync"
+
+      - name: Checkout for operator review notice
+        if: github.event_name == 'push'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Push W5 private review notice to Rodrigo and Ibra
+        if: github.event_name == 'push'
+        env:
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git diff --name-only HEAD^ HEAD | grep -Fxq 'quiniela-control/notifications.json'; then
+            echo "No operator notification update in this commit."
+            exit 0
+          fi
+          if ! jq -e '.items[] | select(.id=="W5_RESULTS_PRIVATE_REVIEW_READY_20261013" and .status=="PRIVATE_REVIEW_READY")' quiniela-control/notifications.json >/dev/null; then
+            echo "No eligible W5 private review notice."
+            exit 0
+          fi
+          if [ -z "${PUSH_SECRET:-}" ]; then
+            echo "::error::PMX_PUSH_SECRET unavailable; dashboard notice saved, push NOT sent."
+            exit 1
+          fi
+          data=$(jq -n --arg title "PACKERS MÉXICO · W5 RESULTADOS LISTOS"             --arg body "Rodrigo: W5 Resultados corregidos (135 picks, 82 aciertos, 44 errores, 9 PUSH). Revisa las 3 piezas W5 desde el panel. Uso privado; logos NFL sin derechos públicos."             --arg url "https://packersmexico.github.io/quiniela-control/#notification-heading"             '{eventKey:"W5_RESULTS_PRIVATE_REVIEW_READY_20261013",title:$title,body:$body,url:$url,tag:"pmx-w5-results-private-review"}')
+          curl --fail-with-body --silent --show-error --max-time 40             -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify'             -H "Authorization: Bearer ${PUSH_SECRET}"             -H 'Content-Type: application/json'             --data "$data"
+          echo
