@@ -153,3 +153,62 @@ h3{margin:4px 0 0;font-size:32px;line-height:.95}
   .progress,.meta-line{max-width:760px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress span{transition:none}}
+
+
+/* PMX Quiniela Asset Desk · 13 Oct 2026 · mobile-first editorial navigation */
+.hero{padding:16px 0 25px}
+.hero h1{font-size:clamp(48px,9vw,78px);margin-bottom:13px}
+.hero-status{margin:0}
+.hero .big-number{font-size:clamp(56px,9vw,78px)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:8px 21px;align-items:baseline}
+.hero-actions .action-link{font-size:12px;width:auto;min-width:0;padding:11px 0}
+.hero .refresh-message{font-size:11px;margin-top:10px}
+.hero .progress{margin-top:13px}
+.pmx-assets{padding:34px 0 34px;border-bottom:2px solid var(--gold)}
+.pmx-assets-header{display:flex;align-items:end;justify-content:space-between;gap:13px 26px;flex-wrap:wrap}
+.pmx-assets h2{font-size:clamp(40px,7vw,66px);line-height:.93;margin-top:7px}
+.pmx-assets h2 span{color:var(--gold)}
+.pmx-assets-intro{color:var(--muted);font-size:12px;line-height:1.7;margin:11px 0 0;max-width:570px}
+.pmx-quiet-link{color:var(--gold);font-weight:700;font-size:11px;text-decoration:none;padding-bottom:5px;border-bottom:1px solid var(--gold)}
+.pmx-assets-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:21px;margin-top:26px}
+.pmx-picks-thumb{position:relative;display:block;max-width:310px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);text-decoration:none;background:#07180f}
+.pmx-picks-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.pmx-picks-thumb span{position:absolute;bottom:0;left:0;right:0;display:block;background:#081D13eb;padding:13px;font-size:11px;font-weight:700;color:var(--gold)}
+.pmx-download-list{min-width:0}
+.pmx-file{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:15px 0;border-top:1px solid var(--line)}
+.pmx-file:last-child{border-bottom:1px solid var(--line)}
+.pmx-file-title{display:block;font-family:"Bebas Neue",Impact,sans-serif;font-size:30px;line-height:1;color:var(--cream);letter-spacing:.01em}
+.pmx-file-meta{display:block;margin-top:6px;font-size:11px;font-weight:600;color:var(--muted);line-height:1.5}
+.pmx-file-state{display:block;margin-top:7px;font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--gold)}
+.pmx-file[data-state="READY"] .pmx-file-state{color:var(--ok)}
+.pmx-file-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.pmx-file-actions a{color:var(--gold);font-size:11px;font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold);padding:4px 0;min-height:29px}
+.pmx-file-actions a.secondary{color:var(--cream);border-color:var(--line)}
+.pmx-mobile-files{border-bottom:1px solid var(--line)}
+.pmx-mobile-files summary,.pmx-more>summary{cursor:pointer;list-style:none;padding:19px 0;font-size:12px;font-weight:700;letter-spacing:.025em;color:var(--cream)}
+.pmx-mobile-files summary::-webkit-details-marker,.pmx-more>summary::-webkit-details-marker{display:none}
+.pmx-mobile-files summary:after{content:" +";color:var(--gold)}
+.pmx-mobile-files[open] summary:after{content:" −"}
+.pmx-mobile-file{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;padding:13px 0;border-top:1px solid var(--line);font-size:12px}
+.pmx-mobile-file a{color:var(--gold);font-weight:700;text-decoration:none}
+.pmx-rights-note{margin:18px 0 0;color:var(--muted);font-size:11px;line-height:1.7;max-width:670px}
+.pmx-more{border-top:1px solid var(--line);margin:22px 0 34px}
+.pmx-more>summary{display:flex;justify-content:space-between;gap:12px;padding:21px 0;font-size:13px}
+.pmx-more>summary span{color:var(--gold)}
+.pmx-more .section{padding:27px 0}
+.notification-section{padding:25px 0}
+.notification-section .section-head h2{font-size:32px}
+.notification-section .section-head .section-stat{font-size:11px}
+@media(min-width:700px){
+  .pmx-assets-grid{grid-template-columns:minmax(180px,32%) minmax(0,1fr);gap:34px}
+  .pmx-picks-thumb{max-width:none}
+  .pmx-file{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px}
+  .pmx-file-actions{justify-content:flex-end}
+}
+@media(max-width:699px){
+  .pmx-picks-thumb{max-width:220px}
+  .pmx-file-title{font-size:29px}
+  .hero-actions{gap:7px 15px}
+  .hero-actions .action-link{font-size:11px}
+  .pmx-assets-grid{gap:14px}
+}
