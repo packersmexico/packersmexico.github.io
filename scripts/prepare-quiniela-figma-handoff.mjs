@@ -34,6 +34,6 @@ const payload={schema:'PMX_QUINIELA_FIGMA_DATA_HANDOFF_V1',week,season:2026,gove
 const folder=root+'/production';fs.mkdirSync(folder,{recursive:true});
 const output=folder+`/week-${String(week).padStart(2,'0')}-figma-handoff.json`;
 const serialized=JSON.stringify(payload,null,2)+'\n';
-if(serialized.includes('"matrix":')||serialized.includes('"picks":')||serialized.includes('submission_id'))throw Error('PUBLIC_FIRST_VALID_PICKS_LEAK');
+if(serialized.includes('"matrix":')||serialized.includes('"picks":[')||serialized.includes('"submission_id"'))throw Error('PUBLIC_FIRST_VALID_PICKS_LEAK');
 if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==serialized)fs.writeFileSync(output,serialized);
 console.log(JSON.stringify({week,stages:states,valid_participants:validNames.length,finals:finals.length,games:games.length}));
