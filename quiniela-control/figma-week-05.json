@@ -28,7 +28,8 @@
     "picks_png": "PASS · 1600x2000 · GITHUB VERIFIED",
     "mobile_png": "PASS · 3 × 1080x1920 · GITHUB VERIFIED",
     "direction_review": "PASS · DIRECTION USER CONFIRMED · 2026-10-09",
-    "publication_evidence": "USER_CONFIRMED · STORIES Y REDES; platform-specific URLs/date not independently verified"
+    "publication_evidence": "USER_CONFIRMED · STORIES Y REDES; platform-specific URLs/date not independently verified",
+    "results_live": "PRIVATE_PASS · PUBLIC_RIGHTS_HOLD"
   },
   "output_targets": {
     "picks": "quiniela-control/exports/w5-picks-board.png",
@@ -79,5 +80,15 @@
       "distribution": "PUBLISHED_USER_CONFIRMED · NO_REPOST",
       "output_file": "quiniela-control/exports/w5-picks-board.png"
     }
+  },
+  "results_delivery": {
+    "state": "RIGHTS_HOLD",
+    "expected": "quiniela-control/exports/w5-results-live.png",
+    "width": 1600,
+    "height": 2000,
+    "sha256": "a3799513ca7297d7c454118d1add885db2a48ff5f5a5595794dfbd94d2948be8",
+    "public_href": null,
+    "required": "03.5 proof/authorization for public NFL team marks in this PNG + Direction final visual approval",
+    "figma_node": "3357:2147661"
   }
 }
