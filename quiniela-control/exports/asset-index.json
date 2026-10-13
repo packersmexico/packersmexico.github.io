@@ -139,10 +139,14 @@
           "size": "1600x2000"
         },
         "results": {
-          "state": "QA_PENDING",
+          "state": "RIGHTS_HOLD",
           "href": null,
-          "expected": "results-live.png",
-          "size": "1600x2000"
+          "expected": "w5-results-live.png",
+          "size": "1600x2000",
+          "planned_href": "./w5-results-live.png",
+          "private_qa": "PASS",
+          "publication_rights": "PENDING_03_5_U004",
+          "sha256": "a3799513ca7297d7c454118d1add885db2a48ff5f5a5595794dfbd94d2948be8"
         },
         "weekly": {
           "state": "QA_PENDING",
