@@ -29,13 +29,26 @@ jobs:
           node-version: '20'
       - name: Validate assets against weekly data and Figma approvals
         run: node scripts/refresh-quiniela-assets.mjs
-      - name: Commit availability only if changed
+      - name: Rebuild index from latest main and persist with bounded non-forced retry
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add quiniela-control/exports/asset-index.json
-          if git diff --cached --quiet; then echo "Index unchanged"; exit 0; fi
-          git commit -m "Quiniela: update verified weekly download availability"
-          git push origin HEAD:main
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/refresh-quiniela-assets.mjs
+            git add -- quiniela-control/exports/asset-index.json
+            if git diff --cached --quiet; then
+              echo "Index unchanged"; exit 0
+            fi
+            git commit -m "Quiniela: update verified weekly download availability"
+            if git push origin HEAD:main; then
+              echo "ASSET INDEX PERSISTED"; exit 0
+            fi
+            echo "::warning::main moved during index update; retrying latest source (attempt $attempt)"
+            sleep 4
+          done
+          echo "::error::Unable to persist asset index after 4 optimistic retries"
+          exit 1

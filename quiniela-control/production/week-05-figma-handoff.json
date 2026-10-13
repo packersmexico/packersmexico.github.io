@@ -19,121 +19,121 @@
       "id": "G01",
       "matchup": "TB @ DAL",
       "time": "JUE 8 OCT · 18:15 CDMX · TNF",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "TB",
+      "score": "TB 24–16 DAL",
+      "status": "FINAL"
     },
     {
       "id": "G02",
       "matchup": "PHI @ JAX",
       "time": "DOM 11 OCT · 07:30 CDMX · LONDON",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "JAX",
+      "score": "JAX 19–17 PHI",
+      "status": "FINAL"
     },
     {
       "id": "G03",
       "matchup": "CIN @ MIA",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "CIN",
+      "score": "CIN 31–24 MIA",
+      "status": "FINAL"
     },
     {
       "id": "G04",
       "matchup": "LV @ NE",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "NE",
+      "score": "NE 45–17 LV",
+      "status": "FINAL"
     },
     {
       "id": "G05",
       "matchup": "MIN @ NO",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "MIN",
+      "score": "MIN 23–13 NO",
+      "status": "FINAL"
     },
     {
       "id": "G06",
       "matchup": "CLE @ NYJ",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "NYJ",
+      "score": "NYJ 17–12 CLE",
+      "status": "FINAL"
     },
     {
       "id": "G07",
       "matchup": "IND @ PIT",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "PIT",
+      "score": "PIT 34–22 IND",
+      "status": "FINAL"
     },
     {
       "id": "G08",
       "matchup": "HOU @ TEN",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "HOU",
+      "score": "HOU 26–3 TEN",
+      "status": "FINAL"
     },
     {
       "id": "G09",
       "matchup": "NYG @ WAS",
       "time": "DOM 11 OCT · 11:00 CDMX",
       "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "score": "NYG 27–27 WAS",
+      "status": "TIE"
     },
     {
       "id": "G10",
       "matchup": "CHI @ GB",
       "time": "DOM 11 OCT · 11:00 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "GB",
+      "score": "GB 31–7 CHI",
+      "status": "FINAL"
     },
     {
       "id": "G11",
       "matchup": "DEN @ LAC",
       "time": "DOM 11 OCT · 14:05 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "DEN",
+      "score": "DEN 23–17 LAC",
+      "status": "FINAL"
     },
     {
       "id": "G12",
       "matchup": "DET @ ARI",
       "time": "DOM 11 OCT · 14:25 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "DET",
+      "score": "DET 45–21 ARI",
+      "status": "FINAL"
     },
     {
       "id": "G13",
       "matchup": "SF @ SEA",
       "time": "DOM 11 OCT · 14:25 CDMX",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "SF",
+      "score": "SF 32–29 SEA",
+      "status": "FINAL"
     },
     {
       "id": "G14",
       "matchup": "BAL @ ATL",
       "time": "DOM 11 OCT · 18:20 CDMX · SNF",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "BAL",
+      "score": "BAL 30–23 ATL",
+      "status": "FINAL"
     },
     {
       "id": "G15",
       "matchup": "BUF @ LAR",
       "time": "LUN 12 OCT · 18:15 CDMX · MNF",
-      "winner": null,
-      "score": null,
-      "status": "SCHEDULED"
+      "winner": "BUF",
+      "score": "BUF 37–34 LAR",
+      "status": "FINAL"
     }
   ],
   "participants": [
@@ -147,283 +147,129 @@
     "RODRI",
     "IBRACHO"
   ],
-  "matrix": {
-    "EL DOC": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "NE",
-      "NO",
-      "CLE",
-      "PIT",
-      "HOU",
-      "WAS",
-      "GB",
-      "DEN",
-      "DET",
-      "SEA",
-      "ATL",
-      "BUF"
-    ],
-    "ARI": [
-      "TB",
-      "PHI",
-      "CIN",
-      "LV",
-      "MIN",
-      "NYJ",
-      "IND",
-      "HOU",
-      "NYG",
-      "GB",
-      "DEN",
-      "DET",
-      "SF",
-      "BAL",
-      "BUF"
-    ],
-    "LALO": [
-      "DAL",
-      "JAX",
-      "MIA",
-      "NE",
-      "NO",
-      "NYJ",
-      "PIT",
-      "TEN",
-      "WAS",
-      "GB",
-      "LAC",
-      "ARI",
-      "SEA",
-      "ATL",
-      "LAR"
-    ],
-    "ALEX": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "NE",
-      "MIN",
-      "CLE",
-      "PIT",
-      "HOU",
-      "NYG",
-      "GB",
-      "DEN",
-      "DET",
-      "SEA",
-      "BAL",
-      "BUF"
-    ],
-    "LUIS C.": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "NE",
-      "MIN",
-      "NYJ",
-      "PIT",
-      "HOU",
-      "NYG",
-      "GB",
-      "LAC",
-      "DET",
-      "SEA",
-      "ATL",
-      "LAR"
-    ],
-    "DR PALMA": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "LV",
-      "NO",
-      "CLE",
-      "PIT",
-      "HOU",
-      "WAS",
-      "CHI",
-      "DEN",
-      "DET",
-      "SEA",
-      "ATL",
-      "BUF"
-    ],
-    "JENNI": [
-      "TB",
-      "PHI",
-      "CIN",
-      "NE",
-      "MIN",
-      "CLE",
-      "PIT",
-      "TEN",
-      "WAS",
-      "GB",
-      "DEN",
-      "DET",
-      "SEA",
-      "BAL",
-      "LAR"
-    ],
-    "RODRI": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "NE",
-      "MIN",
-      "NYJ",
-      "PIT",
-      "HOU",
-      "WAS",
-      "GB",
-      "DEN",
-      "DET",
-      "SEA",
-      "ATL",
-      "LAR"
-    ],
-    "IBRACHO": [
-      "DAL",
-      "JAX",
-      "CIN",
-      "NE",
-      "MIN",
-      "CLE",
-      "IND",
-      "HOU",
-      "NYG",
-      "GB",
-      "DEN",
-      "DET",
-      "SF",
-      "BAL",
-      "BUF"
-    ]
-  },
   "weekly": [
     {
       "name": "EL DOC",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
     },
     {
       "name": "ARI",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
     },
     {
       "name": "LALO",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 5,
+      "wrong": 9,
+      "status": "VALID"
     },
     {
       "name": "ALEX",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
     },
     {
       "name": "LUIS C.",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
     },
     {
       "name": "DR PALMA",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
     },
     {
       "name": "JENNI",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
     },
     {
       "name": "RODRI",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
     },
     {
       "name": "IBRACHO",
-      "status": "VALID",
-      "correct": 0,
-      "wrong": 0
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
     }
   ],
   "season_standings": [
     {
-      "name": "EL DOC",
-      "status": "VALID",
-      "correct": 40,
-      "wrong": 24
-    },
-    {
-      "name": "ARI",
-      "status": "VALID",
-      "correct": 38,
-      "wrong": 26
-    },
-    {
-      "name": "LALO",
-      "status": "VALID",
-      "correct": 37,
-      "wrong": 27
-    },
-    {
       "name": "ALEX",
-      "status": "VALID",
-      "correct": 40,
-      "wrong": 24
-    },
-    {
-      "name": "LUIS C.",
-      "status": "VALID",
-      "correct": 38,
-      "wrong": 26
-    },
-    {
-      "name": "DR PALMA",
-      "status": "VALID",
-      "correct": 37,
-      "wrong": 27
-    },
-    {
-      "name": "JENNI",
-      "status": "VALID",
-      "correct": 37,
-      "wrong": 27
-    },
-    {
-      "name": "RODRI",
-      "status": "VALID",
-      "correct": 39,
-      "wrong": 25
+      "correct": 51,
+      "wrong": 27,
+      "status": "VALID"
     },
     {
       "name": "IBRACHO",
-      "status": "VALID",
-      "correct": 40,
-      "wrong": 24
+      "correct": 51,
+      "wrong": 27,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 47,
+      "wrong": 31,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 46,
+      "wrong": 32,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 44,
+      "wrong": 34,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 42,
+      "wrong": 36,
+      "status": "VALID"
     }
   ],
   "stages": {
     "picks": "READY_FOR_04",
-    "results": "WAITING_ALL_FINAL",
-    "weekly": "WAITING_ALL_FINAL",
-    "season": "WAITING_ALL_FINAL"
+    "results": "READY_FOR_04",
+    "weekly": "READY_FOR_04",
+    "season": "READY_FOR_04"
   },
   "asset_keys": {
     "picks": "w5-picks-board.png",
     "results": "w5-results-live.png",
     "weekly": "w5-ranking-weekly.png",
     "season": "w5-ranking-season.png"
-  }
+  },
+  "matrix_status": "PRIVATE_SOURCE_REQUIRED_FOR_PICKS; NO_MATRIX_IN_PUBLIC_HANDOFF"
 }
