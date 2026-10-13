@@ -14,7 +14,7 @@ function renderLiveResults(data){
   if(!wrap)return;
   wrap.replaceChildren();
   const games=data.games||[];
-  const finals=games.filter(g=>['FINAL','TIE'].includes(g.status) && g.winner);
+  const finals=games.filter(g=>g.status==='TIE'||(g.status==='FINAL' && g.winner));
   const pushes=finals.filter(g=>g.status==='TIE'||g.winner==='TIE').length;
   $('live-game-count').textContent=finals.length+'/'+games.length+' FINAL'+(pushes?' · '+(finals.length-pushes)+' PUNTUABLES · '+pushes+' PUSH':'');
   $('live-title').textContent=(data.week||'SEMANA ACTUAL')+' · RESULTADOS EN VIVO';
@@ -35,7 +35,7 @@ async function approvedVisualPackage(week){
     if(!r.ok)return null;
     const m=await r.json();
     if(Number(m.week)!==Number(week) || m.publication_ready!==true)return null;
-    if(!String(m.qa?.visual_review||'').includes('PASS'))return null;
+    if(!String(m.qa?.visual_review||'').startsWith('PASS'))return null;
     if(!String(m.gate||'').includes('QA_PASS'))return null;
     const keys=['picks','results','weekly','season'];
     for(const k of keys){
