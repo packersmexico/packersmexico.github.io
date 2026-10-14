@@ -1,14 +1,16 @@
 const LIBRARY_URL='./asset-index.json';
 const SLOT_NAMES={picks:'HOJA DE PICKS',results:'RESULTADOS FINALES',weekly:'RANKING SEMANAL',season:'RANKING GLOBAL'};
 function pmxAssetLabel(state){
-  return state==='RIGHTS_HOLD'?'BLOQUEADO POR DERECHOS · 03.5':state==='READY'?'PNG APROBADO':state==='QA_PENDING'?'PENDIENTE DE QA FIGMA':'PENDIENTE DEL EVENTO';
+  return state==='HISTORICAL_SOURCE_MISSING'?'HISTÓRICO POR RECUPERAR · SIN FUENTE VALIDADA':state==='RIGHTS_HOLD'?'BLOQUEADO POR DERECHOS · 03.5':state==='READY'?'PNG APROBADO':state==='QA_PENDING'?'PENDIENTE DE QA VISUAL':'PENDIENTE DEL EVENTO';
 }
 function pmxRenderWeek(container,week,record,heading){
   const section=document.createElement('section');
   section.className='asset';
   const h=document.createElement('h2');h.textContent=heading+' · WEEK '+week;section.append(h);
   const p=document.createElement('p');p.className='meta';
-  p.textContent=(record?.capture?.complete??0)+'/'+(record?.capture?.total??9)+' RESPUESTAS · '+(record?.results?.final??0)+'/'+(record?.results?.total??0)+' JUEGOS FINAL';
+  p.textContent=record?.archive_status==='SOURCE_MISSING_NEEDS_RECONCILIATION'
+    ? 'DATOS HISTÓRICOS NO RECUPERADOS · SIN MARCADORES NI PNG VERIFICADOS'
+    : (record?.capture?.complete??0)+'/'+(record?.capture?.total??9)+' RESPUESTAS · '+(record?.results?.final??0)+'/'+(record?.results?.total??0)+' JUEGOS FINAL';
   section.append(p);
   for(const [key,title] of Object.entries(SLOT_NAMES)){
     const a=record?.assets?.[key]||{state:'WAITING_EVENT'};
