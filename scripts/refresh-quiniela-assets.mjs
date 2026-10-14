@@ -26,7 +26,19 @@ const weeks={};
 for(let w=1;w<=active;w++){
   const wk=read(`${root}/weeks/week-${String(w).padStart(2,'0')}.json`);
   const data=w===current?live:wk;
-  if(!data)continue;
+  if(!data){
+    // Never omit Week 2 from the archive or fabricate historical scores.
+    if(w===2){
+      const unknown=Object.fromEntries(Object.entries(slots).map(([slot,meta])=>[
+        slot,{state:'HISTORICAL_SOURCE_MISSING',href:null,
+          expected:meta.file+'.png',size:meta.width+'x'+meta.height}
+      ]));
+      weeks[w]={week:w,archive_status:'SOURCE_MISSING_NEEDS_RECONCILIATION',
+        capture:{complete:null,total:null,window:'UNKNOWN'},
+        results:{final:null,total:null},assets:unknown};
+    }
+    continue;
+  }
   // Upcoming capture W6 can be OPEN while live score monitor is still on W5.
   const capture=w===captureWeek&&captureWeek>current?currentCapture:(data.capture||{});
   const results=data.results||{};
