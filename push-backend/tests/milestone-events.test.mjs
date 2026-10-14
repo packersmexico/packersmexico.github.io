@@ -54,3 +54,13 @@ test('no picks, submission identity or PII in broadcast milestone body',()=>{
   const out=milestoneEvents({data:before,captureConfig:defaultCfg});
   for(const item of out){assert(!item.body.includes('picks:['));assert(!item.body.includes('submissionID'));assert(item.url.startsWith('https://packersmexico.github.io/'));}
 });
+
+test('newly verified participant produces exactly one safe operator notice, no private picks',()=>{
+  const cfg={...defaultCfg,complete:3,total:9,submission_integrity:{received_names:['LALO','IBRACHO','JENNI'],recently_verified_names:['JENNI']}};
+  const alerts=milestoneEvents({data:before,captureConfig:cfg});
+  const specific=alerts.filter(x=>x.eventKey==='W6_FORM_VERIFIED_JENNI');
+  assert.equal(specific.length,1);
+  assert.match(specific[0].body,/JENNI completó/);
+  assert(!specific[0].body.includes('picks:['));
+  assert(!alerts.some(x=>x.eventKey==='W6_FORM_VERIFIED_LALO'));
+});
