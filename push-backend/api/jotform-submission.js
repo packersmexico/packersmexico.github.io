@@ -80,15 +80,16 @@ export default async function handler(req,res) {
       .replace(/[^A-Z0-9]+/g,'_').replace(/^_|_$/g,'').slice(0,28);
   const idHash=crypto.createHash('sha256').update(submissionID).digest('hex').slice(0,12).toUpperCase();
   const eventKey=`W${week}_PICK_RECEIVED_${safeName}_${idHash}`;
-  const claimKey=`pmx:quiniela:jotform:first:${formID}:${safeName}`;
-  // SET NX guarantees one first submission per participant, even under concurrent webhooks.
-  const claim=await redis(['SET',claimKey,submissionID,'NX','EX',180]);
-  if(claim!=='OK')return json(res,200,{ok:true,status:'DUPLICATE_IGNORED',week,participant});
+  const receiptKey=`pmx:quiniela:jotform:receipts:${formID}`;
+  // Durable first-seen receipt; Redis HSETNX atomically rejects duplicates.
+  // Never store raw picks, names of respondents outside the nine, or raw form content.
+  const record=JSON.stringify({received_at:new Date().toISOString(),submission_hash:idHash});
+  const saved=await redis(['HSETNX',receiptKey,participant,record]);
+  if(Number(saved)!==1)return json(res,200,{ok:true,status:'DUPLICATE_IGNORED',week,participant});
 
   const vapid={publicKey:process.env.VAPID_PUBLIC_KEY,privateKey:process.env.VAPID_PRIVATE_KEY,subject:process.env.VAPID_SUBJECT};
   if(!vapid.publicKey||!vapid.privateKey||!vapid.subject) {
-    await redis(['DEL',claimKey]);
-    return json(res,503,{ok:false,error:'PUSH_NOT_CONFIGURED'});
+    return json(res,202,{ok:true,status:'RECEIPT_SAVED_PUSH_NOT_CONFIGURED',week,participant});
   }
   webpush.setVapidDetails(vapid.subject,vapid.publicKey,vapid.privateKey);
   const title=`QUINIELA PMX · W${week} · NUEVO ENVÍO`;
@@ -120,9 +121,8 @@ export default async function handler(req,res) {
   }
   const sent=deliveries.some(d=>d.status==='SENT'||d.status==='ALREADY_SENT');
   if(!sent){
-    await redis(['DEL',claimKey]);
-    return json(res,503,{ok:false,error:'PUSH_DELIVERY_UNCONFIRMED',week,deliveries});
+    // Receipt must outlive phone subscription errors: never erase a confirmed submission.
+    return json(res,202,{ok:true,status:'RECEIPT_SAVED_PUSH_UNCONFIRMED',week,participant,deliveries});
   }
-  await redis(['SET',claimKey,submissionID]);
-  return json(res,200,{ok:true,status:'ACCEPTED',week,participant,deliveries});
+  return json(res,200,{ok:true,status:'ACCEPTED_PUSH_DISPATCHED',week,participant,deliveries});
 }
