@@ -64,6 +64,33 @@ function renderFutureCapture(snapshot){
   setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
   setText('sync-mode','W6 JOTFORM · CORTE 14 OCT / W5 RESULTADOS FINAL');
 }
+// Read-only overlay from the existing push/backend Redis receipts. Never shows selections.
+async function refreshLiveReceipts(snapshot,stamp){
+  if(!snapshot)return {status:'NO_ACTIVE_CAPTURE'};
+  try{
+    const url='https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?t='+stamp;
+    const response=await fetch(url,{cache:'no-store'});
+    if(!response.ok)throw Error('RECEIPT_HTTP_'+response.status);
+    const live=await response.json();
+    if(!live.ok||Number(live.week)!==Number(snapshot.week_number)||
+       String(live.form_id)!==String(snapshot.capture?.form_id))throw Error('RECEIPT_FORM_MISMATCH');
+    const waiting=(live.webhook_received_unreconciled||[]).filter(n=>
+      !(snapshot.participants||[]).some(p=>p.name===n && String(p.status).startsWith('COMPLETE')));
+    if(waiting.length){
+      const wrap=$('participants');
+      for(const who of waiting){
+        const row=[...wrap.querySelectorAll('.participant')].find(el=>el.querySelector('.participant-name')?.textContent===who);
+        if(row){
+          row.classList.remove('pending');
+          row.querySelector('.participant-status').textContent='RECIBIDO · VALIDAR';
+        }
+      }
+      const label=$('w6-confirmed');
+      if(label)label.textContent+='  |  ENVÍOS NUEVOS PENDIENTES DE CONCILIACIÓN: '+waiting.join(' · ');
+    }
+    return {status:live.backend_status||'WEBHOOK_UNKNOWN',pending:waiting.length};
+  }catch(err){console.warn('W6_RECEIPT_OVERLAY_UNAVAILABLE',String(err));return {status:'BACKEND_UNAVAILABLE'};}
+}
 function renderGames(games=[]){
   const wrap=$('games');wrap.replaceChildren();
   games.forEach(g=>{const row=document.createElement('div');row.className='result-row '+(g.winner?'final':'scheduled');row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state">'+(g.winner?'<b>GANÓ '+esc(g.winner)+'</b><span>'+esc(g.score||'FINAL')+'</span>':(g.status==='LIVE'||g.status==='IN_PROGRESS')?'<b>EN VIVO</b><span>'+esc(g.live_score||'')+' '+esc(g.live_detail||'')+'</span>':'<b>PENDIENTE</b><span>'+esc(g.status||'SCHEDULED')+'</span>')+'</div>';wrap.append(row)});
@@ -131,11 +158,17 @@ async function load(manual=false){
    const previousSync=lastSeenSync;
    render(data); if(closed)renderPrevious(closed);
    if(futureCapture)renderFutureCapture(futureCapture);
+   const receiptCheck=await refreshLiveReceipts(futureCapture,stamp);
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(futureCapture){
        const verified=futureCapture.capture?.submission_integrity?.evidence_date||'SIN FECHA';
-       msg.textContent=(manual?'PANEL RECARGADO · ':'')+'W6 CAPTURA VERIFICADA JOTFORM '+verified+' · W5 RESULTADOS FINAL · EL CONTADOR ES UN CORTE, NO CONSULTA DIRECTA A JOTFORM.';
+       const liveText=receiptCheck.status==='BACKEND_UNAVAILABLE'
+         ? 'RECEPTOR DE ENVÍOS SIN RESPUESTA · CORTE PUBLICADO'
+         : receiptCheck.status==='WAITING_FOR_VERIFIED_WEBHOOK'||receiptCheck.status==='NOT_VERIFIED'
+         ? 'RECEPTOR DISPONIBLE · AÚN SIN WEBHOOK VERIFICADO'
+         : 'RECEPTOR '+receiptCheck.status;
+       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+' · RESULTADOS W5 FINAL · REVISADO '+fmtSync(new Date().toISOString());
      }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
