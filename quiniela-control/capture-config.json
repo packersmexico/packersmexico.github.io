@@ -13,42 +13,45 @@
   "default_green_bay_policy": "GB_PRESELECTED_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
   "default_green_bay_game_id": "G13",
   "default_green_bay_pick": "GB",
-  "capture_status": "OPEN · WEEK6 · 0_OF_9 · 0_OF_126",
+  "capture_status": "OPEN · WEEK6 · 2_OF_9 · 28_OF_126 · JOTFORM_VERIFIED",
   "form_status": "ENABLED",
-  "complete": 0,
+  "complete": 2,
   "total": 9,
   "expected_picks": 126,
-  "received_picks": 0,
-  "missing_picks": 126,
+  "received_picks": 28,
+  "missing_picks": 98,
   "missing_participants": [
     "EL DOC",
     "ARI",
-    "LALO",
     "ALEX",
     "LUIS C.",
     "DR PALMA",
     "JENNI",
-    "RODRI",
-    "IBRACHO"
+    "RODRI"
   ],
   "auto_close_condition": "DEADLINE_16_00_ONLY",
   "locked_submissions": {},
   "duplicate_count": 0,
   "duplicate_submission_ids": [],
-  "unique_participants": 0,
+  "unique_participants": 2,
   "submission_integrity": {
-    "status": "FORM_CREATED_VALIDATED_LABELS_AND_REQUIRED_BY_JOTFORM; FIRST_VALID_SUBMISSIONS_AWAITED",
+    "status": "2_OF_9_COMPLETE_BY_JOTFORM_ANALYSIS; FIRST_VALID_SUBMISSION_ID_AND_PICKS_NOT_YET_PERSISTED",
     "form_questions": 14,
     "mapping_rule": "JOTFORM_QUESTION_ID_PLUS_LITERAL_GAME_ID_G01_TO_G14_NOT_DISPLAY_ORDER",
     "first_valid_only": true,
     "lock_after_first_valid": true,
     "week5_preservation": "WEEK5_MAIN_DATA_14_OF_15_PRESERVED_UNTIL_MNF_FINAL",
-    "source": "NFL WEEK6 OFFICIAL SCHEDULE 2026-10-12"
+    "source": "Jotform submissions count=2 and named analysis, no full submissions/pick records exposed",
+    "received_names": [
+      "IBRACHO",
+      "LALO"
+    ],
+    "verified_on": "2026-10-14"
   },
   "window": "OPEN",
   "invitado": "OFF",
   "last_sync": "2026-10-12T17:43:17+00:00",
   "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "form_create_record": "JOTFORM_VALIDATED_2026-10-12",
-  "capacity_note": "W5 data.json still canonical for unfinished G15; W6 capture-config is ahead by exactly one week"
+  "capacity_note": "Week5 FINAL remains in data.json; Week6 capture is in week-06.json; panel must read both independently"
 }
