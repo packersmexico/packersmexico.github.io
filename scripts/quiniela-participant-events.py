@@ -79,6 +79,25 @@ def build(before_data: dict, before_cfg: dict, after_data: dict, after_cfg: dict
     names = {str(p.get("name") or "").upper().strip() for p in after_data.get("participants") or [] if isinstance(p, dict)}
     count, total = len(current), int(capture.get("total") or 9)
     events = []
+    # Direction-authorized Jotform-verified receipt cut, separate from locked-picks.
+    # Require an explicit newly added notice marker, never infer from mere counts.
+    def verified_signal(c):
+        p = c.get("submission_integrity") or {}
+        received = {str(n).upper().strip() for n in p.get("received_names") or []}
+        pending = {str(n).upper().strip() for n in p.get("notification_pending_names") or []}
+        return received & pending
+    old_signal = verified_signal(old_capture) if old_week == week else set()
+    new_signal = verified_signal(capture)
+    for name in sorted(new_signal-old_signal):
+        if name not in names or name in current:
+            continue
+        events.append({
+            "eventKey": f"W{week}_FORM_VERIFIED_{slug(name)}",
+            "title": f"QUINIELA PMX · W{week} · RESPUESTA RECIBIDA",
+            "body": f"{name} completó el formulario. Corte: {capture.get('complete', 0)}/{total} participantes. Picks privados.",
+            "url": "https://packersmexico.github.io/quiniela-control/",
+            "tag": f"pmx-w{week}-verified-{slug(name).lower()}"
+        })
     for name, sid in sorted(current.items()):
         if names and name not in names:
             continue
@@ -120,7 +139,16 @@ def self_test() -> None:
     cfg_next = json.loads(json.dumps(cfg))
     cfg_next["locked_submissions"]["LUIS C."] = sub("202")
     assert len(build(fresh, cfg, fresh, cfg_next)) == 1
-    print("PASS: unique submission, no prior replay, duplicate ignored, new week, config-only and same-week updates, privacy")
+    # A new verified receipt without pick lock produces one notice, never a fake lock.
+    snapshot_old={"week_number":7,"status":"OPEN","total":9,"complete":1,
+        "submission_integrity":{"received_names":["RODRI"],"notification_pending_names":[]}}
+    snapshot_new=json.loads(json.dumps(snapshot_old))
+    snapshot_new["submission_integrity"]["notification_pending_names"]=["RODRI"]
+    snapshot_alerts=build(after,snapshot_old,after,snapshot_new)
+    assert len(snapshot_alerts)==1 and snapshot_alerts[0]["eventKey"]=="W7_FORM_VERIFIED_RODRI"
+    assert build(after,snapshot_new,after,snapshot_new)==[]
+    assert "picks" not in json.dumps(snapshot_alerts).lower() or "Picks privados" in snapshot_alerts[0]["body"]
+    print("PASS: unique submission, no prior replay, duplicate ignored, verified receipt notice, new week, privacy")
 
 
 if __name__ == "__main__":
