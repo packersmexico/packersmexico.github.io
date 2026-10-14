@@ -68,7 +68,7 @@ function renderFutureCapture(snapshot){
 async function refreshLiveReceipts(snapshot,stamp){
   if(!snapshot)return {status:'NO_ACTIVE_CAPTURE'};
   try{
-    const url='https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?t='+stamp;
+    const url='https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?form_id='+encodeURIComponent(snapshot.capture.form_id)+'&week='+encodeURIComponent(snapshot.week_number)+'&t='+stamp;
     const response=await fetch(url,{cache:'no-store'});
     if(!response.ok)throw Error('RECEIPT_HTTP_'+response.status);
     const live=await response.json();
