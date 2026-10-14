@@ -12,6 +12,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261013-desk">
   <link rel="stylesheet" href="operator.css?v=20261013-desk">
+  <style>
+    /* Safety guard for older injected asset rows; only PNG downloads are allowed. */
+    #pmx-download-list .pmx-file-actions a[href*="figma.com"],
+    #pmx-download-list .pmx-file-actions a[href*="/blob/main/quiniela-control/exports/"] {
+      display:none !important;
+    }
+  </style>
+
   <script src="app.js?v=20261014-w6-capture-final-f17b00d" defer></script>
   <script src="push.js?v=20261012-renew-expired" defer></script>
 </head>
@@ -136,6 +144,6 @@
     <p class="privacy-note">Panel operativo · PACKERS MÉXICO. Proyecto independiente; no afiliado oficialmente con NFL/Green Bay Packers.</p>
   </main>
   <footer class="site-footer"><p>PACKERS MÉXICO</p><p class="independence">Sistema Lambeau · operación reproducible.</p></footer>
-<script src="./panel-assets.js?v=20261014-w5-only-png-a7889c8" defer></script>
+<script src="./panel-downloads-only-w5-20261014.js" defer></script>
 </body>
 </html>
