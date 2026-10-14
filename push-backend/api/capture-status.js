@@ -3,7 +3,7 @@ import { redis } from '../lib/redis.js';
 import { applyCors, json, rejectMethod } from '../lib/http.js';
 
 const SOURCE='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/capture-config.json';
-const canon=(s)=>String(s||'').trim().replace(/\\s+/g,' ').toUpperCase();
+const canon=(s)=>String(s||'').trim().replace(/\s+/g,' ').toUpperCase();
 const key=(formID)=>'pmx:quiniela:jotform:receipts:'+formID;
 
 export default async function handler(req,res){
