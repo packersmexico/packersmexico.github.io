@@ -2,15 +2,13 @@
 (() => {
   'use strict';
   const ROOT = './exports/';
-  const privateRepo='https://github.com/ibrahimsantana/pmx-video-factory/blob/main/quiniela-control/exports/';
   const privateRaw='https://github.com/ibrahimsantana/pmx-video-factory/raw/refs/heads/main/quiniela-control/exports/';
   // These URLs require GitHub access. Private operational QA files are NOT public assets.
-  const figma='https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=';
   const slotMeta={
-    results:{name:'RESULTADOS FINALES',dim:'1600 × 2000',node:'3357-2147661',privateFile:'w5-results-live.png'},
-    weekly:{name:'RANKING SEMANAL',dim:'1080 × 1350',node:'3357-2139371',privateFile:'w5-ranking-weekly.png'},
-    season:{name:'RANKING GENERAL',dim:'1080 × 1350',node:'3357-2139425',privateFile:'w5-ranking-season.png'},
-    picks:{name:'TODOS LOS PICKS',dim:'1600 × 2000',node:'3147-903160',file:'w5-picks-board.png'}
+    results:{name:'RESULTADOS FINALES',dim:'1600 × 2000',privateFile:'w5-results-live.png'},
+    weekly:{name:'RANKING SEMANAL',dim:'1080 × 1350',privateFile:'w5-ranking-weekly.png'},
+    season:{name:'RANKING GENERAL',dim:'1080 × 1350',privateFile:'w5-ranking-season.png'},
+    picks:{name:'TODOS LOS PICKS',dim:'1600 × 2000',file:'w5-picks-board.png'}
   };
   const $=id=>document.getElementById(id);
   function tag(name,className,txt) {
@@ -53,13 +51,10 @@
           actions.append(action('DESCARGAR PNG ↗',ROOT+publicFile,'PMX_W5_'+kind.toUpperCase()+'.png'));
         }else if(kind==='results'&&asset.state==='RIGHTS_HOLD'&&asset.private_qa==='PASS'){
           status='PASS PRIVADO · PUBLICACIÓN BLOQUEADA POR DERECHOS';
-          actions.append(action('DESCARGAR PNG · PRIVADO ↗',privateRaw+meta.privateFile,'PMX_W5_RESULTADOS_FINAL.png'));
-          actions.append(action('VER ORIGINAL PRIVADO ↗',privateRepo+meta.privateFile,null,true));
-          actions.append(action('VER EN FIGMA ↗',figma+meta.node,null,true));
+          actions.append(action('DESCARGAR PNG ↗',privateRaw+meta.privateFile,'PMX_W5_RESULTADOS_FINAL.png'));
         }else if(kind==='weekly'||kind==='season'){
           status=asset.state==='READY'?'PNG EN REVISIÓN · ACCESO PRIVADO':'QA PENDIENTE · DESCARGA INTERNA · NO PUBLICAR';
-          actions.append(action('VER EN FIGMA ↗',figma+meta.node));
-          actions.append(action('DESCARGAR PNG · PRIVADO ↗',privateRaw+meta.privateFile,'PMX_W5_'+kind.toUpperCase()+'.png',true));
+          actions.append(action('DESCARGAR PNG ↗',privateRaw+meta.privateFile,'PMX_W5_'+kind.toUpperCase()+'.png'));
         }else{
           status=asset.state==='RIGHTS_HOLD'?'RETENIDO POR DERECHOS':asset.state==='QA_PENDING'?'QA PENDIENTE':'ESPERANDO ENTREGA';
         }
