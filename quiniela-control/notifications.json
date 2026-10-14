@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-13T21:22:19.680Z",
+  "updated_at": "2026-10-12T17:43:17+00:00",
   "items": [
+    {
+      "id": "W6_OPEN",
+      "status": "READY",
+      "title": "WEEK 6 ABIERTA",
+      "body": "Week 5 cerrada 15/15. Week 6: 0/9 respuestas · cierre 15 OCT · 16:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W5_RESULTS_PRIVATE_REVIEW_READY_20261013",
       "status": "PRIVATE_REVIEW_READY",
@@ -29,46 +38,10 @@
       "secondary_label": "ABRIR RANKING GENERAL"
     },
     {
-      "id": "W6_OPEN",
-      "status": "READY",
-      "title": "WEEK 6 ABIERTA",
-      "body": "Week 5 cerrada 15/15. Week 6: 0/9 respuestas · cierre 15 OCT · 16:00 CDMX.",
-      "href": "./",
-      "secondary_href": "./captura/",
-      "secondary_label": "ABRIR FORMULARIO"
-    },
-    {
       "id": "W5_9OF9",
       "status": "READY",
       "title": "WEEK 5 · PICKS COMPLETOS",
       "body": "9/9 participantes · captura cerrada. Picks y piezas ya pueden revisarse en el panel.",
-      "href": "./",
-      "secondary_href": "./exports/live.html",
-      "secondary_label": "VER PIEZAS"
-    },
-    {
-      "id": "W5_FIGMA_PICKS_REVIEW_READY_9OF9_20261008",
-      "status": "READY",
-      "title": "W5 FIGMA LISTO PARA REVISIÓN",
-      "body": "Hoja 9/9 · 135 picks y 3 móviles exportados. Revisa en el panel; NO publicar antes de aprobación de Dirección.",
-      "href": "./",
-      "secondary_href": "./exports/live.html",
-      "secondary_label": "VER PIEZAS"
-    },
-    {
-      "id": "W5_OPEN",
-      "status": "READY",
-      "title": "WEEK 5 ABIERTA",
-      "body": "Week 4 cerrada 16/16. Week 5: 9/9 respuestas · cierre 8 OCT · 16:00 CDMX.",
-      "href": "./",
-      "secondary_href": "./captura/",
-      "secondary_label": "ABRIR FORMULARIO"
-    },
-    {
-      "id": "W5_REMINDER_8OF9_20261008_1600",
-      "status": "READY",
-      "title": "WEEK 5 · FALTA UNO",
-      "body": "Rodri y Alex ya enviaron. Falta LUIS C. · captura abierta hasta hoy 16:00 CDMX.",
       "href": "./",
       "secondary_href": "./exports/live.html",
       "secondary_label": "VER PIEZAS"
