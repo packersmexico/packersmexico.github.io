@@ -3,32 +3,30 @@
   "season": "2026",
   "week": "WEEK 6",
   "week_number": 6,
-  "snapshot_status": "CAPTURE_OPEN · FORM_JOTFORM_VALIDATED · W5_PENDING_FINAL",
+  "snapshot_status": "CAPTURE_OPEN · 2_OF_9_JOTFORM_VERIFIED · FIRST_VALID_PICK_LOCK_PENDING",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "calendar_verified_at": "2026-10-12",
   "capture": {
     "form_id": "262845110194050",
     "form_url": "https://form.jotform.com/262845110194050",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 0,
+    "complete": 2,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-15T16:00:00-06:00",
     "deadline_label": "15 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
     "expected_picks": 126,
-    "received_picks": 0,
-    "missing_picks": 126,
+    "received_picks": 28,
+    "missing_picks": 98,
     "missing_participants": [
       "EL DOC",
       "ARI",
-      "LALO",
       "ALEX",
       "LUIS C.",
       "DR PALMA",
       "JENNI",
-      "RODRI",
-      "IBRACHO"
+      "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
@@ -37,15 +35,22 @@
     "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {},
-    "unique_participants": 0,
+    "unique_participants": 2,
     "duplicate_count": 0,
     "invitado": "OFF",
     "submission_integrity": {
-      "status": "FORM_14_QUESTIONS_REQUIRED_VERIFIED_BY_JOTFORM_CONNECTOR; NO_SUBMISSIONS_YET",
+      "status": "2_SUBMISSIONS_COMPLETE_14_OF_14_EACH_JOTFORM_ANALYSIS; IDS_AND_PICK_LOCK_NOT_YET_RECONCILED",
       "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
-      "locked_picks_immutable": true
+      "locked_picks_immutable": true,
+      "evidence_date": "2026-10-14",
+      "evidence_form_id": "262845110194050",
+      "received_names": [
+        "IBRACHO",
+        "LALO"
+      ],
+      "source": "Jotform form fetch count=2 + submission analysis named participants"
     },
-    "capture_status": "OPEN_0_OF_9_DEADLINE_20261015_1600"
+    "capture_status": "OPEN_2_OF_9_JOTFORM_VERIFIED_20261014"
   },
   "participants": [
     {
@@ -58,7 +63,7 @@
     },
     {
       "name": "LALO",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "ALEX",
@@ -82,7 +87,7 @@
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     }
   ],
   "games": [
