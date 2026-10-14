@@ -30,17 +30,30 @@ if (earlyWeekOpen) {
   assert.equal(config.form_url,upcoming.capture.form_url);
   assert.equal(config.deadline,upcoming.capture.deadline);
   assert.equal(config.status,upcoming.capture.window);
-  assert.equal(config.complete,0);
+  // Week 6 has verified participant-level Jotform receipts before individual picks
+  // are materialized: validate counts without claiming first-valid pick locks.
   assert.equal(config.total,9);
-  assert.equal(config.received_picks,0);
   assert.equal(config.expected_picks,126);
-  assert.equal(Object.keys(config.locked_submissions||{}).length,0);
+  assert.equal(config.complete,upcoming.capture.complete);
+  assert.equal(config.received_picks,upcoming.capture.received_picks);
+  assert.equal(config.received_picks,config.complete*14);
+  assert.equal(config.missing_picks,(config.total-config.complete)*14);
+  assert.equal(upcoming.capture.missing_picks,config.missing_picks);
+  assert.equal(Object.keys(config.locked_submissions||{}).length,0,
+    'Jotform receipt status does not establish immutable picks');
+  assert.equal(Object.keys(upcoming.capture.locked_submissions||{}).length,0,
+    'Do not claim pick locks before reconciliation');
   assert.equal(config.stable_url,'https://packersmexico.github.io/quiniela-control/captura/');
   assert.equal(upcoming.results.total,14);
   assert.equal(upcoming.results.final,0);
   assert.equal(upcoming.season_standings.length,0,'Never use provisional W5 season as W6 base');
-  assert.deepEqual((config.missing_participants||[]).sort(),
-    (data.participants||[]).map(p=>p.name).sort(),'W6 roster must match locked nine participants');
+  const canonical=(data.participants||[]).map(p=>p.name);
+  const missing=config.missing_participants||[];
+  const received=(upcoming.participants||[]).filter(p=>String(p.status).startsWith('COMPLETE')).map(p=>p.name);
+  assert.equal(new Set(received).size,config.complete,'Duplicate Week 6 receipt identities');
+  assert.equal(new Set(missing).size,config.total-config.complete,'Duplicate Week 6 missing identities');
+  assert.deepEqual([...received,...missing].sort(),canonical.sort(),
+    'W6 received and missing must partition canonical participants');
 } else {
   assert.equal(currentWeek,captureWeek);
   assert.equal(data.capture.deadline,config.deadline);
