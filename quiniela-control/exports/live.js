@@ -17,7 +17,7 @@ function renderLiveResults(data){
   const finals=games.filter(g=>g.status==='TIE'||(g.status==='FINAL' && g.winner));
   const pushes=finals.filter(g=>g.status==='TIE'||g.winner==='TIE').length;
   $('live-game-count').textContent=finals.length+'/'+games.length+' FINAL'+(pushes?' · '+(finals.length-pushes)+' PUNTUABLES · '+pushes+' PUSH':'');
-  $('live-title').textContent=(data.week||'SEMANA ACTUAL')+' · RESULTADOS EN VIVO';
+  $('live-title').textContent=(data.week||'SEMANA CERRADA')+((data.results?.final===data.results?.total)?' · RESULTADOS FINALES':' · RESULTADOS EN SEGUIMIENTO');
   for(const g of games){
     const row=document.createElement('div');row.className='live-game-row';
     const left=document.createElement('strong');left.textContent=g.id+' · '+g.matchup;
@@ -96,6 +96,8 @@ async function load(manual=false){
     if(!r.ok) throw new Error('HTTP '+r.status);
     current=await r.json();
     renderLiveResults(current);
+    const capResponse=await fetch('../capture-config.json?t='+stamp,{cache:'no-store'});
+    const activeCapture=capResponse.ok?await capResponse.json():null;
     const indexResponse=await fetch('./asset-index.json?t='+stamp,{cache:'no-store'});
     const index=indexResponse.ok?await indexResponse.json():{};
     const priorWeek=Number(index.last_completed_week||Math.max(1,Number(current.week_number)-1));
@@ -112,11 +114,11 @@ async function load(manual=false){
     }
     const pickHeading=$('detail')?.querySelector('.eyebrow');
     if(pickHeading)pickHeading.textContent=picksManifest?'PICKS · WEEK '+picksManifest.week:'PICKS · ARCHIVO · WEEK '+imageWeek;
-    $('asset-week').textContent='QUINIELA · '+current.week+' · '+current.season;
-    $('asset-status').textContent='WEEK '+activeWeek+' · '+current.capture.complete+'/'+current.capture.total+' CAPTURAS · PICKS '+(picksManifest?'W'+picksManifest.week+' QA PASS':'PENDIENTES')+' · RANKINGS '+(displayedAssets?'W'+imageWeek+' QA PASS':'PENDIENTES');
+    $('asset-week').textContent='CAPTURA '+(activeCapture?.week||current.week)+' · CIERRE '+current.week;
+    $('asset-status').textContent=(activeCapture?.week||current.week)+' · '+(activeCapture?.complete??current.capture.complete)+'/'+(activeCapture?.total??current.capture.total)+' FORMULARIOS · '+current.week+' '+current.results.final+'/'+current.results.total+' FINAL · PNG APROBADOS EN ARCHIVO W'+imageWeek+'; W5 PRIVADOS EN PANEL';
     await refreshImages(stamp,displayedAssets,picksManifest);
     if(status){
-      status.textContent=(manual?'DATOS RECARGADOS · PNG APROBADOS REVISADOS · SYNC ':'ÚLTIMA SINCRONIZACIÓN · ')+formatTime(current.last_sync);
+      status.textContent=(manual?'ARCHIVOS RECONSULTADOS · ':'CORTE PUBLICADO · ')+(activeCapture?.week||current.week)+' '+(activeCapture?.complete??current.capture.complete)+'/'+(activeCapture?.total??current.capture.total)+' · '+current.week+' '+current.results.final+'/'+current.results.total+' FINAL · ÚLTIMO SYNC DE MARCADORES '+formatTime(current.last_sync);
     }
   }catch(e){
     console.error(e);
