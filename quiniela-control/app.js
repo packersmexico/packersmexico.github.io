@@ -133,7 +133,10 @@ async function load(manual=false){
    if(futureCapture)renderFutureCapture(futureCapture);
    lastSeenSync=data.last_sync||null;
    if(msg){
-     if(manual){
+     if(futureCapture){
+       const verified=futureCapture.capture?.submission_integrity?.evidence_date||'SIN FECHA';
+       msg.textContent=(manual?'PANEL RECARGADO · ':'')+'W6 CAPTURA VERIFICADA JOTFORM '+verified+' · W5 RESULTADOS FINAL · EL CONTADOR ES UN CORTE, NO CONSULTA DIRECTA A JOTFORM.';
+     }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
          : 'PANEL ACTUALIZADO · ÚLTIMO SYNC '+fmtSync(data.last_sync);
