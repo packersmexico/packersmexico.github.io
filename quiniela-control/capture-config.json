@@ -47,7 +47,11 @@
       "JENNI"
     ],
     "verified_on": "2026-10-14",
-    "note": "Snapshot, not live API/webhook claim"
+    "note": "Snapshot, not live API/webhook claim",
+    "recently_verified_names": [
+      "JENNI"
+    ],
+    "alert_scope": "VERIFIED_CUT_ONLY_NO_PICKS"
   },
   "window": "OPEN",
   "invitado": "OFF",
