@@ -20,12 +20,14 @@ function renderPrevious(w4){
   if(!w4) return;
   const n=Number(w4.week_number||4);
   setText('w4-heading','RESULTADOS · WEEK '+n);
+  const foldLabel=document.querySelector('.archive-section .section-collapse > summary');
+  if(foldLabel)foldLabel.textContent='ÚLTIMO CIERRE · WEEK '+n+' · RESULTADOS Y RANKINGS';
   const area=document.querySelector('#w4-heading')?.closest('.section');
-  if(area){ const e=area.querySelector('.eyebrow');if(e)e.textContent='ÚLTIMO CIERRE · WEEK '+n;const heads=area.querySelectorAll('.section-head .eyebrow');if(heads[1])heads[1].textContent='WEEK '+n;if(heads[2])heads[2].textContent='TEMPORADA · TRAS WEEK '+n; const spans=area.querySelectorAll('.section-stat'); if(spans[0])spans[0].textContent=(w4.results?.final||0)+'/'+(w4.results?.total||0)+' FINAL'; if(spans[2])spans[2].textContent=(w4.results?.total||0)*n+' PICKS'; }
+  if(area){ const e=area.querySelector('.eyebrow');if(e)e.textContent='ÚLTIMO CIERRE · WEEK '+n;const heads=area.querySelectorAll('.section-head .eyebrow');if(heads[1])heads[1].textContent='WEEK '+n;if(heads[2])heads[2].textContent='TEMPORADA · TRAS WEEK '+n; const spans=area.querySelectorAll('.section-stat'); if(spans[0])spans[0].textContent=(w4.results?.final||0)+'/'+(w4.results?.total||0)+' FINAL'; if(spans[2])spans[2].textContent='TRAS WEEK '+n; }
   setText('w4-final-count',w4.results?.final??0);
   const leader=[...(w4.weekly_standings||[])].sort((a,b)=>b.correct-a.correct||a.wrong-b.wrong)[0];
-  setText('w4-summary','Week '+n+' · '+(w4.results?.final??0)+'/'+(w4.results?.total??16)+' FINAL · '+(leader?leader.name+' ganó la semana con '+leader.correct+'/'+w4.results.total:'ranking final disponible')+'.');
-  const wrap=$('w4-games'); if(wrap){wrap.replaceChildren();(w4.games||[]).forEach(g=>{const row=document.createElement('div');row.className='result-row final';row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state"><b>GANÓ '+esc(g.winner||'—')+'</b><span>'+esc(g.score||'FINAL')+'</span></div>';wrap.append(row)})}
+  setText('w4-summary','Week '+n+' · '+(w4.results?.final??0)+'/'+(w4.results?.total??16)+' FINAL · '+(leader?leader.name+' lidera la semana con '+leader.correct+'/'+(w4.results?.scored??w4.results?.total??0)+' aciertos posibles':'ranking final disponible')+'.');
+  const wrap=$('w4-games'); if(wrap){wrap.replaceChildren();(w4.games||[]).forEach(g=>{const row=document.createElement('div');row.className='result-row final';row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state"><b>'+((g.status==='TIE'||g.winner==='TIE'||(!g.winner&&g.score))?'EMPATE · PUSH':'GANÓ '+esc(g.winner||'—'))+'</b><span>'+esc(g.score||'FINAL')+'</span></div>';wrap.append(row)})}
   renderRankList('w4-weekly-ranking',w4.weekly_standings||[]);
   renderRankList('w4-season-ranking',w4.season_standings||[]);
 }
@@ -77,12 +79,23 @@ async function load(manual=false){
    const r=await fetch(DATA_URL+'?t='+stamp,{cache:'no-store'});
    if(!r.ok) throw new Error('HTTP '+r.status);
    const data=await r.json();
-   const previousWeek=Math.max(1,Number(data.week_number||5)-1);
-   const w4r=await fetch('./weeks/week-'+String(previousWeek).padStart(2,'0')+'.json?t='+stamp,{cache:'no-store'});
-   if(!w4r.ok) throw new Error('PREVIOUS WEEK HTTP '+w4r.status);
-   const w4=await w4r.json();
+   // La última semana finalizada puede ser la semana principal del feed.
+   const isFinal=Number(data.results?.total)>0 &&
+     Number(data.results?.final)===Number(data.results?.total);
+   let closed=isFinal?data:null;
+   if(!closed){
+     const ir=await fetch('./exports/asset-index.json?t='+stamp,{cache:'no-store'});
+     const idx=ir.ok?await ir.json():{};
+     const week=Number(idx.last_completed_week||Math.max(1,Number(data.week_number||5)-1));
+     const rr=await fetch('./weeks/week-'+String(week).padStart(2,'0')+'.json?t='+stamp,{cache:'no-store'});
+     if(rr.ok){
+       const candidate=await rr.json();
+       if(Number(candidate.results?.total)>0 &&
+         Number(candidate.results?.final)===Number(candidate.results?.total))closed=candidate;
+     }
+   }
    const previousSync=lastSeenSync;
-   render(data); renderPrevious(w4);
+   render(data); if(closed)renderPrevious(closed);
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(manual){
