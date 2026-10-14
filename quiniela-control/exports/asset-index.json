@@ -44,6 +44,45 @@
         }
       }
     },
+    "2": {
+      "week": 2,
+      "archive_status": "SOURCE_MISSING_NEEDS_RECONCILIATION",
+      "capture": {
+        "complete": null,
+        "total": null,
+        "window": "UNKNOWN"
+      },
+      "results": {
+        "final": null,
+        "total": null
+      },
+      "assets": {
+        "picks": {
+          "state": "HISTORICAL_SOURCE_MISSING",
+          "href": null,
+          "expected": "picks-board.png",
+          "size": "1600x2000"
+        },
+        "results": {
+          "state": "HISTORICAL_SOURCE_MISSING",
+          "href": null,
+          "expected": "results-live.png",
+          "size": "1600x2000"
+        },
+        "weekly": {
+          "state": "HISTORICAL_SOURCE_MISSING",
+          "href": null,
+          "expected": "ranking-weekly.png",
+          "size": "1080x1350"
+        },
+        "season": {
+          "state": "HISTORICAL_SOURCE_MISSING",
+          "href": null,
+          "expected": "ranking-season.png",
+          "size": "1080x1350"
+        }
+      }
+    },
     "3": {
       "week": 3,
       "capture": {
