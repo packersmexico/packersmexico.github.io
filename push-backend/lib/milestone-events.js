@@ -39,6 +39,23 @@ export function milestoneEvents({data={},captureConfig={},assetIndex={},stages={
       url:CAPTURE,tag:'pmx-quiniela-w'+cfgWeek+'-open'
     });
   }
+  // Verified Jotform receipt cut: one operator alert per newly confirmed participant.
+  // This is a catch-up notice from the approved snapshot, not proof of live webhook delivery.
+  if(cfgWeek>=dataWeek && cfgWeek<=dataWeek+1 && upper(captureConfig.status)==='OPEN'){
+    const confirmed=new Set((captureConfig.submission_integrity?.received_names||[]).map(upper));
+    const justAdded=new Set((captureConfig.submission_integrity?.recently_verified_names||[]).map(upper));
+    const allowed=new Set(['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']);
+    for(const name of justAdded){
+      if(!confirmed.has(name)||!allowed.has(name))continue;
+      const token=name.replace(/[^A-Z0-9]+/g,'_');
+      events.push({
+        eventKey:'W'+cfgWeek+'_FORM_VERIFIED_'+token,
+        title:'QUINIELA PMX · W'+cfgWeek+' · RESPUESTA RECIBIDA',
+        body:name+' completó el formulario. Captura '+captureConfig.complete+'/'+captureConfig.total+'. Revisar panel; picks privados.',
+        url:PANEL,tag:'pmx-quiniela-w'+cfgWeek+'-form-'+token.toLowerCase()
+      });
+    }
+  }
   // A locked 9/9 is a different milestone from the form opening.
   const capture=cfgWeek>=dataWeek ? captureConfig : (data.capture||{});
   const activeWeek=cfgWeek>=dataWeek ? cfgWeek : dataWeek;
