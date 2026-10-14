@@ -51,7 +51,11 @@
     "recently_verified_names": [
       "JENNI"
     ],
-    "alert_scope": "VERIFIED_CUT_ONLY_NO_PICKS"
+    "alert_scope": "VERIFIED_CUT_ONLY_NO_PICKS",
+    "notification_pending_names": [
+      "JENNI"
+    ],
+    "notification_reason": "Jotform verified 3/9 14 of 14 each; first-valid picks not locked"
   },
   "window": "OPEN",
   "invitado": "OFF",
