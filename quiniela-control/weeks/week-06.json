@@ -3,29 +3,28 @@
   "season": "2026",
   "week": "WEEK 6",
   "week_number": 6,
-  "snapshot_status": "CAPTURE_OPEN · 2_OF_9_JOTFORM_VERIFIED · FIRST_VALID_PICK_LOCK_PENDING",
+  "snapshot_status": "CAPTURE_OPEN · 3_OF_9_JOTFORM_VERIFIED · FIRST_VALID_PICK_LOCK_PENDING",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "calendar_verified_at": "2026-10-12",
   "capture": {
     "form_id": "262845110194050",
     "form_url": "https://form.jotform.com/262845110194050",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 2,
+    "complete": 3,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-15T16:00:00-06:00",
     "deadline_label": "15 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
     "expected_picks": 126,
-    "received_picks": 28,
-    "missing_picks": 98,
+    "received_picks": 42,
+    "missing_picks": 84,
     "missing_participants": [
       "EL DOC",
       "ARI",
       "ALEX",
       "LUIS C.",
       "DR PALMA",
-      "JENNI",
       "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
@@ -35,22 +34,24 @@
     "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {},
-    "unique_participants": 2,
+    "unique_participants": 3,
     "duplicate_count": 0,
     "invitado": "OFF",
     "submission_integrity": {
-      "status": "2_SUBMISSIONS_COMPLETE_14_OF_14_EACH_JOTFORM_ANALYSIS; IDS_AND_PICK_LOCK_NOT_YET_RECONCILED",
+      "status": "3_JOTFORM_SUBMISSIONS_COMPLETE_14_OF_14_EACH; ID_AND_FIRST_VALID_PICK_LOCK_PENDING",
       "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
       "locked_picks_immutable": true,
       "evidence_date": "2026-10-14",
       "evidence_form_id": "262845110194050",
       "received_names": [
+        "LALO",
         "IBRACHO",
-        "LALO"
+        "JENNI"
       ],
-      "source": "Jotform form fetch count=2 + submission analysis named participants"
+      "source": "Jotform form metadata count=3 and analysis of names/14/14",
+      "note": "Snapshot of verified receipts, not live sync or canonical first-valid submission lock"
     },
-    "capture_status": "OPEN_2_OF_9_JOTFORM_VERIFIED_20261014"
+    "capture_status": "OPEN_3_OF_9_JOTFORM_VERIFIED_20261014"
   },
   "participants": [
     {
@@ -79,7 +80,7 @@
     },
     {
       "name": "JENNI",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "RODRI",
