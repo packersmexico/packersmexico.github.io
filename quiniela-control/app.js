@@ -41,6 +41,27 @@ function renderParticipants(list=[]){
   const wrap=$('participants');wrap.replaceChildren();
   list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase().startsWith('COMPLETE');row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
 }
+// Captura vigente se lee por separado del cierre W5 y nunca modifica sus resultados.
+function renderFutureCapture(snapshot){
+  const c=snapshot?.capture;
+  if(!c)return;
+  const total=Number(c.total||9), complete=Number(c.complete||0);
+  setText('week-label',snapshot.week+' · '+snapshot.season+' · CAPTURA');
+  setText('capture-count',complete+'/'+total);
+  setText('missing-count',Math.max(0,total-complete));
+  setText('window-status',snapshot.week+' '+(String(c.window).toUpperCase()==='OPEN'?'ABIERTA':'CERRADA'));
+  setText('deadline','CIERRE · '+(c.deadline_label||'—'));
+  setHref('stable-capture',c.stable_url);
+  setHref('direct-form',c.form_url);
+  const p=$('progress-bar');if(p)p.style.width=(total?Math.round(100*complete/total):0)+'%';
+  const pw=document.querySelector('.progress');
+  if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
+  renderParticipants(snapshot.participants||[]);
+  const fold=$('capture-details');
+  if(fold){fold.open=true;fold.dataset.initialized='1';}
+  setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
+  setText('sync-mode','W6 JOTFORM · CORTE 14 OCT / W5 RESULTADOS FINAL');
+}
 function renderGames(games=[]){
   const wrap=$('games');wrap.replaceChildren();
   games.forEach(g=>{const row=document.createElement('div');row.className='result-row '+(g.winner?'final':'scheduled');row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state">'+(g.winner?'<b>GANÓ '+esc(g.winner)+'</b><span>'+esc(g.score||'FINAL')+'</span>':(g.status==='LIVE'||g.status==='IN_PROGRESS')?'<b>EN VIVO</b><span>'+esc(g.live_score||'')+' '+esc(g.live_detail||'')+'</span>':'<b>PENDIENTE</b><span>'+esc(g.status||'SCHEDULED')+'</span>')+'</div>';wrap.append(row)});
@@ -99,8 +120,15 @@ async function load(manual=false){
          Number(candidate.results?.final)===Number(candidate.results?.total))closed=candidate;
      }
    }
+   let futureCapture=null;
+   const wr=await fetch('./weeks/week-06.json?t='+stamp,{cache:'no-store'});
+   if(wr.ok){
+     const snap=await wr.json();
+     if(Number(snap.week_number)>Number(data.week_number)&&snap.capture)futureCapture=snap;
+   }
    const previousSync=lastSeenSync;
    render(data); if(closed)renderPrevious(closed);
+   if(futureCapture)renderFutureCapture(futureCapture);
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(manual){
