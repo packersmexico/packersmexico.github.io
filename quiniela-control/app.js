@@ -57,6 +57,8 @@ function renderFutureCapture(snapshot){
   const pw=document.querySelector('.progress');
   if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
   renderParticipants(snapshot.participants||[]);
+  const received=(snapshot.participants||[]).filter(x=>String(x.status).startsWith('COMPLETE')).map(x=>x.name);
+  setText('w6-confirmed','YA ENVIARON · '+(received.length?received.join(' · '):'NINGUNO')+'  |  FALTAN '+Math.max(0,total-complete)+'  |  CORTE JOTFORM '+(c.submission_integrity?.evidence_date||'PENDIENTE'));
   const fold=$('capture-details');
   if(fold){fold.open=true;fold.dataset.initialized='1';}
   setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
