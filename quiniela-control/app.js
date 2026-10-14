@@ -22,6 +22,11 @@ function renderPrevious(w4){
   setText('w4-heading','RESULTADOS · WEEK '+n);
   const foldLabel=document.querySelector('.archive-section .section-collapse > summary');
   if(foldLabel)foldLabel.textContent='ÚLTIMO CIERRE · WEEK '+n+' · RESULTADOS Y RANKINGS';
+  const closedFold=document.querySelector('.archive-section .section-collapse');
+  if(closedFold && !closedFold.dataset.initialized){
+    closedFold.open=true;
+    closedFold.dataset.initialized='1';
+  }
   const area=document.querySelector('#w4-heading')?.closest('.section');
   if(area){ const e=area.querySelector('.eyebrow');if(e)e.textContent='ÚLTIMO CIERRE · WEEK '+n;const heads=area.querySelectorAll('.section-head .eyebrow');if(heads[1])heads[1].textContent='WEEK '+n;if(heads[2])heads[2].textContent='TEMPORADA · TRAS WEEK '+n; const spans=area.querySelectorAll('.section-stat'); if(spans[0])spans[0].textContent=(w4.results?.final||0)+'/'+(w4.results?.total||0)+' FINAL'; if(spans[2])spans[2].textContent='TRAS WEEK '+n; }
   setText('w4-final-count',w4.results?.final??0);
