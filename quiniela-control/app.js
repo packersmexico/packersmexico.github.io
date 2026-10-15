@@ -38,8 +38,14 @@ function renderPrevious(w4){
 }
 
 function renderParticipants(list=[]){
-  const wrap=$('participants');wrap.replaceChildren();
+  const wrap=$('participants');if(!wrap)return;wrap.replaceChildren();
   list.forEach(p=>{const row=document.createElement('div');const ok=String(p.status).toUpperCase().startsWith('COMPLETE');row.className='participant '+(ok?'complete':'pending');row.innerHTML='<span class="participant-name">'+esc(p.name)+'</span><span class="participant-status">'+(ok?'RECIBIDO':'FALTA')+'</span>';wrap.append(row)});
+}
+function renderRosterSummary(list=[]){
+  const sent=list.filter(p=>String(p.status).toUpperCase().startsWith('COMPLETE')).map(p=>p.name);
+  const pending=list.filter(p=>!String(p.status).toUpperCase().startsWith('COMPLETE')).map(p=>p.name);
+  setText('sent-names',sent.length?sent.join(' · '):'NINGUNO');
+  setText('pending-names',pending.length?pending.join(' · '):'NINGUNO');
 }
 // Captura vigente se lee por separado del cierre W5 y nunca modifica sus resultados.
 function renderFutureCapture(snapshot){
@@ -57,8 +63,9 @@ function renderFutureCapture(snapshot){
   const pw=document.querySelector('.progress');
   if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
   renderParticipants(snapshot.participants||[]);
-  const received=(snapshot.participants||[]).filter(x=>String(x.status).startsWith('COMPLETE')).map(x=>x.name);
-  setText('w6-confirmed','YA ENVIARON · '+(received.length?received.join(' · '):'NINGUNO')+'  |  FALTAN '+Math.max(0,total-complete)+'  |  CORTE JOTFORM '+(c.submission_integrity?.evidence_date||'PENDIENTE'));
+  renderRosterSummary(snapshot.participants||[]);
+  setText('w6-confirmed',complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
+  setText('last-jotform-check','CORTE VERIFICADO · '+(c.submission_integrity?.evidence_date||'PENDIENTE'));
   const fold=$('capture-details');
   if(fold){fold.open=true;fold.dataset.initialized='1';}
   setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
@@ -70,26 +77,38 @@ async function refreshLiveReceipts(snapshot,stamp){
   try{
     const url='https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?form_id='+encodeURIComponent(snapshot.capture.form_id)+'&week='+encodeURIComponent(snapshot.week_number)+'&t='+stamp;
     const response=await fetch(url,{cache:'no-store'});
-    if(!response.ok)throw Error('RECEIPT_HTTP_'+response.status);
+    if(!response.ok)throw Error('CAPTURE_STATUS_HTTP_'+response.status);
     const live=await response.json();
     if(!live.ok||Number(live.week)!==Number(snapshot.week_number)||
-       String(live.form_id)!==String(snapshot.capture?.form_id))throw Error('RECEIPT_FORM_MISMATCH');
-    const waiting=(live.webhook_received_unreconciled||[]).filter(n=>
-      !(snapshot.participants||[]).some(p=>p.name===n && String(p.status).startsWith('COMPLETE')));
-    if(waiting.length){
-      const wrap=$('participants');
-      for(const who of waiting){
-        const row=[...wrap.querySelectorAll('.participant')].find(el=>el.querySelector('.participant-name')?.textContent===who);
-        if(row){
-          row.classList.remove('pending');
-          row.querySelector('.participant-status').textContent='RECIBIDO · VALIDAR';
-        }
-      }
-      const label=$('w6-confirmed');
-      if(label)label.textContent+='  |  ENVÍOS NUEVOS PENDIENTES DE CONCILIACIÓN: '+waiting.join(' · ');
-    }
-    return {status:live.backend_status||'WEBHOOK_UNKNOWN',pending:waiting.length};
-  }catch(err){console.warn('W6_RECEIPT_OVERLAY_UNAVAILABLE',String(err));return {status:'BACKEND_UNAVAILABLE'};}
+       String(live.form_id)!==String(snapshot.capture?.form_id))throw Error('CAPTURE_STATUS_FORM_MISMATCH');
+
+    const verified=new Set((live.verified_participants||[]).map(x=>String(x.name||'').toUpperCase()));
+    const participants=(snapshot.participants||[]).map(p=>({
+      ...p,status:verified.has(String(p.name).toUpperCase())?'COMPLETE_VERIFIED_LIVE':p.status
+    }));
+    const total=Number(live.total||snapshot.capture.total||9);
+    const complete=Number(live.verified_count||participants.filter(p=>String(p.status).startsWith('COMPLETE')).length);
+    renderParticipants(participants);
+    renderRosterSummary(participants);
+    setText('capture-count',complete+'/'+total);
+    setText('missing-count',Math.max(0,total-complete));
+    setText('w6-confirmed',complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
+    setText('last-jotform-check','ÚLTIMA VERIFICACIÓN · '+fmtSync(live.checked_at)+(live.last_verified_at?' · ÚLTIMO ENVÍO VALIDADO '+fmtSync(live.last_verified_at):''));
+    const p=$('progress-bar');if(p)p.style.width=(total?Math.round(100*complete/total):0)+'%';
+    const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
+    const waiting=(live.webhook_received_unreconciled||[]);
+    setText('capture-rule',complete+'/'+total+' participantes verificados · '+(complete*14)+' de '+(total*14)+' selecciones completas. Picks privados; primera respuesta válida se conserva en backend.');
+    return {
+      status:live.backend_status||'CAPTURE_STATUS_UNKNOWN',
+      pending:waiting.length,
+      checkedAt:live.checked_at||null,
+      lastVerifiedAt:live.last_verified_at||null,
+      lastPush:live.last_push||null
+    };
+  }catch(err){
+    console.warn('W6_LIVE_STATUS_UNAVAILABLE',String(err));
+    return {status:'BACKEND_UNAVAILABLE'};
+  }
 }
 function renderGames(games=[]){
   const wrap=$('games');wrap.replaceChildren();
@@ -164,11 +183,12 @@ async function load(manual=false){
      if(futureCapture){
        const verified=futureCapture.capture?.submission_integrity?.evidence_date||'SIN FECHA';
        const liveText=receiptCheck.status==='BACKEND_UNAVAILABLE'
-         ? 'RECEPTOR DE ENVÍOS SIN RESPUESTA · CORTE PUBLICADO'
-         : receiptCheck.status==='WAITING_FOR_VERIFIED_WEBHOOK'||receiptCheck.status==='NOT_VERIFIED'
-         ? 'RECEPTOR DISPONIBLE · AÚN SIN WEBHOOK VERIFICADO'
-         : 'RECEPTOR '+receiptCheck.status;
-       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+' · RESULTADOS W5 FINAL · REVISADO '+fmtSync(new Date().toISOString());
+         ? 'BACKEND SIN RESPUESTA · MOSTRANDO CORTE PUBLICADO'
+         : 'BACKEND '+receiptCheck.status.replaceAll('_',' ');
+       const pushText=receiptCheck.lastPush
+         ? ' · ÚLTIMO PUSH RODRIGO '+String(receiptCheck.lastPush.rodrigo_status||'UNKNOWN')+' ('+String(receiptCheck.lastPush.participant||'')+')'
+         : '';
+       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+pushText+' · REVISADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
      }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
