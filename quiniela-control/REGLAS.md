@@ -1,6 +1,6 @@
 # Quiniela PACKERS MÉXICO · reglas operativas
 
-**Dirección · decisión vigente 12/oct/2026 · propietario: QUINIELA_CONTROLLER (GitHub Actions)**
+**Dirección · revisión operativa 15/oct/2026 · propietario: QUINIELA_CONTROLLER (GitHub Actions)**
 
 ## 1 · Empates NFL = PUSH (sin ganador ni penalización)
 
@@ -15,17 +15,20 @@
 
 ## 2 · Captura, registro inicial vinculante
 
-- Para cada participante solo cuenta el **primer envío válido** recibido dentro de la ventana autorizada: identidad reconocible, totalidad de elecciones requeridas y vínculo verificable entre `question_id` y `Gxx` (no confiar en orden visual).
+- **UNA SOLA CAPTURA POR INTEGRANTE Y POR SEMANA · VIGENTE DESDE WEEK 7:** para cada participante solo cuenta el **primer envío válido** dentro de la ventana autorizada: identidad reconocible, totalidad de elecciones requeridas y vínculo verificable entre `question_id` y `Gxx` (no confiar en orden visual). Después de quedar `LOCKED`, la UI debe informar `YA REGISTRASTE TUS PICKS` y bloquear nuevas capturas en la medida que lo permitan autenticación y enlace único por integrante. El backend es el cierre autoritativo: deduplicación atómica por `week+participant`, CAS/HSETNX, rechazo o ignorado de duplicados sin sustitución de picks, sin cambiar puntuación ni reenviar notificaciones. Una lista desplegable de nombres no basta por sí sola para impedir envíos duplicados; Control debe documentar cómo los previene en UI y cómo los neutraliza en servidor.
 - Envíos duplicados posteriores **no sustituyen** ese registro, aunque la captura siga abierta. Conservar evidencia de envíos ignorados sin sumar entradas al ranking.
-- **REGLA EXPLÍCITA DE DIRECCIÓN: TODOS VAMOS CON GREEN BAY POR DEFECTO.** Cuando Green Bay participe en la semana, el formulario debe mostrar seleccionado inicialmente `GREEN BAY PACKERS` para los nueve participantes; esta preferencia predeterminada no es una obligación y **cualquiera puede cambiarla** por el rival antes de enviar la quiniela. El sistema debe respetar la elección finalmente enviada y nunca reemplazar por GB un pick contrario ya registrado o bloqueado. Para el resto de partidos, sin preselección automática. La elección inicial no sustituye la obligación de completar y enviar una quiniela válida.
+- **DECISIÓN VIGENTE DE DIRECCIÓN · 15 OCT 2026 · A PARTIR DE WEEK 7:** cuando Green Bay participe en la semana, `GREEN BAY PACKERS` es el pick **predefinido, obligatorio y no editable** de todos los participantes. La opción de elegir al rival no debe existir ni ser aceptada en el formulario, en el webhook, en Redis ni en el pipeline de puntuación. No aceptar payload `Gxx ≠ GB` como envío válido; devolver error explícito, sin sustitución silenciosa ni bloqueo de identidad. En semana BYE de Green Bay no generar juego ni pick GB ficticio. Los demás partidos se eligen libremente, sin preselección.
 - Correcciones documentadas por error técnico de formulario/mapeo requieren validación del propietario; no autorizan cambios tácticos de picks.
+
+
+**QA obligatorio de la regla Week 7+:** (A) primer envío válido 9 participantes, (B) doble clic/envío concurrente mismo integrante ⇒ 1 registro privado, 1 evento por canal, (C) Gxx contrario a GB ⇒ rechazo visible y posibilidad de captura válida, no corrección silenciosa, (D) GB BYE ⇒ no Gxx ficticio, (E) W5/W6 y overrides autorizados históricamente intactos, (F) error/reintento de red no bloquea al usuario si ningún envío válido fue persistido. Estado de una norma aprobada en GitHub NO equivale a implementación ni QA del formulario.
 
 ## 3 · Integridad y publicación
 
 - Nunca modificar `capture.locked_submissions` ni `weeks/week-05.json:locked_picks` para corregir resultados o standings.
 - Week 5: **9/9 participantes · 135/135 picks** preservados; empates y rankings rederivados del mismo cierre de captura.
 - `public_picks_authorized=false` heredado no autoriza repetir publicaciones confirmadas ni activa publicación automática.
-- Week 6 sólo puede abrir captura cuando existan dataset validado, Jotform único con nueve participantes y 14 Game IDs, default editable GB verificado, y enlace estable funcionando; no alterar resultados W5.
+- Week 6 operó históricamente con default GB editable, formulario único y 14 Game IDs; **no aplicar la nueva regla retrospectivamente** a ningún pick bloqueado de Week 5/6, ni alterar resultados W5. A partir de Week 7 el campo Green Bay deberá quedar fijo y validado en backend conforme a la decisión vigente del 15/oct/2026.
 - **AUTO_PUBLISH=NO.** Los cambios de puntuación y assets deben tener readback y no generan por sí solos publicaciones en redes.
 
 **Implementación:** `scripts/quiniela_scoring.py`, `scripts/sync-quiniela-live.py`, regresiones `scripts/test_quiniela_scoring.py`, datasets `quiniela-control/data.json` y `quiniela-control/weeks/week-05.json`.
