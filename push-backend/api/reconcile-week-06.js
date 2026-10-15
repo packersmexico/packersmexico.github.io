@@ -45,7 +45,7 @@ export default async function handler(req,res){
    const raw=records[name];if(!raw){outcome.missing++;continue;}
    let lock;
    try{lock=JSON.parse(raw);}catch{outcome.failed++;continue;}
-   if(!/^\\d{10,25}$/.test(String(lock.submission_id||''))){outcome.failed++;continue;}
+   if(!/^\d{10,25}$/.test(String(lock.submission_id||''))){outcome.failed++;continue;}
    if(lock.picks&&typeof lock.picks==='object'){outcome.already_complete++;continue;}
    try{
      const source=await fetchOriginal(String(lock.submission_id),key);
@@ -57,7 +57,7 @@ export default async function handler(req,res){
      else outcome.failed++;
    }catch(err){
      outcome.failed++;
-     console.warn('W6_HYDRATION_FAILED',String(err.message||'ERROR').replace(/\\d{10,}/g,'[REDACTED]'));
+     console.warn('W6_HYDRATION_FAILED',String(err.message||'ERROR').replace(/\d{10,}/g,'[REDACTED]'));
    }
  }
  // Re-read all existing first-valid records, never expose their contents.
