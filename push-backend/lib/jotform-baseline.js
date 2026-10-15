@@ -16,6 +16,8 @@ function parseBaseline(){
 export async function seedW6Baseline(redis,formID,roster){
   if(String(formID)!==W6_FORM_ID) return {configured:false,seeded:0,total:0};
   const rows=parseBaseline();
+  const ari=String(process.env.PMX_W6_ARI_SUBMISSION_ID||'').trim();
+  if(/^\d{10,25}$/.test(ari))rows.push({name:'ARI',submission_id:ari});
   if(!rows.length) return {configured:false,seeded:0,total:0};
   const key=`pmx:quiniela:jotform:first-valid:${formID}`;
   let seeded=0,accepted=0;
