@@ -4,6 +4,8 @@
 
 ## 1 · Empates NFL = PUSH (sin ganador ni penalización)
 
+- **CAPTURA OBLIGATORIA BINARIA:** para cada encuentro programado, el participante elige exactamente **uno de los dos equipos** como ganador. `EMPATE`, `TIE`, `PUSH`, sin selección o ambos equipos seleccionados **no** son picks válidos. Debe comprobarse en formulario y backend antes de registrar el primer envío válido. Cuando aplique Green Bay, el único pick válido es GB conforme a sección 2.
+- **SI EL MARCADOR OFICIAL TERMINA EMPATADO, SE ANULA ESE PARTIDO PARA TODOS**: nadie acierta ni falla, independientemente del equipo seleccionado. Se conserva el pick original para auditoría, pero no suma ni resta en la puntuación ni en el total de partidos puntuables.
 - Si una fuente deportiva confirma el empate final, el juego conserva `status: TIE`, `winner: null` y el marcador oficial.
 - Para **cada participante**: ese partido otorga **0 aciertos y 0 errores**. No existe un ganador que pueda pronosticarse.
 - El partido sí cuenta como **decidido** (`results.final`); **no** cuenta en el denominador de partidos **puntuables** (`results.scored`).
@@ -21,7 +23,7 @@
 - Correcciones documentadas por error técnico de formulario/mapeo requieren validación del propietario; no autorizan cambios tácticos de picks.
 
 
-**QA obligatorio de la regla Week 7+:** (A) primer envío válido 9 participantes, (B) doble clic/envío concurrente mismo integrante ⇒ 1 registro privado, 1 evento por canal, (C) Gxx contrario a GB ⇒ rechazo visible y posibilidad de captura válida, no corrección silenciosa, (D) GB BYE ⇒ no Gxx ficticio, (E) W5/W6 y overrides autorizados históricamente intactos, (F) error/reintento de red no bloquea al usuario si ningún envío válido fue persistido. Estado de una norma aprobada en GitHub NO equivale a implementación ni QA del formulario.
+**QA obligatorio de la regla Week 7+:** (A) primer envío válido 9 participantes, (B) doble clic/envío concurrente mismo integrante ⇒ 1 registro privado, 1 evento por canal, (C) Gxx contrario a GB ⇒ rechazo visible y posibilidad de captura válida, no corrección silenciosa, (D) GB BYE ⇒ no Gxx ficticio, (E) W5/W6 y overrides autorizados históricamente intactos, (F) error/reintento de red no bloquea al usuario si ningún envío válido fue persistido; (G) en todos los juegos se acepta exclusivamente visitante **o** local, sin opción empate/ambos/vacío; (H) empate NFL oficial provoca PUSH universal, 0 aciertos y 0 errores para los nueve, y se excluye del denominador semanal y global de puntuables. Estado de una norma aprobada en GitHub NO equivale a implementación ni QA del formulario.
 
 ## 3 · Integridad y publicación
 
