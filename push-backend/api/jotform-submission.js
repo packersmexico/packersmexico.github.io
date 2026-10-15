@@ -2,7 +2,8 @@ import crypto from 'node:crypto';
 import webpush from 'web-push';
 import { redis, keys } from '../lib/redis.js';
 import { json, rejectMethod } from '../lib/http.js';
-import { bodyToObject, parseRawRequest, normalizeText, resolveParticipant, validateWeek6Submission } from '../lib/jotform-capture.js';
+import { bodyToObject, parseRawRequest, normalizeText, resolveParticipant } from '../lib/jotform-capture.js';
+import { assertWeekConfig, validateWeeklyPicks } from '../lib/weekly-capture.js';
 import { seedW6Baseline } from '../lib/jotform-baseline.js';
 
 const RAW_BASE = 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
@@ -118,14 +119,15 @@ export default async function handler(req,res) {
   }
 
   const week=Number(config.week_number||0);
-  if(week!==6){
-    logReject('UNSUPPORTED_WEEK',{week});
-    return json(res,503,{ok:false,error:'UNSUPPORTED_WEEK'});
+  let contract;
+  try {
+    contract=assertWeekConfig(await readCanonical('contracts/week-'+String(week).padStart(2,'0')+'.json'));
+  } catch {
+    return json(res,503,{ok:false,error:'WEEK_CONTRACT_UNAVAILABLE'});
   }
-
-  const snapshot=await readCanonical('weeks/week-06.json');
-  const roster=new Set((snapshot.participants||[]).map(p=>normalizeText(p.name)).filter(Boolean));
-  if(roster.size!==Number(config.total||9)){
+  if(String(contract.form_id)!==formID)return json(res,409,{ok:false,error:'CONTRACT_FORM_MISMATCH'});
+  const roster=new Set(contract.roster.map(normalizeText));
+  if(roster.size!==Number(config.total||contract.roster.length)){
     logReject('ROSTER_UNAVAILABLE',{roster_size:roster.size});
     return json(res,503,{ok:false,error:'ROSTER_UNAVAILABLE'});
   }
@@ -138,7 +140,7 @@ export default async function handler(req,res) {
     return json(res,422,{ok:false,error:'PARTICIPANT_NOT_RESOLVED'});
   }
 
-  const integrity=validateWeek6Submission(raw);
+  const integrity=validateWeeklyPicks(raw,contract);
   if(!integrity.valid){
     logReject('INCOMPLETE_OR_INVALID_14',{participant,missing_games:integrity.missing_or_invalid});
     return json(res,422,{ok:false,error:'INCOMPLETE_OR_INVALID_14',missing_games:integrity.missing_or_invalid});
@@ -167,7 +169,7 @@ export default async function handler(req,res) {
   }
 
   const count=Number(await redis(['HLEN',firstValidKey])||0);
-  const total=Number(config.total||9);
+  const total=contract.roster.length;
   console.info('JOTFORM_FIRST_VALID_LOCKED',JSON.stringify({week,participant,count,total,source:backfill?'BACKFILL':'WEBHOOK'}));
 
   if(backfill){
