@@ -3,26 +3,23 @@
   "season": "2026",
   "week": "WEEK 6",
   "week_number": 6,
-  "snapshot_status": "CAPTURE_OPEN · 7_OF_9_JOTFORM_VERIFIED · PRIVATE_FIRST_VALID_SYNC_ACTIVE",
+  "snapshot_status": "CAPTURE_OPEN · 9_OF_9_JOTFORM_VERIFIED · PRIVATE_FIRST_VALID_SYNC_ACTIVE",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "calendar_verified_at": "2026-10-12",
   "capture": {
     "form_id": "262845110194050",
     "form_url": "https://form.jotform.com/262845110194050",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 7,
+    "complete": 9,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-15T16:00:00-06:00",
     "deadline_label": "15 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
     "expected_picks": 126,
-    "received_picks": 98,
-    "missing_picks": 28,
-    "missing_participants": [
-      "LUIS C.",
-      "DR PALMA"
-    ],
+    "received_picks": 126,
+    "missing_picks": 0,
+    "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
     "green_bay_game_id": "G13",
@@ -30,11 +27,11 @@
     "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {},
-    "unique_participants": 7,
+    "unique_participants": 9,
     "duplicate_count": 0,
     "invitado": "OFF",
     "submission_integrity": {
-      "status": "7_JOTFORM_SUBMISSIONS_COMPLETE_14_OF_14_EACH; NO_DUPLICATES; PRIVATE_FIRST_VALID",
+      "status": "9_OF_9_COMPLETE_BY_JOTFORM;14_OF_14_EACH;NO_DUPLICATES",
       "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
       "locked_picks_immutable": true,
       "evidence_date": "2026-10-15",
@@ -46,12 +43,16 @@
         "EL DOC",
         "RODRI",
         "ALEX",
-        "ARI"
+        "ARI",
+        "LUIS C.",
+        "DR PALMA"
       ],
-      "source": "7 unique complete 14/14 confirmed by Jotform; ARI original submission ID reconciled to private first-valid HSETNX",
-      "note": "Public snapshot contains status only. Submission IDs and picks remain private; live first-valid state is read from backend Redis."
+      "source": "Nine real complete submissions reconciled using audited original first-valid IDs",
+      "note": "Public snapshot contains status only. Submission IDs and picks remain private; live first-valid state is read from backend Redis.",
+      "notification_pending_names": [],
+      "notification_reason": "No historical push replay; new first-valid only"
     },
-    "capture_status": "OPEN_7_OF_9_JOTFORM_VERIFIED_20261015"
+    "capture_status": "OPEN_9_OF_9_JOTFORM_VERIFIED_20261015"
   },
   "participants": [
     {
@@ -72,11 +73,11 @@
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "JENNI",
