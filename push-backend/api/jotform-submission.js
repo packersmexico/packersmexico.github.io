@@ -13,7 +13,7 @@ function equalSecret(received, expected) {
 }
 
 function bearerAuthorized(req){
-  const expected=process.env.PMX_PUSH_SECRET || '';
+  const expected=process.env.PMX_RECONCILE_SECRET || process.env.PMX_PUSH_SECRET || '';
   const auth=String(req.headers.authorization||'');
   return Boolean(expected && equalSecret(auth,`Bearer ${expected}`));
 }
