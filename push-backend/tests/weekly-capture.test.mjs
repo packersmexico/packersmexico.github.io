@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {assertWeekConfig,validateWeeklyPicks,scoreGame,scoringPick} from '../lib/weekly-capture.js';
+const base={week_number:7,form_id:'262845110194051',timezone:'America/Mexico_City',deadline:'2026-10-22T16:00:00-06:00',roster:['RODRI'],packers_locked:true,games:[{id:'G01',field:'q3_pick',question:'3',visitor:['GREEN BAY PACKERS','GB'],home:['CHICAGO BEARS','CHI']},{id:'G02',field:'q4_pick',question:'4',visitor:['NEW YORK JETS','NYJ'],home:['DALLAS COWBOYS','DAL']}]};
+test('weekly contract valid (synthetic only, not production schedule)',()=>assert.equal(assertWeekConfig(base).week_number,7));
+test('two binary picks are accepted',()=>assert.equal(validateWeeklyPicks({q3_pick:'GB',q4_pick:'DAL'},base).valid,true));
+test('Packers rival is rejected for locked weeks',()=>assert.deepEqual(validateWeeklyPicks({q3_pick:'CHI',q4_pick:'DAL'},base).missing_or_invalid,['G01']));
+test('tie, blank, both team selections rejected',()=>{for(const v of ['TIE','', 'GB CHI'])assert.equal(validateWeeklyPicks({q3_pick:v,q4_pick:'DAL'},base).valid,false)});
+test('bye contract never invents a GB game',()=>{const c={...base,packers_bye:true,games:[base.games[1]]};assert.equal(validateWeeklyPicks({q4_pick:'NYJ'},c).valid,true)});
+test('a tied FINAL NFL game is universal PUSH',()=>assert.deepEqual(scoreGame('GB',null,'TIE'),{correct:0,wrong:0,push:1,scored:0}));
+test('unapproved overlays cannot change original picks',()=>{const original={G01:'PHI'};assert.equal(scoringPick(original,{G01:{pick:'CAR',approved:false}},'G01'),'PHI');assert.equal(scoringPick(original,{G01:{pick:'CAR',approved:true}},'G01'),'CAR')});

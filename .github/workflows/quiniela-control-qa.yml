@@ -29,6 +29,7 @@ jobs:
           node --check push-backend/api/jotform-submission.js
           node --check push-backend/api/capture-status.js
           node --check push-backend/lib/jotform-capture.js
+          node --check push-backend/lib/weekly-capture.js
           node --check push-backend/lib/jotform-baseline.js
           node --check push-backend/api/milestone-sync.js
           node --check push-backend/lib/milestone-events.js
@@ -46,6 +47,8 @@ jobs:
         run: node --test push-backend/tests/milestone-events.test.mjs
       - name: Jotform W6 first-valid 14/14 validation
         run: node --test push-backend/tests/jotform-capture.test.mjs
+      - name: Reusable week capture / GB lock / BYE / universal PUSH
+        run: node --test push-backend/tests/weekly-capture.test.mjs
       - name: Progressive W5 results and privacy-masked W6 picks preview · QA
         run: |
           node --check scripts/stage-quiniela-editorial.mjs
