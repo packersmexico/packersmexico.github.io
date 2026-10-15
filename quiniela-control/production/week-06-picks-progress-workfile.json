@@ -17,7 +17,7 @@
   "deadline": "2026-10-15T16:00:00-06:00",
   "progress": {
     "validated": 0,
-    "reported": 6,
+    "reported": 7,
     "total": 9,
     "expected_picks": 126,
     "confirmed_picks": 0,
