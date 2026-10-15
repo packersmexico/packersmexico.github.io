@@ -94,10 +94,20 @@ export default async function handler(req,res) {
     return json(res,401,{ok:false,error:'UNAUTHORIZED'});
   }
 
-  const formID=String(body.formID||body.formId||body.formid||'').trim();
-  const submissionID=String(body.submissionID||body.submissionId||body.submissionid||'').trim();
+  // Jotform can wrap standard identifiers in rawRequest or send them with
+  // alternate casing. Inspect only documented identifier keys; never infer a
+  // submission ID from the participant name or create synthetic records.
+  const nested=parseRawRequest(body.rawRequest||body.raw_request||body.payload||{});
+  const wrapped=parseRawRequest(nested.rawRequest||nested.raw_request||{});
+  const field=(keys)=>[body,nested,wrapped].map(obj=>keys.map(k=>obj?.[k]).find(v=>v!==undefined&&v!==null&&v!=='')).find(v=>v!==undefined&&v!==null&&v!=='');
+  const formID=String(field(['formID','formId','formid','form_id'])||'').trim();
+  const submissionID=String(field(['submissionID','submissionId','submissionid','submission_id'])||'').trim();
   if(!/^\d{10,25}$/.test(formID)||!/^\d{10,25}$/.test(submissionID)){
-    logReject('INVALID_FORM_OR_SUBMISSION',{form_present:Boolean(formID),submission_present:Boolean(submissionID)});
+    logReject('INVALID_FORM_OR_SUBMISSION',{
+      form_present:Boolean(formID),submission_present:Boolean(submissionID),
+      body_keys:Object.keys(body).slice(0,25),
+      raw_keys:Object.keys(nested).slice(0,25)
+    });
     return json(res,400,{ok:false,error:'INVALID_FORM_OR_SUBMISSION'});
   }
 
@@ -121,7 +131,7 @@ export default async function handler(req,res) {
   }
   await seedW6Baseline(redis,formID,roster);
 
-  const raw=parseRawRequest(body.rawRequest||body.raw_request||body.answers||{});
+  const raw=parseRawRequest(body.rawRequest||body.raw_request||body.answers||body.payload||{});
   const participant=resolveParticipant(raw,roster);
   if(!participant){
     logReject('PARTICIPANT_NOT_RESOLVED',{raw_keys:Object.keys(raw).slice(0,24)});
