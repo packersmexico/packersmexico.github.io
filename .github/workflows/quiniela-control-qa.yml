@@ -26,6 +26,9 @@ jobs:
           node --check push-backend/api/config.js
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/notify.js
+          node --check push-backend/api/jotform-submission.js
+          node --check push-backend/api/capture-status.js
+          node --check push-backend/lib/jotform-capture.js
           node --check push-backend/api/milestone-sync.js
           node --check push-backend/lib/milestone-events.js
           node --check push-backend/api/health.js
@@ -33,13 +36,15 @@ jobs:
           node --check push-backend/lib/redis.js
       - name: JSON validity
         run: |
-          node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/push-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/notifications.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/package.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/vercel.json','utf8'));"
+          node -e "JSON.parse(require('fs').readFileSync('quiniela-control/data.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/capture-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-06.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/weeks/week-03.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/push-config.json','utf8'));JSON.parse(require('fs').readFileSync('quiniela-control/notifications.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/package.json','utf8'));JSON.parse(require('fs').readFileSync('push-backend/vercel.json','utf8'));"
       - name: Quiniela PUSH scoring, W5 regression and locked-picks integrity
         run: |
           python3 -m py_compile scripts/quiniela_scoring.py scripts/sync-quiniela-live.py
           python3 -m unittest discover -s scripts -p 'test_quiniela_scoring.py' -v
       - name: Operator alerts V2 · W6 opening, 9/9, MNF, files, publication
         run: node --test push-backend/tests/milestone-events.test.mjs
+      - name: Jotform W6 first-valid 14/14 validation
+        run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Progressive W5 results and privacy-masked W6 picks preview · QA
         run: |
           node --check scripts/stage-quiniela-editorial.mjs

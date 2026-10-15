@@ -42,6 +42,13 @@ h3{margin:4px 0 0;font-size:32px;line-height:.95}
 .big-copy{padding-bottom:4px;font-size:15px;font-weight:700;letter-spacing:.04em}
 .progress{height:8px;margin-top:21px;background:#17372C;overflow:hidden}
 .progress span{display:block;height:100%;background:var(--gold);transition:width .25s ease}
+.capture-roster-summary{display:grid;grid-template-columns:1fr;gap:13px;margin-top:21px;padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.capture-roster-block{display:grid;grid-template-columns:89px minmax(0,1fr);gap:13px;align-items:start}
+.capture-roster-block span{font-family:"Bebas Neue",Impact,sans-serif;font-size:21px;line-height:1;letter-spacing:.02em}
+.capture-roster-block strong{font-size:13px;line-height:1.55}
+.capture-roster-sent strong{color:var(--ok)}
+.capture-roster-pending strong{color:var(--gold)}
+.capture-verified-time{margin:8px 0 0;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.04em}
 .meta-line{display:flex;flex-direction:column;gap:8px;margin-top:13px;font-size:13px;font-weight:600}
 .section{padding:34px 0;border-bottom:1px solid var(--line)}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:21px}
@@ -128,6 +135,7 @@ h3{margin:4px 0 0;font-size:32px;line-height:.95}
   .hero-status{gap:21px}
   .big-number{font-size:94px}
   .meta-line{flex-direction:row;justify-content:space-between}
+  .capture-roster-summary{grid-template-columns:1fr 1fr;gap:34px}
   .participants{grid-template-columns:1fr 1fr}
   .participant:nth-child(odd){padding-right:21px;border-right:1px solid var(--line)}
   .participant:nth-child(even){padding-left:21px}
