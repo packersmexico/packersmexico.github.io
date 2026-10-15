@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {HYDRATE_CAS_LUA,parseOriginalSubmission,checksum} from '../lib/jotform-hydration.js';
+const config={week_number:6,form_id:'262845110194050',roster:['EL DOC'],timezone:'America/Mexico_City',deadline:'2026-10-15T16:00:00-06:00',games:[{id:'G01',question:'3',field:'q3_radio1',visitor:['CAROLINA PANTHERS','CAR'],home:['PHILADELPHIA EAGLES','PHI']}],packers_locked:false};
+const original={content:{id:'6678453862304663909',form_id:config.form_id,created_at:'2026-10-14 23:49:46',answers:{'2':{answer:'EL DOC'},'3':{answer:'PHILADELPHIA EAGLES'}}}};
+test('validates real Jotform response mapping without changing source',()=>{const r=parseOriginalSubmission(original,config,'EL DOC',original.content.id);assert.deepEqual(r.picks,{G01:'PHI'});});
+test('rejects original ID mismatch',()=>assert.throws(()=>parseOriginalSubmission(original,config,'EL DOC','123'),/JOTFORM_ID_MISMATCH/));
+test('rejects form mismatch',()=>assert.throws(()=>parseOriginalSubmission({content:{...original.content,form_id:'123'}},config,'EL DOC',original.content.id),/JOTFORM_FORM_MISMATCH/));
+test('rejects incorrect participant',()=>assert.throws(()=>parseOriginalSubmission(original,config,'ARI',original.content.id),/JOTFORM_PARTICIPANT_MISMATCH/));
+test('rejects invalid or absent pick',()=>assert.throws(()=>parseOriginalSubmission({content:{...original.content,answers:{'2':{answer:'EL DOC'},'3':{answer:'TIE'}}}},config,'EL DOC',original.content.id),/JOTFORM_INVALID_PICKS/));
+test('checksum deterministic and changes with selections',()=>{assert.equal(checksum({G01:'PHI'}),checksum({G01:'PHI'}));assert.notEqual(checksum({G01:'PHI'}),checksum({G01:'CAR'}));});
+test('Redis script verifies original ID and null picks before atomic HSET',()=>{assert.match(HYDRATE_CAS_LUA,/SUBMISSION_MISMATCH/);assert.match(HYDRATE_CAS_LUA,/ALREADY_COMPLETE/);assert.match(HYDRATE_CAS_LUA,/HSET/);assert.match(HYDRATE_CAS_LUA,/redis.call\('HGET'/);});
