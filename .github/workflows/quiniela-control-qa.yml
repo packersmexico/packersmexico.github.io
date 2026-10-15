@@ -30,6 +30,8 @@ jobs:
           node --check push-backend/api/capture-status.js
           node --check push-backend/lib/jotform-capture.js
           node --check push-backend/lib/weekly-capture.js
+          node --check push-backend/lib/jotform-hydration.js
+          node --check push-backend/api/reconcile-week-06.js
           node --check push-backend/lib/jotform-baseline.js
           node --check push-backend/api/milestone-sync.js
           node --check push-backend/lib/milestone-events.js
@@ -49,6 +51,8 @@ jobs:
         run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Reusable week capture / GB lock / BYE / universal PUSH
         run: node --test push-backend/tests/weekly-capture.test.mjs
+      - name: Private CAS hydration original picks validation
+        run: node --test push-backend/tests/jotform-hydration.test.mjs
       - name: Progressive W5 results and privacy-masked W6 picks preview · QA
         run: |
           node --check scripts/stage-quiniela-editorial.mjs
