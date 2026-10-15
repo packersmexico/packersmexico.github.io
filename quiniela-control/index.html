@@ -20,7 +20,7 @@
     }
   </style>
 
-  <script src="app.js?v=20261014-live-webhook-edd191f" defer></script>
+  <script src="app.js?v=20261015-w6-live-first-valid" defer></script>
   <script src="push.js?v=20261012-renew-expired" defer></script>
 </head>
 <body>
@@ -39,6 +39,17 @@
         <span class="big-copy">RESPUESTAS RECIBIDAS</span>
       </div>
       <div class="progress" aria-label="Progreso de captura" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><span id="progress-bar" style="width:0"></span></div>
+      <div class="capture-roster-summary" aria-label="Estado Week 6 por participante">
+        <div class="capture-roster-block capture-roster-sent">
+          <span>YA ENVIARON</span>
+          <strong id="sent-names">CONSULTANDO…</strong>
+        </div>
+        <div class="capture-roster-block capture-roster-pending">
+          <span>FALTAN</span>
+          <strong id="pending-names">CONSULTANDO…</strong>
+        </div>
+      </div>
+      <p class="capture-verified-time" id="last-jotform-check">ÚLTIMA VERIFICACIÓN · CONSULTANDO…</p>
       <div class="meta-line"><span id="window-status">—</span><span id="deadline">—</span></div>
       <p class="production-rule" id="w6-confirmed" aria-live="polite">Consultando participantes de Week 6…</p><p class="production-rule refresh-message" id="refresh-message" aria-live="polite">Verifica el último corte de Jotform publicado y los recibos del receptor. Un envío nuevo sólo cuenta como validado tras conciliación; las imágenes mantienen su QA.</p>
       <div class="quick-actions hero-actions">
