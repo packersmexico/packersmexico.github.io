@@ -3,6 +3,7 @@ import webpush from 'web-push';
 import { redis, keys } from '../lib/redis.js';
 import { json, rejectMethod } from '../lib/http.js';
 import { bodyToObject, parseRawRequest, normalizeText, resolveParticipant, validateWeek6Submission } from '../lib/jotform-capture.js';
+import { seedW6Baseline } from '../lib/jotform-baseline.js';
 
 const RAW_BASE = 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
 
@@ -118,6 +119,7 @@ export default async function handler(req,res) {
     logReject('ROSTER_UNAVAILABLE',{roster_size:roster.size});
     return json(res,503,{ok:false,error:'ROSTER_UNAVAILABLE'});
   }
+  await seedW6Baseline(redis,formID,roster);
 
   const raw=parseRawRequest(body.rawRequest||body.raw_request||body.answers||{});
   const participant=resolveParticipant(raw,roster);
