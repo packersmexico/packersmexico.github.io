@@ -3,6 +3,7 @@
 // Never exposes picks, submission IDs, secrets or raw Jotform payloads.
 import { redis } from '../lib/redis.js';
 import { applyCors, json, rejectMethod } from '../lib/http.js';
+import { seedW6Baseline } from '../lib/jotform-baseline.js';
 
 const RAW_BASE='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
 const norm=s=>String(s||'').trim().replace(/\s+/g,' ').toUpperCase();
@@ -54,6 +55,7 @@ export default async function handler(req,res){
 
   const roster=(snapshot.participants||[]).map(p=>norm(p.name)).filter(Boolean);
   const rosterSet=new Set(roster);
+  try{ await seedW6Baseline(redis,formID,rosterSet); }catch(err){ console.error('W6_BASELINE_SEED_FAILED',err?.message); }
   const staticNames=(snapshot.capture?.submission_integrity?.received_names||[]).map(norm).filter(n=>rosterSet.has(n));
   let firstValid={},receipts={},deliveries={};
   let redisStatus='OK';
