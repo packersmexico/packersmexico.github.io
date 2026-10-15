@@ -69,7 +69,7 @@ function renderFutureCapture(snapshot){
   const fold=$('capture-details');
   if(fold){fold.open=true;fold.dataset.initialized='1';}
   setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
-  setText('sync-mode','W6 JOTFORM · CORTE 14 OCT / W5 RESULTADOS FINAL');
+  setText('sync-mode','CAPTURA SEMANAL · ESTADO EN VIVO');
 }
 // Read-only overlay from the existing push/backend Redis receipts. Never shows selections.
 async function refreshLiveReceipts(snapshot,stamp){
@@ -188,7 +188,7 @@ async function load(manual=false){
        const pushText=receiptCheck.lastPush
          ? ' · ÚLTIMO PUSH RODRIGO '+String(receiptCheck.lastPush.rodrigo_status||'UNKNOWN')+' ('+String(receiptCheck.lastPush.participant||'')+')'
          : '';
-       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+pushText+' · REVISADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
+       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+pushText+' · ACTUALIZADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
      }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
