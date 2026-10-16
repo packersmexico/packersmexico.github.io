@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-15T15:05:00+00:00",
+  "updated_at": "2026-10-12T22:16:39-06:00",
   "items": [
+    {
+      "id": "W5_FINAL",
+      "status": "READY",
+      "title": "WEEK 5 FINAL",
+      "body": "15/15 partidos FINAL. Resultados y rankings definitivos están listos.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
     {
       "id": "W6_OPEN",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2139425",
       "secondary_label": "ABRIR RANKING GENERAL"
-    },
-    {
-      "id": "W5_9OF9",
-      "status": "READY",
-      "title": "WEEK 5 · PICKS COMPLETOS",
-      "body": "9/9 participantes · captura cerrada. Picks y piezas ya pueden revisarse en el panel.",
-      "href": "./",
-      "secondary_href": "./exports/live.html",
-      "secondary_label": "VER PIEZAS"
     }
   ]
 }
