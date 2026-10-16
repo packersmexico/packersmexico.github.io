@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 6",
   "week_number": 6,
-  "snapshot_status": "CAPTURE_OPEN · 9_OF_9_JOTFORM_VERIFIED · PRIVATE_FIRST_VALID_SYNC_ACTIVE",
+  "snapshot_status": "CAPTURE_CLOSED · 9_OF_9_JOTFORM_VERIFIED · PRIVATE_FIRST_VALID_SYNC_ACTIVE",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "calendar_verified_at": "2026-10-12",
   "capture": {
@@ -12,7 +12,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-15T16:00:00-06:00",
     "deadline_label": "15 OCT · 16:00 CDMX",
     "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
@@ -24,7 +24,7 @@
     "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
     "green_bay_game_id": "G13",
     "green_bay_default_pick": "GB",
-    "form_status": "ENABLED",
+    "form_status": "DISABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
     "locked_submissions": {},
     "unique_participants": 9,
@@ -52,7 +52,8 @@
       "notification_pending_names": [],
       "notification_reason": "No historical push replay; new first-valid only"
     },
-    "capture_status": "OPEN_9_OF_9_JOTFORM_VERIFIED_20261015"
+    "capture_status": "CLOSED_9_OF_9_JOTFORM_VERIFIED_20261015",
+    "closure_source": "JOTFORM_FORM_DISABLED_2026-10-15"
   },
   "participants": [
     {
@@ -289,7 +290,7 @@
   "season_standings": [],
   "season_base_before_week_status": "PENDING_W5_FINAL; DO_NOT_SEED_FROM_14_OF_15",
   "production": {
-    "package_status": "W6 CAPTURE OPEN · 04 VISUAL PICKS WAITING_9_OF_9",
+    "package_status": "W6 CLOSED · PRIVATE_PICKS_RECONCILIATION_REQUIRED",
     "family": "NORMAL_QUINIELA_SYSTEM",
     "auto_publish": false
   },

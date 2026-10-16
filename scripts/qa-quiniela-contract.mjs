@@ -8,14 +8,14 @@ const config=j(root+'/capture-config.json');
 const archive=j(root+'/weeks/week-'+String(data.week_number).padStart(2,'0')+'.json');
 const index=j(root+'/exports/asset-index.json');
 const logo='PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
-// When the upcoming week's capture opens before MNF finishes, retain the
+// When capture and scoring refer to adjacent weeks, retain the
 // prior week in data.json for the live-results monitor. Only capture-config
 // advances. Never wipe historical picks to activate the new form.
 const currentWeek=Number(data.week_number);
 const captureWeek=Number(config.week_number);
-const earlyWeekOpen=captureWeek===currentWeek+1 && String(config.status).toUpperCase()==='OPEN';
+const separateCaptureWeek=captureWeek===currentWeek+1 && ['OPEN','CLOSED'].includes(String(config.status).toUpperCase());
 assert.equal(Number(archive.week_number),currentWeek);
-if (earlyWeekOpen) {
+if (separateCaptureWeek) {
   const upcoming=j(root+'/weeks/week-'+String(captureWeek).padStart(2,'0')+'.json');
   assert.equal(Number(upcoming.week_number),captureWeek);
   assert.equal(upcoming.games.length,14,'W6 official slate must contain exactly 14 games');

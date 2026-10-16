@@ -75,6 +75,20 @@ export default async function handler(req,res){
     return {name,verified_at:rec.received_at||null,source:rec.source||'PUBLIC_VERIFIED_SNAPSHOT'};
   });
 
+  // Aggregate-only private integrity readback. Never return individual selections,
+  // original submission IDs or weak/reversible per-participant checksums.
+  const gameIds=(snapshot.games||[]).map(g=>String(g.id));
+  const completePrivate=liveNames.filter(name=>{
+    const pick=safeRecord(firstValid[name]).picks;
+    if(!pick||Array.isArray(pick)||typeof pick!=='object'||Object.keys(pick).length!==gameIds.length)return false;
+    return (snapshot.games||[]).every(g=>{
+      const sides=String(g.matchup||'').split('@').map(x=>x.trim());
+      return sides.length===2 && sides.includes(pick[g.id]);
+    });
+  }).length;
+  const privatePicksCount=completePrivate*gameIds.length;
+  const privateIntegrity=redisStatus==='OK' && completePrivate===roster.length && gameIds.length>0?'COMPLETE':'INCOMPLETE';
+
   const receiptNames=Object.keys(receipts).filter(n=>rosterSet.has(n));
   const unreconciled=receiptNames.filter(n=>!liveNames.includes(n));
   const timestamps=verifiedRows.map(x=>x.verified_at).filter(Boolean).sort();
@@ -110,6 +124,9 @@ export default async function handler(req,res){
     checked_at:new Date().toISOString(),
     last_verified_at:lastVerifiedAt,
     last_push:lastPush,
+    private_picks_complete_records:completePrivate,
+    private_picks_count:privatePicksCount,
+    private_picks_integrity:privateIntegrity,
     picks_visible:false
   });
 }
