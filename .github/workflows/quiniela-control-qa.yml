@@ -20,6 +20,7 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check quiniela-control/app.js
+          node --check quiniela-control/panel-week-assets.js
           node --check quiniela-control/exports/live.js
           node --check quiniela-control/push.js
           node --check quiniela-control/push-sw.js
