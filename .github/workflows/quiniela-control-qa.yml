@@ -32,6 +32,7 @@ jobs:
           node --check push-backend/lib/weekly-capture.js
           node --check push-backend/lib/jotform-hydration.js
           node --check push-backend/api/reconcile-week-06.js
+          node --check push-backend/scripts/reconcile-on-deploy.mjs
           node --check push-backend/lib/jotform-baseline.js
           node --check push-backend/api/milestone-sync.js
           node --check push-backend/lib/milestone-events.js
@@ -51,6 +52,21 @@ jobs:
         run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Reusable week capture / GB lock / BYE / universal PUSH
         run: node --test push-backend/tests/weekly-capture.test.mjs
+      - name: W6 closure and safe preview assertions
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+          const form=read('quiniela-control/capture-config.json');
+          const wk=read('quiniela-control/weeks/week-06.json');
+          const assets=read('quiniela-control/exports/asset-index.json');
+          assert.equal(form.status,'CLOSED');
+          assert.equal(form.form_status,'DISABLED');
+          assert.equal(wk.capture.window,'CLOSED');
+          assert.equal(assets.weeks['6'].capture.window,'CLOSED');
+          assert.notEqual(assets.weeks['6'].assets.picks.state,'READY');
+          NODE
       - name: Private CAS hydration original picks validation
         run: node --test push-backend/tests/jotform-hydration.test.mjs
       - name: Progressive W5 results and privacy-masked W6 picks preview · QA
