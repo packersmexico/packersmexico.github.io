@@ -206,7 +206,7 @@
       "capture": {
         "complete": 9,
         "total": 9,
-        "window": "OPEN"
+        "window": "CLOSED"
       },
       "results": {
         "final": 0,
