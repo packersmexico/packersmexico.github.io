@@ -4,7 +4,7 @@
   "week_number": 6,
   "form_id": "262845110194050",
   "form_url": "https://form.jotform.com/262845110194050",
-  "status": "OPEN",
+  "status": "CLOSED",
   "deadline": "2026-10-15T16:00:00-06:00",
   "deadline_label": "15 OCT · 16:00 CDMX",
   "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
@@ -13,8 +13,8 @@
   "default_green_bay_policy": "GB_PRESELECTED_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
   "default_green_bay_game_id": "G13",
   "default_green_bay_pick": "GB",
-  "capture_status": "OPEN · WEEK6 · 9_OF_9 · 126_OF_126 · JOTFORM_VERIFIED",
-  "form_status": "ENABLED",
+  "capture_status": "CLOSED · WEEK6 · 9_OF_9 · 126_OF_126 · JOTFORM_VERIFIED",
+  "form_status": "DISABLED",
   "complete": 9,
   "total": 9,
   "expected_picks": 126,
@@ -52,10 +52,12 @@
     "notification_pending_names": [],
     "notification_reason": "No historical push replay; new first-valid only"
   },
-  "window": "OPEN",
+  "window": "CLOSED",
   "invitado": "OFF",
   "last_sync": "2026-10-15T15:05:00+00:00",
   "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-6",
   "form_create_record": "JOTFORM_VALIDATED_2026-10-12",
-  "capacity_note": "Week5 FINAL remains in data.json; Week6 capture is in week-06.json; panel must read both independently"
+  "capacity_note": "Week5 FINAL remains in data.json; Week6 capture is in week-06.json; panel must read both independently",
+  "closure_source": "JOTFORM_FORM_DISABLED_2026-10-15",
+  "closure_verified_at": "2026-10-15"
 }
