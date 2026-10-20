@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-12T22:16:39-06:00",
+  "updated_at": "2026-10-20T12:35:30.636Z",
   "items": [
+    {
+      "id": "W7_OPEN",
+      "status": "READY",
+      "title": "WEEK 7 ABIERTA",
+      "body": "Week 6 cerrada 14/14. Week 7: 0/9 respuestas · cierre 22 OCT · 16:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W5_FINAL",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2139371",
       "secondary_label": "ABRIR RANKING SEMANAL"
-    },
-    {
-      "id": "W5_SEASON_RANKING_PRIVATE_REVIEW_20261013",
-      "status": "PRIVATE_REVIEW_READY",
-      "title": "WEEK 5 · RANKING GENERAL",
-      "body": "Nueva imagen de ranking general 1080×1350 disponible para revisión privada en Figma. Pendiente autorización final de publicación.",
-      "href": "./",
-      "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2139425",
-      "secondary_label": "ABRIR RANKING GENERAL"
     }
   ]
 }
