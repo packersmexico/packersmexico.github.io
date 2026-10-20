@@ -99,135 +99,135 @@
       "matchup": "SEA @ DEN",
       "time": "JUE 15 OCT · 18:15 CDMX · TNF",
       "kickoff_iso": "2026-10-15T18:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DEN",
+      "score": "DEN 17–14 SEA"
     },
     {
       "id": "G02",
       "matchup": "HOU @ JAX",
       "time": "DOM 18 OCT · 07:30 CDMX · LONDON",
       "kickoff_iso": "2026-10-18T07:30:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "HOU",
+      "score": "HOU 34–31 JAX"
     },
     {
       "id": "G03",
       "matchup": "CHI @ ATL",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "CHI",
+      "score": "CHI 31–23 ATL"
     },
     {
       "id": "G04",
       "matchup": "BAL @ CLE",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "CLE",
+      "score": "CLE 13–10 BAL"
     },
     {
       "id": "G05",
       "matchup": "TEN @ IND",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "TEN",
+      "score": "TEN 26–20 IND"
     },
     {
       "id": "G06",
       "matchup": "NYJ @ NE",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "NE",
+      "score": "NE 26–19 NYJ"
     },
     {
       "id": "G07",
       "matchup": "NO @ NYG",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "NO",
+      "score": "NO 34–27 NYG"
     },
     {
       "id": "G08",
       "matchup": "CAR @ PHI",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "CAR",
+      "score": "CAR 25–14 PHI"
     },
     {
       "id": "G09",
       "matchup": "PIT @ TB",
       "time": "DOM 18 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-18T11:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "PIT",
+      "score": "PIT 26–19 TB"
     },
     {
       "id": "G10",
       "matchup": "AZ @ LAR",
       "time": "DOM 18 OCT · 14:05 CDMX",
       "kickoff_iso": "2026-10-18T14:05:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "AZ",
+      "score": "AZ 18–16 LAR"
     },
     {
       "id": "G11",
       "matchup": "LAC @ KC",
       "time": "DOM 18 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-18T14:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "KC",
+      "score": "KC 22–6 LAC"
     },
     {
       "id": "G12",
       "matchup": "BUF @ LV",
       "time": "DOM 18 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-18T14:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 33–30 LV"
     },
     {
       "id": "G13",
       "matchup": "DAL @ GB",
       "time": "DOM 18 OCT · 18:20 CDMX · SNF",
       "kickoff_iso": "2026-10-18T18:20:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "GB",
+      "score": "GB 23–13 DAL"
     },
     {
       "id": "G14",
       "matchup": "WAS @ SF",
       "time": "LUN 19 OCT · 18:15 CDMX · MNF",
       "kickoff_iso": "2026-10-19T18:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "SF",
+      "score": "SF 23–17 WAS"
     }
   ],
   "results": {
-    "final": 0,
+    "final": 14,
     "total": 14,
-    "status": "SCHEDULED",
+    "status": "FINAL",
     "in_progress": 0,
     "ties": 0,
-    "scored": 0,
+    "scored": 14,
     "pushes": 0
   },
   "locked_picks": {},
@@ -288,11 +288,69 @@
     }
   ],
   "season_standings": [],
-  "season_base_before_week_status": "PENDING_W5_FINAL; DO_NOT_SEED_FROM_14_OF_15",
+  "season_base_before_week_status": "VERIFIED_W5_FINAL_15_OF_15",
   "production": {
-    "package_status": "W6 CLOSED · PRIVATE_PICKS_RECONCILIATION_REQUIRED",
+    "package_status": "W6_14_OF_14_NFL_FINAL · PRIVATE_SCORING_PENDING",
     "family": "NORMAL_QUINIELA_SYSTEM",
     "auto_publish": false
   },
-  "public_picks_authorized": false
+  "public_picks_authorized": false,
+  "last_sync": "2026-10-20T12:20:00Z",
+  "results_source": "https://www.nfl.com/schedules/2026/by-week/week-6",
+  "season_base_before_week": [
+    {
+      "name": "ALEX",
+      "correct": 51,
+      "wrong": 27,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 51,
+      "wrong": 27,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 49,
+      "wrong": 29,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 47,
+      "wrong": 31,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 46,
+      "wrong": 32,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 44,
+      "wrong": 34,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 42,
+      "wrong": 36,
+      "status": "VALID"
+    }
+  ]
 }

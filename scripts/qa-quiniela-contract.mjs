@@ -45,7 +45,9 @@ if (separateCaptureWeek) {
     'Do not claim pick locks before reconciliation');
   assert.equal(config.stable_url,'https://packersmexico.github.io/quiniela-control/captura/');
   assert.equal(upcoming.results.total,14);
-  assert.equal(upcoming.results.final,0);
+  assert.equal(upcoming.results.final,14);
+  assert.equal(upcoming.results.scored,14);
+  assert(upcoming.games.every(g=>g.status==='FINAL'&&g.winner),'W6 games must match official NFL final');
   assert.equal(upcoming.season_standings.length,0,'Never use provisional W5 season as W6 base');
   const canonical=(data.participants||[]).map(p=>p.name);
   const missing=config.missing_participants||[];
