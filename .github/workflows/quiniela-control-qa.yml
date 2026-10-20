@@ -36,6 +36,7 @@ jobs:
           node --check push-backend/scripts/score-week06.mjs
           node --check push-backend/scripts/discover-week07.mjs
           node --check push-backend/scripts/setup-week07.mjs
+          node --check push-backend/scripts/catchup-week07.mjs
           node --check push-backend/scripts/notify-rodrigo-w6-w7.mjs
           node --check push-backend/lib/jotform-hydration.js
           node --check push-backend/api/reconcile-week-06.js
