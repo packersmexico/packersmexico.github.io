@@ -39,7 +39,7 @@ class TiePushTests(unittest.TestCase):
             )
 
     def test_week_5_snapshot_locked_picks_and_rankings(self):
-        data = json.loads((ROOT / "quiniela-control/data.json").read_text(encoding="utf8"))
+        data = json.loads((ROOT / "quiniela-control/weeks/week-05.json").read_text(encoding="utf8"))
         archived = json.loads(
             (ROOT / "quiniela-control/weeks/week-05.json").read_text(encoding="utf8")
         )
@@ -84,7 +84,7 @@ class TiePushTests(unittest.TestCase):
         )
 
     def test_future_final_counts_only_scoreable_games(self):
-        data = json.loads((ROOT / "quiniela-control/data.json").read_text(encoding="utf8"))
+        data = json.loads((ROOT / "quiniela-control/weeks/week-05.json").read_text(encoding="utf8"))
         games = copy.deepcopy(data["games"])
         games[-1]["status"] = "FINAL"
         games[-1]["winner"] = "BUF"
