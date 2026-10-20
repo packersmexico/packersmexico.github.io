@@ -1,0 +1,159 @@
+{
+  "schema": "PMX_QUINIELA_04_PICKS_PROGRESS_WORKFILE_V1",
+  "week": 7,
+  "season": "2026",
+  "kind": "DATA_ONLY_PRIVACY_MASKED_NO_UNPUBLISHED_PICKS",
+  "governance": {
+    "owner": "04",
+    "auto_publish": false,
+    "not_an_asset": true,
+    "figma_master_required": true,
+    "qa_required": true,
+    "raw_picks_private_until_capture_close": true
+  },
+  "status": "BUILDING_NONPUBLIC_PICKS_WORKFILE",
+  "source": "quiniela-control/capture-config.json + weeks/week-07.json",
+  "form_id": "262923769438068",
+  "deadline": "2026-10-22T16:00:00-06:00",
+  "progress": {
+    "validated": 0,
+    "reported": 0,
+    "total": 9,
+    "expected_picks": 126,
+    "confirmed_picks": 0,
+    "jotform_submissions_unreconciled": "NOT_IN_CANONICAL_SOURCE",
+    "mismatch": false
+  },
+  "gb_default": {
+    "game_id": "G13",
+    "pick": "GB",
+    "editable": true,
+    "not_forced": true
+  },
+  "games": [
+    {
+      "game_id": "G01",
+      "matchup": "NE @ CHI",
+      "kickoff": "JUE 22 OCT · 18:15 CDMX · TNF"
+    },
+    {
+      "game_id": "G02",
+      "matchup": "PIT @ NO",
+      "kickoff": "DOM 25 OCT · 07:30 CDMX · FRANCIA"
+    },
+    {
+      "game_id": "G03",
+      "matchup": "SF @ ATL",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G04",
+      "matchup": "CIN @ BAL",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G05",
+      "matchup": "TB @ CAR",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G06",
+      "matchup": "NYG @ HOU",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G07",
+      "matchup": "IND @ MIN",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G08",
+      "matchup": "MIA @ NYJ",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G09",
+      "matchup": "CLE @ TEN",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX"
+    },
+    {
+      "game_id": "G10",
+      "matchup": "DEN @ AZ",
+      "kickoff": "DOM 25 OCT · 14:05 CDMX"
+    },
+    {
+      "game_id": "G11",
+      "matchup": "GB @ DET",
+      "kickoff": "DOM 25 OCT · 14:25 CDMX"
+    },
+    {
+      "game_id": "G12",
+      "matchup": "LAR @ LV",
+      "kickoff": "DOM 25 OCT · 14:25 CDMX"
+    },
+    {
+      "game_id": "G13",
+      "matchup": "KC @ SEA",
+      "kickoff": "DOM 25 OCT · 18:20 CDMX · SNF"
+    },
+    {
+      "game_id": "G14",
+      "matchup": "DAL @ PHI",
+      "kickoff": "LUN 26 OCT · 18:15 CDMX · MNF"
+    }
+  ],
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    }
+  ],
+  "visual_slots": {
+    "picks": {
+      "file": "w7-picks-board.png",
+      "state": "PRIVATE_PREVIEW_ONLY"
+    }
+  },
+  "security": "DO_NOT_STORE_UNPUBLISHED_PICKS_IN_PUBLIC_WORKFILE"
+}
