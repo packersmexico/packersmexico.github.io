@@ -126,6 +126,8 @@ export default async function handler(req,res) {
     return json(res,503,{ok:false,error:'WEEK_CONTRACT_UNAVAILABLE'});
   }
   if(String(contract.form_id)!==formID)return json(res,409,{ok:false,error:'CONTRACT_FORM_MISMATCH'});
+  if(!Number.isFinite(Date.parse(contract.deadline)))return json(res,503,{ok:false,error:'DEADLINE_CONFIG_INVALID'});
+  if(Date.now()>Date.parse(contract.deadline))return json(res,409,{ok:false,error:'CAPTURE_WINDOW_CLOSED'});
   const roster=new Set(contract.roster.map(normalizeText));
   if(roster.size!==Number(config.total||contract.roster.length)){
     logReject('ROSTER_UNAVAILABLE',{roster_size:roster.size});
