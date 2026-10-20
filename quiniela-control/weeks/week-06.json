@@ -233,64 +233,119 @@
   "locked_picks": {},
   "weekly_standings": [
     {
-      "name": "EL DOC",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "ARI",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "LALO",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "ALEX",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
       "name": "DR PALMA",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "JENNI",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
-    },
-    {
-      "name": "RODRI",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
     },
     {
       "name": "IBRACHO",
-      "correct": 0,
-      "wrong": 0,
-      "status": "NO_PICKS"
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
     }
   ],
-  "season_standings": [],
+  "season_standings": [
+    {
+      "name": "IBRACHO",
+      "correct": 60,
+      "wrong": 32,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 59,
+      "wrong": 33,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 58,
+      "wrong": 34,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 57,
+      "wrong": 35,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 56,
+      "wrong": 36,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 56,
+      "wrong": 36,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 54,
+      "wrong": 38,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 53,
+      "wrong": 39,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 49,
+      "wrong": 43,
+      "status": "VALID"
+    }
+  ],
   "season_base_before_week_status": "VERIFIED_W5_FINAL_15_OF_15",
   "production": {
-    "package_status": "W6_14_OF_14_NFL_FINAL · PRIVATE_SCORING_PENDING",
+    "package_status": "W6 FINAL 14/14 · RANKINGS_VERIFIED_PRIVATE · FIGMA_QA_PENDING",
     "family": "NORMAL_QUINIELA_SYSTEM",
     "auto_publish": false
   },
@@ -352,5 +407,13 @@
       "wrong": 36,
       "status": "VALID"
     }
-  ]
+  ],
+  "scoring": {
+    "status": "COMPLETE",
+    "source": "JOTFORM_FIRST_VALID_PRIVATE_REDIS",
+    "checksum": "c73bbb8b642fd02aa49bc99328233485f5d46b98d4d398967313d93c43d13b16",
+    "original_picks_preserved": true,
+    "approved_overlay_separate": true,
+    "picks_visible": false
+  }
 }

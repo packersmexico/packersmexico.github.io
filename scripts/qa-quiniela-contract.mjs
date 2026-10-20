@@ -18,12 +18,12 @@ assert.equal(Number(archive.week_number),currentWeek);
 if (separateCaptureWeek) {
   const upcoming=j(root+'/weeks/week-'+String(captureWeek).padStart(2,'0')+'.json');
   assert.equal(Number(upcoming.week_number),captureWeek);
-  assert.equal(upcoming.games.length,14,'W6 official slate must contain exactly 14 games');
+  assert.equal(upcoming.games.length,14,'Active weekly slate must contain 14 games');
   assert.equal(new Set(upcoming.games.map(g=>g.id)).size,14,'Duplicate W6 Game IDs');
   assert.deepEqual(upcoming.games.map(g=>g.id),Array.from({length:14},(_,i)=>'G'+String(i+1).padStart(2,'0')));
-  assert.equal(upcoming.games.find(g=>g.id==='G13')?.matchup,'DAL @ GB');
+  assert.equal(upcoming.games.find(g=>g.id==='G11')?.matchup,'GB @ DET');
   assert.equal(config.default_green_bay_pick,'GB');
-  assert.equal(config.default_green_bay_game_id,'G13');
+  assert.equal(config.default_green_bay_game_id,'G11');
   assert.equal(upcoming.capture.green_bay_default_pick,'GB');
   assert.equal(config.duplicate_policy,'FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT');
   assert.equal(config.form_id,upcoming.capture.form_id);
@@ -45,9 +45,9 @@ if (separateCaptureWeek) {
     'Do not claim pick locks before reconciliation');
   assert.equal(config.stable_url,'https://packersmexico.github.io/quiniela-control/captura/');
   assert.equal(upcoming.results.total,14);
-  assert.equal(upcoming.results.final,14);
-  assert.equal(upcoming.results.scored,14);
-  assert(upcoming.games.every(g=>g.status==='FINAL'&&g.winner),'W6 games must match official NFL final');
+  assert.equal(upcoming.results.final,0);
+  assert.equal(upcoming.results.scored,0);
+  assert(upcoming.games.every(g=>g.status==='SCHEDULED'&&!g.winner),'W7 must not fabricate results');
   assert.equal(upcoming.season_standings.length,0,'Never use provisional W5 season as W6 base');
   const canonical=(data.participants||[]).map(p=>p.name);
   const missing=config.missing_participants||[];
@@ -66,8 +66,16 @@ assert.equal(data.games.length,Number(data.results.total));
 assert.equal(new Set(data.games.map(g=>g.id)).size,data.games.length);
 const subs=data.capture.locked_submissions||{};
 const valid=Object.entries(subs).filter(([n,v])=>Array.isArray(v.picks)&&v.picks.length===data.games.length);
-assert.equal(valid.length,data.capture.complete,'Submission total does not match locked pick matrix');
-assert.equal(data.capture.received_picks,valid.length*data.games.length);
+if(data.capture.private_picks_integrity==='COMPLETE'){
+ assert.equal(data.capture.complete,9);
+ assert.equal(data.capture.received_picks,126);
+ assert.equal(valid.length,0,'Never put private W6 first-valid picks in public data.json');
+ assert.equal(data.results.final,14,'W6 official results must be finalized');
+ assert.equal(data.weekly_standings.length,9,'W6 scoring must have 9 private-verified aggregates');
+}else{
+ assert.equal(valid.length,data.capture.complete,'Submission total does not match locked pick matrix');
+ assert.equal(data.capture.received_picks,valid.length*data.games.length);
+}
 assert.equal(data.capture.expected_picks,data.capture.total*data.games.length);
 assert.equal(index.score_week,currentWeek,'Scoring week must track data.json');
 assert.equal(index.capture_week,captureWeek,'Capture week must track capture-config');

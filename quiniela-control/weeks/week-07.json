@@ -1,0 +1,234 @@
+{
+  "pmx_id": "PMX-QUINIELA-2026-SEASON-PREBUILD-001",
+  "season": "2026",
+  "week": "WEEK 7",
+  "week_number": 7,
+  "snapshot_status": "CAPTURE_OPEN · W7_0_OF_9 · JOTFORM_FORM_ENABLED · WEBHOOK_SETUP_HOLD",
+  "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-7",
+  "capture": {
+    "form_id": "262923769438068",
+    "form_url": "https://form.jotform.com/262923769438068",
+    "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
+    "complete": 0,
+    "total": 9,
+    "window": "OPEN",
+    "deadline": "2026-10-22T16:00:00-06:00",
+    "deadline_label": "22 OCT · 16:00 CDMX",
+    "expected_picks": 126,
+    "received_picks": 0,
+    "missing_picks": 126,
+    "missing_participants": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
+    "green_bay_pick_policy": "GB_FIXED_NON_EDITABLE",
+    "green_bay_game_id": "G11",
+    "green_bay_default_pick": "GB",
+    "form_status": "ENABLED",
+    "auto_close_condition": "DEADLINE_ONLY",
+    "locked_submissions": {},
+    "unique_participants": 0,
+    "duplicate_count": 0,
+    "invitado": "OFF",
+    "capture_status": "OPEN_W7_0_OF_9_WEBHOOK_SETUP_HOLD",
+    "submission_integrity": {
+      "status": "NO_SUBMISSIONS",
+      "received_names": [],
+      "first_valid_only": true,
+      "notification_pending_names": [],
+      "source": "JOTFORM_FORM_NEW_ZERO_VALID"
+    },
+    "webhook_status": "JOTFORM_API_401_MANUAL_INTEGRATION_REQUIRED"
+  },
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING"
+    }
+  ],
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "NE @ CHI",
+      "time": "JUE 22 OCT · 18:15 CDMX · TNF",
+      "kickoff_iso": "2026-10-22T18:15:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G02",
+      "matchup": "PIT @ NO",
+      "time": "DOM 25 OCT · 07:30 CDMX · FRANCIA",
+      "kickoff_iso": "2026-10-25T07:30:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G03",
+      "matchup": "SF @ ATL",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G04",
+      "matchup": "CIN @ BAL",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G05",
+      "matchup": "TB @ CAR",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G06",
+      "matchup": "NYG @ HOU",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G07",
+      "matchup": "IND @ MIN",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G08",
+      "matchup": "MIA @ NYJ",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G09",
+      "matchup": "CLE @ TEN",
+      "time": "DOM 25 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-25T11:00:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G10",
+      "matchup": "DEN @ AZ",
+      "time": "DOM 25 OCT · 14:05 CDMX",
+      "kickoff_iso": "2026-10-25T14:05:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G11",
+      "matchup": "GB @ DET",
+      "time": "DOM 25 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-25T14:25:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G12",
+      "matchup": "LAR @ LV",
+      "time": "DOM 25 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-25T14:25:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G13",
+      "matchup": "KC @ SEA",
+      "time": "DOM 25 OCT · 18:20 CDMX · SNF",
+      "kickoff_iso": "2026-10-25T18:20:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    },
+    {
+      "id": "G14",
+      "matchup": "DAL @ PHI",
+      "time": "LUN 26 OCT · 18:15 CDMX · MNF",
+      "kickoff_iso": "2026-10-26T18:15:00-06:00",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 14,
+    "status": "SCHEDULED",
+    "in_progress": 0,
+    "ties": 0,
+    "scored": 0,
+    "pushes": 0
+  },
+  "weekly_standings": [],
+  "season_standings": [],
+  "locked_picks": {},
+  "public_picks_authorized": false,
+  "production": {
+    "package_status": "W7 CAPTURE OPEN · WEBHOOK MANUAL ACTION REQUIRED",
+    "auto_publish": false
+  }
+}
