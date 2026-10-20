@@ -67,7 +67,7 @@ class TiePushTests(unittest.TestCase):
         original = copy.deepcopy(data["capture"]["locked_submissions"])
         weekly, season, counts = calculate_standings(
             data["games"], data["participants"], original,
-            data["season_base_before_week"],
+            json.loads((ROOT / "scripts/fixtures/w5-season-base-before-week.json").read_text(encoding="utf8")),
         )
         self.assertEqual(counts, {"decided": 15, "scored": 14, "pushes": 1})
         self.assertEqual(weekly, data["weekly_standings"])
@@ -90,7 +90,7 @@ class TiePushTests(unittest.TestCase):
         games[-1]["winner"] = "BUF"
         weekly, _, counts = calculate_standings(
             games, data["participants"], data["capture"]["locked_submissions"],
-            data["season_base_before_week"],
+            json.loads((ROOT / "scripts/fixtures/w5-season-base-before-week.json").read_text(encoding="utf8")),
         )
         self.assertEqual(counts, {"decided": 15, "scored": 14, "pushes": 1})
         self.assertTrue(all(x["correct"] + x["wrong"] == 14 for x in weekly))
