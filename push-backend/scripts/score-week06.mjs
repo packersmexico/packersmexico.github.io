@@ -6,7 +6,7 @@ function entries(raw){if(!Array.isArray(raw))return raw||{};const d={};for(let i
 if(process.env.VERCEL_ENV!=='production'){console.log('PMX_W6_SCORING_SKIP_NONPRODUCTION');}
 else{
  try{
-  const [w6,w5,locks]=await Promise.all([read('weeks/week-06.json'),read('data.json'),redis(['HGETALL','pmx:quiniela:jotform:first-valid:262845110194050'])]);
+  const [w6,w5,locks]=await Promise.all([read('weeks/week-06.json'),read('weeks/week-05.json'),redis(['HGETALL','pmx:quiniela:jotform:first-valid:262845110194050'])]);
   if(w6.results?.final!==14||w5.week_number!==5||w5.results?.final!==15)throw Error('SCORES_NOT_FINAL');
   const first=entries(locks);
   if(Object.keys(first).length!==9)throw Error('LOCKS_NOT_9');
