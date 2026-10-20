@@ -1,0 +1,47 @@
+[
+  {
+    "name": "ALEX",
+    "correct": 40,
+    "wrong": 24
+  },
+  {
+    "name": "EL DOC",
+    "correct": 40,
+    "wrong": 24
+  },
+  {
+    "name": "IBRACHO",
+    "correct": 40,
+    "wrong": 24
+  },
+  {
+    "name": "RODRI",
+    "correct": 39,
+    "wrong": 25
+  },
+  {
+    "name": "ARI",
+    "correct": 38,
+    "wrong": 26
+  },
+  {
+    "name": "LUIS C.",
+    "correct": 38,
+    "wrong": 26
+  },
+  {
+    "name": "DR PALMA",
+    "correct": 37,
+    "wrong": 27
+  },
+  {
+    "name": "JENNI",
+    "correct": 37,
+    "wrong": 27
+  },
+  {
+    "name": "LALO",
+    "correct": 37,
+    "wrong": 27
+  }
+]
