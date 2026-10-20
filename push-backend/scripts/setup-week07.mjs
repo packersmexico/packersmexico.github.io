@@ -27,7 +27,10 @@ else {
     const body=new URLSearchParams({webhookURL:desired});
     const p=await fetch(api,{method:'POST',headers:{APIKEY:key,'Content-Type':'application/x-www-form-urlencoded'},body});
     const j=await p.json();
-    if(!p.ok||Number(j.responseCode||0)!==200)throw Error('W7_WEBHOOK_REGISTRATION_FAILED_'+p.status);
+    if(!p.ok||Number(j.responseCode||0)!==200){
+      if(p.status===401||p.status===403){console.warn('PMX_W7_WEBHOOK_MANUAL_ACTION_REQUIRED',JSON.stringify({http:p.status,reason:'JOTFORM_API_KEY_CANNOT_WRITE_WEBHOOK',form:'W7'}));process.exit(0);}
+      throw Error('W7_WEBHOOK_REGISTRATION_FAILED_'+p.status);
+    }
     state='CREATED';
   }
   const back=await get(api,key);const after=Array.isArray(back)?back:Object.values(back||{});
