@@ -3,20 +3,20 @@
   "season": "2026",
   "week": "WEEK 7",
   "week_number": 7,
-  "snapshot_status": "CAPTURE_OPEN · W7_0_OF_9 · JOTFORM_FORM_ENABLED · WEBHOOK_SETUP_HOLD",
+  "snapshot_status": "CAPTURE_OPEN · W7_1_OF_9_FIRST_VALID_VERIFIED · WEBHOOK_SETUP_HOLD",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-7",
   "capture": {
     "form_id": "262923769438068",
     "form_url": "https://form.jotform.com/262923769438068",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 0,
+    "complete": 1,
     "total": 9,
     "window": "OPEN",
     "deadline": "2026-10-22T16:00:00-06:00",
     "deadline_label": "22 OCT · 16:00 CDMX",
     "expected_picks": 126,
-    "received_picks": 0,
-    "missing_picks": 126,
+    "received_picks": 14,
+    "missing_picks": 112,
     "missing_participants": [
       "EL DOC",
       "ARI",
@@ -25,8 +25,7 @@
       "LUIS C.",
       "DR PALMA",
       "JENNI",
-      "RODRI",
-      "IBRACHO"
+      "RODRI"
     ],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "green_bay_pick_policy": "GB_FIXED_NON_EDITABLE",
@@ -35,16 +34,18 @@
     "form_status": "ENABLED",
     "auto_close_condition": "DEADLINE_ONLY",
     "locked_submissions": {},
-    "unique_participants": 0,
+    "unique_participants": 1,
     "duplicate_count": 0,
     "invitado": "OFF",
-    "capture_status": "OPEN_W7_0_OF_9_WEBHOOK_SETUP_HOLD",
+    "capture_status": "OPEN_W7_1_OF_9_PRIVATE_FIRST_VALID_VERIFIED",
     "submission_integrity": {
-      "status": "NO_SUBMISSIONS",
-      "received_names": [],
+      "status": "1_OF_9_PRIVATE_FIRST_VALID_VERIFIED_14_OF_14",
+      "received_names": [
+        "IBRACHO"
+      ],
       "first_valid_only": true,
       "notification_pending_names": [],
-      "source": "JOTFORM_FORM_NEW_ZERO_VALID"
+      "source": "JOTFORM_PRIVATE_API_REAL_SUBMISSION"
     },
     "webhook_status": "JOTFORM_API_401_MANUAL_INTEGRATION_REQUIRED"
   },
@@ -83,7 +84,7 @@
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     }
   ],
   "games": [
