@@ -214,7 +214,7 @@
       },
       "assets": {
         "picks": {
-          "state": "PRIVATE_REVIEW",
+          "state": "WAITING_EVENT",
           "href": null,
           "expected": "picks-board.png",
           "size": "1600x2000"
