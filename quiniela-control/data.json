@@ -1,10 +1,10 @@
 {
-  "pmx_id": "PMX-QUINIELA-W5-001",
+  "pmx_id": "PMX-QUINIELA-W6-001",
   "season": "2026",
-  "week": "WEEK 5",
-  "week_number": 5,
-  "last_sync": "2026-10-12T22:16:39-06:00",
-  "sync_mode": "MANUAL_SAME_DAY_NFL_MNF_FINAL_VERIFIED",
+  "week": "WEEK 6",
+  "week_number": 6,
+  "last_sync": "2026-10-20T12:20:00Z",
+  "sync_mode": "NFL_OFFICIAL_FINAL_REDIS_VERIFIED",
   "operator": {
     "name": "RODRIGO",
     "role": "DATA OWNER + PUBLISHING OPERATOR",
@@ -13,474 +13,242 @@
     "control_url": "https://packersmexico.github.io/quiniela-control/"
   },
   "capture": {
-    "form_id": "262777830600055",
-    "form_url": "https://form.jotform.com/262777830600055",
+    "form_id": "262845110194050",
+    "form_url": "https://form.jotform.com/262845110194050",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
     "window": "CLOSED",
-    "deadline": "2026-10-08T16:00:00-06:00",
-    "deadline_label": "8 OCT · 16:00 CDMX",
-    "operational_target": "JUEVES 8 OCT · CIERRE 16:00 CDMX · DIRECCIÓN",
-    "expected_picks": 135,
-    "received_picks": 135,
+    "deadline": "2026-10-15T16:00:00-06:00",
+    "deadline_label": "15 OCT · 16:00 CDMX",
+    "operational_target": "JUEVES 15 OCT · CIERRE 16:00 CDMX",
+    "expected_picks": 126,
+    "received_picks": 126,
     "missing_picks": 0,
     "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
-    "invitado": "OFF",
-    "capture_status": "CLOSED_9_OF_9_DEADLINE_1600",
+    "green_bay_pick_policy": "DEFAULT_GB_EDITABLE_UNTIL_FIRST_VALID_SUBMISSION",
+    "green_bay_game_id": "G13",
+    "green_bay_default_pick": "GB",
     "form_status": "DISABLED",
     "auto_close_condition": "DEADLINE_16_00_ONLY",
-    "locked_submissions": {
-      "DR PALMA": {
-        "submission_id": "6670689441121470817",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "LV",
-          "NO",
-          "CLE",
-          "PIT",
-          "HOU",
-          "WAS",
-          "CHI",
-          "DEN",
-          "DET",
-          "SEA",
-          "ATL",
-          "BUF"
-        ]
-      },
-      "ARI": {
-        "submission_id": "6670690414015895408",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "TB",
-          "PHI",
-          "CIN",
-          "LV",
-          "MIN",
-          "NYJ",
-          "IND",
-          "HOU",
-          "NYG",
-          "GB",
-          "DEN",
-          "DET",
-          "SF",
-          "BAL",
-          "BUF"
-        ]
-      },
-      "LALO": {
-        "submission_id": "6670713770706204750",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "MIA",
-          "NE",
-          "NO",
-          "NYJ",
-          "PIT",
-          "TEN",
-          "WAS",
-          "GB",
-          "LAC",
-          "ARI",
-          "SEA",
-          "ATL",
-          "LAR"
-        ]
-      },
-      "IBRACHO": {
-        "submission_id": "6670744118902933092",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "NE",
-          "MIN",
-          "CLE",
-          "IND",
-          "HOU",
-          "NYG",
-          "GB",
-          "DEN",
-          "DET",
-          "SF",
-          "BAL",
-          "BUF"
-        ]
-      },
-      "JENNI": {
-        "submission_id": "6671269814148574857",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "TB",
-          "PHI",
-          "CIN",
-          "NE",
-          "MIN",
-          "CLE",
-          "PIT",
-          "TEN",
-          "WAS",
-          "GB",
-          "DEN",
-          "DET",
-          "SEA",
-          "BAL",
-          "LAR"
-        ]
-      },
-      "EL DOC": {
-        "submission_id": "6671472801306099783",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "NE",
-          "NO",
-          "CLE",
-          "PIT",
-          "HOU",
-          "WAS",
-          "GB",
-          "DEN",
-          "DET",
-          "SEA",
-          "ATL",
-          "BUF"
-        ]
-      },
-      "ALEX": {
-        "submission_id": "6672917389016661092",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "NE",
-          "MIN",
-          "CLE",
-          "PIT",
-          "HOU",
-          "NYG",
-          "GB",
-          "DEN",
-          "DET",
-          "SEA",
-          "BAL",
-          "BUF"
-        ]
-      },
-      "RODRI": {
-        "submission_id": "6672925502612099422",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "NE",
-          "MIN",
-          "NYJ",
-          "PIT",
-          "HOU",
-          "WAS",
-          "GB",
-          "DEN",
-          "DET",
-          "SEA",
-          "ATL",
-          "LAR"
-        ]
-      },
-      "LUIS C.": {
-        "submission_id": "6673005185188431549",
-        "status": "LOCKED_FIRST_VALID",
-        "picks": [
-          "DAL",
-          "JAX",
-          "CIN",
-          "NE",
-          "MIN",
-          "NYJ",
-          "PIT",
-          "HOU",
-          "NYG",
-          "GB",
-          "LAC",
-          "DET",
-          "SEA",
-          "ATL",
-          "LAR"
-        ]
-      }
-    },
-    "duplicate_count": 1,
-    "g10_schedule_status": "OFFICIAL_FLEX_CORRECTED_IN_DATA · FORM_VISIBLE_CORRECTION_NOTICE",
-    "g10_official_time": "DOM 11 OCT · 11:00 CDMX",
+    "locked_submissions": {},
+    "unique_participants": 9,
+    "duplicate_count": 0,
+    "invitado": "OFF",
     "submission_integrity": {
-      "status": "9_UNIQUE_RESPONSES_FROM_JOTFORM_ANALYSIS",
-      "reconciled_at": "2026-10-08T20:41:26.587Z",
-      "source": "JOTFORM OCT-08 CURRENT SUBMISSIONS; FIRST VALID PER PARTICIPANT; GAME IDS G01-G15",
-      "rule": "MAP_BY_QUESTION_ID_AND_GAME_ID_LABEL_NOT_DISPLAY_ORDER",
-      "anomaly": {
-        "description": "Jotform q13 (G10) has order=14 while q14 (G11) has order=13 after schedule correction; display/order position is non-canonical.",
-        "g10": {
-          "question_id": "13",
-          "field_name": "q13_radio11",
-          "game_id": "G10",
-          "matchup": "CHI @ GB"
-        },
-        "g11": {
-          "question_id": "14",
-          "field_name": "q14_radio12",
-          "game_id": "G11",
-          "matchup": "DEN @ LAC"
-        }
-      },
-      "verified_submissions": [
-        "6670689441121470817",
-        "6670690414015895408",
-        "6670713770706204750",
-        "6670744118902933092",
-        "6671269814148574857",
-        "6671472801306099783",
-        "6672917389016661092",
-        "6672925502612099422",
-        "6673005185188431549"
+      "status": "9_OF_9_COMPLETE_BY_JOTFORM;14_OF_14_EACH;NO_DUPLICATES",
+      "canonical_map": "QUESTION_ID_PLUS_GXX_LITERAL; NOT DISPLAY_ORDER",
+      "locked_picks_immutable": true,
+      "evidence_date": "2026-10-15",
+      "evidence_form_id": "262845110194050",
+      "received_names": [
+        "LALO",
+        "IBRACHO",
+        "JENNI",
+        "EL DOC",
+        "RODRI",
+        "ALEX",
+        "ARI",
+        "LUIS C.",
+        "DR PALMA"
       ],
-      "result": "9 unique participants / 10 raw submissions; DR PALMA duplicate ignored; LUIS C. first valid locked"
+      "source": "Nine real complete submissions reconciled using audited original first-valid IDs",
+      "note": "Public snapshot contains status only. Submission IDs and picks remain private; live first-valid state is read from backend Redis.",
+      "notification_pending_names": [],
+      "notification_reason": "No historical push replay; new first-valid only"
     },
-    "status": "CLOSED",
-    "last_sync": "2026-10-08T20:41:26.587Z",
-    "duplicate_submissions": [
-      {
-        "participant": "DR PALMA",
-        "submission_id": "6672950551129314740",
-        "original_id": "6670689441121470817",
-        "policy": "IGNORE_KEEP_FIRST_VALID",
-        "reported_at": "2026-10-08 14:57:36"
-      }
-    ],
-    "duplicate_submission_ids": [
-      "6672950551129314740"
-    ],
-    "unique_participants": 9
+    "capture_status": "CLOSED_9_OF_9_JOTFORM_VERIFIED_20261015",
+    "closure_source": "JOTFORM_FORM_DISABLED_2026-10-15",
+    "private_picks_integrity": "COMPLETE",
+    "private_picks_source": "REDIS_FIRST_VALID_9X14"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "ARI",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "LALO",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "ALEX",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "LUIS C.",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "DR PALMA",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "JENNI",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "RODRI",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     },
     {
       "name": "IBRACHO",
-      "status": "COMPLETE_LOCKED"
+      "status": "COMPLETE_VERIFIED_JOTFORM"
     }
   ],
   "games": [
     {
       "id": "G01",
-      "matchup": "TB @ DAL",
-      "time": "JUE 8 OCT · 18:15 CDMX · TNF",
-      "kickoff_iso": "2026-10-08T18:15:00-06:00",
-      "winner": "TB",
+      "matchup": "SEA @ DEN",
+      "time": "JUE 15 OCT · 18:15 CDMX · TNF",
+      "kickoff_iso": "2026-10-15T18:15:00-06:00",
       "status": "FINAL",
-      "score": "TB 24–16 DAL"
+      "winner": "DEN",
+      "score": "DEN 17–14 SEA"
     },
     {
       "id": "G02",
-      "matchup": "PHI @ JAX",
-      "time": "DOM 11 OCT · 07:30 CDMX · LONDON",
-      "kickoff_iso": "2026-10-11T07:30:00-06:00",
-      "winner": "JAX",
+      "matchup": "HOU @ JAX",
+      "time": "DOM 18 OCT · 07:30 CDMX · LONDON",
+      "kickoff_iso": "2026-10-18T07:30:00-06:00",
       "status": "FINAL",
-      "score": "JAX 19–17 PHI"
+      "winner": "HOU",
+      "score": "HOU 34–31 JAX"
     },
     {
       "id": "G03",
-      "matchup": "CIN @ MIA",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "CIN",
+      "matchup": "CHI @ ATL",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "CIN 31–24 MIA"
+      "winner": "CHI",
+      "score": "CHI 31–23 ATL"
     },
     {
       "id": "G04",
-      "matchup": "LV @ NE",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "NE",
+      "matchup": "BAL @ CLE",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "NE 45–17 LV"
+      "winner": "CLE",
+      "score": "CLE 13–10 BAL"
     },
     {
       "id": "G05",
-      "matchup": "MIN @ NO",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "MIN",
+      "matchup": "TEN @ IND",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "MIN 23–13 NO"
+      "winner": "TEN",
+      "score": "TEN 26–20 IND"
     },
     {
       "id": "G06",
-      "matchup": "CLE @ NYJ",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "NYJ",
+      "matchup": "NYJ @ NE",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "NYJ 17–12 CLE"
+      "winner": "NE",
+      "score": "NE 26–19 NYJ"
     },
     {
       "id": "G07",
-      "matchup": "IND @ PIT",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "PIT",
+      "matchup": "NO @ NYG",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "PIT 34–22 IND"
+      "winner": "NO",
+      "score": "NO 34–27 NYG"
     },
     {
       "id": "G08",
-      "matchup": "HOU @ TEN",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "HOU",
+      "matchup": "CAR @ PHI",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
       "status": "FINAL",
-      "score": "HOU 26–3 TEN"
+      "winner": "CAR",
+      "score": "CAR 25–14 PHI"
     },
     {
       "id": "G09",
-      "matchup": "NYG @ WAS",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": null,
-      "status": "TIE",
-      "score": "NYG 27–27 WAS"
+      "matchup": "PIT @ TB",
+      "time": "DOM 18 OCT · 11:00 CDMX",
+      "kickoff_iso": "2026-10-18T11:00:00-06:00",
+      "status": "FINAL",
+      "winner": "PIT",
+      "score": "PIT 26–19 TB"
     },
     {
       "id": "G10",
-      "matchup": "CHI @ GB",
-      "time": "DOM 11 OCT · 11:00 CDMX",
-      "kickoff_iso": "2026-10-11T11:00:00-06:00",
-      "winner": "GB",
+      "matchup": "AZ @ LAR",
+      "time": "DOM 18 OCT · 14:05 CDMX",
+      "kickoff_iso": "2026-10-18T14:05:00-06:00",
       "status": "FINAL",
-      "score": "GB 31–7 CHI"
+      "winner": "AZ",
+      "score": "AZ 18–16 LAR"
     },
     {
       "id": "G11",
-      "matchup": "DEN @ LAC",
-      "time": "DOM 11 OCT · 14:05 CDMX",
-      "kickoff_iso": "2026-10-11T14:05:00-06:00",
-      "winner": "DEN",
+      "matchup": "LAC @ KC",
+      "time": "DOM 18 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-18T14:25:00-06:00",
       "status": "FINAL",
-      "score": "DEN 23–17 LAC"
+      "winner": "KC",
+      "score": "KC 22–6 LAC"
     },
     {
       "id": "G12",
-      "matchup": "DET @ ARI",
-      "time": "DOM 11 OCT · 14:25 CDMX",
-      "kickoff_iso": "2026-10-11T14:25:00-06:00",
-      "winner": "DET",
+      "matchup": "BUF @ LV",
+      "time": "DOM 18 OCT · 14:25 CDMX",
+      "kickoff_iso": "2026-10-18T14:25:00-06:00",
       "status": "FINAL",
-      "score": "DET 45–21 ARI"
+      "winner": "BUF",
+      "score": "BUF 33–30 LV"
     },
     {
       "id": "G13",
-      "matchup": "SF @ SEA",
-      "time": "DOM 11 OCT · 14:25 CDMX",
-      "kickoff_iso": "2026-10-11T14:25:00-06:00",
-      "winner": "SF",
+      "matchup": "DAL @ GB",
+      "time": "DOM 18 OCT · 18:20 CDMX · SNF",
+      "kickoff_iso": "2026-10-18T18:20:00-06:00",
       "status": "FINAL",
-      "score": "SF 32–29 SEA"
+      "winner": "GB",
+      "score": "GB 23–13 DAL"
     },
     {
       "id": "G14",
-      "matchup": "BAL @ ATL",
-      "time": "DOM 11 OCT · 18:20 CDMX · SNF",
-      "kickoff_iso": "2026-10-11T18:20:00-06:00",
-      "winner": "BAL",
+      "matchup": "WAS @ SF",
+      "time": "LUN 19 OCT · 18:15 CDMX · MNF",
+      "kickoff_iso": "2026-10-19T18:15:00-06:00",
       "status": "FINAL",
-      "score": "BAL 30–23 ATL"
-    },
-    {
-      "id": "G15",
-      "matchup": "BUF @ LAR",
-      "time": "LUN 12 OCT · 18:15 CDMX · MNF",
-      "kickoff_iso": "2026-10-12T18:15:00-06:00",
-      "winner": "BUF",
-      "status": "FINAL",
-      "score": "BUF 37–34 LAR"
+      "winner": "SF",
+      "score": "SF 23–17 WAS"
     }
   ],
   "results": {
-    "final": 15,
-    "total": 15,
+    "final": 14,
+    "total": 14,
     "status": "FINAL",
     "in_progress": 0,
-    "ties": 1,
+    "ties": 0,
     "scored": 14,
-    "pushes": 1
+    "pushes": 0
   },
   "weekly_standings": [
     {
-      "name": "EL DOC",
+      "name": "DR PALMA",
       "correct": 9,
       "wrong": 5,
       "status": "VALID"
     },
     {
-      "name": "ARI",
-      "correct": 11,
-      "wrong": 3,
-      "status": "VALID"
-    },
-    {
-      "name": "LALO",
-      "correct": 5,
-      "wrong": 9,
-      "status": "VALID"
-    },
-    {
-      "name": "ALEX",
-      "correct": 11,
-      "wrong": 3,
+      "name": "IBRACHO",
+      "correct": 9,
+      "wrong": 5,
       "status": "VALID"
     },
     {
@@ -490,31 +258,114 @@
       "status": "VALID"
     },
     {
-      "name": "DR PALMA",
-      "correct": 7,
-      "wrong": 7,
-      "status": "VALID"
-    },
-    {
-      "name": "JENNI",
+      "name": "RODRI",
       "correct": 9,
       "wrong": 5,
       "status": "VALID"
     },
     {
-      "name": "RODRI",
-      "correct": 10,
-      "wrong": 4,
+      "name": "ALEX",
+      "correct": 8,
+      "wrong": 6,
       "status": "VALID"
     },
     {
-      "name": "IBRACHO",
-      "correct": 11,
-      "wrong": 3,
+      "name": "EL DOC",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 7,
+      "wrong": 7,
       "status": "VALID"
     }
   ],
   "season_standings": [
+    {
+      "name": "IBRACHO",
+      "correct": 60,
+      "wrong": 32,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 59,
+      "wrong": 33,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 58,
+      "wrong": 34,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 57,
+      "wrong": 35,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 56,
+      "wrong": 36,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 56,
+      "wrong": 36,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 54,
+      "wrong": 38,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 53,
+      "wrong": 39,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 49,
+      "wrong": 43,
+      "status": "VALID"
+    }
+  ],
+  "public_picks_authorized": false,
+  "publication": {
+    "gate": "HOLD",
+    "operator": "RODRIGO",
+    "published": false,
+    "urls": [],
+    "assets_status": "W6 14/14 FINAL · FIGMA QA / RIGHTS HOLD"
+  },
+  "sync_policy": {
+    "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
+    "primary_check_after_minutes": 210,
+    "fallback_window_until_minutes": 280,
+    "external_request_only_when_game_due": true,
+    "stop_after_week_complete": true
+  },
+  "season_base_before_week": [
     {
       "name": "ALEX",
       "correct": 51,
@@ -570,68 +421,6 @@
       "status": "VALID"
     }
   ],
-  "public_picks_authorized": false,
-  "publication": {
-    "gate": "HOLD",
-    "operator": "RODRIGO",
-    "published": false,
-    "urls": [],
-    "assets_status": "DATA FINAL 15/15 · FIGMA QA REQUIRED"
-  },
-  "sync_policy": {
-    "strategy": "EXPECTED_GAME_END_CHECKPOINTS",
-    "primary_check_after_minutes": 210,
-    "fallback_window_until_minutes": 280,
-    "external_request_only_when_game_due": true,
-    "stop_after_week_complete": true
-  },
-  "season_base_before_week": [
-    {
-      "name": "ALEX",
-      "correct": 40,
-      "wrong": 24
-    },
-    {
-      "name": "EL DOC",
-      "correct": 40,
-      "wrong": 24
-    },
-    {
-      "name": "IBRACHO",
-      "correct": 40,
-      "wrong": 24
-    },
-    {
-      "name": "RODRI",
-      "correct": 39,
-      "wrong": 25
-    },
-    {
-      "name": "ARI",
-      "correct": 38,
-      "wrong": 26
-    },
-    {
-      "name": "LUIS C.",
-      "correct": 38,
-      "wrong": 26
-    },
-    {
-      "name": "DR PALMA",
-      "correct": 37,
-      "wrong": 27
-    },
-    {
-      "name": "JENNI",
-      "correct": 37,
-      "wrong": 27
-    },
-    {
-      "name": "LALO",
-      "correct": 37,
-      "wrong": 27
-    }
-  ],
   "notifications": {
     "center_status": "ACTIVE",
     "push_status": "ACTIVE",
@@ -661,48 +450,9 @@
     "figma_picks_preview_key": "W5_FIGMA_PICKS_REVIEW_READY_9OF9_20261008"
   },
   "figma": {
-    "file_key": "RAoegEENwTH2L7gb3yydIq",
-    "week5_stage": "FIGMA_PICKS_COMPLETE · WAITING_DIRECTION_VISUAL_REVIEW",
-    "publication_ready": false,
-    "manifest": null,
-    "rivalries_9_of_9_rule": {
-      "armed": false,
-      "condition": "9_OF_9_AND_135_OF_135",
-      "next_stage": "04 · FIGMA",
-      "variant": "RIVALRIES WEEK",
-      "family": "FAM-007 · Rivalries 2026",
-      "figma_owner": "04",
-      "required_text": [
-        "RIVALRIES WEEK",
-        "WEEK 5",
-        "9/9 PICKS COMPLETOS"
-      ],
-      "photo_mode": "PHOTO_OFF_PREFERRED",
-      "no_canva": true,
-      "no_synthetic_players_or_photos": true,
-      "week6_return": "NORMAL_QUINIELA_SYSTEM_UNLESS_NEW_DIRECTION"
-    }
+    "week": 6,
+    "master_node": "3433:1542954",
+    "picks": "PRIVATE_REVIEW"
   },
-  "public_picks": {
-    "status": "NOT_AUTHORIZED · CAPTURE CLOSED · 6/9 LOCKED · 3 MISSING",
-    "source": "JOTFORM · FIRST VALID SUBMISSION PER PARTICIPANT",
-    "games": [
-      "G01",
-      "G02",
-      "G03",
-      "G04",
-      "G05",
-      "G06",
-      "G07",
-      "G08",
-      "G09",
-      "G10",
-      "G11",
-      "G12",
-      "G13",
-      "G14",
-      "G15"
-    ],
-    "matrix": {}
-  }
+  "public_picks": []
 }
