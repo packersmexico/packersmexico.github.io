@@ -216,25 +216,25 @@
         "picks": {
           "state": "READY",
           "href": "./w6-picks-board.png",
-          "expected": "w6-picks-board.png",
+          "expected": "picks-board.png",
           "size": "1600x2000"
         },
         "results": {
           "state": "READY",
           "href": "./w6-results-final.png",
-          "expected": "w6-results-final.png",
+          "expected": "results-live.png",
           "size": "1600x2000"
         },
         "weekly": {
           "state": "READY",
           "href": "./w6-ranking-weekly.png",
-          "expected": "w6-ranking-weekly.png",
+          "expected": "ranking-weekly.png",
           "size": "1080x1350"
         },
         "season": {
           "state": "READY",
           "href": "./w6-ranking-season.png",
-          "expected": "w6-ranking-season.png",
+          "expected": "ranking-season.png",
           "size": "1080x1350"
         }
       }
