@@ -168,11 +168,25 @@ async function load(manual=false){
          Number(candidate.results?.final)===Number(candidate.results?.total))closed=candidate;
      }
    }
+   // Resolve live capture from the active weekly config. Do not pin it to W6:
+   // after W6 is FINAL, W7's independent form must drive the live roster.
    let futureCapture=null;
-   const wr=await fetch('./weeks/week-06.json?t='+stamp,{cache:'no-store'});
-   if(wr.ok){
-     const snap=await wr.json();
-     if(Number(snap.week_number)>Number(data.week_number)&&snap.capture)futureCapture=snap;
+   const configResp=await fetch('./capture-config.json?t='+stamp,{cache:'no-store'});
+   if(configResp.ok){
+     const activeConfig=await configResp.json();
+     const captureWeek=Number(activeConfig.week_number);
+     if(Number.isInteger(captureWeek) && captureWeek>Number(data.week_number) && captureWeek<=18){
+       const filename='./weeks/week-'+String(captureWeek).padStart(2,'0')+'.json?t='+stamp;
+       const snapshotResp=await fetch(filename,{cache:'no-store'});
+       if(snapshotResp.ok){
+         const snap=await snapshotResp.json();
+         if(Number(snap.week_number)===captureWeek &&
+            String(snap.capture?.form_id)===String(activeConfig.form_id) &&
+            snap.capture?.form_id && snap.capture?.window==='OPEN'){
+           futureCapture=snap;
+         }
+       }
+     }
    }
    const previousSync=lastSeenSync;
    render(data); if(closed)renderPrevious(closed);
@@ -188,7 +202,7 @@ async function load(manual=false){
        const pushText=receiptCheck.lastPush
          ? ' · ÚLTIMO PUSH RODRIGO '+String(receiptCheck.lastPush.rodrigo_status||'UNKNOWN')+' ('+String(receiptCheck.lastPush.participant||'')+')'
          : '';
-       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+'W6 '+verified+' · '+liveText+pushText+' · ACTUALIZADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
+       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+futureCapture.week+' · '+verified+' · '+liveText+pushText+' · ACTUALIZADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
      }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
