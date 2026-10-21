@@ -74,7 +74,8 @@ for(let w=1;w<=active;w++){
     const eligible=key==='picks'?picksGate:resultsGate;
     const defaultPath=`${root}/exports/w${w}-${slot.file}.png`;
     const actual=figma?.output_targets?.[key]||defaultPath;
-    const isCorrectPath=actual===defaultPath && !path.isAbsolute(actual);
+    const finalResultsPath=key==='results'&&actual===`${root}/exports/w${w}-results-final.png`;
+    const isCorrectPath=!path.isAbsolute(actual)&&(actual===defaultPath||finalResultsPath);
     const visual=String(figma?.qa?.[`${key}_visual_review`]||figma?.qa?.visual_review||'');
     const perAsset=figma?.asset_approvals?.[key];
     const individual=perAsset?.figma_qa==='PASS' && perAsset?.direction_review==='PASS' && perAsset?.export_verified===true;
