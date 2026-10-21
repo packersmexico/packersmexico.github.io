@@ -42,6 +42,7 @@
       }else{
         const status=a.state==='RIGHTS_HOLD'?'NO DISPONIBLE PARA DISTRIBUCIÓN':
           a.state==='QA_PENDING'?'EN REVISIÓN':
+          a.state==='PRIVATE_REVIEW'?'PNG PRODUCIDO · REVISIÓN PRIVADA · DERECHOS PENDIENTES':
           a.state==='HISTORICAL_SOURCE_MISSING'?'ARCHIVO POR RECUPERAR':'AÚN NO DISPONIBLE';
         info.append(tag('span','pmx-file-state',status));
       }
