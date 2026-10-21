@@ -53,8 +53,20 @@ for(let w=1;w<=active;w++){
     data.participants?.some(p=>p.name===name) &&
     Array.isArray(firstValid[name]?.picks) &&
     firstValid[name].picks.length===data.games?.length).length;
+  // Public snapshots deliberately omit private first-valid picks. Accept the
+  // certified, name-matched receipt without copying picks into this repository.
+  const received=new Set(capture.submission_integrity?.received_names||[]);
+  const roster=new Set((data.participants||[]).map(p=>p.name));
+  const sanitizedReceipt=fullRoster && received.size===target &&
+    [...roster].every(name=>received.has(name)) &&
+    capture.submission_integrity?.locked_picks_immutable===true &&
+    capture.submission_integrity?.evidence_form_id===capture.form_id &&
+    Number(capture.expected_picks)===target*data.games?.length &&
+    Number(capture.received_picks)===Number(capture.expected_picks) &&
+    Number(capture.unique_participants)===target &&
+    Number(capture.duplicate_count)===0;
   const picksGate=captureClosed && complete===target &&
-    (strictFuture ? fullRoster&&lockedCount===target : complete>0);
+    (strictFuture ? fullRoster&&(lockedCount===target||sanitizedReceipt) : complete>0);
   const resultsGate=total>0&&total===final&&String(results.status||'').toUpperCase()==='FINAL';
   const figma=read(`${root}/figma-week-${String(w).padStart(2,'0')}.json`);
   const assets={};
