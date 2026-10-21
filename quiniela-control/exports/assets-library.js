@@ -1,7 +1,7 @@
 const LIBRARY_URL='./asset-index.json';
 const SLOT_NAMES={picks:'HOJA DE PICKS',results:'RESULTADOS FINALES',weekly:'RANKING SEMANAL',season:'RANKING GLOBAL'};
 function pmxAssetLabel(state){
-  return state==='HISTORICAL_SOURCE_MISSING'?'HISTÓRICO POR RECUPERAR · SIN FUENTE VALIDADA':state==='RIGHTS_HOLD'?'BLOQUEADO POR DERECHOS · 03.5':state==='READY'?'PNG APROBADO':state==='QA_PENDING'?'PENDIENTE DE QA VISUAL':'PENDIENTE DEL EVENTO';
+  return state==='HISTORICAL_SOURCE_MISSING'?'HISTÓRICO POR RECUPERAR · SIN FUENTE VALIDADA':state==='RIGHTS_HOLD'?'BLOQUEADO POR DERECHOS · 03.5':state==='READY'?'PNG APROBADO':state==='PRIVATE_REVIEW'?'PNG PRODUCIDO · REVISIÓN PRIVADA / DERECHOS PENDIENTES':state==='QA_PENDING'?'PENDIENTE DE QA VISUAL':'PENDIENTE DEL EVENTO';
 }
 function pmxRenderWeek(container,week,record,heading){
   const section=document.createElement('section');
