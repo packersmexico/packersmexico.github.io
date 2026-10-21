@@ -77,7 +77,7 @@
       const r=await fetch(ROOT+'asset-index.json?t='+Date.now(),{cache:'no-store'});
       if(!r.ok)throw Error('ASSET_INDEX_UNAVAILABLE');
       const index=await r.json();
-      const selected=Number($('pmx-week-selector')?.value||index.active_week||index.capture_week||5);
+      const selected=Number($('pmx-week-selector')?.value||index.last_completed_week||index.score_week||index.active_week||5);
       await draw(index,index.weeks?.[String(selected)]?selected:Number(index.active_week));
     }catch{
       const wrap=$('pmx-download-list');
