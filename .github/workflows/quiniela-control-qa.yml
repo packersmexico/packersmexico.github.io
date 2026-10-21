@@ -75,7 +75,19 @@ jobs:
           assert.equal(wk.capture.window,'CLOSED');
           assert.equal(assets.weeks['6'].capture.window,'CLOSED');
           assert.equal(assets.weeks['7'].capture.window,'OPEN');
-          assert.notEqual(assets.weeks['6'].assets.picks.state,'READY');
+          assert.equal(assets.weeks['6'].capture.complete,9);
+          assert.equal(assets.weeks['6'].results.final,14);
+          const pngs={picks:['w6-picks-board.png',1600,2000],results:['w6-results-final.png',1600,2000],weekly:['w6-ranking-weekly.png',1080,1350],season:['w6-ranking-season.png',1080,1350]};
+          for(const [slot,[name,width,height]] of Object.entries(pngs)){
+            const asset=assets.weeks['6'].assets[slot];
+            assert.equal(asset.state,'READY');
+            assert.equal(asset.href,'./'+name);
+            const bytes=fs.readFileSync('quiniela-control/exports/'+name);
+            assert.deepEqual([...bytes.subarray(0,8)],[137,80,78,71,13,10,26,10]);
+            assert.equal(bytes.readUInt32BE(16),width);
+            assert.equal(bytes.readUInt32BE(20),height);
+          }
+          assert.equal(assets.weeks['5'].assets.results.state,'RIGHTS_HOLD');
           NODE
       - name: Private CAS hydration original picks validation
         run: node --test push-backend/tests/jotform-hydration.test.mjs
