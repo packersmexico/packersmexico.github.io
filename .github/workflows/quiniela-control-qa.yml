@@ -60,6 +60,10 @@ jobs:
         run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Reusable week capture / GB lock / BYE / universal PUSH
         run: node --test push-backend/tests/weekly-capture.test.mjs
+      - name: Asset index writer preserves certified W6 and historic W5
+        run: |
+          node scripts/refresh-quiniela-assets.mjs
+          git diff --exit-code -- quiniela-control/exports/asset-index.json
       - name: W6 closure and safe preview assertions
         run: |
           node --input-type=module <<'NODE'
