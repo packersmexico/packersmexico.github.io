@@ -214,36 +214,28 @@
       },
       "assets": {
         "picks": {
-          "state": "PRIVATE_REVIEW",
+          "state": "WAITING_EVENT",
           "href": null,
-          "expected": "w6-picks-board.png",
-          "size": "1600x2000",
-          "private_qa": "PASS_RENDERED_FIGMA",
-          "publication_rights": "HOLD_03_5_00"
+          "expected": "picks-board.png",
+          "size": "1600x2000"
         },
         "results": {
-          "state": "PRIVATE_REVIEW",
+          "state": "QA_PENDING",
           "href": null,
-          "expected": "w6-results-final.png",
-          "size": "1600x2000",
-          "private_qa": "PASS_RENDERED_FIGMA",
-          "publication_rights": "HOLD_03_5_00"
+          "expected": "results-live.png",
+          "size": "1600x2000"
         },
         "weekly": {
-          "state": "PRIVATE_REVIEW",
+          "state": "QA_PENDING",
           "href": null,
-          "expected": "w6-ranking-weekly.png",
-          "size": "1080x1350",
-          "private_qa": "PASS_RENDERED_FIGMA",
-          "publication_rights": "HOLD_03_5_00"
+          "expected": "ranking-weekly.png",
+          "size": "1080x1350"
         },
         "season": {
-          "state": "PRIVATE_REVIEW",
+          "state": "QA_PENDING",
           "href": null,
-          "expected": "w6-ranking-season.png",
-          "size": "1080x1350",
-          "private_qa": "PASS_RENDERED_FIGMA",
-          "publication_rights": "HOLD_03_5_00"
+          "expected": "ranking-season.png",
+          "size": "1080x1350"
         }
       }
     },
