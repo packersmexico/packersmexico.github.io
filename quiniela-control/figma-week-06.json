@@ -1,0 +1,71 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 6,
+  "season": 2026,
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
+  "publication_ready": false,
+  "gate": "DIRECTION_PANEL_DISTRIBUTION_PASS · PNG_QA_PASS · AUTO_PUBLISH_NO",
+  "source": "FIRST_VALID_REDIS_9X14; issue #42 comment 6293037689",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_node_id": "3433:1542954",
+  "results_revision_node_id": "3503:691466",
+  "results_revision_note": "Footer-only totals V2: 8,7,7,8,9,9,8,9,9. Pixels y=0..1819 identical to original Git blob 77b9fb3477ae56c7c19e3db473b942c54b467130.",
+  "qa": {
+    "visual_review": "PASS · four physical PNGs inspected; results matrix pixel-preserved; Week 6 9/9 and 14/14",
+    "results_totals": "PASS · nine values match Direction and weekly ranking; no change to first-valid choices",
+    "export": "PASS · Git blob and PNG dimensions readback"
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w6-picks-board.png",
+    "results": "quiniela-control/exports/w6-results-final.png",
+    "weekly": "quiniela-control/exports/w6-ranking-weekly.png",
+    "season": "quiniela-control/exports/w6-ranking-season.png"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Git blob 462078bcb4dd71528d6127471e51925174add176; PR #73 merged commit 5a22c7d147ee7a1931081df5426c204502a4e727; Figma 3433:1542954; Direction 2026-10-21 panel authorization",
+      "approved_by": "00 · Dirección · explicit user order",
+      "approved_date": "2026-10-21",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w6-picks-board.png"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Git blob 981d3a5cdab36ef018ee8f2f19bd934e41c37a31; PR #73 merged commit 5a22c7d147ee7a1931081df5426c204502a4e727; Figma 3503:691466; Direction 2026-10-21 panel authorization",
+      "approved_by": "00 · Dirección · explicit user order",
+      "approved_date": "2026-10-21",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w6-results-final.png"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Git blob aae800c131c6b4920bec42b29484874f51c63e0c; PR #73 merged commit 5a22c7d147ee7a1931081df5426c204502a4e727; Figma 3488:1285275; Direction 2026-10-21 panel authorization",
+      "approved_by": "00 · Dirección · explicit user order",
+      "approved_date": "2026-10-21",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w6-ranking-weekly.png"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Git blob 787416e8c72da73a920f45a7fd98567cf0f77c43; PR #73 merged commit 5a22c7d147ee7a1931081df5426c204502a4e727; Figma 3488:1289420; Direction 2026-10-21 panel authorization",
+      "approved_by": "00 · Dirección · explicit user order",
+      "approved_date": "2026-10-21",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w6-ranking-season.png"
+    }
+  },
+  "rights": {
+    "authorization": "Direction authorizes public panel incorporation of these four existing works",
+    "limitation": "This authorization and credit are not an NFL license. No automatic social publication.",
+    "auto_publish": false
+  }
+}
