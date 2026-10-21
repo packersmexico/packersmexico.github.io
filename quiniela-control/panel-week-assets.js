@@ -54,7 +54,7 @@
       ' PARTICIPANTES · '+(record.results?.final??0)+'/'+(record.results?.total??0)+
       ' PARTIDOS FINAL · '+(record.capture?.window==='CLOSED'?'CAPTURA CERRADA':'CAPTURA EN CURSO');
     const thumb=$('pmx-picks-thumb');if(thumb){
-      thumb.hidden=!readyPicks;
+      thumb.hidden=!readyPicks;thumb.style.display=readyPicks?'':'none';
       if(readyPicks){thumb.href=ROOT+readyPicks;thumb.download='PMX_W'+week+'_PICKS.png';
         const img=thumb.querySelector('img');if(img){img.src=ROOT+readyPicks;img.alt='Todos los picks Week '+week;}
         const label=thumb.querySelector('span');if(label)label.textContent='WEEK '+week+' · TODOS LOS PICKS';}
