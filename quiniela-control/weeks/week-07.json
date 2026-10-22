@@ -3,7 +3,7 @@
   "season": "2026",
   "week": "WEEK 7",
   "week_number": 7,
-  "snapshot_status": "CAPTURE_OPEN · 9_OF_9_JOTFORM_VERIFIED · 126_OF_126_PRIVATE · DEADLINE_NOT_REACHED",
+  "snapshot_status": "CAPTURE_CLOSED · 9_OF_9_FIRST_VALID · 126_OF_126 · DIRECTION_EARLY_CLOSE",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-7",
   "capture": {
     "form_id": "262923769438068",
@@ -11,7 +11,7 @@
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
     "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-10-22T16:00:00-06:00",
     "deadline_label": "22 OCT · 16:00 CDMX",
     "expected_picks": 126,
@@ -22,13 +22,13 @@
     "green_bay_pick_policy": "GB_FIXED_NON_EDITABLE",
     "green_bay_game_id": "G11",
     "green_bay_default_pick": "GB",
-    "form_status": "ENABLED",
+    "form_status": "DISABLED",
     "auto_close_condition": "DEADLINE_ONLY",
     "locked_submissions": {},
     "unique_participants": 9,
     "duplicate_count": 0,
     "invitado": "OFF",
-    "capture_status": "OPEN_W7_9_OF_9_PRIVATE_FIRST_VALID_VERIFIED",
+    "capture_status": "CLOSED_W7_9_OF_9_PRIVATE_FIRST_VALID_VERIFIED",
     "submission_integrity": {
       "status": "COMPLETE",
       "received_names": [
@@ -46,9 +46,13 @@
       "source": "BACKEND_REDIS_VERIFIED_PRIVATE_API_RECOVERY",
       "evidence_date": "2026-10-22T14:20:43.972Z",
       "private_picks_count": 126,
-      "picks_visible": false
+      "picks_visible": false,
+      "locked_picks_immutable": true,
+      "evidence_form_id": "262923769438068"
     },
-    "webhook_status": "JOTFORM_API_401_MANUAL_INTEGRATION_REQUIRED"
+    "webhook_status": "JOTFORM_API_401_MANUAL_INTEGRATION_REQUIRED",
+    "closure_basis": "DIRECTION_EXPLICIT_EARLY_CLOSE_2026-10-22",
+    "closed_at": "2026-10-22T19:54:49.883Z"
   },
   "participants": [
     {
@@ -228,9 +232,9 @@
   "weekly_standings": [],
   "season_standings": [],
   "locked_picks": {},
-  "public_picks_authorized": false,
+  "public_picks_authorized": true,
   "production": {
-    "package_status": "W7 9/9 PRIVATE PICKS COMPLETE · CAPTURE OPEN UNTIL 16:00 CDMX · WIP Figma only",
+    "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   }
 }

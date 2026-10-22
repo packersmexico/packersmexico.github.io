@@ -1,0 +1,37 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 7,
+  "season": 2026,
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
+  "publication_ready": false,
+  "gate": "PICKS_QA_PASS · DIRECTION_PANEL_DISTRIBUTION_PASS · AUTO_PUBLISH_NO",
+  "source": "FIRST_VALID_REDIS_9X14 · Jotform original IDs validated in authenticated session · issue #42",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_node_id": "3509:695557",
+  "qa": {
+    "picks_board": "PASS",
+    "picks_visual_review": "PASS",
+    "picks_screenshot_evidence": "Figma node 3509:695557 screenshot 1600x2000; 126/126 nodes, codes and positions compared to nine source submissions",
+    "export": "PASS · Git blob b18ae10b37741f16788ce627dbded09659ac3c8a · 1600x2000"
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w7-picks-board.png"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "126/126 Jotform FIRST_VALID question IDs 3-16 checked against week-07 contract; Figma node 3509:695557; PNG blob b18ae10b37741f16788ce627dbded09659ac3c8a",
+      "approved_by": "00 · Dirección · explicit publication request",
+      "approved_date": "2026-10-22",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w7-picks-board.png"
+    }
+  },
+  "rights": {
+    "authorization": "Direction authorizes public panel incorporation of W7 picks",
+    "limitation": "This authorization does not constitute a license from NFL or clubs. No automatic social publication.",
+    "auto_publish": false
+  }
+}
