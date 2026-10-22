@@ -4,7 +4,7 @@
   "week_number": 7,
   "form_id": "262923769438068",
   "form_url": "https://form.jotform.com/262923769438068",
-  "status": "OPEN",
+  "status": "CLOSED",
   "deadline": "2026-10-22T16:00:00-06:00",
   "deadline_label": "22 OCT · 16:00 CDMX",
   "operational_target": "JUEVES 22 OCT · CIERRE 16:00 CDMX",
@@ -13,8 +13,8 @@
   "default_green_bay_policy": "GB_PRESELECTED_NOT_EDITABLE",
   "default_green_bay_game_id": "G11",
   "default_green_bay_pick": "GB",
-  "capture_status": "OPEN · WEEK7 · 9_OF_9 · 126_OF_126 · WEBHOOK_SETUP_HOLD",
-  "form_status": "ENABLED",
+  "capture_status": "CLOSED · WEEK7 · 9_OF_9 · 126_OF_126 · DIRECTION_EARLY_CLOSE",
+  "form_status": "DISABLED",
   "complete": 9,
   "total": 9,
   "expected_picks": 126,
@@ -47,13 +47,18 @@
     "recently_verified_names": [],
     "notification_pending_names": [],
     "alert_scope": "WEBHOOK_FIRST_VALID_ONLY",
-    "evidence_date": "2026-10-22T14:20:43.972Z"
+    "evidence_date": "2026-10-22T14:20:43.972Z",
+    "locked_picks_immutable": true,
+    "evidence_form_id": "262923769438068",
+    "private_picks_count": 126
   },
-  "window": "OPEN",
+  "window": "CLOSED",
   "invitado": "OFF",
   "last_sync": "2026-10-22T14:20:43.972Z",
   "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-7",
   "form_create_record": "JOTFORM_FORM_2026_10_20",
   "capacity_note": "W6 is FINAL in data.json; W7 capture is OPEN in week-07.json until 22 Oct 16:00 CDMX",
-  "webhook_status": "MANUAL_INTEGRATION_REQUIRED_JOTFORM_API_HTTP_401"
+  "webhook_status": "MANUAL_INTEGRATION_REQUIRED_JOTFORM_API_HTTP_401",
+  "closure_basis": "DIRECTION_EXPLICIT_EARLY_CLOSE_2026-10-22",
+  "closed_at": "2026-10-22T19:54:49.883Z"
 }
