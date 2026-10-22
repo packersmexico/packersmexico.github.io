@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-22T14:20:43.972Z",
+  "updated_at": "2026-10-20T12:20:00Z",
   "items": [
+    {
+      "id": "W6_FINAL",
+      "status": "READY",
+      "title": "WEEK 6 FINAL",
+      "body": "14/14 partidos FINAL. Resultados y rankings definitivos están listos.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
     {
       "id": "W7_OPEN",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2147661",
       "secondary_label": "ABRIR W5 RESULTS"
-    },
-    {
-      "id": "W5_WEEKLY_RANKING_PRIVATE_REVIEW_20261013",
-      "status": "PRIVATE_REVIEW_READY",
-      "title": "WEEK 5 · RANKING SEMANAL",
-      "body": "Nueva imagen de ranking semanal 1080×1350 disponible para revisión privada en Figma. No habilitar descarga o publicación pública mientras persista el gate de derechos.",
-      "href": "./",
-      "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2139371",
-      "secondary_label": "ABRIR RANKING SEMANAL"
     }
   ]
 }
