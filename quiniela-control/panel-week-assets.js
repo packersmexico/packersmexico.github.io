@@ -56,7 +56,7 @@
       ' PARTIDOS FINAL · '+(record.capture?.window==='CLOSED'?'CAPTURA CERRADA':'CAPTURA EN CURSO');
     const thumb=$('pmx-picks-thumb');if(thumb){
       thumb.hidden=!readyPicks;thumb.style.display=readyPicks?'':'none';
-      if(readyPicks){thumb.href=ROOT+readyPicks;thumb.download='PMX_W'+week+'_PICKS.png';
+      if(readyPicks){thumb.href=ROOT+readyPicks;thumb.download='PMX_W'+week+'_PICKS.png';thumb.setAttribute('aria-label','Descargar imagen de picks Week '+week);
         const img=thumb.querySelector('img');if(img){img.src=ROOT+readyPicks;img.alt='Todos los picks Week '+week;}
         const label=thumb.querySelector('span');if(label)label.textContent='WEEK '+week+' · TODOS LOS PICKS';}
     }
@@ -78,7 +78,10 @@
       const r=await fetch(ROOT+'asset-index.json?t='+Date.now(),{cache:'no-store'});
       if(!r.ok)throw Error('ASSET_INDEX_UNAVAILABLE');
       const index=await r.json();
-      const selected=Number($('pmx-week-selector')?.value||index.last_completed_week||index.score_week||index.active_week||5);
+      const latestPicks=Object.entries(index.weeks||{}).filter(([w,r])=>
+        r.capture?.window==='CLOSED' && r.assets?.picks?.state==='READY' && validPublicHref(r.assets.picks.href,Number(w)))
+        .map(([w])=>Number(w)).sort((a,b)=>b-a)[0];
+      const selected=Number($('pmx-week-selector')?.value||latestPicks||index.last_completed_week||index.score_week||index.active_week||5);
       await draw(index,index.weeks?.[String(selected)]?selected:Number(index.active_week));
     }catch{
       const wrap=$('pmx-download-list');
