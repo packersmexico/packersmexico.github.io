@@ -13,24 +13,25 @@ export const CaptionLayer: React.FC<{cues?: CaptionCue[]}> = ({cues = []}) => {
     <div
       style={{
         position: 'absolute',
-        left: 88,
-        right: 88,
-        bottom: 388,
+        left: 92,
+        right: 92,
+        bottom: 210,
         textAlign: 'center',
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: 38,
-        lineHeight: 1.5,
+        fontSize: 34,
+        lineHeight: 1.28,
         fontWeight: 800,
         color: brand.cream,
-        textShadow: '0 3px 10px rgba(0,0,0,.8)',
+        textShadow: '0 3px 10px rgba(0,0,0,.82)',
+        zIndex: 20,
       }}
     >
       <span
         style={{
-          background: 'rgba(8,29,19,.9)',
+          background: 'rgba(8,29,19,.92)',
           boxDecorationBreak: 'clone',
           WebkitBoxDecorationBreak: 'clone',
-          padding: '12px 16px',
+          padding: '10px 14px',
         }}
       >
         {cue.text}
