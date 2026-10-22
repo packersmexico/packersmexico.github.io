@@ -1,0 +1,322 @@
+{
+  "version": "1.0",
+  "pmxId": "PMX-W5-DRPALMA-NFL-001",
+  "family": "DR_PALMA",
+  "mode": "WEEKLY_PREVIEW",
+  "aspect": "9:16",
+  "headline": "RECOMENDACIONES DEL DR. PALMA",
+  "subheadline": "WEEK 5 · JUEGOS + PICKS",
+  "durationSeconds": 165.4,
+  "sourceLabel": "DR PALMA · AUDIO ORIGINAL · FINAL V04 · MUSIC CC0 · FINAL V05",
+  "destinationLabel": "WEEK 5 · 2026",
+  "audioUrl": "static:drpalma-final.m4a",
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 18.055,
+      "type": "HOOK",
+      "kicker": "CUANDO PACKERS NO ESTÉ JUGANDO",
+      "title": "RECOMENDACIONES NFL",
+      "support": "DR. PALMA · WEEK 5",
+      "body": "JUEGOS Y PICKS DESTACADOS",
+      "insights": [
+        {
+          "label": "FORMATO",
+          "text": "Recomendaciones + picks"
+        },
+        {
+          "label": "VOZ",
+          "text": "Dr. Palma"
+        },
+        {
+          "label": "NOTA",
+          "text": "Cuotas y spreads cambian"
+        }
+      ],
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
+      "assetCredit": "Staff Sgt. Charles Casner · dominio público (EE.UU.) · archivo 2025"
+    },
+    {
+      "id": "S02",
+      "start": 18.055,
+      "end": 37.25,
+      "type": "MATCHUP",
+      "kicker": "JUEGO 1 · LONDRES",
+      "title": "PHI @ JAX",
+      "support": "DOM 11 OCT · 07:30 CDMX",
+      "body": "Dr. Palma ve ventaja para Jacksonville, aunque destaca la capacidad competitiva de Philadelphia.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "JAX favorito ~ -7.5 en el corte consultado"
+        },
+        {
+          "label": "TOTAL",
+          "text": "~41.5 puntos"
+        },
+        {
+          "label": "CONTEXTO",
+          "text": "London game"
+        }
+      ],
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jalen_Hurts_Training_Camp_2025.jpg",
+      "assetCredit": "Staff Sgt. Charles Casner · dominio público (EE.UU.) · archivo 2025"
+    },
+    {
+      "id": "S03",
+      "start": 37.25,
+      "end": 73.379,
+      "type": "MATCHUP",
+      "kicker": "JUEGO 2",
+      "title": "SF @ SEA",
+      "support": "DOM 11 OCT · 14:25 CDMX",
+      "body": "Duelo divisional de alto nivel. El Dr. Palma resalta el nivel de San Francisco y menciona a Brock Purdy.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "SEA favorito ~ -3 en el corte consultado"
+        },
+        {
+          "label": "TOTAL",
+          "text": "~45.5 puntos"
+        },
+        {
+          "label": "LECTURA",
+          "text": "Pronóstico atribuido al Dr. Palma"
+        }
+      ],
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/49ers_offense_vs_Bears_2024.jpg",
+      "assetCredit": "ZappaOMatic · Wikimedia Commons · CC0 1.0 · archivo 2024"
+    },
+    {
+      "id": "S04",
+      "start": 73.379,
+      "end": 105.44,
+      "type": "MATCHUP",
+      "kicker": "JUEGO 3 · MNF",
+      "title": "BUF @ LAR",
+      "support": "LUN 12 OCT · 18:15 CDMX",
+      "body": "Josh Allen y Matthew Stafford concentran el atractivo del cierre de Week 5.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "LAR favorito ~ -3 en el corte consultado"
+        },
+        {
+          "label": "TOTAL",
+          "text": "~54.5 puntos"
+        },
+        {
+          "label": "FOCO",
+          "text": "Duelo de quarterbacks"
+        }
+      ],
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Josh-Allen-TD-celly-2025.jpg",
+      "assetCredit": "WuTang94 · Wikimedia Commons · CC0 1.0 · archivo 2025"
+    },
+    {
+      "id": "S05",
+      "start": 105.44,
+      "end": 119.84,
+      "type": "ANALYSIS",
+      "kicker": "APUESTAS · PICK ORIGINAL",
+      "title": "DALLAS VS TAMPA BAY",
+      "support": "GRABADO ANTES DEL TNF",
+      "body": "El audio recomienda Dallas y proyecta una noche ofensiva fuerte de Dak Prescott. El número exacto inicial no se recupera con certeza del ASR.",
+      "insights": [
+        {
+          "label": "MERCADO PREVIO",
+          "text": "Dallas cerró aproximadamente -9.5"
+        },
+        {
+          "label": "RESULTADO",
+          "text": "TB 24–16 DAL · pick ya resuelto"
+        },
+        {
+          "label": "REGLA",
+          "text": "No presentar como apuesta vigente"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "start": 119.84,
+      "end": 137.41,
+      "type": "ANALYSIS",
+      "kicker": "APUESTAS · PICK 2",
+      "title": "CLEVELAND +2.5",
+      "support": "DR. PALMA · UNDERDOG",
+      "body": "Le gusta Cleveland como underdog y dice que podría estirarse hasta +3.5 o +4.5.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "CLE +2.5 en el corte consultado"
+        },
+        {
+          "label": "RIVAL",
+          "text": "@ New York Jets"
+        },
+        {
+          "label": "LECTURA",
+          "text": "Valor del spread según Dr. Palma"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "start": 137.41,
+      "end": 148.49,
+      "type": "ANALYSIS",
+      "kicker": "APUESTAS · PICK 3",
+      "title": "HOUSTON MONEYLINE",
+      "support": "HOU @ TEN",
+      "body": "El Dr. Palma cree que Houston debe ganar y prefiere el moneyline.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "HOU aprox. -425 ML / -7.5"
+        },
+        {
+          "label": "ADVERTENCIA",
+          "text": "«deberían ganar sí o sí» es opinión, no garantía"
+        },
+        {
+          "label": "FORMATO",
+          "text": "Pick atribuido"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "start": 148.49,
+      "end": 156,
+      "type": "ANALYSIS",
+      "kicker": "APUESTAS · PICK 4",
+      "title": "SAINTS + SPREAD",
+      "support": "MIN @ NO",
+      "body": "Recomienda New Orleans si conserva spread positivo.",
+      "insights": [
+        {
+          "label": "MERCADO",
+          "text": "NO +2.5 en el corte consultado"
+        },
+        {
+          "label": "CONDICIÓN",
+          "text": "Sólo si sigue positivo"
+        },
+        {
+          "label": "LÍNEAS",
+          "text": "Pueden moverse antes del kickoff"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "start": 156,
+      "end": 165.4,
+      "type": "OUTRO",
+      "kicker": "CIERRE · APUESTAS",
+      "title": "JUEGA CON RESPONSABILIDAD",
+      "support": "18+ · ENTRETENIMIENTO",
+      "body": "Los picks son opinión del colaborador y no garantizan resultados. Verifica siempre la línea vigente.",
+      "insights": [
+        {
+          "label": "NO GARANTÍA",
+          "text": "Un pick puede perder"
+        },
+        {
+          "label": "CUOTAS",
+          "text": "Cambian por operador y horario"
+        },
+        {
+          "label": "CONTROL",
+          "text": "No persigas pérdidas"
+        }
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 18.055,
+      "text": "Familia Packers MX, semana 5. Aquí van las recomendaciones del doctor Palma: tres partidos muy buenos."
+    },
+    {
+      "start": 18.055,
+      "end": 37.25,
+      "text": "Desde Londres, Jacksonville Jaguars recibe a Philadelphia Eagles. Yo creo que es un partido muy cargado hacia los Jaguars."
+    },
+    {
+      "start": 37.25,
+      "end": 45.984,
+      "text": "A las 2:25, Seattle Seahawks contra San Francisco 49ers."
+    },
+    {
+      "start": 45.984,
+      "end": 63.939,
+      "text": "San Francisco, hasta ahorita, es el equipo más completo de la liga y el que mejor juega al fútbol americano."
+    },
+    {
+      "start": 63.939,
+      "end": 73.379,
+      "text": "Brock Purdy no ha sido tocado. Espero un clásico; vaya que son un buen equipo."
+    },
+    {
+      "start": 73.379,
+      "end": 86.339,
+      "text": "Y finalmente, el lunes por la noche: Los Angeles Rams ante Buffalo Bills."
+    },
+    {
+      "start": 86.339,
+      "end": 96.099,
+      "text": "Probablemente un clásico de muchos puntos, con Josh Allen y Matthew Stafford."
+    },
+    {
+      "start": 96.099,
+      "end": 105.44,
+      "text": "Imperdible para cerrar la semana 5 de la temporada regular."
+    },
+    {
+      "start": 105.44,
+      "end": 109.2,
+      "text": "Cowboys: [línea inicial no inteligible con certeza]."
+    },
+    {
+      "start": 109.2,
+      "end": 112.72,
+      "text": "Tómenlo. Yo creo que van a destrozar a Tampa Bay el jueves por la noche."
+    },
+    {
+      "start": 113.68,
+      "end": 119.84,
+      "text": "En casa, Dak Prescott suele promediar más de 30 puntos por partido en horario estelar."
+    },
+    {
+      "start": 120.16,
+      "end": 129.725,
+      "text": "Cleveland Browns es uno de mis equipos favoritos en este momento y Las Vegas nos los está dando como underdog."
+    },
+    {
+      "start": 129.725,
+      "end": 137.41,
+      "text": "Tomarlo en +2.5, y tal vez estirarlo hasta +3.5 o +4.5, podría ser una buena apuesta."
+    },
+    {
+      "start": 137.41,
+      "end": 144.29,
+      "text": "Houston debería ganar; me gusta el valor que tiene el moneyline. Creo que al fin van a ganar, lo sugiero."
+    },
+    {
+      "start": 148.565,
+      "end": 155.939,
+      "text": "Y los Saints, si tienen spread positivo, recomiendo mucho ir con ellos."
+    },
+    {
+      "start": 156.979,
+      "end": 165.299,
+      "text": "Espero les sirvan para sus parlays, que sean exitosas las recomendaciones, y disfruten los partidos de esta semana."
+    }
+  ],
+  "musicUrl": "static:drpalma-bed.m4a"
+}

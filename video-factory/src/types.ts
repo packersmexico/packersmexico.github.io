@@ -47,6 +47,7 @@ export type VideoSpec = {
   destinationLabel?: string;
   durationSeconds: number;
   audioUrl?: string;
+  musicUrl?: string;
   assetUrl?: string;
   assetCredit?: string;
   captions?: CaptionCue[];
