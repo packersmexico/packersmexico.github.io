@@ -64,11 +64,13 @@ function renderFutureCapture(snapshot){
   if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
   renderParticipants(snapshot.participants||[]);
   renderRosterSummary(snapshot.participants||[]);
+  const roster=document.querySelector('.capture-roster-summary');
+  if(roster)roster.setAttribute('aria-label','Estado Week '+snapshot.week_number+' por participante');
   setText('w6-confirmed',complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
   setText('last-jotform-check','CORTE VERIFICADO · '+(c.submission_integrity?.evidence_date||'PENDIENTE'));
   const fold=$('capture-details');
   if(fold){fold.open=true;fold.dataset.initialized='1';}
-  setText('capture-rule',complete+'/'+total+' envíos completos verificados por Jotform · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. Primera respuesta/ID y picks aún pendientes de conciliación.');
+  setText('capture-rule',complete+'/'+total+' envíos completos verificados · '+(c.received_picks||0)+' de '+(c.expected_picks||0)+' selecciones respondidas. '+(c.submission_integrity?.status==='COMPLETE'?'Primeros registros válidos bloqueados.':'Conciliación FIRST_VALID pendiente.'));
   setText('sync-mode','CAPTURA SEMANAL · ESTADO EN VIVO');
 }
 // Read-only overlay from the existing push/backend Redis receipts. Never shows selections.
@@ -97,7 +99,7 @@ async function refreshLiveReceipts(snapshot,stamp){
     const p=$('progress-bar');if(p)p.style.width=(total?Math.round(100*complete/total):0)+'%';
     const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
     const waiting=(live.webhook_received_unreconciled||[]);
-    setText('capture-rule',complete+'/'+total+' participantes verificados · '+(complete*14)+' de '+(total*14)+' selecciones completas. Picks privados; primera respuesta válida se conserva en backend.');
+    setText('capture-rule',complete+'/'+total+' participantes verificados · '+(complete*14)+' de '+(total*14)+' selecciones completas. Primera respuesta válida conservada en backend; descargas sujetas al índice de assets.');
     return {
       status:live.backend_status||'CAPTURE_STATUS_UNKNOWN',
       pending:waiting.length,
@@ -182,7 +184,7 @@ async function load(manual=false){
          const snap=await snapshotResp.json();
          if(Number(snap.week_number)===captureWeek &&
             String(snap.capture?.form_id)===String(activeConfig.form_id) &&
-            snap.capture?.form_id && snap.capture?.window==='OPEN'){
+            snap.capture?.form_id && ['OPEN','CLOSED'].includes(snap.capture?.window)){
            futureCapture=snap;
          }
        }
