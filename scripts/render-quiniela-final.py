@@ -233,7 +233,7 @@ def main():
           'output_file':str(path),
           'renderer_template_node':node,
           'scoring_checksum':private['checksum']}
-    stage_path.write_text(json.dumps(stage,ensure_ascii=False,indent=2)+'\\n',encoding='utf8')
+    stage_path.write_text(json.dumps(stage,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print('PMX_MNF_PRIVATE_RENDER_BUNDLE_COMPLETE',json.dumps({
       'week':week,'final':len(games),'participant_count':9,'logos':count,
       'rankings':len(private['weekly']),'files':[p.name for _,p,_ in files],
