@@ -7,7 +7,14 @@ const capture=data.capture||{};
 const games=data.games||[];
 const submissions=capture.locked_submissions||{};
 const participants=(data.participants||[]).map(x=>x.name);
-const validNames=participants.filter(n=>Array.isArray(submissions[n]?.picks)&&submissions[n].picks.length===games.length);
+const names=new Set(capture.submission_integrity?.received_names||[]);
+const validPrivateReceipt=
+   names.size===participants.length && participants.every(n=>names.has(n)) &&
+   Number(capture.complete)===participants.length &&
+   Number(capture.received_picks)===participants.length*games.length &&
+   capture.submission_integrity?.status==='COMPLETE';
+const validNames=participants.filter(n=>(Array.isArray(submissions[n]?.picks)&&submissions[n].picks.length===games.length) ||
+  (validPrivateReceipt&&names.has(n)));
 const deadlineClosed=String(capture.window).toUpperCase()==='CLOSED';
 const finals=games.filter(g=>g.status==='FINAL'&&g.winner);
 const pushes=games.filter(g=>g.status==='TIE'&&g.winner==null);
