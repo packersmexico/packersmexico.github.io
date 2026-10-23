@@ -52,7 +52,7 @@ jobs:
           exit 1
 
   render-final:
-    needs: stage
+    needs: prepare
     runs-on: ubuntu-latest
     permissions:
       contents: write
