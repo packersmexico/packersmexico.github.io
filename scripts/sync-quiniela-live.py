@@ -117,11 +117,11 @@ def main():
 
     pending=[g for g in games if g.get('status') not in ('FINAL','TIE')]
     due=[g for g in pending if (t:=date_of(g.get('kickoff_iso'))) and
-         (NOW-dt.timedelta(minutes=10))<=t<=NOW and NOW-t<=dt.timedelta(days=14)]
+         t<=NOW+dt.timedelta(minutes=10) and NOW-t<=dt.timedelta(days=14)]
+    changed=[]
     if due:
         dates={date_of(g['kickoff_iso']).astimezone(ET).strftime('%Y%m%d') for g in due}
         observed=official_events(dates)
-        changed=[]
         for g in due:
             event=observed.get(g.get('matchup'))
             if not event:continue
@@ -154,7 +154,7 @@ def main():
     result={'final':decided,'total':len(games),'status':'FINAL' if finals else 'LIVE',
             'in_progress':sum(g.get('status')=='IN_PROGRESS' for g in games),
             'ties':pushes,'scored':scored,'pushes':pushes}
-    if snap.get('results')!=result or any(g!=o for g,o in zip(games,snap.get('games',[]))):
+    if snap.get('results')!=result or changed:
         snap['games']=games
         snap['results']=result
         snap['last_sync']=NOW.isoformat()
