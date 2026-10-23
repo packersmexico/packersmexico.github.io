@@ -23,7 +23,7 @@ function reject(res,status,error){return json(res,status,{ok:false,error});}
 export default async function handler(req,res){
  res.setHeader('Cache-Control','no-store,max-age=0');
  if(req.method!=='POST')return rejectMethod(req,res,['POST']);
- if(!safeEqual(req.headers.authorization,'Bearer '+(process.env.PMX_PUSH_SECRET||'')))return reject(res,401,'UNAUTHORIZED');
+ if(!process.env.PMX_PUSH_SECRET || !safeEqual(req.headers.authorization,'Bearer '+process.env.PMX_PUSH_SECRET))return reject(res,401,'UNAUTHORIZED');
  const week=Number(req.body?.week||req.query?.week);
  if(!Number.isInteger(week)||week<7||week>18)return reject(res,400,'INVALID_WEEK');
  try{
