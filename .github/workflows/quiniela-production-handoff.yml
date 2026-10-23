@@ -6,6 +6,7 @@ on:
       - 'quiniela-control/data.json'
       - 'scripts/prepare-quiniela-figma-handoff.mjs'
       - 'scripts/render-quiniela-final.py'
+      - '.github/workflows/quiniela-production-handoff.yml'
       - 'quiniela-control/templates/**'
   workflow_dispatch:
   schedule:
