@@ -167,16 +167,16 @@ def main():
     # Week 7 approved Figma family must be visually certified once before reuse.
     if week!=7:raise RuntimeError('NEW_WEEK_FIGMA_MASTER_FIT_QA_REQUIRED')
     games=data.get('games') or []
-    if len(games)!=14 or data.get('results',{}).get('status')!='FINAL' or
-       int(data['results'].get('final') or 0)!=len(games):
+    if (len(games)!=14 or data.get('results',{}).get('status')!='FINAL' or
+        int(data['results'].get('final') or 0)!=len(games)):
         print('PMX_RENDER_HOLD_WAITING_MNF_FINAL')
         return
     if data.get('capture',{}).get('window')!='CLOSED' or data['capture'].get('received_picks')!=126:
         raise RuntimeError('CAPTURE_INTEGRITY_REQUIRED')
     private=get_private_final(week)
-    if len(private['render'].get('roster',[]))!=9 or
-       set(private['render']['roster'])!=set(ROSTER) or
-       not all(len(private['render']['matrix'].get(n,[]))==14 for n in ROSTER):
+    if (len(private['render'].get('roster',[]))!=9 or
+        set(private['render']['roster'])!=set(ROSTER) or
+        not all(len(private['render']['matrix'].get(n,[]))==14 for n in ROSTER)):
         raise RuntimeError('PRIVATE_MATRIX_NOT_9_X_14')
     if private['checksum']!=data.get('scoring',{}).get('checksum'):
         raise RuntimeError('SCORING_HASH_MISMATCH')
@@ -186,8 +186,8 @@ def main():
         wrong=sum(v['result']=='WRONG' for v in cells)
         pushes=sum(v['result']=='PUSH' for v in cells)
         row=next(x for x in private['weekly'] if x['name']==name)
-        if correct!=row['correct'] or wrong!=row['wrong'] or
-           correct+wrong+pushes!=14:raise RuntimeError('INDIVIDUAL_FINAL_INTEGRITY_FAILED')
+        if (correct!=row['correct'] or wrong!=row['wrong'] or
+            correct+wrong+pushes!=14):raise RuntimeError('INDIVIDUAL_FINAL_INTEGRITY_FAILED')
         for i,v in enumerate(cells):
             matchups=games[i]['matchup'].split(' @ ')
             if v['team'] not in matchups:raise RuntimeError('TEAM_NOT_IN_MATCHUP')
