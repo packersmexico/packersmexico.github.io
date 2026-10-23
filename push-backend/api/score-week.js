@@ -74,7 +74,22 @@ export default async function handler(req,res){
   await redis(['SET',key,JSON.stringify(value)]);
   const back=JSON.parse(await redis(['GET',key])||'null');
   if(!back||back.checksum!==checksum||back.weekly.length!==contract.roster.length)throw Error('PRIVATE_SCORE_READBACK_FAILED');
-  return json(res,200,{ok:true,week,integrity:'COMPLETE',weekly:score.weekly,season:score.season,counts:score.counts,checksum,source:value.source,source_url:value.source_url,picks_visible:false});
+  const response={ok:true,week,integrity:'COMPLETE',weekly:score.weekly,season:score.season,
+    counts:score.counts,checksum,source:value.source,source_url:value.source_url,picks_visible:false};
+  // Only this authenticated POST may return the private render matrix, AFTER
+  // capture CLOSED and every NFL game FINAL. Never log or persist this matrix.
+  if(req.body?.render===true){
+    response.render={
+      roster:contract.roster,
+      games:games.map(g=>({id:g.id,matchup:g.matchup,score:g.score,winner:g.winner,status:g.status})),
+      matrix:Object.fromEntries(contract.roster.map(name=>[name,games.map(g=>{
+        const original=locks[name].picks[g.id];
+        const selected=overrides[name+':'+g.id]?.pick||original;
+        return {team:selected,result:g.status==='TIE'?'PUSH':selected===g.winner?'CORRECT':'WRONG'};
+      })]))
+    };
+  }
+  return json(res,200,response);
  }catch(e){
   console.error('PMX_SCORING_HOLD',JSON.stringify({week,reason:String(e?.message||'ERROR').slice(0,90)}));
   return reject(res,409,'SCORING_HOLD_'+String(e?.message||'UNKNOWN').slice(0,70));
