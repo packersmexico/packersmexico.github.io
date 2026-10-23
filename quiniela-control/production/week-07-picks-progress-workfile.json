@@ -11,24 +11,24 @@
     "qa_required": true,
     "raw_picks_private_until_capture_close": true
   },
-  "status": "BUILDING_NONPUBLIC_PICKS_WORKFILE",
+  "status": "CAPTURE_LOCKED_READY_FOR_PRIVATE_04_HANDOFF",
   "source": "quiniela-control/capture-config.json + weeks/week-07.json",
   "form_id": "262923769438068",
   "deadline": "2026-10-22T16:00:00-06:00",
   "progress": {
-    "validated": 0,
+    "validated": 9,
     "reported": 9,
     "total": 9,
     "expected_picks": 126,
-    "confirmed_picks": 0,
+    "confirmed_picks": 126,
     "jotform_submissions_unreconciled": "NOT_IN_CANONICAL_SOURCE",
-    "mismatch": true
+    "mismatch": false
   },
   "gb_default": {
-    "game_id": "G13",
+    "game_id": "G11",
     "pick": "GB",
-    "editable": true,
-    "not_forced": true
+    "editable": false,
+    "not_forced": false
   },
   "games": [
     {
@@ -105,54 +105,54 @@
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "ARI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "LALO",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "ALEX",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "JENNI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "RODRI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     }
   ],
   "visual_slots": {
     "picks": {
       "file": "w7-picks-board.png",
-      "state": "PRIVATE_PREVIEW_ONLY"
+      "state": "DATA_GATE_READY_NEEDS_PRIVATE_04_HANDOFF"
     }
   },
   "security": "DO_NOT_STORE_UNPUBLISHED_PICKS_IN_PUBLIC_WORKFILE"
