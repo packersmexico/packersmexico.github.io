@@ -5,7 +5,11 @@ on:
     paths:
       - 'quiniela-control/data.json'
       - 'scripts/prepare-quiniela-figma-handoff.mjs'
+      - 'scripts/render-quiniela-final.py'
+      - 'quiniela-control/templates/**'
   workflow_dispatch:
+  schedule:
+    - cron: '15,45 0-8 * * 2' # Monday night + Tuesday UTC safety retries
 permissions:
   contents: write
 concurrency:
@@ -45,4 +49,57 @@ jobs:
             sleep 4
           done
           echo "::error::Unable to persist Figma handoff after 4 optimistic retries"
+          exit 1
+
+  render-final:
+    needs: stage
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Render only when a whole NFL week is FINAL and source matches W07 Figma family
+        id: eligible
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          j=json.load(open('quiniela-control/data.json'))
+          w=j.get('week_number')
+          r=j.get('results') or {}
+          print('ready='+str(w==7 and r.get('status')=='FINAL' and r.get('final')==14 and
+                len(j.get('weekly_standings') or [])==9).lower())
+          PY
+      - name: Install image compositor
+        if: steps.eligible.outputs.ready == 'true'
+        run: python3 -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Render against frozen Figma masters with 126 private decisions
+        if: steps.eligible.outputs.ready == 'true'
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: python3 scripts/render-quiniela-final.py
+      - name: Persist 3 PNG outputs and QA lineage, preserving concurrent main commits
+        if: steps.eligible.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- quiniela-control/exports/w7-results-final.png quiniela-control/exports/w7-ranking-weekly.png quiniela-control/exports/w7-ranking-season.png quiniela-control/figma-week-07.json
+          if git diff --cached --quiet; then
+            echo 'W7 render bundle already verified and persisted'
+            exit 0
+          fi
+          git commit -m 'Quiniela: W7 post-MNF Figma-backed 3 PNGs + QA provenance'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo 'PMX_W7_3_ASSETS_PERSISTED'
+              exit 0
+            fi
+            sleep 4
+          done
+          echo '::error::W7 PNG bundle not persisted'
           exit 1

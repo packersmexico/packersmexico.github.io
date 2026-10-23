@@ -37,10 +37,15 @@ jobs:
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/subscribe-form.js
           node --check push-backend/api/notify.js
+          node --check push-backend/api/score-week.js
+          node --check push-backend/api/scoring-status.js
+          node --check push-backend/lib/weekly-rankings.js
           node --check push-backend/api/milestone-sync.js
           node --check scripts/refresh-quiniela-assets.mjs
           node --check scripts/prepare-quiniela-figma-handoff.mjs
           python3 -m py_compile scripts/sync-quiniela-live.py
+          python3 -m py_compile scripts/render-quiniela-final.py
+          python3 scripts/sync-quiniela-live.py --self-test
       - name: Enforce weekly data and image QA contract
         run: node scripts/qa-quiniela-contract.mjs
       - name: W5 PUSH 15-of-15 Figma data contract without private selections

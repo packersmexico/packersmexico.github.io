@@ -68,11 +68,17 @@ export function picksDraft(config,upcoming) {
   assert(week>=1 && week===integer(upcoming.week_number),'WEEK_MISMATCH');
   const roster=(upcoming.participants||[]).map(p=>p.name);
   const games=upcoming.games||[];
-  assert(roster.length===9&&games.length===14,'W6_ROSTER_OR_SLATE_INVALID');
+  assert(roster.length===9&&games.length>=1&&games.length<=18,'WEEK_ROSTER_OR_SLATE_INVALID');
   const locks=config.locked_submissions||{};
-  // Name-only status, NOT the user's picks. Early public export is prohibited.
+  const rec=config.submission_integrity||{};
+  const received=new Set(rec.received_names||[]);
+  const privateReceipt=rec.status==='9_OF_9_FIRST_VALID_VERIFIED_126_OF_126'||
+    (received.size===roster.length && roster.every(name=>received.has(name)) &&
+      Number(config.received_picks)===roster.length*games.length);
+  // The public file carries name-only receipts; it NEVER carries first-valid selections.
   const masked=roster.map(name=>({
-    name,status:Array.isArray(locks[name]?.picks)&&locks[name].picks.length===games.length?
+    name,status:((Array.isArray(locks[name]?.picks)&&locks[name].picks.length===games.length)||
+      (privateReceipt&&received.has(name)))?
       'FIRST_VALID_RECONCILED':'PENDING_CANONICAL_RECONCILIATION',
     visible_selection:'•••'
   }));
@@ -96,7 +102,7 @@ export function picksDraft(config,upcoming) {
       confirmed_picks:valid*games.length,
       jotform_submissions_unreconciled:'NOT_IN_CANONICAL_SOURCE',
       mismatch:valid!==reported},
-    gb_default:{game_id:'G13',pick:'GB',editable:true,not_forced:true},
+    gb_default:{game_id:(games.find(g=>String(g.matchup).split(' @ ').includes('GB'))||{}).id||null,pick:'GB',editable:false,not_forced:false},
     games:games.map(g=>({game_id:g.id,matchup:g.matchup,kickoff:g.time||null})),
     participants:masked,
     visual_slots:{
