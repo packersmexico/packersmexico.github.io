@@ -98,9 +98,9 @@
       "matchup": "NE @ CHI",
       "time": "JUE 22 OCT · 18:15 CDMX · TNF",
       "kickoff_iso": "2026-10-22T18:15:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "NE 0–10 CHI"
     },
     {
       "id": "G02",
@@ -223,8 +223,8 @@
   "results": {
     "final": 0,
     "total": 14,
-    "status": "SCHEDULED",
-    "in_progress": 0,
+    "status": "LIVE",
+    "in_progress": 1,
     "ties": 0,
     "scored": 0,
     "pushes": 0
@@ -236,5 +236,7 @@
   "production": {
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
-  }
+  },
+  "last_sync": "2026-10-23T00:49:59.649026+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
