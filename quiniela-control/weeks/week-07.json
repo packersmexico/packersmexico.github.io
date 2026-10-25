@@ -190,7 +190,7 @@
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
       "status": "IN_PROGRESS",
       "winner": null,
-      "score": "GB 7–7 DET"
+      "score": "GB 17–17 DET"
     },
     {
       "id": "G12",
@@ -199,7 +199,7 @@
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
       "status": "IN_PROGRESS",
       "winner": null,
-      "score": "LAR 7–3 LV"
+      "score": "LAR 28–18 LV"
     },
     {
       "id": "G13",
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-25T21:00:43.373231+00:00",
+  "last_sync": "2026-10-25T23:12:52.851409+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
