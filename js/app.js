@@ -154,6 +154,110 @@
     }
   }
 
+
+  function renderHubSeason(attribution) {
+    var season = window.PMX_SEASON_2026;
+    var list = document.getElementById("hub-season-list");
+    var controls = document.querySelector(".hub-season__filters");
+    var counter = document.getElementById("hub-season-count");
+    if (!list || !controls || !counter) return;
+    if (!season || !Array.isArray(season.games)) {
+      counter.textContent = "Consulta todos los partidos en el calendario completo.";
+      controls.hidden = true;
+      return;
+    }
+    var pieces = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "America/Mexico_City", year: "numeric", month: "2-digit", day: "2-digit"
+    }).formatToParts(new Date());
+    var dateParts = {};
+    pieces.forEach(function (item) { if (item.type !== "literal") dateParts[item.type] = item.value; });
+    var today = [dateParts.year, dateParts.month, dateParts.day].join("-");
+    var next = season.games.find(function (game) {
+      return game.site !== "BYE" && game.dateISO && game.dateISO >= today;
+    }) || season.games.find(function (game) { return game.site !== "BYE" && !game.dateISO; });
+    var filter = "ALL";
+
+    function addLabel(parent, textValue, className) {
+      if (!textValue) return;
+      var span = document.createElement("span");
+      if (className) span.className = className;
+      span.textContent = textValue;
+      parent.appendChild(span);
+    }
+    function eligible(game) {
+      if (filter === "ALL") return true;
+      if (filter === "NEXT") return !game.dateISO || game.dateISO >= today;
+      if (filter === "PRIME") return Boolean(game.prime);
+      return game.site === filter;
+    }
+    function updateList() {
+      list.replaceChildren();
+      var count = 0;
+      season.games.forEach(function (game) {
+        if (!eligible(game)) return;
+        count += 1;
+        var isBye = game.site === "BYE";
+        var isNext = next && game.week === next.week;
+        var row = document.createElement("article");
+        row.className = "hub-season__game" + (isNext ? " hub-season__game--next" : "") + (isBye ? " hub-season__game--bye" : "");
+        var w = document.createElement("p");
+        w.className = "hub-season__week";
+        w.textContent = "W" + String(game.week).padStart(2, "0");
+        var details = document.createElement("div");
+        details.className = "hub-season__details";
+        if (isNext) addLabel(details, "PRÓXIMO PARTIDO", "hub-season__up-next");
+        var name = document.createElement("h4");
+        name.className = "hub-season__opponent";
+        name.textContent = isBye ? "SEMANA DE DESCANSO" :
+          game.site === "HOME" ? "PACKERS vs. " + game.opponent : "PACKERS @ " + game.opponent;
+        details.appendChild(name);
+        var meta = document.createElement("p");
+        meta.className = "hub-season__meta";
+        addLabel(meta, game.dateLabel || "FECHA PENDIENTE");
+        if (!isBye) {
+          addLabel(meta, game.site === "HOME" ? "LOCAL" : "VISITA");
+          if (game.tv && game.tv !== "TBD") addLabel(meta, game.tv);
+        }
+        details.appendChild(meta);
+        var notes = [game.special, game.uniform, game.opponentUniform].filter(Boolean);
+        if (notes.length) {
+          var more = document.createElement("p");
+          more.className = "hub-season__special";
+          more.textContent = notes.join(" · ");
+          details.appendChild(more);
+        }
+        var time = document.createElement("div");
+        time.className = "hub-season__time";
+        var clock = document.createElement("strong");
+        clock.textContent = isBye ? "—" : (game.time || "POR DEFINIR");
+        time.appendChild(clock);
+        if (!isBye && game.time) addLabel(time, "CDMX", "hub-season__tz");
+        row.append(w, details, time);
+        list.appendChild(row);
+      });
+      counter.textContent = count === season.games.length
+        ? "MOSTRANDO LAS " + count + " SEMANAS"
+        : "MOSTRANDO " + count + " DE " + season.games.length + " SEMANAS";
+      controls.querySelectorAll("[data-season-filter]").forEach(function (button) {
+        button.setAttribute("aria-pressed", button.dataset.seasonFilter === filter ? "true" : "false");
+      });
+    }
+
+    controls.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-season-filter]");
+      if (!button || !controls.contains(button)) return;
+      var selected = button.dataset.seasonFilter;
+      if (!["ALL", "NEXT", "HOME", "AWAY", "PRIME"].includes(selected)) return;
+      filter = selected;
+      updateList();
+    });
+    updateList();
+    var full = configureInternalLink("calendar-full-link", "calendario/", attribution);
+    var agenda = configureLink("calendar-agenda-link", season.publicCalendarUrl, attribution);
+    attachTracking(full, "CLICK_CALENDAR", { destination_type: "calendar" });
+    attachTracking(agenda, "CLICK_CALENDAR", { destination_type: "calendar" });
+  }
+
   function renderSocialLinks(attribution) {
     var list = document.getElementById("social-links");
     var labels = {
@@ -273,20 +377,20 @@
     var registrationLink = configureLink("registration-link", config.registrationUrl, attribution);
     var mapsLink = configureLink("maps-link", config.mapsUrl, attribution, "URL de Maps pendiente de validación");
     var calendarLink = configureLink("calendar-link", config.calendarUrl, attribution, "URL de calendario pendiente de validación");
-    var calendarHeaderLink = configureLink("calendar-link-header", config.calendarUrl, attribution, "URL de calendario pendiente de validación");
+    var calendarHeaderLink = configureInternalLink("calendar-link-header", "#calendario", attribution);
     var gopackgoLink = configureLink("gopackgo-link", config.gopackgoUrl, attribution, "URL de GoPackGo MX pendiente de validación");
     var gopackgoHeaderLink = configureLink("gopackgo-link-header", config.gopackgoUrl, attribution, "URL de GoPackGo MX pendiente de validación");
 
     attachTracking(registrationLink, "CLICK_REGISTRO", { destination_type: "registration", cta_id: "confirma_tu_asistencia" });
     attachTracking(mapsLink, "CLICK_MAPS", { destination_type: "maps" });
     attachTracking(calendarLink, "CLICK_CALENDAR", { destination_type: "calendar" });
-    attachTracking(calendarHeaderLink, "CLICK_CALENDAR", { destination_type: "calendar" });
     attachTracking(gopackgoLink, "CLICK_GOPACKGO", { destination_type: "gopackgo" });
     attachTracking(gopackgoHeaderLink, "CLICK_GOPACKGO", { destination_type: "gopackgo" });
 
     renderPromo(attribution);
     renderSpecial();
     renderQuiniela(attribution);
+    renderHubSeason(attribution);
     renderSocialLinks(attribution);
 
     window.PMX_ANALYTICS.trackOnce("HUB_VIEW", {}, "hub-view");
