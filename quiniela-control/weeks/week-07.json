@@ -116,63 +116,63 @@
       "matchup": "SF @ ATL",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "SF 14–12 ATL"
+      "status": "FINAL",
+      "winner": "ATL",
+      "score": "ATL 29–20 SF"
     },
     {
       "id": "G04",
       "matchup": "CIN @ BAL",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "CIN 0–13 BAL"
+      "status": "FINAL",
+      "winner": "CIN",
+      "score": "CIN 35–13 BAL"
     },
     {
       "id": "G05",
       "matchup": "TB @ CAR",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "TB 33–6 CAR"
+      "status": "FINAL",
+      "winner": "TB",
+      "score": "TB 43–13 CAR"
     },
     {
       "id": "G06",
       "matchup": "NYG @ HOU",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "NYG 14–6 HOU"
+      "status": "FINAL",
+      "winner": "NYG",
+      "score": "NYG 27–21 HOU"
     },
     {
       "id": "G07",
       "matchup": "IND @ MIN",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "IND 10–6 MIN"
+      "status": "FINAL",
+      "winner": "MIN",
+      "score": "MIN 16–10 IND"
     },
     {
       "id": "G08",
       "matchup": "MIA @ NYJ",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "MIA 21–7 NYJ"
+      "status": "FINAL",
+      "winner": "MIA",
+      "score": "MIA 28–25 NYJ"
     },
     {
       "id": "G09",
       "matchup": "CLE @ TEN",
       "time": "DOM 25 OCT · 11:00 CDMX",
       "kickoff_iso": "2026-10-25T11:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "CLE 14–14 TEN"
+      "status": "FINAL",
+      "winner": "CLE",
+      "score": "CLE 27–24 TEN"
     },
     {
       "id": "G10",
@@ -188,18 +188,18 @@
       "matchup": "GB @ DET",
       "time": "DOM 25 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "GB 7–7 DET"
     },
     {
       "id": "G12",
       "matchup": "LAR @ LV",
       "time": "DOM 25 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "LAR 7–3 LV"
     },
     {
       "id": "G13",
@@ -221,12 +221,12 @@
     }
   ],
   "results": {
-    "final": 2,
+    "final": 9,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 7,
+    "in_progress": 2,
     "ties": 0,
-    "scored": 2,
+    "scored": 9,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-25T18:24:44.749580+00:00",
+  "last_sync": "2026-10-25T21:00:43.373231+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
