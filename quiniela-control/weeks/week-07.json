@@ -107,9 +107,9 @@
       "matchup": "PIT @ NO",
       "time": "DOM 25 OCT · 07:30 CDMX · FRANCIA",
       "kickoff_iso": "2026-10-25T07:30:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "PIT 13–10 NO"
     },
     {
       "id": "G03",
@@ -224,7 +224,7 @@
     "final": 1,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0,
     "scored": 1,
     "pushes": 0
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-23T03:38:49.990693+00:00",
+  "last_sync": "2026-10-25T15:14:38.578237+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
