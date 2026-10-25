@@ -39,10 +39,11 @@
       <div class="header-inner">
         <img class="brand-logo" src="assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg" alt="PACKERS MÉXICO">
 
-        <a class="mobile-menu-link" href="#resources">MENU</a>
+        <div class="mobile-quick-nav" aria-label="Accesos rápidos"><a class="mobile-menu-link" href="#calendario">PARTIDOS</a><a class="mobile-menu-link" href="#social">REDES</a></div>
 
         <nav class="desktop-nav" aria-label="Navegación principal">
           <a id="calendar-link-header" class="nav-link" href="#">CALENDARIO 2026</a>
+          <a class="nav-link" href="#social">REDES</a>
           <a id="gopackgo-link-header" class="nav-link" href="#">GOPACKGO MX</a>
         </nav>
       </div>
@@ -101,6 +102,46 @@
             <h2 id="special-title" class="module-title"></h2>
             <p id="special-description" class="module-copy"></p>
           </section>
+        </div>
+      </section>
+
+
+      <!-- Calendario integrado: mismos datos canónicos que /calendario/, sin duplicar fixtures. -->
+      <section id="calendario" class="hub-season" aria-labelledby="hub-season-title">
+        <div class="hub-season__heading">
+          <div>
+            <p class="module-kicker">TEMPORADA REGULAR · 2026</p>
+            <h2 id="hub-season-title" class="hub-season__title">CADA PARTIDO. TODA LA TEMPORADA.</h2>
+            <p class="hub-season__deck">18 semanas, 17 juegos y una fecha de descanso. Consulta horarios CDMX, rival, transmisión y partidos especiales.</p>
+          </div>
+          <a class="hub-season__social-jump" href="#social">SÍGUENOS EN LAS 5 REDES <span aria-hidden="true">↘</span></a>
+        </div>
+
+        <div class="hub-season__summary" aria-label="Resumen de temporada">
+          <span><strong>17</strong> JUEGOS</span>
+          <span><strong>9</strong> EN CASA</span>
+          <span><strong>8</strong> DE VISITA</span>
+          <span><strong>W11</strong> DESCANSO</span>
+        </div>
+
+        <div class="hub-season__toolbar">
+          <h3 class="hub-season__subheading">WEEK 01 <span aria-hidden="true">—</span> 18</h3>
+          <div class="hub-season__filters" role="group" aria-label="Filtrar partidos">
+            <button type="button" class="hub-season__filter" data-season-filter="ALL" aria-pressed="true">TODOS</button>
+            <button type="button" class="hub-season__filter" data-season-filter="NEXT" aria-pressed="false">PRÓXIMOS</button>
+            <button type="button" class="hub-season__filter" data-season-filter="HOME" aria-pressed="false">CASA</button>
+            <button type="button" class="hub-season__filter" data-season-filter="AWAY" aria-pressed="false">VISITA</button>
+            <button type="button" class="hub-season__filter" data-season-filter="PRIME" aria-pressed="false">PRIMETIME</button>
+          </div>
+        </div>
+        <p id="hub-season-count" class="hub-season__count" role="status" aria-live="polite">Cargando temporada…</p>
+        <div id="hub-season-list" class="hub-season__list" aria-label="Lista de partidos por semana"></div>
+        <div class="hub-season__foot">
+          <p class="hub-season__notice">Todos los horarios en CDMX. Fechas, transmisiones y horarios sujetos a cambios por la NFL; Week 18 sigue por confirmar.</p>
+          <div class="hub-season__links">
+            <a id="calendar-full-link" class="hub-season__link" href="calendario/">VER CALENDARIO COMPLETO <span aria-hidden="true">↗</span></a>
+            <a id="calendar-agenda-link" class="hub-season__link hub-season__link--secondary" href="#">AÑADIR A GOOGLE CALENDAR <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </section>
 
