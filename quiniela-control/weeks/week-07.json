@@ -179,9 +179,9 @@
       "matchup": "DEN @ AZ",
       "time": "DOM 25 OCT · 14:05 CDMX",
       "kickoff_iso": "2026-10-25T14:05:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DEN",
+      "score": "DEN 30–16 AZ"
     },
     {
       "id": "G11",
@@ -221,12 +221,12 @@
     }
   ],
   "results": {
-    "final": 12,
+    "final": 13,
     "total": 14,
     "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
-    "scored": 12,
+    "scored": 13,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-26T08:29:04.337416+00:00",
+  "last_sync": "2026-10-26T21:08:25.409301+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
