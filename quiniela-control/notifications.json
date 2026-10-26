@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-20T12:20:00Z",
+  "updated_at": null,
   "items": [
+    {
+      "id": "W8_OPEN",
+      "status": "READY",
+      "title": "WEEK 8 ABIERTA",
+      "body": "Week 8: 0/9 respuestas · cierre 29 OCT · 16:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W6_FINAL",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "./captura/",
       "secondary_label": "ABRIR FORMULARIO"
-    },
-    {
-      "id": "W5_RESULTS_PRIVATE_REVIEW_READY_20261013",
-      "status": "PRIVATE_REVIEW_READY",
-      "title": "RODRIGO · WEEK 5 RESULTS CORREGIDOS",
-      "body": "Resultados W5 corregidos sobre la matriz original: 135 selecciones, 82 aciertos, 44 errores y 9 PUSH. Revisar en Figma. PNG privado listo; derechos NFL 03.5 y publicación pública en HOLD.",
-      "href": "./",
-      "secondary_href": "https://www.figma.com/design/RAoegEENwTH2L7gb3yydIq/?node-id=3357-2147661",
-      "secondary_label": "ABRIR W5 RESULTS"
     }
   ]
 }
