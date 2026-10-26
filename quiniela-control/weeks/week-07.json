@@ -188,27 +188,27 @@
       "matchup": "GB @ DET",
       "time": "DOM 25 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "GB 17–17 DET"
+      "status": "FINAL",
+      "winner": "DET",
+      "score": "DET 20–17 GB"
     },
     {
       "id": "G12",
       "matchup": "LAR @ LV",
       "time": "DOM 25 OCT · 14:25 CDMX",
       "kickoff_iso": "2026-10-25T14:25:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "LAR 28–18 LV"
+      "status": "FINAL",
+      "winner": "LAR",
+      "score": "LAR 35–21 LV"
     },
     {
       "id": "G13",
       "matchup": "KC @ SEA",
       "time": "DOM 25 OCT · 18:20 CDMX · SNF",
       "kickoff_iso": "2026-10-25T18:20:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "KC 0–3 SEA"
     },
     {
       "id": "G14",
@@ -221,12 +221,12 @@
     }
   ],
   "results": {
-    "final": 9,
+    "final": 11,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 2,
+    "in_progress": 1,
     "ties": 0,
-    "scored": 9,
+    "scored": 11,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-25T23:12:52.851409+00:00",
+  "last_sync": "2026-10-26T01:08:45.405954+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
