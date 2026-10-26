@@ -206,9 +206,9 @@
       "matchup": "KC @ SEA",
       "time": "DOM 25 OCT · 18:20 CDMX · SNF",
       "kickoff_iso": "2026-10-25T18:20:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "KC 3–13 SEA"
+      "status": "FINAL",
+      "winner": "SEA",
+      "score": "SEA 20–3 KC"
     },
     {
       "id": "G14",
@@ -221,12 +221,12 @@
     }
   ],
   "results": {
-    "final": 11,
+    "final": 12,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 1,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 11,
+    "scored": 12,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-26T02:55:32.395906+00:00",
+  "last_sync": "2026-10-26T08:29:04.337416+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
