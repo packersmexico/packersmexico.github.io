@@ -27,8 +27,17 @@ function published(stage,slot) {
 }
 export function milestoneEvents({data={},captureConfig={},assetIndex={},stages={}}={}) {
   const events=[],dataWeek=whole(data.week_number),cfgWeek=whole(captureConfig.week_number);
-  // Capture may be ONE week ahead of data while the Monday-night game is pending.
-  if(cfgWeek>=dataWeek&&cfgWeek<=dataWeek+1&&upper(captureConfig.status)==='OPEN'
+  // Week 8 can open while W7 MNF remains pending, even when public score snapshot
+  // is W6. Require a closed, fully verified intermediate W7 capture.
+  const interim=assetIndex.weeks?.[dataWeek+1];
+  const gap2Verified=cfgWeek===dataWeek+2 &&
+    upper(interim?.capture?.window)==='CLOSED' &&
+    Number(interim?.capture?.total)===9 &&
+    Number(interim?.capture?.complete)===9 &&
+    Number(interim?.results?.final)<Number(interim?.results?.total);
+  const captureWindowAllowed=cfgWeek>=dataWeek&&
+    (cfgWeek<=dataWeek+1||gap2Verified);
+  if(captureWindowAllowed&&upper(captureConfig.status)==='OPEN'
     &&String(captureConfig.form_id||'').trim()
     &&String(captureConfig.form_url||'').startsWith('https://form.jotform.com/')) {
     const complete=Number(captureConfig.complete||0),total=Number(captureConfig.total||9);
@@ -41,7 +50,7 @@ export function milestoneEvents({data={},captureConfig={},assetIndex={},stages={
   }
   // Verified Jotform receipt cut: one operator alert per newly confirmed participant.
   // This is a catch-up notice from the approved snapshot, not proof of live webhook delivery.
-  if(cfgWeek>=dataWeek && cfgWeek<=dataWeek+1 && upper(captureConfig.status)==='OPEN'){
+  if(captureWindowAllowed && upper(captureConfig.status)==='OPEN'){
     const confirmed=new Set((captureConfig.submission_integrity?.received_names||[]).map(upper));
     const justAdded=new Set((captureConfig.submission_integrity?.recently_verified_names||[]).map(upper));
     const allowed=new Set(['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']);
