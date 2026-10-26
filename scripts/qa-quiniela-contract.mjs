@@ -13,7 +13,17 @@ const logo='PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
 // advances. Never wipe historical picks to activate the new form.
 const currentWeek=Number(data.week_number);
 const captureWeek=Number(config.week_number);
-const separateCaptureWeek=captureWeek===currentWeek+1 && ['OPEN','CLOSED'].includes(String(config.status).toUpperCase());
+const interim=captureWeek===currentWeek+2?
+  j(root+'/weeks/week-'+String(currentWeek+1).padStart(2,'0')+'.json'):null;
+const safeEarlyRollover=captureWeek===currentWeek+2&&
+  interim?.capture?.window==='CLOSED'&&
+  Number(interim.capture.complete)===Number(interim.capture.total)&&
+  Number(interim.capture.total)===9&&
+  Number(interim.results?.total)>0&&
+  Number(interim.results?.final)<Number(interim.results.total);
+const separateCaptureWeek=(captureWeek===currentWeek+1||safeEarlyRollover) &&
+  ['OPEN','CLOSED'].includes(String(config.status).toUpperCase());
+assert(captureWeek<=currentWeek+1||safeEarlyRollover,'Invalid early rollover: middle week must be fully captured and still scoring');
 assert.equal(Number(archive.week_number),currentWeek);
 if (separateCaptureWeek) {
   const upcoming=j(root+'/weeks/week-'+String(captureWeek).padStart(2,'0')+'.json');
