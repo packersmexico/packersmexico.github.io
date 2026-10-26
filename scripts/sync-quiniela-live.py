@@ -36,7 +36,7 @@ def date_of(iso):
     except (ValueError,TypeError,AttributeError):return None
 
 def norm(s):
-    return {'JAC':'JAX','WSH':'WAS','LA':'LAR'}.get(str(s or ''),str(s or ''))
+    return {'JAC':'JAX','WSH':'WAS','LA':'LAR','ARI':'AZ'}.get(str(s or '').upper(),str(s or '').upper())
 
 def next_week(data,config):
     current=int(data['week_number'])
@@ -202,6 +202,8 @@ if __name__=='__main__':
         d={'week_number':6}
         assert next_week(d,{'week_number':7,'status':'OPEN'})==6
         assert next_week(d,{'week_number':7,'status':'CLOSED'})==7
+        assert norm('ARI')=='AZ'
+        assert norm('JAC')=='JAX'
         assert not complete([{'status':'SCHEDULED','winner':None}])
         assert complete([{'status':'TIE','winner':None}])
         assert complete([{'status':'FINAL','winner':'GB','matchup':'GB @ DET'}])
