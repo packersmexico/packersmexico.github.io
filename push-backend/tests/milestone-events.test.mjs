@@ -73,6 +73,7 @@ test('W8 can open while W7 MNF is pending only if W7 is already 9/9 CLOSED',()=>
   assert.equal(valid.filter(x=>x.eventKey==='W8_OPEN').length,1);
   assert.match(valid.find(x=>x.eventKey==='W8_OPEN').url,/\/captura\/$/);
   assert(!events({data,captureConfig:cfg,assetIndex:{weeks:{}}}).includes('W8_OPEN'));
-  assert(!events({data,captureConfig:cfg,assetIndex:{weeks:{7:{capture:{complete:8,total:9,window:'OPEN'},results:{final:13,total:14}}}}}}).includes('W8_OPEN'));
+  const incomplete={weeks:{7:{capture:{complete:8,total:9,window:'OPEN'},results:{final:13,total:14}}}};
+  assert(!events({data,captureConfig:cfg,assetIndex:incomplete}).includes('W8_OPEN'));
   assert(!events({data,captureConfig:{...cfg,week_number:9},assetIndex:index}).includes('W9_OPEN'));
 });
