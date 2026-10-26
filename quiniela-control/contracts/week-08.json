@@ -1,0 +1,212 @@
+{
+  "week_number": 8,
+  "form_id": "262986491498075",
+  "timezone": "America/Mexico_City",
+  "deadline": "2026-10-29T16:00:00-06:00",
+  "roster": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
+  "packers_locked": true,
+  "packers_bye": false,
+  "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-8",
+  "source_schedule_verified": "2026-10-26",
+  "bye_teams": [
+    "HOU",
+    "NO",
+    "NYG",
+    "SF"
+  ],
+  "field_map_qa": "PENDING_JOTFORM_QUESTION_IDS_AUTHENTICATED_READBACK",
+  "games": [
+    {
+      "id": "G01",
+      "field": "q3_radio1",
+      "question": "3",
+      "visitor": [
+        "CAROLINA PANTHERS",
+        "CAR"
+      ],
+      "home": [
+        "GREEN BAY PACKERS",
+        "GB"
+      ]
+    },
+    {
+      "id": "G02",
+      "field": "q4_radio2",
+      "question": "4",
+      "visitor": [
+        "BALTIMORE RAVENS",
+        "BAL"
+      ],
+      "home": [
+        "BUFFALO BILLS",
+        "BUF"
+      ]
+    },
+    {
+      "id": "G03",
+      "field": "q5_radio3",
+      "question": "5",
+      "visitor": [
+        "TENNESSEE TITANS",
+        "TEN"
+      ],
+      "home": [
+        "CINCINNATI BENGALS",
+        "CIN"
+      ]
+    },
+    {
+      "id": "G04",
+      "field": "q6_radio4",
+      "question": "6",
+      "visitor": [
+        "ARIZONA CARDINALS",
+        "AZ"
+      ],
+      "home": [
+        "DALLAS COWBOYS",
+        "DAL"
+      ]
+    },
+    {
+      "id": "G05",
+      "field": "q7_radio5",
+      "question": "7",
+      "visitor": [
+        "MINNESOTA VIKINGS",
+        "MIN"
+      ],
+      "home": [
+        "DETROIT LIONS",
+        "DET"
+      ]
+    },
+    {
+      "id": "G06",
+      "field": "q8_radio6",
+      "question": "8",
+      "visitor": [
+        "INDIANAPOLIS COLTS",
+        "IND"
+      ],
+      "home": [
+        "JACKSONVILLE JAGUARS",
+        "JAX"
+      ]
+    },
+    {
+      "id": "G07",
+      "field": "q9_radio7",
+      "question": "9",
+      "visitor": [
+        "LAS VEGAS RAIDERS",
+        "LV"
+      ],
+      "home": [
+        "NEW YORK JETS",
+        "NYJ"
+      ]
+    },
+    {
+      "id": "G08",
+      "field": "q10_radio8",
+      "question": "10",
+      "visitor": [
+        "CLEVELAND BROWNS",
+        "CLE"
+      ],
+      "home": [
+        "PITTSBURGH STEELERS",
+        "PIT"
+      ]
+    },
+    {
+      "id": "G09",
+      "field": "q11_radio9",
+      "question": "11",
+      "visitor": [
+        "ATLANTA FALCONS",
+        "ATL"
+      ],
+      "home": [
+        "TAMPA BAY BUCCANEERS",
+        "TB"
+      ]
+    },
+    {
+      "id": "G10",
+      "field": "q12_radio10",
+      "question": "12",
+      "visitor": [
+        "LOS ANGELES CHARGERS",
+        "LAC"
+      ],
+      "home": [
+        "LOS ANGELES RAMS",
+        "LAR"
+      ]
+    },
+    {
+      "id": "G11",
+      "field": "q13_radio11",
+      "question": "13",
+      "visitor": [
+        "KANSAS CITY CHIEFS",
+        "KC"
+      ],
+      "home": [
+        "DENVER BRONCOS",
+        "DEN"
+      ]
+    },
+    {
+      "id": "G12",
+      "field": "q14_radio12",
+      "question": "14",
+      "visitor": [
+        "NEW ENGLAND PATRIOTS",
+        "NE"
+      ],
+      "home": [
+        "MIAMI DOLPHINS",
+        "MIA"
+      ]
+    },
+    {
+      "id": "G13",
+      "field": "q15_radio13",
+      "question": "15",
+      "visitor": [
+        "PHILADELPHIA EAGLES",
+        "PHI"
+      ],
+      "home": [
+        "WASHINGTON COMMANDERS",
+        "WAS"
+      ]
+    },
+    {
+      "id": "G14",
+      "field": "q16_radio14",
+      "question": "16",
+      "visitor": [
+        "CHICAGO BEARS",
+        "CHI"
+      ],
+      "home": [
+        "SEATTLE SEAHAWKS",
+        "SEA"
+      ]
+    }
+  ]
+}

@@ -18,7 +18,15 @@ if(!live||!Number.isInteger(Number(live.week_number)))throw Error('ACTIVE_DATA_I
 const current=Number(live.week_number);
 const currentCapture=read(`${root}/capture-config.json`)||{};
 const captureWeek=Number(currentCapture.week_number||current);
-if(!Number.isInteger(captureWeek)||captureWeek<current||captureWeek>current+1){
+const interim=captureWeek===current+2?read(`${root}/weeks/week-${String(current+1).padStart(2,'0')}.json`):null;
+const safeEarlyRollover=captureWeek===current+2 &&
+  interim?.capture?.window==='CLOSED' &&
+  Number(interim.capture.complete)===Number(interim.capture.total) &&
+  Number(interim.capture.total)===9 &&
+  Number(interim.results?.total)>0 &&
+  Number(interim.results?.final)<Number(interim.results.total);
+if(!Number.isInteger(captureWeek)||captureWeek<current||
+  (captureWeek>current+1&&!safeEarlyRollover)){
   throw Error('UNEXPECTED_CAPTURE_WEEK_ADVANCE');
 }
 const active=Math.max(current,captureWeek);
