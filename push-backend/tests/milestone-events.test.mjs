@@ -64,3 +64,15 @@ test('newly verified participant produces exactly one safe operator notice, no p
   assert(!specific[0].body.includes('picks:['));
   assert(!alerts.some(x=>x.eventKey==='W6_FORM_VERIFIED_LALO'));
 });
+
+test('W8 can open while W7 MNF is pending only if W7 is already 9/9 CLOSED',()=>{
+  const data={week_number:6,results:{final:14,total:14,status:'FINAL'},games:Array.from({length:14},()=>({status:'FINAL',winner:'GB'}))};
+  const cfg={week_number:8,status:'OPEN',form_id:'262986491498075',form_url:'https://form.jotform.com/262986491498075',complete:0,total:9,deadline_label:'29 OCT · 16:00 CDMX'};
+  const index={weeks:{7:{capture:{complete:9,total:9,window:'CLOSED'},results:{final:13,total:14}}}};
+  const valid=milestoneEvents({data,captureConfig:cfg,assetIndex:index});
+  assert.equal(valid.filter(x=>x.eventKey==='W8_OPEN').length,1);
+  assert.match(valid.find(x=>x.eventKey==='W8_OPEN').url,/\/captura\/$/);
+  assert(!events({data,captureConfig:cfg,assetIndex:{weeks:{}}}).includes('W8_OPEN'));
+  assert(!events({data,captureConfig:cfg,assetIndex:{weeks:{7:{capture:{complete:8,total:9,window:'OPEN'},results:{final:13,total:14}}}}}}).includes('W8_OPEN'));
+  assert(!events({data,captureConfig:{...cfg,week_number:9},assetIndex:index}).includes('W9_OPEN'));
+});
