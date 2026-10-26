@@ -208,7 +208,7 @@
       "kickoff_iso": "2026-10-25T18:20:00-06:00",
       "status": "IN_PROGRESS",
       "winner": null,
-      "score": "KC 0–3 SEA"
+      "score": "KC 3–13 SEA"
     },
     {
       "id": "G14",
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-26T01:08:45.405954+00:00",
+  "last_sync": "2026-10-26T02:55:32.395906+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
