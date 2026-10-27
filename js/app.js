@@ -259,7 +259,7 @@
   }
 
   function prepareWeekEightInvitation() {
-    // W08 has no game-specific registration; keep the existing general form trackable.
+    // W08 partner activation is pending; do not assert event registration rules without partner confirmation.
     if (config.gameId !== "PMX-WS-2026-W08") return;
     var registration = document.getElementById("registration-link");
     var directions = document.getElementById("maps-link");
@@ -278,7 +278,7 @@
 
     var note = document.createElement("p");
     note.className = "hero__registration-note";
-    note.textContent = "Jueves 29 de octubre: invitación para ver el partido juntos. No hay registro específico para esta jornada; el formulario es general de la comunidad.";
+    note.textContent = "Jueves 29 de octubre: los detalles de la convivencia en Wingstop Condesa están por confirmar. El formulario es general de la comunidad; no garantiza acceso, mesa ni asistencia a este evento.";
     actions.insertAdjacentElement("afterend", note);
   }
 
