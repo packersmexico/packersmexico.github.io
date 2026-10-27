@@ -179,7 +179,7 @@ def main():
 
     # The first run commits the new official finals to GitHub. The second run
     # scores against the independently persisted snapshot; never invent data.
-    if week==int(data['week_number']) and len(data.get('weekly_standings') or [])==9 and data.get('results',{}).get('final')==len(games):
+    if week==int(data['week_number']) and len(data.get('weekly_standings') or [])==9 and data.get('results',{}).get('final')==len(games) and data.get('scoring',{}).get('checksum')==snap.get('scoring',{}).get('checksum'):
         return
     scored_data=score_week(week)
     if not scored_data:return
@@ -196,7 +196,7 @@ def main():
     # Advance the existing scoreboard only with fully certified aggregates.
     current=dict(data)
     current.update({k:v for k,v in snap.items() if k not in
-        ('locked_picks','public_picks_authorized','production','status','snapshot_status','scoring')})
+        ('locked_picks','public_picks_authorized','production','status','snapshot_status')})
     current['week_number']=week
     current['week']='WEEK '+str(week)
     current['season_base_before_week']=previous['season_standings']
@@ -217,6 +217,7 @@ if __name__=='__main__':
         assert next_week(d,{'week_number':7,'status':'CLOSED'})==7
         assert norm('ARI')=='AZ'
         assert norm('JAC')=='JAX'
+        assert 'scoring' not in ('locked_picks','public_picks_authorized','production','status','snapshot_status')
         assert not complete([{'status':'SCHEDULED','winner':None}])
         assert complete([{'status':'TIE','winner':None}])
         assert complete([{'status':'FINAL','winner':'GB','matchup':'GB @ DET'}])
