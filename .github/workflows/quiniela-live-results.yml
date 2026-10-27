@@ -7,6 +7,7 @@ on:
     - cron: '*/15 12-23 * * 0'
     - cron: '*/15 0-8 * * 1'
     - cron: '*/15 0-8 * * 2'
+    - cron: '*/30 9-18 * * 2' # Tuesday UTC post-MNF final/scoring retry; safely no-op after FINAL
   push:
     branches: [main]
     paths:
