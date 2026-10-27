@@ -258,6 +258,30 @@
     attachTracking(agenda, "CLICK_CALENDAR", { destination_type: "calendar" });
   }
 
+  function prepareWeekEightInvitation() {
+    // W08 has no game-specific registration; keep the existing general form trackable.
+    if (config.gameId !== "PMX-WS-2026-W08") return;
+    var registration = document.getElementById("registration-link");
+    var directions = document.getElementById("maps-link");
+    var actions = document.querySelector(".hero__actions");
+    if (!registration || !directions || !actions) return;
+
+    directions.classList.remove("cta--secondary");
+    directions.classList.add("cta--primary");
+    registration.classList.remove("cta--primary");
+    registration.classList.add("cta--secondary");
+    var directionLabel = directions.querySelector("span");
+    var registrationLabel = registration.querySelector("span");
+    if (directionLabel) directionLabel.textContent = "CÓMO LLEGAR · WINGSTOP CONDESA";
+    if (registrationLabel) registrationLabel.textContent = "REGISTRO GENERAL · OPCIONAL";
+    actions.insertBefore(directions, registration);
+
+    var note = document.createElement("p");
+    note.className = "hero__registration-note";
+    note.textContent = "Jueves 29 de octubre: invitación para ver el partido juntos. No hay registro específico para esta jornada; el formulario es general de la comunidad.";
+    actions.insertAdjacentElement("afterend", note);
+  }
+
   function renderSocialLinks(attribution) {
     var list = document.getElementById("social-links");
     var labels = {
@@ -383,6 +407,7 @@
 
     attachTracking(registrationLink, "CLICK_REGISTRO", { destination_type: "registration", cta_id: "confirma_tu_asistencia" });
     attachTracking(mapsLink, "CLICK_MAPS", { destination_type: "maps" });
+    prepareWeekEightInvitation();
     attachTracking(calendarLink, "CLICK_CALENDAR", { destination_type: "calendar" });
     attachTracking(gopackgoLink, "CLICK_GOPACKGO", { destination_type: "gopackgo" });
     attachTracking(gopackgoHeaderLink, "CLICK_GOPACKGO", { destination_type: "gopackgo" });
