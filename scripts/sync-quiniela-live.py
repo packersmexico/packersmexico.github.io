@@ -197,6 +197,10 @@ def main():
     current=dict(data)
     current.update({k:v for k,v in snap.items() if k not in
         ('locked_picks','public_picks_authorized','production','status','snapshot_status','scoring')})
+    # Public aggregate contains only an integrity digest, never individual picks.
+    # Preserve the independent Redis scoring fingerprint for private PNG renderer QA.
+    current['scoring']={'status':'COMPLETE','checksum':scored_data['checksum'],
+        'source':'REDIS_FIRST_VALID_BACKEND','original_picks_preserved':True,'picks_visible':False}
     current['week_number']=week
     current['week']='WEEK '+str(week)
     current['season_base_before_week']=previous['season_standings']
