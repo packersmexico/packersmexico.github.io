@@ -454,5 +454,12 @@
   },
   "public_picks": [],
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-7",
-  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD",
+  "scoring": {
+    "status": "COMPLETE",
+    "checksum": "b8343ccc1091768567edd4096c582578b703b1dc63fa0600f998f77e27c29bcd",
+    "source": "REDIS_FIRST_VALID_BACKEND",
+    "original_picks_preserved": true,
+    "picks_visible": false
+  }
 }
