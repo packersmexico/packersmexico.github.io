@@ -136,7 +136,8 @@ def results_image(data,private,logos):
     return base,cells
 
 def dense_rank(rows,i):
-    return 1+len(set(r['correct'] for r in rows[:i]))
+    # Equal totals share the same rank. Count only distinct HIGHER scores.
+    return 1+len({r['correct'] for r in rows if r['correct']>rows[i]['correct']})
 
 def ranking_image(kind,data,private):
     img=official_template(kind)
