@@ -31,7 +31,7 @@ FONT_URL='https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/Mon
 FONT_FILE=pathlib.Path('/tmp/pmx-montserrat-variable.ttf')
 SCORER='https://packersmexicogithubio-push-backend.vercel.app/api/score-week'
 ROSTER=['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']
-ALIASES={'WAS':'wsh','JAX':'jax','SF':'sf','GB':'gb','KC':'kc','TB':'tb',
+ALIASES={'AZ':'ari','WAS':'wsh','JAX':'jax','SF':'sf','GB':'gb','KC':'kc','TB':'tb',
  'LV':'lv','NO':'no','NE':'ne','NYG':'nyg','NYJ':'nyj','LAR':'lar','LAC':'lac'}
 
 def official_template(kind):
@@ -72,7 +72,9 @@ def logo_file(code,cache):
     if code in cache:return cache[code]
     short=ALIASES.get(code,code.lower())
     url='https://a.espncdn.com/i/teamlogos/nfl/500/'+short+'.png'
-    raw=request(url)
+    try:raw=request(url)
+    except urllib.error.HTTPError as exc:
+        raise RuntimeError('TEAM_LOGO_PROVIDER_HTTP_'+code+'_'+short+'_'+str(exc.code)) from exc
     image=Image.open(io.BytesIO(raw)).convert('RGBA')
     if image.width<50 or image.height<50:raise RuntimeError('TEAM_LOGO_TOO_SMALL_'+code)
     image.thumbnail((52,52),Image.Resampling.LANCZOS)
