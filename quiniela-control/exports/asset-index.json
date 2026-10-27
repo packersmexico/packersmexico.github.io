@@ -258,20 +258,20 @@
           "size": "1600x2000"
         },
         "results": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w7-results-final.png",
           "expected": "results-live.png",
           "size": "1600x2000"
         },
         "weekly": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w7-ranking-weekly.png",
           "expected": "ranking-weekly.png",
           "size": "1080x1350"
         },
         "season": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w7-ranking-season.png",
           "expected": "ranking-season.png",
           "size": "1080x1350"
         }
