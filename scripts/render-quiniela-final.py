@@ -32,7 +32,7 @@ FONT_FILE=pathlib.Path('/tmp/pmx-montserrat-variable.ttf')
 SCORER='https://packersmexicogithubio-push-backend.vercel.app/api/score-week'
 ROSTER=['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']
 ALIASES={'WAS':'wsh','JAX':'jax','SF':'sf','GB':'gb','KC':'kc','TB':'tb',
- 'LV':'lv','NO':'no','NE':'ne','NYG':'nyg','NYJ':'nyj','LAR':'lar','LAC':'lac'}
+ 'LV':'lv','NO':'no','NE':'ne','NYG':'nyg','NYJ':'nyj','LAR':'lar','LAC':'lac','AZ':'ari'}
 
 def official_template(kind):
     filename,expected=BASE[kind]
