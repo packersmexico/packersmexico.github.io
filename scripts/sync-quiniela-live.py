@@ -40,9 +40,21 @@ def norm(s):
 
 def next_week(data,config):
     current=int(data['week_number'])
-    capture=int(config.get('week_number') or current)
-    if capture>current and capture<=current+1 and str(config.get('status') or '').upper()=='CLOSED':
-        return capture
+    # An already OPEN W8 must never strand closed W7 while data.json still
+    # contains W6. Score the consecutive CLOSED week first, independent of
+    # which newer capture form is active. Do not read unpublished picks.
+    candidate=current+1
+    upcoming=ROOT/'weeks'/f'week-{candidate:02d}.json'
+    if upcoming.exists():
+        snap=read(upcoming)
+        capture=snap.get('capture') or {}
+        games=snap.get('games') or []
+        if (int(snap.get('week_number') or 0)==candidate and
+            str(capture.get('window') or capture.get('status') or '').upper()=='CLOSED' and
+            int(capture.get('complete') or 0)==int(capture.get('total') or 9) and
+            int(capture.get('received_picks') or 0)==int(capture.get('total') or 9)*len(games) and
+            bool(games)):
+            return candidate
     return current
 
 def complete(games):
@@ -200,7 +212,8 @@ def main():
 if __name__=='__main__':
     if '--self-test' in sys.argv:
         d={'week_number':6}
-        assert next_week(d,{'week_number':7,'status':'OPEN'})==6
+        assert next_week(d,{'week_number':8,'status':'OPEN'})==7, 'W8_OPEN_MUST_NOT_SKIP_CLOSED_W7'
+        assert next_week({'week_number':7},{'week_number':8,'status':'OPEN'})==7, 'OPEN_W8_NOT_ELIGIBLE'
         assert next_week(d,{'week_number':7,'status':'CLOSED'})==7
         assert norm('ARI')=='AZ'
         assert norm('JAC')=='JAX'
