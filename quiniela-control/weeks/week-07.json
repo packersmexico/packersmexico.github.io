@@ -229,14 +229,131 @@
     "scored": 14,
     "pushes": 0
   },
-  "weekly_standings": [],
-  "season_standings": [],
+  "weekly_standings": [
+    {
+      "name": "EL DOC",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 7,
+      "wrong": 7,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 6,
+      "wrong": 8,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 6,
+      "wrong": 8,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 5,
+      "wrong": 9,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 5,
+      "wrong": 9,
+      "status": "VALID"
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "IBRACHO",
+      "correct": 67,
+      "wrong": 39,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 67,
+      "wrong": 39,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 66,
+      "wrong": 40,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 66,
+      "wrong": 40,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 62,
+      "wrong": 44,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 61,
+      "wrong": 45,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 61,
+      "wrong": 45,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 60,
+      "wrong": 46,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 54,
+      "wrong": 52,
+      "status": "VALID"
+    }
+  ],
   "locked_picks": {},
   "public_picks_authorized": true,
   "production": {
-    "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
+    "package_status": "W7 FINAL · RANKINGS_VERIFIED_PRIVATE · FIGMA_QA_PENDING",
     "auto_publish": false
   },
-  "last_sync": "2026-10-27T14:20:44.789782+00:00",
-  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
+  "last_sync": "2026-10-27T17:24:22.690268+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD",
+  "scoring": {
+    "status": "COMPLETE",
+    "checksum": "b8343ccc1091768567edd4096c582578b703b1dc63fa0600f998f77e27c29bcd",
+    "source": "REDIS_FIRST_VALID_BACKEND",
+    "original_picks_preserved": true,
+    "picks_visible": false
+  }
 }
