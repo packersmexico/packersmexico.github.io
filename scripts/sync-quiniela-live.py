@@ -196,7 +196,7 @@ def main():
     # Advance the existing scoreboard only with fully certified aggregates.
     current=dict(data)
     current.update({k:v for k,v in snap.items() if k not in
-        ('locked_picks','public_picks_authorized','production','status','snapshot_status','scoring')})
+        ('locked_picks','public_picks_authorized','production','status','snapshot_status')})
     current['week_number']=week
     current['week']='WEEK '+str(week)
     current['season_base_before_week']=previous['season_standings']
