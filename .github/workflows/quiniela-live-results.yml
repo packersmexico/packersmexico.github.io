@@ -11,6 +11,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/sync-quiniela-live.py'
+      # A confirmed 14/14 snapshot must trigger authenticated scoring immediately.
+      - 'quiniela-control/weeks/week-*.json'
   workflow_dispatch:
 permissions:
   contents: write
