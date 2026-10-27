@@ -1,0 +1,278 @@
+{
+  "schema": "PMX_QUINIELA_04_RESULTS_WORKFILE_V1",
+  "week": 7,
+  "season": "2026",
+  "kind": "DATA_ONLY_FOR_EXISTING_FIGMA_MASTER",
+  "governance": {
+    "owner": "04",
+    "auto_publish": false,
+    "not_an_asset": true,
+    "figma_master_required": true,
+    "qa_required": true,
+    "no_downloadable_png_without_04_PASS": true
+  },
+  "status": "ALL_RESULTS_FINAL_READY_FOR_04",
+  "source": "quiniela-control/data.json",
+  "last_sync": "2026-10-27T17:24:22.690268+00:00",
+  "progress": {
+    "decided": 14,
+    "total": 14,
+    "scoreable": 14,
+    "pushes": 0,
+    "remaining": 0
+  },
+  "headline": "RESULTADOS · WEEK 7",
+  "games": [
+    {
+      "game_id": "G01",
+      "matchup": "NE @ CHI",
+      "kickoff": "JUE 22 OCT · 18:15 CDMX · TNF",
+      "state": "DECIDED",
+      "score": "CHI 30–24 NE",
+      "winner": "CHI",
+      "is_push": false,
+      "visual_label": "GANÓ CHI"
+    },
+    {
+      "game_id": "G02",
+      "matchup": "PIT @ NO",
+      "kickoff": "DOM 25 OCT · 07:30 CDMX · FRANCIA",
+      "state": "DECIDED",
+      "score": "PIT 16–10 NO",
+      "winner": "PIT",
+      "is_push": false,
+      "visual_label": "GANÓ PIT"
+    },
+    {
+      "game_id": "G03",
+      "matchup": "SF @ ATL",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "ATL 29–20 SF",
+      "winner": "ATL",
+      "is_push": false,
+      "visual_label": "GANÓ ATL"
+    },
+    {
+      "game_id": "G04",
+      "matchup": "CIN @ BAL",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "CIN 35–13 BAL",
+      "winner": "CIN",
+      "is_push": false,
+      "visual_label": "GANÓ CIN"
+    },
+    {
+      "game_id": "G05",
+      "matchup": "TB @ CAR",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "TB 43–13 CAR",
+      "winner": "TB",
+      "is_push": false,
+      "visual_label": "GANÓ TB"
+    },
+    {
+      "game_id": "G06",
+      "matchup": "NYG @ HOU",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "NYG 27–21 HOU",
+      "winner": "NYG",
+      "is_push": false,
+      "visual_label": "GANÓ NYG"
+    },
+    {
+      "game_id": "G07",
+      "matchup": "IND @ MIN",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "MIN 16–10 IND",
+      "winner": "MIN",
+      "is_push": false,
+      "visual_label": "GANÓ MIN"
+    },
+    {
+      "game_id": "G08",
+      "matchup": "MIA @ NYJ",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "MIA 28–25 NYJ",
+      "winner": "MIA",
+      "is_push": false,
+      "visual_label": "GANÓ MIA"
+    },
+    {
+      "game_id": "G09",
+      "matchup": "CLE @ TEN",
+      "kickoff": "DOM 25 OCT · 11:00 CDMX",
+      "state": "DECIDED",
+      "score": "CLE 27–24 TEN",
+      "winner": "CLE",
+      "is_push": false,
+      "visual_label": "GANÓ CLE"
+    },
+    {
+      "game_id": "G10",
+      "matchup": "DEN @ AZ",
+      "kickoff": "DOM 25 OCT · 14:05 CDMX",
+      "state": "DECIDED",
+      "score": "DEN 30–16 AZ",
+      "winner": "DEN",
+      "is_push": false,
+      "visual_label": "GANÓ DEN"
+    },
+    {
+      "game_id": "G11",
+      "matchup": "GB @ DET",
+      "kickoff": "DOM 25 OCT · 14:25 CDMX",
+      "state": "DECIDED",
+      "score": "DET 20–17 GB",
+      "winner": "DET",
+      "is_push": false,
+      "visual_label": "GANÓ DET"
+    },
+    {
+      "game_id": "G12",
+      "matchup": "LAR @ LV",
+      "kickoff": "DOM 25 OCT · 14:25 CDMX",
+      "state": "DECIDED",
+      "score": "LAR 35–21 LV",
+      "winner": "LAR",
+      "is_push": false,
+      "visual_label": "GANÓ LAR"
+    },
+    {
+      "game_id": "G13",
+      "matchup": "KC @ SEA",
+      "kickoff": "DOM 25 OCT · 18:20 CDMX · SNF",
+      "state": "DECIDED",
+      "score": "SEA 20–3 KC",
+      "winner": "SEA",
+      "is_push": false,
+      "visual_label": "GANÓ SEA"
+    },
+    {
+      "game_id": "G14",
+      "matchup": "DAL @ PHI",
+      "kickoff": "LUN 26 OCT · 18:15 CDMX · MNF",
+      "state": "DECIDED",
+      "score": "DAL 38–21 PHI",
+      "winner": "DAL",
+      "is_push": false,
+      "visual_label": "GANÓ DAL"
+    }
+  ],
+  "rankings": {
+    "state": "DATA_FINAL_NEEDS_VISUAL_QA",
+    "weekly": [
+      {
+        "name": "EL DOC",
+        "correct": 9,
+        "wrong": 5
+      },
+      {
+        "name": "RODRI",
+        "correct": 9,
+        "wrong": 5
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 8,
+        "wrong": 6
+      },
+      {
+        "name": "ALEX",
+        "correct": 7,
+        "wrong": 7
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 7,
+        "wrong": 7
+      },
+      {
+        "name": "JENNI",
+        "correct": 6,
+        "wrong": 8
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 6,
+        "wrong": 8
+      },
+      {
+        "name": "ARI",
+        "correct": 5,
+        "wrong": 9
+      },
+      {
+        "name": "LALO",
+        "correct": 5,
+        "wrong": 9
+      }
+    ],
+    "season": [
+      {
+        "name": "IBRACHO",
+        "correct": 67,
+        "wrong": 39
+      },
+      {
+        "name": "RODRI",
+        "correct": 67,
+        "wrong": 39
+      },
+      {
+        "name": "ALEX",
+        "correct": 66,
+        "wrong": 40
+      },
+      {
+        "name": "EL DOC",
+        "correct": 66,
+        "wrong": 40
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 62,
+        "wrong": 44
+      },
+      {
+        "name": "ARI",
+        "correct": 61,
+        "wrong": 45
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 61,
+        "wrong": 45
+      },
+      {
+        "name": "JENNI",
+        "correct": 60,
+        "wrong": 46
+      },
+      {
+        "name": "LALO",
+        "correct": 54,
+        "wrong": 52
+      }
+    ]
+  },
+  "visual_slots": {
+    "results": {
+      "file": "w7-results-live.png",
+      "state": "READY_FOR_04"
+    },
+    "weekly": {
+      "file": "w7-ranking-weekly.png",
+      "state": "READY_FOR_04"
+    },
+    "season": {
+      "file": "w7-ranking-season.png",
+      "state": "READY_FOR_04"
+    }
+  }
+}
