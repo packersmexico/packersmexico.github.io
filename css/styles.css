@@ -498,3 +498,6 @@ body.theme-rivalries .social-hub { border-top-color: rgba(223,162,25,.82); }
   .hub-season__opponent { font-size:32px; }
   .hub-season__title { font-size:89px; }
 }
+
+/* Week 8 only: event directions first, generic community signup subordinate. */
+.hero__registration-note { max-width:580px; margin:13px 0 0; color:var(--muted); font:500 12px/1.5 "Montserrat",sans-serif; }
