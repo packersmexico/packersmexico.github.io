@@ -215,18 +215,18 @@
       "matchup": "DAL @ PHI",
       "time": "LUN 26 OCT · 18:15 CDMX · MNF",
       "kickoff_iso": "2026-10-26T18:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DAL",
+      "score": "DAL 38–21 PHI"
     }
   ],
   "results": {
-    "final": 13,
+    "final": 14,
     "total": 14,
-    "status": "LIVE",
+    "status": "FINAL",
     "in_progress": 0,
     "ties": 0,
-    "scored": 13,
+    "scored": 14,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -237,6 +237,6 @@
     "package_status": "W7 PICKS FINAL · 126/126 VERIFIED · PANEL DOWNLOAD AUTHORIZED",
     "auto_publish": false
   },
-  "last_sync": "2026-10-26T21:08:25.409301+00:00",
+  "last_sync": "2026-10-27T14:20:44.789782+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
