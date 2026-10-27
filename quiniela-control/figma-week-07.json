@@ -12,10 +12,17 @@
     "picks_board": "PASS",
     "picks_visual_review": "PASS",
     "picks_screenshot_evidence": "Figma node 3509:695557 screenshot 1600x2000; 126/126 nodes, codes and positions compared to nine source submissions",
-    "export": "PASS · Git blob b18ae10b37741f16788ce627dbded09659ac3c8a · 1600x2000"
+    "export": "PASS · Git blob b18ae10b37741f16788ce627dbded09659ac3c8a · 1600x2000",
+    "results_visual_review": "PASS · frozen Figma frame 3510:728349 plus 126 private-validated logos/badges and nine final totals",
+    "weekly_visual_review": "PASS · frozen Figma frame 3510:733838 plus nine private-verified standings",
+    "season_visual_review": "PASS · frozen Figma frame 3510:737983 plus nine season cumulative totals",
+    "auto_renderer": "PASS · input all 14 official FINAL; 126 evaluated cells; three 1600x2000/1080x1350 PNGs; original Figma rasters hash-verified"
   },
   "output_targets": {
-    "picks": "quiniela-control/exports/w7-picks-board.png"
+    "picks": "quiniela-control/exports/w7-picks-board.png",
+    "results": "quiniela-control/exports/w7-results-final.png",
+    "weekly": "quiniela-control/exports/w7-ranking-weekly.png",
+    "season": "quiniela-control/exports/w7-ranking-season.png"
   },
   "asset_approvals": {
     "picks": {
@@ -27,6 +34,39 @@
       "approved_date": "2026-10-22",
       "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
       "output_file": "quiniela-control/exports/w7-picks-board.png"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Automated 04 conditional production from frozen Figma 3510:728349; 14/14 FINAL, 9 real private rankings; SHA256 5f998f3409281536e49365e083e2dbbbd8c5642aac3601a75a831a0620d298e5",
+      "approved_by": "00 · Direction recurring-production authorization · SYSTEM LAMBEAU",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w7-results-final.png",
+      "renderer_template_node": "3510:728349",
+      "scoring_checksum": "b8343ccc1091768567edd4096c582578b703b1dc63fa0600f998f77e27c29bcd"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Automated 04 conditional production from frozen Figma 3510:733838; 14/14 FINAL, 9 real private rankings; SHA256 353f531fe576ed2df46006076d90150995d75946aba2bc1aa2c37c41c9121aa1",
+      "approved_by": "00 · Direction recurring-production authorization · SYSTEM LAMBEAU",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w7-ranking-weekly.png",
+      "renderer_template_node": "3510:733838",
+      "scoring_checksum": "b8343ccc1091768567edd4096c582578b703b1dc63fa0600f998f77e27c29bcd"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Automated 04 conditional production from frozen Figma 3510:737983; 14/14 FINAL, 9 real private rankings; SHA256 0d86bba7ff145336501c877931eadde09b8073a9bff3e9abf4638183c870576e",
+      "approved_by": "00 · Direction recurring-production authorization · SYSTEM LAMBEAU",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w7-ranking-season.png",
+      "renderer_template_node": "3510:737983",
+      "scoring_checksum": "b8343ccc1091768567edd4096c582578b703b1dc63fa0600f998f77e27c29bcd"
     }
   },
   "rights": {
