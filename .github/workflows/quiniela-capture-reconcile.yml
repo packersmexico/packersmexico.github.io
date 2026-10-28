@@ -1,0 +1,25 @@
+name: Quiniela Private First-Valid Capture Reconciliation
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pmx-quiniela-private-capture-reconcile
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reconcile only the canonical OPEN Jotform against Redis first-valid
+        env:
+          PMX_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          test -n "${PMX_SECRET:-}" || { echo '::error::PMX_PUSH_SECRET unavailable'; exit 1; }
+          curl --fail-with-body --silent --show-error --max-time 75 --retry 2 \
+            -X POST "https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture" \
+            -H "Authorization: Bearer ${PMX_SECRET}" \
+            -H "Content-Type: application/json" \
+            --data '{}' | python3 -c 'import json,sys; d=json.load(sys.stdin); print(json.dumps({k:d.get(k) for k in ("ok","week","status","verified_count","added","valid_submissions","private_picks_count","question_map_verified")},ensure_ascii=False))'
