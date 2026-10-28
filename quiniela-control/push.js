@@ -289,8 +289,8 @@ async function initializePush(){
         'PRUEBA FALLIDA · '+e.slice(0,70),'off');
     }finally{testButton.disabled=false;}
   });
-  verifyBinding().catch(console.error);
   showLocalState();
+  verifyBinding().catch(console.error);
   if(Notification.permission==='denied')return;
 
   button.addEventListener('click',async()=>{
