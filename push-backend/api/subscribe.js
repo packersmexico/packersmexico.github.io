@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { diagnoseDevice, ackDevice } from '../lib/push-diagnostic.js';
 import { redis, keys } from '../lib/redis.js';
 import { applyCors, isAllowedOrigin, json, rejectMethod } from '../lib/http.js';
 
@@ -30,6 +31,11 @@ export default async function handler(req, res) {
     try { body = JSON.parse(body); }
     catch { return json(res, 400, { ok: false, error: 'INVALID_JSON_BODY' }); }
   }
+
+  // Reuse this existing function, avoiding extra Vercel Hobby function slots.
+  if(body?.action==='diagnostic_status'||body?.action==='diagnostic_test')
+    return diagnoseDevice(req,res,body);
+  if(body?.action==='ack')return ackDevice(req,res,body);
 
   const { registrationCode, subscription, deviceLabel = 'Dispositivo', operator = 'RODRIGO' } = body;
   const role = String(operator).trim().toUpperCase();
