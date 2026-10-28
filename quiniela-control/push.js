@@ -216,6 +216,7 @@ async function initializePush(){
   // recognizes this endpoint. After a WebPush 404/410 the backend deletes it.
   // Keep renewal accessible even when the browser previously said "active".
   const showLocalState=()=>{
+    if(testButton)testButton.disabled=!(Notification.permission==='granted'&&Boolean(subscription)&&isRegistered());
     if(label)label.textContent='ADMINISTRADOR: '+selectedRole();
     const ready=Notification.permission==='granted' && Boolean(subscription) && isRegistered();
     button.textContent=ready?'RENOVAR NOTIFICACIONES':'ACTIVAR NOTIFICACIONES';
@@ -295,6 +296,8 @@ async function initializePush(){
 
       if(payload.operator!==operator)throw new Error('OPERATOR_MISMATCH');
       localStorage.setItem(storageKey(),'1');
+      localStorage.setItem('pmxPushOperator',operator);
+      if(testButton)testButton.disabled=false;
       button.textContent='RENOVAR NOTIFICACIONES';
       button.disabled=false;
       pushStatus('SUSCRIPCIÓN RENOVADA PARA '+operator+' · ENVÍO DE PRUEBA PENDIENTE','on');
