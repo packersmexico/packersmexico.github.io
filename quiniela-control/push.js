@@ -232,10 +232,10 @@ async function initializePush(){
   async function diagnostic(action){
     const live=await currentSubscription(registration);
     if(!live)throw new Error('NO_LOCAL_PUSH_SUBSCRIPTION');
-    const response=await fetch(api+'/api/push-diagnostic',{
+    const response=await fetch(api+'/api/subscribe',{
       method:'POST',mode:'cors',cache:'no-store',
       headers:{'Content-Type':'text/plain;charset=UTF-8'},
-      body:JSON.stringify({action,operator:selectedRole(),subscription:serializeSubscription(live)})
+      body:JSON.stringify({action:action==='test'?'diagnostic_test':'diagnostic_status',operator:selectedRole(),subscription:serializeSubscription(live)})
     });
     const result=await response.json().catch(()=>({error:'INVALID_RESPONSE'}));
     if(!response.ok)throw new Error(result.error||'HTTP_'+response.status);
