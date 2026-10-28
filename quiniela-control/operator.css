@@ -174,3 +174,8 @@ h2{font-size:31px}
  .participant-name{font-size:12px}
  #push-status[data-state="on"]{max-width:55%;font-size:11px}
 }
+
+.pmx-latest-downloads{margin:8px 0 18px;padding:12px 0;border-top:2px solid #FFB612}
+.pmx-latest-downloads[hidden]{display:none!important}
+.pmx-latest-downloads-links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pmx-latest-downloads-links a{color:#FFB612;font-size:13px;font-weight:700;padding:8px 0}
