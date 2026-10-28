@@ -39,7 +39,7 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   const config=await configResponse.json();
   const week=Number(config.week_number),FORM=String(config.form_id||'');
   if(String(config.status).toUpperCase()!=='OPEN')return {ok:true,week,status:'CAPTURE_NOT_OPEN'};
-  if(!Number.isInteger(week)||week<8||week>18||!/^\\d{10,25}$/.test(FORM))throw Error('ACTIVE_FORM_INVALID');
+  if(!Number.isInteger(week)||week<8||week>18||!/^\d{10,25}$/.test(FORM))throw Error('ACTIVE_FORM_INVALID');
   const contractResponse=await fetch(ROOT+'contracts/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now(),{cache:'no-store'});
   if(!contractResponse.ok)throw Error('ACTIVE_WEEK_CONTRACT_UNAVAILABLE');
   const contract=assertWeekConfig(await contractResponse.json());
