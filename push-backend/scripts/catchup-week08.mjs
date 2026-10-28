@@ -30,9 +30,10 @@ async function fetchFormSubmissions(key){
  }
  return rows;
 }
-if(process.env.VERCEL_ENV!=='production')console.log('PMX_W8_CATCHUP_SKIP_NONPRODUCTION');
-else if(!process.env.PMX_JOTFORM_API_KEY)console.log('PMX_W8_CATCHUP_HOLD_API_KEY_UNAVAILABLE');
-else {
+export async function catchupWeek08(){
+if(process.env.VERCEL_ENV!=='production')return {ok:false,status:'SKIP_NONPRODUCTION'};
+if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
+{
  try {
   const contractResponse=await fetch(BASE,{cache:'no-store'});
   if(!contractResponse.ok)throw Error('W8_CONTRACT_UNAVAILABLE');
@@ -72,5 +73,8 @@ else {
     redis_first_valid:count,private_picks:totalPicks,new_first_valid:newValid,
     ignored_duplicates:duplicates,notifications_sent:0,picks_visible:false
   }));
- }catch(e){console.error('PMX_W8_CATCHUP_HOLD',String(e.message||'UNKNOWN').replace(/[0-9]{10,}/g,'[REDACTED]'));process.exitCode=1;}
+  return {ok:true,week:8,verified_count:count,valid_submissions:valid.length,added:newValid,private_picks_count:totalPicks};
+ }catch(e){console.error('PMX_W8_CATCHUP_HOLD',String(e.message||'UNKNOWN').replace(/[0-9]{10,}/g,'[REDACTED]'));throw e;}
 }
+}
+if(process.argv[1]?.endsWith('/catchup-week08.mjs')) await catchupWeek08();
