@@ -27,7 +27,6 @@ jobs:
           node --check push-backend/api/config.js
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/notify.js
-          node --check push-backend/api/push-diagnostic.js
           node --check push-backend/api/jotform-submission.js
           node --check push-backend/api/capture-status.js
           node --check push-backend/lib/jotform-capture.js
