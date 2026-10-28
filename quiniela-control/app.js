@@ -94,7 +94,7 @@ async function refreshLiveReceipts(snapshot,stamp){
     renderRosterSummary(participants);
     setText('capture-count',complete+'/'+total);
     setText('missing-count',Math.max(0,total-complete));
-    setText('w6-confirmed',complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
+    setText('w6-confirmed',live.backend_status==='STATIC_VERIFIED_ONLY' ? complete+'/'+total+' VERIFICADOS EN BACKEND · ENVÍOS JOTFORM PENDIENTES DE CONCILIAR' : complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
     setText('last-jotform-check','ÚLTIMA VERIFICACIÓN · '+fmtSync(live.checked_at)+(live.last_verified_at?' · ÚLTIMO ENVÍO VALIDADO '+fmtSync(live.last_verified_at):''));
     const p=$('progress-bar');if(p)p.style.width=(total?Math.round(100*complete/total):0)+'%';
     const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
@@ -198,7 +198,7 @@ async function load(manual=false){
    if(msg){
      if(futureCapture){
        const verified=futureCapture.capture?.submission_integrity?.evidence_date||'SIN FECHA';
-       const liveText=receiptCheck.status==='BACKEND_UNAVAILABLE'
+       const liveText=receiptCheck.status==='STATIC_VERIFIED_ONLY' ? 'JOTFORM NO CONCILIADO · NO INFERIR 0 ENVÍOS' : receiptCheck.status==='BACKEND_UNAVAILABLE'
          ? 'BACKEND SIN RESPUESTA · MOSTRANDO CORTE PUBLICADO'
          : 'BACKEND '+receiptCheck.status.replaceAll('_',' ');
        const pushText=receiptCheck.lastPush
