@@ -174,3 +174,13 @@ h2{font-size:31px}
  .participant-name{font-size:12px}
  #push-status[data-state="on"]{max-width:55%;font-size:11px}
 }
+
+/* El cierre semanal debe ser visible en móvil antes del formulario de la semana nueva. */
+.pmx-latest-downloads{border-top:2px solid var(--gold);border-bottom:1px solid var(--line);padding:15px 0 19px;margin:10px 0 20px}
+.pmx-latest-downloads[hidden]{display:none!important}
+.pmx-latest-downloads-title{font-family:"Bebas Neue",Impact,sans-serif;font-size:30px;line-height:1.05;color:var(--cream)}
+.pmx-latest-downloads-meta{margin:5px 0 13px;font-size:11px;font-weight:600;color:var(--gold)}
+.pmx-latest-downloads-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.pmx-latest-downloads-links a{color:var(--cream);border-bottom:1px solid var(--gold);font-size:12px;font-weight:800;line-height:1.3;min-height:48px;padding:9px 0;text-decoration:none;display:flex;align-items:center;overflow-wrap:anywhere}
+.pmx-latest-downloads-links a:focus-visible,.pmx-latest-downloads-links a:hover{color:var(--gold)}
+@media(min-width:760px){.pmx-latest-downloads-links{grid-template-columns:repeat(4,minmax(0,1fr))}.pmx-latest-downloads{margin-top:18px}}
