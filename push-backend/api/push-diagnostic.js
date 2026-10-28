@@ -42,8 +42,16 @@ export default async function handler(req,res){
       lastStatus={queuedAt:v.queuedAt,serviceWorkerShowCalled:!!ack,
         acknowledgedAt:ack||null};}catch{}
   }
+  const latest=await redis(['GET',PREFIX+'milestone-last:'+role]);
+  let lastMilestone=null;
+  if(latest){
+    try{const v=JSON.parse(latest);const ack=await redis(['GET',PREFIX+'ack:'+v.id]);
+      lastMilestone={eventKey:v.eventKey,queuedAt:v.queuedAt,
+        serviceWorkerShowCalled:!!ack,acknowledgedAt:ack||null};}catch{}
+  }
   if(action==='status')return json(res,200,{ok:true,operator:role,
-    registered:true,registeredAt:record.registeredAt||null,lastTest:lastStatus,
+    registered:true,registeredAt:record.registeredAt||null,
+    lastTest:lastStatus,lastMilestone,
     deliveryProof:'SERVICE_WORKER_SHOW_NOTIFICATION_PROMISE_NOT_OS_DISPLAY'});
   const pub=process.env.VAPID_PUBLIC_KEY,priv=process.env.VAPID_PRIVATE_KEY,subject=process.env.VAPID_SUBJECT;
   if(!pub||!priv||!subject)return json(res,503,{ok:false,error:'VAPID_NOT_CONFIGURED'});
