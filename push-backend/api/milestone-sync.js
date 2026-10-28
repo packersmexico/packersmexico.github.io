@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import webpush from 'web-push';
 import { redis, keys } from '../lib/redis.js';
 import { milestoneEvents } from '../lib/milestone-events.js';
@@ -59,7 +60,10 @@ async function sendEvent(role, record, event, vapid, assetIndex) {
   }
 
   webpush.setVapidDetails(vapid.subject, vapid.publicKey, vapid.privateKey);
+  const ackId = crypto.randomBytes(24).toString('hex');
+  await redis(['SET','pmx:quiniela:push:diagnostic:pending:'+ackId,role,'EX',600]);
   const payload = JSON.stringify({
+    ackId,ackUrl:'https://packersmexicogithubio-push-backend.vercel.app/api/push-ack',
     title: event.title,
     body: event.body,
     url: event.url,
@@ -83,6 +87,8 @@ async function sendEvent(role, record, event, vapid, assetIndex) {
   }
 
   const sentAt = new Date().toISOString();
+  await redis(['SET','pmx:quiniela:push:diagnostic:milestone-last:'+role,
+    JSON.stringify({id:ackId,eventKey:event.eventKey,queuedAt:sentAt}),'EX',1209600]);
   await redis(['SET', sentKey, sentAt]);
   return { eventKey: event.eventKey, status: 'SENT', sentAt };
 }
