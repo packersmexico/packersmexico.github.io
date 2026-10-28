@@ -26,7 +26,7 @@
   </style>
 
   <script src="app.js?v=20261022-week7-closed-picks" defer></script>
-  <script src="push.js?v=20261012-renew-expired" defer></script>
+  <script src="push.js?v=20261028-device-ack" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -92,6 +92,7 @@
         <label for="push-operator" class="production-rule">OPERADOR</label>
         <select id="push-operator" aria-label="Selecciona el operador de este dispositivo"><option value="RODRIGO">RODRIGO</option><option value="IBRA">IBRA</option></select>
         <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
+        <button class="action-link" id="push-test" type="button" disabled>PROBAR PUSH EN ESTE TELÉFONO</button>
       </div>
       </details>
       <details class="hub-fold"><summary>Historial de avisos</summary><div class="notification-list" id="notification-list" aria-live="polite"></div></details>
