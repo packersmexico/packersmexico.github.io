@@ -14,14 +14,14 @@ self.addEventListener('push', event => {
     // Acknowledge only after showNotification resolves; this does not claim that
     // Android showed a visible banner.
     if (typeof data.ackId === 'string' && /^[a-f0-9]{48}$/.test(data.ackId) &&
-        data.ackUrl === 'https://packersmexicogithubio-push-backend.vercel.app/api/push-ack') {
+        data.ackUrl === 'https://packersmexicogithubio-push-backend.vercel.app/api/subscribe') {
       try {
         await fetch(data.ackUrl, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-store',
           headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-          body: JSON.stringify({ ackId: data.ackId })
+          body: JSON.stringify({ action: 'ack', ackId: data.ackId })
         });
       } catch (_) { /* Leave test as unacknowledged; never fabricate delivery. */ }
     }
