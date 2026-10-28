@@ -228,7 +228,44 @@ async function initializePush(){
       Notification.permission==='denied'?'off':ready?'on':'idle'
     );
   };
-  roleControl.addEventListener('change',showLocalState);
+
+  async function diagnostic(action){
+    const live=await currentSubscription(registration);
+    if(!live)throw new Error('NO_LOCAL_PUSH_SUBSCRIPTION');
+    const response=await fetch(api+'/api/push-diagnostic',{
+      method:'POST',mode:'cors',cache:'no-store',
+      headers:{'Content-Type':'text/plain;charset=UTF-8'},
+      body:JSON.stringify({action,operator:selectedRole(),subscription:serializeSubscription(live)})
+    });
+    const result=await response.json().catch(()=>({error:'INVALID_RESPONSE'}));
+    if(!response.ok)throw new Error(result.error||'HTTP_'+response.status);
+    return result;
+  }
+  async function verifyBinding(){
+    if(Notification.permission!=='granted'||!subscription)return;
+    try{
+      const result=await diagnostic('status');
+      if(testButton)testButton.disabled=false;
+      pushStatus(result.lastTest?.serviceWorkerShowCalled?
+        'SERVICE WORKER CONFIRMÓ LA PRUEBA · REVISA ANDROID':
+        result.lastTest?'PUSH ACEPTADO · SIN ACUSE DEL TELÉFONO':
+          'DISPOSITIVO REGISTRADO EN EL SERVIDOR · LISTO PARA PRUEBA','on');
+    }catch(error){
+      if(testButton)testButton.disabled=true;
+      const message=String(error?.message||'UNKNOWN');
+      pushStatus(message==='THIS_DEVICE_IS_NOT_CURRENT_SUBSCRIBER'?
+        'ESTE TELÉFONO FUE SUSTITUIDO · RENOVAR':
+        message==='NO_ACTIVE_DEVICE_IN_BACKEND'?
+          'TELÉFONO NO REGISTRADO EN SERVIDOR · RENOVAR':
+          'REGISTRO SIN VALIDAR · '+message.slice(0,70),'off');
+    }
+  }
+  roleControl.addEventListener('change',()=>{
+    localStorage.setItem('pmxPushOperator',selectedRole());
+    showLocalState();
+    verifyBinding().catch(console.error);
+  });
+  verifyBinding().catch(console.error);
   showLocalState();
   if(Notification.permission==='denied')return;
 
