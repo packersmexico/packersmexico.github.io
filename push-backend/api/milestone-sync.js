@@ -63,7 +63,7 @@ async function sendEvent(role, record, event, vapid, assetIndex) {
   const ackId = crypto.randomBytes(24).toString('hex');
   await redis(['SET','pmx:quiniela:push:diagnostic:pending:'+ackId,role,'EX',600]);
   const payload = JSON.stringify({
-    ackId,ackUrl:'https://packersmexicogithubio-push-backend.vercel.app/api/push-ack',
+    ackId,ackUrl:'https://packersmexicogithubio-push-backend.vercel.app/api/subscribe',
     title: event.title,
     body: event.body,
     url: event.url,
