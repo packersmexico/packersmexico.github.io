@@ -166,9 +166,12 @@ function registerViaForm(api, registrationCode, subscription, operator){
 async function initializePush(){
   const button=push$('push-enable');
   const roleControl=push$('push-operator');
+  const testButton=push$('push-test');
   if(!button || !roleControl)return;
   roleControl.value=OPERATOR;
   const queryRole=new URLSearchParams(location.search).get('operador')?.toUpperCase();
+  const rememberedRole=localStorage.getItem('pmxPushOperator');
+  if(['IBRA','RODRIGO'].includes(rememberedRole))roleControl.value=rememberedRole;
   if(['IBRA','RODRIGO'].includes(queryRole))roleControl.value=queryRole;
   const selectedRole=()=>roleControl.value==='IBRA'?'IBRA':'RODRIGO';
   const storageKey=()=> 'pmxPushRegistered_'+selectedRole();
