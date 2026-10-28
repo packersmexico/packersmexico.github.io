@@ -37,8 +37,7 @@ jobs:
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/subscribe-form.js
           node --check push-backend/api/notify.js
-          node --check push-backend/api/push-diagnostic.js
-          node --check push-backend/api/push-ack.js
+          node --check push-backend/lib/push-diagnostic.js
           node --check quiniela-control/push-sw.js
           node --check push-backend/api/score-week.js
           node --check push-backend/api/reconcile-capture.js
