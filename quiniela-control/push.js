@@ -165,6 +165,7 @@ function registerViaForm(api, registrationCode, subscription, operator){
 
 async function initializePush(){
   const button=push$('push-enable');
+  const testButton=push$('push-test');
   const roleControl=push$('push-operator');
   if(!button || !roleControl)return;
   roleControl.value=OPERATOR;
@@ -226,6 +227,64 @@ async function initializePush(){
   };
   roleControl.addEventListener('change',showLocalState);
   showLocalState();
+  if(testButton){
+    testButton.hidden=false;
+    testButton.disabled=Notification.permission==='denied';
+    testButton.addEventListener('click',async()=>{
+      testButton.disabled=true;
+      let stage='DISPOSITIVO';
+      try{
+        if(Notification.permission!=='granted')throw new Error('NOTIFICATION_PERMISSION_NOT_GRANTED');
+        const activeSub=await registration.pushManager.getSubscription();
+        if(!activeSub)throw new Error('NO_BROWSER_SUBSCRIPTION');
+        const operator=selectedRole();
+        stage='CÓDIGO';
+        const code=window.prompt('Código de vinculación de '+operator+' para comprobar ESTE teléfono');
+        if(!code){pushStatus('PRUEBA CANCELADA','idle');return;}
+        stage='RED';
+        pushStatus('COMPROBANDO DISPOSITIVO REGISTRADO…','busy');
+        const response=await fetch(api+'/api/push-diagnostic',{
+          method:'POST',mode:'cors',
+          headers:{'Content-Type':'text/plain;charset=UTF-8'},
+          body:JSON.stringify({mode:'test',operator,registrationCode:code,endpoint:activeSub.endpoint})
+        });
+        const payload=await response.json().catch(()=>({}));
+        if(!response.ok)throw new Error(payload.error||('DIAGNOSTIC_HTTP_'+response.status));
+        if(!payload.ok||!payload.eventKey)throw new Error('DIAGNOSTIC_INVALID_RESPONSE');
+        pushStatus('PUSH ACEPTADO POR SERVIDOR · COMPROBANDO RECEPCIÓN EN ESTE TELÉFONO…','busy');
+        const expectedEvent=payload.eventKey;
+        setTimeout(async()=>{
+          try{
+            const cache=await caches.open('pmx-push-receipt-v1');
+            const receipt=await cache.match(new URL('./.pmx-push-receipt',location.href).href);
+            const data=receipt?await receipt.json():{};
+            if(data.eventKey===expectedEvent){
+              pushStatus('PUSH RECIBIDO POR EL NAVEGADOR · SI NO VES EL AVISO, REVISA LAS NOTIFICACIONES DE ANDROID','on');
+            }else{
+              pushStatus('SERVIDOR ACEPTÓ EL PUSH · RECEPCIÓN EN EL TELÉFONO SIN CONFIRMAR. REVISA CHROME/ANDROID','idle');
+            }
+          }catch(_){
+            pushStatus('SERVIDOR ACEPTÓ EL PUSH · REVISA SI APARECIÓ EN TU TELÉFONO','idle');
+          }
+        },6000);
+      }catch(error){
+        const c=String(error?.message||'UNKNOWN');
+        const message={
+          DIFFERENT_DEVICE_REGISTERED_RENEW:'OTRO DISPOSITIVO ESTÁ VINCULADO A ESTE OPERADOR · PULSA RENOVAR AQUÍ',
+          NOT_REGISTERED_RENEW:'EL SERVIDOR NO TIENE TU SUSCRIPCIÓN · PULSA ACTIVAR/RENOVAR',
+          SUBSCRIPTION_EXPIRED_RENEW:'SUSCRIPCIÓN CADUCADA · PULSA RENOVAR',
+          NO_BROWSER_SUBSCRIPTION:'ESTE NAVEGADOR NO TIENE SUSCRIPCIÓN · PULSA ACTIVAR',
+          NOTIFICATION_PERMISSION_NOT_GRANTED:'PERMITE NOTIFICACIONES EN CHROME Y ANDROID',
+          INVALID_REGISTRATION_CODE:'CÓDIGO DE VINCULACIÓN INCORRECTO',
+          TEST_COOLDOWN_60_SECONDS:'PRUEBA RECIENTE · INTENTA OTRA VEZ EN 60 SEGUNDOS',
+          PUSH_GATEWAY_REJECTED:'EL SERVIDOR PUSH RECHAZÓ EL ENVÍO · REVISAR EL BACKEND'
+        }[c];
+        pushStatus(message||('ERROR '+stage+' · '+c.slice(0,75)),'off');
+      }finally{
+        testButton.disabled=Notification.permission==='denied';
+      }
+    });
+  }
   if(Notification.permission==='denied')return;
 
   button.addEventListener('click',async()=>{
