@@ -262,15 +262,16 @@ async function initializePush(){
   }
   roleControl.addEventListener('change',()=>{
     localStorage.setItem('pmxPushOperator',selectedRole());
+    if(testButton)testButton.disabled=true;
     showLocalState();
     verifyBinding().catch(console.error);
-
+  });
   if(testButton)testButton.addEventListener('click',async()=>{
     testButton.disabled=true;
-    pushStatus('ENVIANDO PRUEBA DE PUSH A ESTE TELÉFONO…','busy');
+    pushStatus('ENVIANDO PRUEBA A ESTE TELÉFONO…','busy');
     try{
       await diagnostic('test');
-      pushStatus('SERVICIO PUSH ACEPTÓ EL AVISO · BUSCANDO ACUSE DEL TELÉFONO','busy');
+      pushStatus('EL SERVICIO PUSH ACEPTÓ EL AVISO · BUSCANDO ACUSE','busy');
       let confirmed=false;
       for(let i=0;i<5;i++){
         await new Promise(resolve=>setTimeout(resolve,2000));
@@ -278,19 +279,15 @@ async function initializePush(){
         if(check.lastTest?.serviceWorkerShowCalled){confirmed=true;break;}
       }
       pushStatus(confirmed?
-        'SERVICE WORKER CONFIRMÓ LA PRUEBA · REVISA AVISOS EN ANDROID':
+        'SERVICE WORKER CONFIRMÓ EL AVISO · REVISA NOTIFICACIONES ANDROID':
         'PUSH ACEPTADO · SIN ACUSE DEL TELÉFONO · ABRE EN CHROME Y REVISA PERMISOS',
         confirmed?'on':'off');
     }catch(error){
       const e=String(error?.message||'UNKNOWN');
-      pushStatus(e==='TEST_RATE_LIMIT_45_SECONDS'?
-        'PRUEBA RECIENTE · INTENTA NUEVAMENTE EN 45 SEGUNDOS':
-        e.includes('SUBSCRIPTION')||e.includes('DEVICE')?
-          'SUSCRIPCIÓN DE ESTE TELÉFONO INVÁLIDA · RENOVAR':
-          'PRUEBA FALLIDA · '+e.slice(0,80),'off');
+      pushStatus(e==='TEST_RATE_LIMIT_45_SECONDS'?'PRUEBA RECIENTE · INTENTA EN 45 SEGUNDOS':
+        e.includes('SUBSCRIPTION')||e.includes('DEVICE')?'DISPOSITIVO SIN VINCULACIÓN VÁLIDA · RENOVAR':
+        'PRUEBA FALLIDA · '+e.slice(0,70),'off');
     }finally{testButton.disabled=false;}
-  });
-
   });
   verifyBinding().catch(console.error);
   showLocalState();
