@@ -243,7 +243,7 @@ async function initializePush(){
         if(!code){pushStatus('PRUEBA CANCELADA','idle');return;}
         stage='RED';
         pushStatus('COMPROBANDO DISPOSITIVO REGISTRADO…','busy');
-        const response=await fetch(api+'/api/push-diagnostic',{
+        const response=await fetch(api+'/api/subscribe',{
           method:'POST',mode:'cors',
           headers:{'Content-Type':'text/plain;charset=UTF-8'},
           body:JSON.stringify({mode:'test',operator,registrationCode:code,endpoint:activeSub.endpoint})

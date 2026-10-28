@@ -17,6 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Keep Vercel Hobby within twelve serverless functions
+        shell: bash
+        run: |
+          count=$(find push-backend/api -maxdepth 1 -type f -name '*.js' | wc -l)
+          echo "PMX_VERCEL_SERVERLESS_FUNCTION_COUNT=$count"
+          if [ "$count" -gt 12 ]; then
+            echo "::error::Hobby Vercel supports at most 12 Serverless Functions; consolidate routes."
+            exit 1
+          fi
       - name: JavaScript syntax
         run: |
           node --check quiniela-control/app.js
@@ -27,7 +36,6 @@ jobs:
           node --check push-backend/api/config.js
           node --check push-backend/api/subscribe.js
           node --check push-backend/api/notify.js
-          node --check push-backend/api/push-diagnostic.js
           node --check push-backend/api/jotform-submission.js
           node --check push-backend/api/capture-status.js
           node --check push-backend/lib/jotform-capture.js
