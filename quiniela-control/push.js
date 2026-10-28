@@ -264,6 +264,33 @@ async function initializePush(){
     localStorage.setItem('pmxPushOperator',selectedRole());
     showLocalState();
     verifyBinding().catch(console.error);
+
+  if(testButton)testButton.addEventListener('click',async()=>{
+    testButton.disabled=true;
+    pushStatus('ENVIANDO PRUEBA DE PUSH A ESTE TELÉFONO…','busy');
+    try{
+      await diagnostic('test');
+      pushStatus('SERVICIO PUSH ACEPTÓ EL AVISO · BUSCANDO ACUSE DEL TELÉFONO','busy');
+      let confirmed=false;
+      for(let i=0;i<5;i++){
+        await new Promise(resolve=>setTimeout(resolve,2000));
+        const check=await diagnostic('status');
+        if(check.lastTest?.serviceWorkerShowCalled){confirmed=true;break;}
+      }
+      pushStatus(confirmed?
+        'SERVICE WORKER CONFIRMÓ LA PRUEBA · REVISA AVISOS EN ANDROID':
+        'PUSH ACEPTADO · SIN ACUSE DEL TELÉFONO · ABRE EN CHROME Y REVISA PERMISOS',
+        confirmed?'on':'off');
+    }catch(error){
+      const e=String(error?.message||'UNKNOWN');
+      pushStatus(e==='TEST_RATE_LIMIT_45_SECONDS'?
+        'PRUEBA RECIENTE · INTENTA NUEVAMENTE EN 45 SEGUNDOS':
+        e.includes('SUBSCRIPTION')||e.includes('DEVICE')?
+          'SUSCRIPCIÓN DE ESTE TELÉFONO INVÁLIDA · RENOVAR':
+          'PRUEBA FALLIDA · '+e.slice(0,80),'off');
+    }finally{testButton.disabled=false;}
+  });
+
   });
   verifyBinding().catch(console.error);
   showLocalState();
