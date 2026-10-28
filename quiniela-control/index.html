@@ -22,11 +22,11 @@
     #pmx-download-list .pmx-file-actions a[href*="/blob/main/quiniela-control/exports/"] {
       display:none !important;
     }
-  #pmx-picks-thumb[hidden]{display:none!important}
+  #pmx-picks-thumb[hidden],#push-test[hidden]{display:none!important}
   </style>
 
   <script src="app.js?v=20261022-week7-closed-picks" defer></script>
-  <script src="push.js?v=20261012-renew-expired" defer></script>
+  <script src="push.js?v=20261028-phone-diagnostic" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -92,7 +92,9 @@
         <label for="push-operator" class="production-rule">OPERADOR</label>
         <select id="push-operator" aria-label="Selecciona el operador de este dispositivo"><option value="RODRIGO">RODRIGO</option><option value="IBRA">IBRA</option></select>
         <button class="action-link push-enable" id="push-enable" type="button">ACTIVAR NOTIFICACIONES</button>
+        <button class="action-link push-enable" id="push-test" type="button" hidden>PROBAR PUSH EN ESTE TELÉFONO</button>
       </div>
+      <p class="production-rule">Una suscripción activa por operador. Si cambiaste de teléfono o navegador, pulsa RENOVAR aquí y después PROBAR PUSH. La prueba no reenvía avisos antiguos.</p>
       </details>
       <details class="hub-fold"><summary>Historial de avisos</summary><div class="notification-list" id="notification-list" aria-live="polite"></div></details>
     </section>
