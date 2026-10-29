@@ -15,9 +15,12 @@ function equalSecret(received, expected) {
 }
 
 function bearerAuthorized(req){
-  const expected=process.env.PMX_RECONCILE_SECRET || process.env.PMX_PUSH_SECRET || '';
+  // Canonical backfill supports the dedicated reconciliation credential and
+  // the pre-existing GH Actions operator credential without revealing either.
   const auth=String(req.headers.authorization||'');
-  return Boolean(expected && equalSecret(auth,`Bearer ${expected}`));
+  return [process.env.PMX_RECONCILE_SECRET,process.env.PMX_PUSH_SECRET]
+    .filter(secret=>typeof secret==='string'&&secret.length>0)
+    .some(secret=>equalSecret(auth,`Bearer ${secret}`));
 }
 
 async function readCanonical(file) {
