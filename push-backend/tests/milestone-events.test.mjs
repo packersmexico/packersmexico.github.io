@@ -50,6 +50,20 @@ test('when 9/9 locked, notify separately; no W5 captures replay',()=>{
   assert(events({data:before,captureConfig:cfg}).includes('W6_9OF9'));
   assert(!events({data:before,captureConfig:{...cfg,locked_submissions:{}}}).includes('W6_9OF9'));
 });
+test('W8 sends one 9/9 notification from sanitized backend receipt without public picks',()=>{
+  const roster=['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO'];
+  const cfg={week_number:8,status:'CLOSED',form_id:'262986491498075',
+    form_url:'https://form.jotform.com/262986491498075',
+    complete:9,total:9,unique_participants:9,received_picks:126,expected_picks:126,missing_picks:0,
+    locked_submissions:{},submission_integrity:{status:'COMPLETE',first_valid_only:true,
+    locked_picks_immutable:true,evidence_form_id:'262986491498075',received_names:roster}};
+  const d={week_number:7,results:{final:14,total:14,status:'FINAL'},
+    games:Array.from({length:14},()=>({status:'FINAL',winner:'GB'}))};
+  const list=milestoneEvents({data:d,captureConfig:cfg,assetIndex:{weeks:{}}});
+  assert.equal(list.filter(e=>e.eventKey==='W8_9OF9').length,1);
+  assert(!JSON.stringify(list).includes('submission_id'));
+  assert(!events({data:d,captureConfig:{...cfg,submission_integrity:{...cfg.submission_integrity,received_names:roster.slice(1)}}}).includes('W8_9OF9'));
+});
 test('no picks, submission identity or PII in broadcast milestone body',()=>{
   const out=milestoneEvents({data:before,captureConfig:defaultCfg});
   for(const item of out){assert(!item.body.includes('picks:['));assert(!item.body.includes('submissionID'));assert(item.url.startsWith('https://packersmexico.github.io/'));}
