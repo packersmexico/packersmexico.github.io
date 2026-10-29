@@ -1,14 +1,23 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-10-29T16:30:15.007Z",
   "items": [
     {
-      "id": "W8_OPEN",
+      "id": "W8_ASSET_READY_PICKS",
       "status": "READY",
-      "title": "WEEK 8 ABIERTA",
-      "body": "Week 7 cerrada 14/14. Week 8: 0/9 respuestas · cierre 29 OCT · 16:00 CDMX.",
+      "title": "WEEK 8 · TODOS LOS PICKS DISPONIBLES",
+      "body": "9/9 participantes y 126/126 selecciones FIRST_VALID verificadas. Captura cerrada; PNG de Week 8 disponible para descarga.",
+      "href": "./exports/w8-picks-board.png",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
+    {
+      "id": "W8_9OF9",
+      "status": "READY",
+      "title": "WEEK 8 · REGISTRO CERRADO 9/9",
+      "body": "Las nueve respuestas originales están certificadas y bloqueadas. El formulario ya no acepta envíos.",
       "href": "./",
-      "secondary_href": "./captura/",
-      "secondary_label": "ABRIR FORMULARIO"
+      "secondary_href": "./exports/w8-picks-board.png",
+      "secondary_label": "VER TODOS LOS PICKS"
     },
     {
       "id": "W6_FINAL",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "./exports/live.html",
       "secondary_label": "VER PIEZAS"
-    },
-    {
-      "id": "W6_OPEN",
-      "status": "READY",
-      "title": "WEEK 6 ABIERTA",
-      "body": "Week 5 cerrada 15/15. Week 6: 9/9 respuestas · cierre 15 OCT · 16:00 CDMX.",
-      "href": "./",
-      "secondary_href": "./captura/",
-      "secondary_label": "ABRIR FORMULARIO"
     }
   ]
 }
