@@ -213,7 +213,7 @@ if __name__=='__main__':
     if '--self-test' in sys.argv:
         d={'week_number':6}
         assert next_week(d,{'week_number':8,'status':'OPEN'})==7, 'W8_OPEN_MUST_NOT_SKIP_CLOSED_W7'
-        assert next_week({'week_number':7},{'week_number':8,'status':'OPEN'})==7, 'OPEN_W8_NOT_ELIGIBLE'
+        assert next_week({'week_number':7},{'week_number':8,'status':'OPEN'})==8, 'NOW_CLOSED_W8_MUST_BE_ELIGIBLE'
         assert next_week(d,{'week_number':7,'status':'CLOSED'})==7
         assert norm('ARI')=='AZ'
         assert norm('JAC')=='JAX'

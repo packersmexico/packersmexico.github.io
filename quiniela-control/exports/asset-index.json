@@ -280,9 +280,9 @@
     "8": {
       "week": 8,
       "capture": {
-        "complete": 0,
+        "complete": 9,
         "total": 9,
-        "window": "OPEN"
+        "window": "CLOSED"
       },
       "results": {
         "final": 0,
@@ -290,8 +290,8 @@
       },
       "assets": {
         "picks": {
-          "state": "WAITING_EVENT",
-          "href": null,
+          "state": "READY",
+          "href": "./w8-picks-board.png",
           "expected": "picks-board.png",
           "size": "1600x2000"
         },
