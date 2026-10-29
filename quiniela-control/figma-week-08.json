@@ -1,0 +1,37 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 8,
+  "season": 2026,
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
+  "publication_ready": false,
+  "gate": "PICKS_QA_PASS · DIRECTION_PANEL_DISTRIBUTION_PASS · AUTO_PUBLISH_NO",
+  "source": "REDIS_FIRST_VALID_9X14_VERIFIED_FORM_262986491498075 · Jotform 9 original submissions · 29 OCT 2026",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_node_id": "3848:218256",
+  "qa": {
+    "picks_board": "PASS",
+    "picks_visual_review": "PASS",
+    "picks_screenshot_evidence": "Figma screenshot of existing W08 3848:218256 inspected 1600x2000: 9 names, 14 correct matchups, 126 true 03.5 logo vectors, headers and footer readable; compared to nine source selections",
+    "export": "PASS · Git blob 6ab59e1fc588d80a6bf88c336f28971bee97e854 · PNG 1600x2000"
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w8-picks-board.png"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "126/126 choices from 9 first-valid Jotform original submissions reconciled in Redis; Figma W08 node 3848:218256; authentic vector assets from 03.5 32/32 pack; PNG Git blob 6ab59e1fc588d80a6bf88c336f28971bee97e854",
+      "approved_by": "00 · Dirección · explicit user closure and panel update order",
+      "approved_date": "2026-10-29",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w8-picks-board.png"
+    }
+  },
+  "rights": {
+    "authorization": "Direction requests W08 completed picks board on existing public panel",
+    "limitation": "No NFL or team marks license claimed. No automatic social publication.",
+    "auto_publish": false
+  }
+}
