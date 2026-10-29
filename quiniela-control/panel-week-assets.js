@@ -74,30 +74,11 @@
     const fold=$('pmx-mobile-files');if(fold)fold.hidden=!mobile.childElementCount;
   }
 
-  async function showLatest(index){
-    const nav=$('pmx-latest-downloads');if(!nav)return;
-    nav.hidden=true;nav.replaceChildren();
-    const w=Number(index.last_completed_week),rec=index.weeks?.[w];
-    if(!rec||rec.results.final!==rec.results.total)return;
-    const links=tag('div','pmx-latest-downloads-links');
-    for(const kind of ['picks','results','weekly','season']){
-      const a=rec.assets?.[kind],file=a?.state==='READY'?validPublicHref(a.href,w):null;
-      if(file&&await exists(file)){
-        const link=tag('a','',LABELS[kind]+' ↗');
-        link.href=ROOT+file;link.download='PMX_W'+w+'_'+kind.toUpperCase()+'.png';
-        links.append(link);
-      }
-    }
-    if(!links.childElementCount)return;
-    nav.append(tag('strong','pmx-latest-downloads-title','WEEK '+w+' · '+links.childElementCount+' PNG LISTOS'),links);
-    nav.hidden=false;
-  }
   async function refresh(){
     try{
       const r=await fetch(ROOT+'asset-index.json?t='+Date.now(),{cache:'no-store'});
       if(!r.ok)throw Error('ASSET_INDEX_UNAVAILABLE');
       const index=await r.json();
-      await showLatest(index);
       const latestPicks=Object.entries(index.weeks||{}).filter(([w,r])=>
         r.capture?.window==='CLOSED' && r.assets?.picks?.state==='READY' && validPublicHref(r.assets.picks.href,Number(w)))
         .map(([w])=>Number(w)).sort((a,b)=>b-a)[0];
