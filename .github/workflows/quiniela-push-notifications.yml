@@ -38,14 +38,14 @@ jobs:
           data_week=int(data.get("week_number") or 0)
           capture_week=int(capture_cfg.get("week_number") or 0)
           capture_open=str(capture_cfg.get("status") or "").upper()=="OPEN"
-          use_capture_open=bool(capture_open and capture_week>data_week)
+          use_capture_ahead=bool(capture_week>data_week and capture_week<=data_week+1)
 
-          if use_capture_open:
+          if use_capture_ahead:
               week=capture_week
               capture={
                 "complete":capture_cfg.get("complete",0),
                 "total":capture_cfg.get("total",9),
-                "window":"OPEN",
+                "window":capture_cfg.get("status") or "UNKNOWN",
                 "deadline_label":capture_cfg.get("deadline_label") or "—"
               }
               results={}
@@ -61,7 +61,7 @@ jobs:
           deadline=str(capture.get("deadline_label") or "—")
 
           event=None
-          if use_capture_open:
+          if use_capture_ahead and window=="OPEN":
               previous=pathlib.Path(f"quiniela-control/weeks/week-{week-1:02d}.json")
               prior_final=False
               prior_final_label=""
@@ -153,20 +153,69 @@ jobs:
           }
           existing=[x for x in notices.get("items",[]) if x.get("id")!=item["id"]]
           notices["items"]=[item]+existing[:4]
-          notices["updated_at"]=capture_cfg.get("last_sync") if use_capture_open else data.get("last_sync")
+          notices["updated_at"]=capture_cfg.get("last_sync") if use_capture_ahead else data.get("last_sync")
           notices_path.write_text(json.dumps(notices,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
-      - name: Update operator notification center
+      - name: Update operator notification center with optimistic concurrency retry
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add quiniela-control/notifications.json
-          if git diff --cached --quiet; then
-            echo "Notification center unchanged"
-          else
-            git commit -m "Quiniela: refresh operator notification center"
-            git push origin HEAD:main
-          fi
+          # Keep the event from the triggering snapshot, but always reconcile with
+          # the latest notification center before attempting to push to main.
+          # Do not force-push, discard unrelated commits, or duplicate event IDs.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 - <<'PY'
+          import json
+          from pathlib import Path
 
+          source=Path('.pmx-push-event.json')
+          event=json.loads(source.read_text(encoding='utf-8')) if source.exists() else {}
+          if not event or not event.get('eventKey'):
+              print('No event in triggering snapshot')
+              raise SystemExit(0)
+          path=Path('quiniela-control/notifications.json')
+          notices=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {'updated_at':None,'items':[]}
+          event_id=event['eventKey']
+          item={
+              'id':event_id, 'status':'READY',
+              'title':event['title'].replace('QUINIELA PMX · ',''),
+              'body':event['body'],'href':'./',
+              'secondary_href':'./captura/' if event_id.endswith('_OPEN') else './exports/live.html',
+              'secondary_label':'ABRIR FORMULARIO' if event_id.endswith('_OPEN') else 'VER PIEZAS'
+          }
+          current=list(notices.get('items') or [])
+          prior=next((i for i,x in enumerate(current) if x.get('id')==event_id),None)
+          if prior is None:
+              notices['items']=[item]+current[:4]
+          elif current[prior]!=item:
+              current[prior]=item
+              notices['items']=current[:5]
+          else:
+              print('Notification event already present; preserving existing ordering')
+              raise SystemExit(0)
+          cfg=json.loads(Path('quiniela-control/capture-config.json').read_text(encoding='utf-8'))
+          data=json.loads(Path('quiniela-control/data.json').read_text(encoding='utf-8'))
+          cfg_week=int(cfg.get('week_number') or 0)
+          data_week=int(data.get('week_number') or 0)
+          notices['updated_at']=(cfg.get('last_sync') if cfg_week>data_week else data.get('last_sync')) or notices.get('updated_at')
+          path.write_text(json.dumps(notices,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+            git add -- quiniela-control/notifications.json
+            if git diff --cached --quiet; then
+              echo "Notification center current"
+              exit 0
+            fi
+            git commit -m "Quiniela: refresh operator notification center"
+            if git push origin HEAD:main; then
+              echo "Operator notice persisted on attempt ${attempt}"
+              exit 0
+            fi
+            echo "::warning::main changed concurrently; reconciling against fresh head (attempt ${attempt})"
+            sleep 3
+          done
+          echo '::error::Operator notification not persisted after bounded concurrency retries'
+          exit 1
