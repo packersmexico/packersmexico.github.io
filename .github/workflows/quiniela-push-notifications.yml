@@ -37,15 +37,17 @@ jobs:
 
           data_week=int(data.get("week_number") or 0)
           capture_week=int(capture_cfg.get("week_number") or 0)
-          capture_open=str(capture_cfg.get("status") or "").upper()=="OPEN"
+          capture_state=str(capture_cfg.get("status") or "").upper()
+          capture_open=capture_state=="OPEN"
           use_capture_open=bool(capture_open and capture_week>data_week)
+          use_future_capture=bool(capture_week>data_week and capture_state in ("OPEN","CLOSED"))
 
-          if use_capture_open:
+          if use_future_capture:
               week=capture_week
               capture={
                 "complete":capture_cfg.get("complete",0),
                 "total":capture_cfg.get("total",9),
-                "window":"OPEN",
+                "window":capture_state,
                 "deadline_label":capture_cfg.get("deadline_label") or "—"
               }
               results={}
@@ -153,20 +155,44 @@ jobs:
           }
           existing=[x for x in notices.get("items",[]) if x.get("id")!=item["id"]]
           notices["items"]=[item]+existing[:4]
-          notices["updated_at"]=capture_cfg.get("last_sync") if use_capture_open else data.get("last_sync")
+          notices["updated_at"]=capture_cfg.get("last_sync") if use_future_capture else data.get("last_sync")
           notices_path.write_text(json.dumps(notices,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
-      - name: Update operator notification center
+      - name: Update operator notification center with optimistic retry
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add quiniela-control/notifications.json
-          if git diff --cached --quiet; then
-            echo "Notification center unchanged"
-          else
+          cp quiniela-control/notifications.json /tmp/pmx-operator-notification-candidate.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 - <<'PY'
+          import json,pathlib
+          target=pathlib.Path('quiniela-control/notifications.json')
+          candidate=json.loads(pathlib.Path('/tmp/pmx-operator-notification-candidate.json').read_text())
+          latest=json.loads(target.read_text()) if target.exists() else {'items':[]}
+          if candidate.get('items'):
+              item=candidate['items'][0]
+              current=[x for x in latest.get('items',[]) if x.get('id')!=item.get('id')]
+              latest['items']=[item]+current[:4]
+              latest['updated_at']=candidate.get('updated_at')
+              target.write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\\n')
+          PY
+            git add -- quiniela-control/notifications.json
+            if git diff --cached --quiet; then
+              echo "Notification center already current"
+              exit 0
+            fi
             git commit -m "Quiniela: refresh operator notification center"
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              echo "PMX_OPERATOR_NOTICE_PERSISTED"
+              exit 0
+            fi
+            echo "::warning::main advanced during notification write; retrying ($attempt)"
+            sleep 3
+          done
+          echo "::error::Operator notification center write failed after 4 retries"
+          exit 1
 
