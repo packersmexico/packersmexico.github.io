@@ -178,7 +178,7 @@ jobs:
               current=[x for x in latest.get('items',[]) if x.get('id')!=item.get('id')]
               latest['items']=[item]+current[:4]
               latest['updated_at']=candidate.get('updated_at')
-              target.write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\\n')
+              target.write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\n')
           PY
             git add -- quiniela-control/notifications.json
             if git diff --cached --quiet; then
