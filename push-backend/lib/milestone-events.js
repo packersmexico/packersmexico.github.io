@@ -68,9 +68,26 @@ export function milestoneEvents({data={},captureConfig={},assetIndex={},stages={
   // A locked 9/9 is a different milestone from the form opening.
   const capture=cfgWeek>=dataWeek ? captureConfig : (data.capture||{});
   const activeWeek=cfgWeek>=dataWeek ? cfgWeek : dataWeek;
+  // Public snapshots deliberately omit locked_submissions. Validate the
+  // canonical Redis FIRST_VALID receipt, not a non-existent public picks map.
+  const receipt=capture.submission_integrity||{};
+  const received=new Set((receipt.received_names||[]).map(upper));
+  const canonical=new Set(['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']);
+  const total=whole(capture.total);
+  const privateReceipt=receipt.status==='COMPLETE' &&
+    receipt.first_valid_only===true && receipt.locked_picks_immutable===true &&
+    String(receipt.evidence_form_id||'')===String(capture.form_id||'') &&
+    Boolean(capture.form_id) &&
+    received.size===total && total===canonical.size &&
+    [...canonical].every(name=>received.has(name)) &&
+    Number(receipt.private_picks_count)===Number(capture.received_picks) &&
+    Number(capture.received_picks)===Number(capture.expected_picks) &&
+    Number(capture.expected_picks)>0 &&
+    Number(capture.duplicate_count||0)===0;
+  const publicLockCount=Object.keys(capture.locked_submissions||{}).length;
   if(activeWeek>0&&upper(capture.status||capture.window)==='CLOSED'
-     &&whole(capture.complete)===whole(capture.total)
-     &&whole(capture.total)>0 && Object.keys(capture.locked_submissions||{}).length===whole(capture.total)) {
+     &&whole(capture.complete)===total && total>0 &&
+     (publicLockCount===total || privateReceipt)) {
     events.push({
       eventKey:'W'+activeWeek+'_9OF9',
       title:'PACKERS MÉXICO · W'+activeWeek+' · 9/9 REGISTROS',
