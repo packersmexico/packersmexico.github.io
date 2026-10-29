@@ -227,10 +227,11 @@
   "results": {
     "final": 0,
     "total": 14,
-    "status": "SCHEDULED",
+    "status": "LIVE",
+    "in_progress": 0,
+    "ties": 0,
     "scored": 0,
-    "pushes": 0,
-    "in_progress": 0
+    "pushes": 0
   },
   "weekly_standings": [],
   "season_standings": [],
@@ -243,5 +244,7 @@
     "NO",
     "NYG",
     "SF"
-  ]
+  ],
+  "last_sync": "2026-10-29T16:25:18.041826+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
