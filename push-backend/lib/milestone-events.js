@@ -68,9 +68,21 @@ export function milestoneEvents({data={},captureConfig={},assetIndex={},stages={
   // A locked 9/9 is a different milestone from the form opening.
   const capture=cfgWeek>=dataWeek ? captureConfig : (data.capture||{});
   const activeWeek=cfgWeek>=dataWeek ? cfgWeek : dataWeek;
+  // Public snapshots intentionally contain no raw first-valid picks. A validated
+  // backend receipt can authorize the 9/9 milestone without exposing choices.
+  const certified=capture.submission_integrity||{};
+  const n=whole(capture.total);
+  const privateCount=Object.keys(capture.locked_submissions||{}).length===n;
+  const names=Array.isArray(certified.received_names)?certified.received_names:[];
+  const receiptCount=certified.status==='COMPLETE' && certified.first_valid_only===true &&
+    certified.locked_picks_immutable===true &&
+    certified.evidence_form_id===capture.form_id && Boolean(capture.form_id) &&
+    names.length===n && new Set(names).size===n &&
+    Number(capture.unique_participants)===n &&
+    Number(capture.received_picks)===Number(capture.expected_picks) &&
+    Number(capture.expected_picks)>0 && Number(capture.missing_picks)===0;
   if(activeWeek>0&&upper(capture.status||capture.window)==='CLOSED'
-     &&whole(capture.complete)===whole(capture.total)
-     &&whole(capture.total)>0 && Object.keys(capture.locked_submissions||{}).length===whole(capture.total)) {
+     &&whole(capture.complete)===n && n>0 && (privateCount||receiptCount)) {
     events.push({
       eventKey:'W'+activeWeek+'_9OF9',
       title:'PACKERS MÉXICO · W'+activeWeek+' · 9/9 REGISTROS',
