@@ -3,10 +3,16 @@ import {catchupWeek08} from '../scripts/catchup-week08.mjs';
 import {json,rejectMethod} from '../lib/http.js';
 
 function authorized(req){
-  const secret=process.env.PMX_RECONCILE_SECRET||process.env.PMX_PUSH_SECRET||'';
+  // Accept either previously configured operator credential. The scheduled
+  // Github workflow uses PMX_PUSH_SECRET while production also has a dedicated
+  // PMX_RECONCILE_SECRET. Picking only the first one caused repeated HTTP 401.
   const incoming=Buffer.from(String(req.headers.authorization||''));
-  const expected=Buffer.from('Bearer '+secret);
-  return Boolean(secret&&incoming.length===expected.length&&crypto.timingSafeEqual(incoming,expected));
+  return [process.env.PMX_RECONCILE_SECRET,process.env.PMX_PUSH_SECRET]
+    .filter(secret=>typeof secret==='string'&&secret.length>0)
+    .some(secret=>{
+      const expected=Buffer.from('Bearer '+secret);
+      return incoming.length===expected.length&&crypto.timingSafeEqual(incoming,expected);
+    });
 }
 
 export default async function handler(req,res){
