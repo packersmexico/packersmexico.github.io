@@ -111,81 +111,81 @@
       "matchup": "BAL @ BUF",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "BAL 10–36 BUF"
     },
     {
       "id": "G03",
       "matchup": "TEN @ CIN",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "TEN 36–36 CIN"
     },
     {
       "id": "G04",
       "matchup": "AZ @ DAL",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "AZ 24–30 DAL"
     },
     {
       "id": "G05",
       "matchup": "MIN @ DET",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DET",
+      "score": "DET 19–15 MIN"
     },
     {
       "id": "G06",
       "matchup": "IND @ JAX",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "JAX",
+      "score": "JAX 42–7 IND"
     },
     {
       "id": "G07",
       "matchup": "LV @ NYJ",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "LV",
+      "score": "LV 38–33 NYJ"
     },
     {
       "id": "G08",
       "matchup": "CLE @ PIT",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "PIT",
+      "score": "PIT 27–6 CLE"
     },
     {
       "id": "G09",
       "matchup": "ATL @ TB",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "TB",
+      "score": "TB 16–0 ATL"
     },
     {
       "id": "G10",
       "matchup": "LAC @ LAR",
       "time": "DOM 01 NOV · 15:05 CDMX",
       "kickoff_iso": "2026-11-01T15:05:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "LAC 0–0 LAR"
     },
     {
       "id": "G11",
@@ -225,12 +225,12 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 6,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 4,
     "ties": 0,
-    "scored": 1,
+    "scored": 6,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -245,6 +245,6 @@
     "NYG",
     "SF"
   ],
-  "last_sync": "2026-10-30T04:40:16.289312+00:00",
+  "last_sync": "2026-11-01T21:17:38.400288+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
