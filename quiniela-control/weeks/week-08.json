@@ -210,9 +210,9 @@
       "matchup": "PHI @ WAS",
       "time": "DOM 01 NOV · 19:20 CDMX · SNF",
       "kickoff_iso": "2026-11-01T19:20:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "PHI 10–16 WAS"
     },
     {
       "id": "G14",
@@ -228,7 +228,7 @@
     "final": 12,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0,
     "scored": 12,
     "pushes": 0
@@ -245,6 +245,6 @@
     "NYG",
     "SF"
   ],
-  "last_sync": "2026-11-02T00:55:14.394292+00:00",
+  "last_sync": "2026-11-02T04:04:15.054945+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
