@@ -111,27 +111,27 @@
       "matchup": "BAL @ BUF",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "BAL 10–36 BUF"
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 36–10 BAL"
     },
     {
       "id": "G03",
       "matchup": "TEN @ CIN",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "TEN 36–36 CIN"
+      "status": "FINAL",
+      "winner": "CIN",
+      "score": "CIN 43–36 TEN"
     },
     {
       "id": "G04",
       "matchup": "AZ @ DAL",
       "time": "DOM 01 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-01T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "AZ 24–30 DAL"
+      "status": "FINAL",
+      "winner": "AZ",
+      "score": "AZ 33–30 DAL"
     },
     {
       "id": "G05",
@@ -183,27 +183,27 @@
       "matchup": "LAC @ LAR",
       "time": "DOM 01 NOV · 15:05 CDMX",
       "kickoff_iso": "2026-11-01T15:05:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "LAC 0–0 LAR"
+      "status": "FINAL",
+      "winner": "LAR",
+      "score": "LAR 24–9 LAC"
     },
     {
       "id": "G11",
       "matchup": "KC @ DEN",
       "time": "DOM 01 NOV · 15:25 CDMX",
       "kickoff_iso": "2026-11-01T15:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DEN",
+      "score": "DEN 28–24 KC"
     },
     {
       "id": "G12",
       "matchup": "NE @ MIA",
       "time": "DOM 01 NOV · 15:25 CDMX",
       "kickoff_iso": "2026-11-01T15:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "NE",
+      "score": "NE 24–19 MIA"
     },
     {
       "id": "G13",
@@ -225,12 +225,12 @@
     }
   ],
   "results": {
-    "final": 6,
+    "final": 12,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 4,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 6,
+    "scored": 12,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -245,6 +245,6 @@
     "NYG",
     "SF"
   ],
-  "last_sync": "2026-11-01T21:17:38.400288+00:00",
+  "last_sync": "2026-11-02T00:55:14.394292+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
