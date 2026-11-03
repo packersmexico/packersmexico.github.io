@@ -1,0 +1,23 @@
+name: Quiniela W9 Jotform Public Field Map Readonly
+on:
+  push:
+    branches:
+      - quiniela/w9-operational-open-20261103
+    paths:
+      - scripts/inspect-jotform-week9.mjs
+      - .github/workflows/quiniela-w09-form-inspection.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Inspect public W09 field names without submitting
+        run: |
+          curl --retry 2 -fLsS --max-time 35 -A 'Mozilla/5.0 (compatible; PMX-Quiniela-QA/1.0)' https://form.jotform.com/263063334940050 -o /tmp/pmx-week09-form.html
+          node scripts/inspect-jotform-week9.mjs /tmp/pmx-week09-form.html
