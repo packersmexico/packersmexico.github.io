@@ -4,7 +4,7 @@
   "season": 2026,
   "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
   "publication_ready": false,
-  "gate": "PICKS_QA_PASS · DIRECTION_PANEL_DISTRIBUTION_PASS · AUTO_PUBLISH_NO",
+  "gate": "PICKS_QA_PASS · W08_POST_MNF_FIGMA_QA_PASS · DIRECTION_PANEL_DISTRIBUTION_PASS · AUTO_PUBLISH_NO",
   "source": "REDIS_FIRST_VALID_9X14_VERIFIED_FORM_262986491498075 · Jotform 9 original submissions · 29 OCT 2026",
   "file_key": "RAoegEENwTH2L7gb3yydIq",
   "picks_node_id": "3848:218256",
@@ -12,10 +12,17 @@
     "picks_board": "PASS",
     "picks_visual_review": "PASS",
     "picks_screenshot_evidence": "Figma screenshot of existing W08 3848:218256 inspected 1600x2000: 9 names, 14 correct matchups, 126 true 03.5 logo vectors, headers and footer readable; compared to nine source selections",
-    "export": "PASS · Git blob 6ab59e1fc588d80a6bf88c336f28971bee97e854 · PNG 1600x2000"
+    "export": "PASS · Git blob 6ab59e1fc588d80a6bf88c336f28971bee97e854 · PNG 1600x2000",
+    "results_visual_review": "PASS · Figma W08 node 3876:218063 · 1600×2000 screenshot inspected, real 126 vector-logo selections + green/red QA, official 14 finals, nine totals",
+    "weekly_visual_review": "PASS · Figma W08 node 3877:222154 · 1080×1350 screenshot inspected, 9 ranks, three tied leaders 11/14",
+    "season_visual_review": "PASS · Figma W08 node 3877:226299 · 1080×1350 screenshot inspected, 9 season standings, RODRI 78",
+    "matrix_reconciliation": "PASS · 126 named first-valid Figma cells independently matched 9 private Redis weekly totals; no original picks edited"
   },
   "output_targets": {
-    "picks": "quiniela-control/exports/w8-picks-board.png"
+    "picks": "quiniela-control/exports/w8-picks-board.png",
+    "results": "quiniela-control/exports/w8-results-final.png",
+    "weekly": "quiniela-control/exports/w8-ranking-weekly.png",
+    "season": "quiniela-control/exports/w8-ranking-season.png"
   },
   "asset_approvals": {
     "picks": {
@@ -27,11 +34,47 @@
       "approved_date": "2026-10-29",
       "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE",
       "output_file": "quiniela-control/exports/w8-picks-board.png"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3876:218063; visual screenshot QA reviewed; exported native 1600x2000 PNG Git blob f29489330f0c59f966f5fc62e4c8a6befff8c318; scores exactly W08 private scoring checksum 26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366; input verified 9x14, Week8 14/14 FINAL.",
+      "approved_by": "00 · Dirección · explicit order to complete Figma originals and update panel",
+      "approved_date": "2026-11-03",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE · NO_SOCIAL_AUTO_PUBLISH",
+      "output_file": "quiniela-control/exports/w8-results-final.png",
+      "renderer_template_node": "3876:218063",
+      "scoring_checksum": "26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3877:222154; visual screenshot QA reviewed; exported native 1080x1350 PNG Git blob 7743739ee5fda9284a638701a8ba90b3dbfb5eac; scores exactly W08 private scoring checksum 26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366; input verified 9x14, Week8 14/14 FINAL.",
+      "approved_by": "00 · Dirección · explicit order to complete Figma originals and update panel",
+      "approved_date": "2026-11-03",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE · NO_SOCIAL_AUTO_PUBLISH",
+      "output_file": "quiniela-control/exports/w8-ranking-weekly.png",
+      "renderer_template_node": "3877:222154",
+      "scoring_checksum": "26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3877:226299; visual screenshot QA reviewed; exported native 1080x1350 PNG Git blob 775aad8ba920132880019edf056ed57ed59650cb; scores exactly W08 private scoring checksum 26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366; input verified 9x14, Week8 14/14 FINAL.",
+      "approved_by": "00 · Dirección · explicit order to complete Figma originals and update panel",
+      "approved_date": "2026-11-03",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NOT_NFL_LICENSE · NO_SOCIAL_AUTO_PUBLISH",
+      "output_file": "quiniela-control/exports/w8-ranking-season.png",
+      "renderer_template_node": "3877:226299",
+      "scoring_checksum": "26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366"
     }
   },
   "rights": {
-    "authorization": "Direction requests W08 completed picks board on existing public panel",
-    "limitation": "No NFL or team marks license claimed. No automatic social publication.",
+    "authorization": "Direction expressly requested Week8 three Figma masters and panel download 2026-11-03",
+    "limitation": "Direction approval for PMX panel is not an NFL/team trademark license; no social auto-publication.",
     "auto_publish": false
   }
 }
