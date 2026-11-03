@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-29T16:30:15.007Z",
+  "updated_at": "2026-11-03T14:05:42Z",
   "items": [
+    {
+      "id": "W9_OPEN",
+      "status": "READY",
+      "title": "WEEK 9 ABIERTA",
+      "body": "Week 8 cerrada 14/14. Week 9: 0/9 respuestas · cierre 05 NOV · 16:00 CDMX.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W8_ASSET_READY_PICKS",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "./captura/",
       "secondary_label": "ABRIR FORMULARIO"
-    },
-    {
-      "id": "W5_FINAL",
-      "status": "READY",
-      "title": "WEEK 5 FINAL",
-      "body": "15/15 partidos FINAL. Resultados y rankings definitivos están listos.",
-      "href": "./",
-      "secondary_href": "./exports/live.html",
-      "secondary_label": "VER PIEZAS"
     }
   ]
 }
