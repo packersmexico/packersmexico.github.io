@@ -233,10 +233,120 @@
     "scored": 14,
     "pushes": 0
   },
-  "weekly_standings": [],
-  "season_standings": [],
+  "weekly_standings": [
+    {
+      "name": "DR PALMA",
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 11,
+      "wrong": 3,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "RODRI",
+      "correct": 78,
+      "wrong": 42,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 76,
+      "wrong": 44,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 76,
+      "wrong": 44,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 75,
+      "wrong": 45,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 73,
+      "wrong": 47,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 72,
+      "wrong": 48,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 69,
+      "wrong": 51,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 68,
+      "wrong": 52,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 63,
+      "wrong": 57,
+      "status": "VALID"
+    }
+  ],
   "production": {
-    "package_status": "W8 9/9 LOCKED FIRST_VALID · 126/126 PRIVATE · 04 PICKS QA REQUIRED",
+    "package_status": "W8 FINAL · RANKINGS_VERIFIED_PRIVATE · FIGMA_QA_PENDING",
     "auto_publish": false
   },
   "bye_teams": [
@@ -245,6 +355,13 @@
     "NYG",
     "SF"
   ],
-  "last_sync": "2026-11-03T05:43:22.111384+00:00",
-  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
+  "last_sync": "2026-11-03T13:01:51.969761+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD",
+  "scoring": {
+    "status": "COMPLETE",
+    "checksum": "26f52fdb42bd16b907ee1b607ea19bd33c720bc5967e7aa15135e60de6e3e366",
+    "source": "REDIS_FIRST_VALID_BACKEND",
+    "original_picks_preserved": true,
+    "picks_visible": false
+  }
 }
