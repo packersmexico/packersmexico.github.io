@@ -219,18 +219,18 @@
       "matchup": "CHI @ SEA",
       "time": "LUN 02 NOV · 19:15 CDMX · MNF",
       "kickoff_iso": "2026-11-02T19:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "CHI",
+      "score": "CHI 34–17 SEA"
     }
   ],
   "results": {
-    "final": 13,
+    "final": 14,
     "total": 14,
-    "status": "LIVE",
+    "status": "FINAL",
     "in_progress": 0,
     "ties": 0,
-    "scored": 13,
+    "scored": 14,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -245,6 +245,6 @@
     "NYG",
     "SF"
   ],
-  "last_sync": "2026-11-02T12:21:09.050393+00:00",
+  "last_sync": "2026-11-03T05:43:22.111384+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
