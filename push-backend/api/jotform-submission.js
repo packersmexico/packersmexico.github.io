@@ -147,8 +147,8 @@ export default async function handler(req,res) {
 
   const integrity=validateWeeklyPicks(raw,contract);
   if(!integrity.valid){
-    logReject('INCOMPLETE_OR_INVALID_14',{participant,missing_games:integrity.missing_or_invalid});
-    return json(res,422,{ok:false,error:'INCOMPLETE_OR_INVALID_14',missing_games:integrity.missing_or_invalid});
+    logReject('INCOMPLETE_OR_INVALID_WEEK',{participant,missing_games:integrity.missing_or_invalid});
+    return json(res,422,{ok:false,error:'INCOMPLETE_OR_INVALID_WEEK',missing_games:integrity.missing_or_invalid});
   }
 
   const idHash=crypto.createHash('sha256').update(submissionID).digest('hex').slice(0,12).toUpperCase();
@@ -161,7 +161,7 @@ export default async function handler(req,res) {
     submission_hash:idHash,
     received_at:receivedAt,
     submitted_at:isoFromBody(body,raw),
-    integrity:'14_OF_14',
+    integrity:`${contract.games.length}_OF_${contract.games.length}`,
     picks:integrity.picks,
     source:backfill?'JOTFORM_CONNECTOR_BACKFILL':'JOTFORM_WEBHOOK'
   });
