@@ -20,12 +20,18 @@ export function validateWeeklyPicks(raw,config){
   assertWeekConfig(config);
   const picks={},invalid=[];
   for(const g of config.games){
-    const value=pickValue(raw?.[g.field]??raw?.[String(g.question)]);
+    // Jotform generated fields may use the q<ID>_q<ID>_... prefix.
+    // Question ID still takes precedence for trusted private API backfill.
+    const value=pickValue(raw?.[g.field]??raw?.[`q${g.question}_${g.field}`]??raw?.[String(g.question)]);
     const visitor=g.visitor.map(normalizeName),home=g.home.map(normalizeName);
     let selected=null;
     if(visitor.includes(value))selected=g.visitor[1];
     else if(home.includes(value))selected=g.home[1];
     const requiresGB=g.visitor[1]==='GB'||g.home[1]==='GB';
+    // A genuine readonly GB form item has no answer. Record the explicitly
+    // approved fixed GB choice, but NEVER override an opposing submitted pick.
+    if(!selected && value===null && requiresGB && config.packers_locked===true &&
+       g.fixed_default==='GB' && g.readonly_verified===true) selected='GB';
     if(!selected||(requiresGB&&config.packers_locked===true&&selected!=='GB')) invalid.push(g.id);
     else picks[g.id]=selected;
   }

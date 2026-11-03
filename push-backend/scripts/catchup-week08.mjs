@@ -56,7 +56,7 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
    const hash=crypto.createHash('sha256').update(entry.original_id).digest('hex').slice(0,12).toUpperCase();
    const record={participant:entry.name,submission_id:entry.original_id,submission_hash:hash,
      submitted_at:entry.created_at,received_at:new Date().toISOString(),
-     integrity:'14_OF_14',picks:entry.picks,picks_checksum:checksum(entry.picks),
+     integrity:`${contract.games.length}_OF_${contract.games.length}`,picks:entry.picks,picks_checksum:checksum(entry.picks),
      source:'JOTFORM_PRIVATE_API_RECOVERY',notifications_sent:0};
    const stored=await redis(['HSETNX',lock,entry.name,JSON.stringify(record)]);
    if(Number(stored)===1){
