@@ -8,3 +8,14 @@ test('tie, blank, both team selections rejected',()=>{for(const v of ['TIE','', 
 test('bye contract never invents a GB game',()=>{const c={...base,packers_bye:true,games:[base.games[1]]};assert.equal(validateWeeklyPicks({q4_pick:'NYJ'},c).valid,true)});
 test('a tied FINAL NFL game is universal PUSH',()=>assert.deepEqual(scoreGame('GB',null,'TIE'),{correct:0,wrong:0,push:1,scored:0}));
 test('unapproved overlays cannot change original picks',()=>{const original={G01:'PHI'};assert.equal(scoringPick(original,{G01:{pick:'CAR',approved:false}},'G01'),'PHI');assert.equal(scoringPick(original,{G01:{pick:'CAR',approved:true}},'G01'),'CAR')});
+
+test('W9 readonly GB is fixed without fabricated user selection',()=>{
+ const cfg={...base,week_number:9,games:[{...base.games[0],field:'q14_readonly_gb',question:'14',fixed_default:'GB',readonly_verified:true},base.games[1]]};
+ assert.deepEqual(validateWeeklyPicks({q4_pick:'NYJ'},cfg),{valid:true,picks:{G01:'GB',G02:'NYJ'},missing_or_invalid:[]});
+ assert.deepEqual(validateWeeklyPicks({'14':'CHI',q4_pick:'NYJ'},cfg).missing_or_invalid,['G01']);
+ assert.deepEqual(validateWeeklyPicks({'14':'',q4_pick:'NYJ'},cfg).missing_or_invalid,['G01']);
+});
+test('W9 generated Jotform prefix q3_q3_radio1 is accepted',()=>{
+ const cfg={...base,games:[{...base.games[0],field:'q3_radio1',question:'3'},base.games[1]]};
+ assert.equal(validateWeeklyPicks({q3_q3_radio1:'GB',q4_pick:'DAL'},cfg).valid,true);
+});
