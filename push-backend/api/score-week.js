@@ -36,6 +36,34 @@ export default async function handler(req,res){
   if(String(snapshot.capture?.form_id)!==String(contract.form_id)||
      String(snapshot.capture?.window).toUpperCase()!=='CLOSED' ||
      Number(snapshot.capture?.complete)!==contract.roster?.length)throw Error('CAPTURE_NOT_CERTIFIED');
+
+  // Private pre-kickoff matrix for the approved PICKS image. The same server
+  // credential is required; the public site never receives these values.
+  if(req.body?.picks===true){
+    const games=snapshot.games||[];
+    if(week<9 || games.length<13 || games.length>16 ||
+       snapshot.capture?.window!=='CLOSED' ||
+       Number(snapshot.capture?.received_picks)!==contract.roster.length*games.length ||
+       games.length!==contract.games.length || 
+       games.some((g,i)=>g.id!==contract.games[i].id||
+       g.matchup!==contract.games[i].visitor[1]+' @ '+contract.games[i].home[1]))
+      throw Error('PICK_MATRIX_RELEASE_NOT_CERTIFIED');
+    const picks=parseHash(await redis(['HGETALL','pmx:quiniela:jotform:first-valid:'+contract.form_id]));
+    if(Object.keys(picks).length!==9 ||
+       contract.roster.some(name=>{
+        const r=picks[name];
+        return !r||r.participant!==name||r.picks==null||
+          Object.keys(r.picks).length!==games.length||
+          games.some(g=>!g.matchup.split(' @ ').includes(r.picks[g.id]));
+       }))throw Error('PRIVATE_CAPTURE_MATRIX_INTEGRITY');
+    const matrix=Object.fromEntries(contract.roster.map(name=>[name,
+      games.map(g=>({id:g.id,team:picks[name].picks[g.id]}))]));
+    const hash=crypto.createHash('sha256').update(JSON.stringify(matrix)).digest('hex');
+    return json(res,200,{ok:true,week,integrity:'COMPLETE',status:'CLOSED_FIRST_VALID_9_OF_9',
+      roster:contract.roster,games:games.map(g=>({id:g.id,matchup:g.matchup,time:g.time})),
+      matrix,picks:games.length*contract.roster.length,checksum:hash,
+      source:'REDIS_ORIGINAL_FIRST_VALID',picks_visible:false});
+  }
   const games=snapshot.games||[];
   if(!games.length||games.length!==contract.games.length||
      games.some((g,i)=>g.id!==contract.games[i].id||
