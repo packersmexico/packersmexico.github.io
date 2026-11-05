@@ -11,6 +11,9 @@ on:
       - 'quiniela-control/figma-week-*.json'
       - 'quiniela-control/notifications.json'
       - 'quiniela-control/reminders/**'
+      - 'push-backend/api/milestone-sync.js'
+      - 'push-backend/lib/capture-progress-events.js'
+      - 'push-backend/api/jotform-submission.js'
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
