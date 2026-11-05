@@ -70,6 +70,47 @@ async function inspectPrepared(week,stagedOverride=null){
   bye_teams:manifest.bye_teams,form_url:manifest.form_url||'https://form.jotform.com/'+manifest.form_id,
   games,verified_at:new Date().toISOString()};
 }
+
+async function repairStagedQuestionFidelity(week){
+  if(![16,17].includes(week))throw Error('ONLY_W16_W17_SAFE_REPAIR');
+  const active=await remoteJson(RAW+'capture-config.json?t='+Date.now());
+  if(Number(active.week_number)>=week)throw Error('CANNOT_REPAIR_ACTIVE_FORM');
+  const manifest=await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
+  if(!manifest.form_id||!String(manifest.status).startsWith('STAGED')||!manifest.release_gate?.flex_or_tbd_revalidation_required)
+    throw Error('STAGED_MANIFEST_MISSING_OR_NOT_FLEX');
+  const form=await jotform('/form/'+manifest.form_id);
+  if(cleanString(form.status)!=='DISABLED'||Number(form.count||form.new||0)!==0)
+    throw Error('UNSAFE_TO_EDIT_NONEMPTY_OR_OPEN');
+  const current=await jotform('/form/'+manifest.form_id+'/questions');
+  const items=Object.values(current||{}).filter(q=>/^G\\d{2}/.test(String(q.text||'')))
+    .sort((a,b)=>Number(a.order||9999)-Number(b.order||9999));
+  if(items.length!==manifest.games.length)throw Error('EXPECTED_EXISTING_'+manifest.games.length+'_GAME_FIELDS');
+  const edited=[];
+  for(let i=0;i<items.length;i++){
+    const q=items[i],g=manifest.games[i],id=String(q.qid||'');
+    const target=g.id+' · '+g.matchup;
+    const patch={};
+    if(String(q.text||'').trim()!==target)patch['question[text]']=target;
+    if(g.fixed_pick==='GB'&&q.type!=='control_text'){
+      patch['question[type]']='control_text';
+      patch['question[required]']='No';
+      patch['question[readonly]']='Yes';
+      patch['question[defaultValue]']='GB';
+    }
+    if(Object.keys(patch).length>0){
+      if(!/^\\d+$/.test(id))throw Error('INVALID_QID_TO_REPAIR');
+      await jotform('/form/'+manifest.form_id+'/question/'+id,'POST',patch);
+      edited.push({game:g.id,changed:Object.keys(patch).map(k=>k.replace('question[','').replace(']',''))});
+    }
+  }
+  // Exact parser is the same used on next-week activation.
+  const validated=await inspectPrepared(week);
+  if(!validated.question_map_verified||validated.form_status!=='DISABLED'||validated.game_count!==manifest.games.length)
+    throw Error('FUTURE_QUESTION_REPAIR_READBACK_FAIL');
+  return {ok:true,week,status:'REPAIRED_DISABLED_PRIVATE',form_status:validated.form_status,
+    game_count:validated.game_count,field_map_verified:true,edited,zero_submissions:true};
+}
+
 async function changeFormStatus(week,formId,status,stage){
  if(!['DISABLED','ENABLED'].includes(status))throw Error('UNSUPPORTED_FORM_STATUS');
  const active=await remoteJson(RAW+'capture-config.json?t='+Date.now());
@@ -153,6 +194,10 @@ export default async function handler(req,res){
  if(!authorized(req))return json(res,401,{ok:false,error:'UNAUTHORIZED'});
  try{
   const action=String(req.body?.action||'RECONCILE').toUpperCase();
+  if(action==='REPAIR_STAGED'){
+    const w=Number(req.body?.week);
+    return json(res,200,await repairStagedQuestionFidelity(w));
+  }
   if(action==='CREATE_STAGED'){
    const w=Number(req.body?.week);
    if(!Number.isInteger(w)||w<13||w>18)return json(res,400,{ok:false,error:'INVALID_WEEK'});
