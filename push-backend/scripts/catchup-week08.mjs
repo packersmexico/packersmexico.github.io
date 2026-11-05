@@ -6,13 +6,18 @@ import {resolveParticipant,normalizeText} from '../lib/jotform-capture.js';
 import {assertWeekConfig,validateWeeklyPicks} from '../lib/weekly-capture.js';
 import {checksum} from '../lib/jotform-hydration.js';
 const ROOT='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
-function requireCorrectOriginal(s,contract){
+function requireCorrectOriginal(s,contract,stats){
  const name=resolveParticipant(s.answers||{},new Set(contract.roster.map(normalizeText)));
- if(!name||String(s.form_id||s.formID||'')!==String(contract.form_id)||!/^[0-9]{10,25}$/.test(String(s.id||'')))return null;
+ if(!name){stats.participant_missing++;return null;}
+ if(String(s.form_id||s.formID||'')!==String(contract.form_id)||!/^[0-9]{10,25}$/.test(String(s.id||''))){stats.form_or_id_invalid++;return null;}
  const result=validateWeeklyPicks(s.answers||{},contract);
- if(!result.valid||Object.keys(result.picks).length!==contract.games.length)return null;
+ if(!result.valid||Object.keys(result.picks).length!==contract.games.length){
+   stats.picks_invalid++;
+   for(const game of result.missing_or_invalid||[]) stats.invalid_games[game]=(stats.invalid_games[game]||0)+1;
+   return null;
+ }
  const t=String(s.created_at||'');const created=Date.parse(t.endsWith('Z')?t:t.replace(' ','T')+'Z');
- if(!Number.isFinite(created)||created>Date.parse(contract.deadline))return null;
+ if(!Number.isFinite(created)||created>Date.parse(contract.deadline)){stats.date_invalid++;return null;}
  return {name,original_id:String(s.id),created_at:t,picks:result.picks};
 }
 async function fetchFormSubmissions(key,FORM){
@@ -45,7 +50,8 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   const contract=assertWeekConfig(await contractResponse.json());
   if(contract.week_number!==week||String(contract.form_id)!==FORM)throw Error('FORM_CONTRACT_MISMATCH');
   const originals=await fetchFormSubmissions(process.env.PMX_JOTFORM_API_KEY,FORM);
-  const valid=originals.map(s=>requireCorrectOriginal(s,contract)).filter(Boolean)
+  const rejectionStats={participant_missing:0,form_or_id_invalid:0,picks_invalid:0,date_invalid:0,invalid_games:{}};
+  const valid=originals.map(s=>requireCorrectOriginal(s,contract,rejectionStats)).filter(Boolean)
     .sort((a,b)=>Date.parse(a.created_at)-Date.parse(b.created_at)||a.original_id.localeCompare(b.original_id));
   // Aggregate-only diagnostics: never log individual responses, picks or IDs.
   const rejected=originals.length-valid.length;
@@ -78,7 +84,7 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   console.info('PMX_ACTIVE_CAPTURE_READBACK',JSON.stringify({
     week,form_id:FORM,jotform_submissions:originals.length,valid_submissions:valid.length,rejected_submissions:rejected,
     redis_first_valid:count,private_picks:totalPicks,new_first_valid:newValid,
-    ignored_duplicates:duplicates,notifications_sent:0,picks_visible:false
+    ignored_duplicates:duplicates,rejection_stats:rejectionStats,notifications_sent:0,picks_visible:false
   }));
   return {ok:true,week,verified_count:count,jotform_submissions:originals.length,valid_submissions:valid.length,rejected_submissions:rejected,added:newValid,private_picks_count:totalPicks,checked_at:new Date().toISOString()};
  }catch(e){console.error('PMX_W8_CATCHUP_HOLD',String(e.message||'UNKNOWN').replace(/[0-9]{10,}/g,'[REDACTED]'));throw e;}
