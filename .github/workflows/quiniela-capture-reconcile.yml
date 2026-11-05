@@ -59,6 +59,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Wait for Vercel production alias after repository change
+        if: github.event_name == 'push'
+        run: sleep 25
       - name: Validate prepared Jotform field maps with private API, no activation
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
