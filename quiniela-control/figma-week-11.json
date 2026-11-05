@@ -1,0 +1,75 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 11,
+  "season": 2026,
+  "state": "PREBUILD_FIRST_VALID_PENDING",
+  "publication_ready": false,
+  "auto_publish": false,
+  "gate": "W11_STRUCTURE_PREBUILT · 13_GAMES · ROSTER_9 · ALL_ASSETS_HOLD",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_prebuild_node_id": "3887:230435",
+  "picks_master_source_node_id": "3880:222049",
+  "identity": "PMX Horizontal V1.1 reused unchanged; no artificial logo, no generated images",
+  "governance": {
+    "production_parity": "NOT_APPROVED_FOR_QUINIELA_PRODUCTION",
+    "proof": "Real editable Figma prebuild, no public export; final QA perceptual required",
+    "allowed_surface": "PRIVATE_PREPRODUCTION_ONLY"
+  },
+  "content": {
+    "game_count": 13,
+    "roster": 9,
+    "bye_teams": [
+      "ATL",
+      "CLE",
+      "GB",
+      "LAR",
+      "NE",
+      "SEA"
+    ],
+    "green_bay_fixed": false,
+    "packers_bye": true,
+    "schedule_status": "STAGED_FORM_DISABLED_QA_PASS"
+  },
+  "qa": {
+    "prebuild_structure": "PASS · Figma editable 1600x2000; 13–16 games properly reflowed; nine participant columns; 0 original W8 picks",
+    "visual_prebuild": "PASS · native Figma full-frame screenshot reviewed; 16-row W12 BYE overlay fixed",
+    "final_matrix": "HOLD · 9/9 FIRST_VALID MISSING",
+    "results_final": "HOLD · NFL MNF NOT FINAL"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "HOLD_FIRST_VALID_AND_FINAL_QA",
+      "direction_review": "HOLD",
+      "export_verified": false,
+      "evidence": "Editable Figma PREBUILD only: node 3887:230435, 1600x2000, 13 scheduled matchups, 9 participant headers, no individual selections. Logo horizontal V1.1 preserved. This is not a finished PNG.",
+      "output_file": "quiniela-control/exports/w11-picks-board.png"
+    },
+    "results": {
+      "figma_qa": "HOLD_FIRST_VALID_AND_FINAL_QA",
+      "direction_review": "HOLD",
+      "export_verified": false,
+      "evidence": "Existing blank Figma instance staged, production output requires authenticated score/picks and visual QA.",
+      "output_file": "quiniela-control/exports/w11-results-final.png"
+    },
+    "weekly": {
+      "figma_qa": "HOLD_FIRST_VALID_AND_FINAL_QA",
+      "direction_review": "HOLD",
+      "export_verified": false,
+      "evidence": "Existing blank Figma instance staged, production output requires authenticated score/picks and visual QA.",
+      "output_file": "quiniela-control/exports/w11-ranking-weekly.png"
+    },
+    "season": {
+      "figma_qa": "HOLD_FIRST_VALID_AND_FINAL_QA",
+      "direction_review": "HOLD",
+      "export_verified": false,
+      "evidence": "Existing blank Figma instance staged, production output requires authenticated score/picks and visual QA.",
+      "output_file": "quiniela-control/exports/w11-ranking-season.png"
+    }
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w11-picks-board.png",
+    "results": "quiniela-control/exports/w11-results-final.png",
+    "weekly": "quiniela-control/exports/w11-ranking-weekly.png",
+    "season": "quiniela-control/exports/w11-ranking-season.png"
+  }
+}
