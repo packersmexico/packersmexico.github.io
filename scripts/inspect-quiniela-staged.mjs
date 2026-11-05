@@ -13,7 +13,9 @@ async function inspect(week){
  const response=await fetch(API,{method:'POST',headers:{Authorization:'Bearer '+process.env.PMX_PUSH_SECRET,'Content-Type':'application/json'},body:JSON.stringify({action:'INSPECT_STAGED',week}),signal:AbortSignal.timeout(60000)});
  const body=await response.json();
  if(!response.ok||!body.ok)throw Error('JOTFORM_INSPECTION_HOLD_'+(body.reason||body.error||response.status));
- if(body.form_status!=='DISABLED'||!body.question_map_verified||body.game_count!==manifest.games.length)throw Error('JOTFORM_STAGE_NOT_CERTIFIED');
+ if(body.form_status!=='DISABLED'||!body.question_map_verified||body.game_count!==manifest.games.length)
+  throw Error('JOTFORM_STAGE_NOT_CERTIFIED_'+String(body.week)+'_'+String(body.form_status)+'_'+String(body.question_map_verified)+'_'+String(body.game_count)+'_EXPECTED_'+manifest.games.length);
+
  if(JSON.stringify(body.roster)!==JSON.stringify(manifest.roster))throw Error('ROSTER_NOT_CANONICAL');
  if(body.games.length!==manifest.games.length||body.games.some(g=>!manifest.games.some(x=>x.matchup===g.visitor[1]+' @ '+g.home[1])))throw Error('JOTFORM_NFL_MISMATCH');
  const deadline=new Date(Math.floor((Date.parse(manifest.first_kickoff_utc)-3*3600000)/3600000)*3600000).toISOString();
