@@ -352,6 +352,27 @@ def self_test():
     assert len(ROSTER)==9 and len(set(ROSTER))==9
     for n in (13,14,15,16):
         assert 9*n in (117,126,135,144)
+    # Synthetic QA only: exercises geometry, FIT and ranking overlays in memory;
+    # absolutely no synthetic participant entries or images are committed.
+    original_logo=globals()["logo"]
+    try:
+        globals()["logo"]=lambda code,cache:Image.new("RGBA",(25,25),(0,0,0,0))
+        rankings=[{"name":name,"correct":9-(i//3),"wrong":i//3} for i,name in enumerate(ROSTER)]
+        for n in (13,14,15,16):
+            games=[{"id":"G"+str(i+1).zfill(2),"matchup":"GB @ NE",
+                    "kickoff_iso":"2026-11-08T18:00:00Z",
+                    "score":"GB 27–19 NE"} for i in range(n)]
+            matrix={name:[{"id":g["id"],"team":"GB","result":"CORRECT"}
+                          for g in games] for name in ROSTER}
+            picks=[{"name":name,"correct":9,"wrong":0} for name in ROSTER]
+            p=game_board(9,"picks",games,matrix,["PIT","TEN"])
+            f=game_board(9,"final",games,matrix,["PIT","TEN"])
+            assert p[0].size==f[0].size==(1600,2000)
+            assert p[2]==f[2]==9*n
+            assert ranking("weekly",9,games,rankings)[0].size==(1080,1350)
+            assert ranking("season",9,games,rankings)[0].size==(1080,1350)
+    finally:
+        globals()["logo"]=original_logo
     print("PASS FROZEN_FIGMA 13/14/15/16 + RANKINGS, no private reads, no exports")
 
 if __name__=="__main__":
