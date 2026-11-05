@@ -154,7 +154,7 @@ async function load(manual=false){
    let reconciliation=null;
    if(manual){
      try{
-       const reply=await fetch('https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-public',{
+       const reply=await fetch('https://packersmexicogithubio-push-backend.vercel.app/api/capture-status',{
          method:'POST',mode:'cors',cache:'no-store',headers:{'Content-Type':'application/json'},body:'{}'
        });
        reconciliation=await reply.json();
