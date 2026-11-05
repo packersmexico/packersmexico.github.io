@@ -304,10 +304,10 @@ def run(kind,eligibility=False):
     games=snap["games"]
     if len(games) not in (13,14,15,16):raise RuntimeError("BAD_GAME_COUNT")
     contract=load_json(ROOT/"contracts"/("week-"+str(week).zfill(2)+".json"))
-    if len(contract["games"])!=len(games) or
-       any(a["id"]!=b["id"] or
-           a["visitor"][1]+" @ "+a["home"][1]!=b["matchup"]
-           for a,b in zip(contract["games"],games))):
+    if (len(contract["games"])!=len(games) or
+        any(a["id"]!=b["id"] or
+            a["visitor"][1]+" @ "+a["home"][1]!=b["matchup"]
+            for a,b in zip(contract["games"],games))):
         raise RuntimeError("GAME_ORDER_CONTRACT_MISMATCH")
     raw=private(week,kind)
     matrix=validate_matrix(games,raw,kind)
