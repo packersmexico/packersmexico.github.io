@@ -47,6 +47,8 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   const originals=await fetchFormSubmissions(process.env.PMX_JOTFORM_API_KEY,FORM);
   const valid=originals.map(s=>requireCorrectOriginal(s,contract)).filter(Boolean)
     .sort((a,b)=>Date.parse(a.created_at)-Date.parse(b.created_at)||a.original_id.localeCompare(b.original_id));
+  // Aggregate-only diagnostics: never log individual responses, picks or IDs.
+  const rejected=originals.length-valid.length;
   let newValid=0,duplicates=0;
   const lock='pmx:quiniela:jotform:first-valid:'+FORM;
   const receipts='pmx:quiniela:jotform:receipts:'+FORM;
@@ -74,11 +76,11 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   }
   if(unhealthy||count>contract.roster.length)throw Error('FIRST_VALID_LOCKS_INTEGRITY');
   console.info('PMX_ACTIVE_CAPTURE_READBACK',JSON.stringify({
-    week,form_id:FORM,jotform_submissions:originals.length,valid_submissions:valid.length,
+    week,form_id:FORM,jotform_submissions:originals.length,valid_submissions:valid.length,rejected_submissions:rejected,
     redis_first_valid:count,private_picks:totalPicks,new_first_valid:newValid,
     ignored_duplicates:duplicates,notifications_sent:0,picks_visible:false
   }));
-  return {ok:true,week,verified_count:count,valid_submissions:valid.length,added:newValid,private_picks_count:totalPicks};
+  return {ok:true,week,verified_count:count,jotform_submissions:originals.length,valid_submissions:valid.length,rejected_submissions:rejected,added:newValid,private_picks_count:totalPicks,checked_at:new Date().toISOString()};
  }catch(e){console.error('PMX_W8_CATCHUP_HOLD',String(e.message||'UNKNOWN').replace(/[0-9]{10,}/g,'[REDACTED]'));throw e;}
 }
 }
