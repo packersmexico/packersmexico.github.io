@@ -136,7 +136,7 @@ async function createPrepared(week){
  const [form,questions]=await Promise.all([jotform('/form/'+formId),jotform('/form/'+formId+'/questions')]);
  if(cleanString(form.status)!=='DISABLED'||Number(form.count||form.new||0)!==0)
   throw Error('PREPARED_FORM_NOT_DISABLED_OR_NOT_EMPTY');
- const actual=Object.values(questions||{}).filter(x=>/^G\d{2}\s/.test(String(x.text||'')));
+ const actual=Object.values(questions||{}).filter(x=>/^G\d{2}\s/.test(String(x.text||''))).sort((a,b)=>Number(a.order||0)-Number(b.order||0));
  if(actual.length!==manifest.games.length)throw Error('STAGED_FORM_QUESTIONS_MISSING');
  if(actual.some((x,i)=>String(x.text||'').includes(manifest.games[i].matchup)===false))
   throw Error('STAGED_GAME_ORDER_NOT_CANONICAL');
