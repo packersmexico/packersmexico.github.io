@@ -59,6 +59,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Validate prepared Jotform field maps with private API, no activation
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: node scripts/inspect-quiniela-staged.mjs
       - name: Self-test idempotent close/open gates
         run: node scripts/quiniela-season-cycle.mjs --self-test
       - name: Auto-close FIRST_VALID 9/9 or deadline; auto-open staged form after previous MNF
