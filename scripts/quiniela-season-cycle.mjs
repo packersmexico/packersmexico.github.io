@@ -53,6 +53,8 @@ async function main(){
   invariant(!canClose(sample,{verified_count:8,verified_participants:ROSTER.slice(0,8).map(name=>({name})),private_picks_count:120},Date.parse('2026-11-04T12:00:00Z')).due,'PARTIAL_NOT_EARLY');
   invariant(canClose(sample,{verified_count:8,verified_participants:ROSTER.slice(0,8).map(name=>({name})),private_picks_count:120},Date.parse('2026-11-06T12:00:00Z')).due,'DEADLINE_CUTOFF');
   invariant(confirmDeadline('2026-11-13T01:15:00Z')==='2026-11-12T22:00:00.000Z','W10_DEADLINE');
+  const flex={release_gate:{flex_or_tbd_revalidation_required:true},flex_schedule_verified:false,games:[{schedule_precision:'TBD_FLEX_WINDOW'}]};
+  invariant(!(flex.flex_schedule_verified && flex.games.every(g=>g.schedule_precision==='OFFICIAL_CONFIRMED')),'FLEX_MUST_HOLD');
   console.log('PASS W9-W18: first-valid closing, deadline, 9/9, no premature rollover');return;
  }
  invariant(process.env.GITHUB_ACTIONS==='true','GH_ACTIONS_ONLY');
@@ -106,7 +108,11 @@ async function main(){
  if(!/^\d{10,25}$/.test(String(manifest.form_id||''))){
   console.log('PMX_NEXT_FORM_HOLD_NOT_CREATED',next);return;
  }
- if(next>=16&&manifest.status.includes('FLEX_DATES_UNCONFIRMED')){console.log('PMX_NEXT_FORM_HOLD_FLEX_KICKOFF_UNVERIFIED',next);return;}
+ if(manifest.release_gate?.flex_or_tbd_revalidation_required===true &&
+     !(manifest.flex_schedule_verified===true && 
+       manifest.games.every(g=>g.schedule_precision==='OFFICIAL_CONFIRMED'))){
+   console.log('PMX_NEXT_FORM_HOLD_FLEX_KICKOFF_UNVERIFIED',next);return;
+ }
  const [check,prev]=await Promise.all([
   call('reconcile-capture',{action:'INSPECT_STAGED',week:next}),
   Promise.resolve(read('weeks/'+tag(current)))
