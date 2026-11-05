@@ -57,7 +57,7 @@ async function inspectPrepared(week){
   if(gb&&q.type!=='control_text')throw Error('GB_NOT_READONLY');
   if(!gb&&q.type!=='control_radio')throw Error('GAME_NOT_BINARY_RADIO_'+id);
   if(!gb&&q.options.split('|').filter(Boolean).length!==2)throw Error('NOT_TWO_OPTIONS_'+id);
-  return {id,question:q.qid,field:'q'+q.qid+'_'+q.name,visitor:[verified.away_name,verified.away],home:[verified.home_name,verified.home],
+  return {id,question:q.qid,field:q.name.startsWith('q'+q.qid+'_')?q.name:('q'+q.qid+'_'+q.name),visitor:[verified.away_name,verified.away],home:[verified.home_name,verified.home],
     ...(gb?{fixed_default:'GB',readonly_verified:true}:{})};
  });
  if(new Set(games.map(x=>x.question)).size!==games.length)throw Error('DUPLICATE_QUESTION_IDS');
