@@ -6,8 +6,8 @@
   "source_comparison": "ESPN_PUBLIC_SCHEDULE_MATCHUPS_WITH_NFL_OFFICIAL_BYE_AND_TEAM_COVERAGE",
   "espn_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=11&limit=100",
   "generated_at": "2026-11-05T03:52:42.239Z",
-  "status": "STAGED_LOCKED_NOT_PUBLIC",
-  "public_form_status": "NOT_OPEN",
+  "status": "STAGED_FORM_CREATED_DISABLED_MAPPING_PENDING",
+  "public_form_status": "DISABLED_VERIFIED",
   "roster": [
     "EL DOC",
     "ARI",
@@ -197,5 +197,30 @@
       "schedule_precision": "PROVISIONAL_REVALIDATE_BEFORE_OPEN",
       "fixed_pick": null
     }
+  ],
+  "form_id": "263078694568071",
+  "form_url": "https://form.jotform.com/263078694568071",
+  "form_metadata": {
+    "title": "PMX · Quiniela · Week 11 · 2026 · PREPARADO — NO ABIERTO",
+    "submission_count": 0,
+    "status": "DISABLED",
+    "verified_by": "Jotform form readback 2026-11-04",
+    "verified_question_headings": 13
+  },
+  "field_map_verified": false,
+  "game_order_form": [
+    "IND @ HOU",
+    "AZ @ KC",
+    "BAL @ CAR",
+    "JAX @ NYG",
+    "MIA @ BUF",
+    "NO @ CHI",
+    "TB @ DET",
+    "TEN @ DAL",
+    "NYJ @ LAC",
+    "LV @ DEN",
+    "PIT @ PHI",
+    "MIN @ SF",
+    "CIN @ WAS"
   ]
 }
