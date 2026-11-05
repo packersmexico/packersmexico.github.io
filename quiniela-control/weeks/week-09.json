@@ -3,91 +3,105 @@
   "season": "2026",
   "week": "WEEK 9",
   "week_number": 9,
-  "snapshot_status": "OPEN_CAPTURE_NO_GAMES_STARTED",
+  "snapshot_status": "CLOSED_WAITING_NFL_FINAL",
   "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-9",
   "capture": {
     "form_id": "263063334940050",
     "form_url": "https://form.jotform.com/263063334940050",
     "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
-    "complete": 0,
+    "complete": 9,
     "total": 9,
-    "window": "OPEN",
+    "window": "CLOSED",
     "deadline": "2026-11-05T16:00:00-06:00",
     "deadline_label": "05 NOV · 16:00 CDMX",
     "expected_picks": 135,
-    "received_picks": 0,
-    "missing_picks": 135,
-    "missing_participants": [
-      "EL DOC",
-      "ARI",
-      "LALO",
-      "ALEX",
-      "LUIS C.",
-      "DR PALMA",
-      "JENNI",
-      "RODRI",
-      "IBRACHO"
-    ],
+    "received_picks": 135,
+    "missing_picks": 0,
+    "missing_participants": [],
     "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
     "green_bay_pick_policy": "GB_FIXED_NON_EDITABLE",
     "green_bay_game_id": "G12",
     "green_bay_default_pick": "GB",
-    "form_status": "ENABLED",
+    "form_status": "DISABLED",
     "auto_close_condition": "DIRECTION_EARLY_CLOSE_AFTER_9_OF_9_OR_DEADLINE",
     "locked_submissions": {},
-    "unique_participants": 0,
+    "unique_participants": 9,
     "duplicate_count": 0,
     "invitado": "OFF",
-    "capture_status": "OPEN_W9_ZERO_FIRST_VALID",
+    "capture_status": "CLOSED_FIRST_VALID_9OF9",
     "submission_integrity": {
-      "status": "AWAITING_FIRST_VALID",
-      "received_names": [],
-      "private_picks_count": 0,
+      "status": "COMPLETE",
+      "received_names": [
+        "EL DOC",
+        "LALO",
+        "RODRI",
+        "DR PALMA",
+        "IBRACHO",
+        "JENNI",
+        "ALEX",
+        "LUIS C.",
+        "ARI"
+      ],
+      "private_picks_count": 135,
       "picks_visible": false,
       "locked_picks_immutable": true,
       "evidence_form_id": "263063334940050",
       "form_questions": 15,
-      "mapping_rule": "JOTFORM_PUBLIC_HTML_QIDS_VERIFIED_W9"
+      "mapping_rule": "JOTFORM_PUBLIC_HTML_QIDS_VERIFIED_W9",
+      "first_valid_only": true
     },
-    "webhook_status": "PENDING_BACKEND_E2E_CREDENTIAL_CHECK",
-    "open_basis": "DIRECTION_EXPLICIT_W09_OPEN_2026-11-03"
+    "webhook_status": "PENDING_DIRECT_WEBHOOK_E2E · POLLING_RECONCILIATION_EXISTING_10MIN",
+    "open_basis": "DIRECTION_EXPLICIT_W09_OPEN_2026-11-03",
+    "season": "2026",
+    "week": "WEEK 9",
+    "week_number": 9,
+    "status": "CLOSED",
+    "operational_target": "JUEVES 05 NOV · CIERRE 16:00 CDMX",
+    "default_green_bay_policy": "GB_FIXED_NON_EDITABLE",
+    "default_green_bay_game_id": "G12",
+    "default_green_bay_pick": "GB",
+    "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-9",
+    "opened_at": "2026-11-03T14:05:42Z",
+    "closure_basis": "AUTO_9_OF_9",
+    "closed_at": "2026-11-05T20:22:06.630Z",
+    "last_sync": "2026-11-05T20:22:06.630Z"
   },
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "ARI",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "LALO",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "ALEX",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "JENNI",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "RODRI",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING_FIRST_VALID"
+      "status": "COMPLETE_VERIFIED"
     }
   ],
   "games": [
