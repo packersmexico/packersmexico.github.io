@@ -25,12 +25,12 @@ async function jotform(uri,method='GET',body=null){
  const obj=await r.json();if(Number(obj.responseCode)!==200)throw Error('JOTFORM_API_REJECTED_'+obj.responseCode);
  return obj.content;
 }
-function cleanString(v){return String(v||'').trim().toUpperCase().replace(/\\s+/g,' ');}
+function cleanString(v){return String(v||'').trim().toUpperCase().replace(/\s+/g,' ');}
 const normalize={JAGUARS:'JAX',RAVENS:'BAL',COMMANDERS:'WAS',GIANTS:'NYG',PATRIOTS:'NE',LIONS:'DET',PACKERS:'GB'};
 const shortTeam=v=>normalize[cleanString(v)]||cleanString(v);
 async function inspectPrepared(week){
  const manifest=await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
- if(manifest.week!==week||!String(manifest.status).startsWith('STAGED')||!/^\\d{10,25}$/.test(String(manifest.form_id||'')))throw Error('UNPREPARED_WEEK_FORM');
+ if(manifest.week!==week||!String(manifest.status).startsWith('STAGED')||!/^\d{10,25}$/.test(String(manifest.form_id||'')))throw Error('UNPREPARED_WEEK_FORM');
  const [form,questions]=await Promise.all([
   jotform('/form/'+manifest.form_id),jotform('/form/'+manifest.form_id+'/questions')
  ]);
@@ -43,10 +43,10 @@ async function inspectPrepared(week){
  const roster=manifest.roster||['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO'];
  const options=ro[0].options.split('|').map(x=>x.trim()).filter(Boolean);
  if(new Set(options).size!==9||roster.some(x=>!options.includes(x)))throw Error('ROSTER_OPTIONS_MISMATCH');
- const formGames=items.filter(q=>/^G\\d{2}\\s/.test(q.text));
+ const formGames=items.filter(q=>/^G\d{2}\s/.test(q.text));
  if(formGames.length!==manifest.games.length)throw Error('FORM_GAME_COUNT_MISMATCH');
  const games=formGames.map((q,i)=>{
-  const m=q.text.match(/^G(\\d{2})\\s*[·.:-]?\\s*([A-Z0-9]+)\\s*@\\s*([A-Z0-9]+)/i);
+  const m=q.text.match(/^G(\d{2})\s*[·.:-]?\s*([A-Z0-9]+)\s*@\s*([A-Z0-9]+)/i);
   if(!m)throw Error('GAME_LABEL_BAD_'+q.qid);
   const id='G'+m[1],matchup=m[2].toUpperCase()+' @ '+m[3].toUpperCase();
   const verified=manifest.games.find(g=>g.matchup===matchup);
@@ -100,7 +100,7 @@ export default async function handler(req,res){
   }
   if(action==='CLOSE_ACTIVE'||action==='OPEN_STAGED'){
    const week=Number(req.body?.week),form=String(req.body?.form_id||'');
-   if(!Number.isInteger(week)||week<9||week>18||!/^\\d{10,25}$/.test(form))throw Error('INVALID_TRANSITION_INPUT');
+   if(!Number.isInteger(week)||week<9||week>18||!/^\d{10,25}$/.test(form))throw Error('INVALID_TRANSITION_INPUT');
    if(action==='CLOSE_ACTIVE')return json(res,200,await changeFormStatus(week,form,'DISABLED','ACTIVE_CLOSE'));
    return json(res,200,await changeFormStatus(week,form,'ENABLED','STAGED_OPEN'));
   }
