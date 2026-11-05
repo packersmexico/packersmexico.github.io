@@ -13,7 +13,14 @@ export function assertWeekConfig(c) {
 export function normalizeName(s){return String(s??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').trim().replace(/\s+/g,' ').toUpperCase();}
 function pickValue(v){
   if(Array.isArray(v))return v.length===1?pickValue(v[0]):null;
-  if(v&&typeof v==='object')return pickValue(v.answer??v.value??v.text);
+  if(v&&typeof v==='object'){
+    // Jotform private API includes `text` as QUESTION LABEL, not a response.
+    // A readonly GB header is metadata; it must not invalidate a fixed pick.
+    if(Object.prototype.hasOwnProperty.call(v,'answer'))return pickValue(v.answer);
+    if(Object.prototype.hasOwnProperty.call(v,'value'))return pickValue(v.value);
+    if(!('type' in v)&&!('name' in v)&&Object.prototype.hasOwnProperty.call(v,'text'))return pickValue(v.text);
+    return null;
+  }
   return typeof v==='string'?normalizeName(v):null;
 }
 export function validateWeeklyPicks(raw,config){
