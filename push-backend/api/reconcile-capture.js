@@ -28,8 +28,8 @@ async function jotform(uri,method='GET',body=null){
 function cleanString(v){return String(v||'').trim().toUpperCase().replace(/\s+/g,' ');}
 const normalize={JAGUARS:'JAX',RAVENS:'BAL',COMMANDERS:'WAS',GIANTS:'NYG',PATRIOTS:'NE',LIONS:'DET',PACKERS:'GB'};
 const shortTeam=v=>normalize[cleanString(v)]||cleanString(v);
-async function inspectPrepared(week){
- const manifest=await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
+async function inspectPrepared(week,stagedOverride=null){
+ const manifest=stagedOverride||await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
  if(manifest.week!==week||!String(manifest.status).startsWith('STAGED')||!/^\d{10,25}$/.test(String(manifest.form_id||'')))throw Error('UNPREPARED_WEEK_FORM');
  const [form,questions]=await Promise.all([
   jotform('/form/'+manifest.form_id),jotform('/form/'+manifest.form_id+'/questions')
@@ -79,6 +79,11 @@ async function changeFormStatus(week,formId,status,stage){
   if(week!==Number(active.week_number)+1||status!=='ENABLED')throw Error('OPEN_NOT_NEXT_WEEK');
   const pre=await inspectPrepared(week);
   if(pre.form_id!==formId)throw Error('OPEN_NOT_APPROVED_FORM');
+  const plan=await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
+  if(plan.release_gate?.flex_or_tbd_revalidation_required===true &&
+    !(plan.flex_schedule_verified===true && 
+      plan.games.every(g=>g.schedule_precision==='OFFICIAL_CONFIRMED')))
+    throw Error('FLEX_KICKOFF_REVALIDATION_REQUIRED');
  }else throw Error('NO_AUTHORIZED_TRANSITION');
  const formBefore=await jotform('/form/'+formId);
  if(cleanString(formBefore.status)===status)return {ok:true,week,form_id:formId,status,changed:false,verified:true};
@@ -138,7 +143,8 @@ async function createPrepared(week){
  return {ok:true,week,form_id:formId,form_url:'https://form.jotform.com/'+formId,
   form_status:'DISABLED',game_count:actual.length,questions_count:Object.keys(questions||{}).length,
   source_schedule:manifest.source_schedule,zero_submissions:true,created_at:new Date().toISOString(),
-  flex_hold:manifest.release_gate?.flex_or_tbd_revalidation_required===true};
+  flex_hold:manifest.release_gate?.flex_or_tbd_revalidation_required===true,
+  inspected:await inspectPrepared(week,{...manifest,form_id:formId,form_url:'https://form.jotform.com/'+formId})};
 }
 
 export default async function handler(req,res){
