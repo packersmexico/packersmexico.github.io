@@ -1,6 +1,7 @@
 import webpush from 'web-push';
 import { redis, keys } from '../lib/redis.js';
 import { milestoneEvents } from '../lib/milestone-events.js';
+import { planCaptureProgress } from '../lib/capture-progress-events.js';
 import { applyCors, json, rejectMethod } from '../lib/http.js';
 
 const RAW_BASE = 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
@@ -114,6 +115,26 @@ export default async function handler(req, res) {
     catch {stages[week]=null;}
   }));
   const candidates=milestoneEvents({data,captureConfig,assetIndex,stages});
+  // Add FIRST_VALID progress and close-day 10:00 CDMX recap from PRIVATE Redis.
+  // Not based on stale public capture-config counters; never expose raw picks.
+  const w=Number(captureConfig.week_number),form=String(captureConfig.form_id||'');
+  if(w>=9&&w<=18&&['OPEN','CLOSED'].includes(String(captureConfig.status||''))&&/^\d{10,25}$/.test(form)){
+    const weekFile='weeks/week-'+String(w).padStart(2,'0')+'.json';
+    const [snapshot,locks]=await Promise.all([
+      getJson(RAW_BASE+'/'+weekFile+'?t='+Date.now()),
+      redis(['HGETALL','pmx:quiniela:jotform:first-valid:'+form])
+    ]);
+    const progress=planCaptureProgress({config:captureConfig,snapshot,rawFirstValid:locks});
+    if(progress.status!=='PASS'){
+      console.warn('QUINIELA_PROGRESS_HOLD',progress.status);
+    }else{
+      candidates.push(...progress.events);
+      console.info('QUINIELA_PROGRESS_PLAN',JSON.stringify({
+        week:w,verified:progress.verified,pending_count:progress.pending.length,
+        planned:progress.events.map(e=>e.eventKey),picks_visible:false
+      }));
+    }
+  }
   const results = [];
   for (const role of ['RODRIGO','IBRA']) {
     const raw = await redis(['GET', keys.subscriptionFor(role)]);

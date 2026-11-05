@@ -46,7 +46,7 @@ function logReject(reason,extra={}){
   console.warn('JOTFORM_REJECT',JSON.stringify({reason,...extra}));
 }
 
-async function dispatchPush({week,participant,count,total,eventKey}){
+async function dispatchPush({week,participant,count,total,pending,eventKey}){
   const vapid={
     publicKey:process.env.VAPID_PUBLIC_KEY,
     privateKey:process.env.VAPID_PRIVATE_KEY,
@@ -56,7 +56,7 @@ async function dispatchPush({week,participant,count,total,eventKey}){
   webpush.setVapidDetails(vapid.subject,vapid.publicKey,vapid.privateKey);
   const payload=JSON.stringify({
     title:`QUINIELA PMX · W${week} · RESPUESTA VALIDADA`,
-    body:`${participant} completó Week ${week}. Registro: ${count}/${total} participantes.`,
+    body:`${participant} registró sus picks. Van ${count}/${total}; faltan ${pending.length}: ${pending.length?pending.join(', '):'ninguno'}.`,
     url:'https://packersmexico.github.io/quiniela-control/',
     tag:`pmx-w${week}-valid-${safeSlug(participant).toLowerCase()}`,
     eventKey
@@ -181,8 +181,14 @@ export default async function handler(req,res) {
     return json(res,200,{ok:true,status:'BACKFILLED_FIRST_VALID',week,participant,count,total,picks_visible:false});
   }
 
+  // Read actual FIRST_VALID locks, not public zero-valued capture-config counters.
+  const lockedNames=await redis(['HKEYS',firstValidKey]);
+  const verified=new Set((lockedNames||[]).map(normalizeText));
+  if(verified.size!==count || ![...verified].every(n=>contract.roster.includes(n)))
+    return json(res,202,{ok:true,status:'ACCEPTED_FIRST_VALID_PUSH_HOLD_INVALID_ROSTER',week,participant,count,total,picks_visible:false});
+  const pending=contract.roster.filter(name=>!verified.has(name));
   const eventKey=`W${week}_FIRST_VALID_${safeSlug(participant)}`;
-  const deliveries=await dispatchPush({week,participant,count,total,eventKey});
+  const deliveries=await dispatchPush({week,participant,count,total,pending,eventKey});
   await redis(['HSET',`pmx:quiniela:jotform:delivery:${formID}`,participant,JSON.stringify({
     event_key:eventKey,at:new Date().toISOString(),deliveries
   })]);

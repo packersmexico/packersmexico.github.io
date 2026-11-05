@@ -54,6 +54,7 @@ jobs:
           node --check push-backend/lib/jotform-baseline.js
           node --check push-backend/api/milestone-sync.js
           node --check push-backend/lib/milestone-events.js
+          node --check push-backend/lib/capture-progress-events.js
           node --check push-backend/api/health.js
           node --check push-backend/lib/http.js
           node --check push-backend/lib/redis.js
@@ -66,6 +67,8 @@ jobs:
           python3 -m unittest discover -s scripts -p 'test_quiniela_scoring.py' -v
       - name: Operator alerts V2 · W6 opening, 9/9, MNF, files, publication
         run: node --test push-backend/tests/milestone-events.test.mjs
+      - name: W9-W18 new FIRST_VALID push and 10AM CDMX closing recap · privacy and idempotency
+        run: node --test push-backend/tests/capture-progress-events.test.mjs
       - name: Jotform W6 first-valid 14/14 validation
         run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Reusable week capture / GB lock / BYE / universal PUSH
