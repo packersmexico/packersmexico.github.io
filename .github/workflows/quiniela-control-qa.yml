@@ -11,6 +11,7 @@ on:
       - 'push-backend/**'
       - '.github/workflows/quiniela-push-notifications.yml'
       - '.github/workflows/quiniela-milestone-push.yml'
+      - '.github/workflows/quiniela-control-qa.yml'
   workflow_dispatch:
 jobs:
   qa:
