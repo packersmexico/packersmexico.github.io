@@ -51,7 +51,7 @@ jobs:
           week=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["week_number"])')
           form=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["form_id"])')
           curl -sSf --max-time 40 "$API?week=$week&form_id=$form" | \
-            python3 -c 'import json,sys;d=json.load(sys.stdin);print(json.dumps({k:d.get(k) for k in ("ok","week","verified_count","total","backend_status","private_picks_count","private_picks_integrity")},ensure_ascii=False));assert d.get("ok") and d.get("week")==9'
+            python3 -c 'import json,sys;d=json.load(sys.stdin);print(json.dumps({k:d.get(k) for k in ("ok","week","verified_count","total","backend_status","private_picks_count","private_picks_integrity")},ensure_ascii=False));assert d.get("ok") and int(d.get("week") or -1)==int(sys.argv[1])' "$week"
       - name: Checkout canonical main for season state transitions
         uses: actions/checkout@v4
         with:
