@@ -41,6 +41,20 @@ jobs:
           python scripts/render-quiniela-season.py --mode picks --eligible
           status=$?
           set -e
-          test "$status" = 2
+          test "$status" = 0 -o "$status" = 2
+          if [ "$status" = 0 ]; then
+            node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const cfg=JSON.parse(fs.readFileSync('quiniela-control/capture-config.json','utf8'));
+          const w=JSON.parse(fs.readFileSync('quiniela-control/weeks/week-'+String(cfg.week_number).padStart(2,'0')+'.json','utf8'));
+          assert.equal(cfg.status,'CLOSED');
+          assert.equal(cfg.complete,9);
+          assert.equal(w.capture.complete,9);
+          assert.equal(cfg.received_picks,9*w.games.length);
+          assert.equal(w.capture.received_picks,9*w.games.length);
+          console.log('PASS: 9/9 early closure legitimately permits real W'+cfg.week_number+' rendering');
+          NODE
+          fi
           git diff --exit-code -- quiniela-control/exports/
-          echo "PASS: no synthetic submissions, no premature public PNGs"
+          echo "PASS: eligibility is read-only; never fabricates picks or writes PNGs"
