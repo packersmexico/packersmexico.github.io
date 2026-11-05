@@ -17,7 +17,10 @@ import sys
 import urllib.request
 from zoneinfo import ZoneInfo
 
-from PIL import Image, ImageDraw, ImageFont
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    Image = ImageDraw = ImageFont = None  # eligibility checks do not require Pillow
 
 ROOT=pathlib.Path("quiniela-control")
 OUTPUT=ROOT/"exports"
@@ -290,8 +293,11 @@ def run(kind,eligibility=False):
     stage_path=ROOT/("figma-week-"+str(week).zfill(2)+".json")
     stage=load_json(stage_path) if stage_path.exists() else {}
     target_slots=["picks"] if kind=="picks" else ["results","weekly","season"]
+    current_hash=load_json(ROOT/"data.json").get("scoring",{}).get("checksum") if kind=="final" else None
     if all(stage.get("asset_approvals",{}).get(slot,{}).get("export_verified") is True and
-           pathlib.Path(stage["asset_approvals"][slot]["output_file"]).exists() for slot in target_slots):
+           pathlib.Path(stage["asset_approvals"][slot]["output_file"]).exists() and
+           (kind=="picks" or stage["asset_approvals"][slot].get("scoring_checksum")==current_hash)
+           for slot in target_slots):
         print("PMX_AUTO_RENDER_ALREADY_CERTIFIED",week,kind)
         return 2
     if eligibility:return 0
