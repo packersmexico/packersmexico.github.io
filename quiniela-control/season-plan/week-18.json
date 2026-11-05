@@ -6,8 +6,8 @@
   "source_comparison": "ESPN_PUBLIC_SCHEDULE_MATCHUPS_WITH_NFL_OFFICIAL_BYE_AND_TEAM_COVERAGE",
   "espn_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=18&limit=100",
   "generated_at": "2026-11-05T03:52:42.652Z",
-  "status": "STAGED_FLEX_DATES_UNCONFIRMED",
-  "public_form_status": "NOT_OPEN",
+  "status": "STAGED_FORM_DISABLED_FLEX_HOLD_PENDING_QUESTION_MAP",
+  "public_form_status": "DISABLED_VERIFIED",
   "roster": [
     "EL DOC",
     "ARI",
@@ -226,5 +226,16 @@
       "schedule_precision": "TBD_FLEX_WINDOW",
       "fixed_pick": null
     }
-  ]
+  ],
+  "form_id": "263083772065056",
+  "form_url": "https://form.jotform.com/263083772065056",
+  "field_map_verified": false,
+  "form_metadata": {
+    "status": "DISABLED",
+    "submission_count": 0,
+    "provider": "Jotform connected provider direct form creation and readback",
+    "pending": "Authenticated backend question-map QA",
+    "prepared_at": "2026-11-05",
+    "game_count": 16
+  }
 }
