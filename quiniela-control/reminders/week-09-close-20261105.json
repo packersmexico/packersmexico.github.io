@@ -1,0 +1,21 @@
+{
+  "schema": "PMX_QUINIELA_OPERATOR_PUSH_REQUEST_V1",
+  "event_key": "W9_CLOSE_REMINDER_20261105_1600",
+  "week": 9,
+  "form_id": "263063334940050",
+  "due": "2026-11-05T16:00:00-06:00",
+  "status": "REQUESTED",
+  "user_authorized": true,
+  "recipients": [
+    "IBRA",
+    "RODRIGO"
+  ],
+  "source": "LIVE_FIRST_VALID_REDIS_AFTER_JOTFORM_RECONCILIATION",
+  "rule": "SEND_ONCE_ONLY_BEFORE_DEADLINE_IF_PENDING_VERIFIED_NO_CACHED_COUNTS",
+  "include_fields": [
+    "verified_count",
+    "pending_count",
+    "pending_names"
+  ],
+  "auto_publish_social": false
+}

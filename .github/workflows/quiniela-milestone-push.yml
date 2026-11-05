@@ -10,6 +10,7 @@ on:
       - 'quiniela-control/exports/**'
       - 'quiniela-control/figma-week-*.json'
       - 'quiniela-control/notifications.json'
+      - 'quiniela-control/reminders/**'
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
@@ -60,3 +61,87 @@ jobs:
           data=$(jq -n --arg title "PACKERS MÉXICO · W5 RESULTADOS LISTOS"             --arg body "Rodrigo: W5 Resultados corregidos (135 picks, 82 aciertos, 44 errores, 9 PUSH). Revisa las 3 piezas W5 desde el panel. Uso privado; logos NFL sin derechos públicos."             --arg url "https://packersmexico.github.io/quiniela-control/#notification-heading"             '{eventKey:"W5_RESULTS_PRIVATE_REVIEW_READY_20261013",title:$title,body:$body,url:$url,tag:"pmx-w5-results-private-review"}')
           curl --fail-with-body --silent --show-error --max-time 40             -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify'             -H "Authorization: Bearer ${PUSH_SECRET}"             -H 'Content-Type: application/json'             --data "$data"
           echo
+
+      - name: Send requested W9 closing push from fresh FIRST_VALID counts
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          FILE='quiniela-control/reminders/week-09-close-20261105.json'
+          if ! git diff --name-only HEAD^ HEAD | grep -Fxq "$FILE"; then
+            echo 'No new W9 closing-reminder request; no push'
+            exit 0
+          fi
+          test -n "${PUSH_SECRET:-}" || { echo '::error::PMX_PUSH_SECRET missing: push NOT SENT'; exit 1; }
+          jq -e '.event_key=="W9_CLOSE_REMINDER_20261105_1600" and .status=="REQUESTED" and .week==9' "$FILE" >/dev/null
+
+          curl --fail-with-body -sS --max-time 75 --retry 1 \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PUSH_SECRET}" \
+            -H 'Content-Type: application/json' --data '{}' > /tmp/w9-reconcile.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/w9-reconcile.json'))
+          assert d.get('ok') is True and int(d.get('week',-1))==9, 'RECONCILIATION_NOT_VERIFIED'
+          print('LIVE_JOTFORM_RECONCILED', {k:d.get(k) for k in ('week','verified_count','valid_submissions','rejected_submissions')})
+          PY
+
+          curl --fail-with-body -sS --max-time 35 \
+            'https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?week=9&form_id=263063334940050' \
+            -o /tmp/w9-live.json
+
+          python3 - <<'PY'
+          import datetime,json
+          from pathlib import Path
+          config=json.load(open('quiniela-control/capture-config.json'))
+          d=json.load(open('/tmp/w9-live.json'))
+          roster=['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO']
+          verified=[x['name'] for x in d.get('verified_participants',[])]
+          count=int(d.get('verified_count',-1))
+          if (int(config.get('week_number',-1))!=9 or config.get('status')!='OPEN' or
+              int(d.get('week',-1))!=9 or str(d.get('form_id'))!='263063334940050' or
+              d.get('backend_status')!='LIVE_FIRST_VALID_VERIFIED' or
+              count!=len(verified) or len(set(verified))!=count or
+              count<1 or count>9 or any(n not in roster for n in verified) or
+              int(d.get('private_picks_count',-1))!=count*15):
+              raise SystemExit('HOLD: live FIRST_VALID integrity missing; no push')
+          pending=[name for name in roster if name not in verified]
+          deadline=datetime.datetime.fromisoformat(config['deadline'])
+          now=datetime.datetime.now(datetime.timezone.utc)
+          if not pending or now >= deadline:
+              print('SKIP: full roster or deadline already passed; no stale reminder')
+              Path('/tmp/w9-push-skip').write_text('1')
+          else:
+              msg=f"Registrados: {count}/9. Faltan: {len(pending)} — {', '.join(pending)}. Cierre hoy 16:00 CDMX. Envía tus picks."
+              payload={'eventKey':'W9_CLOSE_REMINDER_20261105_1600',
+                       'title':'PACKERS MÉXICO · QUINIELA W9 · ÚLTIMO AVISO',
+                       'body':msg,
+                       'url':'https://packersmexico.github.io/quiniela-control/captura/',
+                       'tag':'pmx-quiniela-w9-close-reminder-20261105'}
+              assert len(msg)<=240
+              Path('/tmp/w9-reminder-payload.json').write_text(json.dumps(payload,ensure_ascii=False))
+              print('REMINDER_PREPARED',json.dumps({'verified':count,'pending':pending,'deadline':config['deadline']},ensure_ascii=False))
+          PY
+
+          if test -f /tmp/w9-push-skip; then
+            echo 'W9 reminder is no longer timely; no push sent'
+            exit 0
+          fi
+
+          code=$(curl -sS --max-time 45 -o /tmp/w9-push-receipt.json -w '%{http_code}' \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify' \
+            -H "Authorization: Bearer ${PUSH_SECRET}" \
+            -H 'Content-Type: application/json' --data-binary @/tmp/w9-reminder-payload.json)
+          python3 - "$code" <<'PY'
+          import json,sys
+          code=int(sys.argv[1])
+          rec=json.load(open('/tmp/w9-push-receipt.json'))
+          deliveries=[{'operator':x.get('operator'),'status':x.get('status'),'sentAt':x.get('sentAt')} for x in rec.get('deliveries',[])]
+          print('PMX_PUSH_RECEIPT',json.dumps({'http':code,'eventKey':rec.get('eventKey'),'deliveries':deliveries}))
+          if rec.get('eventKey')!='W9_CLOSE_REMINDER_20261105_1600' or code not in (200,207):
+              raise SystemExit('PUSH_FAILED_NO_ACCEPTANCE')
+          if not any(x.get('operator')=='IBRA' and x.get('status') in ('SENT','ALREADY_SENT') for x in deliveries):
+              raise SystemExit('IBRA_PUSH_NOT_ACCEPTED')
+          PY
