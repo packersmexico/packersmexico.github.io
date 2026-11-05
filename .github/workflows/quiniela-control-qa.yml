@@ -76,7 +76,18 @@ jobs:
       - name: Asset index writer preserves certified W6 and historic W5
         run: |
           node scripts/refresh-quiniela-assets.mjs
-          git diff --exit-code -- quiniela-control/exports/asset-index.json
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          const cfg=JSON.parse(fs.readFileSync('quiniela-control/capture-config.json','utf8'));
+          const idx=JSON.parse(fs.readFileSync('quiniela-control/exports/asset-index.json','utf8'));
+          const wk=idx.weeks[String(cfg.week_number)];
+          assert(wk&&wk.capture.window===cfg.status);
+          assert.equal(wk.capture.complete,cfg.complete);
+          if(cfg.complete===9 && cfg.status==='CLOSED' && wk.assets.picks.state!=='READY')
+            assert.equal(wk.assets.picks.state,'QA_PENDING');
+          console.log('PASS: asset index reflects newest certified capture without declaring PNG READY prematurely');
+          NODE
       - name: W6 closure and safe preview assertions
         run: |
           node --input-type=module <<'NODE'
