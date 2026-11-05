@@ -6,8 +6,8 @@
   "source_comparison": "ESPN_PUBLIC_SCHEDULE_MATCHUPS_WITH_NFL_OFFICIAL_BYE_AND_TEAM_COVERAGE",
   "espn_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=12&limit=100",
   "generated_at": "2026-11-05T03:52:42.291Z",
-  "status": "STAGED_LOCKED_NOT_PUBLIC",
-  "public_form_status": "NOT_OPEN",
+  "status": "STAGED_FORM_CREATED_DISABLED_MAPPING_PENDING",
+  "public_form_status": "DISABLED_VERIFIED",
   "roster": [
     "EL DOC",
     "ARI",
@@ -226,5 +226,33 @@
       "schedule_precision": "PROVISIONAL_REVALIDATE_BEFORE_OPEN",
       "fixed_pick": null
     }
+  ],
+  "form_id": "263079252473057",
+  "form_url": "https://form.jotform.com/263079252473057",
+  "form_metadata": {
+    "title": "PMX · Quiniela · Week 12 · 2026 · PREPARADO — NO ABIERTO",
+    "status": "DISABLED",
+    "submission_count": 0,
+    "verified_by": "Jotform form readback 2026-11-04",
+    "verified_question_headings": 16
+  },
+  "field_map_verified": false,
+  "game_order_form": [
+    "GB @ LAR",
+    "CHI @ DET",
+    "PHI @ DAL",
+    "KC @ BUF",
+    "DEN @ PIT",
+    "ATL @ MIN",
+    "BAL @ HOU",
+    "LV @ CLE",
+    "NO @ CIN",
+    "NYG @ IND",
+    "NYJ @ MIA",
+    "TEN @ JAX",
+    "SEA @ SF",
+    "WAS @ AZ",
+    "NE @ LAC",
+    "CAR @ TB"
   ]
 }
