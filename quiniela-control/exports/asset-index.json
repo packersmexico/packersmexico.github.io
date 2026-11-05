@@ -318,9 +318,9 @@
     "9": {
       "week": 9,
       "capture": {
-        "complete": 0,
+        "complete": 9,
         "total": 9,
-        "window": "OPEN"
+        "window": "CLOSED"
       },
       "results": {
         "final": 0,
@@ -328,8 +328,8 @@
       },
       "assets": {
         "picks": {
-          "state": "WAITING_EVENT",
-          "href": null,
+          "state": "READY",
+          "href": "./w9-picks-board.png",
           "expected": "picks-board.png",
           "size": "1600x2000"
         },

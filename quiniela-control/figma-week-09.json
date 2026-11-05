@@ -2,9 +2,9 @@
   "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
   "week": 9,
   "season": 2026,
-  "state": "PREPRODUCTION_PRIVATE_NO_EXPORT",
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
   "publication_ready": false,
-  "gate": "W09_PREBUILD_FIGMA_QA_PASS · FIRST_VALID_9_OF_9_HOLD · AUTO_PUBLISH_NO",
+  "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO",
   "source": "Official W09 schedule contract + Jotform form 263063334940050; personal submissions remain private Redis only",
   "file_key": "RAoegEENwTH2L7gb3yydIq",
   "picks_prebuild_node_id": "3880:222049",
@@ -14,15 +14,20 @@
     "fixed_gb": "PASS · G12 GB @ NE explicit GB FIJO policy, no respondent selection invented",
     "identity": "PASS · approved horizontal V1.1 reused as existing Figma component; Bebas Neue/Montserrat; no AI art",
     "sample_screenshot": "Figma native node 3880:222049 screenshot 1600x2000 reviewed before final BYE rule alignment; final export remains HOLD until verified 9/9",
-    "rights": "Direction authorized private prebuild, not publication or reuse of unvalidated picks."
+    "rights": "Direction authorized private prebuild, not publication or reuse of unvalidated picks.",
+    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
   },
   "asset_approvals": {
     "picks": {
-      "figma_qa": "HOLD_FIRST_VALID",
-      "direction_review": "HOLD_9_OF_9",
-      "export_verified": false,
-      "evidence": "Prebuild editable Figma only, no final PNG",
-      "output_file": "quiniela-control/exports/w9-picks-board.png"
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:232684; validated 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 8ef192ebdf0385463872fb6054accca031be7a289948b583d1b84facf81ab9ba; source checksum 96d7640f5eba7896d27921e746f7360b7939a491a22b2ce36c16e981458ae21e; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w9-picks-board.png",
+      "renderer_template_node": "3893:232684",
+      "scoring_checksum": "96d7640f5eba7896d27921e746f7360b7939a491a22b2ce36c16e981458ae21e"
     }
   },
   "output_targets": {
