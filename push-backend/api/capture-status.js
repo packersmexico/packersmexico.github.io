@@ -2,7 +2,8 @@
 // Merges the public verified snapshot with private first-valid Redis locks.
 // Never exposes picks, submission IDs, secrets or raw Jotform payloads.
 import { redis } from '../lib/redis.js';
-import { applyCors, json, rejectMethod } from '../lib/http.js';
+import { applyCors, json, rejectMethod, isAllowedOrigin } from '../lib/http.js';
+import { catchupWeek08 } from '../scripts/catchup-week08.mjs';
 import { seedW6Baseline } from '../lib/jotform-baseline.js';
 
 const RAW_BASE='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control';
@@ -34,7 +35,31 @@ function safeRecord(value){
 export default async function handler(req,res){
   applyCors(req,res);
   if(req.method==='OPTIONS')return res.status(204).end();
-  if(req.method!=='GET')return rejectMethod(req,res,['GET']);
+  if(req.method==='POST'){
+    // Unprivileged browser can only ask backend to reconcile the ONE canonical
+    // open form. No keys, picks, names or submission IDs reach the client.
+    if(!req.headers.origin||!isAllowedOrigin(req))return json(res,403,{ok:false,error:'ORIGIN_NOT_ALLOWED'});
+    if(process.env.VERCEL_ENV!=='production')return json(res,503,{ok:false,error:'PRODUCTION_ONLY'});
+    const lockKey='pmx:quiniela:public:manual-reconcile-lock';
+    try {
+      const lock=await redis(['SET',lockKey,new Date().toISOString(),'NX','EX',20]);
+      if(lock!=='OK')return json(res,202,{ok:true,status:'RECONCILIATION_RECENTLY_REQUESTED',retry_after_seconds:20});
+      const result=await catchupWeek08();
+      if(!result.ok)return json(res,503,{ok:false,error:'RECONCILIATION_NOT_EXECUTED'});
+      return json(res,200,{
+        ok:true,status:'JOTFORM_RECONCILED',week:result.week,
+        jotform_submissions:result.jotform_submissions??null,
+        valid_submissions:result.valid_submissions??null,
+        rejected_submissions:result.rejected_submissions??null,
+        verified_count:result.verified_count??null,
+        added:result.added??0,checked_at:result.checked_at??new Date().toISOString()
+      });
+    }catch(err){
+      console.error('PMX_PUBLIC_MANUAL_RECONCILE_FAILED',String(err?.message||'UNKNOWN').replace(/[0-9]{10,}/g,'[REDACTED]'));
+      return json(res,503,{ok:false,error:'MANUAL_RECONCILIATION_UNAVAILABLE'});
+    }
+  }
+  if(req.method!=='GET')return rejectMethod(req,res,['GET','POST']);
   res.setHeader('Cache-Control','no-store, max-age=0');
 
   const formID=String(req.query?.form_id||'').trim();
