@@ -1,0 +1,215 @@
+{
+  "week_number": 13,
+  "form_id": "263083244968062",
+  "timezone": "America/Mexico_City",
+  "deadline": "2026-12-03T22:00:00.000Z",
+  "roster": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
+  "packers_locked": true,
+  "packers_bye": false,
+  "bye_teams": [
+    "BAL",
+    "IND",
+    "LV",
+    "NYJ"
+  ],
+  "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-13",
+  "source_schedule_verified": "2026-11-05T03:52:42.367Z",
+  "field_map_qa": "PASS",
+  "field_map_evidence": "Authenticated private Jotform API readback at 2026-11-05T13:41:30.678Z, form DISABLED and zero submissions, 14 unique question IDs",
+  "games": [
+    {
+      "id": "G01",
+      "question": "3",
+      "field": "q3_radio1",
+      "visitor": [
+        "CHIEFS",
+        "KC"
+      ],
+      "home": [
+        "RAMS",
+        "LAR"
+      ]
+    },
+    {
+      "id": "G02",
+      "question": "4",
+      "field": "q4_radio2",
+      "visitor": [
+        "BENGALS",
+        "CIN"
+      ],
+      "home": [
+        "BROWNS",
+        "CLE"
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "5",
+      "field": "q5_radio3",
+      "visitor": [
+        "LIONS",
+        "DET"
+      ],
+      "home": [
+        "FALCONS",
+        "ATL"
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "6",
+      "field": "q6_text4",
+      "visitor": [
+        "PACKERS",
+        "GB"
+      ],
+      "home": [
+        "SAINTS",
+        "NO"
+      ],
+      "fixed_default": "GB",
+      "readonly_verified": true
+    },
+    {
+      "id": "G05",
+      "question": "7",
+      "field": "q7_radio5",
+      "visitor": [
+        "JAGUARS",
+        "JAX"
+      ],
+      "home": [
+        "BEARS",
+        "CHI"
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "8",
+      "field": "q8_radio6",
+      "visitor": [
+        "CHARGERS",
+        "LAC"
+      ],
+      "home": [
+        "BUCCANEERS",
+        "TB"
+      ]
+    },
+    {
+      "id": "G07",
+      "question": "9",
+      "field": "q9_radio7",
+      "visitor": [
+        "49ERS",
+        "SF"
+      ],
+      "home": [
+        "GIANTS",
+        "NYG"
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "10",
+      "field": "q10_radio8",
+      "visitor": [
+        "COMMANDERS",
+        "WAS"
+      ],
+      "home": [
+        "TITANS",
+        "TEN"
+      ]
+    },
+    {
+      "id": "G09",
+      "question": "11",
+      "field": "q11_radio9",
+      "visitor": [
+        "DOLPHINS",
+        "MIA"
+      ],
+      "home": [
+        "BRONCOS",
+        "DEN"
+      ]
+    },
+    {
+      "id": "G10",
+      "question": "12",
+      "field": "q12_radio10",
+      "visitor": [
+        "EAGLES",
+        "PHI"
+      ],
+      "home": [
+        "CARDINALS",
+        "AZ"
+      ]
+    },
+    {
+      "id": "G11",
+      "question": "13",
+      "field": "q13_radio11",
+      "visitor": [
+        "BILLS",
+        "BUF"
+      ],
+      "home": [
+        "PATRIOTS",
+        "NE"
+      ]
+    },
+    {
+      "id": "G12",
+      "question": "14",
+      "field": "q14_radio12",
+      "visitor": [
+        "PANTHERS",
+        "CAR"
+      ],
+      "home": [
+        "VIKINGS",
+        "MIN"
+      ]
+    },
+    {
+      "id": "G13",
+      "question": "15",
+      "field": "q15_radio13",
+      "visitor": [
+        "TEXANS",
+        "HOU"
+      ],
+      "home": [
+        "STEELERS",
+        "PIT"
+      ]
+    },
+    {
+      "id": "G14",
+      "question": "16",
+      "field": "q16_radio14",
+      "visitor": [
+        "COWBOYS",
+        "DAL"
+      ],
+      "home": [
+        "SEAHAWKS",
+        "SEA"
+      ]
+    }
+  ]
+}

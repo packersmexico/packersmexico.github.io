@@ -1,0 +1,236 @@
+{
+  "week_number": 15,
+  "form_id": "263083991840060",
+  "timezone": "America/Mexico_City",
+  "deadline": "2026-12-17T22:00:00.000Z",
+  "roster": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
+  "packers_locked": true,
+  "packers_bye": false,
+  "bye_teams": [],
+  "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-15",
+  "source_schedule_verified": "2026-11-05T03:52:42.477Z",
+  "field_map_qa": "PASS",
+  "field_map_evidence": "Authenticated private Jotform API readback at 2026-11-05T13:41:31.468Z, form DISABLED and zero submissions, 16 unique question IDs",
+  "games": [
+    {
+      "id": "G01",
+      "question": "3",
+      "field": "q3_radio1",
+      "visitor": [
+        "49ERS",
+        "SF"
+      ],
+      "home": [
+        "CHARGERS",
+        "LAC"
+      ]
+    },
+    {
+      "id": "G02",
+      "question": "7",
+      "field": "q7_g02",
+      "visitor": [
+        "SEAHAWKS",
+        "SEA"
+      ],
+      "home": [
+        "EAGLES",
+        "PHI"
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "8",
+      "field": "q8_g03",
+      "visitor": [
+        "BEARS",
+        "CHI"
+      ],
+      "home": [
+        "BILLS",
+        "BUF"
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "9",
+      "field": "q9_g04",
+      "visitor": [
+        "FALCONS",
+        "ATL"
+      ],
+      "home": [
+        "COMMANDERS",
+        "WAS"
+      ]
+    },
+    {
+      "id": "G05",
+      "question": "10",
+      "field": "q10_g05",
+      "visitor": [
+        "RAVENS",
+        "BAL"
+      ],
+      "home": [
+        "STEELERS",
+        "PIT"
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "11",
+      "field": "q11_g06",
+      "visitor": [
+        "BENGALS",
+        "CIN"
+      ],
+      "home": [
+        "PANTHERS",
+        "CAR"
+      ]
+    },
+    {
+      "id": "G07",
+      "question": "12",
+      "field": "q12_g07",
+      "visitor": [
+        "BROWNS",
+        "CLE"
+      ],
+      "home": [
+        "GIANTS",
+        "NYG"
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "13",
+      "field": "q13_g08",
+      "visitor": [
+        "COLTS",
+        "IND"
+      ],
+      "home": [
+        "TITANS",
+        "TEN"
+      ]
+    },
+    {
+      "id": "G09",
+      "question": "14",
+      "field": "q14_g09",
+      "visitor": [
+        "JAGUARS",
+        "JAX"
+      ],
+      "home": [
+        "TEXANS",
+        "HOU"
+      ]
+    },
+    {
+      "id": "G10",
+      "question": "4",
+      "field": "q4_text2",
+      "visitor": [
+        "DOLPHINS",
+        "MIA"
+      ],
+      "home": [
+        "PACKERS",
+        "GB"
+      ],
+      "fixed_default": "GB",
+      "readonly_verified": true
+    },
+    {
+      "id": "G11",
+      "question": "15",
+      "field": "q15_g11",
+      "visitor": [
+        "SAINTS",
+        "NO"
+      ],
+      "home": [
+        "BUCCANEERS",
+        "TB"
+      ]
+    },
+    {
+      "id": "G12",
+      "question": "16",
+      "field": "q16_g12",
+      "visitor": [
+        "JETS",
+        "NYJ"
+      ],
+      "home": [
+        "CARDINALS",
+        "AZ"
+      ]
+    },
+    {
+      "id": "G13",
+      "question": "17",
+      "field": "q17_g13",
+      "visitor": [
+        "COWBOYS",
+        "DAL"
+      ],
+      "home": [
+        "RAMS",
+        "LAR"
+      ]
+    },
+    {
+      "id": "G14",
+      "question": "18",
+      "field": "q18_g14",
+      "visitor": [
+        "BRONCOS",
+        "DEN"
+      ],
+      "home": [
+        "RAIDERS",
+        "LV"
+      ]
+    },
+    {
+      "id": "G15",
+      "question": "19",
+      "field": "q19_g15",
+      "visitor": [
+        "LIONS",
+        "DET"
+      ],
+      "home": [
+        "VIKINGS",
+        "MIN"
+      ]
+    },
+    {
+      "id": "G16",
+      "question": "20",
+      "field": "q20_g16",
+      "visitor": [
+        "PATRIOTS",
+        "NE"
+      ],
+      "home": [
+        "CHIEFS",
+        "KC"
+      ]
+    }
+  ]
+}

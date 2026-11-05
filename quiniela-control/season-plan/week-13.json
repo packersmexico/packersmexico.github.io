@@ -6,7 +6,7 @@
   "source_comparison": "ESPN_PUBLIC_SCHEDULE_MATCHUPS_WITH_NFL_OFFICIAL_BYE_AND_TEAM_COVERAGE",
   "espn_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=13&limit=100",
   "generated_at": "2026-11-05T03:52:42.367Z",
-  "status": "STAGED_FORM_DISABLED_PENDING_QUESTION_MAP",
+  "status": "STAGED_FORM_DISABLED_QA_PASS",
   "public_form_status": "DISABLED_VERIFIED",
   "roster": [
     "EL DOC",
@@ -210,13 +210,14 @@
   ],
   "form_id": "263083244968062",
   "form_url": "https://form.jotform.com/263083244968062",
-  "field_map_verified": false,
+  "field_map_verified": true,
   "form_metadata": {
     "status": "DISABLED",
     "submission_count": 0,
     "provider": "Jotform connected provider direct form creation and readback",
     "pending": "Authenticated backend question-map QA",
     "prepared_at": "2026-11-05",
-    "game_count": 14
+    "game_count": 14,
+    "field_map_readback": "2026-11-05T13:41:30.678Z"
   }
 }
