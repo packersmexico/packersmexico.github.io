@@ -1,0 +1,35 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 9,
+  "season": 2026,
+  "state": "PREPRODUCTION_PRIVATE_NO_EXPORT",
+  "publication_ready": false,
+  "gate": "W09_PREBUILD_FIGMA_QA_PASS · FIRST_VALID_9_OF_9_HOLD · AUTO_PUBLISH_NO",
+  "source": "Official W09 schedule contract + Jotform form 263063334940050; personal submissions remain private Redis only",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_prebuild_node_id": "3880:222049",
+  "picks_master_source_node_id": "3848:218256",
+  "qa": {
+    "prebuild": "PASS · Figma editable frame 1600x2000; 15 official games, nine real participant headers, all 126 historical W08 selections removed, Week09 no individual picks.",
+    "fixed_gb": "PASS · G12 GB @ NE explicit GB FIJO policy, no respondent selection invented",
+    "identity": "PASS · approved horizontal V1.1 reused as existing Figma component; Bebas Neue/Montserrat; no AI art",
+    "sample_screenshot": "Figma native node 3880:222049 screenshot 1600x2000 reviewed before final BYE rule alignment; final export remains HOLD until verified 9/9",
+    "rights": "Direction authorized private prebuild, not publication or reuse of unvalidated picks."
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "HOLD_FIRST_VALID",
+      "direction_review": "HOLD_9_OF_9",
+      "export_verified": false,
+      "evidence": "Prebuild editable Figma only, no final PNG",
+      "output_file": "quiniela-control/exports/w9-picks-board.png"
+    }
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w9-picks-board.png",
+    "results": "quiniela-control/exports/w9-results-final.png",
+    "weekly": "quiniela-control/exports/w9-ranking-weekly.png",
+    "season": "quiniela-control/exports/w9-ranking-season.png"
+  },
+  "auto_publish": false
+}

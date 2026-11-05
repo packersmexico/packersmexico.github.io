@@ -19,3 +19,9 @@ test('W9 generated Jotform prefix q3_q3_radio1 is accepted',()=>{
  const cfg={...base,games:[{...base.games[0],field:'q3_radio1',question:'3'},base.games[1]]};
  assert.equal(validateWeeklyPicks({q3_q3_radio1:'GB',q4_pick:'DAL'},cfg).valid,true);
 });
+
+test('Jotform readonly title metadata is not interpreted as a pick',()=>{
+ const cfg={...base,week_number:9,games:[{...base.games[0],field:'q14_readonly_gb',question:'14',fixed_default:'GB',readonly_verified:true},base.games[1]]};
+ assert.equal(validateWeeklyPicks({'14':{text:'G12 · Packers @ Patriots',type:'control_head',name:'fixedInfo'},'4':{answer:'DAL',type:'control_radio',text:'G02'}},cfg).valid,true);
+ assert.deepEqual(validateWeeklyPicks({'14':{answer:'CHI',text:'Packers @ Patriots',type:'control_radio'},'4':{answer:'DAL'}},cfg).missing_or_invalid,['G01']);
+});

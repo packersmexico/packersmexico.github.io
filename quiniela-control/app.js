@@ -95,11 +95,11 @@ async function refreshLiveReceipts(snapshot,stamp){
     setText('capture-count',complete+'/'+total);
     setText('missing-count',Math.max(0,total-complete));
     setText('w6-confirmed',live.backend_status==='STATIC_VERIFIED_ONLY' ? complete+'/'+total+' VERIFICADOS EN BACKEND · ENVÍOS JOTFORM PENDIENTES DE CONCILIAR' : complete+'/'+total+' RESPUESTAS COMPLETAS VERIFICADAS · '+Math.max(0,total-complete)+' PENDIENTES');
-    setText('last-jotform-check','ÚLTIMA VERIFICACIÓN · '+fmtSync(live.checked_at)+(live.last_verified_at?' · ÚLTIMO ENVÍO VALIDADO '+fmtSync(live.last_verified_at):''));
+    setText('last-jotform-check','ÚLTIMA CONSULTA AL BACKEND · '+fmtSync(live.checked_at)+(live.last_verified_at?' · ÚLTIMO FIRST_VALID '+fmtSync(live.last_verified_at):''));
     const p=$('progress-bar');if(p)p.style.width=(total?Math.round(100*complete/total):0)+'%';
     const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total));}
     const waiting=(live.webhook_received_unreconciled||[]);
-    setText('capture-rule',complete+'/'+total+' participantes verificados · '+(complete*14)+' de '+(total*14)+' selecciones completas. Primera respuesta válida conservada en backend; descargas sujetas al índice de assets.');
+    setText('capture-rule',complete+'/'+total+' participantes FIRST_VALID · '+(complete*(snapshot.games||[]).length)+' de '+(total*(snapshot.games||[]).length)+' selecciones validadas. Jotform se consulta al pulsar VERIFICAR; el contador solo muestra registros admitidos.');
     return {
       status:live.backend_status||'CAPTURE_STATUS_UNKNOWN',
       pending:waiting.length,
@@ -148,9 +148,21 @@ async function load(manual=false){
  const btn=$('refresh-control'), msg=$('refresh-message');
  if(manual){
    if(btn) btn.disabled=true;
-   if(msg) msg.textContent='ACTUALIZANDO… trayendo información y piezas más recientes.';
+   if(msg) msg.textContent='CONSULTANDO JOTFORM Y CONCILIANDO FIRST_VALID…';
  }
  try{
+   let reconciliation=null;
+   if(manual){
+     try{
+       const reply=await fetch('https://packersmexicogithubio-push-backend.vercel.app/api/capture-status',{
+         method:'POST',mode:'cors',cache:'no-store',headers:{'Content-Type':'application/json'},body:'{}'
+       });
+       reconciliation=await reply.json();
+       if(!reply.ok && reply.status!==202) reconciliation={ok:false,status:'UNAVAILABLE',error:reconciliation?.error||'HTTP_'+reply.status};
+     }catch(error){
+       reconciliation={ok:false,status:'UNAVAILABLE',error:'NETWORK_ERROR'};
+     }
+   }
    const stamp=Date.now();
    const r=await fetch(DATA_URL+'?t='+stamp,{cache:'no-store'});
    if(!r.ok) throw new Error('HTTP '+r.status);
@@ -197,14 +209,19 @@ async function load(manual=false){
    lastSeenSync=data.last_sync||null;
    if(msg){
      if(futureCapture){
-       const verified=futureCapture.capture?.submission_integrity?.evidence_date||'SIN FECHA';
-       const liveText=receiptCheck.status==='STATIC_VERIFIED_ONLY' ? 'JOTFORM NO CONCILIADO · NO INFERIR 0 ENVÍOS' : receiptCheck.status==='BACKEND_UNAVAILABLE'
+       const verified='CORTE REDIS '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
+       const liveText=receiptCheck.status==='STATIC_VERIFIED_ONLY' ? 'SIN FIRST_VALID EN REDIS · PULSA VERIFICAR PARA CONSULTAR JOTFORM' : receiptCheck.status==='BACKEND_UNAVAILABLE'
          ? 'BACKEND SIN RESPUESTA · MOSTRANDO CORTE PUBLICADO'
          : 'BACKEND '+receiptCheck.status.replaceAll('_',' ');
        const pushText=receiptCheck.lastPush
          ? ' · ÚLTIMO PUSH RODRIGO '+String(receiptCheck.lastPush.rodrigo_status||'UNKNOWN')+' ('+String(receiptCheck.lastPush.participant||'')+')'
          : '';
-       msg.textContent=(manual?'VERIFICACIÓN TERMINADA · ':'')+futureCapture.week+' · '+verified+' · '+liveText+pushText+' · ACTUALIZADO '+fmtSync(receiptCheck.checkedAt||new Date().toISOString());
+       const manualInfo=!manual ? '' : reconciliation?.status==='JOTFORM_RECONCILED'
+         ? 'CONCILIACIÓN REAL JOTFORM · '+reconciliation.jotform_submissions+' ENVÍOS · '+reconciliation.valid_submissions+' VÁLIDOS · '+reconciliation.verified_count+' FIRST_VALID · '
+         : reconciliation?.status==='RECONCILIATION_RECENTLY_REQUESTED'
+           ? 'CONSULTA RECIENTE EN PROCESO · REVISA DE NUEVO EN 20 SEGUNDOS · '
+           : 'NO SE PUDO CONSULTAR JOTFORM ('+String(reconciliation?.error||'SIN_RESPUESTA')+') · ';
+       msg.textContent=manualInfo+futureCapture.week+' · '+verified+' · '+liveText+pushText;
      }else if(manual){
        msg.textContent=(previousSync&&previousSync===lastSeenSync)
          ? 'PANEL RECARGADO · SIN CAMBIOS NUEVOS · ÚLTIMO SYNC '+fmtSync(data.last_sync)
