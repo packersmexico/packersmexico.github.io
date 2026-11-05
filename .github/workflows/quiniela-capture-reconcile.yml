@@ -14,6 +14,7 @@ on:
       - 'scripts/quiniela-season-cycle.mjs'
       - 'quiniela-control/data.json'
       - 'quiniela-control/season-plan/**'
+      - 'scripts/repair-quiniela-staged.mjs'
   workflow_dispatch:
 permissions:
   contents: write
@@ -62,6 +63,10 @@ jobs:
       - name: Wait for Vercel production alias after repository change
         if: github.event_name == 'push'
         run: sleep 25
+      - name: Repair known W16/W17 provider question inconsistencies without opening forms
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: node scripts/repair-quiniela-staged.mjs
       - name: Validate prepared Jotform field maps with private API, no activation
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
