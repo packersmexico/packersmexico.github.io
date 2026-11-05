@@ -1,0 +1,236 @@
+{
+  "week_number": 12,
+  "form_id": "263079252473057",
+  "timezone": "America/Mexico_City",
+  "deadline": "2026-11-25T22:00:00.000Z",
+  "roster": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
+  "packers_locked": true,
+  "packers_bye": false,
+  "bye_teams": [],
+  "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-12",
+  "source_schedule_verified": "2026-11-05T03:52:42.291Z",
+  "field_map_qa": "PASS",
+  "field_map_evidence": "Authenticated private Jotform API readback at 2026-11-05T04:18:20.128Z, form DISABLED and zero submissions, 16 unique question IDs",
+  "games": [
+    {
+      "id": "G01",
+      "question": "22",
+      "field": "q22_g01Gb",
+      "visitor": [
+        "PACKERS",
+        "GB"
+      ],
+      "home": [
+        "RAMS",
+        "LAR"
+      ],
+      "fixed_default": "GB",
+      "readonly_verified": true
+    },
+    {
+      "id": "G02",
+      "question": "23",
+      "field": "q23_g02Chi",
+      "visitor": [
+        "BEARS",
+        "CHI"
+      ],
+      "home": [
+        "LIONS",
+        "DET"
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "24",
+      "field": "q24_g03Phi",
+      "visitor": [
+        "EAGLES",
+        "PHI"
+      ],
+      "home": [
+        "COWBOYS",
+        "DAL"
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "25",
+      "field": "q25_g04Kc",
+      "visitor": [
+        "CHIEFS",
+        "KC"
+      ],
+      "home": [
+        "BILLS",
+        "BUF"
+      ]
+    },
+    {
+      "id": "G05",
+      "question": "26",
+      "field": "q26_g05Den",
+      "visitor": [
+        "BRONCOS",
+        "DEN"
+      ],
+      "home": [
+        "STEELERS",
+        "PIT"
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "27",
+      "field": "q27_g06Atl",
+      "visitor": [
+        "FALCONS",
+        "ATL"
+      ],
+      "home": [
+        "VIKINGS",
+        "MIN"
+      ]
+    },
+    {
+      "id": "G07",
+      "question": "28",
+      "field": "q28_g07Bal",
+      "visitor": [
+        "RAVENS",
+        "BAL"
+      ],
+      "home": [
+        "TEXANS",
+        "HOU"
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "29",
+      "field": "q29_g08Lv",
+      "visitor": [
+        "RAIDERS",
+        "LV"
+      ],
+      "home": [
+        "BROWNS",
+        "CLE"
+      ]
+    },
+    {
+      "id": "G09",
+      "question": "30",
+      "field": "q30_g09No",
+      "visitor": [
+        "SAINTS",
+        "NO"
+      ],
+      "home": [
+        "BENGALS",
+        "CIN"
+      ]
+    },
+    {
+      "id": "G10",
+      "question": "31",
+      "field": "q31_g10Nyg",
+      "visitor": [
+        "GIANTS",
+        "NYG"
+      ],
+      "home": [
+        "COLTS",
+        "IND"
+      ]
+    },
+    {
+      "id": "G11",
+      "question": "32",
+      "field": "q32_g11Nyj",
+      "visitor": [
+        "JETS",
+        "NYJ"
+      ],
+      "home": [
+        "DOLPHINS",
+        "MIA"
+      ]
+    },
+    {
+      "id": "G12",
+      "question": "33",
+      "field": "q33_g12Ten",
+      "visitor": [
+        "TITANS",
+        "TEN"
+      ],
+      "home": [
+        "JAGUARS",
+        "JAX"
+      ]
+    },
+    {
+      "id": "G13",
+      "question": "34",
+      "field": "q34_g13Sea",
+      "visitor": [
+        "SEAHAWKS",
+        "SEA"
+      ],
+      "home": [
+        "49ERS",
+        "SF"
+      ]
+    },
+    {
+      "id": "G14",
+      "question": "35",
+      "field": "q35_g14Was",
+      "visitor": [
+        "COMMANDERS",
+        "WAS"
+      ],
+      "home": [
+        "CARDINALS",
+        "AZ"
+      ]
+    },
+    {
+      "id": "G15",
+      "question": "36",
+      "field": "q36_g15Ne",
+      "visitor": [
+        "PATRIOTS",
+        "NE"
+      ],
+      "home": [
+        "CHARGERS",
+        "LAC"
+      ]
+    },
+    {
+      "id": "G16",
+      "question": "37",
+      "field": "q37_g16Car",
+      "visitor": [
+        "PANTHERS",
+        "CAR"
+      ],
+      "home": [
+        "BUCCANEERS",
+        "TB"
+      ]
+    }
+  ]
+}
