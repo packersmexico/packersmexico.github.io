@@ -27,7 +27,7 @@ async function verifiedGitHubRead(path){
  const payload=await r.json();
  if(payload.type!=='file'||payload.encoding!=='base64'||!payload.content)
   throw Error('CANONICAL_GITHUB_API_PAYLOAD');
- return JSON.parse(Buffer.from(payload.content.replace(/\\n/g,''),'base64').toString('utf8'));
+ return JSON.parse(Buffer.from(payload.content.replace(/\s+/g,''),'base64').toString('utf8'));
 }
 function captureCertified(snapshot,contract){
  return String(snapshot?.capture?.form_id)===String(contract?.form_id)&&
