@@ -45,4 +45,20 @@ jobs:
             exit 0
           fi
           git commit -m "Quiniela: sync observed live and final NFL scores"
-          git push origin HEAD:main
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "PMX_OFFICIAL_SCORE_PERSISTED"
+              break
+            fi
+            if [ "$attempt" = 4 ]; then
+              echo "::error::Could not persist official scoreboard"
+              exit 1
+            fi
+            sleep 4
+          done
+      - name: Auto-render Figma RESULTS, WEEKLY and SEASON after complete verified MNF
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: bash scripts/run-quiniela-auto-render.sh final
