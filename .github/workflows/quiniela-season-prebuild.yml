@@ -1,0 +1,54 @@
+name: Quiniela 2026 Season Prebuild · PRIVATE STAGING ONLY
+on:
+  push:
+    branches:
+      - quiniela/season-w10-w18-automation-20261104
+    paths:
+      - 'scripts/prebuild-quiniela-season.mjs'
+      - '.github/workflows/quiniela-season-prebuild.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pmx-quiniela-season-prebuild
+  cancel-in-progress: false
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate schedule guardrails without network
+        run: node scripts/prebuild-quiniela-season.mjs --self-test
+      - name: Stage official NFL week matchups against ESPN and BYE validation
+        run: node scripts/prebuild-quiniela-season.mjs
+      - name: Validate no future form released by staging
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';import assert from 'node:assert/strict';
+          const active=JSON.parse(fs.readFileSync('quiniela-control/capture-config.json','utf8'));
+          assert.equal(active.week_number,9);
+          for(let w=10;w<=18;w++){
+            const f=JSON.parse(fs.readFileSync('quiniela-control/season-plan/week-'+String(w).padStart(2,'0')+'.json','utf8'));
+            assert.equal(f.week,w);
+            assert(f.status.startsWith('STAGED'));
+            assert.equal(f.release_gate.social_auto_publish,false);
+            assert.equal(f.games.length*2+f.bye_teams.length,32);
+            assert(!f.form_id || /^\d{10,25}$/.test(String(f.form_id)));
+          }
+          console.log('PASS W10-W18 STAGED, W09 untouched, ZERO FUTURE PUBLICATION');
+          NODE
+      - name: Persist staged plans on this branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add quiniela-control/season-plan/week-*.json
+          if git diff --cached --quiet; then echo 'Prebuild unchanged'; exit 0; fi
+          git commit -m 'Quiniela: stage W10-W18 ESPN NFL weekly schedules, no forms opened'
+          git push origin HEAD:${{ github.ref_name }}

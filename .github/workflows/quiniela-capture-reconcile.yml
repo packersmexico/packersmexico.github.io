@@ -11,9 +11,12 @@ on:
       - 'push-backend/api/capture-status.js'
       - 'push-backend/lib/weekly-capture.js'
       - 'push-backend/scripts/catchup-week08.mjs'
+      - 'scripts/quiniela-season-cycle.mjs'
+      - 'quiniela-control/data.json'
+      - 'quiniela-control/season-plan/**'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: pmx-quiniela-private-capture-reconcile
   cancel-in-progress: false
@@ -49,3 +52,43 @@ jobs:
           form=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["form_id"])')
           curl -sSf --max-time 40 "$API?week=$week&form_id=$form" | \
             python3 -c 'import json,sys;d=json.load(sys.stdin);print(json.dumps({k:d.get(k) for k in ("ok","week","verified_count","total","backend_status","private_picks_count","private_picks_integrity")},ensure_ascii=False));assert d.get("ok") and d.get("week")==9'
+      - name: Checkout canonical main for season state transitions
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate prepared Jotform field maps with private API, no activation
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: node scripts/inspect-quiniela-staged.mjs
+      - name: Self-test idempotent close/open gates
+        run: node scripts/quiniela-season-cycle.mjs --self-test
+      - name: Auto-close FIRST_VALID 9/9 or deadline; auto-open staged form after previous MNF
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: node scripts/quiniela-season-cycle.mjs
+      - name: Persist ONLY canonical season transitions with optimistic retry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- quiniela-control/capture-config.json quiniela-control/contracts/ quiniela-control/weeks/ quiniela-control/season-plan/
+          if git diff --cached --quiet; then
+            echo 'PMX_CANONICAL_SEASON_NO_TRANSITION'
+            exit 0
+          fi
+          git commit -m 'Quiniela: certified weekly capture close or next-week release'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo 'PMX_SEASON_TRANSITION_PERSISTED'
+              exit 0
+            fi
+            sleep 5
+          done
+          echo '::error::Season state commit failed; next 10min run must reconcile before claiming PASS'
+          exit 1

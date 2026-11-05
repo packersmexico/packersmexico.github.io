@@ -46,6 +46,13 @@ jobs:
           node --check push-backend/api/scoring-status.js
           node --check push-backend/lib/weekly-rankings.js
           node --check push-backend/api/milestone-sync.js
+          node --check scripts/prebuild-quiniela-season.mjs
+          node --check scripts/quiniela-season-cycle.mjs
+          node --check scripts/inspect-quiniela-staged.mjs
+          node scripts/inspect-quiniela-staged.mjs --self-test
+          node --check push-backend/api/reconcile-capture.js
+          node scripts/prebuild-quiniela-season.mjs --self-test
+          node scripts/quiniela-season-cycle.mjs --self-test
           node --check scripts/refresh-quiniela-assets.mjs
           node --check scripts/prepare-quiniela-figma-handoff.mjs
           python3 -m py_compile scripts/sync-quiniela-live.py
