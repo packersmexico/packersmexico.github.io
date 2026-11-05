@@ -71,8 +71,7 @@ for(let w=1;w<=active;w++){
     capture.submission_integrity?.evidence_form_id===capture.form_id &&
     Number(capture.expected_picks)===target*data.games?.length &&
     Number(capture.received_picks)===Number(capture.expected_picks) &&
-    Number(capture.unique_participants)===target &&
-    Number(capture.duplicate_count)===0;
+    Number(capture.unique_participants)===target; // duplicates do not revoke valid FIRST_VALID locks
   const picksGate=captureClosed && complete===target &&
     (strictFuture ? fullRoster&&(lockedCount===target||sanitizedReceipt) : complete>0);
   const resultsGate=total>0&&total===final&&String(results.status||'').toUpperCase()==='FINAL';

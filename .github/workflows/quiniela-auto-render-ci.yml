@@ -1,0 +1,46 @@
+name: Quiniela W9-W18 Real Figma Renderer QA
+on:
+  pull_request:
+    paths:
+      - 'scripts/render-quiniela-season.py'
+      - 'scripts/run-quiniela-auto-render.sh'
+      - 'quiniela-control/templates/quiniela-auto-*'
+      - '.github/workflows/quiniela-auto-render-ci.yml'
+      - '.github/workflows/quiniela-live-results.yml'
+      - '.github/workflows/quiniela-capture-reconcile.yml'
+      - 'push-backend/api/score-week.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Structural safety and syntax
+        run: |
+          set -euo pipefail
+          node --check push-backend/api/score-week.js
+          python -m py_compile scripts/render-quiniela-season.py
+          bash -n scripts/run-quiniela-auto-render.sh
+          node scripts/audit-quiniela-season-readiness.mjs
+      - name: Install image compositor without new services
+        run: python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Inspect Figma frozen hashes and exercise 13-16 rows and rank overlays
+        run: python scripts/render-quiniela-season.py --self-test
+      - name: Assert no output produced without complete FIRST_VALID
+        run: |
+          set -euo pipefail
+          set +e
+          python scripts/render-quiniela-season.py --mode picks --eligible
+          status=$?
+          set -e
+          test "$status" = 2
+          git diff --exit-code -- quiniela-control/exports/
+          echo "PASS: no synthetic submissions, no premature public PNGs"

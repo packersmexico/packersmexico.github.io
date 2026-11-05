@@ -1,0 +1,45 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_FROZEN_FAMILY_V1",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "approved_for": "W9-W18 controlled auto-render from authentic private records",
+  "identity": "PMX/Logo/Current/Horizontal/V1.1",
+  "mode": "FROZEN_FIGMA_BASE_AND_EPHEMERAL_AUTHENTIC_DATA",
+  "budget_mxn": 0,
+  "auto_publish_social": false,
+  "grid": {
+    "13": {
+      "node_id": "3893:224403",
+      "path": "quiniela-control/templates/quiniela-auto-13-base.png",
+      "git_blob": "b8bb60a85b7043e3c5c687268c380198f39fc2ed"
+    },
+    "14": {
+      "node_id": "3893:228543",
+      "path": "quiniela-control/templates/quiniela-auto-14-base.png",
+      "git_blob": "30dcd9f22e556f6ef017f724ab7a670fd7489297"
+    },
+    "15": {
+      "node_id": "3893:232684",
+      "path": "quiniela-control/templates/quiniela-auto-15-base.png",
+      "git_blob": "6ea21e3f3f6f2998cb55610cbda73966e80fd106"
+    },
+    "16": {
+      "node_id": "3893:236827",
+      "path": "quiniela-control/templates/quiniela-auto-16-base.png",
+      "git_blob": "436ffb889c54c6ec70d54f430a1fd255c1623281"
+    }
+  },
+  "ranking": {
+    "weekly": {
+      "node_id": "3894:240766",
+      "path": "quiniela-control/templates/quiniela-auto-weekly-base.png",
+      "git_blob": "3d25b70da1fd56d40a7e17cfbe307bd7ac05d81f"
+    },
+    "season": {
+      "node_id": "3894:244882",
+      "path": "quiniela-control/templates/quiniela-auto-season-base.png",
+      "git_blob": "1dc5d245743fb63eb135eed2046309111f82f7a2"
+    }
+  },
+  "version": "2026-11-05",
+  "privacy": "Only ephemeral authenticated render records; no private picks or original submission IDs committed."
+}

@@ -95,3 +95,7 @@ jobs:
           done
           echo '::error::Season state commit failed; next 10min run must reconcile before claiming PASS'
           exit 1
+      - name: Auto-render Figma PICKS after genuine 9/9 closure, 04 QA and panel index
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: bash scripts/run-quiniela-auto-render.sh picks
