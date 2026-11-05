@@ -14,6 +14,26 @@ async function read(p){
  if(!r.ok)throw Error('SOURCE_'+r.status);
  return r.json();
 }
+
+async function verifiedGitHubRead(path){
+ // Authoritative origin fallback when raw.githubusercontent's main ref is stale
+ // immediately after the season-transition commit. Public JSON only.
+ const url='https://api.github.com/repos/packersmexico/packersmexico.github.io/contents/quiniela-control/'+path+'?ref=main';
+ const r=await fetch(url,{cache:'no-store',headers:{
+  Accept:'application/vnd.github+json',
+  'User-Agent':'PMX-Quiniela-Scoring-Certification-Readback'
+ }});
+ if(!r.ok)throw Error('CANONICAL_GITHUB_API_'+r.status);
+ const payload=await r.json();
+ if(payload.type!=='file'||payload.encoding!=='base64'||!payload.content)
+  throw Error('CANONICAL_GITHUB_API_PAYLOAD');
+ return JSON.parse(Buffer.from(payload.content.replace(/\s+/g,''),'base64').toString('utf8'));
+}
+function captureCertified(snapshot,contract){
+ return String(snapshot?.capture?.form_id)===String(contract?.form_id)&&
+  String(snapshot?.capture?.window).toUpperCase()==='CLOSED'&&
+  Number(snapshot?.capture?.complete)===contract?.roster?.length;
+}
 function parseHash(raw){
  if(raw==null)return {};
  const e=Array.isArray(raw)?Array.from({length:Math.floor(raw.length/2)},(_,i)=>[raw[i*2],raw[i*2+1]]):Object.entries(raw);
@@ -27,15 +47,23 @@ export default async function handler(req,res){
  const week=Number(req.body?.week||req.query?.week);
  if(!Number.isInteger(week)||week<7||week>18)return reject(res,400,'INVALID_WEEK');
  try{
-  const [snapshot,previous,contract]=await Promise.all([
+  let [snapshot,previous,contract]=await Promise.all([
    read('weeks/week-'+String(week).padStart(2,'0')+'.json'),
    read('weeks/week-'+String(week-1).padStart(2,'0')+'.json'),
    read('contracts/week-'+String(week).padStart(2,'0')+'.json')
   ]);
+  if(!captureCertified(snapshot,contract)){
+    // Re-check after GitHub Actions commits CLOSED + 9/9 to main.
+    // The raw CDN can transiently serve the previous OPEN snapshot, so consult
+    // GitHub's authoritative Contents API. NO changes to the certification gate.
+    const current=await verifiedGitHubRead('weeks/week-'+String(week).padStart(2,'0')+'.json');
+    if(current?.week_number===week && captureCertified(current,contract)){
+      snapshot=current;
+      console.info('PMX_SCORING_CANONICAL_READBACK',JSON.stringify({week,status:'CLOSED',complete:9,source:'GITHUB_CONTENTS_API'}));
+    }
+  }
   if(snapshot.week_number!==week||previous.week_number!==week-1||contract.week_number!==week)throw Error('WEEK_CHAIN_MISMATCH');
-  if(String(snapshot.capture?.form_id)!==String(contract.form_id)||
-     String(snapshot.capture?.window).toUpperCase()!=='CLOSED' ||
-     Number(snapshot.capture?.complete)!==contract.roster?.length)throw Error('CAPTURE_NOT_CERTIFIED');
+  if(!captureCertified(snapshot,contract))throw Error('CAPTURE_NOT_CERTIFIED');
 
   // Private pre-kickoff matrix for the approved PICKS image. The same server
   // credential is required; the public site never receives these values.

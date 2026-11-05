@@ -43,6 +43,7 @@ jobs:
           node --check push-backend/lib/weekly-capture.js
           node --check push-backend/lib/weekly-rankings.js
           node --check push-backend/api/scoring-status.js
+          node --check push-backend/api/score-week.js
           node --check push-backend/scripts/score-week06.mjs
           node --check push-backend/scripts/discover-week07.mjs
           node --check push-backend/scripts/setup-week07.mjs
