@@ -110,9 +110,9 @@
       "matchup": "JAX @ BAL",
       "time": "JUE 05 NOV · 19:15 CDMX · TNF",
       "kickoff_iso": "2026-11-05T19:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "JAX",
+      "score": "JAX 33–10 BAL"
     },
     {
       "id": "G02",
@@ -242,12 +242,12 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 15,
-    "status": "SCHEDULED",
+    "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
-    "scored": 0,
+    "scored": 1,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,5 +321,6 @@
     "status": "NOT_STARTED",
     "original_picks_preserved": true,
     "picks_visible": false
-  }
+  },
+  "last_sync": "2026-11-06T05:25:52.628925+00:00"
 }
