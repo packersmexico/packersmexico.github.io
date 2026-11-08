@@ -119,9 +119,9 @@
       "matchup": "CIN @ ATL",
       "time": "DOM 08 NOV · 08:30 CDMX · MADRID",
       "kickoff_iso": "2026-11-08T08:30:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "CIN 34–17 ATL"
     },
     {
       "id": "G03",
@@ -245,7 +245,7 @@
     "final": 1,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0,
     "scored": 1,
     "pushes": 0
@@ -322,5 +322,5 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-06T05:25:52.628925+00:00"
+  "last_sync": "2026-11-08T17:22:23.331878+00:00"
 }
