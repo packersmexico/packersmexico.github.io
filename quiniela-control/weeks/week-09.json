@@ -119,8 +119,8 @@
       "matchup": "CIN @ ATL",
       "time": "DOM 08 NOV · 08:30 CDMX · MADRID",
       "kickoff_iso": "2026-11-08T08:30:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
+      "status": "FINAL",
+      "winner": "CIN",
       "score": "CIN 34–17 ATL"
     },
     {
@@ -128,72 +128,72 @@
       "matchup": "DEN @ CAR",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DEN",
+      "score": "DEN 26–21 CAR"
     },
     {
       "id": "G04",
       "matchup": "DAL @ IND",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "DAL 20–20 IND"
     },
     {
       "id": "G05",
       "matchup": "NYJ @ KC",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "KC",
+      "score": "KC 35–12 NYJ"
     },
     {
       "id": "G06",
       "matchup": "DET @ MIA",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "DET",
+      "score": "DET 19–9 MIA"
     },
     {
       "id": "G07",
       "matchup": "CLE @ NO",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "CLE 16–16 NO"
     },
     {
       "id": "G08",
       "matchup": "NYG @ PHI",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "NYG 19–11 PHI"
     },
     {
       "id": "G09",
       "matchup": "LAR @ WAS",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "LAR",
+      "score": "LAR 20–13 WAS"
     },
     {
       "id": "G10",
       "matchup": "HOU @ LAC",
       "time": "DOM 08 NOV · 15:05 CDMX",
       "kickoff_iso": "2026-11-08T15:05:00-06:00",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null
+      "score": "HOU 7–0 LAC"
     },
     {
       "id": "G11",
@@ -242,12 +242,12 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 6,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 1,
+    "in_progress": 4,
     "ties": 0,
-    "scored": 1,
+    "scored": 6,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -322,5 +322,5 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-08T17:22:23.331878+00:00"
+  "last_sync": "2026-11-08T21:15:45.981506+00:00"
 }
