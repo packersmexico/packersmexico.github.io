@@ -39,7 +39,7 @@
   function gameDayWindowPassed(game) {
     // Advance the next-game registration hero five hours after scheduled kickoff.
     // This is a display cutoff, not a claim that the game has ended.
-    if (!game.time || !/^\\d{1,2}:\\d{2}$/.test(game.time)) return false;
+    if (!game.time || !/^\d{1,2}:\d{2}$/.test(game.time)) return false;
     var kickoff = game.time.split(":").map(Number);
     return localClockMinutes() >= kickoff[0] * 60 + kickoff[1] + 300;
   }
