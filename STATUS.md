@@ -14,49 +14,31 @@ Season Calendar route: `https://packersmexico.github.io/calendario/`
 
 ## CURRENT PHASE
 
-`FASE 2D · HUB RIVALRIES WEEK 5 · PUBLIC EDITORIAL SURFACES`
+`FASE 2E · HUB GAME DAY W10 · PACKERS VS VIKINGS · 2026-11-08`
 
 ## STATUS
 
-`RIVALRIES WEEK 5 CAPSULE ACTIVE · HUB AUTO-ROLLOVER WEEK 5 · BEARS LOGO FROM APPROVED FIGMA NFL LOGO PACK · SOCIAL 5/5 REDESIGNED · QUINIELA PUBLIC WEEK 4 ONLY · INTERNAL CONTROL REMOVED FROM PUBLIC SURFACE · GITHUB PAGES DEPLOY PASS`
+`W10 SOURCE + SCRIPT QA PASS · PAGES DEPLOY/PUBLIC BROWSER QA NOT YET VERIFIED · EXTERNAL FORM W10 STATUS UNKNOWN`
 
-## CORE HUB · CURRENT LIVE STATE
+## CORE HUB · CURRENT GAME CONFIGURATION (2026-11-08)
 
-Resolved automatically for current CDMX date:
+- Week 10: `PMX-WS-2026-W10`
+- Fixture: `MINNESOTA VIKINGS @ GREEN BAY PACKERS`
+- Official game: Sunday `2026-11-15`, kickoff `12:00 CDMX` (Packers 2026 schedule)
+- Community venue: `Wingstop Condesa, Atlixco 94, CDMX`
+- Exact approved venue wording: `Casa Oficial de Packers en CDMX` (venue relationship only; PMX independent of NFL/Packers)
+- Registration CTA: `CONFIRMA TU ASISTENCIA`; existing Forms.app destination remains untouched
+- Registration is a headcount estimate; not a table reservation.
+- The existing Week 9 game-day hero transitions at `2026-11-08 20:25 CDMX`, five hours after 15:25 kickoff. This cutoff is for display only, not a claim about the final whistle.
+- Generic weekly auto-rollover thereafter still uses the schedule; a BYE is excluded from the **next Game Day attendance hero** but remains in the season calendar.
+- Script execution QA: W09 at 20:20 Nov 8; W10 at 20:25 Nov 8 / Nov 9 / Nov 15 14:00; W12 after the Week 10 window. Exact registration URL and analytics keys unchanged.
+- Last source code commit: `e431e94ebe2f5b364405e58f350e865ce0099994`
+- External Forms.app is managed outside the Hub: current event selection/companion count for Week 10 could not be verified. **Do not say Week 10 registration is confirmed** until the external form is checked.
+- Live public browser/mobile QA remains HOLD because direct browser access to GitHub Pages and Forms.app was not available in this execution. Pages Actions outcome must be read separately.
 
-- `WEEK 5 · NFL RIVALRIES`
-- `BEARS @ PACKERS`
-- `DOM 11 OCT · 14:25 CDMX`
-- `WINGSTOP CONDESA · CDMX`
-- `Casa Oficial de Packers en CDMX`
-- `CONFIRMA TU ASISTENCIA`
-- Packers + Bears matchup logos active
-- temporary Rivalries capsule active from `2026-10-05` through `2026-10-11`
+### Historical Week 5 state (not current)
 
-Rivalries capsule:
-- ID: `PMX-RIVALRIES-W5-2026`
-- approved temporary logo asset: `assets/PMX_LOGO_RIVALRIES_W5_2026.svg`
-- canonical Horizontal V1.1 remains unchanged
-- body-level theme is reversible and date-gated
-
-Public quiniela:
-- latest published picks: `WEEK 4`
-- route: `https://packersmexico.github.io/quiniela/w04/`
-- public content: 9 participants · 16 games · 144 picks
-- no capture counters, operator controls, deadlines, VAPID/push state or internal control metadata are rendered in the public Hub/quiniela page
-
-Social surface:
-- Instagram · @packers_mx
-- X · @Packers_Mx
-- Facebook · PACKERS MÉXICO
-- TikTok · @packers_mx
-- YouTube · GoPackGo MX
-- redesigned as a dedicated editorial section rather than a low-emphasis footer list
-
-Implementation:
-- Hub version `p0-weekly-auto-v1.4`
-- deployment commit `0134a9c0dc12db25df9938f9533fe166810d83d3`
-- GitHub Pages build/deploy: `SUCCESS`
+The old Week 5 Rivalries capsule was date-gated for Oct 5–11; its assets and editorial evidence remain historical. These do not override current W10 game data.
 
 ## WEEKLY AUTO-ROLLOVER
 
@@ -324,5 +306,7 @@ Verified:
 7. `Monitor NFL/Packers flex changes and update the season schedule source when materially required.`
 
 ## LAST RELEVANT CHANGE
+
+`2026-11-08 · Week 10 Game Day rollover adjusted. On Nov 8 after the five-hour game-day display window, Hub promotes Vikings @ Packers on Nov 15 at 12:00 CDMX and retains official venue wording. BYE weeks no longer become registerable Hub hero games. External form W10, browser and publish deployment require independent readback/QA.`
 
 `2026-09-14 · Core Hub weekly rollover is now systemized. The root Hub consumes the existing 2026 season schedule and automatically advances the visible matchup by CDMX date. Public browser QA confirmed Week 2 Packers @ Jets at 11:00 CDMX and no Vikings residue. Ordinary weekly opponent/date/time rollover no longer requires a manual Hub edit; factual flex changes remain a recency-controlled maintenance task.`
