@@ -49,7 +49,8 @@
 
     var today = todayISOInTimezone();
     var upcoming = season.games.find(function (game) {
-      return game.dateISO && (game.dateISO > today ||
+      // The Hub promotes a playable Game Day; BYE remains visible in the season calendar.
+      return game.site !== "BYE" && game.dateISO && (game.dateISO > today ||
         (game.dateISO === today && !gameDayWindowPassed(game)));
     });
 
