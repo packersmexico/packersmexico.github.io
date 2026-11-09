@@ -137,9 +137,9 @@
       "matchup": "DAL @ IND",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "DAL 20–20 IND"
+      "status": "FINAL",
+      "winner": "DAL",
+      "score": "DAL 27–23 IND"
     },
     {
       "id": "G05",
@@ -164,17 +164,17 @@
       "matchup": "CLE @ NO",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "CLE 16–16 NO"
+      "status": "FINAL",
+      "winner": "NO",
+      "score": "NO 23–22 CLE"
     },
     {
       "id": "G08",
       "matchup": "NYG @ PHI",
       "time": "DOM 08 NOV · 12:00 CDMX",
       "kickoff_iso": "2026-11-08T12:00:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
+      "status": "FINAL",
+      "winner": "NYG",
       "score": "NYG 19–11 PHI"
     },
     {
@@ -191,36 +191,36 @@
       "matchup": "HOU @ LAC",
       "time": "DOM 08 NOV · 15:05 CDMX",
       "kickoff_iso": "2026-11-08T15:05:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "HOU 7–0 LAC"
+      "status": "FINAL",
+      "winner": "HOU",
+      "score": "HOU 44–22 LAC"
     },
     {
       "id": "G11",
       "matchup": "LV @ SF",
       "time": "DOM 08 NOV · 15:25 CDMX",
       "kickoff_iso": "2026-11-08T15:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "SF",
+      "score": "SF 38–17 LV"
     },
     {
       "id": "G12",
       "matchup": "GB @ NE",
       "time": "DOM 08 NOV · 15:25 CDMX",
       "kickoff_iso": "2026-11-08T15:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "GB",
+      "score": "GB 45–27 NE"
     },
     {
       "id": "G13",
       "matchup": "AZ @ SEA",
       "time": "DOM 08 NOV · 15:25 CDMX",
       "kickoff_iso": "2026-11-08T15:25:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "SEA",
+      "score": "SEA 17–3 AZ"
     },
     {
       "id": "G14",
@@ -242,12 +242,12 @@
     }
   ],
   "results": {
-    "final": 6,
+    "final": 13,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 4,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 6,
+    "scored": 13,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -322,5 +322,5 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-08T21:15:45.981506+00:00"
+  "last_sync": "2026-11-09T01:03:27.530690+00:00"
 }
