@@ -227,9 +227,9 @@
       "matchup": "TB @ CHI",
       "time": "DOM 08 NOV · 19:20 CDMX · SNF",
       "kickoff_iso": "2026-11-08T19:20:00-06:00",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "TB 16–24 CHI"
+      "status": "FINAL",
+      "winner": "CHI",
+      "score": "CHI 27–24 TB"
     },
     {
       "id": "G15",
@@ -242,12 +242,12 @@
     }
   ],
   "results": {
-    "final": 13,
+    "final": 14,
     "total": 15,
     "status": "LIVE",
-    "in_progress": 1,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 13,
+    "scored": 14,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -322,5 +322,5 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-09T04:21:07.714262+00:00"
+  "last_sync": "2026-11-09T13:11:45.145557+00:00"
 }
