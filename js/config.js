@@ -20,12 +20,37 @@
     return [values.year, values.month, values.day].join("-");
   }
 
+  function localClockMinutes() {
+    var parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: timezone,
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23"
+    }).formatToParts(new Date());
+
+    var values = parts.reduce(function (result, part) {
+      if (part.type !== "literal") result[part.type] = part.value;
+      return result;
+    }, {});
+
+    return Number(values.hour) * 60 + Number(values.minute);
+  }
+
+  function gameDayWindowPassed(game) {
+    // Advance the next-game registration hero five hours after scheduled kickoff.
+    // This is a display cutoff, not a claim that the game has ended.
+    if (!game.time || !/^\\d{1,2}:\\d{2}$/.test(game.time)) return false;
+    var kickoff = game.time.split(":").map(Number);
+    return localClockMinutes() >= kickoff[0] * 60 + kickoff[1] + 300;
+  }
+
   function resolveCurrentGame() {
     if (!season || !Array.isArray(season.games) || !season.games.length) return null;
 
     var today = todayISOInTimezone();
     var upcoming = season.games.find(function (game) {
-      return game.dateISO && game.dateISO >= today;
+      return game.dateISO && (game.dateISO > today ||
+        (game.dateISO === today && !gameDayWindowPassed(game)));
     });
 
     if (upcoming) return upcoming;
