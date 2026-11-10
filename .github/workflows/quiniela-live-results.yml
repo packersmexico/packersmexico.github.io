@@ -17,6 +17,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: quiniela-smart-results
   cancel-in-progress: false
@@ -62,3 +63,36 @@ jobs:
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: bash scripts/run-quiniela-auto-render.sh final
+      - name: Trigger existing season capture workflow immediately after certified MNF
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('quiniela-control')
+          data=json.load(open(root/'data.json'))
+          cfg=json.load(open(root/'capture-config.json'))
+          week=int(data.get('week_number') or 0)
+          scoring=data.get('scoring') or {}
+          results=data.get('results') or {}
+          verified=(
+            9<=week<=17 and cfg.get('week_number')==week and
+            cfg.get('status')=='CLOSED' and
+            scoring.get('status')=='COMPLETE' and bool(scoring.get('checksum')) and
+            results.get('status')=='FINAL' and
+            results.get('final')==results.get('total') and
+            len(data.get('season_standings') or [])==9
+          )
+          print('PMX_POST_MNF_AUTO_OPEN_GATE',json.dumps({'week':week,'certified':verified,'next_week':week+1 if verified else None}))
+          pathlib.Path('/tmp/pmx-trigger-next-week').write_text('1' if verified else '0')
+          PY
+          if [ "$(cat /tmp/pmx-trigger-next-week)" != '1' ]; then
+            echo "PMX_NEXT_WEEK_DISPATCH_HOLD_UNCERTIFIED"
+            exit 0
+          fi
+          # workflow_dispatch is allowed from GITHUB_TOKEN. Do NOT create a
+          # second orchestrator or rely on an unreliable schedule-only handoff.
+          gh workflow run quiniela-capture-reconcile.yml --ref main
+          echo "PMX_NEXT_WEEK_DISPATCHED_TO_EXISTING_WORKFLOW"
