@@ -10,6 +10,7 @@ on:
       - '.github/workflows/quiniela-capture-reconcile.yml'
       - 'push-backend/api/capture-status.js'
       - 'push-backend/api/reconcile-capture.js'
+      - 'push-backend/package.json'
       - 'push-backend/lib/weekly-capture.js'
       - 'push-backend/scripts/catchup-week08.mjs'
       - 'scripts/quiniela-season-cycle.mjs'
