@@ -145,3 +145,33 @@ jobs:
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: bash scripts/run-quiniela-auto-render.sh picks
+
+      - name: Alert operators if weekly automation fails, without exposing private picks
+        if: ${{ failure() }}
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${PMX_PUSH_SECRET:-}" ]; then
+            echo "::warning::Operator push unavailable; inspect failed run in GitHub Actions"
+            exit 0
+          fi
+          week=$(python3 -c 'import json;print(json.load(open("quiniela-control/capture-config.json"))["week_number"])' 2>/dev/null || echo "UNKNOWN")
+          payload=$(python3 - "$week" <<'PY'
+          import json,sys
+          w=sys.argv[1]
+          print(json.dumps({
+            "eventKey":"QUINIELA_AUTOMATION_HOLD_W"+w+"_"+__import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y%m%d"),
+            "title":"PACKERS MÉXICO · QUINIELA EN HOLD",
+            "body":"La conciliación o el cambio de semana W"+w+" falló. Requiere revisión técnica; no se liberaron datos sin verificar.",
+            "url":"https://github.com/packersmexico/packersmexico.github.io/actions/runs/"+__import__("os").environ.get("GITHUB_RUN_ID",""),
+            "tag":"pmx-quiniela-automation-hold-w"+w
+          },ensure_ascii=False))
+          PY
+          )
+          curl --fail-with-body --silent --show-error --max-time 30 \\
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify' \\
+            -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \\
+            -H 'Content-Type: application/json' \\
+            --data "$payload" || echo "::warning::Could not deliver HOLD notification; workflow failure remains visible in GitHub"
