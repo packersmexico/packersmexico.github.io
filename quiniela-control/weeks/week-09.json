@@ -236,18 +236,18 @@
       "matchup": "BUF @ MIN",
       "time": "LUN 09 NOV · 19:15 CDMX · MNF",
       "kickoff_iso": "2026-11-09T19:15:00-06:00",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 23–6 MIN"
     }
   ],
   "results": {
-    "final": 14,
+    "final": 15,
     "total": 15,
-    "status": "LIVE",
+    "status": "FINAL",
     "in_progress": 0,
     "ties": 0,
-    "scored": 14,
+    "scored": 15,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -322,5 +322,5 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-09T13:11:45.145557+00:00"
+  "last_sync": "2026-11-10T06:22:01.398625+00:00"
 }
