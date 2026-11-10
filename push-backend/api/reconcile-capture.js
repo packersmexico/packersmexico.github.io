@@ -199,7 +199,7 @@ export default async function handler(req,res){
     // user profiles, raw form metadata, submissions or any pick.
     async function probe(route){
       try {await jotform(route);return 'AUTHORIZED';}
-      catch(e){return String(e?.message||'UNKNOWN').replace(/\\d{10,}/g,'[REDACTED]').slice(0,42);}
+      catch(e){return String(e?.message||'UNKNOWN').replace(/\d{10,}/g,'[REDACTED]').slice(0,42);}
     }
     const [account,week9,week10]=await Promise.all([
       probe('/user'),
