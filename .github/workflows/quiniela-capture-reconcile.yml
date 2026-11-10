@@ -114,13 +114,17 @@ jobs:
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: node scripts/quiniela-season-cycle.mjs
+      - name: Refresh panel asset index from canonical Week10 state immediately
+        run: |
+          set -euo pipefail
+          node scripts/refresh-quiniela-assets.mjs
       - name: Persist ONLY canonical season transitions with optimistic retry
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- quiniela-control/capture-config.json quiniela-control/contracts/ quiniela-control/weeks/ quiniela-control/season-plan/
+          git add -- quiniela-control/capture-config.json quiniela-control/contracts/ quiniela-control/weeks/ quiniela-control/season-plan/ quiniela-control/exports/asset-index.json
           if git diff --cached --quiet; then
             echo 'PMX_CANONICAL_SEASON_NO_TRANSITION'
             exit 0
