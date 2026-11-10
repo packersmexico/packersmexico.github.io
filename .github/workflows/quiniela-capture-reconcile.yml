@@ -20,6 +20,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: pmx-quiniela-private-capture-reconcile
   cancel-in-progress: false
@@ -119,6 +120,7 @@ jobs:
           set -euo pipefail
           node scripts/refresh-quiniela-assets.mjs
       - name: Persist ONLY canonical season transitions with optimistic retry
+        id: persist
         shell: bash
         run: |
           set -euo pipefail
@@ -127,6 +129,7 @@ jobs:
           git add -- quiniela-control/capture-config.json quiniela-control/contracts/ quiniela-control/weeks/ quiniela-control/season-plan/ quiniela-control/exports/asset-index.json
           if git diff --cached --quiet; then
             echo 'PMX_CANONICAL_SEASON_NO_TRANSITION'
+            echo 'transition=false' >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m 'Quiniela: certified weekly capture close or next-week release'
@@ -135,12 +138,22 @@ jobs:
             git rebase origin/main
             if git push origin HEAD:main; then
               echo 'PMX_SEASON_TRANSITION_PERSISTED'
+              echo 'transition=true' >> "$GITHUB_OUTPUT"
               exit 0
             fi
             sleep 5
           done
           echo '::error::Season state commit failed; next 10min run must reconcile before claiming PASS'
           exit 1
+      - name: Dispatch existing operator milestone push after canonical transition
+        if: steps.persist.outputs.transition == 'true' || github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run quiniela-milestone-push.yml --ref main
+          echo 'PMX_MILESTONE_WORKFLOW_DISPATCHED'
       - name: Auto-render Figma PICKS after genuine 9/9 closure, 04 QA and panel index
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
