@@ -194,6 +194,23 @@ export default async function handler(req,res){
  if(!authorized(req))return json(res,401,{ok:false,error:'UNAUTHORIZED'});
  try{
   const action=String(req.body?.action||'RECONCILE').toUpperCase();
+  if(action==='DIAGNOSE_JOTFORM_AUTH'){
+    // Authenticated read-only probes only. Never return API keys, Jotform
+    // user profiles, raw form metadata, submissions or any pick.
+    async function probe(route){
+      try {await jotform(route);return 'AUTHORIZED';}
+      catch(e){return String(e?.message||'UNKNOWN').replace(/\\d{10,}/g,'[REDACTED]').slice(0,42);}
+    }
+    const [account,week9,week10]=await Promise.all([
+      probe('/user'),
+      probe('/form/263063334940050'),
+      probe('/form/263078323388060')
+    ]);
+    const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),
+      account,week9,week10,private_picks_logged:false};
+    console.info('PMX_JOTFORM_AUTH_DIAGNOSTIC',JSON.stringify(result));
+    return json(res,200,result);
+  }
   if(action==='REPAIR_STAGED'){
     const w=Number(req.body?.week);
     return json(res,200,await repairStagedQuestionFidelity(w));
