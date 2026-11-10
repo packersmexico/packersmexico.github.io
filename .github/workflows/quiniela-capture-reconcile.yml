@@ -100,34 +100,6 @@ jobs:
           done
           echo '::error::Season state commit failed; next 10min run must reconcile before claiming PASS'
           exit 1
-      - name: Diagnose authenticated W9 picks source without exposing selections
-        env:
-          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          import json,os,urllib.request,urllib.error
-          req=urllib.request.Request(
-            'https://packersmexicogithubio-push-backend.vercel.app/api/score-week',
-            data=json.dumps({'week':9,'picks':True}).encode(),
-            headers={'Authorization':'Bearer '+os.environ['PMX_PUSH_SECRET'],'Content-Type':'application/json'},
-            method='POST'
-          )
-          try:
-            with urllib.request.urlopen(req, timeout=35) as response:
-              obj=json.load(response)
-              print('PMX_W9_PRIVATE_SOURCE',json.dumps({'http':response.status,'ok':obj.get('ok'),'week':obj.get('week'),'integrity':obj.get('integrity'),'count':obj.get('picks')},ensure_ascii=False))
-          except urllib.error.HTTPError as e:
-            raw=e.read(1400).decode('utf8','replace')
-            try:
-              parsed=json.loads(raw)
-              reason=str(parsed.get('error') or 'UNSPECIFIED')
-            except (ValueError,TypeError):
-              reason='MALFORMED_RESPONSE'
-            if not reason.startswith('SCORING_HOLD_'):reason='REJECTED'
-            print('PMX_W9_SCORE_HOLD',json.dumps({'http':e.code,'reason':reason[:110]}))
-            raise SystemExit(1)
-          PY
       - name: Auto-render Figma PICKS after genuine 9/9 closure, 04 QA and panel index
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
