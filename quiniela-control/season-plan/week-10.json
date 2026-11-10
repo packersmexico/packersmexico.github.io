@@ -234,5 +234,16 @@
     "SF @ DAL",
     "PIT @ CIN",
     "LAC @ BAL"
-  ]
+  ],
+  "manual_provider_activation": {
+    "approved": true,
+    "method": "JOTFORM_OAUTH_CONNECTOR",
+    "actor": "00 · Dirección",
+    "form_id": "263078323388060",
+    "observed_status": "ENABLED",
+    "submission_count": 0,
+    "evidence": "Jotform connector edit_form + fetch on 2026-11-10; same form 263078323388060; zero submissions, 19 questions, no question edits; backend read-only question map must be reverified before canonical activation",
+    "scope": "ONE_TIME_WEEK10_ONLY",
+    "auto_publish": false
+  }
 }
