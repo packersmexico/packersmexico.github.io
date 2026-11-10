@@ -1,0 +1,275 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_DATA_HANDOFF_V1",
+  "week": 9,
+  "season": 2026,
+  "governance": {
+    "figma_owner": "04",
+    "auto_publish": false,
+    "logo": "PMX_HORIZONTAL_V1.1",
+    "never_approve_without_real_canvas_qa": true
+  },
+  "capture": {
+    "status": "CLOSED",
+    "complete": 9,
+    "total": 9,
+    "missing": []
+  },
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "JAX @ BAL",
+      "time": "JUE 05 NOV · 19:15 CDMX · TNF",
+      "winner": "JAX",
+      "score": "JAX 33–10 BAL",
+      "status": "FINAL"
+    },
+    {
+      "id": "G02",
+      "matchup": "CIN @ ATL",
+      "time": "DOM 08 NOV · 08:30 CDMX · MADRID",
+      "winner": "CIN",
+      "score": "CIN 34–17 ATL",
+      "status": "FINAL"
+    },
+    {
+      "id": "G03",
+      "matchup": "DEN @ CAR",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "DEN",
+      "score": "DEN 26–21 CAR",
+      "status": "FINAL"
+    },
+    {
+      "id": "G04",
+      "matchup": "DAL @ IND",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "DAL",
+      "score": "DAL 27–23 IND",
+      "status": "FINAL"
+    },
+    {
+      "id": "G05",
+      "matchup": "NYJ @ KC",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "KC",
+      "score": "KC 35–12 NYJ",
+      "status": "FINAL"
+    },
+    {
+      "id": "G06",
+      "matchup": "DET @ MIA",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "DET",
+      "score": "DET 19–9 MIA",
+      "status": "FINAL"
+    },
+    {
+      "id": "G07",
+      "matchup": "CLE @ NO",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "NO",
+      "score": "NO 23–22 CLE",
+      "status": "FINAL"
+    },
+    {
+      "id": "G08",
+      "matchup": "NYG @ PHI",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "NYG",
+      "score": "NYG 19–11 PHI",
+      "status": "FINAL"
+    },
+    {
+      "id": "G09",
+      "matchup": "LAR @ WAS",
+      "time": "DOM 08 NOV · 12:00 CDMX",
+      "winner": "LAR",
+      "score": "LAR 20–13 WAS",
+      "status": "FINAL"
+    },
+    {
+      "id": "G10",
+      "matchup": "HOU @ LAC",
+      "time": "DOM 08 NOV · 15:05 CDMX",
+      "winner": "HOU",
+      "score": "HOU 44–22 LAC",
+      "status": "FINAL"
+    },
+    {
+      "id": "G11",
+      "matchup": "LV @ SF",
+      "time": "DOM 08 NOV · 15:25 CDMX",
+      "winner": "SF",
+      "score": "SF 38–17 LV",
+      "status": "FINAL"
+    },
+    {
+      "id": "G12",
+      "matchup": "GB @ NE",
+      "time": "DOM 08 NOV · 15:25 CDMX",
+      "winner": "GB",
+      "score": "GB 45–27 NE",
+      "status": "FINAL"
+    },
+    {
+      "id": "G13",
+      "matchup": "AZ @ SEA",
+      "time": "DOM 08 NOV · 15:25 CDMX",
+      "winner": "SEA",
+      "score": "SEA 17–3 AZ",
+      "status": "FINAL"
+    },
+    {
+      "id": "G14",
+      "matchup": "TB @ CHI",
+      "time": "DOM 08 NOV · 19:20 CDMX · SNF",
+      "winner": "CHI",
+      "score": "CHI 27–24 TB",
+      "status": "FINAL"
+    },
+    {
+      "id": "G15",
+      "matchup": "BUF @ MIN",
+      "time": "LUN 09 NOV · 19:15 CDMX · MNF",
+      "winner": "BUF",
+      "score": "BUF 23–6 MIN",
+      "status": "FINAL"
+    }
+  ],
+  "participants": [
+    "EL DOC",
+    "ARI",
+    "LALO",
+    "ALEX",
+    "LUIS C.",
+    "DR PALMA",
+    "JENNI",
+    "RODRI",
+    "IBRACHO"
+  ],
+  "matrix_status": "PRIVATE_SOURCE_REQUIRED_FOR_PICKS; NO_MATRIX_IN_PUBLIC_HANDOFF",
+  "weekly": [
+    {
+      "name": "EL DOC",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "ARI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "LALO",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "ALEX",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "LUIS C.",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "DR PALMA",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "JENNI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "RODRI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "IBRACHO",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "EL DOC",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "ARI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "LALO",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "ALEX",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "LUIS C.",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "DR PALMA",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "JENNI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "RODRI",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    },
+    {
+      "name": "IBRACHO",
+      "status": "NO_PICK",
+      "correct": null,
+      "wrong": null
+    }
+  ],
+  "stages": {
+    "picks": "READY_FOR_04",
+    "results": "READY_FOR_04",
+    "weekly": "READY_FOR_04",
+    "season": "READY_FOR_04"
+  },
+  "asset_keys": {
+    "picks": "w9-picks-board.png",
+    "results": "w9-results-live.png",
+    "weekly": "w9-ranking-weekly.png",
+    "season": "w9-ranking-season.png"
+  }
+}
