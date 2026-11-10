@@ -4,12 +4,9 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   },
   "dependencies": {
     "web-push": "^3.6.7"
-  },
-  "scripts": {
-    "postinstall": "node scripts/reconcile-on-deploy.mjs && node scripts/score-week06.mjs && node scripts/discover-week07.mjs && node scripts/setup-week07.mjs && node scripts/notify-rodrigo-w6-w7.mjs && node scripts/catchup-week07.mjs && node scripts/catchup-week08.mjs"
   }
 }
