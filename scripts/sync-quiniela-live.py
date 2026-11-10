@@ -98,7 +98,17 @@ def score_week(week):
             body=json.load(resp)
     except urllib.error.HTTPError as e:
         if e.code==409:
-            print('PMX_SCORE_WAITING_CANONICAL_SNAPSHOT',week)
+            # Scoring service returns only a category (no picks, participants or
+            # submission identifiers). Surface that cause instead of a false
+            # generic "snapshot waiting" so the pipeline can be repaired.
+            try:
+                failure=json.loads(e.read().decode('utf8','replace'))
+                reason=str(failure.get('error') or 'UNSPECIFIED')
+                if not reason.startswith('SCORING_HOLD_'):
+                    reason='UNEXPECTED_REJECTION'
+            except (ValueError,TypeError,UnicodeError):
+                reason='NON_JSON_SCORING_HOLD'
+            print('PMX_SCORE_HOLD_REASON',week,reason[:100])
             return None
         raise
     if not body.get('ok') or body.get('integrity')!='COMPLETE' or int(body.get('week') or 0)!=week:
