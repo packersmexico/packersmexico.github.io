@@ -113,11 +113,17 @@ async function main(){
        manifest.games.every(g=>g.schedule_precision==='OFFICIAL_CONFIRMED'))){
    console.log('PMX_NEXT_FORM_HOLD_FLEX_KICKOFF_UNVERIFIED',next);return;
  }
+ const recovery=next===10 &&
+   manifest.manual_provider_activation?.approved===true &&
+   manifest.manual_provider_activation?.method==='JOTFORM_OAUTH_CONNECTOR' &&
+   String(manifest.manual_provider_activation.form_id)===String(manifest.form_id);
  const [check,prev]=await Promise.all([
-  call('reconcile-capture',{action:'INSPECT_STAGED',week:next}),
+  call('reconcile-capture',{action:recovery?'INSPECT_STAGED_ENABLED':'INSPECT_STAGED',week:next}),
   Promise.resolve(read('weeks/'+tag(current)))
  ]);
- invariant(check.form_status==='DISABLED'&&check.question_map_verified&&check.game_count===manifest.games.length,'JOTFORM_INSPECTION_HOLD');
+ invariant(check.form_status===(recovery?'ENABLED':'DISABLED')&&
+  check.question_map_verified&&check.game_count===manifest.games.length&&
+  (!recovery||check.verified_enabled_by_provider===true),'JOTFORM_INSPECTION_HOLD');
  invariant(prev.week_number===current && prev.results?.status==='FINAL'&&prev.season_standings?.length===9,'PREVIOUS_SNAPSHOT_NOT_FINAL');
  const target=Date.parse(check.deadline_utc),deadline=confirmDeadline(manifest.first_kickoff_utc);
  invariant(target>now && Date.parse(deadline)>now,'OPENING_AFTER_DEADLINE_HOLD');
@@ -133,10 +139,12 @@ async function main(){
    deadline,roster:ROSTER,packers_locked:check.packers_locked,packers_bye:check.packers_bye,
    bye_teams:check.bye_teams,source_schedule:check.source_schedule,
    source_schedule_verified:isoNow(),field_map_qa:'PASS',
-   field_map_evidence:'Authenticated Jotform questions, zero submissions and disabled form revalidated at rollover '+isoNow(),
+   field_map_evidence:'Authenticated Jotform questions, zero submissions and '+check.form_status+' form revalidated at rollover '+isoNow(),
    games:check.games};
  // Only activate after all gates. An interrupted commit may need an operator repair.
- const enabled=await call('reconcile-capture',{action:'OPEN_STAGED',week:next,form_id:check.form_id});
+ const enabled=recovery
+  ? {verified:check.verified_enabled_by_provider===true,status:'ENABLED',form_id:check.form_id}
+  : await call('reconcile-capture',{action:'OPEN_STAGED',week:next,form_id:check.form_id});
  invariant(enabled.verified && enabled.status==='ENABLED','FORM_ENABLE_READBACK_MISSING');
  const created={season:'2026',week:'WEEK '+next,week_number:next,form_id:check.form_id,form_url:check.form_url,
   status:'OPEN',window:'OPEN',deadline,deadline_label:'CIERRE AUTOMÁTICO · '+deadline,
@@ -150,7 +158,7 @@ async function main(){
     first_valid_only:true,picks_visible:false,locked_picks_immutable:true,evidence_form_id:check.form_id},
   locked_submissions:{},duplicate_count:0,unique_participants:0,
   invitado:'OFF',source_schedule:check.source_schedule,webhook_status:'POLLING_RECONCILIATION_10MIN',
-  open_basis:'AUTO_PREVIOUS_MNF_FINAL_AND_JOTFORM_QA',opened_at:isoNow(),last_sync:isoNow(),
+  open_basis:recovery?'DIRECTION_AUTHORIZED_OAUTH_W10_RECOVERY_AFTER_MNF_FINAL':'AUTO_PREVIOUS_MNF_FINAL_AND_JOTFORM_QA',opened_at:isoNow(),last_sync:isoNow(),
   closure_basis:null,closed_at:null};
  const snap={pmx_id:prev.pmx_id,season:'2026',week:'WEEK '+next,week_number:next,
   snapshot_status:'OPEN_CAPTURE_NO_GAMES_STARTED',schedule_source:check.source_schedule,capture:created,
