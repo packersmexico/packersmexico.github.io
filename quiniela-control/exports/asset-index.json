@@ -4,7 +4,7 @@
   "score_week": 8,
   "capture_week": 9,
   "in_progress_week": null,
-  "last_completed_week": 8,
+  "last_completed_week": 9,
   "weeks": {
     "1": {
       "week": 1,
@@ -323,7 +323,7 @@
         "window": "CLOSED"
       },
       "results": {
-        "final": 14,
+        "final": 15,
         "total": 15
       },
       "assets": {
@@ -334,19 +334,19 @@
           "size": "1600x2000"
         },
         "results": {
-          "state": "WAITING_EVENT",
+          "state": "QA_PENDING",
           "href": null,
           "expected": "results-live.png",
           "size": "1600x2000"
         },
         "weekly": {
-          "state": "WAITING_EVENT",
+          "state": "QA_PENDING",
           "href": null,
           "expected": "ranking-weekly.png",
           "size": "1080x1350"
         },
         "season": {
-          "state": "WAITING_EVENT",
+          "state": "QA_PENDING",
           "href": null,
           "expected": "ranking-season.png",
           "size": "1080x1350"
