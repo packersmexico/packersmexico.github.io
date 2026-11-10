@@ -76,7 +76,7 @@ jobs:
             -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \
             -H "Content-Type: application/json" \
             --data '{"action":"DIAGNOSE_JOTFORM_AUTH"}' | \
-            python3 -c 'import json,sys;d=json.load(sys.stdin);print("PMX_STAGED_AUTH_PROBE",json.dumps({k:d.get(k) for k in ("ok","key_present","account","week9","week10")},ensure_ascii=False));assert d.get("ok")'
+            python3 -c 'import json,sys;d=json.load(sys.stdin);print("PMX_STAGED_AUTH_PROBE",json.dumps({k:d.get(k) for k in ("ok","key_present","account","week9","week10","w9Questions","w10Questions","w10Submissions","w10Webhooks")},ensure_ascii=False));assert d.get("ok")'
       - name: Repair known W16/W17 provider question inconsistencies without opening forms
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
