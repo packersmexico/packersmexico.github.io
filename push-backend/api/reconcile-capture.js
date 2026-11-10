@@ -201,13 +201,17 @@ export default async function handler(req,res){
       try {await jotform(route);return 'AUTHORIZED';}
       catch(e){return String(e?.message||'UNKNOWN').replace(/\d{10,}/g,'[REDACTED]').slice(0,42);}
     }
-    const [account,week9,week10]=await Promise.all([
+    const [account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks]=await Promise.all([
       probe('/user'),
       probe('/form/263063334940050'),
-      probe('/form/263078323388060')
+      probe('/form/263078323388060'),
+      probe('/form/263063334940050/questions'),
+      probe('/form/263078323388060/questions'),
+      probe('/form/263078323388060/submissions?limit=1'),
+      probe('/form/263078323388060/webhooks')
     ]);
     const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),
-      account,week9,week10,private_picks_logged:false};
+      account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks,private_picks_logged:false};
     console.info('PMX_JOTFORM_AUTH_DIAGNOSTIC',JSON.stringify(result));
     return json(res,200,result);
   }
