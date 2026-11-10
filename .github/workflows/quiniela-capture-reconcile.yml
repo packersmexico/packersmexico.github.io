@@ -9,6 +9,7 @@ on:
       - 'quiniela-control/contracts/week-*.json'
       - '.github/workflows/quiniela-capture-reconcile.yml'
       - 'push-backend/api/capture-status.js'
+      - 'push-backend/api/reconcile-capture.js'
       - 'push-backend/lib/weekly-capture.js'
       - 'push-backend/scripts/catchup-week08.mjs'
       - 'scripts/quiniela-season-cycle.mjs'
@@ -63,6 +64,18 @@ jobs:
       - name: Wait for Vercel production alias after repository change
         if: github.event_name == 'push'
         run: sleep 25
+      - name: Diagnose Jotform auth and staged W10 ownership without exposing keys or picks
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error --max-time 65 \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \
+            -H "Content-Type: application/json" \
+            --data '{"action":"DIAGNOSE_JOTFORM_AUTH"}' | \
+            python3 -c 'import json,sys;d=json.load(sys.stdin);print("PMX_STAGED_AUTH_PROBE",json.dumps({k:d.get(k) for k in ("ok","key_present","account","week9","week10")},ensure_ascii=False));assert d.get("ok")'
       - name: Repair known W16/W17 provider question inconsistencies without opening forms
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
