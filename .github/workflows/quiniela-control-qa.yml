@@ -18,6 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Vercel build must not replay old Jotform migrations during npm install
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const pkg=JSON.parse(fs.readFileSync('push-backend/package.json','utf8'));
+          assert.equal(pkg.engines.node,'24.x');
+          assert.equal(pkg.scripts?.postinstall,undefined,
+            'Do not run private Jotform API calls or historical W6/W7 migrations during Vercel npm install');
+          console.log('PASS: clean deterministic Vercel build; historical migrations isolated from production deploy');
+          NODE
       - name: Keep Vercel Hobby within twelve serverless functions
         shell: bash
         run: |
