@@ -28,14 +28,14 @@ async function jotform(uri,method='GET',body=null){
 function cleanString(v){return String(v||'').trim().toUpperCase().replace(/\s+/g,' ');}
 const normalize={JAGUARS:'JAX',RAVENS:'BAL',COMMANDERS:'WAS',GIANTS:'NYG',PATRIOTS:'NE',LIONS:'DET',PACKERS:'GB'};
 const shortTeam=v=>normalize[cleanString(v)]||cleanString(v);
-async function inspectPrepared(week,stagedOverride=null){
+async function inspectPrepared(week,stagedOverride=null,expectedStatus='DISABLED'){
  const manifest=stagedOverride||await remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now());
  if(manifest.week!==week||!String(manifest.status).startsWith('STAGED')||!/^\d{10,25}$/.test(String(manifest.form_id||'')))throw Error('UNPREPARED_WEEK_FORM');
  const [form,questions]=await Promise.all([
   jotform('/form/'+manifest.form_id),jotform('/form/'+manifest.form_id+'/questions')
  ]);
  const formStatus=cleanString(form.status);
- if(formStatus!=='DISABLED' || Number(form.count||form.new||0)!==0)throw Error('PREPARED_FORM_NOT_PRIVATE_ZERO');
+ if(formStatus!==expectedStatus || Number(form.count||form.new||0)!==0)throw Error('PREPARED_FORM_NOT_PRIVATE_ZERO');
  const items=Object.entries(questions||{}).map(([qid,q])=>({qid:String(q.qid||qid),name:String(q.name||''),text:String(q.text||''),type:String(q.type||''),order:Number(q.order||9999),options:String(q.options||'')}))
   .sort((a,b)=>a.order-b.order);
  const ro=items.filter(q=>q.type==='control_dropdown'&&/PARTICIP/i.test(q.text));
@@ -223,6 +223,33 @@ export default async function handler(req,res){
    const w=Number(req.body?.week);
    if(!Number.isInteger(w)||w<13||w>18)return json(res,400,{ok:false,error:'INVALID_WEEK'});
    return json(res,200,await createPrepared(w));
+  }
+  if(action==='INSPECT_STAGED_ENABLED'){
+   // One-time authorized recovery only. Normal W11–W18 still require
+   // provider-side write + DISABLED staged form before canonical release.
+   const week=Number(req.body?.week);
+   if(week!==10)throw Error('ENABLED_RECOVERY_ONLY_W10');
+   const [active,prior,manifest]=await Promise.all([
+     remoteJson(RAW+'capture-config.json?t='+Date.now()),
+     remoteJson(RAW+'data.json?t='+Date.now()),
+     remoteJson(RAW+'season-plan/week-10.json?t='+Date.now())
+   ]);
+   const approved=manifest.manual_provider_activation;
+   if(Number(active.week_number)!==9||active.status!=='CLOSED'||
+      Number(active.complete)!==9||
+      prior.week_number!==9||prior.results?.status!=='FINAL'||
+      Number(prior.results?.final)!==15||
+      prior.scoring?.status!=='COMPLETE'||!prior.scoring?.checksum||
+      !Array.isArray(prior.season_standings)||prior.season_standings.length!==9||
+      manifest.status!=='STAGED_FORM_DISABLED_QA_PASS'||
+      approved?.approved!==true||approved?.method!=='JOTFORM_OAUTH_CONNECTOR'||
+      String(approved.form_id)!==String(manifest.form_id)||
+      approved.observed_status!=='ENABLED'||Number(approved.submission_count)!==0)
+       throw Error('DIRECTION_PROVIDER_RECOVERY_NOT_AUTHORIZED_OR_PREVIOUS_WEEK_INVALID');
+   const inspection=await inspectPrepared(week,null,'ENABLED');
+   if(inspection.form_status!=='ENABLED'||inspection.game_count!==manifest.games.length)
+     throw Error('ENABLED_FORM_READBACK_HOLD');
+   return json(res,200,{...inspection,verified_enabled_by_provider:true,source:'DIRECTOR_AUTHORIZED_PROVIDER_OAUTH_RECOVERY_W10'});
   }
   if(action==='INSPECT_STAGED'){
    const w=Number(req.body?.week);
