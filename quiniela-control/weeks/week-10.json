@@ -1,0 +1,323 @@
+{
+  "pmx_id": "PMX-QUINIELA-2026-SEASON-PREBUILD-001",
+  "season": "2026",
+  "week": "WEEK 10",
+  "week_number": 10,
+  "snapshot_status": "OPEN_CAPTURE_NO_GAMES_STARTED",
+  "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+  "capture": {
+    "season": "2026",
+    "week": "WEEK 10",
+    "week_number": 10,
+    "form_id": "263078323388060",
+    "form_url": "https://form.jotform.com/263078323388060",
+    "status": "OPEN",
+    "window": "OPEN",
+    "deadline": "2026-11-12T22:00:00.000Z",
+    "deadline_label": "CIERRE AUTOMÁTICO · 2026-11-12T22:00:00.000Z",
+    "stable_url": "https://packersmexico.github.io/quiniela-control/captura/",
+    "form_status": "ENABLED",
+    "complete": 0,
+    "total": 9,
+    "expected_picks": 126,
+    "received_picks": 0,
+    "missing_picks": 126,
+    "missing_participants": [
+      "EL DOC",
+      "ARI",
+      "LALO",
+      "ALEX",
+      "LUIS C.",
+      "DR PALMA",
+      "JENNI",
+      "RODRI",
+      "IBRACHO"
+    ],
+    "duplicate_policy": "FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT",
+    "default_green_bay_policy": "GB_FIXED_NON_EDITABLE",
+    "default_green_bay_game_id": "G05",
+    "default_green_bay_pick": "GB",
+    "submission_integrity": {
+      "status": "AWAITING_FIRST_VALID",
+      "received_names": [],
+      "private_picks_count": 0,
+      "first_valid_only": true,
+      "picks_visible": false,
+      "locked_picks_immutable": true,
+      "evidence_form_id": "263078323388060"
+    },
+    "locked_submissions": {},
+    "duplicate_count": 0,
+    "unique_participants": 0,
+    "invitado": "OFF",
+    "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-10",
+    "webhook_status": "POLLING_RECONCILIATION_10MIN",
+    "open_basis": "DIRECTION_AUTHORIZED_OAUTH_W10_RECOVERY_AFTER_MNF_FINAL",
+    "opened_at": "2026-11-10T14:24:42.321Z",
+    "last_sync": "2026-11-10T14:24:42.321Z",
+    "closure_basis": null,
+    "closed_at": null
+  },
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING_FIRST_VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING_FIRST_VALID"
+    }
+  ],
+  "games": [
+    {
+      "id": "G01",
+      "matchup": "WAS @ NYG",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-13T01:15:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873052"
+    },
+    {
+      "id": "G02",
+      "matchup": "NE @ DET",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T14:30:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873053"
+    },
+    {
+      "id": "G03",
+      "matchup": "KC @ ATL",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873058"
+    },
+    {
+      "id": "G04",
+      "matchup": "HOU @ CLE",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873056"
+    },
+    {
+      "id": "G05",
+      "matchup": "MIN @ GB",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873060"
+    },
+    {
+      "id": "G06",
+      "matchup": "MIA @ IND",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873059"
+    },
+    {
+      "id": "G07",
+      "matchup": "CAR @ NO",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873055"
+    },
+    {
+      "id": "G08",
+      "matchup": "BUF @ NYJ",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873054"
+    },
+    {
+      "id": "G09",
+      "matchup": "JAX @ TEN",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T18:00:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873057"
+    },
+    {
+      "id": "G10",
+      "matchup": "LAR @ AZ",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T21:05:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873061"
+    },
+    {
+      "id": "G11",
+      "matchup": "SEA @ LV",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T21:05:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873062"
+    },
+    {
+      "id": "G12",
+      "matchup": "SF @ DAL",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-15T21:25:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873063"
+    },
+    {
+      "id": "G13",
+      "matchup": "PIT @ CIN",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-16T01:20:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873064"
+    },
+    {
+      "id": "G14",
+      "matchup": "LAC @ BAL",
+      "time": "HORARIO OFICIAL · CDMX",
+      "kickoff_iso": "2026-11-17T01:15:00.000Z",
+      "status": "SCHEDULED",
+      "winner": null,
+      "score": null,
+      "espn_event_id": "401873065"
+    }
+  ],
+  "results": {
+    "final": 0,
+    "total": 14,
+    "status": "SCHEDULED",
+    "in_progress": 0,
+    "ties": 0,
+    "scored": 0,
+    "pushes": 0
+  },
+  "weekly_standings": [],
+  "season_standings": [],
+  "season_base_before_week": [
+    {
+      "name": "RODRI",
+      "correct": 93,
+      "wrong": 42,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 90,
+      "wrong": 45,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 89,
+      "wrong": 46,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 89,
+      "wrong": 46,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 86,
+      "wrong": 49,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 86,
+      "wrong": 49,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 79,
+      "wrong": 56,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 77,
+      "wrong": 58,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 72,
+      "wrong": 63,
+      "status": "VALID"
+    }
+  ],
+  "production": {
+    "package_status": "W10 CAPTURE OPEN · WAITING FIRST_VALID",
+    "auto_publish": false
+  },
+  "bye_teams": [
+    "CHI",
+    "DEN",
+    "PHI",
+    "TB"
+  ],
+  "scoring": {
+    "status": "NOT_STARTED",
+    "original_picks_preserved": true,
+    "picks_visible": false
+  }
+}

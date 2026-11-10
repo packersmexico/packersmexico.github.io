@@ -23,9 +23,9 @@
     "TB"
   ],
   "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-10",
-  "source_schedule_verified": "2026-11-05T03:52:42.140Z",
+  "source_schedule_verified": "2026-11-10T14:24:42.321Z",
   "field_map_qa": "PASS",
-  "field_map_evidence": "Authenticated private Jotform API readback at 2026-11-05T04:18:19.222Z, form DISABLED and zero submissions, 14 unique question IDs",
+  "field_map_evidence": "Authenticated Jotform questions, zero submissions and ENABLED form revalidated at rollover 2026-11-10T14:24:42.321Z",
   "games": [
     {
       "id": "G01",

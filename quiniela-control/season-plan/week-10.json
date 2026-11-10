@@ -6,7 +6,7 @@
   "source_comparison": "ESPN_PUBLIC_SCHEDULE_MATCHUPS_WITH_NFL_OFFICIAL_BYE_AND_TEAM_COVERAGE",
   "espn_url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=10&limit=100",
   "generated_at": "2026-11-05T03:52:42.140Z",
-  "status": "STAGED_FORM_DISABLED_QA_PASS",
+  "status": "ACTIVATED_FORM_ENABLED",
   "public_form_status": "DISABLED_VERIFIED",
   "roster": [
     "EL DOC",
@@ -245,5 +245,7 @@
     "evidence": "Jotform connector edit_form + fetch on 2026-11-10; same form 263078323388060; zero submissions, 19 questions, no question edits; backend read-only question map must be reverified before canonical activation",
     "scope": "ONE_TIME_WEEK10_ONLY",
     "auto_publish": false
-  }
+  },
+  "form_status": "ENABLED",
+  "opened_at": "2026-11-10T14:24:42.322Z"
 }
