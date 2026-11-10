@@ -87,6 +87,29 @@ jobs:
         run: node scripts/inspect-quiniela-staged.mjs
       - name: Self-test idempotent close/open gates
         run: node scripts/quiniela-season-cycle.mjs --self-test
+      - name: Verify staged W10 question map read-only before provider activation
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cfg=$(curl -sSfL --max-time 25 'https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/capture-config.json')
+          current=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["week_number"])')
+          if [ "$current" != "9" ]; then echo 'PMX_W10_AUTH_PREFLIGHT_NOT_NEEDED'; exit 0; fi
+          code=$(curl -sS --max-time 40 -o /tmp/pmx-w10-preflight.json -w '%{http_code}' \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \
+            -H 'Content-Type: application/json' \
+            --data '{"action":"INSPECT_STAGED","week":10}')
+          python3 - "$code" <<'PY'
+          import json,sys
+          code=int(sys.argv[1]);d=json.load(open('/tmp/pmx-w10-preflight.json'))
+          print('PMX_W10_READONLY_PREFLIGHT',json.dumps({
+            'http':code,'ok':d.get('ok'),'game_count':d.get('game_count'),
+            'form_status':d.get('form_status'),'question_map_verified':d.get('question_map_verified'),
+            'error':d.get('error'),'reason':d.get('reason')
+          },ensure_ascii=False))
+          PY
       - name: Auto-close FIRST_VALID 9/9 or deadline; auto-open staged form after previous MNF
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
