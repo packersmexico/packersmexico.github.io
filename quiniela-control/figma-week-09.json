@@ -15,7 +15,10 @@
     "identity": "PASS · approved horizontal V1.1 reused as existing Figma component; Bebas Neue/Montserrat; no AI art",
     "sample_screenshot": "Figma native node 3880:222049 screenshot 1600x2000 reviewed before final BYE rule alignment; final export remains HOLD until verified 9/9",
     "rights": "Direction authorized private prebuild, not publication or reuse of unvalidated picks.",
-    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
+    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "results_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "weekly_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "season_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
   },
   "asset_approvals": {
     "picks": {
@@ -28,6 +31,39 @@
       "output_file": "quiniela-control/exports/w9-picks-board.png",
       "renderer_template_node": "3893:232684",
       "scoring_checksum": "96d7640f5eba7896d27921e746f7360b7939a491a22b2ce36c16e981458ae21e"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:232684; validated 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 0208269a131b2bb19eaf23189408b5982f15f20a1ab14075210d482a7b4ef0b5; source checksum ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w9-results-final.png",
+      "renderer_template_node": "3893:232684",
+      "scoring_checksum": "ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:240766; validated 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 690fbcc1f3712d67e0af8d101a253c72906228d1298c8c911e9a3daffb296ed5; source checksum ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w9-ranking-weekly.png",
+      "renderer_template_node": "3894:240766",
+      "scoring_checksum": "ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:244882; validated 9×15 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 263458b6cc354985fc9db1d2e5ef9d040ed31cd3f0eb4a262078c4f20fee0e79; source checksum ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w9-ranking-season.png",
+      "renderer_template_node": "3894:244882",
+      "scoring_checksum": "ecceb03947dbdc266e1cf33a2e27505d9d9cfad1198a80db7c304e1e13651340"
     }
   },
   "output_targets": {

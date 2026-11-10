@@ -1,7 +1,7 @@
 {
   "schema": "PMX_QUINIELA_ASSET_INDEX_V1",
   "active_week": 9,
-  "score_week": 8,
+  "score_week": 9,
   "capture_week": 9,
   "in_progress_week": null,
   "last_completed_week": 9,
@@ -334,20 +334,20 @@
           "size": "1600x2000"
         },
         "results": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w9-results-final.png",
           "expected": "results-live.png",
           "size": "1600x2000"
         },
         "weekly": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w9-ranking-weekly.png",
           "expected": "ranking-weekly.png",
           "size": "1080x1350"
         },
         "season": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w9-ranking-season.png",
           "expected": "ranking-season.png",
           "size": "1080x1350"
         }
