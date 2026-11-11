@@ -1,6 +1,8 @@
 import crypto from 'node:crypto';
 import {catchupWeek08} from '../scripts/catchup-week08.mjs';
 import {json,rejectMethod} from '../lib/http.js';
+import {assertWeekConfig} from '../lib/weekly-capture.js';
+import {classifyJotformWebhooks} from '../lib/jotform-webhook-admin.js';
 
 const RAW='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
 function authorized(req){
@@ -16,9 +18,9 @@ async function remoteJson(endpoint){
  if(!r.ok)throw Error('CANONICAL_SOURCE_'+r.status);
  return r.json();
 }
-async function jotform(uri,method='GET',body=null){
- if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
- const opts={method,headers:{APIKEY:process.env.PMX_JOTFORM_API_KEY,Accept:'application/json'}};
+async function jotform(uri,method='GET',body=null,apiKey=process.env.PMX_JOTFORM_API_KEY){
+ if(!apiKey)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
+ const opts={method,headers:{APIKEY:apiKey,Accept:'application/json'}};
  if(body){opts.headers['Content-Type']='application/x-www-form-urlencoded';opts.body=new URLSearchParams(body).toString();}
  const r=await fetch('https://api.jotform.com'+uri,{...opts,cache:'no-store',signal:AbortSignal.timeout(30000)});
  if(!r.ok)throw Error('JOTFORM_API_'+r.status);
@@ -188,28 +190,85 @@ async function createPrepared(week){
   inspected:await inspectPrepared(week,{...manifest,form_id:formId,form_url:'https://form.jotform.com/'+formId})};
 }
 
+
+const PMX_WEBHOOK_TARGET='https://packersmexicogithubio-push-backend.vercel.app/api/jotform-submission';
+// The regular form/submission API key may intentionally be READ-ONLY.
+// Do not broaden it: webhook administration uses a dedicated opt-in secret.
+async function ensureActiveWebhook(){
+ const config=await remoteJson(RAW+'capture-config.json?t='+Date.now());
+ const week=Number(config.week_number),form=String(config.form_id||'');
+ if(config.status!=='OPEN')return {ok:true,status:'SKIP_FORM_NOT_OPEN',week};
+ if(!Number.isInteger(week)||week<9||week>18||!/^\\d{10,25}$/.test(form))
+   throw Error('WEBHOOK_CANONICAL_WEEK_INVALID');
+ const contract=assertWeekConfig(await remoteJson(
+   RAW+'contracts/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now()
+ ));
+ if(contract.week_number!==week||String(contract.form_id)!==form)
+   throw Error('WEBHOOK_CANONICAL_CONTRACT_MISMATCH');
+ const apiKey=process.env.PMX_JOTFORM_WEBHOOK_API_KEY;
+ // Never probe with the regular READ-ONLY key: 403 is expected and is not
+ // evidence that the already-working FIRST_VALID/push pipeline has failed.
+ if(!apiKey)return {ok:true,status:'HOLD_WEBHOOK_ADMIN_CREDENTIAL_NOT_CONFIGURED',
+   week,form_id:form,fallback:'EXISTING_FIRST_VALID_POLLING'};
+ const token=process.env.PMX_JOTFORM_WEBHOOK_TOKEN;
+ if(!token)return {ok:true,status:'HOLD_WEBHOOK_RECEIVER_TOKEN_MISSING',
+   week,form_id:form,fallback:'EXISTING_FIRST_VALID_POLLING'};
+ const desired=new URL(PMX_WEBHOOK_TARGET);
+ desired.searchParams.set('token',token);
+ const url=desired.toString();
+ const route='/form/'+form+'/webhooks';
+ try {
+   const before=classifyJotformWebhooks(await jotform(route,'GET',null,apiKey),url);
+   if(before.status==='REGISTERED')return {ok:true,status:'WEBHOOK_REGISTERED',week,form_id:form,
+     existing:true,endpoint_count:1,instant_delivery_e2e:'NOT_TESTED'};
+   if(before.status!=='NEEDS_REGISTRATION')return {ok:true,status:before.status,
+     week,form_id:form,fallback:'EXISTING_FIRST_VALID_POLLING'};
+   await jotform(route,'POST',{webhookURL:url},apiKey);
+   const after=classifyJotformWebhooks(await jotform(route,'GET',null,apiKey),url);
+   return {ok:true,status:after.status==='REGISTERED'?'WEBHOOK_REGISTERED':'HOLD_WEBHOOK_READBACK',
+     week,form_id:form,created:true,
+     ...(after.status==='REGISTERED'
+        ?{endpoint_count:1,instant_delivery_e2e:'NOT_TESTED'}
+        :{fallback:'EXISTING_FIRST_VALID_POLLING'})};
+ } catch(e) {
+   const err=String(e?.message||'');
+   if(/^JOTFORM_API_(?:401|403)$/.test(err)||
+     /^JOTFORM_API_REJECTED_(?:401|403)$/.test(err))
+     return {ok:true,status:'HOLD_JOTFORM_WEBHOOK_ADMIN_PERMISSION',week,form_id:form,
+       fallback:'EXISTING_FIRST_VALID_POLLING',provider_http:Number(err.match(/(401|403)/)?.[0]||0)};
+   throw e;
+ }
+}
+
 export default async function handler(req,res){
  res.setHeader('Cache-Control','no-store,max-age=0');
  if(req.method!=='POST')return rejectMethod(req,res,['POST']);
  if(!authorized(req))return json(res,401,{ok:false,error:'UNAUTHORIZED'});
  try{
   const action=String(req.body?.action||'RECONCILE').toUpperCase();
+  if(action==='ENSURE_ACTIVE_WEBHOOK'){
+    const result=await ensureActiveWebhook();
+    console.info('PMX_WEBHOOK_ADMIN',JSON.stringify(result));
+    return json(res,200,result);
+  }
   if(action==='DIAGNOSE_JOTFORM_AUTH'){
     // Authenticated read-only probes only. Never return API keys, Jotform
     // user profiles, raw form metadata, submissions or any pick.
-    async function probe(route){
-      try {await jotform(route);return 'AUTHORIZED';}
+    async function probe(route,apiKey=process.env.PMX_JOTFORM_API_KEY){
+      try {await jotform(route,'GET',null,apiKey);return 'AUTHORIZED';}
       catch(e){return String(e?.message||'UNKNOWN').replace(/\d{10,}/g,'[REDACTED]').slice(0,42);}
     }
-    const [account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks]=await Promise.all([
+    const [account,week9,week10,w9Questions,w10Questions,w10Submissions]=await Promise.all([
       probe('/user'),
       probe('/form/263063334940050'),
       probe('/form/263078323388060'),
       probe('/form/263063334940050/questions'),
       probe('/form/263078323388060/questions'),
-      probe('/form/263078323388060/submissions?limit=1'),
-      probe('/form/263078323388060/webhooks')
+      probe('/form/263078323388060/submissions?limit=1')
     ]);
+    const w10Webhooks=process.env.PMX_JOTFORM_WEBHOOK_API_KEY
+      ? await probe('/form/263078323388060/webhooks',process.env.PMX_JOTFORM_WEBHOOK_API_KEY)
+      : 'DEDICATED_WEBHOOK_ADMIN_KEY_NOT_CONFIGURED';
     const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),
       account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks,private_picks_logged:false};
     console.info('PMX_JOTFORM_AUTH_DIAGNOSTIC',JSON.stringify(result));
