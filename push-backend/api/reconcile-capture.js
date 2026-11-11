@@ -1,6 +1,8 @@
 import crypto from 'node:crypto';
 import {catchupWeek08} from '../scripts/catchup-week08.mjs';
 import {json,rejectMethod} from '../lib/http.js';
+import {redis} from '../lib/redis.js';
+import {ensureActiveWebhook} from '../lib/jotform-webhook-ensure.js';
 
 const RAW='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
 function authorized(req){
@@ -214,6 +216,35 @@ export default async function handler(req,res){
       account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks,private_picks_logged:false};
     console.info('PMX_JOTFORM_AUTH_DIAGNOSTIC',JSON.stringify(result));
     return json(res,200,result);
+  }
+  if(action==='ENSURE_ACTIVE_WEBHOOK'){
+    // Optional instant provider webhook. FIRST_VALID polling and its push
+    // keep working even if the existing Jotform API key cannot manage hooks.
+    const active=await remoteJson(RAW+'capture-config.json?t='+Date.now());
+    const week=Number(active.week_number),formId=String(active.form_id||'');
+    if(week<9||week>18||active.status!=='OPEN'||!/^\d{10,25}$/.test(formId))
+      return json(res,200,{ok:true,status:'SKIP_NO_OPEN_FORM',configured:false,
+        fallback:'SCHEDULED_FIRST_VALID_ACTIVE'});
+    const force=req.body?.force===true;
+    const key='pmx:quiniela:jotform:webhook-check:'+formId;
+    if(!force){
+      const slot=await redis(['SET',key,new Date().toISOString(),'NX','EX',1200]);
+      if(slot!=='OK')return json(res,200,{ok:true,status:'RECHECK_COOLDOWN',
+        week,configured:null,fallback:'SCHEDULED_FIRST_VALID_ACTIVE'});
+    }
+    const state=await ensureActiveWebhook({
+      formId,token:process.env.PMX_JOTFORM_WEBHOOK_TOKEN,
+      fetchWebhookList:(uri)=>jotform(uri),
+      createWebhook:(uri,body)=>jotform(uri,'POST',body)
+    });
+    const output={ok:true,week,status:state.status,
+      configured:state.configured===true,verified:state.verified===true,
+      provider_status:state.provider_status||null,
+      permission:state.permission||null,
+      fallback:'SCHEDULED_FIRST_VALID_ACTIVE',
+      instant_delivery:'NOT_E2E_CERTIFIED'};
+    console.info('PMX_JOTFORM_WEBHOOK_GATE',JSON.stringify(output));
+    return json(res,200,output);
   }
   if(action==='REPAIR_STAGED'){
     const w=Number(req.body?.week);
