@@ -39,32 +39,6 @@ jobs:
             -H "Authorization: Bearer ${PMX_SECRET}" \
             -H "Content-Type: application/json" \
             --data '{}' | python3 -c 'import json,sys; d=json.load(sys.stdin); print(json.dumps({k:d.get(k) for k in ("ok","week","status","jotform_submissions","verified_count","added","valid_submissions","rejected_submissions","private_picks_count","question_map_verified")},ensure_ascii=False))'
-      - name: Self-heal optional Jotform native webhook without blocking verified FIRST_VALID
-        env:
-          PMX_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
-        shell: bash
-        run: |
-          set -u
-          # Reuse existing authenticated backend. Provider 403 is an explicit
-          # permission HOLD, NOT a failure of FIRST_VALID polling or push.
-          if ! curl --fail-with-body --silent --show-error --max-time 50 \
-            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
-            -H "Authorization: Bearer ${PMX_SECRET}" \
-            -H 'Content-Type: application/json' \
-            --data '{"action":"ENSURE_ACTIVE_WEBHOOK"}' > /tmp/pmx-webhook-gate.json; then
-            echo "::warning::PMX_WEBHOOK_OPTIONAL_UNAVAILABLE; scheduled FIRST_VALID polling is still enabled"
-            exit 0
-          fi
-          python3 - <<'PY'
-          import json
-          d=json.load(open('/tmp/pmx-webhook-gate.json'))
-          safe={k:d.get(k) for k in ('week','status','configured','verified','provider_status','fallback')}
-          print('PMX_OPTIONAL_JOTFORM_WEBHOOK',json.dumps(safe,ensure_ascii=False))
-          if d.get('status')=='PROVIDER_WEBHOOK_PERMISSION_HOLD':
-              print('::warning::Jotform webhook management needs Full Access on the backend API key; push via scheduled FIRST_VALID remains operational')
-          elif d.get('status') in ('ALREADY_CONFIGURED','CREATED_AND_VERIFIED'):
-              print('PMX_PROVIDER_WEBHOOK_CONFIGURATION_VERIFIED; instant delivery still requires live E2E evidence')
-          PY
       - name: Verify public manual button endpoint and read-only receipt counts (no secrets)
         if: github.event_name == 'push'
         shell: bash
@@ -92,6 +66,32 @@ jobs:
       - name: Wait for Vercel production alias after repository change
         if: github.event_name == 'push'
         run: sleep 25
+      - name: Self-heal optional Jotform native webhook without blocking verified FIRST_VALID
+        env:
+          PMX_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -u
+          # Reuse existing authenticated backend. Provider 403 is an explicit
+          # permission HOLD, NOT a failure of FIRST_VALID polling or push.
+          if ! curl --fail-with-body --silent --show-error --max-time 50 \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PMX_SECRET}" \
+            -H 'Content-Type: application/json' \
+            --data '{"action":"ENSURE_ACTIVE_WEBHOOK"}' > /tmp/pmx-webhook-gate.json; then
+            echo "::warning::PMX_WEBHOOK_OPTIONAL_UNAVAILABLE; scheduled FIRST_VALID polling is still enabled"
+            exit 0
+          fi
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/pmx-webhook-gate.json'))
+          safe={k:d.get(k) for k in ('week','status','configured','verified','provider_status','fallback')}
+          print('PMX_OPTIONAL_JOTFORM_WEBHOOK',json.dumps(safe,ensure_ascii=False))
+          if d.get('status')=='PROVIDER_WEBHOOK_PERMISSION_HOLD':
+              print('::warning::Jotform webhook management needs Full Access on the backend API key; push via scheduled FIRST_VALID remains operational')
+          elif d.get('status') in ('ALREADY_CONFIGURED','CREATED_AND_VERIFIED'):
+              print('PMX_PROVIDER_WEBHOOK_CONFIGURATION_VERIFIED; instant delivery still requires live E2E evidence')
+          PY
       - name: Diagnose Jotform auth and staged W10 ownership without exposing keys or picks
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
