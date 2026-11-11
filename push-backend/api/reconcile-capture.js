@@ -198,7 +198,7 @@ async function ensureActiveWebhook(){
  const config=await remoteJson(RAW+'capture-config.json?t='+Date.now());
  const week=Number(config.week_number),form=String(config.form_id||'');
  if(config.status!=='OPEN')return {ok:true,status:'SKIP_FORM_NOT_OPEN',week};
- if(!Number.isInteger(week)||week<9||week>18||!/^\\d{10,25}$/.test(form))
+ if(!Number.isInteger(week)||week<9||week>18||!/^\d{10,25}$/.test(form))
    throw Error('WEBHOOK_CANONICAL_WEEK_INVALID');
  const contract=assertWeekConfig(await remoteJson(
    RAW+'contracts/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now()
