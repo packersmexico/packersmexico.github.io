@@ -80,6 +80,11 @@ jobs:
         run: node --test push-backend/tests/milestone-events.test.mjs
       - name: W9-W18 new FIRST_VALID push and 10AM CDMX closing recap · privacy and idempotency
         run: node --test push-backend/tests/capture-progress-events.test.mjs
+      - name: Jotform webhook admin token privacy and idempotency
+        run: |
+          node --check push-backend/lib/jotform-webhook-admin.js
+          node --check push-backend/api/reconcile-capture.js
+          node --test push-backend/tests/jotform-webhook-admin.test.mjs
       - name: Jotform W6 first-valid 14/14 validation
         run: node --test push-backend/tests/jotform-capture.test.mjs
       - name: Reusable week capture / GB lock / BYE / universal PUSH
