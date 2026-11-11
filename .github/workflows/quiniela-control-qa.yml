@@ -67,6 +67,7 @@ jobs:
           node --check push-backend/lib/milestone-events.js
           node --check push-backend/lib/capture-progress-events.js
           node --check push-backend/lib/jotform-webhook-ensure.js
+          node --check push-backend/lib/jotform-credentials.js
           node --check push-backend/api/reconcile-capture.js
           node --check push-backend/api/health.js
           node --check push-backend/lib/http.js
@@ -172,6 +173,8 @@ jobs:
           }
           assert.equal(assets.weeks['5'].assets.results.state,'RIGHTS_HOLD');
           NODE
+      - name: Jotform dedicated control credential least-privilege routing QA
+        run: node --test push-backend/tests/jotform-credentials.test.mjs
       - name: Optional Jotform webhook permissions, idempotency, privacy and nonblocking 403 QA
         run: node --test push-backend/tests/jotform-webhook-ensure.test.mjs
       - name: Private CAS hydration original picks validation

@@ -3,6 +3,7 @@ import {catchupWeek08} from '../scripts/catchup-week08.mjs';
 import {json,rejectMethod} from '../lib/http.js';
 import {redis} from '../lib/redis.js';
 import {ensureActiveWebhook} from '../lib/jotform-webhook-ensure.js';
+import {chooseJotformCredential} from '../lib/jotform-credentials.js';
 
 const RAW='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
 function authorized(req){
@@ -19,8 +20,13 @@ async function remoteJson(endpoint){
  return r.json();
 }
 async function jotform(uri,method='GET',body=null){
- if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
- const opts={method,headers:{APIKEY:process.env.PMX_JOTFORM_API_KEY,Accept:'application/json'}};
+ const apiKey=chooseJotformCredential({
+  path:uri,method,
+  readKey:process.env.PMX_JOTFORM_API_KEY,
+  controlKey:process.env.PMX_JOTFORM_CONTROL_API_KEY
+ });
+ if(!apiKey)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
+ const opts={method,headers:{APIKEY:apiKey,Accept:'application/json'}};
  if(body){opts.headers['Content-Type']='application/x-www-form-urlencoded';opts.body=new URLSearchParams(body).toString();}
  const r=await fetch('https://api.jotform.com'+uri,{...opts,cache:'no-store',signal:AbortSignal.timeout(30000)});
  if(!r.ok)throw Error('JOTFORM_API_'+r.status);
@@ -212,7 +218,7 @@ export default async function handler(req,res){
       probe('/form/263078323388060/submissions?limit=1'),
       probe('/form/263078323388060/webhooks')
     ]);
-    const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),
+    const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),control_key_present:Boolean(process.env.PMX_JOTFORM_CONTROL_API_KEY),
       account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks,private_picks_logged:false};
     console.info('PMX_JOTFORM_AUTH_DIAGNOSTIC',JSON.stringify(result));
     return json(res,200,result);
@@ -241,6 +247,7 @@ export default async function handler(req,res){
       configured:state.configured===true,verified:state.verified===true,
       provider_status:state.provider_status||null,
       permission:state.permission||null,
+      dedicated_control_key_configured:Boolean(process.env.PMX_JOTFORM_CONTROL_API_KEY),
       fallback:'SCHEDULED_FIRST_VALID_ACTIVE',
       instant_delivery:'NOT_E2E_CERTIFIED'};
     console.info('PMX_JOTFORM_WEBHOOK_GATE',JSON.stringify(output));
