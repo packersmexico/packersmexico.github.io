@@ -154,6 +154,48 @@ jobs:
           set -euo pipefail
           gh workflow run quiniela-milestone-push.yml --ref main
           echo 'PMX_MILESTONE_WORKFLOW_DISPATCHED'
+      - name: Ensure active-week Jotform webhook with dedicated permissions (non-blocking)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.persist.outputs.transition == 'true' || github.event_name == 'schedule'
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # When scheduled every 10 min, check at most once each hour.
+          # This never alters FIRST_VALID, picks, opening gates or push subscriptions.
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            current_minute=$(date -u +%M)
+            if [ "$((10#$current_minute))" -ge 11 ]; then
+              echo "PMX_WEBHOOK_ADMIN_RETRY_DEFERRED_TO_HOURLY"
+              exit 0
+            fi
+          fi
+          if [ -z "${PMX_PUSH_SECRET:-}" ]; then
+            echo "::warning::PMX_PUSH_SECRET unavailable; webhook status unverified"
+            exit 0
+          fi
+          status=$(curl --silent --show-error --max-time 35 \
+            -o /tmp/pmx-webhook-admin-readback.json -w '%{http_code}' \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \
+            -H 'Content-Type: application/json' \
+            --data '{"action":"ENSURE_ACTIVE_WEBHOOK"}') || {
+            echo "::warning::Could not verify webhook administrator; existing 10-minute reconciliation stays enabled"
+            exit 0
+          }
+          if [ "$status" != 200 ]; then
+            echo "::warning::Webhook administration unavailable (HTTP $status); FIRST_VALID reconciliation unchanged"
+            exit 0
+          fi
+          python3 - <<'PY'
+          import json
+          j=json.load(open('/tmp/pmx-webhook-admin-readback.json'))
+          print('PMX_WEBHOOK_ADMIN_STATUS',json.dumps({
+            k:j.get(k) for k in ('ok','week','status','fallback','provider_http','existing','created','instant_delivery_e2e')
+          },ensure_ascii=False))
+          if not j.get('ok') or j.get('status','').startswith('HOLD_'):
+            print('::warning::Webhook administrator not yet authorized; verified FIRST_VALID polling continues')
+          PY
       - name: Auto-render Figma PICKS after genuine 9/9 closure, 04 QA and panel index
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
