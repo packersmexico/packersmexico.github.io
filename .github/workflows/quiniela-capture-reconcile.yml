@@ -180,6 +180,38 @@ jobs:
           set -euo pipefail
           gh workflow run quiniela-milestone-push.yml --ref main
           echo 'PMX_MILESTONE_WORKFLOW_DISPATCHED'
+      - name: Verify active Jotform webhook with separate control credential (non-blocking)
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Never block ongoing FIRST_VALID polling or push notifications.
+          # One hourly check on cron; also run at configuration changes/manual runs.
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$((10#$(date -u +%M)))" -ge 10 ]; then
+            echo "PMX_WEBHOOK_CHECK_DEFERRED_TO_HOURLY"
+            exit 0
+          fi
+          if [ -z "${PMX_PUSH_SECRET:-}" ]; then
+            echo "::warning::Operator credential missing, webhook inspection skipped"
+            exit 0
+          fi
+          if ! curl --silent --show-error --fail-with-body --max-time 40 \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+            -H "Authorization: Bearer ${PMX_PUSH_SECRET}" \
+            -H "Content-Type: application/json" \
+            --data '{"action":"ENSURE_ACTIVE_WEBHOOK"}' > /tmp/pmx-webhook-admin.json; then
+            echo "::warning::Jotform webhook admin unavailable; FIRST_VALID polling remains active"
+            exit 0
+          fi
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/pmx-webhook-admin.json'))
+          keep=('ok','week','status','configured','verified','dedicated_control_key_configured','fallback')
+          print('PMX_JOTFORM_WEBHOOK_ADMIN',json.dumps({k:d.get(k) for k in keep},ensure_ascii=False))
+          if not d.get('configured'):
+            print('::warning::Optional instant webhook not certified; push via FIRST_VALID polling unaffected')
+          PY
       - name: Auto-render Figma PICKS after genuine 9/9 closure, 04 QA and panel index
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}

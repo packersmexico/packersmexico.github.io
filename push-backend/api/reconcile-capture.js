@@ -216,7 +216,9 @@ export default async function handler(req,res){
       probe('/form/263063334940050/questions'),
       probe('/form/263078323388060/questions'),
       probe('/form/263078323388060/submissions?limit=1'),
-      probe('/form/263078323388060/webhooks')
+      process.env.PMX_JOTFORM_CONTROL_API_KEY
+        ? probe('/form/263078323388060/webhooks')
+        : Promise.resolve('DEDICATED_CONTROL_KEY_NOT_CONFIGURED')
     ]);
     const result={ok:true,diagnostic:'JOTFORM_READ_ONLY',key_present:Boolean(process.env.PMX_JOTFORM_API_KEY),control_key_present:Boolean(process.env.PMX_JOTFORM_CONTROL_API_KEY),
       account,week9,week10,w9Questions,w10Questions,w10Submissions,w10Webhooks,private_picks_logged:false};
@@ -231,6 +233,15 @@ export default async function handler(req,res){
     if(week<9||week>18||active.status!=='OPEN'||!/^\d{10,25}$/.test(formId))
       return json(res,200,{ok:true,status:'SKIP_NO_OPEN_FORM',configured:false,
         fallback:'SCHEDULED_FIRST_VALID_ACTIVE'});
+    // Keep read-only Jotform API permissions intact. The confirmed HTTP 403 on
+    // /webhooks is expected until a separate Full-Access key is provisioned.
+    // Do not consume the cooldown, call the provider with the read-only key,
+    // or mislabel the existing FIRST_VALID/push pipeline as failed.
+    if(!process.env.PMX_JOTFORM_CONTROL_API_KEY)
+      return json(res,200,{ok:true,week,status:'HOLD_WEBHOOK_ADMIN_KEY_NOT_CONFIGURED',
+        configured:false,dedicated_control_key_configured:false,
+        fallback:'SCHEDULED_FIRST_VALID_ACTIVE',
+        instant_delivery:'NOT_E2E_CERTIFIED'});
     const force=req.body?.force===true;
     const key='pmx:quiniela:jotform:webhook-check:'+formId;
     if(!force){
