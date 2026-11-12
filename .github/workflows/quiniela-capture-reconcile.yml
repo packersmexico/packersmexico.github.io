@@ -1,7 +1,7 @@
 name: Quiniela Private First-Valid Capture Reconciliation
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '3-59/10 * * * *'
   push:
     branches: [main]
     paths:

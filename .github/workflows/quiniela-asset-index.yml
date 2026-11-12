@@ -10,7 +10,7 @@ on:
       - 'quiniela-control/exports/*.png'
       - 'scripts/refresh-quiniela-assets.mjs'
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '11 */4 * * *'
   workflow_dispatch:
 permissions:
   contents: write

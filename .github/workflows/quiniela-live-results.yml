@@ -1,13 +1,13 @@
 name: Quiniela Live Score Monitor
 on:
   schedule:
-    - cron: '*/15 0-7 * * 5'
-    - cron: '*/15 15-23 * * 6'
-    - cron: '*/15 0-7 * * 0'
-    - cron: '*/15 12-23 * * 0'
-    - cron: '*/15 0-8 * * 1'
-    - cron: '*/15 0-8 * * 2'
-    - cron: '*/30 9-18 * * 2' # Tuesday UTC post-MNF final/scoring retry; safely no-op after FINAL
+    - cron: '6-59/15 0-7 * * 5'
+    - cron: '6-59/15 15-23 * * 6'
+    - cron: '6-59/15 0-7 * * 0'
+    - cron: '6-59/15 12-23 * * 0'
+    - cron: '6-59/15 0-8 * * 1'
+    - cron: '6-59/15 0-8 * * 2'
+    - cron: '11-59/30 9-18 * * 2' # Tuesday UTC post-MNF final/scoring retry; safely no-op after FINAL
   push:
     branches: [main]
     paths:
