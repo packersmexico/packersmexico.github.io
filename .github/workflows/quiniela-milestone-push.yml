@@ -15,7 +15,7 @@ on:
       - 'push-backend/lib/capture-progress-events.js'
       - 'push-backend/api/jotform-submission.js'
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '7-59/10 * * * *'
   workflow_dispatch:
 
 permissions:
