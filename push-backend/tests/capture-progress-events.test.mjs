@@ -63,6 +63,19 @@ test('W10 10AM recap works dynamically, zero submissions and 9/9 completeness',(
   assert.equal(all.pending.length,0);
   assert.match(all.events.at(-1).body,/Faltan: 0/);
 });
+
+test('W10 catch-up reminder survives delayed cron after 10AM and stops at deadline',()=>{
+  const expected='W10_CLOSE_REMINDER_20261112_1600';
+  for(const utc of ['2026-11-12T18:11:00Z','2026-11-12T21:55:00Z']){
+    const r=fixture(10,['IBRACHO','RODRI'],utc);
+    assert.equal(r.status,'PASS');
+    assert.equal(r.events.filter(e=>e.eventKey===expected).length,1);
+    assert.match(r.events.find(e=>e.eventKey===expected).body,/Registrados: 2\/9/);
+  }
+  const expired=fixture(10,['IBRACHO','RODRI'],'2026-11-12T22:01:00Z');
+  assert(!expired.events.some(e=>e.eventKey===expected));
+});
+
 test('fail closed on noncanonical form, wrong snapshot, malformed or incomplete private selections',()=>{
   const f=fixture(10,['ARI'],'2026-11-12T16:01:00Z');
   assert.equal(f.status,'PASS');

@@ -81,9 +81,10 @@ export function planCaptureProgress({config,snapshot,rawFirstValid,now=new Date(
       });
     }
   }
-  // GitHub's existing */10 cron attempts at 10:00, 10:10... CDMX.
-  // Same eventKey as a manually delivered reminder ensures no duplicate in W9.
-  if(local.date===due.date && local.hour===10 && moment<deadline) {
+  // GitHub cron is best effort: for W10+ allow delayed execution after 10AM,
+  // but not after the deadline. A stable eventKey prevents repeat deliveries.
+  // W9 retains its historical 10AM-only policy.
+  if(local.date===due.date && (week>=10 ? local.hour>=10 : local.hour===10) && moment<deadline) {
     const key='W'+week+'_CLOSE_REMINDER_'+due.ymd+'_'+due.hhmm;
     events.push({
       eventKey:key,
