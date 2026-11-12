@@ -2,7 +2,7 @@
   "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
   "week": 10,
   "season": 2026,
-  "state": "PRIVATE_PREBUILD_8_OF_9_HOLD",
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
   "publication_ready": false,
   "auto_publish": false,
   "file_key": "RAoegEENwTH2L7gb3yydIq",
@@ -27,16 +27,19 @@
     "private_data_integrity": "8×14 FIRST_VALID verified in backend; no individual selections copied into Figma or GitHub",
     "fit": "PREBUILD_ONLY · 14 games × 9 columns · screenshot inspected; final 9×14 render/QA pending",
     "capture_cutoff": "HOLD · 16:00 CDMX deadline elapsed while provider still ENABLED; no silent extension or late-pick authorization.",
-    "picks_visual_review": "HOLD · requires 9/9 and real auto-render readback"
+    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
   },
   "asset_approvals": {
     "picks": {
-      "figma_qa": "PREBUILD_PASS",
-      "direction_review": "HOLD_9_OF_9_AND_DEADLINE",
-      "export_verified": false,
-      "evidence": "Existing Figma W10 node 3887:226139 reviewed; 8/9 FIRST_VALID; no final PNG produced.",
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:228543; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 595bd7053ed321910171a156002e62950758b2697e8a15647ff2da8ecedba2ca; source checksum 986e7d183c19a79fc1f74438db44da4cfd68a111f3e18832c123e7d7165a4668; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
       "output_file": "quiniela-control/exports/w10-picks-board.png",
-      "distribution": "PRIVATE_HOLD · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE"
+      "renderer_template_node": "3893:228543",
+      "scoring_checksum": "986e7d183c19a79fc1f74438db44da4cfd68a111f3e18832c123e7d7165a4668"
     }
   },
   "output_targets": {
@@ -48,5 +51,6 @@
     "Canonical capture CLOSED_FIRST_VALID_9OF9 with 126/126 picks",
     "Existing render-quiniela-season.py real PNG 1600x2000 with frozen Figma template, checksum and QA",
     "Panel asset index READY + 05 manual review, AUTO_PUBLISH_NO"
-  ]
+  ],
+  "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO"
 }
