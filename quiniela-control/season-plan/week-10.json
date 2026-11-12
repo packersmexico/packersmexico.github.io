@@ -262,6 +262,19 @@
     "deadline_policy": "PRESERVE_ORIGINAL_2026_11_12_1600_CDMX_NO_SILENT_EXTENSION",
     "render": "EXISTING_14_GAME_FROZEN_FIGMA_ONLY",
     "auto_publish": false,
-    "disposition": "REQUESTED_NO_FORCED_PASS"
+    "disposition": "PROVIDER_DISABLED_READBACK_PASS_REPEAT_CANONICAL_CLOSE",
+    "jotform_readback": {
+      "status": "DISABLED",
+      "submission_count": 9,
+      "questions_preserved": 19
+    },
+    "backend_private_integrity": {
+      "verified_count": 9,
+      "picks": 126,
+      "pending": 0,
+      "readback": "2026-11-12T23:02:17.881Z"
+    },
+    "closure_authorization": "DIRECTION_USER_EXPLICIT_FINISH_IMAGE_WITH_ALL_NINE_CONFIRMED",
+    "no_manual_pick_edits": true
   }
 }
