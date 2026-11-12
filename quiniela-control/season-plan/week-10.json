@@ -275,6 +275,14 @@
       "readback": "2026-11-12T23:02:17.881Z"
     },
     "closure_authorization": "DIRECTION_USER_EXPLICIT_FINISH_IMAGE_WITH_ALL_NINE_CONFIRMED",
-    "no_manual_pick_edits": true
+    "no_manual_pick_edits": true,
+    "render_retry": {
+      "reason": "SCORE_WEEK_SOURCE_CONFLICT_409_CAPTION_NOT_CERTIFIED",
+      "source_closed_readback": "2026-11-12T23:06:00Z",
+      "readback": "RAW_GITHUB_WEEK10_CLOSED_9OF9_126OF126",
+      "repeat_workflow": "SAME_CAPTURE_RECONCILE_WITH_FROZEN_FIGMA_RENDER",
+      "no_override": true,
+      "auto_publish": false
+    }
   }
 }
