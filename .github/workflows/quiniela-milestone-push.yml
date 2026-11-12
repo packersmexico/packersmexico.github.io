@@ -148,3 +148,83 @@ jobs:
           if not any(x.get('operator')=='IBRA' and x.get('status') in ('SENT','ALREADY_SENT') for x in deliveries):
               raise SystemExit('IBRA_PUSH_NOT_ACCEPTED')
           PY
+
+      - name: Send W10 close reminder to Rodrigo and Ibra after live gate
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          FILE='quiniela-control/reminders/week-10-close-20261112.json'
+          if ! git diff --name-only HEAD^ HEAD | grep -Fxq "$FILE"; then
+            echo 'No new W10 closing-reminder request; no push'
+            exit 0
+          fi
+          jq -e '.event_key=="W10_CLOSE_OPERATOR_REMINDER_20261112_1600" and .status=="REQUESTED" and .week==10 and .user_authorized==true and .form_id=="263078323388060"' "$FILE" >/dev/null
+          jq -e '.week_number==10 and .status=="OPEN" and .form_id=="263078323388060" and .deadline=="2026-11-12T22:00:00.000Z"' quiniela-control/capture-config.json >/dev/null
+          if ! python3 - <<'PY'
+          import datetime
+          cutoff=datetime.datetime.fromisoformat('2026-11-12T22:00:00+00:00')
+          now=datetime.datetime.now(datetime.timezone.utc)
+          if now >= cutoff:
+              print('SKIP_W10_REMINDER_DEADLINE_PASSED')
+              raise SystemExit(1)
+          print('W10_REMINDER_TIMELY',now.isoformat())
+          PY
+          then
+            exit 0
+          fi
+          test -n "${PUSH_SECRET}" || { echo '::error::PMX_PUSH_SECRET unavailable; reminder not sent'; exit 1; }
+          # Reconcile private first-valid picks; never expose individual answers.
+          if curl --fail-with-body -sS --max-time 80 --retry 1 \
+             -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture' \
+             -H "Authorization: Bearer ${PUSH_SECRET}" \
+             -H 'Content-Type: application/json' --data '{}' > /tmp/w10-reconcile.json; then
+            python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/w10-reconcile.json'))
+          print('W10_RECONCILE',json.dumps({k:d.get(k) for k in ('ok','week','status','verified_count','valid_submissions','rejected_submissions')}))
+          PY
+          else
+            echo '::warning::Live reconciliation unavailable; reminder carries no count'
+          fi
+          if curl --fail-with-body -sS --max-time 35 \
+              'https://packersmexicogithubio-push-backend.vercel.app/api/capture-status?week=10&form_id=263078323388060' \
+              -o /tmp/w10-live.json; then
+            if python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/w10-live.json'))
+          valid=d.get('ok') is True and d.get('week')==10 and str(d.get('form_id'))=='263078323388060'
+          n=d.get('verified_count',-1)
+          complete=valid and n==9 and d.get('private_picks_count')==126 and len(d.get('pending_participants',[]))==0
+          print('W10_LIVE_GATE',json.dumps({'valid':valid,'verified_count':n if valid else None,'already_complete':complete}))
+          raise SystemExit(0 if complete else 1)
+          PY
+            then
+              echo 'SKIP_W10_REMINDER_ALL_NINE_VERIFIED'
+              exit 0
+            fi
+          else
+            echo '::warning::Capture-status unavailable; sending time-specific reminder without counts'
+          fi
+          payload=$(jq -n \
+            --arg title 'PACKERS MÉXICO · W10 CIERRA HOY 16:00' \
+            --arg body 'Rodrigo: hoy jueves 12 de noviembre cierra la Quiniela W10 a las 16:00 CDMX. Envía recordatorio al grupo y revisa los pendientes en el panel.' \
+            --arg url 'https://packersmexico.github.io/quiniela-control/?operador=RODRIGO' \
+            '{eventKey:"W10_CLOSE_OPERATOR_REMINDER_20261112_1600",title:$title,body:$body,url:$url,tag:"pmx-quiniela-w10-close-reminder-20261112"}')
+          code=$(curl -sS --max-time 45 -o /tmp/w10-push-receipt.json -w '%{http_code}' \
+            -X POST 'https://packersmexicogithubio-push-backend.vercel.app/api/notify' \
+            -H "Authorization: Bearer ${PUSH_SECRET}" \
+            -H 'Content-Type: application/json' --data "$payload")
+          python3 - "$code" <<'PY'
+          import json,sys
+          code=int(sys.argv[1])
+          receipt=json.load(open('/tmp/w10-push-receipt.json'))
+          deliveries=[{'operator':x.get('operator'),'status':x.get('status'),'sentAt':x.get('sentAt')} for x in receipt.get('deliveries',[])]
+          print('W10_REMINDER_PUSH_RECEIPT',json.dumps({'http':code,'eventKey':receipt.get('eventKey'),'deliveries':deliveries}))
+          if receipt.get('eventKey')!='W10_CLOSE_OPERATOR_REMINDER_20261112_1600' or code not in (200,207):
+              raise SystemExit('PUSH_REQUEST_FAILED')
+          if not any(x.get('operator')=='RODRIGO' and x.get('status') in ('SENT','ALREADY_SENT') for x in deliveries):
+              raise SystemExit('RODRIGO_PUSH_NOT_CONFIRMED_BY_BACKEND')
+          PY
