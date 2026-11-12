@@ -247,5 +247,21 @@
     "auto_publish": false
   },
   "form_status": "ENABLED",
-  "opened_at": "2026-11-10T14:24:42.322Z"
+  "opened_at": "2026-11-10T14:24:42.322Z",
+  "reconcile_request": {
+    "key": "PMX_W10_FINAL_FIRST_VALID_PROOF_20261112",
+    "purpose": "TRIGGER_CANONICAL_LIVE_BACKEND_RECONCILIATION_AND_9_OF_9_CLOSE",
+    "requested_by": "DIRECTION_00_USER_CONFIRMATION",
+    "form_id": "263078323388060",
+    "jotform_total_observed": 9,
+    "backend_last_observed": 8,
+    "expected_unique_complete": 9,
+    "expected_picks": 126,
+    "require_private_first_valid": true,
+    "require_backend_readback": true,
+    "deadline_policy": "PRESERVE_ORIGINAL_2026_11_12_1600_CDMX_NO_SILENT_EXTENSION",
+    "render": "EXISTING_14_GAME_FROZEN_FIGMA_ONLY",
+    "auto_publish": false,
+    "disposition": "REQUESTED_NO_FORCED_PASS"
+  }
 }
