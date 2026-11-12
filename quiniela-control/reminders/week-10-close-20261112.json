@@ -1,0 +1,18 @@
+{
+  "schema": "PMX_QUINIELA_OPERATOR_PUSH_REQUEST_V1",
+  "event_key": "W10_CLOSE_OPERATOR_REMINDER_20261112_1600",
+  "week": 10,
+  "form_id": "263078323388060",
+  "due": "2026-11-12T16:00:00-06:00",
+  "status": "REQUESTED",
+  "user_authorized": true,
+  "recipients": [
+    "RODRIGO",
+    "IBRA"
+  ],
+  "purpose": "RODRIGO_SEND_GROUP_REMINDER_BEFORE_W10_DEADLINE",
+  "source": "LIVE_BACKEND_IF_AVAILABLE_NO_UNVERIFIED_COUNTS",
+  "rule": "SEND_ONCE_ONLY_BEFORE_DEADLINE_SKIP_IF_9OF9_VERIFIED",
+  "include_fields": [],
+  "auto_publish_social": false
+}
