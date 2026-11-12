@@ -19,7 +19,7 @@ for(let week=8;week<=18;week++){
     contract=read(cp);
     if(contract.week_number!==week) blockers.push('CONTRACT_WEEK_MISMATCH');
     if(JSON.stringify(contract.roster)!==JSON.stringify(roster)) blockers.push('ROSTER_MISMATCH');
-    if(!contract.form_id || !/^\\d{10,}$/.test(String(contract.form_id))) blockers.push('FORM_NOT_ASSIGNED');
+    if(!contract.form_id || !/^\d{10,}$/.test(String(contract.form_id))) blockers.push('FORM_NOT_ASSIGNED');
     if(!contract.source_schedule || !String(contract.source_schedule).includes('/2026/by-week/week-'+week)) blockers.push('NFL_SCHEDULE_SOURCE_MISSING');
     if(!contract.source_schedule_verified) blockers.push('SCHEDULE_NOT_VERIFIED');
     if(!Array.isArray(contract.bye_teams)) blockers.push('BYE_NOT_VERIFIED');

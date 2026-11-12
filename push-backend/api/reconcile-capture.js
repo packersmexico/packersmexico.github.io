@@ -90,7 +90,7 @@ async function repairStagedQuestionFidelity(week){
   if(cleanString(form.status)!=='DISABLED'||Number(form.count||form.new||0)!==0)
     throw Error('UNSAFE_TO_EDIT_NONEMPTY_OR_OPEN');
   const current=await jotform('/form/'+manifest.form_id+'/questions');
-  const items=Object.values(current||{}).filter(q=>/^G\\d{2}/.test(String(q.text||'')))
+  const items=Object.values(current||{}).filter(q=>/^G\d{2}/.test(String(q.text||'')))
     .sort((a,b)=>Number(a.order||9999)-Number(b.order||9999));
   if(items.length!==manifest.games.length)throw Error('EXPECTED_EXISTING_'+manifest.games.length+'_GAME_FIELDS');
   const edited=[];
@@ -106,7 +106,7 @@ async function repairStagedQuestionFidelity(week){
       patch['question[defaultValue]']='GB';
     }
     if(Object.keys(patch).length>0){
-      if(!/^\\d+$/.test(id))throw Error('INVALID_QID_TO_REPAIR');
+      if(!/^\d+$/.test(id))throw Error('INVALID_QID_TO_REPAIR');
       await jotform('/form/'+manifest.form_id+'/question/'+id,'POST',patch);
       edited.push({game:g.id,changed:Object.keys(patch).map(k=>k.replace('question[','').replace(']',''))});
     }
