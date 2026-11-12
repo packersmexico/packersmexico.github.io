@@ -1,0 +1,52 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 10,
+  "season": 2026,
+  "state": "PRIVATE_PREBUILD_8_OF_9_HOLD",
+  "publication_ready": false,
+  "auto_publish": false,
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "picks_prebuild_node_id": "3887:226139",
+  "renderer_template_node_id": "3893:228543",
+  "renderer_template_version": "14_GAMES_FROZEN_FIGMA_V1.0",
+  "source": {
+    "form_id": "263078323388060",
+    "source_system": "REDIS_FIRST_VALID_READ_ONLY",
+    "snapshot_checked_at": "2026-11-12T22:51:44.221Z",
+    "verified_participants": 8,
+    "expected_participants": 9,
+    "received_private_picks": 112,
+    "expected_private_picks": 126,
+    "pending_participants": [
+      "LUIS C."
+    ],
+    "individual_picks_persisted_here": false
+  },
+  "qa": {
+    "figma_prebuild": "PASS · 1600×2000 original W10 instance inspected; all 14 approved matchups, 9 participant headers and original horizontal V1.1 logo retained; status text updated from 0/9 to 8/9; Luis column marked pending.",
+    "private_data_integrity": "8×14 FIRST_VALID verified in backend; no individual selections copied into Figma or GitHub",
+    "fit": "PREBUILD_ONLY · 14 games × 9 columns · screenshot inspected; final 9×14 render/QA pending",
+    "capture_cutoff": "HOLD · 16:00 CDMX deadline elapsed while provider still ENABLED; no silent extension or late-pick authorization.",
+    "picks_visual_review": "HOLD · requires 9/9 and real auto-render readback"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PREBUILD_PASS",
+      "direction_review": "HOLD_9_OF_9_AND_DEADLINE",
+      "export_verified": false,
+      "evidence": "Existing Figma W10 node 3887:226139 reviewed; 8/9 FIRST_VALID; no final PNG produced.",
+      "output_file": "quiniela-control/exports/w10-picks-board.png",
+      "distribution": "PRIVATE_HOLD · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE"
+    }
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w10-picks-board.png"
+  },
+  "release_conditions": [
+    "Confirm authority/closure of W10 capture because 16:00 deadline has elapsed",
+    "9 distinct complete FIRST_VALID 14/14 picks, no duplicates and fixed GB",
+    "Canonical capture CLOSED_FIRST_VALID_9OF9 with 126/126 picks",
+    "Existing render-quiniela-season.py real PNG 1600x2000 with frozen Figma template, checksum and QA",
+    "Panel asset index READY + 05 manual review, AUTO_PUBLISH_NO"
+  ]
+}
