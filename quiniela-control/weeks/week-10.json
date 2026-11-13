@@ -103,9 +103,9 @@
       "matchup": "WAS @ NYG",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-13T01:15:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "WAS",
+      "score": "WAS 24–21 NYG",
       "espn_event_id": "401873052"
     },
     {
@@ -240,12 +240,12 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 14,
-    "status": "SCHEDULED",
+    "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
-    "scored": 0,
+    "scored": 1,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -320,5 +320,7 @@
     "status": "NOT_STARTED",
     "original_picks_preserved": true,
     "picks_visible": false
-  }
+  },
+  "last_sync": "2026-11-13T06:28:29.244445+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
