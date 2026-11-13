@@ -147,6 +147,31 @@ def validate_matrix(games,backend,kind):
         raise RuntimeError("PRIVATE_PICKS_NOT_COMPLETE")
     return rows
 
+def approved_week10_corrections(week, kind, games, matrix):
+    """Apply only two approved W10 exceptions in memory. Preserve FIRST_VALID."""
+    if week!=10 or kind!="picks":return None
+    manifest=load_json(ROOT/"approved-corrections"/"week-10.json")
+    entries=manifest.get("exceptions") or []
+    expected={"ALEX":"IND","LUIS C.":"IND"}
+    if (manifest.get("schema")!="PMX_QUINIELA_APPROVED_PICK_EXCEPTIONS_V1"
+        or manifest.get("approval_id")!="PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND"
+        or manifest.get("week")!=10 or manifest.get("form_id")!="263078323388060"
+        or manifest.get("matchup")!="MIA @ IND" or manifest.get("game_id")!="G06"
+        or manifest.get("first_valid_immutable") is not True
+        or manifest.get("all_other_picks_unchanged") is not True
+        or len(entries)!=2
+        or {e.get("participant"):e.get("pick") for e in entries}!=expected
+        or any(e.get("original")!="MIA" or e.get("game_id")!="G06" for e in entries)):
+        raise RuntimeError("W10_EXCEPTION_MANIFEST_INVALID")
+    indices=[i for i,g in enumerate(games) if g.get("id")=="G06" and g.get("matchup")=="MIA @ IND"]
+    if len(indices)!=1:raise RuntimeError("W10_G06_CONTRACT_INVALID")
+    i=indices[0]
+    for person in expected:
+        if matrix[person][i] != {"id":"G06","team":"MIA"}:
+            raise RuntimeError("W10_ORIGINAL_FIRST_VALID_MISMATCH_"+person)
+        matrix[person][i]={"id":"G06","team":"IND"}
+    return {"approval_id":manifest["approval_id"],"exceptions":entries,"preserved_originals":True}
+
 def game_board(week,mode,games,matrix,bye):
     n=len(games)
     if n not in (13,14,15,16):raise RuntimeError("UNSUPPORTED_FIGMA_ROWS_"+str(n))
@@ -159,7 +184,8 @@ def game_board(week,mode,games,matrix,bye):
     label=("PICKS · WEEK " if mode=="picks" else "RESULTADOS · WEEK ")+str(week)
     d.rectangle((75,248,1400,373),fill=DARK)
     text_checked(d,(80,252),label,display,CREAM,1295)
-    note=("CAPTURA CERRADA · 9/9 FIRST_VALID · "+str(9*n)+" PICKS"
+    note=(("CAPTURA CERRADA · 9/9 · "+str(9*n)+" PICKS · 2 CORRECCIONES AUTORIZADAS"
+           if week==10 else "CAPTURA CERRADA · 9/9 FIRST_VALID · "+str(9*n)+" PICKS")
           if mode=="picks" else str(n)+"/"+str(n)+" FINAL · RESULTADOS OFICIALES NFL")
     text_checked(d,(80,353),note,mont20,GOLD,1360)
     logos={}
@@ -177,7 +203,8 @@ def game_board(week,mode,games,matrix,bye):
             if mode=="final":badge(d,x+29,round(cy-19),cell["result"])
     byes="BYE · "+(" · ".join(bye) if bye else "NINGUNO")
     text_checked(d,(82,1840),byes,mont20,GOLD,1435)
-    foot=("9/9 CAPTURA CERRADA · FIRST_VALID ORIGINAL · SIN IA"
+    foot=(("9/9 CAPTURA · 2 EXCEPCIONES G06 APROBADAS · ORIGINAL RESGUARDADO" if week==10 else
+           "9/9 CAPTURA CERRADA · FIRST_VALID ORIGINAL · SIN IA")
           if mode=="picks" else "RESULTADOS FINALIZADOS · VERIFICACIÓN PRIVADA DE ACIERTOS")
     text_checked(d,(82,1895),foot,mont17,MUTED,1420)
     return image,definition,9*n
@@ -294,9 +321,11 @@ def run(kind,eligibility=False):
     stage=load_json(stage_path) if stage_path.exists() else {}
     target_slots=["picks"] if kind=="picks" else ["results","weekly","season"]
     current_hash=load_json(ROOT/"data.json").get("scoring",{}).get("checksum") if kind=="final" else None
+    correction_id="PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND" if week==10 and kind=="picks" else None
     if all(stage.get("asset_approvals",{}).get(slot,{}).get("export_verified") is True and
            pathlib.Path(stage["asset_approvals"][slot]["output_file"]).exists() and
-           (kind=="picks" or stage["asset_approvals"][slot].get("scoring_checksum")==current_hash)
+           (kind=="picks" or stage["asset_approvals"][slot].get("scoring_checksum")==current_hash) and
+           (not correction_id or stage.get("approved_exceptions",{}).get("approval_id")==correction_id)
            for slot in target_slots):
         print("PMX_AUTO_RENDER_ALREADY_CERTIFIED",week,kind)
         return 2
@@ -311,6 +340,7 @@ def run(kind,eligibility=False):
         raise RuntimeError("GAME_ORDER_CONTRACT_MISMATCH")
     raw=private(week,kind)
     matrix=validate_matrix(games,raw,kind)
+    correction=approved_week10_corrections(week,kind,games,matrix)
     records={}
     if kind=="picks":
         board,origin,cells=game_board(week,"picks",games,matrix,contract.get("bye_teams",[]))
@@ -334,6 +364,13 @@ def run(kind,eligibility=False):
             records[slot]={"path":filename,"node":node,"sha256":digest}
         checksum=raw["checksum"]
     stage_record(week,records,checksum,len(games))
+    if correction:
+        stage_path=ROOT/("figma-week-"+str(week).zfill(2)+".json")
+        data=load_json(stage_path)
+        data["approved_exceptions"]=correction
+        data["qa"]["picks_visual_review"]="PASS · FROZEN_FIGMA + EXACT TWO APPROVED W10 G06 PICK EXCEPTIONS · 9×14"
+        data["asset_approvals"]["picks"]["evidence"]+="; approved exceptions "+correction["approval_id"]+"; FIRST_VALID preserved."
+        stage_path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("PMX_AUTO_RENDER_READY",json.dumps({
         "week":week,"kind":kind,"games":len(games),"roster":9,"cells":len(games)*9,
         "slots":{k:{"path":str(v["path"]),"figma_node":v["node"],"sha256":v["sha256"]} for k,v in records.items()},

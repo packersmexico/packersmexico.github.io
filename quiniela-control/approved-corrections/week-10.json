@@ -1,0 +1,34 @@
+{
+  "schema": "PMX_QUINIELA_APPROVED_PICK_EXCEPTIONS_V1",
+  "approval_id": "PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND",
+  "week": 10,
+  "form_id": "263078323388060",
+  "game_id": "G06",
+  "matchup": "MIA @ IND",
+  "approved_by": "Dirección · PACKERS MÉXICO",
+  "source_issue": "https://github.com/packersmexico/packersmexico.github.io/issues/43#issuecomment-6839826094",
+  "reason": "Autorización expresa y única de Dirección para dos cambios después de captura W10 cerrada",
+  "exceptions": [
+    {
+      "participant": "ALEX",
+      "game_id": "G06",
+      "original": "MIA",
+      "pick": "IND"
+    },
+    {
+      "participant": "LUIS C.",
+      "game_id": "G06",
+      "original": "MIA",
+      "pick": "IND"
+    }
+  ],
+  "first_valid_immutable": true,
+  "all_other_picks_unchanged": true,
+  "apply_to": [
+    "picks_board",
+    "weekly_scoring",
+    "final_results"
+  ],
+  "auto_publish_social": false,
+  "budget_mxn": 0
+}
