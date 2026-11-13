@@ -87,6 +87,32 @@ export default async function handler(req,res){
     throw Error('OVERLAY_AUDIT_MISMATCH');
    overrides[k]=v;
   }
+  // The original Jotform FIRST_VALID remains immutable. Only Direction's
+  // two exceptional Week 10 picks may supersede scoring and final render.
+  if(week===10){
+   const manifest=await read('approved-corrections/week-10.json');
+   const fixes=manifest?.exceptions||[];
+   const expected=['ALEX','LUIS C.'];
+   if(manifest?.schema!=='PMX_QUINIELA_APPROVED_PICK_EXCEPTIONS_V1'||
+      manifest?.approval_id!=='PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND'||
+      manifest?.week!==10||String(manifest?.form_id)!=='263078323388060'||
+      manifest?.game_id!=='G06'||manifest?.matchup!=='MIA @ IND'||
+      manifest?.first_valid_immutable!==true||manifest?.all_other_picks_unchanged!==true||
+      fixes.length!==2||new Set(fixes.map(x=>x.participant)).size!==2||
+      expected.some(p=>!fixes.some(x=>x.participant===p))||
+      !games.some(g=>g.id==='G06'&&g.matchup==='MIA @ IND'))
+      throw Error('DIRECTOR_W10_APPROVAL_INVALID');
+   for(const e of fixes){
+    const key=e.participant+':G06';
+    if(e.game_id!=='G06'||e.original!=='MIA'||e.pick!=='IND'||
+       locks[e.participant]?.picks?.G06!=='MIA'||
+       (overrides[key]&&overrides[key].pick!=='IND'))
+      throw Error('DIRECTOR_W10_ORIGINAL_MISMATCH_'+e.participant);
+    overrides[key]={participant:e.participant,game_id:'G06',
+      original:'MIA',pick:'IND',approved:true,
+      approved_by:manifest.approved_by,reference:manifest.source_issue};
+   }
+  }
   for(const name of contract.roster){
    const picks=locks[name].picks;
    if(!picks||Array.isArray(picks)||Object.keys(picks).length!==games.length||
