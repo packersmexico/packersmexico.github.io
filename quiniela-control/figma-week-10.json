@@ -27,14 +27,14 @@
     "private_data_integrity": "8×14 FIRST_VALID verified in backend; no individual selections copied into Figma or GitHub",
     "fit": "PREBUILD_ONLY · 14 games × 9 columns · screenshot inspected; final 9×14 render/QA pending",
     "capture_cutoff": "HOLD · 16:00 CDMX deadline elapsed while provider still ENABLED; no silent extension or late-pick authorization.",
-    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
+    "picks_visual_review": "PASS · FROZEN_FIGMA + EXACT TWO APPROVED W10 G06 PICK EXCEPTIONS · 9×14"
   },
   "asset_approvals": {
     "picks": {
       "figma_qa": "PASS",
       "direction_review": "PASS",
       "export_verified": true,
-      "evidence": "Figma node 3893:228543; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 595bd7053ed321910171a156002e62950758b2697e8a15647ff2da8ecedba2ca; source checksum 986e7d183c19a79fc1f74438db44da4cfd68a111f3e18832c123e7d7165a4668; automatic layout fit checks.",
+      "evidence": "Figma node 3893:228543; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 9f2731f126ba07177e7d2b7799e23550415273bc70134ab1b772c939534f5f75; source checksum 986e7d183c19a79fc1f74438db44da4cfd68a111f3e18832c123e7d7165a4668; automatic layout fit checks.; approved exceptions PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND; FIRST_VALID preserved.",
       "approved_by": "00 · Direction · recurring automation order 2026-11-05",
       "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
       "output_file": "quiniela-control/exports/w10-picks-board.png",
@@ -52,5 +52,23 @@
     "Existing render-quiniela-season.py real PNG 1600x2000 with frozen Figma template, checksum and QA",
     "Panel asset index READY + 05 manual review, AUTO_PUBLISH_NO"
   ],
-  "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO"
+  "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO",
+  "approved_exceptions": {
+    "approval_id": "PMX-W10-EXCEPTION-20261112-ALEX-LUISC-IND",
+    "exceptions": [
+      {
+        "participant": "ALEX",
+        "game_id": "G06",
+        "original": "MIA",
+        "pick": "IND"
+      },
+      {
+        "participant": "LUIS C.",
+        "game_id": "G06",
+        "original": "MIA",
+        "pick": "IND"
+      }
+    ],
+    "preserved_originals": true
+  }
 }
