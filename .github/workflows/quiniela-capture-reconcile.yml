@@ -16,6 +16,8 @@ on:
       - 'scripts/quiniela-season-cycle.mjs'
       - 'quiniela-control/data.json'
       - 'quiniela-control/season-plan/**'
+      - 'quiniela-control/approved-corrections/**'
+      - 'scripts/render-quiniela-season.py'
       - 'scripts/repair-quiniela-staged.mjs'
   workflow_dispatch:
 permissions:
