@@ -123,9 +123,9 @@
       "matchup": "KC @ ATL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "KC 7–0 ATL",
+      "status": "FINAL",
+      "winner": "KC",
+      "score": "KC 35–13 ATL",
       "espn_event_id": "401873058"
     },
     {
@@ -133,9 +133,9 @@
       "matchup": "HOU @ CLE",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "HOU 10–0 CLE",
+      "status": "FINAL",
+      "winner": "CLE",
+      "score": "CLE 27–24 HOU",
       "espn_event_id": "401873056"
     },
     {
@@ -143,9 +143,9 @@
       "matchup": "MIN @ GB",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "MIN 10–0 GB",
+      "status": "FINAL",
+      "winner": "MIN",
+      "score": "MIN 30–10 GB",
       "espn_event_id": "401873060"
     },
     {
@@ -153,9 +153,9 @@
       "matchup": "MIA @ IND",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "MIA 0–7 IND",
+      "status": "FINAL",
+      "winner": "IND",
+      "score": "IND 24–22 MIA",
       "espn_event_id": "401873059"
     },
     {
@@ -163,9 +163,9 @@
       "matchup": "CAR @ NO",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "CAR 0–0 NO",
+      "status": "FINAL",
+      "winner": "CAR",
+      "score": "CAR 20–17 NO",
       "espn_event_id": "401873055"
     },
     {
@@ -173,9 +173,9 @@
       "matchup": "BUF @ NYJ",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "BUF 7–0 NYJ",
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 31–12 NYJ",
       "espn_event_id": "401873054"
     },
     {
@@ -183,9 +183,9 @@
       "matchup": "JAX @ TEN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "JAX 10–3 TEN",
+      "status": "FINAL",
+      "winner": "JAX",
+      "score": "JAX 40–23 TEN",
       "espn_event_id": "401873057"
     },
     {
@@ -193,9 +193,9 @@
       "matchup": "LAR @ AZ",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:05:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "LAR 31–6 AZ",
       "espn_event_id": "401873061"
     },
     {
@@ -203,9 +203,9 @@
       "matchup": "SEA @ LV",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:05:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "SEA 21–10 LV",
       "espn_event_id": "401873062"
     },
     {
@@ -213,9 +213,9 @@
       "matchup": "SF @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:25:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "SF 17–16 DAL",
       "espn_event_id": "401873063"
     },
     {
@@ -240,12 +240,12 @@
     }
   ],
   "results": {
-    "final": 2,
+    "final": 9,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 7,
+    "in_progress": 3,
     "ties": 0,
-    "scored": 2,
+    "scored": 9,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,6 +321,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-15T18:45:20.846205+00:00",
+  "last_sync": "2026-11-15T23:11:45.634358+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
