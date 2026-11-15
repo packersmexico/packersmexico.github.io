@@ -113,9 +113,9 @@
       "matchup": "NE @ DET",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T14:30:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "DET",
+      "score": "DET 35–10 NE",
       "espn_event_id": "401873053"
     },
     {
@@ -123,9 +123,9 @@
       "matchup": "KC @ ATL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "KC 7–0 ATL",
       "espn_event_id": "401873058"
     },
     {
@@ -133,9 +133,9 @@
       "matchup": "HOU @ CLE",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "HOU 10–0 CLE",
       "espn_event_id": "401873056"
     },
     {
@@ -143,9 +143,9 @@
       "matchup": "MIN @ GB",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "MIN 10–0 GB",
       "espn_event_id": "401873060"
     },
     {
@@ -153,9 +153,9 @@
       "matchup": "MIA @ IND",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "MIA 0–7 IND",
       "espn_event_id": "401873059"
     },
     {
@@ -163,9 +163,9 @@
       "matchup": "CAR @ NO",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "CAR 0–0 NO",
       "espn_event_id": "401873055"
     },
     {
@@ -173,9 +173,9 @@
       "matchup": "BUF @ NYJ",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "BUF 7–0 NYJ",
       "espn_event_id": "401873054"
     },
     {
@@ -183,9 +183,9 @@
       "matchup": "JAX @ TEN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "JAX 10–3 TEN",
       "espn_event_id": "401873057"
     },
     {
@@ -240,12 +240,12 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 2,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 7,
     "ties": 0,
-    "scored": 1,
+    "scored": 2,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,6 +321,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-13T06:28:29.244445+00:00",
+  "last_sync": "2026-11-15T18:45:20.846205+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
