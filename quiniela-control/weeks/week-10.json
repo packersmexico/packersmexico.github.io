@@ -193,9 +193,9 @@
       "matchup": "LAR @ AZ",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:05:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "LAR 31–6 AZ",
+      "status": "FINAL",
+      "winner": "LAR",
+      "score": "LAR 34–6 AZ",
       "espn_event_id": "401873061"
     },
     {
@@ -203,9 +203,9 @@
       "matchup": "SEA @ LV",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:05:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "SEA 21–10 LV",
+      "status": "FINAL",
+      "winner": "SEA",
+      "score": "SEA 21–13 LV",
       "espn_event_id": "401873062"
     },
     {
@@ -213,9 +213,9 @@
       "matchup": "SF @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-15T21:25:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "SF 17–16 DAL",
+      "status": "FINAL",
+      "winner": "SF",
+      "score": "SF 46–40 DAL",
       "espn_event_id": "401873063"
     },
     {
@@ -223,9 +223,9 @@
       "matchup": "PIT @ CIN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-16T01:20:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "PIT 3–17 CIN",
       "espn_event_id": "401873064"
     },
     {
@@ -240,12 +240,12 @@
     }
   ],
   "results": {
-    "final": 9,
+    "final": 12,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 3,
+    "in_progress": 1,
     "ties": 0,
-    "scored": 9,
+    "scored": 12,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,6 +321,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-15T23:11:45.634358+00:00",
+  "last_sync": "2026-11-16T02:47:57.234680+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
