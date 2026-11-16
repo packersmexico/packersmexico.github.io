@@ -223,9 +223,9 @@
       "matchup": "PIT @ CIN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-16T01:20:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "PIT 3–17 CIN",
+      "status": "FINAL",
+      "winner": "CIN",
+      "score": "CIN 38–18 PIT",
       "espn_event_id": "401873064"
     },
     {
@@ -240,12 +240,12 @@
     }
   ],
   "results": {
-    "final": 12,
+    "final": 13,
     "total": 14,
     "status": "LIVE",
-    "in_progress": 1,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 12,
+    "scored": 13,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,6 +321,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-16T02:47:57.234680+00:00",
+  "last_sync": "2026-11-16T06:09:18.371628+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
