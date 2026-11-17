@@ -35,6 +35,69 @@ jobs:
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: python3 scripts/sync-quiniela-live.py
+      - name: Watch the final MNF official flag briefly without a second scheduler
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # GitHub schedule triggers may drift by hours. Only if exactly one
+          # game remains, and that game's verified kickoff is well underway,
+          # poll for its official ESPN completed flag within this same runner.
+          # Bounded 18 checks x 90s, with no artificial FINAL or new cron.
+          if ! python3 - <<'PY'
+          import datetime,json
+          from pathlib import Path
+          root=Path('quiniela-control')
+          cfg=json.load(open(root/'capture-config.json'))
+          week=int(cfg.get('week_number') or 0)
+          path=root/'weeks'/f'week-{week:02d}.json'
+          if not path.exists():raise SystemExit(2)
+          snap=json.load(open(path))
+          games=snap.get('games') or []
+          remaining=[g for g in games if g.get('status') not in ('FINAL','TIE')]
+          if not games or len(remaining)!=1:raise SystemExit(2)
+          game=remaining[0]
+          try:
+              stamp=datetime.datetime.fromisoformat(game['kickoff_iso'].replace('Z','+00:00'))
+              now=datetime.datetime.now(datetime.timezone.utc)
+              elapsed=(now-stamp).total_seconds()/60
+          except (KeyError,ValueError,TypeError):raise SystemExit(2)
+          ready=(cfg.get('status')=='CLOSED' and cfg.get('complete')==9 and
+              snap.get('capture',{}).get('window')=='CLOSED' and
+              game.get('status')=='IN_PROGRESS' and
+              game.get('kickoff_iso')==max(str(g.get('kickoff_iso') or '') for g in games) and
+              120<=elapsed<=300)
+          print('PMX_MNF_TAIL_WATCH_GATE',json.dumps({
+              'week':week,'last_game':game.get('id'),'active':ready,
+              'elapsed_minutes':round(elapsed),'remaining_games':len(remaining)}))
+          raise SystemExit(0 if ready else 2)
+          PY
+          then
+            echo 'PMX_MNF_TAIL_WATCH_NOT_ELIGIBLE'
+            exit 0
+          fi
+          for attempt in {1..18}; do
+            echo "PMX_MNF_FINAL_WATCH_CHECK $attempt/18"
+            python3 scripts/sync-quiniela-live.py
+            if python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('quiniela-control')
+          cfg=json.load(open(root/'capture-config.json'))
+          snap=json.load(open(root/'weeks'/f"week-{cfg['week_number']:02d}.json"))
+          games=snap.get('games') or []
+          complete=bool(games) and all(
+              (g.get('status')=='FINAL' and g.get('winner') in str(g.get('matchup','')).split(' @ ')) or
+              (g.get('status')=='TIE' and not g.get('winner')) for g in games)
+          if complete:print('PMX_MNF_FINAL_FLAG_CONFIRMED',cfg['week_number'],len(games))
+          raise SystemExit(0 if complete else 1)
+          PY
+            then
+              break
+            fi
+            if [ "$attempt" -lt 18 ]; then sleep 90; fi
+          done
       - name: Persist verified scoring changes
         shell: bash
         run: |
