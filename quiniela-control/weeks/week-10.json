@@ -248,8 +248,118 @@
     "scored": 14,
     "pushes": 0
   },
-  "weekly_standings": [],
-  "season_standings": [],
+  "weekly_standings": [
+    {
+      "name": "ARI",
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
+    },
+    {
+      "name": "RODRI",
+      "correct": 10,
+      "wrong": 4,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 9,
+      "wrong": 5,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 8,
+      "wrong": 6,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 6,
+      "wrong": 8,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 4,
+      "wrong": 10,
+      "status": "VALID"
+    }
+  ],
+  "season_standings": [
+    {
+      "name": "RODRI",
+      "correct": 103,
+      "wrong": 46,
+      "status": "VALID"
+    },
+    {
+      "name": "EL DOC",
+      "correct": 100,
+      "wrong": 49,
+      "status": "VALID"
+    },
+    {
+      "name": "IBRACHO",
+      "correct": 99,
+      "wrong": 50,
+      "status": "VALID"
+    },
+    {
+      "name": "ALEX",
+      "correct": 98,
+      "wrong": 51,
+      "status": "VALID"
+    },
+    {
+      "name": "LUIS C.",
+      "correct": 94,
+      "wrong": 55,
+      "status": "VALID"
+    },
+    {
+      "name": "DR PALMA",
+      "correct": 90,
+      "wrong": 59,
+      "status": "VALID"
+    },
+    {
+      "name": "ARI",
+      "correct": 89,
+      "wrong": 60,
+      "status": "VALID"
+    },
+    {
+      "name": "JENNI",
+      "correct": 85,
+      "wrong": 64,
+      "status": "VALID"
+    },
+    {
+      "name": "LALO",
+      "correct": 78,
+      "wrong": 71,
+      "status": "VALID"
+    }
+  ],
   "season_base_before_week": [
     {
       "name": "RODRI",
@@ -307,7 +417,7 @@
     }
   ],
   "production": {
-    "package_status": "W10 CAPTURE OPEN · WAITING FIRST_VALID",
+    "package_status": "W10 FINAL · RANKINGS_VERIFIED_PRIVATE · FIGMA_QA_PENDING",
     "auto_publish": false
   },
   "bye_teams": [
@@ -317,10 +427,12 @@
     "TB"
   ],
   "scoring": {
-    "status": "NOT_STARTED",
+    "status": "COMPLETE",
+    "checksum": "b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0",
+    "source": "REDIS_FIRST_VALID_BACKEND",
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-17T04:25:22.783926+00:00",
+  "last_sync": "2026-11-17T07:43:36.072802+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
