@@ -219,5 +219,17 @@
     "prepared_at": "2026-11-05",
     "game_count": 14,
     "field_map_readback": "2026-11-05T13:41:30.678Z"
+  },
+  "provider_schedule": {
+    "approved": true,
+    "method": "JOTFORM_NATIVE_SINGLE_WINDOW",
+    "form_id": "263083244968062",
+    "start_at_utc": "2026-12-01T15:00:00.000Z",
+    "end_at_utc": "2026-12-03T22:00:00.000Z",
+    "timezone": "America/Mexico_City",
+    "original_form_preserved": true,
+    "provider_oauth_evidence": "Jotform OAuth edit_form scheduled a SINGLE availability window and fetch readback confirmed; 2026-11-17",
+    "trust_boundary": "Provider acceptance is separate from canonical FIRST_VALID/Redis; no raw picks published",
+    "auto_publish_social": false
   }
 }

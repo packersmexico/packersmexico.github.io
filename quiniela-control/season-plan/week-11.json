@@ -226,5 +226,17 @@
     "CIN @ WAS"
   ],
   "opened_at": "2026-11-17T21:36:45.511Z",
-  "open_basis": "DIRECTION_AUTHORIZED_PROVIDER_OAUTH_W11_WITH_PUBLIC_QID_QA"
+  "open_basis": "DIRECTION_AUTHORIZED_PROVIDER_OAUTH_W11_WITH_PUBLIC_QID_QA",
+  "provider_schedule": {
+    "approved": true,
+    "method": "JOTFORM_NATIVE_SINGLE_WINDOW",
+    "form_id": "263078694568071",
+    "start_at_utc": "2026-11-17T15:00:00.000Z",
+    "end_at_utc": "2026-11-19T22:00:00.000Z",
+    "timezone": "America/Mexico_City",
+    "original_form_preserved": true,
+    "provider_oauth_evidence": "Jotform OAuth edit_form scheduled a SINGLE availability window and fetch readback confirmed; 2026-11-17",
+    "trust_boundary": "Provider acceptance is separate from canonical FIRST_VALID/Redis; no raw picks published",
+    "auto_publish_social": false
+  }
 }
