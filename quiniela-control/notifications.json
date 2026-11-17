@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-11-03T14:05:42Z",
+  "updated_at": "2026-11-17T21:36:45.511Z",
   "items": [
+    {
+      "id": "W11_OPEN",
+      "status": "READY",
+      "title": "WEEK 11 ABIERTA",
+      "body": "Week 10 cerrada 14/14. Week 11: 0/9 respuestas · cierre CIERRE AUTOMÁTICO · 2026-11-19T22:00:00.000Z.",
+      "href": "./",
+      "secondary_href": "./captura/",
+      "secondary_label": "ABRIR FORMULARIO"
+    },
     {
       "id": "W9_OPEN",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "./exports/live.html",
       "secondary_label": "VER PIEZAS"
-    },
-    {
-      "id": "W7_OPEN",
-      "status": "READY",
-      "title": "WEEK 7 ABIERTA",
-      "body": "Week 6 cerrada 14/14. Week 7: 9/9 respuestas · cierre 22 OCT · 16:00 CDMX.",
-      "href": "./",
-      "secondary_href": "./captura/",
-      "secondary_label": "ABRIR FORMULARIO"
     }
   ]
 }
