@@ -77,9 +77,9 @@ async function main(){
     native.method==='JOTFORM_NATIVE_SINGLE_WINDOW' &&
     String(native.form_id)===String(config.form_id) &&
     native.original_form_preserved===true &&
-    Date.parse(native.end_at_utc)===deadline;
+    Date.parse(native.end_at_utc)===Date.parse(config.deadline);
   const status=nativeAuthorized
-    ? {verified:true,status:now>=deadline?'SCHEDULED_WINDOW_ENDED':'OPEN_UNTIL_NATIVE_END'}
+    ? {verified:true,status:now>=Date.parse(config.deadline)?'SCHEDULED_WINDOW_ENDED':'OPEN_UNTIL_NATIVE_END'}
     : await call('reconcile-capture',{action:'CLOSE_ACTIVE',week:current,form_id:String(config.form_id)});
   invariant(status.verified && (nativeAuthorized || status.status==='DISABLED'),'JOTFORM_CLOSE_NOT_VERIFIED');
   const snapshot=read('weeks/'+tag(current));
