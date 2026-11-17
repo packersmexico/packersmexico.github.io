@@ -12,6 +12,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/sync-quiniela-live.py'
+      - '.github/workflows/quiniela-live-results.yml'
       # A confirmed 14/14 snapshot must trigger authenticated scoring immediately.
       - 'quiniela-control/weeks/week-*.json'
   workflow_dispatch:
@@ -59,6 +60,88 @@ jobs:
             fi
             sleep 4
           done
+      - name: Retry private scoring in this same run after verified FINAL persists
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # GitHub Actions commits made by GITHUB_TOKEN do NOT dispatch other
+          # workflows via push. Refresh main and complete the required second
+          # score pass here instead of waiting for unreliable cron.
+          git fetch origin main
+          git reset --hard origin/main
+          if ! python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('quiniela-control')
+          cfg=json.load(open(root/'capture-config.json'))
+          data=json.load(open(root/'data.json'))
+          w=int(cfg.get('week_number',0))
+          p=root/'weeks'/f'week-{w:02d}.json'
+          if not p.exists():
+              print('PMX_TWO_PASS_SKIP_NO_SNAPSHOT')
+              raise SystemExit(2)
+          snap=json.load(open(p))
+          games=snap.get('games') or []
+          decided=bool(games) and all(
+              (g.get('status')=='FINAL' and g.get('winner') in str(g.get('matchup','')).split(' @ ')) or
+              (g.get('status')=='TIE' and not g.get('winner')) for g in games)
+          eligible=(cfg.get('status')=='CLOSED' and cfg.get('complete')==9 and
+              snap.get('capture',{}).get('window')=='CLOSED' and decided and
+              snap.get('scoring',{}).get('status')!='COMPLETE' and
+              int(data.get('week_number') or 0) in (w,w-1))
+          print('PMX_MNF_SECOND_PASS_GATE',json.dumps({
+              'week':w,'official_final':decided,'scoring_pending':eligible,
+              'games':len(games),'already_scored':snap.get('scoring',{}).get('status')=='COMPLETE'
+          }))
+          raise SystemExit(0 if eligible else 2)
+          PY
+          then
+            echo 'PMX_TWO_PASS_NOT_NEEDED'
+            exit 0
+          fi
+          # The newly persisted GitHub snapshot may take a few seconds to
+          # propagate to the authenticated backend; bounded retries only.
+          for attempt in 1 2 3 4; do
+            python3 scripts/sync-quiniela-live.py
+            if python3 - <<'PY'
+          import json
+          p='quiniela-control/data.json'
+          d=json.load(open(p))
+          s=d.get('scoring') or {}
+          if s.get('status')=='COMPLETE' and s.get('checksum') and len(d.get('season_standings') or [])==9 and d.get('results',{}).get('status')=='FINAL':
+              print('PMX_POST_MNF_PRIVATE_SCORING_PASS',d['week_number'],s['checksum'][:12])
+          else:raise SystemExit(1)
+          PY
+            then
+              break
+            fi
+            if [ "$attempt" -eq 4 ]; then
+              echo '::error::Official FINAL persisted but private scoring is HOLD; no false rankings or W11 release'
+              exit 1
+            fi
+            sleep 12
+          done
+          git add -- quiniela-control/data.json quiniela-control/weeks/
+          if git diff --cached --quiet; then
+            echo 'PMX_POST_MNF_SCORE_ALREADY_PERSISTED'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Quiniela: complete private scoring immediately after official MNF final'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo 'PMX_POST_MNF_SCORING_PERSISTED_TO_MAIN'
+              exit 0
+            fi
+            sleep 4
+          done
+          echo '::error::Private scoring passed but could not persist to main'
+          exit 1
       - name: Auto-render Figma RESULTS, WEEKLY and SEASON after complete verified MNF
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}

@@ -20,6 +20,12 @@ on:
       - 'scripts/render-quiniela-season.py'
       - 'scripts/repair-quiniela-staged.mjs'
   workflow_dispatch:
+    inputs:
+      maintenance:
+        description: 'Run provider diagnostics and staged-form maintenance on demand'
+        type: boolean
+        required: false
+        default: false
 permissions:
   contents: write
   actions: write
@@ -95,6 +101,7 @@ jobs:
               print('PMX_PROVIDER_WEBHOOK_CONFIGURATION_VERIFIED; instant delivery still requires live E2E evidence')
           PY
       - name: Diagnose Jotform auth and staged W10 ownership without exposing keys or picks
+        if: github.event_name == 'workflow_dispatch' && inputs.maintenance == true
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         shell: bash
@@ -107,16 +114,20 @@ jobs:
             --data '{"action":"DIAGNOSE_JOTFORM_AUTH"}' | \
             python3 -c 'import json,sys;d=json.load(sys.stdin);print("PMX_STAGED_AUTH_PROBE",json.dumps({k:d.get(k) for k in ("ok","key_present","account","week9","week10","w9Questions","w10Questions","w10Submissions","w10Webhooks")},ensure_ascii=False));assert d.get("ok")'
       - name: Repair known W16/W17 provider question inconsistencies without opening forms
+        if: github.event_name == 'workflow_dispatch' && inputs.maintenance == true
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: node scripts/repair-quiniela-staged.mjs
       - name: Validate prepared Jotform field maps with private API, no activation
+        if: github.event_name == 'workflow_dispatch' && inputs.maintenance == true
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: node scripts/inspect-quiniela-staged.mjs
       - name: Self-test idempotent close/open gates
+        if: github.event_name == 'workflow_dispatch' && inputs.maintenance == true
         run: node scripts/quiniela-season-cycle.mjs --self-test
       - name: Verify staged W10 question map read-only before provider activation
+        if: github.event_name == 'workflow_dispatch' && inputs.maintenance == true
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         shell: bash
