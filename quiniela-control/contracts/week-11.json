@@ -25,9 +25,11 @@
     "SEA"
   ],
   "source_schedule": "https://www.nfl.com/schedules/2026/by-week/week-11",
-  "source_schedule_verified": "2026-11-05T03:52:42.239Z",
+  "source_schedule_verified": "2026-11-17T21:36:45.511Z",
+  "participant_question": "2",
+  "participant_field": "q2_dropdown0",
   "field_map_qa": "PASS",
-  "field_map_evidence": "Authenticated private Jotform API readback at 2026-11-05T04:18:19.655Z, form DISABLED and zero submissions, 13 unique question IDs",
+  "field_map_evidence": "PASS · ACTUAL JOTFORM PUBLIC DOM + OAUTH STATUS · Published Jotform HTML: 13 exact game IDs and qIDs, all 26 team options, 9 roster names, provider OAuth ENABLED, no submissions; verified 2026-11-17T21:36:45.511Z",
   "games": [
     {
       "id": "G01",
