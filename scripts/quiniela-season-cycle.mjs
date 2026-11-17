@@ -66,9 +66,22 @@ async function main(){
   const cut=canClose(config,live,now);
   console.log('PMX_CAPTURE_2026',JSON.stringify({week:current,verified:cut.n,deadline:config.deadline,due:cut.due,complete:cut.complete}));
   if(!cut.due)return;
-  // Verifies Jotform disable before writing public CLOSED state. Idempotent.
-  const status=await call('reconcile-capture',{action:'CLOSE_ACTIVE',week:current,form_id:String(config.form_id)});
-  invariant(status.verified&&status.status==='DISABLED','JOTFORM_CLOSE_NOT_VERIFIED');
+  // For a Direction-approved single provider-native window, no management key
+  // is required: Jotform enforces the availability window and FIRST_VALID is
+  // protected by the canonical server-side deadline. Other forms retain the
+  // authenticated provider CLOSE_ACTIVE readback (fail-closed).
+  const planFile='season-plan/'+tag(current);
+  const plan=fs.existsSync(path.join(ROOT,planFile))?read(planFile):null;
+  const native=plan?.provider_schedule;
+  const nativeAuthorized=native?.approved===true &&
+    native.method==='JOTFORM_NATIVE_SINGLE_WINDOW' &&
+    String(native.form_id)===String(config.form_id) &&
+    native.original_form_preserved===true &&
+    Date.parse(native.end_at_utc)===deadline;
+  const status=nativeAuthorized
+    ? {verified:true,status:now>=deadline?'SCHEDULED_WINDOW_ENDED':'OPEN_UNTIL_NATIVE_END'}
+    : await call('reconcile-capture',{action:'CLOSE_ACTIVE',week:current,form_id:String(config.form_id)});
+  invariant(status.verified && (nativeAuthorized || status.status==='DISABLED'),'JOTFORM_CLOSE_NOT_VERIFIED');
   const snapshot=read('weeks/'+tag(current));
   invariant(snapshot.week_number===current&&snapshot.capture.form_id===config.form_id,'SNAPSHOT_CLOSURE_MISMATCH');
   const expected=9*snapshot.games.length;
@@ -77,7 +90,7 @@ async function main(){
   const integrity={...config.submission_integrity,status:cut.complete?'COMPLETE':'INCOMPLETE_HOLD',first_valid_only:true,
    locked_picks_immutable:true,evidence_form_id:config.form_id,received_names:verifiedNames,
    private_picks_count:Number(live.private_picks_count||0),picks_visible:false};
-  const close={...config,status:'CLOSED',window:'CLOSED',form_status:'DISABLED',
+  const close={...config,status:'CLOSED',window:'CLOSED',form_status:nativeAuthorized?status.status:'DISABLED',
    capture_status:cut.complete?'CLOSED_FIRST_VALID_9OF9':'CLOSED_DEADLINE_INCOMPLETE_HOLD',
    complete:cut.n,received_picks:Number(live.private_picks_count||0),
    expected_picks:expected,missing_picks:expected-Number(live.private_picks_count||0),
@@ -88,7 +101,7 @@ async function main(){
   snapshot.participants=ROSTER.map(name=>({name,status:verifiedNames.includes(name)?'COMPLETE_VERIFIED':'PENDING_FIRST_VALID'}));
   snapshot.snapshot_status=cut.complete?'CLOSED_WAITING_NFL_FINAL':'CLOSED_INCOMPLETE_HOLD';
   invariant(save('capture-config.json',close),'CONFIG_STILL_OLD');save('weeks/'+tag(current),snapshot);
-  console.log('PMX_AUTO_CLOSED',JSON.stringify({week:current,complete:cut.n,status:close.capture_status,form_disabled:true}));
+  console.log('PMX_AUTO_CLOSED',JSON.stringify({week:current,complete:cut.n,status:close.capture_status,provider_native_window:nativeAuthorized,provider_shutdown_status:status.status,first_valid_locked:true}));
   return;
  }
  if(String(config.status)!=='CLOSED'){console.log('PMX_CAPTURE_TRANSITION_HOLD',String(config.status));return;}
@@ -117,13 +130,21 @@ async function main(){
    manifest.manual_provider_activation?.approved===true &&
    manifest.manual_provider_activation?.method==='JOTFORM_OAUTH_CONNECTOR' &&
    String(manifest.manual_provider_activation.form_id)===String(manifest.form_id);
+ const nativeScheduled=manifest.provider_schedule?.approved===true &&
+   manifest.provider_schedule.method==='JOTFORM_NATIVE_SINGLE_WINDOW' &&
+   manifest.provider_schedule.original_form_preserved===true &&
+   String(manifest.provider_schedule.form_id)===String(manifest.form_id);
+ const inspectAction=recovery?'INSPECT_STAGED_ENABLED':
+   nativeScheduled?'INSPECT_STAGED_ENABLED_SCHEDULED':'INSPECT_STAGED';
  const [check,prev]=await Promise.all([
-  call('reconcile-capture',{action:recovery?'INSPECT_STAGED_ENABLED':'INSPECT_STAGED',week:next}),
+  call('reconcile-capture',{action:inspectAction,week:next}),
   Promise.resolve(read('weeks/'+tag(current)))
  ]);
- invariant(check.form_status===(recovery?'ENABLED':'DISABLED')&&
+ invariant(check.form_status===(recovery||nativeScheduled?'ENABLED':'DISABLED')&&
   check.question_map_verified&&check.game_count===manifest.games.length&&
-  (!recovery||check.verified_enabled_by_provider===true),'JOTFORM_INSPECTION_HOLD');
+  (!(recovery||nativeScheduled)||check.verified_enabled_by_provider===true)&&
+  (!nativeScheduled||check.provider_schedule_verified===true&&check.private_poll_verified===true),
+  'JOTFORM_INSPECTION_HOLD');
  invariant(prev.week_number===current && prev.results?.status==='FINAL'&&prev.season_standings?.length===9,'PREVIOUS_SNAPSHOT_NOT_FINAL');
  const target=Date.parse(check.deadline_utc),deadline=confirmDeadline(manifest.first_kickoff_utc);
  invariant(target>now && Date.parse(deadline)>now,'OPENING_AFTER_DEADLINE_HOLD');
@@ -142,7 +163,7 @@ async function main(){
    field_map_evidence:'Authenticated Jotform questions, zero submissions and '+check.form_status+' form revalidated at rollover '+isoNow(),
    games:check.games};
  // Only activate after all gates. An interrupted commit may need an operator repair.
- const enabled=recovery
+ const enabled=recovery||nativeScheduled
   ? {verified:check.verified_enabled_by_provider===true,status:'ENABLED',form_id:check.form_id}
   : await call('reconcile-capture',{action:'OPEN_STAGED',week:next,form_id:check.form_id});
  invariant(enabled.verified && enabled.status==='ENABLED','FORM_ENABLE_READBACK_MISSING');
@@ -158,7 +179,8 @@ async function main(){
     first_valid_only:true,picks_visible:false,locked_picks_immutable:true,evidence_form_id:check.form_id},
   locked_submissions:{},duplicate_count:0,unique_participants:0,
   invitado:'OFF',source_schedule:check.source_schedule,webhook_status:'POLLING_RECONCILIATION_10MIN',
-  open_basis:recovery?'DIRECTION_AUTHORIZED_OAUTH_W10_RECOVERY_AFTER_MNF_FINAL':'AUTO_PREVIOUS_MNF_FINAL_AND_JOTFORM_QA',opened_at:isoNow(),last_sync:isoNow(),
+  open_basis:recovery?'DIRECTION_AUTHORIZED_OAUTH_W10_RECOVERY_AFTER_MNF_FINAL':
+    nativeScheduled?'AUTO_FINAL_AND_JOTFORM_NATIVE_WINDOW_QA':'AUTO_PREVIOUS_MNF_FINAL_AND_JOTFORM_QA',opened_at:isoNow(),last_sync:isoNow(),
   closure_basis:null,closed_at:null};
  const snap={pmx_id:prev.pmx_id,season:'2026',week:'WEEK '+next,week_number:next,
   snapshot_status:'OPEN_CAPTURE_NO_GAMES_STARTED',schedule_source:check.source_schedule,capture:created,
@@ -172,6 +194,8 @@ async function main(){
  save('capture-config.json',created);
  manifest.status='ACTIVATED_FORM_ENABLED';manifest.form_status='ENABLED';manifest.opened_at=isoNow();
  manifest.field_map_verified=true;save(filename,manifest);
- console.log('PMX_AUTO_OPENED',JSON.stringify({week:next,games:planGames.length,form_enabled:true,zero_picks:true,prior_final:true}));
+ console.log('PMX_AUTO_OPENED',JSON.stringify({week:next,games:planGames.length,form_enabled:true,
+   native_scheduled:nativeScheduled,private_poll_verified:check.private_poll_verified===true,
+   first_valid_preserved:true,prior_final:true}));
 }
 await main();
