@@ -27,7 +27,10 @@
     "private_data_integrity": "8×14 FIRST_VALID verified in backend; no individual selections copied into Figma or GitHub",
     "fit": "PREBUILD_ONLY · 14 games × 9 columns · screenshot inspected; final 9×14 render/QA pending",
     "capture_cutoff": "HOLD · 16:00 CDMX deadline elapsed while provider still ENABLED; no silent extension or late-pick authorization.",
-    "picks_visual_review": "PASS · FROZEN_FIGMA + EXACT TWO APPROVED W10 G06 PICK EXCEPTIONS · 9×14"
+    "picks_visual_review": "PASS · FROZEN_FIGMA + EXACT TWO APPROVED W10 G06 PICK EXCEPTIONS · 9×14",
+    "results_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "weekly_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "season_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
   },
   "asset_approvals": {
     "picks": {
@@ -40,10 +43,46 @@
       "output_file": "quiniela-control/exports/w10-picks-board.png",
       "renderer_template_node": "3893:228543",
       "scoring_checksum": "986e7d183c19a79fc1f74438db44da4cfd68a111f3e18832c123e7d7165a4668"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:228543; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 9d2298a66889e69e83426da13cb0bbef67a034b41080a3e9ad01967e60a55142; source checksum b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w10-results-final.png",
+      "renderer_template_node": "3893:228543",
+      "scoring_checksum": "b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:240766; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 f2ac44805ccfff28c9ed80b9edda26a053a5d7fbceb62e63d4ed1c65d9ba0321; source checksum b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w10-ranking-weekly.png",
+      "renderer_template_node": "3894:240766",
+      "scoring_checksum": "b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:244882; validated 9×14 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 20d2af68b821b347b3edb6a9934efc1b16ec63bc578df89629ae45c9b5d9f7f5; source checksum b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w10-ranking-season.png",
+      "renderer_template_node": "3894:244882",
+      "scoring_checksum": "b815a7cf4f6837a3be6dea36bcd70718c830a9d61b10e32f048fceadce4322c0"
     }
   },
   "output_targets": {
-    "picks": "quiniela-control/exports/w10-picks-board.png"
+    "picks": "quiniela-control/exports/w10-picks-board.png",
+    "results": "quiniela-control/exports/w10-results-final.png",
+    "weekly": "quiniela-control/exports/w10-ranking-weekly.png",
+    "season": "quiniela-control/exports/w10-ranking-season.png"
   },
   "release_conditions": [
     "Confirm authority/closure of W10 capture because 16:00 deadline has elapsed",

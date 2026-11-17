@@ -1,10 +1,10 @@
 {
   "schema": "PMX_QUINIELA_ASSET_INDEX_V1",
   "active_week": 10,
-  "score_week": 9,
+  "score_week": 10,
   "capture_week": 10,
   "in_progress_week": null,
-  "last_completed_week": 9,
+  "last_completed_week": 10,
   "weeks": {
     "1": {
       "week": 1,
@@ -361,7 +361,7 @@
         "window": "CLOSED"
       },
       "results": {
-        "final": 13,
+        "final": 14,
         "total": 14
       },
       "assets": {
@@ -372,20 +372,20 @@
           "size": "1600x2000"
         },
         "results": {
-          "state": "WAITING_EVENT",
-          "href": null,
+          "state": "READY",
+          "href": "./w10-results-final.png",
           "expected": "results-live.png",
           "size": "1600x2000"
         },
         "weekly": {
-          "state": "WAITING_EVENT",
-          "href": null,
+          "state": "READY",
+          "href": "./w10-ranking-weekly.png",
           "expected": "ranking-weekly.png",
           "size": "1080x1350"
         },
         "season": {
-          "state": "WAITING_EVENT",
-          "href": null,
+          "state": "READY",
+          "href": "./w10-ranking-season.png",
           "expected": "ranking-season.png",
           "size": "1080x1350"
         }
