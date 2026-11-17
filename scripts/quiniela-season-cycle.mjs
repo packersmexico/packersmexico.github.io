@@ -134,6 +134,20 @@ async function main(){
    manifest.provider_schedule.method==='JOTFORM_NATIVE_SINGLE_WINDOW' &&
    manifest.provider_schedule.original_form_preserved===true &&
    String(manifest.provider_schedule.form_id)===String(manifest.form_id);
+ // A native provider window must not be probed prematurely. Waiting for
+ // its approved start is an expected state, not a failing 10-minute cron.
+ if(nativeScheduled){
+   const start=Date.parse(manifest.provider_schedule.start_at_utc);
+   const end=Date.parse(manifest.provider_schedule.end_at_utc);
+   const deadlineLocal=Date.parse(confirmDeadline(manifest.first_kickoff_utc));
+   invariant(Number.isFinite(start)&&Number.isFinite(end)&&start<end&&
+     end===deadlineLocal,'NATIVE_WINDOW_MANIFEST_INVALID');
+   if(now<start){
+     console.log('PMX_NEXT_FORM_WAIT_NATIVE_WINDOW',JSON.stringify({week:next,start_at_utc:manifest.provider_schedule.start_at_utc}));
+     return;
+   }
+   invariant(now<end,'NATIVE_WINDOW_EXPIRED_BEFORE_CANONICAL_ACTIVATION');
+ }
  const inspectAction=recovery?'INSPECT_STAGED_ENABLED':
    nativeScheduled?'INSPECT_STAGED_ENABLED_SCHEDULED':'INSPECT_STAGED';
  const [check,prev]=await Promise.all([
