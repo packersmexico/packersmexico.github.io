@@ -1,0 +1,154 @@
+{
+  "schema": "PMX_QUINIELA_04_PICKS_PROGRESS_WORKFILE_V1",
+  "week": 11,
+  "season": "2026",
+  "kind": "DATA_ONLY_PRIVACY_MASKED_NO_UNPUBLISHED_PICKS",
+  "governance": {
+    "owner": "04",
+    "auto_publish": false,
+    "not_an_asset": true,
+    "figma_master_required": true,
+    "qa_required": true,
+    "raw_picks_private_until_capture_close": true
+  },
+  "status": "BUILDING_NONPUBLIC_PICKS_WORKFILE",
+  "source": "quiniela-control/capture-config.json + weeks/week-11.json",
+  "form_id": "263078694568071",
+  "deadline": "2026-11-19T22:00:00.000Z",
+  "progress": {
+    "validated": 0,
+    "reported": 0,
+    "total": 9,
+    "expected_picks": 117,
+    "confirmed_picks": 0,
+    "jotform_submissions_unreconciled": "NOT_IN_CANONICAL_SOURCE",
+    "mismatch": false
+  },
+  "gb_default": {
+    "game_id": null,
+    "pick": "GB",
+    "editable": false,
+    "not_forced": false
+  },
+  "games": [
+    {
+      "game_id": "G01",
+      "matchup": "IND @ HOU",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G02",
+      "matchup": "AZ @ KC",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G03",
+      "matchup": "BAL @ CAR",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G04",
+      "matchup": "JAX @ NYG",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G05",
+      "matchup": "MIA @ BUF",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G06",
+      "matchup": "NO @ CHI",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G07",
+      "matchup": "TB @ DET",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G08",
+      "matchup": "TEN @ DAL",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G09",
+      "matchup": "NYJ @ LAC",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G10",
+      "matchup": "LV @ DEN",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G11",
+      "matchup": "PIT @ PHI",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G12",
+      "matchup": "MIN @ SF",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    },
+    {
+      "game_id": "G13",
+      "matchup": "CIN @ WAS",
+      "kickoff": "HORARIO OFICIAL · CDMX"
+    }
+  ],
+  "participants": [
+    {
+      "name": "EL DOC",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "ARI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "LALO",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "ALEX",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "LUIS C.",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "DR PALMA",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "JENNI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "RODRI",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    },
+    {
+      "name": "IBRACHO",
+      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "visible_selection": "•••"
+    }
+  ],
+  "visual_slots": {
+    "picks": {
+      "file": "w11-picks-board.png",
+      "state": "PRIVATE_PREVIEW_ONLY"
+    }
+  },
+  "security": "DO_NOT_STORE_UNPUBLISHED_PICKS_IN_PUBLIC_WORKFILE"
+}
