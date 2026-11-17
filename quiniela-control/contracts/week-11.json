@@ -28,8 +28,8 @@
   "source_schedule_verified": "2026-11-17T21:36:45.511Z",
   "participant_question": "2",
   "participant_field": "q2_dropdown0",
-  "field_map_qa": "PASS · ACTUAL PUBLIC HTML DOM + JOTFORM OAUTH STATUS",
-  "field_map_evidence": "Published Jotform HTML: 13 exact game IDs and qIDs, all 26 team options, 9 roster names, provider OAuth ENABLED, no submissions; verified 2026-11-17T21:36:45.511Z",
+  "field_map_qa": "PASS",
+  "field_map_evidence": "PASS · ACTUAL JOTFORM PUBLIC DOM + OAUTH STATUS · Published Jotform HTML: 13 exact game IDs and qIDs, all 26 team options, 9 roster names, provider OAuth ENABLED, no submissions; verified 2026-11-17T21:36:45.511Z",
   "games": [
     {
       "id": "G01",
