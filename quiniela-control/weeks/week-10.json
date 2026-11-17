@@ -233,19 +233,19 @@
       "matchup": "LAC @ BAL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-17T01:15:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
+      "status": "FINAL",
+      "winner": "LAC",
       "score": "LAC 23–20 BAL",
       "espn_event_id": "401873065"
     }
   ],
   "results": {
-    "final": 13,
+    "final": 14,
     "total": 14,
-    "status": "LIVE",
-    "in_progress": 1,
+    "status": "FINAL",
+    "in_progress": 0,
     "ties": 0,
-    "scored": 13,
+    "scored": 14,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -321,6 +321,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-17T03:56:56.096220+00:00",
+  "last_sync": "2026-11-17T04:25:22.783926+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
