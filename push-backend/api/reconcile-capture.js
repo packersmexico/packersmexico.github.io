@@ -79,6 +79,103 @@ async function inspectPrepared(week,stagedOverride=null,expectedStatus='DISABLED
   games,verified_at:new Date().toISOString()};
 }
 
+// Direction-approved provider-native availability. A published form is readable
+// without calling restricted Jotform /form/:id or /questions endpoints. This is
+// used only while the form's explicit single-window schedule is ACTIVE.
+async function inspectNativeScheduled(week){
+ const [manifest,active,data]=await Promise.all([
+  remoteJson(RAW+'season-plan/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now()),
+  remoteJson(RAW+'capture-config.json?t='+Date.now()),
+  remoteJson(RAW+'data.json?t='+Date.now())
+ ]);
+ const window=manifest.provider_schedule||{};
+ const formId=String(manifest.form_id||'');
+ const starts=Date.parse(window.start_at_utc),ends=Date.parse(window.end_at_utc);
+ const deadline=Math.floor((Date.parse(manifest.first_kickoff_utc)-10800000)/3600000)*3600000;
+ if(!Number.isInteger(week)||week<11||week>18||week!==Number(active.week_number)+1||
+    active.status!=='CLOSED'||!String(manifest.status).startsWith('STAGED')||
+    !/^\d{10,25}$/.test(formId)||window.approved!==true||
+    window.method!=='JOTFORM_NATIVE_SINGLE_WINDOW'||String(window.form_id)!==formId||
+    window.original_form_preserved!==true||
+    !Number.isFinite(starts)||!Number.isFinite(ends)||
+    starts>=ends||ends!==deadline||Date.now()<starts||Date.now()>=ends||
+    manifest.release_gate?.social_auto_publish!==false||
+    (manifest.release_gate?.flex_or_tbd_revalidation_required===true&&
+      !(manifest.flex_schedule_verified===true&&manifest.games.every(g=>g.schedule_precision==='OFFICIAL_CONFIRMED')))||
+    data.week_number!==week-1||data.results?.status!=='FINAL'||
+    Number(data.results.final)!==Number(data.results.total)||
+    data.scoring?.status!=='COMPLETE'||!data.scoring?.checksum||
+    !Array.isArray(data.season_standings)||data.season_standings.length!==9)
+   throw Error('SCHEDULED_RELEASE_GATE_NOT_MET');
+ const roster=manifest.roster||[];
+ if(roster.length!==9||new Set(roster).size!==9||
+    !Array.isArray(manifest.games)||manifest.games.length<13||manifest.games.length>16)
+   throw Error('SCHEDULED_ROSTER_OR_GAMES_INVALID');
+ const url='https://form.jotform.com/'+formId;
+ const page=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(30000)});
+ if(!page.ok)throw Error('SCHEDULED_PUBLIC_FORM_HTTP_'+page.status);
+ const html=await page.text();
+ if(html.length<1500||html.length>2500000||
+    !html.includes('https://submit.jotform.com/submit/'+formId)||
+    !html.includes('name="formID"'))throw Error('SCHEDULED_PUBLIC_FORM_NOT_ENABLED');
+ const nodes=[...html.matchAll(/<li\b[^>]*\bid="(?:id|cid)_(\d+)"[^>]*>([\s\S]*?)<\/li>/g)];
+ const participant=nodes.find(x=>/participante/i.test(x[2])&&x[2].includes('<select'));
+ const pQuestion=participant?.[2].match(/\bname="q(\d+)_([^"]+)"/);
+ const participantOptions=[...(participant?.[2]||'').matchAll(/<option value="([^"]+)">/g)].map(x=>x[1]).filter(Boolean);
+ if(!pQuestion||participantOptions.length!==9||
+    participantOptions.some((x,i)=>x!==roster[i]))throw Error('SCHEDULED_PUBLIC_ROSTER_MISMATCH');
+ const observed=[];
+ for(const element of nodes){
+  const qid=element[1],part=element[2];
+  const match=part.match(/\bG(\d{2})\s+([A-Z0-9]+)\s*@\s*([A-Z0-9]+)/);
+  if(!match)continue;
+  const gameId='G'+match[1],matchup=match[2]+' @ '+match[3];
+  const g=manifest.games.find(x=>x.id===gameId&&x.matchup===matchup);
+  const inputName=part.match(/\bname="(q\d+_[^"]+)"/)?.[1];
+  if(!g||!inputName||!inputName.startsWith('q'+qid+'_')||observed.some(x=>x.id===gameId))
+   throw Error('SCHEDULED_PUBLIC_GAME_MAP_MISMATCH');
+  const visitor=[g.away_name,g.away],home=[g.home_name,g.home];
+  const chosen={id:gameId,question:qid,field:inputName.slice(('q'+qid+'_').length),visitor,home};
+  if(g.fixed_pick==='GB'){
+   if(!(g.away==='GB'||g.home==='GB')||!/data-type="control_text"/.test(element[0])||
+      !/(readonly|readOnly)/i.test(part)||!/GB/.test(part))
+     throw Error('SCHEDULED_PUBLIC_FIXED_GB_INVALID');
+   chosen.fixed_default='GB';
+   chosen.readonly_verified=true;
+  }else{
+   if(g.away==='GB'||g.home==='GB'||!/data-type="control_radio"/.test(element[0]))
+     throw Error('SCHEDULED_PUBLIC_UNEXPECTED_GB_OR_INPUT');
+   const opts=[...part.matchAll(/\btype="radio"\s+value="([^"]+)"/g)].map(x=>x[1]);
+   if(opts.length!==2||opts[0]!==g.away_name||opts[1]!==g.home_name)
+     throw Error('SCHEDULED_PUBLIC_TEAM_OPTIONS_INVALID');
+  }
+  observed.push(chosen);
+ }
+ if(observed.length!==manifest.games.length||
+    observed.some((g,i)=>g.id!==manifest.games[i].id||
+      g.id!=='G'+String(i+1).padStart(2,'0'))||
+    new Set(observed.map(x=>x.question)).size!==observed.length)
+   throw Error('SCHEDULED_PUBLIC_QID_COUNT_OR_ORDER');
+ // Current API key successfully polls genuine submissions on the enabled
+ // form; check capability, but never reveal names, IDs, answers or picks.
+ const submissions=await jotform('/form/'+formId+'/submissions?limit=1');
+ if(!Array.isArray(submissions))throw Error('SCHEDULED_PRIVATE_POLL_UNAVAILABLE');
+ const result={ok:true,week,form_id:formId,form_status:'ENABLED',
+  verified_enabled_by_provider:true,question_map_verified:true,
+  participant_question:pQuestion[1],game_count:observed.length,
+  deadline_utc:new Date(ends).toISOString(),
+  source_schedule:manifest.source_schedule,timezone:'America/Mexico_City',
+  roster,packers_bye:manifest.packers_bye,packers_locked:manifest.packers_fixed,
+  bye_teams:manifest.bye_teams,form_url:url,games:observed,
+  provider_schedule_verified:true,private_poll_verified:true,
+  source:'PROVIDER_NATIVE_WINDOW_PUBLIC_REAL_QIDS_PRIVATE_READ_ACCESS',
+  verified_at:new Date().toISOString()};
+ console.info('PMX_SCHEDULED_PROVIDER_QA',JSON.stringify({
+   week,form_id:'[REDACTED]',game_count:observed.length,
+   provider_schedule_verified:true,private_poll_verified:true,picks_visible:false}));
+ return result;
+}
+
 async function repairStagedQuestionFidelity(week){
   if(![16,17].includes(week))throw Error('ONLY_W16_W17_SAFE_REPAIR');
   const active=await remoteJson(RAW+'capture-config.json?t='+Date.now());
@@ -272,6 +369,10 @@ export default async function handler(req,res){
    const w=Number(req.body?.week);
    if(!Number.isInteger(w)||w<13||w>18)return json(res,400,{ok:false,error:'INVALID_WEEK'});
    return json(res,200,await createPrepared(w));
+  }
+  if(action==='INSPECT_STAGED_ENABLED_SCHEDULED'){
+    const week=Number(req.body?.week);
+    return json(res,200,await inspectNativeScheduled(week));
   }
   if(action==='INSPECT_STAGED_ENABLED'){
    // One-time authorized recovery only. Normal W11–W18 still require
