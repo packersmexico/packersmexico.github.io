@@ -16,8 +16,26 @@ function cleanEventKey(value) {
 export default async function handler(req, res) {
   applyCors(req, res);
   if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'POST') return rejectMethod(req, res, ['POST']);
+  if (!['POST','GET'].includes(req.method)) return rejectMethod(req, res, ['POST','GET']);
   if (!authorized(req)) return json(res, 401, { ok: false, error: 'UNAUTHORIZED' });
+  // Read-only operator readiness on the EXISTING notify function. Never reveal
+  // subscription endpoints, device keys or registration codes.
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control','no-store');
+    const operators={};
+    for (const role of ['RODRIGO','IBRA']) {
+      const entry=await redis(['GET',keys.subscriptionFor(role)]);
+      let subscribed=false;
+      try {
+        const device=entry?JSON.parse(entry):null;
+        subscribed=Boolean(device?.subscription?.endpoint?.startsWith('https://'));
+      } catch { subscribed=false; }
+      operators[role]={subscribed};
+    }
+    return json(res,200,{ok:true,operators,
+      vapid_configured:Boolean(process.env.VAPID_PUBLIC_KEY&&process.env.VAPID_PRIVATE_KEY),
+      checked_at:new Date().toISOString()});
+  }
 
   const publicKey = process.env.VAPID_PUBLIC_KEY;
   const privateKey = process.env.VAPID_PRIVATE_KEY;
