@@ -104,6 +104,19 @@ async function main(){
   const response=await fetchJson(url);
   assert(response.ok,'CAPTURE_STATUS_UNAVAILABLE_'+response.status);
   const d=validateLive(config,contract,response.data);
+  const readiness=await fetchJson(API+'notify',{
+    method:'GET',headers:{Authorization:'Bearer '+secret}
+  });
+  assert(readiness.ok && readiness.data?.ok===true,'PUSH_READINESS_UNAVAILABLE');
+  const operators=readiness.data.operators||{};
+  const ibraReady=operators.IBRA?.subscribed===true,rodrigoReady=operators.RODRIGO?.subscribed===true;
+  console.log('PMX_PUSH_SUBSCRIPTIONS',JSON.stringify({
+    ibra:ibraReady?'REGISTERED':'NOT_REGISTERED',
+    rodrigo:rodrigoReady?'REGISTERED':'NOT_REGISTERED',
+    vapid_configured:readiness.data.vapid_configured===true
+  }));
+  if(!ibraReady||!rodrigoReady||readiness.data.vapid_configured!==true)
+    console.warn('::warning::PMX_OPERATOR_PUSH_DEVICE_REGISTRATION_REQUIRED');
   console.log('PMX_CAPTURE_ALERT_GATE',JSON.stringify({week:d.week,verified:d.count,total:d.total,
     pending:d.pending.length,first_valid_integrity:'PASS',deadline:config.deadline}));
   let accepted=0,partial=0;
