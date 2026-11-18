@@ -2,6 +2,9 @@ name: Quiniela Private First-Valid Capture Reconciliation
 on:
   schedule:
     - cron: '3-59/10 * * * *'
+    # Exact 10:00 local CDMX = 16:00 UTC (Mexico City has no DST).
+    # The existing ten-minute job also retries if GitHub delays this event.
+    - cron: '0 16 * * *'
   push:
     branches: [main]
     paths:
@@ -14,6 +17,8 @@ on:
       - 'push-backend/lib/weekly-capture.js'
       - 'push-backend/scripts/catchup-week08.mjs'
       - 'scripts/quiniela-season-cycle.mjs'
+      - 'scripts/quiniela-capture-notifications.mjs'
+      - 'push-backend/api/notify.js'
       - 'quiniela-control/data.json'
       - 'quiniela-control/season-plan/**'
       - 'quiniela-control/approved-corrections/**'
@@ -229,3 +234,14 @@ jobs:
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: bash scripts/run-quiniela-auto-render.sh picks
+      - name: Alert Ibra and Rodrigo on each real FIRST_VALID and deadline-day 10 AM
+        if: always()
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Reuse the single canonical capture status, existing Web Push backend
+          # and immutable Redis event keys. Never send a pick or submission ID.
+          node scripts/quiniela-capture-notifications.mjs --self-test
+          node scripts/quiniela-capture-notifications.mjs
