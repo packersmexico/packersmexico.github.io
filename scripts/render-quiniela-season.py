@@ -15,6 +15,8 @@ import os
 import pathlib
 import sys
 import urllib.request
+import urllib.error
+import time
 from zoneinfo import ZoneInfo
 
 try:
@@ -57,14 +59,32 @@ def request(url, method="GET", body=None, secret=None):
     with urllib.request.urlopen(req,timeout=45) as reply:
         return reply.read()
 
+def transient_capture_race(status, body):
+    # GitHub raw may still serve OPEN for seconds after the canonical CLOSE
+    # commit has landed. Never retry genuine matrix/rights/QA failures.
+    return int(status)==409 and "SCORING_HOLD_CAPTURE_NOT_CERTIFIED" in str(body)
+
 def private(week,kind):
     secret=os.environ.get("PMX_PUSH_SECRET")
     if not secret:raise RuntimeError("RENDER_SECRET_MISSING")
     body={"week":week,"picks":True} if kind=="picks" else {"week":week,"render":True}
-    reply=json.loads(request(API,method="POST",body=body,secret=secret))
-    if reply.get("ok") is not True or reply.get("week")!=week or reply.get("integrity")!="COMPLETE":
-        raise RuntimeError("PRIVATE_RENDER_SOURCE_FAILED")
-    return reply
+    for attempt in range(6):
+        try:
+            reply=json.loads(request(API,method="POST",body=body,secret=secret))
+            if reply.get("ok") is not True or reply.get("week")!=week or reply.get("integrity")!="COMPLETE":
+                raise RuntimeError("PRIVATE_RENDER_SOURCE_FAILED")
+            return reply
+        except urllib.error.HTTPError as err:
+            reason=err.read(512).decode("utf-8","replace")
+            if not transient_capture_race(err.code,reason):
+                raise RuntimeError("PRIVATE_RENDER_BACKEND_HOLD_HTTP_"+str(err.code)) from err
+            if attempt==5:
+                raise RuntimeError("PRIVATE_RENDER_CANONICAL_CLOSE_NOT_VISIBLE_AFTER_RETRIES") from err
+            wait=[6,12,20,30,40][attempt]
+            print("PMX_RENDER_WAIT_GITHUB_RAW_CLOSED week="+str(week)+
+                  " retry="+str(attempt+1)+"/5 wait_seconds="+str(wait),file=sys.stderr)
+            time.sleep(wait)
+    raise RuntimeError("PRIVATE_RENDER_SOURCE_RETRY_EXHAUSTED")
 
 def font(style,size):
     FONT_CACHE.mkdir(parents=True,exist_ok=True)
@@ -378,6 +398,10 @@ def run(kind,eligibility=False):
     return 0
 
 def self_test():
+    assert transient_capture_race(409,'{"error":"SCORING_HOLD_CAPTURE_NOT_CERTIFIED"}')
+    assert not transient_capture_race(409,'{"error":"SCORING_HOLD_PRIVATE_CAPTURE_MATRIX_INTEGRITY"}')
+    assert not transient_capture_race(401,'{"error":"SCORING_HOLD_CAPTURE_NOT_CERTIFIED"}')
+
     frozen_catalog=load_json(MASTER)
     for n in (13,14,15,16):
         file,path=frozen("grid",n)
