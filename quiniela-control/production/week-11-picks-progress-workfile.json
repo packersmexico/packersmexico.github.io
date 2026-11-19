@@ -11,16 +11,16 @@
     "qa_required": true,
     "raw_picks_private_until_capture_close": true
   },
-  "status": "BUILDING_NONPUBLIC_PICKS_WORKFILE",
+  "status": "CAPTURE_LOCKED_READY_FOR_PRIVATE_04_HANDOFF",
   "source": "quiniela-control/capture-config.json + weeks/week-11.json",
   "form_id": "263078694568071",
   "deadline": "2026-11-19T22:00:00.000Z",
   "progress": {
-    "validated": 0,
-    "reported": 0,
+    "validated": 9,
+    "reported": 9,
     "total": 9,
     "expected_picks": 117,
-    "confirmed_picks": 0,
+    "confirmed_picks": 117,
     "jotform_submissions_unreconciled": "NOT_IN_CANONICAL_SOURCE",
     "mismatch": false
   },
@@ -100,54 +100,54 @@
   "participants": [
     {
       "name": "EL DOC",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "ARI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "LALO",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "ALEX",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "LUIS C.",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "DR PALMA",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "JENNI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "RODRI",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     },
     {
       "name": "IBRACHO",
-      "status": "PENDING_CANONICAL_RECONCILIATION",
+      "status": "FIRST_VALID_RECONCILED",
       "visible_selection": "•••"
     }
   ],
   "visual_slots": {
     "picks": {
       "file": "w11-picks-board.png",
-      "state": "PRIVATE_PREVIEW_ONLY"
+      "state": "DATA_GATE_READY_NEEDS_PRIVATE_04_HANDOFF"
     }
   },
   "security": "DO_NOT_STORE_UNPUBLISHED_PICKS_IN_PUBLIC_WORKFILE"
