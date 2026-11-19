@@ -51,7 +51,7 @@
   "closure_basis": "AUTO_9_OF_9",
   "closed_at": "2026-11-19T19:40:43.637Z",
   "operator_verified_reconcile_request": {
-    "purpose": "CLOSE_FIRST_VALID_9_OF_9_AND_RENDER_PRIVATE_PICKS",
+    "purpose": "RETRY_W11_FIGMA_PICKS_AFTER_TRANSIENT_GITHUB_RAW_HTTP_409",
     "week": 11,
     "verified_count": 9,
     "private_picks_count": 117,
@@ -59,7 +59,9 @@
     "verified_at": "2026-11-19T19:38:16.115Z",
     "requested_by": "DIRECTION_00",
     "no_private_picks_logged": true,
-    "auto_publish": false
+    "auto_publish": false,
+    "recovery_merge_sha": "fec2446fd84aef864af739dfde2e993dfcf3d5e5",
+    "release_gate": "CLOSED_FIRST_VALID_9_OF_9_AND_PRIVATE_SCORE_WEEK_AUTH"
   },
   "capture_status": "CLOSED_FIRST_VALID_9OF9"
 }
