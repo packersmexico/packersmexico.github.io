@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-11-17T21:36:45.511Z",
+  "updated_at": "2026-11-19T19:40:43.637Z",
   "items": [
+    {
+      "id": "W11_9OF9",
+      "status": "READY",
+      "title": "WEEK 11 · PICKS COMPLETOS",
+      "body": "9/9 participantes · captura cerrada. Picks y piezas ya pueden revisarse en el panel.",
+      "href": "./",
+      "secondary_href": "./exports/live.html",
+      "secondary_label": "VER PIEZAS"
+    },
     {
       "id": "W11_OPEN",
       "status": "READY",
@@ -36,15 +45,6 @@
       "href": "./",
       "secondary_href": "./exports/w8-picks-board.png",
       "secondary_label": "VER TODOS LOS PICKS"
-    },
-    {
-      "id": "W6_FINAL",
-      "status": "READY",
-      "title": "WEEK 6 FINAL",
-      "body": "14/14 partidos FINAL. Resultados y rankings definitivos están listos.",
-      "href": "./",
-      "secondary_href": "./exports/live.html",
-      "secondary_label": "VER PIEZAS"
     }
   ]
 }
