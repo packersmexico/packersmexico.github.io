@@ -146,6 +146,40 @@ async function main(){
     console.log('PMX_DEADLINE_10AM_NOT_DUE_OR_FULL',JSON.stringify({week:d.week,due,
       missing:d.pending.length}));
   }
+  // One Direction-authorized operator reminder. The request contains no picks
+  // or private Jotform data; recipients and pending names derive from live Redis
+  // FIRST_VALID only. Same idempotency service prevents any duplicate push.
+  const requestPath=ROOT+'reminders/week-11-on-demand-20261119.json';
+  if(fs.existsSync(requestPath)){
+    const request=JSON.parse(fs.readFileSync(requestPath,'utf8'));
+    const localDate=mexicoParts(now).date;
+    if(request.user_authorized===true && request.status==='REQUESTED' &&
+      request.week===d.week && request.week===11 &&
+      String(request.form_id)===String(config.form_id) &&
+      request.requested_local_date===localDate &&
+      request.source==='LIVE_BACKEND_FIRST_VALID_ONLY' &&
+      Array.isArray(request.recipients) &&
+      request.recipients.length===2 &&
+      request.recipients.includes('RODRIGO') &&
+      request.recipients.includes('IBRA') &&
+      /^W11_PENDING_OPERATOR_REMINDER_20261119_1245$/.test(request.event_key) &&
+      d.pending.length>0 && now<deadline){
+      const payload={kind:'DIRECTION_ON_DEMAND_PENDING',week:d.week,
+        eventKey:request.event_key,
+        title:'PACKERS MÉXICO · QUINIELA W11 · ÚLTIMO RECORDATORIO',
+        body:'Registrados '+d.count+'/9. Faltan: '+d.pending.join(', ')+
+          '. Cierre HOY 16:00 CDMX. ¡Envía tus picks!',
+        url:CAPTURE,tag:'pmx-w11-direction-reminder-20261119'};
+      if(await notify(payload,secret))accepted++;else partial++;
+      console.log('PMX_DIRECTION_PUSH',JSON.stringify({
+        week:d.week,remaining:d.pending.length,verified:d.count,
+        event_key:request.event_key,accepted:accepted>0,private_picks_visible:false
+      }));
+    }else console.log('PMX_DIRECTION_PUSH_SKIPPED',JSON.stringify({
+      week:d.week,request_present:true,pending:d.pending.length,
+      authorized:request.user_authorized===true,local_date:localDate
+    }));
+  }
   console.log('PMX_PUSH_CYCLE',JSON.stringify({week:d.week,accepted,partial,verified:d.count,deadlineReminderDue:due}));
 }
 await main();
