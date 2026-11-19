@@ -1,0 +1,17 @@
+{
+  "schema": "PMX_QUINIELA_OPERATOR_PUSH_REQUEST_V1",
+  "event_key": "W11_PENDING_OPERATOR_REMINDER_20261119_1245",
+  "week": 11,
+  "form_id": "263078694568071",
+  "status": "REQUESTED",
+  "user_authorized": true,
+  "recipients": [
+    "RODRIGO",
+    "IBRA"
+  ],
+  "purpose": "DIRECTION_EXPLICIT_SEND_NOW_W11_MISSING_PARTICIPANTS",
+  "source": "LIVE_BACKEND_FIRST_VALID_ONLY",
+  "rule": "SEND_ONCE_BEFORE_DEADLINE_SKIPS_IF_9OF9",
+  "requested_local_date": "2026-11-19",
+  "auto_publish_social": false
+}
