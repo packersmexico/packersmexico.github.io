@@ -49,5 +49,16 @@
   "opened_at": "2026-11-17T21:36:45.511Z",
   "last_sync": "2026-11-17T21:36:45.511Z",
   "closure_basis": null,
-  "closed_at": null
+  "closed_at": null,
+  "operator_verified_reconcile_request": {
+    "purpose": "CLOSE_FIRST_VALID_9_OF_9_AND_RENDER_PRIVATE_PICKS",
+    "week": 11,
+    "verified_count": 9,
+    "private_picks_count": 117,
+    "source": "LIVE_FIRST_VALID_VERIFIED",
+    "verified_at": "2026-11-19T19:38:16.115Z",
+    "requested_by": "DIRECTION_00",
+    "no_private_picks_logged": true,
+    "auto_publish": false
+  }
 }
