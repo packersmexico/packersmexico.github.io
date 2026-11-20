@@ -114,9 +114,9 @@
       "matchup": "IND @ HOU",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-20T01:15:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "HOU",
+      "score": "HOU 26–3 IND",
       "espn_event_id": "401873066"
     },
     {
@@ -241,12 +241,12 @@
     }
   ],
   "results": {
-    "final": 0,
+    "final": 1,
     "total": 13,
-    "status": "SCHEDULED",
+    "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
-    "scored": 0,
+    "scored": 1,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -323,5 +323,7 @@
     "status": "NOT_STARTED",
     "original_picks_preserved": true,
     "picks_visible": false
-  }
+  },
+  "last_sync": "2026-11-20T07:00:12.916770+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
