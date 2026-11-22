@@ -124,9 +124,9 @@
       "matchup": "AZ @ KC",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "AZ 7–27 KC",
       "espn_event_id": "401873067"
     },
     {
@@ -134,9 +134,9 @@
       "matchup": "BAL @ CAR",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "BAL 26–22 CAR",
       "espn_event_id": "401873068"
     },
     {
@@ -154,9 +154,9 @@
       "matchup": "MIA @ BUF",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "MIA 6–20 BUF",
       "espn_event_id": "401873070"
     },
     {
@@ -164,9 +164,9 @@
       "matchup": "NO @ CHI",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "NO 7–16 CHI",
       "espn_event_id": "401873071"
     },
     {
@@ -174,9 +174,9 @@
       "matchup": "TB @ DET",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "TB 7–10 DET",
       "espn_event_id": "401873072"
     },
     {
@@ -184,9 +184,9 @@
       "matchup": "TEN @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "TEN 6–27 DAL",
       "espn_event_id": "401873073"
     },
     {
@@ -244,7 +244,7 @@
     "final": 1,
     "total": 13,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 6,
     "ties": 0,
     "scored": 1,
     "pushes": 0
@@ -324,6 +324,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-20T07:00:12.916770+00:00",
+  "last_sync": "2026-11-22T19:26:32.632951+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
