@@ -144,9 +144,9 @@
       "matchup": "JAX @ NYG",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "JAX 9–23 NYG",
+      "status": "FINAL",
+      "winner": "NYG",
+      "score": "NYG 23–18 JAX",
       "espn_event_id": "401873069"
     },
     {
@@ -204,9 +204,9 @@
       "matchup": "LV @ DEN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T21:25:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "LV 24–31 DEN",
+      "status": "FINAL",
+      "winner": "DEN",
+      "score": "DEN 38–24 LV",
       "espn_event_id": "401873075"
     },
     {
@@ -224,9 +224,9 @@
       "matchup": "MIN @ SF",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-23T01:20:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "SF",
+      "score": "SF 35–10 MIN",
       "espn_event_id": "401873077"
     },
     {
@@ -241,12 +241,12 @@
     }
   ],
   "results": {
-    "final": 9,
+    "final": 12,
     "total": 13,
     "status": "LIVE",
-    "in_progress": 2,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 9,
+    "scored": 12,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -324,6 +324,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-23T00:26:20.915201+00:00",
+  "last_sync": "2026-11-23T07:21:41.257914+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
