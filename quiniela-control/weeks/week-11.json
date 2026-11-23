@@ -124,9 +124,9 @@
       "matchup": "AZ @ KC",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "AZ 7–27 KC",
+      "status": "FINAL",
+      "winner": "KC",
+      "score": "KC 34–7 AZ",
       "espn_event_id": "401873067"
     },
     {
@@ -134,9 +134,9 @@
       "matchup": "BAL @ CAR",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "BAL 26–22 CAR",
+      "status": "FINAL",
+      "winner": "CAR",
+      "score": "CAR 35–33 BAL",
       "espn_event_id": "401873068"
     },
     {
@@ -144,9 +144,9 @@
       "matchup": "JAX @ NYG",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "JAX 9–23 NYG",
       "espn_event_id": "401873069"
     },
     {
@@ -154,9 +154,9 @@
       "matchup": "MIA @ BUF",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "MIA 6–20 BUF",
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 26–9 MIA",
       "espn_event_id": "401873070"
     },
     {
@@ -164,9 +164,9 @@
       "matchup": "NO @ CHI",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "NO 7–16 CHI",
+      "status": "FINAL",
+      "winner": "CHI",
+      "score": "CHI 21–13 NO",
       "espn_event_id": "401873071"
     },
     {
@@ -174,9 +174,9 @@
       "matchup": "TB @ DET",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "TB 7–10 DET",
+      "status": "FINAL",
+      "winner": "DET",
+      "score": "DET 31–21 TB",
       "espn_event_id": "401873072"
     },
     {
@@ -184,9 +184,9 @@
       "matchup": "TEN @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T18:00:00.000Z",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "TEN 6–27 DAL",
+      "status": "FINAL",
+      "winner": "DAL",
+      "score": "DAL 51–30 TEN",
       "espn_event_id": "401873073"
     },
     {
@@ -194,9 +194,9 @@
       "matchup": "NYJ @ LAC",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T21:05:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "NYJ",
+      "score": "NYJ 27–24 LAC",
       "espn_event_id": "401873074"
     },
     {
@@ -204,9 +204,9 @@
       "matchup": "LV @ DEN",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T21:25:00.000Z",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "LV 24–31 DEN",
       "espn_event_id": "401873075"
     },
     {
@@ -214,9 +214,9 @@
       "matchup": "PIT @ PHI",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-22T21:25:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "PHI",
+      "score": "PHI 19–16 PIT",
       "espn_event_id": "401873076"
     },
     {
@@ -241,12 +241,12 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 9,
     "total": 13,
     "status": "LIVE",
-    "in_progress": 6,
+    "in_progress": 2,
     "ties": 0,
-    "scored": 1,
+    "scored": 9,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -324,6 +324,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-22T19:26:32.632951+00:00",
+  "last_sync": "2026-11-23T00:26:20.915201+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
