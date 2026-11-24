@@ -9,7 +9,10 @@
     "limitation": "Direction approves private-to-panel exports only, not NFL license or social-media autopublishing."
   },
   "qa": {
-    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
+    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "results_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "weekly_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked",
+    "season_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
   },
   "asset_approvals": {
     "picks": {
@@ -22,10 +25,46 @@
       "output_file": "quiniela-control/exports/w11-picks-board.png",
       "renderer_template_node": "3893:224403",
       "scoring_checksum": "2f0d6ccc0ad637a26e4d27549245c5d7f01cedb425e8923fcd2ddf93e32825ad"
+    },
+    "results": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:224403; validated 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 3a29ce435710742a0d2fedf7c2e246655353186be7e2badcd83b24c3fe18e33e; source checksum 335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w11-results-final.png",
+      "renderer_template_node": "3893:224403",
+      "scoring_checksum": "335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8"
+    },
+    "weekly": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:240766; validated 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 c9d7a1df150504e75c9632bf68bb2681299abbca747ac1f61dd321471f641c0a; source checksum 335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w11-ranking-weekly.png",
+      "renderer_template_node": "3894:240766",
+      "scoring_checksum": "335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8"
+    },
+    "season": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3894:244882; validated 9×13 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 fb9f24d605b2ab54f840cd87aba86c18354d9b4fafc720afad19b72522d882b6; source checksum 335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w11-ranking-season.png",
+      "renderer_template_node": "3894:244882",
+      "scoring_checksum": "335ca8e39dbe088a1e46e0fc88192e47e09693c792d9b6d4a654881d6d7988e8"
     }
   },
   "output_targets": {
-    "picks": "quiniela-control/exports/w11-picks-board.png"
+    "picks": "quiniela-control/exports/w11-picks-board.png",
+    "results": "quiniela-control/exports/w11-results-final.png",
+    "weekly": "quiniela-control/exports/w11-ranking-weekly.png",
+    "season": "quiniela-control/exports/w11-ranking-season.png"
   },
   "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO",
   "auto_publish": false
