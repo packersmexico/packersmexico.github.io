@@ -234,19 +234,19 @@
       "matchup": "CIN @ WAS",
       "time": "HORARIO OFICIAL · CDMX",
       "kickoff_iso": "2026-11-24T01:15:00.000Z",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "WAS",
+      "score": "WAS 22–20 CIN",
       "espn_event_id": "401873078"
     }
   ],
   "results": {
-    "final": 12,
+    "final": 13,
     "total": 13,
-    "status": "LIVE",
+    "status": "FINAL",
     "in_progress": 0,
     "ties": 0,
-    "scored": 12,
+    "scored": 13,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -324,6 +324,6 @@
     "original_picks_preserved": true,
     "picks_visible": false
   },
-  "last_sync": "2026-11-23T07:21:41.257914+00:00",
+  "last_sync": "2026-11-24T09:42:01.472418+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
