@@ -6,7 +6,15 @@ const inputs=body=>[...body.matchAll(/<input\b[^>]*>/gi)].map(m=>attrs(m[0]));
 const labels=body=>[...body.matchAll(/<label\b[^>]*>([\s\S]*?)<\/label>/gi)].map(m=>m[1]);
 const plain=s=>s.replace(/<[^>]*>/g,' ').replace(/(?:&nbsp;|&#160;)/gi,' ')
  .replace(/(?:&#64;|&commat;)/gi,'@').replace(/&amp;/gi,'&').replace(/\s+/g,' ').trim();
-const gameText=s=>plain(s).match(/^G(\d{2})\s*[·.:-]?\s*([A-Z0-9]+)\s*@\s*([A-Z0-9]+)(?=\s|[:·.-]|$)/i);
+const gameText=s=>plain(s).match(/^G(\d{2})\s*[·.:-]?\s*([A-Z0-9]+)\s*@\s*([A-Z0-9]+)(?=\s|[:·.\-(–—]|$)/i);
+const rosterLabel=s=>{
+ // Card has an accessibility description inside the required star. Match
+ // the provider's label element, not that extra translated description.
+ const cardLabel=s.match(/<span\b[^>]*\bclass=["'][^"']*\bjfQuestionLabelContainer\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i);
+ return /^(?:participant|participante)\s*\*?$/i.test(plain(cardLabel?.[1]??s));
+};
+const teamValue=(value,name,code)=>[name,code].includes(plain(value||'').toUpperCase());
+const fixedCopy=text=>/(?:\s*:\s*(?:PACKERS\s+)?GB|\s+[—–-]\s+fixed to GB; informational only, no pick required or editable alternative\.)$/i.test(plain(text));
 const textNodes=body=>[...body.matchAll(/<div\b([^>]*)>([^<>]*)<\/div>/gi)]
  .filter(m=>attrs(m[1])['data-component']==='text'||/\bform-html\b/.test(attrs(m[1]).class||''))
  .map(m=>m[2]);
@@ -14,7 +22,7 @@ const textNodes=body=>[...body.matchAll(/<div\b([^>]*)>([^<>]*)<\/div>/gi)]
 export function readNativeFormMap(html,manifest){
  const rows=[...html.matchAll(/(<li\b[^>]*\bid="(?:id|cid)_(\d+)"[^>]*>)([\s\S]*?)<\/li>/gi)]
   .map(m=>({qid:m[2],type:attrs(m[1])['data-type'],body:m[3]}));
- const selectors=rows.filter(x=>x.type==='control_dropdown'&&labels(x.body).some(x=>/^participante\b/i.test(plain(x))));
+ const selectors=rows.filter(x=>x.type==='control_dropdown'&&labels(x.body).some(rosterLabel));
  if(selectors.length!==1)throw Error('SCHEDULED_PUBLIC_ROSTER_MISMATCH');
  const participant=selectors[0];
  const name=attrs(participant.body.match(/<select\b[^>]*>/i)?.[0]||'').name||'';
@@ -43,7 +51,7 @@ export function readNativeFormMap(html,manifest){
    const readOnly=controls.length===1 && /<input\b[^>]*\sreadonly(?=\s|[=>/])/i.test(row.body) &&
       controls[0].name?.startsWith(prefix)&&/^GB$/i.test(controls[0].value||'');
    const displayOnly=row.type==='control_text'&&controls.length===0&&staticText&&
-      /:\s*(?:PACKERS\s+)?GB\s*$/i.test(plain(staticText));
+      fixedCopy(staticText);
    if(!expected||!readOnly&&!displayOnly)throw Error('SCHEDULED_PUBLIC_FIXED_GB_INVALID');
    result.field=readOnly?controls[0].name.slice(prefix.length):'staticFixed'+id;
    result.fixed_default='GB';result.readonly_verified=true;
@@ -51,7 +59,8 @@ export function readNativeFormMap(html,manifest){
    if(game.away==='GB'||game.home==='GB'||row.type!=='control_radio'||
       controls.length!==2||controls.some(x=>x.type!=='radio'||!x.name?.startsWith(prefix))||
       controls.some(x=>x.name!==controls[0].name)||
-      plain(controls[0].value||'')!==game.away_name||plain(controls[1].value||'')!==game.home_name)
+      !teamValue(controls[0].value,game.away_name,game.away)||
+      !teamValue(controls[1].value,game.home_name,game.home))
       throw Error('SCHEDULED_PUBLIC_TEAM_OPTIONS_INVALID');
    result.field=controls[0].name.slice(prefix.length);
   }
