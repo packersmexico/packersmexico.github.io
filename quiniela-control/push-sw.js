@@ -1,5 +1,5 @@
-// Use the approved PMX mark unchanged; resolve from the SW's Pages scope.
-const PMX_NOTIFICATION_ICON = '../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
+// Raster for Android notification rendering; the approved PMX SVG master is unchanged.
+const PMX_NOTIFICATION_ICON = './assets/pmx-notification-icon.png';
 // Activate this visual-only update without cleaning caches or changing subscriptions.
 self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
 

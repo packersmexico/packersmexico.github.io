@@ -119,7 +119,7 @@ test('push uses the unchanged PMX brand for normal and diagnostic notifications'
  const handlers={}, shown=[], receipts=[];
  const worker=new URL('../../quiniela-control/push-sw.js',import.meta.url);
  const scope='https://packersmexico.github.io/quiniela-control/';
- const logo='https://packersmexico.github.io/assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
+ const logo='https://packersmexico.github.io/quiniela-control/assets/pmx-notification-icon.png';
  let activated=false;
  vm.runInNewContext(fs.readFileSync(worker,'utf8'),{
   URL,Response,
@@ -138,7 +138,7 @@ test('push uses the unchanged PMX brand for normal and diagnostic notifications'
   assert.equal(shown.at(-1).options.data.url,scope);
   assert.equal(receipts.at(-1).eventKey,eventKey);
  }
- assert.equal(fs.existsSync(new URL('../../assets/'+logo.split('/').at(-1),import.meta.url)),true);
+ assert.equal(fs.existsSync(new URL('../../quiniela-control/assets/'+logo.split('/').at(-1),import.meta.url)),true);
 });
 
 test('authorized visual push test routes only to the selected role and rejects invalid targeting',async()=>{
