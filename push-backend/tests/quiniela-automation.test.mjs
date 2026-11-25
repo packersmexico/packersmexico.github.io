@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import vm from 'node:vm';
 import {readWeekSources} from '../api/score-week.js';
 import {parseJotformCreatedAt,requireCorrectOriginal} from '../scripts/catchup-week08.mjs';
 import {readNativeFormMap} from '../lib/jotform-native-form.js';
@@ -112,4 +113,30 @@ test('picks reads the closed snapshot and contract through one trusted canonical
   [pinned,'quiniela-control','contracts','week-12.json']
  ]);
  await assert.rejects(()=>readWeekSources(12,{picks:true,request:async()=>({ok:true,json:async()=>({ref:'refs/heads/other',object:{type:'commit',sha:pinned}})})}),/PICKS_CANONICAL_REF_INVALID/);
+});
+
+test('push uses the unchanged PMX brand for normal and diagnostic notifications',async()=>{
+ const handlers={}, shown=[], receipts=[];
+ const worker=new URL('../../quiniela-control/push-sw.js',import.meta.url);
+ const scope='https://packersmexico.github.io/quiniela-control/';
+ const logo='https://packersmexico.github.io/assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
+ let activated=false;
+ vm.runInNewContext(fs.readFileSync(worker,'utf8'),{
+  URL,Response,
+  self:{addEventListener:(type,fn)=>{handlers[type]=fn;},skipWaiting:async()=>{activated=true;},
+   registration:{scope,showNotification:async(title,options)=>shown.push({title,options})}},
+  caches:{open:async()=>({put:async(url,response)=>receipts.push(await response.json())})}
+ });
+ let done;
+ handlers.install({waitUntil:p=>{done=p;}});
+ await done;
+ assert.equal(activated,true);
+ for(const eventKey of ['W12_ASSET_READY_PICKS','DEVICE_TEST_IBRA_123']){
+  handlers.push({data:{json:()=>({title:'Quiniela PMX',eventKey,url:scope})},waitUntil:p=>{done=p;}});
+  await done;
+  assert.equal(shown.at(-1).options.icon,logo);
+  assert.equal(shown.at(-1).options.data.url,scope);
+  assert.equal(receipts.at(-1).eventKey,eventKey);
+ }
+ assert.equal(fs.existsSync(new URL('../../assets/'+logo.split('/').at(-1),import.meta.url)),true);
 });
