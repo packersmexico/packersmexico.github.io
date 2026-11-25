@@ -1,0 +1,268 @@
+{
+  "schema": "PMX_QUINIELA_04_RESULTS_WORKFILE_V1",
+  "week": 11,
+  "season": "2026",
+  "kind": "DATA_ONLY_FOR_EXISTING_FIGMA_MASTER",
+  "governance": {
+    "owner": "04",
+    "auto_publish": false,
+    "not_an_asset": true,
+    "figma_master_required": true,
+    "qa_required": true,
+    "no_downloadable_png_without_04_PASS": true
+  },
+  "status": "ALL_RESULTS_FINAL_READY_FOR_04",
+  "source": "quiniela-control/data.json",
+  "last_sync": "2026-11-24T20:06:38.958075+00:00",
+  "progress": {
+    "decided": 13,
+    "total": 13,
+    "scoreable": 13,
+    "pushes": 0,
+    "remaining": 0
+  },
+  "headline": "RESULTADOS · WEEK 11",
+  "games": [
+    {
+      "game_id": "G01",
+      "matchup": "IND @ HOU",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "HOU 26–3 IND",
+      "winner": "HOU",
+      "is_push": false,
+      "visual_label": "GANÓ HOU"
+    },
+    {
+      "game_id": "G02",
+      "matchup": "AZ @ KC",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "KC 34–7 AZ",
+      "winner": "KC",
+      "is_push": false,
+      "visual_label": "GANÓ KC"
+    },
+    {
+      "game_id": "G03",
+      "matchup": "BAL @ CAR",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "CAR 35–33 BAL",
+      "winner": "CAR",
+      "is_push": false,
+      "visual_label": "GANÓ CAR"
+    },
+    {
+      "game_id": "G04",
+      "matchup": "JAX @ NYG",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "NYG 23–18 JAX",
+      "winner": "NYG",
+      "is_push": false,
+      "visual_label": "GANÓ NYG"
+    },
+    {
+      "game_id": "G05",
+      "matchup": "MIA @ BUF",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "BUF 26–9 MIA",
+      "winner": "BUF",
+      "is_push": false,
+      "visual_label": "GANÓ BUF"
+    },
+    {
+      "game_id": "G06",
+      "matchup": "NO @ CHI",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "CHI 21–13 NO",
+      "winner": "CHI",
+      "is_push": false,
+      "visual_label": "GANÓ CHI"
+    },
+    {
+      "game_id": "G07",
+      "matchup": "TB @ DET",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "DET 31–21 TB",
+      "winner": "DET",
+      "is_push": false,
+      "visual_label": "GANÓ DET"
+    },
+    {
+      "game_id": "G08",
+      "matchup": "TEN @ DAL",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "DAL 51–30 TEN",
+      "winner": "DAL",
+      "is_push": false,
+      "visual_label": "GANÓ DAL"
+    },
+    {
+      "game_id": "G09",
+      "matchup": "NYJ @ LAC",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "NYJ 27–24 LAC",
+      "winner": "NYJ",
+      "is_push": false,
+      "visual_label": "GANÓ NYJ"
+    },
+    {
+      "game_id": "G10",
+      "matchup": "LV @ DEN",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "DEN 38–24 LV",
+      "winner": "DEN",
+      "is_push": false,
+      "visual_label": "GANÓ DEN"
+    },
+    {
+      "game_id": "G11",
+      "matchup": "PIT @ PHI",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "PHI 19–16 PIT",
+      "winner": "PHI",
+      "is_push": false,
+      "visual_label": "GANÓ PHI"
+    },
+    {
+      "game_id": "G12",
+      "matchup": "MIN @ SF",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "SF 35–10 MIN",
+      "winner": "SF",
+      "is_push": false,
+      "visual_label": "GANÓ SF"
+    },
+    {
+      "game_id": "G13",
+      "matchup": "CIN @ WAS",
+      "kickoff": "HORARIO OFICIAL · CDMX",
+      "state": "DECIDED",
+      "score": "WAS 22–20 CIN",
+      "winner": "WAS",
+      "is_push": false,
+      "visual_label": "GANÓ WAS"
+    }
+  ],
+  "rankings": {
+    "state": "DATA_FINAL_NEEDS_VISUAL_QA",
+    "weekly": [
+      {
+        "name": "DR PALMA",
+        "correct": 10,
+        "wrong": 3
+      },
+      {
+        "name": "ALEX",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "LALO",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "RODRI",
+        "correct": 9,
+        "wrong": 4
+      },
+      {
+        "name": "EL DOC",
+        "correct": 8,
+        "wrong": 5
+      },
+      {
+        "name": "JENNI",
+        "correct": 8,
+        "wrong": 5
+      },
+      {
+        "name": "ARI",
+        "correct": 6,
+        "wrong": 7
+      }
+    ],
+    "season": [
+      {
+        "name": "RODRI",
+        "correct": 112,
+        "wrong": 50
+      },
+      {
+        "name": "EL DOC",
+        "correct": 108,
+        "wrong": 54
+      },
+      {
+        "name": "IBRACHO",
+        "correct": 108,
+        "wrong": 54
+      },
+      {
+        "name": "ALEX",
+        "correct": 107,
+        "wrong": 55
+      },
+      {
+        "name": "LUIS C.",
+        "correct": 103,
+        "wrong": 59
+      },
+      {
+        "name": "DR PALMA",
+        "correct": 100,
+        "wrong": 62
+      },
+      {
+        "name": "ARI",
+        "correct": 95,
+        "wrong": 67
+      },
+      {
+        "name": "JENNI",
+        "correct": 93,
+        "wrong": 69
+      },
+      {
+        "name": "LALO",
+        "correct": 87,
+        "wrong": 75
+      }
+    ]
+  },
+  "visual_slots": {
+    "results": {
+      "file": "w11-results-live.png",
+      "state": "READY_FOR_04"
+    },
+    "weekly": {
+      "file": "w11-ranking-weekly.png",
+      "state": "READY_FOR_04"
+    },
+    "season": {
+      "file": "w11-ranking-season.png",
+      "state": "READY_FOR_04"
+    }
+  }
+}
