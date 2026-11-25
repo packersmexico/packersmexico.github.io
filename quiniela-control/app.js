@@ -112,9 +112,23 @@ async function refreshLiveReceipts(snapshot,stamp){
     return {status:'BACKEND_UNAVAILABLE'};
   }
 }
-function renderGames(games=[]){
+function renderScoreboard(data){
+  const games=data.games||[];
+  setText('results-heading','MONITOR DE JUEGOS · WEEK '+data.week_number);
+  setText('final-count',data.results?.final??0);
+  setText('game-count',data.results?.total??games.length);
+  setText('score-sync','MARCADORES · '+fmtSync(data.last_sync));
   const wrap=$('games');wrap.replaceChildren();
-  games.forEach(g=>{const row=document.createElement('div');row.className='result-row '+(g.winner?'final':'scheduled');row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state">'+(g.winner?'<b>GANÓ '+esc(g.winner)+'</b><span>'+esc(g.score||'FINAL')+'</span>':(g.status==='LIVE'||g.status==='IN_PROGRESS')?'<b>EN VIVO</b><span>'+esc(g.live_score||'')+' '+esc(g.live_detail||'')+'</span>':'<b>PENDIENTE</b><span>'+esc(g.status||'SCHEDULED')+'</span>')+'</div>';wrap.append(row)});
+  games.forEach(g=>{
+    const tie=g.status==='TIE'||g.winner==='TIE';
+    const live=g.status==='LIVE'||g.status==='IN_PROGRESS';
+    const final=tie||Boolean(g.winner);
+    const label=tie?'EMPATE · PUSH':g.winner?'GANÓ '+g.winner:live?'EN VIVO':'PENDIENTE';
+    const detail=final?(g.score||'FINAL'):live?([g.score||g.live_score,g.live_detail].filter(Boolean).join(' ')||'—'):(g.status||'SCHEDULED');
+    const row=document.createElement('div');row.className='result-row '+(final?'final':'scheduled');
+    row.innerHTML='<div><strong>'+esc(g.id)+' · '+esc(g.matchup)+'</strong><span>'+esc(g.time)+'</span></div><div class="game-state"><b>'+esc(label)+'</b><span>'+esc(detail)+'</span></div>';
+    wrap.append(row);
+  });
 }
 function renderRanking(data){
   const rows=weeklyTable(data); const wrap=$('weekly-ranking'); wrap.replaceChildren();
@@ -127,13 +141,12 @@ function render(data){
  const picksLink=$('current-picks-link'); if(picksLink)picksLink.textContent='IMÁGENES Y DESCARGAS →';
  setText('week-label',data.week+' · '+data.season);setText('capture-count',complete+'/'+total);setText('missing-count',Math.max(0,total-complete));
  setText('window-status',String(c.window).toUpperCase()==='OPEN'?(data.week+' ABIERTA'):(data.week+' CERRADA'));setText('deadline','CIERRE · '+(c.deadline_label||'—'));
- setText('final-count',data.results?.final??0);setText('game-count',data.results?.total??(data.games||[]).length);
  setText('gate-status',data.publication?.gate||'HOLD');setText('last-sync',fmtSync(data.last_sync));setText('sync-mode',(data.sync_mode||'MANUAL').replaceAll('_',' '));
  setHref('stable-capture',c.stable_url);setHref('direct-form',c.form_url);setHref('data-system',data.operator?.data_system_url);
  const p=$('progress-bar');if(p)p.style.width=pct+'%';const pw=document.querySelector('.progress');if(pw){pw.setAttribute('aria-valuenow',String(complete));pw.setAttribute('aria-valuemax',String(total))}
  const membersFold=$('capture-details');
  if(membersFold && !membersFold.dataset.initialized){membersFold.open=complete<total;membersFold.dataset.initialized='1';}
- renderParticipants(data.participants||[]);renderGames(data.games||[]);renderRanking(data);
+ renderParticipants(data.participants||[]);renderRanking(data);
  setText('capture-rule',(c.received_picks||0)+'/'+(c.expected_picks||0)+' picks registrados · '+(c.missing_picks||0)+' pendientes.');
 }
 async function refreshPublishedAssets(stamp){
@@ -205,6 +218,10 @@ async function load(manual=false){
    const previousSync=lastSeenSync;
    render(data); if(closed)renderPrevious(closed);
    if(futureCapture)renderFutureCapture(futureCapture);
+   // Show current public NFL scores after capture closes, without advancing
+   // the independently verified rankings or exposing any picks.
+   const scoreView=futureCapture?.capture?.window==='CLOSED'&&futureCapture.games?.length?futureCapture:data;
+   renderScoreboard(scoreView);
    const receiptCheck=await refreshLiveReceipts(futureCapture,stamp);
    lastSeenSync=data.last_sync||null;
    if(msg){
