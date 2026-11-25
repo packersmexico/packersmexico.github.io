@@ -13,6 +13,7 @@ on:
       - '.github/workflows/quiniela-capture-reconcile.yml'
       - 'push-backend/api/capture-status.js'
       - 'push-backend/api/reconcile-capture.js'
+      - 'push-backend/lib/jotform-native-form.js'
       - 'push-backend/package.json'
       - 'push-backend/lib/weekly-capture.js'
       - 'push-backend/scripts/catchup-week08.mjs'
@@ -41,34 +42,6 @@ jobs:
   reconcile:
     runs-on: ubuntu-latest
     steps:
-      - name: Reconcile only the canonical OPEN Jotform against Redis first-valid
-        env:
-          PMX_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
-        run: |
-          set -euo pipefail
-          test -n "${PMX_SECRET:-}" || { echo '::error::PMX_PUSH_SECRET unavailable'; exit 1; }
-          curl --fail-with-body --silent --show-error --max-time 75 --retry 2 \
-            -X POST "https://packersmexicogithubio-push-backend.vercel.app/api/reconcile-capture" \
-            -H "Authorization: Bearer ${PMX_SECRET}" \
-            -H "Content-Type: application/json" \
-            --data '{}' | python3 -c 'import json,sys; d=json.load(sys.stdin); print(json.dumps({k:d.get(k) for k in ("ok","week","status","jotform_submissions","verified_count","added","valid_submissions","rejected_submissions","private_picks_count","question_map_verified")},ensure_ascii=False))'
-      - name: Verify public manual button endpoint and read-only receipt counts (no secrets)
-        if: github.event_name == 'push'
-        shell: bash
-        run: |
-          set -euo pipefail
-          API="https://packersmexicogithubio-push-backend.vercel.app/api/capture-status"
-          status=$(curl -sS --max-time 65 --output /tmp/pmx-manual-check.json --write-out '%{http_code}' \
-            -X POST "$API" \
-            -H "Origin: https://packersmexico.github.io" \
-            -H "Content-Type: application/json" --data '{}')
-          cat /tmp/pmx-manual-check.json | python3 -c 'import json,sys;d=json.load(sys.stdin); print(json.dumps({k:d.get(k) for k in ("ok","status","week","jotform_submissions","valid_submissions","rejected_submissions","verified_count","added","error")},ensure_ascii=False)); assert d.get("ok") and d.get("status") in ("JOTFORM_RECONCILED","RECONCILIATION_RECENTLY_REQUESTED"), "MANUAL_RECONCILIATION_NOT_OPERATIONAL"'
-          test "$status" = 200 -o "$status" = 202
-          cfg=$(curl -sSfL --max-time 30 "https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/capture-config.json")
-          week=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["week_number"])')
-          form=$(printf '%s' "$cfg" | python3 -c 'import json,sys;print(json.load(sys.stdin)["form_id"])')
-          curl -sSf --max-time 40 "$API?week=$week&form_id=$form" | \
-            python3 -c 'import json,sys;d=json.load(sys.stdin);print(json.dumps({k:d.get(k) for k in ("ok","week","verified_count","total","backend_status","private_picks_count","private_picks_integrity")},ensure_ascii=False));assert d.get("ok") and int(d.get("week") or -1)==int(sys.argv[1])' "$week"
       - name: Checkout canonical main for season state transitions
         uses: actions/checkout@v4
         with:
@@ -155,7 +128,7 @@ jobs:
             'error':d.get('error'),'reason':d.get('reason')
           },ensure_ascii=False))
           PY
-      - name: Auto-close FIRST_VALID 9/9 or deadline; auto-open staged form after previous MNF
+      - name: Reconcile current form then close at 9/9 or cutoff; release next eligible form
         env:
           PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
         run: node scripts/quiniela-season-cycle.mjs
@@ -189,6 +162,11 @@ jobs:
           done
           echo '::error::Season state commit failed; next 10min run must reconcile before claiming PASS'
           exit 1
+      - name: Reconcile just-opened form after canonical state is published
+        if: steps.persist.outputs.transition == 'true'
+        env:
+          PMX_PUSH_SECRET: ${{ secrets.PMX_PUSH_SECRET }}
+        run: node scripts/quiniela-season-cycle.mjs --reconcile-only
       - name: Dispatch existing operator milestone push after canonical transition
         if: steps.persist.outputs.transition == 'true' || github.event_name == 'push'
         env:

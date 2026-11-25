@@ -3,6 +3,7 @@ import {catchupWeek08} from '../scripts/catchup-week08.mjs';
 import {json,rejectMethod} from '../lib/http.js';
 import {redis} from '../lib/redis.js';
 import {ensureActiveWebhook} from '../lib/jotform-webhook-ensure.js';
+import {readNativeFormMap} from '../lib/jotform-native-form.js';
 import {chooseJotformCredential} from '../lib/jotform-credentials.js';
 
 const RAW='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
@@ -118,51 +119,14 @@ async function inspectNativeScheduled(week){
  if(html.length<1500||html.length>2500000||
     !html.includes('https://submit.jotform.com/submit/'+formId)||
     !html.includes('name="formID"'))throw Error('SCHEDULED_PUBLIC_FORM_NOT_ENABLED');
- const nodes=[...html.matchAll(/<li\b[^>]*\bid="(?:id|cid)_(\d+)"[^>]*>([\s\S]*?)<\/li>/g)];
- const participant=nodes.find(x=>/participante/i.test(x[2])&&x[2].includes('<select'));
- const pQuestion=participant?.[2].match(/\bname="q(\d+)_([^"]+)"/);
- const participantOptions=[...(participant?.[2]||'').matchAll(/<option value="([^"]+)">/g)].map(x=>x[1]).filter(Boolean);
- if(!pQuestion||participantOptions.length!==9||
-    participantOptions.some((x,i)=>x!==roster[i]))throw Error('SCHEDULED_PUBLIC_ROSTER_MISMATCH');
- const observed=[];
- for(const element of nodes){
-  const qid=element[1],part=element[2];
-  const match=part.match(/\bG(\d{2})\s+([A-Z0-9]+)\s*@\s*([A-Z0-9]+)/);
-  if(!match)continue;
-  const gameId='G'+match[1],matchup=match[2]+' @ '+match[3];
-  const g=manifest.games.find(x=>x.id===gameId&&x.matchup===matchup);
-  const inputName=part.match(/\bname="(q\d+_[^"]+)"/)?.[1];
-  if(!g||!inputName||!inputName.startsWith('q'+qid+'_')||observed.some(x=>x.id===gameId))
-   throw Error('SCHEDULED_PUBLIC_GAME_MAP_MISMATCH');
-  const visitor=[g.away_name,g.away],home=[g.home_name,g.home];
-  const chosen={id:gameId,question:qid,field:inputName.slice(('q'+qid+'_').length),visitor,home};
-  if(g.fixed_pick==='GB'){
-   if(!(g.away==='GB'||g.home==='GB')||!/data-type="control_text"/.test(element[0])||
-      !/(readonly|readOnly)/i.test(part)||!/GB/.test(part))
-     throw Error('SCHEDULED_PUBLIC_FIXED_GB_INVALID');
-   chosen.fixed_default='GB';
-   chosen.readonly_verified=true;
-  }else{
-   if(g.away==='GB'||g.home==='GB'||!/data-type="control_radio"/.test(element[0]))
-     throw Error('SCHEDULED_PUBLIC_UNEXPECTED_GB_OR_INPUT');
-   const opts=[...part.matchAll(/\btype="radio"\s+value="([^"]+)"/g)].map(x=>x[1]);
-   if(opts.length!==2||opts[0]!==g.away_name||opts[1]!==g.home_name)
-     throw Error('SCHEDULED_PUBLIC_TEAM_OPTIONS_INVALID');
-  }
-  observed.push(chosen);
- }
- if(observed.length!==manifest.games.length||
-    observed.some((g,i)=>g.id!==manifest.games[i].id||
-      g.id!=='G'+String(i+1).padStart(2,'0'))||
-    new Set(observed.map(x=>x.question)).size!==observed.length)
-   throw Error('SCHEDULED_PUBLIC_QID_COUNT_OR_ORDER');
+ const {participantQuestion,games:observed}=readNativeFormMap(html,manifest);
  // Current API key successfully polls genuine submissions on the enabled
  // form; check capability, but never reveal names, IDs, answers or picks.
  const submissions=await jotform('/form/'+formId+'/submissions?limit=1');
  if(!Array.isArray(submissions))throw Error('SCHEDULED_PRIVATE_POLL_UNAVAILABLE');
  const result={ok:true,week,form_id:formId,form_status:'ENABLED',
   verified_enabled_by_provider:true,question_map_verified:true,
-  participant_question:pQuestion[1],game_count:observed.length,
+  participant_question:participantQuestion,game_count:observed.length,
   deadline_utc:new Date(ends).toISOString(),
   source_schedule:manifest.source_schedule,timezone:'America/Mexico_City',
   roster,packers_bye:manifest.packers_bye,packers_locked:manifest.packers_fixed,
@@ -413,7 +377,14 @@ export default async function handler(req,res){
    return json(res,200,await changeFormStatus(week,form,'ENABLED','STAGED_OPEN'));
   }
   if(action!=='RECONCILE')return json(res,400,{ok:false,error:'UNKNOWN_ACTION'});
-  return json(res,200,await catchupWeek08());
+  const body=req.body||{};
+  const pinned=body.week!==undefined||body.form_id!==undefined||body.deadline!==undefined;
+  if(pinned&&(!Number.isInteger(body.week)||body.week<9||body.week>18||
+      !/^\d{10,25}$/.test(String(body.form_id||''))||!Number.isFinite(Date.parse(body.deadline))))
+    return json(res,400,{ok:false,error:'INVALID_EXPECTED_CAPTURE'});
+  return json(res,200,await catchupWeek08(pinned?{
+    week:body.week,form_id:String(body.form_id),deadline:body.deadline
+  }:null));
  }catch(e){
   const reason=String(e?.message||'RECONCILIATION_ERROR').replace(/[0-9]{10,}/g,'[REDACTED]');
   console.error('PMX_CAPTURE_CONTROL_HOLD',reason);

@@ -117,7 +117,19 @@ jobs:
           // W9-W18 active config is dynamic; no historic gate may freeze W9.
           assert(Number.isInteger(form.week_number) && form.week_number>=9 && form.week_number<=18);
           assert(['OPEN','CLOSED'].includes(form.status));
-          assert.equal(form.form_status,form.status==='OPEN'?'ENABLED':'DISABLED');
+          const planPath='quiniela-control/season-plan/week-'+String(form.week_number).padStart(2,'0')+'.json';
+          const native=(fs.existsSync(planPath)?read(planPath):null)?.provider_schedule;
+          const hasApprovedNativeWindow=native?.approved===true &&
+            native.method==='JOTFORM_NATIVE_SINGLE_WINDOW' &&
+            native.original_form_preserved===true &&
+            String(native.form_id)===String(form.form_id) &&
+            Date.parse(native.end_at_utc)===Date.parse(form.deadline);
+          const ordinary=form.status==='OPEN'?'ENABLED':'DISABLED';
+          const nativeStatuses=form.status==='OPEN'?['OPEN_UNTIL_NATIVE_END']:
+            ['OPEN_UNTIL_NATIVE_END','SCHEDULED_WINDOW_ENDED'];
+          assert(form.form_status===ordinary ||
+            (hasApprovedNativeWindow&&nativeStatuses.includes(form.form_status)),
+            'active form has no certified provider state');
           const activeWeek=read('quiniela-control/weeks/week-'+String(form.week_number).padStart(2,'0')+'.json');
           assert.equal(activeWeek.week_number,form.week_number);
           assert.equal(activeWeek.capture.form_id,form.form_id);

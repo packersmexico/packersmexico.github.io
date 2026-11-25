@@ -310,3 +310,9 @@ Verified:
 `2026-11-08 · Week 10 Game Day rollover adjusted. On Nov 8 after the five-hour game-day display window, Hub promotes Vikings @ Packers on Nov 15 at 12:00 CDMX and retains official venue wording. BYE weeks no longer become registerable Hub hero games. External form W10, browser and publish deployment require independent readback/QA.`
 
 `2026-09-14 · Core Hub weekly rollover is now systemized. The root Hub consumes the existing 2026 season schedule and automatically advances the visible matchup by CDMX date. Public browser QA confirmed Week 2 Packers @ Jets at 11:00 CDMX and no Vikings residue. Ordinary weekly opponent/date/time rollover no longer requires a manual Hub edit; factual flex changes remain a recency-controlled maintenance task.`
+
+## QUINIELA · AUTOMATIC CAPTURE HANDOFF
+- The existing reconciliation workflow matches the checked-out week, form and deadline before counting receipts or closing; it retries deployment propagation without accepting the previous week's response.
+- Provider-native staged forms are verified against actual public controls. Display-only Green Bay is accepted only as the canonical fixed pick; mismatched matchups, mutable Green Bay fields and unexpected options hold release.
+- No new controller or schedule; historical records, published files, provider windows, approval gates and notification endpoints remain unchanged.
+- Keep production acceptance separate from automated tests: verify a newly submitted genuine FIRST_VALID appears without manual reconciliation and observe an actual close. No synthetic records in production.
