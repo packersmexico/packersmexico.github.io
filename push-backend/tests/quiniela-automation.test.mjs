@@ -140,3 +140,26 @@ test('push uses the unchanged PMX brand for normal and diagnostic notifications'
  }
  assert.equal(fs.existsSync(new URL('../../assets/'+logo.split('/').at(-1),import.meta.url)),true);
 });
+
+test('authorized visual push test routes only to the selected role and rejects invalid targeting',async()=>{
+ const source=fs.readFileSync(new URL('../api/notify.js',import.meta.url),'utf8')
+  .replace(/^import .*;$/gm,'').replace('export default async function handler','async function handler');
+ const sent=[];
+ const handler=vm.runInNewContext(source+'\nhandler;',{
+  process:{env:{PMX_PUSH_SECRET:'qa',VAPID_PUBLIC_KEY:'public',VAPID_PRIVATE_KEY:'private'}},
+  webpush:{setVapidDetails(){},sendNotification:async (sub,payload,options)=>sent.push({sub,options})},
+  redis:async ([op,key])=>op==='GET'&&key.startsWith('subscription:')?JSON.stringify({subscription:key}):null,
+  keys:{subscriptionFor:r=>'subscription:'+r,sentFor:r=>'sent:'+r},
+  applyCors(){},json:(res,status,body)=>({status,body})
+ });
+ const base={eventKey:'DEVICE_TEST_STYLE',title:'QA',body:'QA',url:'https://example.test'};
+ const call=data=>handler({headers:{authorization:'Bearer qa'},method:'POST',body:{...base,...data}},{});
+ assert.equal((await call({testOperator:'UNKNOWN'})).status,400);
+ assert.equal(sent.length,0);
+ assert.equal((await call({testOperator:'IBRA'})).status,200);
+ assert.equal(sent.length,1);
+ assert.equal(sent[0].sub,'subscription:IBRA');
+ assert.equal(sent[0].options.TTL,120);
+ assert.equal((await call({})).status,200);
+ assert.deepEqual(sent.slice(1).map(x=>x.sub),['subscription:RODRIGO','subscription:IBRA']);
+});
