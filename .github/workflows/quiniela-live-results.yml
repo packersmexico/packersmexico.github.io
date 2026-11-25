@@ -1,6 +1,12 @@
 name: Quiniela Live Score Monitor
 on:
   schedule:
+    # W12 holiday kickoff coverage (UTC). The existing poller still selects the
+    # due games from the verified active week's schedule.
+    - cron: '6-59/15 0-5 26 11 *'   # Wed night CDMX: GB at LAR (01:00 UTC)
+    - cron: '6-59/15 17-23 26 11 *' # Thanksgiving early games; Fri 00-07 slots cover the night game
+    - cron: '6-59/15 19-23 27 11 *' # Black Friday: DEN at PIT (20:00 UTC)
+    - cron: '6-59/15 0-1 28 11 *'   # Black Friday overtime/final spillover
     - cron: '6-59/15 0-7 * * 5'
     - cron: '6-59/15 15-23 * * 6'
     - cron: '6-59/15 0-7 * * 0'
@@ -170,18 +176,37 @@ jobs:
             python3 scripts/sync-quiniela-live.py
             if python3 - <<'PY'
           import json
-          p='quiniela-control/data.json'
-          d=json.load(open(p))
-          s=d.get('scoring') or {}
-          if s.get('status')=='COMPLETE' and s.get('checksum') and len(d.get('season_standings') or [])==9 and d.get('results',{}).get('status')=='FINAL':
-              print('PMX_POST_MNF_PRIVATE_SCORING_PASS',d['week_number'],s['checksum'][:12])
-          else:raise SystemExit(1)
+          from pathlib import Path
+          root=Path('quiniela-control')
+          cfg=json.load(open(root/'capture-config.json'))
+          week=int(cfg.get('week_number') or 0)
+          snap=json.load(open(root/'weeks'/f'week-{week:02d}.json'))
+          data=json.load(open(root/'data.json'))
+          scoring=data.get('scoring') or {}
+          snap_scoring=snap.get('scoring') or {}
+          results=data.get('results') or {}
+          snap_results=snap.get('results') or {}
+          certified=(
+              cfg.get('status')=='CLOSED' and cfg.get('complete')==9 and
+              data.get('week_number')==snap.get('week_number')==week and
+              snap.get('capture',{}).get('window')=='CLOSED' and
+              scoring.get('status')==snap_scoring.get('status')=='COMPLETE' and
+              bool(scoring.get('checksum')) and scoring['checksum']==snap_scoring.get('checksum') and
+              results.get('status')==snap_results.get('status')=='FINAL' and
+              0 < len(snap.get('games') or [])==results.get('final')==results.get('total')==
+                  snap_results.get('final')==snap_results.get('total') and
+              len(data.get('season_standings') or [])==9
+          )
+          if not certified:
+              print('PMX_POST_MNF_PRIVATE_SCORING_PENDING',week,'score_pointer',data.get('week_number'))
+              raise SystemExit(1)
+          print('PMX_POST_MNF_PRIVATE_SCORING_PASS',week,scoring['checksum'][:12])
           PY
             then
               break
             fi
             if [ "$attempt" -eq 4 ]; then
-              echo '::error::Official FINAL persisted but private scoring is HOLD; no false rankings or W11 release'
+              echo '::error::Official FINAL persisted but private scoring is HOLD; no false rankings or next-week release'
               exit 1
             fi
             sleep 12
