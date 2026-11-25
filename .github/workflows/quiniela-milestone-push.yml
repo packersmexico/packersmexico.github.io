@@ -18,5 +18,5 @@ jobs:
           curl -fsS --max-time 15 -H "Authorization: Bearer $PMX_PUSH_SECRET" "$URL" |
             jq -e '.ok == true and .targeted_test_supported == true and .operators.IBRA.subscribed == true' >/dev/null
           curl -fsS --max-time 15 -H "Authorization: Bearer $PMX_PUSH_SECRET" -H 'Content-Type: application/json' \
-            --data-binary '{"eventKey":"DEVICE_TEST_IBRA_LOGO_PNG_20261125","testOperator":"IBRA","title":"Quiniela · Packers México","body":"Segunda prueba: logo de Packers México en PNG.","url":"https://packersmexico.github.io/quiniela-control/?operador=IBRA#notification-heading","tag":"pmx-logo-test-ibra"}' "$URL" |
+            --data-binary '{"eventKey":"DEVICE_TEST_IBRA_LOGO_RESEND_20261125_1205","testOperator":"IBRA","title":"Quiniela · Packers México","body":"Reenvío de prueba del logo de la Quiniela.","url":"https://packersmexico.github.io/quiniela-control/?operador=IBRA#notification-heading","tag":"pmx-logo-test-ibra"}' "$URL" |
             jq -e '{eventKey,deliveries} | select((.deliveries|length) == 1 and .deliveries[0].operator == "IBRA" and (.deliveries[0].status == "SENT" or .deliveries[0].status == "ALREADY_SENT"))'
