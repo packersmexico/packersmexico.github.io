@@ -262,7 +262,7 @@
   "results": {
     "final": 0,
     "total": 16,
-    "status": "PENDING",
+    "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
     "scored": 0,
@@ -389,5 +389,7 @@
   "scoring": {
     "status": "PENDING",
     "picks_visible": false
-  }
+  },
+  "last_sync": "2026-11-25T18:50:19.180676+00:00",
+  "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
