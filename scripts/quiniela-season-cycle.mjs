@@ -217,7 +217,7 @@ async function main(){
  invariant(enabled.verified && enabled.status==='ENABLED','FORM_ENABLE_READBACK_MISSING');
  const created={season:'2026',week:'WEEK '+next,week_number:next,form_id:check.form_id,form_url:check.form_url,
   status:'OPEN',window:'OPEN',deadline,deadline_label:'CIERRE AUTOMÁTICO · '+deadline,
-  stable_url:'https://packersmexico.github.io/quiniela-control/captura/',form_status:'ENABLED',
+  stable_url:'https://packersmexico.github.io/quiniela-control/captura/',form_status:nativeScheduled?'OPEN_UNTIL_NATIVE_END':'ENABLED',
   complete:0,total:9,expected_picks:9*planGames.length,received_picks:0,missing_picks:9*planGames.length,
   missing_participants:ROSTER,duplicate_policy:'FIRST_VALID_SUBMISSION_LOCKED_PER_PARTICIPANT',
   default_green_bay_policy:check.packers_locked?'GB_FIXED_NON_EDITABLE':'PACKERS_BYE',
