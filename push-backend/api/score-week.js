@@ -4,15 +4,41 @@ import crypto from 'node:crypto';
 import { redis } from '../lib/redis.js';
 import { calculateWeeklyRankings, digestScores } from '../lib/weekly-rankings.js';
 import { json, rejectMethod } from '../lib/http.js';
-const BASE='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
+const REPO='packersmexico/packersmexico.github.io';
+const RAW='https://raw.githubusercontent.com/'+REPO+'/';
+const GITHUB_REF='https://api.github.com/repos/'+REPO+'/git/ref/heads/main';
 const safeEqual=(a,b)=>{
  const x=Buffer.from(String(a||'')),y=Buffer.from(String(b||''));
  return x.length>0&&x.length===y.length&&crypto.timingSafeEqual(x,y);
 };
-async function read(p){
- const r=await fetch(BASE+p+'?t='+Date.now(),{cache:'no-store'});
+async function read(p,ref='main',request=fetch){
+ const r=await request(RAW+ref+'/quiniela-control/'+p+'?t='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4000)});
  if(!r.ok)throw Error('SOURCE_'+r.status);
  return r.json();
+}
+export async function readWeekSources(week,{picks=false,request=fetch}={}){
+ // Only the official main ref (never a client-supplied commit). Pin all
+ // three reads together: the mutable raw alias can lag a freshly pushed close.
+ let ref='main';
+ if(picks){
+  let reply;
+  try{
+   const r=await request(GITHUB_REF+'?t='+Date.now(),{cache:'no-store',
+     headers:{'User-Agent':'PMX-Quiniela-Renderer','Accept':'application/vnd.github+json'},
+     signal:AbortSignal.timeout(3000)});
+   if(!r.ok)throw Error('REF_HTTP_'+r.status);
+   reply=await r.json();
+  }catch{throw Error('PICKS_CANONICAL_REF_UNAVAILABLE');}
+  if(reply.ref!=='refs/heads/main'||reply.object?.type!=='commit'||!/^[a-f0-9]{40}$/.test(reply.object?.sha||''))
+   throw Error('PICKS_CANONICAL_REF_INVALID');
+  ref=reply.object.sha;
+ }
+ const tag=w=>'week-'+String(w).padStart(2,'0')+'.json';
+ return Promise.all([
+  read('weeks/'+tag(week),ref,request),
+  read('weeks/'+tag(week-1),ref,request),
+  read('contracts/'+tag(week),ref,request)
+ ]);
 }
 function parseHash(raw){
  if(raw==null)return {};
@@ -27,11 +53,7 @@ export default async function handler(req,res){
  const week=Number(req.body?.week||req.query?.week);
  if(!Number.isInteger(week)||week<7||week>18)return reject(res,400,'INVALID_WEEK');
  try{
-  const [snapshot,previous,contract]=await Promise.all([
-   read('weeks/week-'+String(week).padStart(2,'0')+'.json'),
-   read('weeks/week-'+String(week-1).padStart(2,'0')+'.json'),
-   read('contracts/week-'+String(week).padStart(2,'0')+'.json')
-  ]);
+  const [snapshot,previous,contract]=await readWeekSources(week,{picks:req.body?.picks===true});
   if(snapshot.week_number!==week||previous.week_number!==week-1||contract.week_number!==week)throw Error('WEEK_CHAIN_MISMATCH');
   if(String(snapshot.capture?.form_id)!==String(contract.form_id)||
      String(snapshot.capture?.window).toUpperCase()!=='CLOSED' ||

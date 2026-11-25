@@ -62,7 +62,8 @@ def request(url, method="GET", body=None, secret=None):
 def transient_capture_race(status, body):
     # GitHub raw may still serve OPEN for seconds after the canonical CLOSE
     # commit has landed. Never retry genuine matrix/rights/QA failures.
-    return int(status)==409 and "SCORING_HOLD_CAPTURE_NOT_CERTIFIED" in str(body)
+    return int(status)==409 and any(code in str(body) for code in (
+        "SCORING_HOLD_CAPTURE_NOT_CERTIFIED","SCORING_HOLD_PICKS_CANONICAL_REF_UNAVAILABLE"))
 
 def private(week,kind):
     secret=os.environ.get("PMX_PUSH_SECRET")
@@ -399,6 +400,8 @@ def run(kind,eligibility=False):
 
 def self_test():
     assert transient_capture_race(409,'{"error":"SCORING_HOLD_CAPTURE_NOT_CERTIFIED"}')
+    assert transient_capture_race(409,'{"error":"SCORING_HOLD_PICKS_CANONICAL_REF_UNAVAILABLE"}')
+    assert not transient_capture_race(409,'{"error":"SCORING_HOLD_PICKS_CANONICAL_REF_INVALID"}')
     assert not transient_capture_race(409,'{"error":"SCORING_HOLD_PRIVATE_CAPTURE_MATRIX_INTEGRITY"}')
     assert not transient_capture_race(401,'{"error":"SCORING_HOLD_CAPTURE_NOT_CERTIFIED"}')
 

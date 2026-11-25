@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {readWeekSources} from '../api/score-week.js';
 import {parseJotformCreatedAt,requireCorrectOriginal} from '../scripts/catchup-week08.mjs';
 import {readNativeFormMap} from '../lib/jotform-native-form.js';
 import {assertWeekConfig,validateWeeklyPicks} from '../lib/weekly-capture.js';
@@ -91,4 +92,24 @@ test('Jotform REST cutoff uses Eastern standard time, exact cutoff accepted, lat
  assert.equal(parseJotformCreatedAt('2026-11-24 19:12:35'),Date.parse('2026-11-25T00:12:35Z'));
  for(const value of ['2026-02-30 17:00:00','2026-11-25 24:00:00','2026-11-25','2026-11-25 17:00:00 EST',''])
   assert.equal(Number.isNaN(parseJotformCreatedAt(value)),true);
+});
+
+test('picks reads the closed snapshot and contract through one trusted canonical commit',async()=>{
+ const pinned='a'.repeat(40);
+ const calls=[];
+ const request=async url=>{
+  calls.push(new URL(url));
+  if(url.includes('/git/ref/heads/main'))return {ok:true,json:async()=>({ref:'refs/heads/main',object:{type:'commit',sha:pinned}})};
+  const window=url.includes('/'+pinned+'/')?'CLOSED':'OPEN';
+  return {ok:true,json:async()=>({capture:{window}})};
+ };
+ const [snapshot]=await readWeekSources(12,{picks:true,request});
+ assert.equal(snapshot.capture.window,'CLOSED');
+ assert.equal(calls.length,4);
+ assert.deepEqual(calls.slice(1).map(u=>u.pathname.split('/').slice(3)),[
+  [pinned,'quiniela-control','weeks','week-12.json'],
+  [pinned,'quiniela-control','weeks','week-11.json'],
+  [pinned,'quiniela-control','contracts','week-12.json']
+ ]);
+ await assert.rejects(()=>readWeekSources(12,{picks:true,request:async()=>({ok:true,json:async()=>({ref:'refs/heads/other',object:{type:'commit',sha:pinned}})})}),/PICKS_CANONICAL_REF_INVALID/);
 });
