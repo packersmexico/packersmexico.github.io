@@ -6,7 +6,19 @@ import {resolveParticipant,normalizeText} from '../lib/jotform-capture.js';
 import {assertWeekConfig,validateWeeklyPicks} from '../lib/weekly-capture.js';
 import {checksum} from '../lib/jotform-hydration.js';
 const ROOT='https://raw.githubusercontent.com/packersmexico/packersmexico.github.io/main/quiniela-control/';
-function requireCorrectOriginal(s,contract,stats){
+// Jotform REST created_at is a bare EST wall time in the active winter
+// schedule (provider docs and Week 12 receipts). Do not use the server zone.
+// https://www.jotform.com/answers/4661943-api-submission-date-is-in-what-time-zone
+export function parseJotformCreatedAt(value){
+ if(typeof value!=='string')return NaN;
+ const m=value.trim().match(/^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2}:\d{2})(\.\d{1,3})?(Z|[+-]\d{2}:?\d{2})?$/i);
+ if(!m)return NaN;
+ const wall=m[1]+'T'+m[2],fraction=(m[3]||'.0').padEnd(4,'0');
+ const check=Date.parse(wall+fraction+'Z');
+ if(!Number.isFinite(check)||new Date(check).toISOString()!==wall+fraction+'Z')return NaN;
+ return Date.parse(wall+fraction+(m[4]?.toUpperCase()||'-05:00'));
+}
+export function requireCorrectOriginal(s,contract,stats){
  const name=resolveParticipant(s.answers||{},new Set(contract.roster.map(normalizeText)));
  if(!name){stats.participant_missing++;return null;}
  if(String(s.form_id||s.formID||'')!==String(contract.form_id)||!/^[0-9]{10,25}$/.test(String(s.id||''))){stats.form_or_id_invalid++;return null;}
@@ -16,9 +28,9 @@ function requireCorrectOriginal(s,contract,stats){
    for(const game of result.missing_or_invalid||[]) stats.invalid_games[game]=(stats.invalid_games[game]||0)+1;
    return null;
  }
- const t=String(s.created_at||'');const created=Date.parse(t.endsWith('Z')?t:t.replace(' ','T')+'Z');
+ const created=parseJotformCreatedAt(s.created_at);
  if(!Number.isFinite(created)||created>Date.parse(contract.deadline)){stats.date_invalid++;return null;}
- return {name,original_id:String(s.id),created_at:t,picks:result.picks};
+ return {name,original_id:String(s.id),created,created_at:new Date(created).toISOString(),picks:result.picks};
 }
 async function fetchFormSubmissions(key,FORM){
  const rows=[];let offset=0;
@@ -56,7 +68,7 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   const originals=await fetchFormSubmissions(process.env.PMX_JOTFORM_API_KEY,FORM);
   const rejectionStats={participant_missing:0,form_or_id_invalid:0,picks_invalid:0,date_invalid:0,invalid_games:{}};
   const valid=originals.map(s=>requireCorrectOriginal(s,contract,rejectionStats)).filter(Boolean)
-    .sort((a,b)=>Date.parse(a.created_at)-Date.parse(b.created_at)||a.original_id.localeCompare(b.original_id));
+    .sort((a,b)=>a.created-b.created||a.original_id.localeCompare(b.original_id));
   // Aggregate-only diagnostics: never log individual responses, picks or IDs.
   const rejected=originals.length-valid.length;
   let newValid=0,duplicates=0;

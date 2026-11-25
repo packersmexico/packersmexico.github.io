@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {parseJotformCreatedAt,requireCorrectOriginal} from '../scripts/catchup-week08.mjs';
 import {readNativeFormMap} from '../lib/jotform-native-form.js';
 import {assertWeekConfig,validateWeeklyPicks} from '../lib/weekly-capture.js';
 import {reconcileCanonical,canClose} from '../../scripts/quiniela-season-cycle.mjs';
@@ -73,4 +74,21 @@ test('a partially verified capture waits and closes incomplete at cutoff; nine c
  assert.equal(canClose(config,live(8),Date.parse(config.deadline)-1).due,false);
  assert.deepEqual(Object.values(canClose(config,live(8),Date.parse(config.deadline))).slice(0,3),[true,false,8]);
  assert.equal(canClose(config,live(9),Date.parse(config.deadline)-1).complete,true);
+});
+
+test('Jotform REST cutoff uses Eastern standard time, exact cutoff accepted, later denied',()=>{
+ const deadline='2026-11-25T22:00:00.000Z';
+ const contract=assertWeekConfig({...config,deadline,timezone:'America/Mexico_City',roster,packers_locked:true,games:readNativeFormMap(html,manifest).games});
+ const stats={date_invalid:0};
+ const original=(created_at)=>({id:'123456789098',form_id:config.form_id,created_at,
+   answers:{'21':{answer:roster[0]},'23':{answer:'LIONS'}}});
+ assert.equal(requireCorrectOriginal(original('2026-11-25 16:59:59'),contract,stats).created_at,'2026-11-25T21:59:59.000Z');
+ assert.equal(requireCorrectOriginal(original('2026-11-25 17:00:00'),contract,stats).created_at,deadline);
+ assert.equal(requireCorrectOriginal(original('2026-11-25 17:00:01'),contract,stats),null);
+ assert.equal(stats.date_invalid,1);
+ for(const value of ['2026-11-25T22:00:00Z','2026-11-25T17:00:00-05:00','2026-11-25 16:00:00-0600','2026-11-25T23:00:00+01:00'])
+  assert.equal(parseJotformCreatedAt(value),Date.parse(deadline));
+ assert.equal(parseJotformCreatedAt('2026-11-24 19:12:35'),Date.parse('2026-11-25T00:12:35Z'));
+ for(const value of ['2026-02-30 17:00:00','2026-11-25 24:00:00','2026-11-25','2026-11-25 17:00:00 EST',''])
+  assert.equal(Number.isNaN(parseJotformCreatedAt(value)),true);
 });
