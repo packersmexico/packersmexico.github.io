@@ -442,8 +442,8 @@
       },
       "assets": {
         "picks": {
-          "state": "QA_PENDING",
-          "href": null,
+          "state": "READY",
+          "href": "./w12-picks-board.png",
           "expected": "picks-board.png",
           "size": "1600x2000"
         },

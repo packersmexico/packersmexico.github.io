@@ -1,0 +1,32 @@
+{
+  "schema": "PMX_QUINIELA_FIGMA_STAGE_V2",
+  "week": 12,
+  "season": 2026,
+  "state": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION",
+  "file_key": "RAoegEENwTH2L7gb3yydIq",
+  "rights": {
+    "auto_publish": false,
+    "limitation": "Direction approves private-to-panel exports only, not NFL license or social-media autopublishing."
+  },
+  "qa": {
+    "picks_visual_review": "PASS · FROZEN_FIGMA_TEMPLATE_QA · 9×16 private first-valid entries, dimensions verified, Figma immutable blob SHA checked"
+  },
+  "asset_approvals": {
+    "picks": {
+      "figma_qa": "PASS",
+      "direction_review": "PASS",
+      "export_verified": true,
+      "evidence": "Figma node 3893:236827; validated 9×16 private first-valid entries, dimensions verified, Figma immutable blob SHA checked; exported SHA256 2b74b2e057810ca33d9cf8a31a06836614d66aa92aa8b2ea6afba1708c00cbd8; source checksum 7184f4bc251e15d302009e7dfad22437cd51804767d07f8fd498539b739a7385; automatic layout fit checks.",
+      "approved_by": "00 · Direction · recurring automation order 2026-11-05",
+      "distribution": "PANEL_DOWNLOAD_AUTHORIZED_BY_DIRECTION · NO_SOCIAL_AUTO_PUBLISH · NOT_NFL_LICENSE",
+      "output_file": "quiniela-control/exports/w12-picks-board.png",
+      "renderer_template_node": "3893:236827",
+      "scoring_checksum": "7184f4bc251e15d302009e7dfad22437cd51804767d07f8fd498539b739a7385"
+    }
+  },
+  "output_targets": {
+    "picks": "quiniela-control/exports/w12-picks-board.png"
+  },
+  "gate": "FIGMA_FROZEN_BASE + PRIVATE_SOURCE + LAYOUT_FIT + 04_AUTOMATED_QA_PASS · AUTO_PUBLISH_NO",
+  "auto_publish": false
+}
