@@ -1,5 +1,5 @@
 // Raster for Android notification rendering; the approved PMX SVG master is unchanged.
-const PMX_NOTIFICATION_ICON = './assets/pmx-notification-icon.png';
+const PMX_NOTIFICATION_ICON = './assets/pmx-notification-icon-v2.png';
 // Activate this visual-only update without cleaning caches or changing subscriptions.
 self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
 

@@ -119,7 +119,7 @@ test('push uses the unchanged PMX brand for normal and diagnostic notifications'
  const handlers={}, shown=[], receipts=[];
  const worker=new URL('../../quiniela-control/push-sw.js',import.meta.url);
  const scope='https://packersmexico.github.io/quiniela-control/';
- const logo='https://packersmexico.github.io/quiniela-control/assets/pmx-notification-icon.png';
+ const logo='https://packersmexico.github.io/quiniela-control/assets/pmx-notification-icon-v2.png';
  let activated=false;
  vm.runInNewContext(fs.readFileSync(worker,'utf8'),{
   URL,Response,
