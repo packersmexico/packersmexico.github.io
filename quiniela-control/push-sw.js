@@ -1,9 +1,15 @@
+// Use the approved PMX mark unchanged; resolve from the SW's Pages scope.
+const PMX_NOTIFICATION_ICON = '../assets/PMX_LOGO_HISTORICO_HORIZONTAL_CANVA_MASTER_V1.1.svg';
+// Activate this visual-only update without cleaning caches or changing subscriptions.
+self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
+
 self.addEventListener('push', event => {
   let data = {};
   try { data = event.data ? event.data.json() : {}; } catch (_) {}
   const title = data.title || 'PACKERS MÉXICO · Quiniela';
   const options = {
     body: data.body || 'Hay una actualización de la Quiniela.',
+    icon: new URL(PMX_NOTIFICATION_ICON, self.registration.scope).href,
     tag: data.tag || data.eventKey || 'pmx-quiniela',
     renotify: true,
     data: { url: data.url || './' }
