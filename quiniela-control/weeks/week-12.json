@@ -4,7 +4,7 @@
   "week": "WEEK 12",
   "week_number": 12,
   "snapshot_status": "OPEN",
-  "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-12",
+  "schedule_source": "https://www.nfl.com/news/week-12-schedule-change",
   "capture": {
     "season": "2026",
     "week": "WEEK 12",
@@ -98,130 +98,162 @@
     {
       "id": "G01",
       "matchup": "GB @ LAR",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-26T01:00:00.000Z",
+      "espn_event_id": "401873079"
     },
     {
       "id": "G02",
       "matchup": "CHI @ DET",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-26T18:00:00.000Z",
+      "espn_event_id": "401873081"
     },
     {
       "id": "G03",
       "matchup": "PHI @ DAL",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-26T21:30:00.000Z",
+      "espn_event_id": "401873080"
     },
     {
       "id": "G04",
       "matchup": "KC @ BUF",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-27T01:20:00.000Z",
+      "espn_event_id": "401873082"
     },
     {
       "id": "G05",
       "matchup": "DEN @ PIT",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-27T20:00:00.000Z",
+      "espn_event_id": "401873083"
     },
     {
       "id": "G06",
       "matchup": "ATL @ MIN",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873084"
     },
     {
       "id": "G07",
       "matchup": "BAL @ HOU",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873085"
     },
     {
       "id": "G08",
       "matchup": "LV @ CLE",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-30T01:20:00.000Z",
+      "espn_event_id": "401873086"
     },
     {
       "id": "G09",
       "matchup": "NO @ CIN",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873087"
     },
     {
       "id": "G10",
       "matchup": "NYG @ IND",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873088"
     },
     {
       "id": "G11",
       "matchup": "NYJ @ MIA",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873089"
     },
     {
       "id": "G12",
       "matchup": "TEN @ JAX",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T18:00:00.000Z",
+      "espn_event_id": "401873090"
     },
     {
       "id": "G13",
       "matchup": "SEA @ SF",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T21:25:00.000Z",
+      "espn_event_id": "401873091"
     },
     {
       "id": "G14",
       "matchup": "WAS @ AZ",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T21:25:00.000Z",
+      "espn_event_id": "401873092"
     },
     {
       "id": "G15",
       "matchup": "NE @ LAC",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-11-29T21:05:00.000Z",
+      "espn_event_id": "401873093"
     },
     {
       "id": "G16",
       "matchup": "CAR @ TB",
-      "time": "HORARIO OFICIAL PENDIENTE DE SYNC",
+      "time": "HORARIO OFICIAL · CDMX",
       "status": "SCHEDULED",
       "winner": null,
-      "score": null
+      "score": null,
+      "kickoff_iso": "2026-12-01T01:15:00.000Z",
+      "espn_event_id": "401873094"
     }
   ],
   "results": {
