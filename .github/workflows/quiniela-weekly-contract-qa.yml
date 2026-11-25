@@ -8,6 +8,8 @@ on:
       - 'push-backend/api/notify.js'
       - 'scripts/qa-quiniela-contract.mjs'
       - 'scripts/quiniela-capture-notifications.mjs'
+      - 'scripts/quiniela-season-cycle.mjs'
+      - '.github/workflows/quiniela-capture-reconcile.yml'
       - 'scripts/audit-quiniela-season-readiness.mjs'
       - 'scripts/prepare-quiniela-figma-handoff.mjs'
       - '.github/workflows/quiniela-production-handoff.yml'
@@ -21,6 +23,8 @@ on:
       - 'push-backend/**'
       - 'scripts/qa-quiniela-contract.mjs'
       - 'scripts/quiniela-capture-notifications.mjs'
+      - 'scripts/quiniela-season-cycle.mjs'
+      - '.github/workflows/quiniela-capture-reconcile.yml'
 permissions:
   contents: read
 jobs:
@@ -53,6 +57,7 @@ jobs:
           node --check push-backend/lib/weekly-rankings.js
           node --check push-backend/api/milestone-sync.js
           node --check scripts/prebuild-quiniela-season.mjs
+          node --test push-backend/tests/quiniela-automation.test.mjs
           node --check scripts/quiniela-season-cycle.mjs
           node --check scripts/quiniela-capture-notifications.mjs
           node scripts/quiniela-capture-notifications.mjs --self-test

@@ -3,6 +3,7 @@
 // Never publishes to social; never copies individual picks or IDs to GitHub.
 import fs from 'node:fs';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 const ROOT='quiniela-control';
 const API='https://packersmexicogithubio-push-backend.vercel.app/api/';
 const ROSTER=['EL DOC','ARI','LALO','ALEX','LUIS C.','DR PALMA','JENNI','RODRI','IBRACHO'];
@@ -27,6 +28,25 @@ async function captureStatus(config){
  const d=await res.json();
  invariant(d.ok && Number(d.week)===config.week_number && String(d.form_id)===String(config.form_id),'LIVE_FORM_MISMATCH');
  return d;
+}
+export async function reconcileCanonical(config, request=call, pause=ms=>new Promise(r=>setTimeout(r,ms))){
+ const week=config.week_number,form=String(config.form_id);
+ const expected={action:'RECONCILE',week,form_id:form,deadline:config.deadline};
+ for(let n=0;n<4;n++){
+  try{
+   const d=await request('reconcile-capture',expected);
+   invariant(Number(d.week)===week&&Number.isInteger(d.verified_count)&&d.verified_count>=0&&
+     d.verified_count<=9&&Number.isInteger(d.valid_submissions)&&d.valid_submissions>=d.added&&
+     Number.isInteger(d.jotform_submissions)&&d.jotform_submissions>=d.valid_submissions&&
+     Number.isInteger(d.added)&&d.added>=0&&d.added<=d.verified_count,
+     'CANONICAL_RECONCILIATION_NOT_VERIFIED');
+   console.log('PMX_CANONICAL_RECONCILED',JSON.stringify({week,jotform:d.jotform_submissions,first_valid:d.verified_count,added:d.added}));
+   return d;
+  }catch(err){
+   if(n===3||!/^BACKEND_reconcile-capture_(ACTIVE_CAPTURE_CHANGED|ACTIVE_WEEK_CONTRACT_UNAVAILABLE|FORM_CONTRACT_MISMATCH|ACTIVE_CAPTURE_DEADLINE_MISMATCH)$/.test(err.message))throw err;
+   await pause(5000*(n+1));
+  }
+ }
 }
 function canClose(config,live,now){
  const deadline=Date.parse(config.deadline);
@@ -60,9 +80,22 @@ async function main(){
  invariant(process.env.GITHUB_ACTIONS==='true','GH_ACTIONS_ONLY');
  const config=read('capture-config.json');
  invariant(config.week_number>=9&&config.week_number<=18,'UNEXPECTED_ACTIVE_WEEK');
- const now=Date.now(),current=Number(config.week_number);
+ const current=Number(config.week_number);
+ let now=Date.now();
  if(String(config.status)==='OPEN'){
+  let reconciled=await reconcileCanonical(config);
+  if(process.argv.includes('--reconcile-only'))return;
+  // If the provider read straddled cutoff, fetch once after cutoff to include
+  // any last-second eligible submission before writing a closed snapshot.
+  if(now<Date.parse(config.deadline)&&Date.now()>=Date.parse(config.deadline))
+    reconciled=await reconcileCanonical(config);
+  now=Date.now();
   const live=await captureStatus(config);
+  invariant(live.backend_status!=='REDIS_READ_UNAVAILABLE' &&
+    Number(live.verified_count)>=reconciled.verified_count &&
+    Number(live.private_picks_complete_records)===Number(live.verified_count) &&
+    Number(live.private_picks_count)===Number(live.verified_count)*Number(config.expected_picks)/9,
+    'CLOSURE_READBACK_NOT_VERIFIED');
   const cut=canClose(config,live,now);
   console.log('PMX_CAPTURE_2026',JSON.stringify({week:current,verified:cut.n,deadline:config.deadline,due:cut.due,complete:cut.complete}));
   if(!cut.due)return;
@@ -104,6 +137,7 @@ async function main(){
   console.log('PMX_AUTO_CLOSED',JSON.stringify({week:current,complete:cut.n,status:close.capture_status,provider_native_window:nativeAuthorized,provider_shutdown_status:status.status,first_valid_locked:true}));
   return;
  }
+ if(process.argv.includes('--reconcile-only'))return;
  if(String(config.status)!=='CLOSED'){console.log('PMX_CAPTURE_TRANSITION_HOLD',String(config.status));return;}
  if(current>=18){console.log('PMX_SEASON_COMPLETE_NO_NEXT_WEEK');return;}
  const next=current+1;
@@ -212,4 +246,4 @@ async function main(){
    native_scheduled:nativeScheduled,private_poll_verified:check.private_poll_verified===true,
    first_valid_preserved:true,prior_final:true}));
 }
-await main();
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))await main();

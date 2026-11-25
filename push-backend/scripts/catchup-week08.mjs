@@ -34,7 +34,7 @@ async function fetchFormSubmissions(key,FORM){
  }
  return rows;
 }
-export async function catchupWeek08(){
+export async function catchupWeek08(expected=null){
 if(process.env.VERCEL_ENV!=='production')return {ok:false,status:'SKIP_NONPRODUCTION'};
 if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
 {
@@ -43,12 +43,16 @@ if(!process.env.PMX_JOTFORM_API_KEY)throw Error('JOTFORM_API_KEY_UNAVAILABLE');
   if(!configResponse.ok)throw Error('ACTIVE_CONFIG_UNAVAILABLE');
   const config=await configResponse.json();
   const week=Number(config.week_number),FORM=String(config.form_id||'');
+  if(expected&&(week!==expected.week||FORM!==expected.form_id||String(config.status).toUpperCase()!=='OPEN'))
+    throw Error('ACTIVE_CAPTURE_CHANGED');
+  if(expected&&Date.parse(config.deadline)!==Date.parse(expected.deadline))throw Error('ACTIVE_CAPTURE_DEADLINE_MISMATCH');
   if(String(config.status).toUpperCase()!=='OPEN')return {ok:true,week,status:'CAPTURE_NOT_OPEN'};
   if(!Number.isInteger(week)||week<8||week>18||!/^\d{10,25}$/.test(FORM))throw Error('ACTIVE_FORM_INVALID');
   const contractResponse=await fetch(ROOT+'contracts/week-'+String(week).padStart(2,'0')+'.json?t='+Date.now(),{cache:'no-store'});
   if(!contractResponse.ok)throw Error('ACTIVE_WEEK_CONTRACT_UNAVAILABLE');
   const contract=assertWeekConfig(await contractResponse.json());
   if(contract.week_number!==week||String(contract.form_id)!==FORM)throw Error('FORM_CONTRACT_MISMATCH');
+  if(Date.parse(contract.deadline)!==Date.parse(config.deadline))throw Error('ACTIVE_CAPTURE_DEADLINE_MISMATCH');
   const originals=await fetchFormSubmissions(process.env.PMX_JOTFORM_API_KEY,FORM);
   const rejectionStats={participant_missing:0,form_or_id_invalid:0,picks_invalid:0,date_invalid:0,invalid_games:{}};
   const valid=originals.map(s=>requireCorrectOriginal(s,contract,rejectionStats)).filter(Boolean)
