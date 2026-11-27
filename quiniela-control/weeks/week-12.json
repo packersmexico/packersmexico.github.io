@@ -122,9 +122,9 @@
       "id": "G03",
       "matchup": "PHI @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
-      "status": "IN_PROGRESS",
-      "winner": null,
-      "score": "PHI 30–38 DAL",
+      "status": "FINAL",
+      "winner": "PHI",
+      "score": "PHI 39–38 DAL",
       "kickoff_iso": "2026-11-26T21:30:00.000Z",
       "espn_event_id": "401873080"
     },
@@ -132,9 +132,9 @@
       "id": "G04",
       "matchup": "KC @ BUF",
       "time": "HORARIO OFICIAL · CDMX",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "BUF",
+      "score": "BUF 13–10 KC",
       "kickoff_iso": "2026-11-27T01:20:00.000Z",
       "espn_event_id": "401873082"
     },
@@ -260,12 +260,12 @@
     }
   ],
   "results": {
-    "final": 2,
+    "final": 4,
     "total": 16,
     "status": "LIVE",
-    "in_progress": 1,
+    "in_progress": 0,
     "ties": 0,
-    "scored": 2,
+    "scored": 4,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -390,6 +390,6 @@
     "status": "PENDING",
     "picks_visible": false
   },
-  "last_sync": "2026-11-27T00:58:01.417403+00:00",
+  "last_sync": "2026-11-27T08:10:51.189964+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
