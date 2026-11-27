@@ -112,9 +112,9 @@
       "id": "G02",
       "matchup": "CHI @ DET",
       "time": "HORARIO OFICIAL · CDMX",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "CHI",
+      "score": "CHI 39–35 DET",
       "kickoff_iso": "2026-11-26T18:00:00.000Z",
       "espn_event_id": "401873081"
     },
@@ -122,9 +122,9 @@
       "id": "G03",
       "matchup": "PHI @ DAL",
       "time": "HORARIO OFICIAL · CDMX",
-      "status": "SCHEDULED",
+      "status": "IN_PROGRESS",
       "winner": null,
-      "score": null,
+      "score": "PHI 30–38 DAL",
       "kickoff_iso": "2026-11-26T21:30:00.000Z",
       "espn_event_id": "401873080"
     },
@@ -260,12 +260,12 @@
     }
   ],
   "results": {
-    "final": 1,
+    "final": 2,
     "total": 16,
     "status": "LIVE",
-    "in_progress": 0,
+    "in_progress": 1,
     "ties": 0,
-    "scored": 1,
+    "scored": 2,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -390,6 +390,6 @@
     "status": "PENDING",
     "picks_visible": false
   },
-  "last_sync": "2026-11-26T08:03:54.904053+00:00",
+  "last_sync": "2026-11-27T00:58:01.417403+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
