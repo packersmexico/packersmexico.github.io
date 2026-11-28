@@ -142,9 +142,9 @@
       "id": "G05",
       "matchup": "DEN @ PIT",
       "time": "HORARIO OFICIAL · CDMX",
-      "status": "SCHEDULED",
-      "winner": null,
-      "score": null,
+      "status": "FINAL",
+      "winner": "PIT",
+      "score": "PIT 27–5 DEN",
       "kickoff_iso": "2026-11-27T20:00:00.000Z",
       "espn_event_id": "401873083"
     },
@@ -260,12 +260,12 @@
     }
   ],
   "results": {
-    "final": 4,
+    "final": 5,
     "total": 16,
     "status": "LIVE",
     "in_progress": 0,
     "ties": 0,
-    "scored": 4,
+    "scored": 5,
     "pushes": 0
   },
   "weekly_standings": [],
@@ -390,6 +390,6 @@
     "status": "PENDING",
     "picks_visible": false
   },
-  "last_sync": "2026-11-27T08:10:51.189964+00:00",
+  "last_sync": "2026-11-28T01:52:03.413657+00:00",
   "results_source": "ESPN_NFL_COMPLETED_EVENT_SCOREBOARD"
 }
